@@ -61,10 +61,10 @@
 	set waitfor = 0
 	if(src.mloop) return
 	mloop = 1
-	Move(get_step(mob.loc, true_dir),true_dir)
-	while(true_dir)
+	src.Move(get_step(mob.loc, true_dir),true_dir)
+	while(src.true_dir)
 		sleep(world.tick_lag)
-		if(true_dir)
-			Move(get_step(mob.loc, true_dir),true_dir)
+		if(src.true_dir)
+			src.Move(get_step(mob.loc, true_dir),true_dir)
 	mloop = 0
 

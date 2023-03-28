@@ -5,12 +5,8 @@
 	icon = 'icons/obj/aibots.dmi'
 	layer = MOB_LAYER
 	universal_speak = 1
-<<<<<<< HEAD
 	density = FALSE
 	bad_type = /mob/living/bot
-=======
-	density = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/card/id/botcard = null
 	var/list/botcard_access = list()
 	var/on = TRUE
@@ -23,7 +19,6 @@
 	var/list/req_access = list()
 	var/list/req_one_access = list()
 	mob_classification = CLASSIFICATION_SYNTHETIC
-	colony_friend = TRUE
 
 /mob/living/bot/New()
 	..()

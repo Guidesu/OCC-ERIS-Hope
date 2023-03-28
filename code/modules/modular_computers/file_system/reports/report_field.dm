@@ -125,10 +125,7 @@ Basic field subtypes.
 
 /datum/report_field/number/module/ask_value(mob/user)
 	var/input_value = input(user, "[display_name()]:", "Form Input", get_value()) as null|num
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(input_value < 0)
 		to_chat(user,SPAN_WARNING("Value has to be positive."))
 		return

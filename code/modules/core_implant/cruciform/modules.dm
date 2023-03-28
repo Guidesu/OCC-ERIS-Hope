@@ -2,16 +2,10 @@
 
 
 /datum/core_module/cruciform/red_light/install()
-<<<<<<< HEAD
 	implant.icon_state = "cruciform_red"
 	implant.max_power += 30 //Occulus Edit: Revert
 	implant.power_regen += 0.25 //Occulus Edit: Revert
 	implant.restore_power(implant.max_power)
-=======
-	implant.icon_state = "cruciform_purple"
-	implant.max_power += 50
-	implant.power_regen += 0.3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(ishuman(implant.wearer))
 		var/mob/living/carbon/human/H = implant.wearer
@@ -19,14 +13,9 @@
 
 /datum/core_module/cruciform/red_light/uninstall()
 	implant.icon_state = "cruciform_green"
-<<<<<<< HEAD
 	implant.max_power -= 30 //Occulus Edit: Revert
 	implant.power_regen -= 0.25 //Occulus Edit: Revert
 	implant.power = implant.max_power
-=======
-	implant.max_power -= 50
-	implant.power_regen -= 0.3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(ishuman(implant.wearer))
 		var/mob/living/carbon/human/H = implant.wearer
@@ -36,9 +25,8 @@
 
 
 /*
-	contractor uplink hidden inside cruciform. Used for inquisitors and maybe other NT antags
+	Traitor uplink hidden inside cruciform. Used for inquisitors and maybe other NT antags
 */
-/*
 /datum/core_module/cruciform/uplink
 	var/telecrystals = 15
 	var/obj/item/device/uplink/hidden/uplink
@@ -58,11 +46,12 @@
 
 
 
+
 /datum/core_module/cruciform/uplink/uninstall()
 	telecrystals = uplink.uses
 	implant.hidden_uplink = null
 	QDEL_NULL(uplink)
-*/
+
 
 
 
@@ -77,7 +66,6 @@
 
 /datum/core_module/cruciform/cloning/proc/write_wearer(var/mob/living/carbon/human/H)
 	dna = H.dna
-<<<<<<< HEAD
 	if(H.ckey)
 		ckey = H.ckey
 	if(H.mind)
@@ -92,14 +80,6 @@
 /datum/core_module/cruciform/cloning/on_implant_uninstall()
 	if(ishuman(implant.wearer))
 		write_wearer(implant.wearer)
-=======
-	ckey = H.ckey
-	mind = H.mind
-	languages = H.languages
-	flavor = H.flavor_text
-	age = H.age
-	stats = H.stats
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/core_module/cruciform/cloning/preinstall()
 	if(ishuman(implant.wearer))
@@ -107,18 +87,7 @@
 
 /datum/core_module/cruciform/cloning/install()
 	if(ishuman(implant.wearer))
-<<<<<<< HEAD
 		write_wearer(implant.wearer)
-=======
-		var/mob/living/carbon/human/H = implant.wearer
-		dna = H.dna
-		ckey = H.ckey
-		mind = H.mind
-		languages = H.languages
-		flavor = H.flavor_text
-		age = H.age
-		stats = H.stats
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/core_module/cruciform/obey/install()
 	var/laws = list("You are enslaved. You must obey the laws below.",
@@ -194,19 +163,15 @@
 	ritual_types = list(/datum/ritual/cruciform/base,
 	/datum/ritual/targeted/cruciform/base,
 	/datum/ritual/group/cruciform,
-<<<<<<< HEAD
 	/datum/ritual/cruciform/occulus) // OCCULUS EDIT
 //	/datum/ritual/cruciform/machines - Eclipse edit
-=======
-	/datum/ritual/cruciform/machines)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/core_module/rituals/cruciform/agrolyte
 	access = list(access_nt_agrolyte)
 	ritual_types = list(/datum/ritual/cruciform/agrolyte)
 
 /datum/core_module/rituals/cruciform/priest
-	access = list(access_nt_disciple, access_nt_custodian, access_nt_agrolyte)
+	access = list(access_nt_preacher, access_nt_custodian, access_nt_agrolyte)
 	ritual_types = list(/datum/ritual/cruciform/priest,
 	/datum/ritual/targeted/cruciform/priest)
 
@@ -232,26 +197,3 @@
 
 /datum/core_module/rituals/cruciform/crusader
 	ritual_types = list(/datum/ritual/cruciform/crusader)
-
-/datum/core_module/rituals/cruciform/omni
-	ritual_types = list(/datum/ritual/cruciform/omni)
-
-/datum/core_module/rituals/cruciform/tessellate
-	ritual_types = list(/datum/ritual/cruciform/tessellate,
-	/datum/ritual/targeted/cruciform/tessellate)
-
-/datum/core_module/rituals/cruciform/lemniscate
-	ritual_types = list(/datum/ritual/cruciform/lemniscate,
-	/datum/ritual/targeted/cruciform/lemniscate)
-
-/datum/core_module/rituals/cruciform/monomial
-	ritual_types = list(/datum/ritual/cruciform/monomial,
-	/datum/ritual/targeted/cruciform/monomial)
-
-/datum/core_module/rituals/cruciform/divisor
-	ritual_types = list(/datum/ritual/cruciform/divisor,
-	/datum/ritual/targeted/cruciform/divisor)
-
-/datum/core_module/rituals/cruciform/factorial
-	ritual_types = list(/datum/ritual/cruciform/factorial,
-	/datum/ritual/targeted/cruciform/factorial)

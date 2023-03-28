@@ -2,9 +2,9 @@
 	name = "alien thing"
 	desc = "There's something alien about this."
 	icon = 'icons/mob/alien.dmi'
-	health = 50
+	var/health = 50
 
-/obj/structure/alien/healthCheck()
+/obj/structure/alien/proc/healthcheck()
 	if(health <=0)
 		density = FALSE
 		qdel(src)
@@ -13,7 +13,7 @@
 /obj/structure/alien/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
-	healthCheck()
+	healthcheck()
 	return
 
 /obj/structure/alien/ex_act(severity)
@@ -27,7 +27,7 @@
 				health-=50
 			else
 				health-=25
-	healthCheck()
+	healthcheck()
 	return
 
 /obj/structure/alien/hitby(AM as mob|obj)
@@ -40,17 +40,17 @@
 		tforce = AM:throwforce
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
-	healthCheck()
+	healthcheck()
 	..()
 	return
 
 /obj/structure/alien/attack_generic()
 	attack_hand(usr)
 
-/obj/structure/alien/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/alien/attackby(var/obj/item/weapon/W, var/mob/user)
 	health = max(0, health - W.force)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	healthCheck()
+	healthcheck()
 	..()
 	return
 

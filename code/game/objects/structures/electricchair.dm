@@ -6,14 +6,8 @@
 	var/last_time = 1.0
 
 /obj/structure/bed/chair/e_chair/New()
-<<<<<<< HEAD
 	. = ..()
 	add_overlays(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))
-=======
-	..()
-	add_overlay(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))
-	return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bed/chair/e_chair/attackby(var/obj/item/tool/tool, var/mob/user)
 	if(!tool.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
@@ -35,17 +29,10 @@
 	shock()
 
 /obj/structure/bed/chair/e_chair/rotate()
-<<<<<<< HEAD
 	. = ..()
 	cut_overlays()
 	add_overlays(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))
 	//there's probably a better way of handling this, but eh. -Pete
-=======
-	..()
-	cut_overlays()
-	add_overlay(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))	//there's probably a better way of handling this, but eh. -Pete
-	return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bed/chair/e_chair/proc/shock()
 	if(last_time + 50 > world.time)

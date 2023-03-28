@@ -1,7 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
 /obj/structure/girder,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "ah" = (
@@ -10,27 +9,12 @@
 "am" = (
 /mob/living/simple_animal/hostile/hivebot,
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ah" = (
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"am" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"ap" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ay" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/northright,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "aP" = (
@@ -50,37 +34,15 @@
 "bb" = (
 /obj/spawner/scrap/sparse,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"aP" = (
-/obj/structure/closet/secure_closet/rare_loot,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"aU" = (
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/template_noop)
-"bb" = (
-/obj/random/scrap/sparse_even,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bd" = (
 /obj/machinery/light_construct{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "bm" = (
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bm" = (
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bs" = (
 /obj/machinery/door/firedoor,
@@ -88,7 +50,6 @@
 	name = "Airlock";
 	req_access = list(1)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
 /area/template_noop)
 "by" = (
@@ -102,52 +63,24 @@
 "bG" = (
 /obj/structure/cyberplant,
 /turf/simulated/floor/tiled/steel/orangecorner/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"by" = (
-/obj/machinery/computer/arcade,
-/turf/simulated/floor/tiled/steel/orangecorner,
-/area/template_noop)
-"bE" = (
-/obj/structure/bed/chair/wood,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"bG" = (
-/obj/structure/cyberplant,
-/turf/simulated/floor/tiled/steel/orangecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "dO" = (
 /obj/structure/showcase{
 	desc = "Ancient robotic frame, that is long deactivated and rusted solid. However, it still strikes am awesome pose, that somehow makes you think of justice and righteousness.";
 	name = "Statue of Judge Boopsky"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_platform/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "eD" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"fj" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "fy" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/armor/heavy/riot/ironhammer,
 /obj/item/clothing/suit/armor/heavy/riot/ironhammer,
-<<<<<<< HEAD
 /obj/item/clothing/head/armor/riot_hud,
 /obj/item/clothing/head/armor/riot_hud,
 /turf/simulated/floor/tiled/dark/cargo/airless,
@@ -155,83 +88,41 @@
 "gf" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/airless,
-=======
-/obj/item/clothing/head/helmet/faceshield/riot,
-/obj/item/clothing/head/helmet/faceshield/riot,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"gf" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "gt" = (
 /obj/machinery/light_construct{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"gw" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/orangecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "hy" = (
 /obj/machinery/door/airlock/centcom{
 	icon_state = "door_locked";
 	locked = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ib" = (
 /obj/effect/window_lwall_spawn/smartspawn,
 /obj/machinery/door/firedoor,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
-=======
-/turf/simulated/floor/plating,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "iz" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ku" = (
 /obj/machinery/door/window/brigdoor/northleft{
 	dir = 2
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"kO" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/steel/orangecorner,
-/area/template_noop)
-"kS" = (
-/obj/random/junk/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "lz" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
@@ -242,18 +133,6 @@
 "nQ" = (
 /obj/spawner/junkfood/rotten,
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"nC" = (
-/obj/random/scrap/dense_weighted,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"nQ" = (
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "nR" = (
 /obj/machinery/firealarm{
@@ -261,7 +140,6 @@
 	pixel_y = -28
 	},
 /obj/machinery/light,
-<<<<<<< HEAD
 /turf/simulated/floor/carpet/airless,
 /area/template_noop)
 "oS" = (
@@ -291,36 +169,11 @@
 /obj/item/storage/fancy/cigarettes/dromedaryco,
 /turf/simulated/floor/carpet/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
-=======
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"oP" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"oS" = (
-/obj/structure/table/rack,
-/obj/item/clothing/mask/gas/tactical,
-/obj/random/gun_energy_cheap/low_chance,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"pa" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"pb" = (
-/obj/structure/table/woodentable,
-/obj/item/material/ashtray,
-/obj/item/storage/fancy/cigarettes/frozen,
-/obj/random/cloth/belt/low_chance,
-/turf/simulated/floor/carpet,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "po" = (
 /obj/machinery/light_construct{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "qk" = (
@@ -332,35 +185,16 @@
 	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"pF" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "qp" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 4";
 	name = "Cell 4 Locker"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/orangecorner/airless,
 /area/template_noop)
 "rN" = (
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/steel/orangecorner,
-/area/template_noop)
-"rI" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
-/area/template_noop)
-"rN" = (
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "sD" = (
 /obj/machinery/door/firedoor,
@@ -371,30 +205,16 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/cargo/airless,
 /area/template_noop)
 "up" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/cargo,
-/area/template_noop)
-"tA" = (
-/mob/living/simple_animal/hostile/hivebot,
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"up" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "uv" = (
 /obj/machinery/light_construct{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "uQ" = (
@@ -412,30 +232,13 @@
 /obj/item/storage/briefcase,
 /turf/simulated/floor/carpet/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"uQ" = (
-/obj/structure/closet/secure_closet/brig,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"wg" = (
-/obj/structure/table/woodentable,
-/obj/item/storage/briefcase,
-/obj/item/storage/briefcase,
-/turf/simulated/floor/carpet,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ww" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/freezer{
 	name = "Docking Airlock"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/cargo/airless,
-=======
-/turf/simulated/floor/tiled/steel/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "xf" = (
 /obj/structure/table/reinforced,
@@ -443,7 +246,6 @@
 	dir = 4;
 	req_access = null
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/techfloor_grid/airless,
 /area/template_noop)
 "xp" = (
@@ -469,32 +271,10 @@
 /area/template_noop)
 "yr" = (
 /turf/simulated/floor/tiled/steel/techfloor_grid/airless,
-=======
-/turf/simulated/floor/tiled/steel/techfloor_grid,
-/area/template_noop)
-"xp" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"xN" = (
-/obj/structure/table/rack,
-/obj/random/medical,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"xO" = (
-/obj/structure/table/woodentable,
-/obj/item/paper_bin,
-/obj/item/pen,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"yr" = (
-/turf/simulated/floor/tiled/steel/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "yJ" = (
 /obj/machinery/door/firedoor,
 /obj/effect/window_lwall_spawn/reinforced,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
 /area/template_noop)
 "zc" = (
@@ -513,33 +293,11 @@
 /obj/item/stool,
 /obj/spawner/junkfood/rotten,
 /turf/simulated/floor/tiled/steel/orangecorner/airless,
-=======
-/turf/simulated/floor/plating,
-/area/template_noop)
-"zc" = (
-/obj/structure/table/woodentable,
-/obj/structure/noticeboard{
-	pixel_x = 30
-	},
-/obj/item/stack/material/cardboard/random,
-/obj/random/cloth/gloves/low_chance,
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"zj" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"zC" = (
-/obj/item/stool,
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/steel/orangecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "zO" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "Av" = (
@@ -559,22 +317,6 @@
 "Az" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"Av" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"Ax" = (
-/obj/structure/table/woodentable,
-/obj/item/folder/blue,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"Az" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "BD" = (
 /obj/structure/bed/chair{
@@ -583,11 +325,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "CD" = (
 /obj/structure/bed/chair{
@@ -596,28 +334,19 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "DI" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ej" = (
 /obj/structure/sign/faction/ironhammer{
 	pixel_x = 32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "EA" = (
@@ -631,40 +360,16 @@
 "Fb" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"EA" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/rare_loot,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"Fb" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"FY" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/obj/random/material/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "GD" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "GZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "Hc" = (
@@ -676,72 +381,39 @@
 /obj/item/bedsheet/orange,
 /turf/simulated/floor/tiled/steel/orangecorner/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"Hc" = (
-/obj/structure/bed/padded,
-/obj/item/bedsheet/orange,
-/turf/simulated/floor/tiled/steel/orangecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Hd" = (
 /obj/item/modular_computer/console{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "II" = (
 /mob/living/simple_animal/hostile/hivebot/range,
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"Hg" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"II" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Jd" = (
 /obj/structure/sign/faction/ironhammer{
 	pixel_y = 32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Js" = (
 /obj/machinery/holoposter{
 	pixel_y = 32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "JA" = (
 /obj/machinery/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "JW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "KI" = (
@@ -767,36 +439,11 @@
 /area/template_noop)
 "Lz" = (
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"KI" = (
-/obj/structure/table/rack,
-/obj/item/storage/box/handcuffs,
-/obj/item/storage/box/flashbangs,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"KW" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"La" = (
-/obj/item/stool,
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/orangecorner,
-/area/template_noop)
-"Lz" = (
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "LE" = (
 /obj/machinery/door/firedoor,
 /obj/effect/window_lwall_spawn/smartspawn,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
-=======
-/turf/simulated/floor/plating,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "LZ" = (
 /obj/structure/bed/chair{
@@ -806,7 +453,6 @@
 	dir = 4
 	},
 /obj/machinery/light,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "Mf" = (
@@ -818,13 +464,6 @@
 /obj/item/book/manual/wiki/security_ironparagraphs,
 /turf/simulated/floor/wood/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"Mf" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/steel/orangecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ME" = (
 /obj/structure/table/woodentable,
@@ -842,11 +481,7 @@
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
-<<<<<<< HEAD
 /turf/simulated/floor/carpet/airless,
-=======
-/turf/simulated/floor/carpet,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ns" = (
 /obj/structure/bed/chair{
@@ -855,21 +490,12 @@
 /obj/machinery/light_construct{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"NB" = (
-/obj/random/material/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "NH" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/carpet/airless,
 /area/template_noop)
 "NL" = (
@@ -879,28 +505,13 @@
 "NQ" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"NL" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"NQ" = (
-/obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "NR" = (
 /obj/machinery/light,
 /obj/item/modular_computer/console{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Oz" = (
 /turf/simulated/wall,
@@ -909,11 +520,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Pc" = (
 /obj/machinery/door/window/brigdoor/northright{
@@ -922,25 +529,16 @@
 /obj/machinery/door/window/brigdoor/northright{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/cargo/airless,
 /area/template_noop)
 "PT" = (
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/cargo,
-/area/template_noop)
-"PT" = (
-/obj/random/scrap/dense_weighted,
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Qn" = (
 /obj/item/modular_computer/console{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "Qo" = (
@@ -953,33 +551,12 @@
 "SV" = (
 /obj/spawner/soda,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"Qo" = (
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"QE" = (
-/turf/simulated/floor/tiled/steel/orangecorner,
-/area/template_noop)
-"RS" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/obj/random/junk/low_chance,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"SV" = (
-/obj/item/reagent_containers/food/drinks/drinkingglass/soda,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Th" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	name = "Courtroom"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/cargo/airless,
 /area/template_noop)
 "Ur" = (
@@ -989,33 +566,17 @@
 "Uy" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/cargo,
-/area/template_noop)
-"Ur" = (
-/obj/machinery/light_construct,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"Uy" = (
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "UT" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
 "VG" = (
-<<<<<<< HEAD
 /turf/simulated/floor/carpet/airless,
-=======
-/turf/simulated/floor/carpet,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "VK" = (
 /obj/structure/table/woodentable,
 /obj/item/device/lighting/toggleable/lamp/green,
-<<<<<<< HEAD
 /turf/simulated/floor/carpet/airless,
 /area/template_noop)
 "Wp" = (
@@ -1041,72 +602,19 @@
 /obj/structure/table/woodentable,
 /obj/spawner/lowkeyrandom,
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/carpet,
-/area/template_noop)
-"Wj" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"Wm" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot/range,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"Wp" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"Xd" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"XE" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"XL" = (
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"XS" = (
-/obj/structure/table/woodentable,
-/obj/random/lowkeyrandom,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"Ys" = (
-/obj/structure/lattice,
-/obj/random/junk/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Yy" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/flask/detflask,
 /obj/item/reagent_containers/food/drinks/flask/detflask,
-<<<<<<< HEAD
 /obj/spawner/lowkeyrandom,
 /turf/simulated/floor/carpet/airless,
-=======
-/obj/random/lowkeyrandom,
-/turf/simulated/floor/carpet,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "YE" = (
 /obj/machinery/holoposter{
 	pixel_x = 32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ze" = (
 /turf/simulated/wall/r_wall,
@@ -1114,31 +622,16 @@
 "Zy" = (
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
-=======
-"ZN" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
-/area/template_noop)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 Zy
 Zy
 UT
 ag
-<<<<<<< HEAD
 UT
 Zy
 UT
 ah
-=======
-pF
-Zy
-UT
-fj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ag
 UT
 Zy
@@ -1146,19 +639,11 @@ Zy
 Zy
 Zy
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 Zy
 Zy
 Zy
-=======
-NB
-Zy
-Zy
-Zy
-NB
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -1167,11 +652,7 @@ Zy
 "}
 (2,1,1) = {"
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Ze
 Ze
@@ -1179,17 +660,12 @@ Ze
 Ze
 Ze
 Ze
-<<<<<<< HEAD
 ah
-=======
-Hg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 ag
 ah
 ah
 UT
-<<<<<<< HEAD
 UT
 Zy
 Zy
@@ -1200,27 +676,11 @@ UT
 ah
 ag
 Zy
-=======
-ZN
-NB
-kS
-Zy
-Zy
-Ys
-UT
-fj
-ag
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (3,1,1) = {"
 Zy
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Ze
 pb
 wg
@@ -1231,37 +691,22 @@ ah
 ah
 Ze
 PT
-<<<<<<< HEAD
 ah
-=======
-ap
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 Zy
 Zy
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 ah
 ah
-=======
-NB
-Zy
-ah
-fj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bb
 ag
 Zy
 "}
 (4,1,1) = {"
 Zy
-<<<<<<< HEAD
 Zy
-=======
-rI
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 LE
 VG
@@ -1269,30 +714,18 @@ VG
 Av
 VG
 sD
-<<<<<<< HEAD
 XL
-=======
-zj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 Ze
 ag
 ag
 UT
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 UT
 ah
 ah
-=======
-kS
-FY
-pF
-ah
-fj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 XL
 Ze
@@ -1310,29 +743,17 @@ nR
 Ze
 XL
 XL
-<<<<<<< HEAD
 XL
 ah
 UT
 Zy
-=======
-zj
-ah
-UT
-RS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 UT
 ah
 ah
-<<<<<<< HEAD
 XL
 Xd
-=======
-Wj
-tA
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Ur
 Ze
 Zy
@@ -1354,11 +775,7 @@ ah
 Zy
 Zy
 UT
-<<<<<<< HEAD
 UT
-=======
-pF
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bb
 bd
 YE
@@ -1398,11 +815,7 @@ Zy
 (8,1,1) = {"
 Zy
 UT
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Ze
 by
 zC
@@ -1433,22 +846,14 @@ Zy
 Ze
 bG
 QE
-<<<<<<< HEAD
 QE
-=======
-gw
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 yJ
 bG
 QE
 QE
 yJ
 bG
-<<<<<<< HEAD
 QE
-=======
-kO
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 QE
 Ze
 EA
@@ -1463,11 +868,7 @@ Zy
 "}
 (10,1,1) = {"
 Zy
-<<<<<<< HEAD
 UT
-=======
-ZN
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Ze
 qp
@@ -1476,11 +877,7 @@ QE
 yJ
 qp
 QE
-<<<<<<< HEAD
 QE
-=======
-Mf
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 yJ
 qp
 QE
@@ -1491,11 +888,7 @@ am
 rN
 xN
 Ze
-<<<<<<< HEAD
 XL
-=======
-zj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Az
 Ze
 Zy
@@ -1508,11 +901,7 @@ Ze
 yJ
 ag
 ah
-<<<<<<< HEAD
 ah
-=======
-Hg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 ag
 Pc
@@ -1538,19 +927,11 @@ aU
 eD
 zj
 uv
-<<<<<<< HEAD
 ah
 UT
 ah
 po
 GZ
-=======
-fj
-UT
-oP
-po
-XE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 XL
 zj
 JA
@@ -1562,15 +943,9 @@ NL
 bm
 bs
 JW
-<<<<<<< HEAD
 ah
 UT
 Zy
-=======
-fj
-Ys
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (13,1,1) = {"
 Zy
@@ -1580,11 +955,7 @@ eD
 XL
 Xd
 ah
-<<<<<<< HEAD
 UT
-=======
-Ys
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 ah
 ah
@@ -1598,15 +969,9 @@ GD
 nQ
 NR
 Ze
-<<<<<<< HEAD
 XL
 ah
 UT
-=======
-zj
-ah
-Wm
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 "}
 (14,1,1) = {"
@@ -1616,21 +981,12 @@ aU
 eD
 SV
 SV
-<<<<<<< HEAD
 ah
 ah
 UT
 UT
 ah
 XL
-=======
-fj
-Hg
-UT
-Ys
-ah
-Wj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 XL
 XL
 XL
@@ -1667,17 +1023,10 @@ ib
 xf
 ib
 Ze
-<<<<<<< HEAD
 ah
 ah
 UT
 Zy
-=======
-fj
-fj
-Wm
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (16,1,1) = {"
 Zy
@@ -1691,11 +1040,7 @@ iz
 iz
 Ns
 Xd
-<<<<<<< HEAD
 qk
-=======
-iz
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 iz
 Ze
 Js
@@ -1703,15 +1048,9 @@ XL
 JA
 ku
 xp
-<<<<<<< HEAD
 XL
 XL
 XL
-=======
-zj
-XL
-zj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 UT
 Zy
@@ -1719,11 +1058,7 @@ Zy
 (17,1,1) = {"
 Zy
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 Zy
 Zy
@@ -1743,27 +1078,16 @@ XL
 XL
 XL
 XL
-<<<<<<< HEAD
 XL
-=======
-zj
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 LE
 Zy
 "}
 (18,1,1) = {"
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 UT
 Zy
-=======
-rI
-Zy
-UT
-rI
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Ze
 CD
@@ -1786,19 +1110,11 @@ Ze
 Zy
 "}
 (19,1,1) = {"
-<<<<<<< HEAD
 Zy
 Zy
 Zy
 UT
 Zy
-=======
-kS
-Zy
-Zy
-UT
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 LE
 Ax
@@ -1809,11 +1125,7 @@ ay
 BD
 LE
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 UT
 Zy
@@ -1842,58 +1154,34 @@ LE
 Zy
 Zy
 UT
-<<<<<<< HEAD
 Zy
-=======
-rI
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Ze
 ww
 Ze
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 "}
 (21,1,1) = {"
 Zy
 Zy
-<<<<<<< HEAD
 Zy
 UT
-=======
-kS
-ZN
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 LE
 II
-<<<<<<< HEAD
 Mf
-=======
-gf
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 VG
 VG
 Lz
 Lz
 LE
-<<<<<<< HEAD
 Zy
 UT
 UT
 Zy
-=======
-kS
-UT
-UT
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -1904,11 +1192,7 @@ Zy
 "}
 (22,1,1) = {"
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 UT
 Zy
@@ -1922,21 +1206,12 @@ gf
 xO
 LE
 UT
-<<<<<<< HEAD
 UT
 Zy
 Zy
 Zy
 Zy
 Zy
-=======
-ZN
-Zy
-Zy
-kS
-Zy
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -1947,11 +1222,7 @@ Zy
 Zy
 Zy
 UT
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 LE
 bE
@@ -1969,11 +1240,7 @@ Zy
 Zy
 Zy
 Zy
-<<<<<<< HEAD
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 "}
@@ -1994,19 +1261,11 @@ LE
 Ze
 UT
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 Zy
 Zy
 Zy
-=======
-kS
-Zy
-kS
-Zy
-rI
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -2022,12 +1281,6 @@ Zy
 Zy
 Zy
 Zy
-<<<<<<< HEAD
-=======
-kS
-Zy
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -2037,14 +1290,10 @@ Zy
 Zy
 Zy
 Zy
-<<<<<<< HEAD
 Zy
 Zy
 Zy
 Zy
-=======
-kS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy

@@ -1,6 +1,6 @@
 
 /obj/machinery/artifact_analyser
-	name = "anomaly analyser"
+	name = "Anomaly Analyser"
 	desc = "Studies the emissions of anomalous materials to discover their uses."
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "isolator"
@@ -85,12 +85,8 @@
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<br>"
 		P.info += "\icon[scanned_object] [results]"
-<<<<<<< HEAD
 		P.stamped = list(/obj/item/stamp)
 		P.set_overlays(list("paper_stamped"))
-=======
-		P.copy_overlays(list("paper_stamped"), TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(scanned_object)
 			P.artifact_type = scanned_object.type
 			if(istype(scanned_object, /obj/machinery/artifact))
@@ -153,16 +149,11 @@
 			Structure is composed of a carbo-titanium alloy with interlaced reinforcing energy fields, and the contained liquid \
 			resembles proto-plasmic residue supportive of single cellular developmental conditions."
 		if(/obj/machinery/power/supermatter)
-<<<<<<< HEAD
 			return "Super dense phoron clump - Appears to have been shaped or hewn, structure is composed of matter 2000% denser than ordinary carbon matter residue.\
 			Potential application as unrefined phoron source."
 		if(/obj/machinery/power/supermatter)
 			return "Super dense phoron clump - Appears to have been shaped or hewn, structure is composed of matter 2000% denser than ordinary carbon matter residue.\
 			Potential application as unrefined phoron source."
-=======
-			return "Super dense plasma clump - Appears to have been shaped or hewn, structure is composed of matter 2000% denser than ordinary carbon matter residue.\
-			Potential application as unrefined plasma source."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(/obj/machinery/giga_drill)
 			return "Automated mining drill - structure composed of titanium-carbide alloy, with tip and drill lines edged in an alloy of diamond and phoron."
 		if(/obj/machinery/replicator)

@@ -14,7 +14,6 @@
 	var/image/blood_overlay //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/randpixel = 6
 	var/abstract = 0
-<<<<<<< HEAD
 	var/r_speed = 1
 	var/health
 	var/max_health
@@ -22,22 +21,12 @@
 	var/burning
 	var/hitsound = 'sound/weapons/genhit1.ogg'
 	var/worksound
-=======
-	var/r_speed = 1.0
-	health = null
-	var/max_health = null
-	var/burn_point = null
-	var/burning = null
-	var/hitsound = null
-	var/worksound = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/no_attack_log = 0			//If it's an item we don't want to log attack_logs with, set this to 1
 
 	var/obj/item/master
 	var/list/origin_tech = list()	//Used by R&D to determine what research bonuses it grants.
 	var/list/attack_verb = list() //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 
-	var/extra_bulk = 0 	//Extra physicial volume added by certain mods
 
 	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/cold_protection = 0 //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
@@ -47,19 +36,13 @@
 	var/datum/action/item_action/action
 	var/action_button_name //It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
 	var/action_button_is_hands_free = 0 //If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
-	var/action_button_proc //If set, when the button is used it calls the proc of that name
-	var/action_button_arguments //If set, hands these arguments to the proc.
 
 	//This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
 	//It should be used purely for appearance. For gameplay effects caused by items covering body parts, use body_parts_covered.
 	var/flags_inv = 0
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 
-<<<<<<< HEAD
 	var/list/tool_qualities// List of item qualities for tools system. See qualities.dm.
-=======
-	var/list/tool_qualities = null// List of item qualities for tools system. See qualities.dm.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/aspects = list()
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
@@ -68,7 +51,6 @@
 	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
 	var/slowdown = 0 // How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown_hold // How much holding an item slows you down.
-<<<<<<< HEAD
 	var/datum/armor/armor // Ref to the armor datum
 	var/list/allowed = list() //suit storage stuff.
 	var/obj/item/device/uplink/hidden/hidden_uplink // All items can have an uplink hidden inside, just remember to add the triggers.
@@ -76,22 +58,6 @@
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 
 	var/contained_sprite = FALSE //TRUE if object icon and related mob overlays are all in one dmi
-=======
-
-	var/stiffness = 0 // How much recoil is caused by moving
-	var/obscuration = 0 // How much firearm accuracy is decreased
-
-	var/list/armor_list  = list() //A list version of the armor datum, for initialization.
-	var/datum/armor/armor// Ref to the armor datum
-
-	var/list/allowed = list() //suit storage stuff.
-	var/list/blacklisted_allowed = list()//suit storage stuff.
-	var/obj/item/device/uplink/hidden/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
-	var/zoomdevicename = null //name used for message when binoculars/scope is used
-	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
-
-	var/contained_sprite = FALSE //TRUE if object icon and related mob over-lays are all in one dmi
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 	var/icon_override_female = null  //SYZYGY EDIT - gendered icon_overrides
@@ -103,76 +69,16 @@
 	// Used to specify the icon file to be used when the item is worn. If not set the default icon for that slot will be used.
 	// If icon_override or sprite_sheets are set they will take precendence over this, assuming they apply to the slot in question.
 	// Only slot_l_hand/slot_r_hand are implemented at the moment. Others to be implemented as needed.
-	var/tmp/list/item_icons = list()
+	var/list/item_icons = list()
 
 	// HUD action buttons. Only used by guns atm.
 	var/list/hud_actions
 
 	//Damage vars
 	var/force = 0	//How much damage the weapon deals
-	var/embed_mult = 1 //Multiplier for the chance of embedding in mobs. Set to zero to completely disable embedding
+	var/embed_mult = 0.5 //Multiplier for the chance of embedding in mobs. Set to zero to completely disable embedding
 	var/structure_damage_factor = STRUCTURE_DAMAGE_NORMAL	//Multiplier applied to the damage when attacking structures and machinery
-
-	var/post_penetration_dammult = 1 //how much damage do we do post-armor-penetation
 	//Does not affect damage dealt to mobs
-	//var/attack_distance = 1
-
-	var/list/item_upgrades = list()
-
-	/// Any upgrades in here will be applied on initialize().
-	var/list/initialized_upgrades = list()
-
-	var/max_upgrades = 3
-	var/allow_greyson_mods = FALSE
-	prefixes = list()
-	var/list/blacklist_upgrades = list() //Zebra list. /item/upgrade/thing = TRUE means it IS  blacklisted, /item/upgrade/thing/subtype = FALSE means it won't b blacklisted. subtypes go first.
-	var/my_fuel = "fuel" //If we use fuel, what do we use?
-
-	var/list/effective_faction = list() // Which faction the item is effective against.
-	var/damage_mult = 1 // The damage multiplier the item get when attacking that faction.
-	//Stolen things form tool qualities
-	var/eye_hazard = FALSE
-	var/use_power_cost = 0
-	var/use_fuel_cost = 0
-	var/obj/item/cell/cell = null
-	var/suitable_cell = null	//Dont forget to edit this for a tool, if you want in to consume cells
-	var/passive_power_cost = 0 //Energy consumed per process tick while active
-	var/use_stock_cost = 0
-	var/stock = 0
-	var/sparks_on_use = FALSE
-	//Used for stashes
-	var/start_hidden = FALSE
-
-	var/chameleon_type
-
-	var/has_alt_mode = FALSE
-	var/alt_mode_damagetype = HALLOSS
-	var/alt_mode_verbs = list("wack", "bash", "thump")
-	var/alt_mode_active = FALSE
-	var/alt_mode_toggle = ""
-	var/alt_mode_lossrate = 0.5
-	var/alt_mode_sharp = FALSE
-
-/obj/item/Initialize()
-
-	for (var/upgrade_typepath in initialized_upgrades)
-		var/obj/item/upgrade = new upgrade_typepath
-
-		if (!(LEGACY_SEND_SIGNAL(upgrade, COMSIG_IATTACK, src, null)))
-			QDEL_NULL(upgrade)
-
-	if(armor_list)
-		armor = getArmor(arglist(armor_list))
-	else
-		armor = getArmor()
-
-	if(chameleon_type)
-		verbs.Add(/obj/item/proc/set_chameleon_appearance)
-
-	if(has_alt_mode)
-		verbs.Add(/obj/item/proc/verb_alt_mode_activeate)
-
-	. = ..()
 
 	var/list/item_upgrades = list()
 	var/max_upgrades = 3
@@ -188,8 +94,6 @@
 
 /obj/item/Destroy()
 	QDEL_NULL(hidden_uplink)
-	if(blood_overlay && items_blood_overlay_by_type[type] == blood_overlay)
-		LAZYREMOVE(items_blood_overlay_by_type, type)
 	QDEL_NULL(blood_overlay)
 	QDEL_NULL(action)
 	if(ismob(loc))
@@ -211,31 +115,14 @@
 
 /obj/item/ex_act(severity)
 	switch(severity)
-		if(1)
+		if(1.0)
 			qdel(src)
-<<<<<<< HEAD
 		if(2)
 			if(prob(50))
 				qdel(src)
-=======
-			return
-		if(2)
-			if(prob(50))
-				qdel(src)
-				return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(3)
 			if(prob(5))
 				qdel(src)
-
-/obj/item/emp_act(severity)
-	if(chameleon_type)
-		name = initial(name)
-		desc = initial(desc)
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-		update_icon()
-		update_wear_icon()
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
@@ -251,7 +138,7 @@
 
 	loc = T
 
-/obj/item/examine(user, distance = -1)
+/obj/item/examine(mob/user, var/distance = -1)
 	var/message
 	var/size
 	switch(w_class)
@@ -271,33 +158,15 @@
 			size = "colossal"
 		if(ITEM_SIZE_TITANIC)
 			size = "titanic"
-<<<<<<< HEAD
-=======
-		if(ITEM_SIZE_PLANET)
-			size = "planetary"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	message += "\nIt is a [size] item."
 
 	for(var/Q in tool_qualities)
 		message += "\n<blue>It possesses [tool_qualities[Q]] tier of [Q] quality.<blue>"
 
-<<<<<<< HEAD
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.stats.getPerk(PERK_MARKET_PROF))
 			message += SPAN_NOTICE("\nThis item cost: [price_tag == null ? 0 : price_tag][CREDITS]")
-=======
-	if(allow_greyson_mods)
-		message += "\n<blue>This allows for Greyson Positronic based mods to be integrated without normal constraints.<blue>"
-
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.stats.getPerk(PERK_MARKET_PROF))
-			message += SPAN_NOTICE("\nThis item cost: [get_item_cost()][CREDITS]")
-		if(H.stats.getPerk(PERK_MARKET_PROF) && surplus_tag == TRUE)
-			message += SPAN_NOTICE("\nThis item has a surplus tag and is only worth ten percent its usual value on exports.")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return ..(user, distance, "", message)
 
@@ -325,7 +194,6 @@
 /obj/item/proc/pickup(mob/target)
 	throwing = 0
 	var/atom/old_loc = loc
-	LEGACY_SEND_SIGNAL(src, COMSIG_ITEM_PICKED, src, target)
 	if(target.put_in_active_hand(src) && old_loc )
 		if((target != old_loc) && (target != old_loc.get_holding_mob()))
 			do_pickup_animation(target,old_loc)
@@ -339,15 +207,9 @@
 			return
 		var/mob/living/silicon/robot/R = user
 		R.activate_module(src)
-<<<<<<< HEAD
 	//R.hud_used.update_robot_modules_display()
 
 /obj/item/proc/talk_into(mob/living/M, message, channel, var/verb = "says", var/datum/language/speaking = null, var/speech_volume)
-=======
-		//R.hud_used.update_robot_modules_display()
-
-/obj/item/proc/talk_into(mob/living/M, message, channel, verb = "says", datum/language/speaking = null, speech_volume)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/proc/moved(mob/user as mob, old_loc as turf)
@@ -356,25 +218,15 @@
 // Called whenever an object is moved out of a mob's equip slot. Possibly into another slot, possibly to elsewhere
 // Linker proc: mob/proc/prepare_for_slotmove, which is referenced in proc/handle_item_insertion and obj/item/attack_hand.
 // This exists so that dropped() could exclusively be called when an item is dropped.
-<<<<<<< HEAD
 /obj/item/proc/on_slotmove(var/mob/user)
-=======
-/obj/item/proc/on_slotmove(mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(wielded)
 		unwield(user)
 	if(zoom)
 		zoom(user)
 	if(get_equip_slot() in unworn_slots)
-<<<<<<< HEAD
 		SEND_SIGNAL(src, COMSIG_CLOTH_DROPPED, user)
 		if(user)
 			SEND_SIGNAL(user, COMSIG_CLOTH_DROPPED, src)
-=======
-		LEGACY_SEND_SIGNAL(src, COMSIG_CLOTH_DROPPED, user)
-		if(user)
-			LEGACY_SEND_SIGNAL(user, COMSIG_CLOTH_DROPPED, src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //	Called before an item is picked up (loc is not yet changed)
@@ -385,20 +237,12 @@
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/the_storage)
-<<<<<<< HEAD
 	SEND_SIGNAL(the_storage, COMSIG_STORAGE_TAKEN, src, the_storage)
-=======
-	LEGACY_SEND_SIGNAL(the_storage, COMSIG_STORAGE_TAKEN, src, the_storage)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/the_storage)
-<<<<<<< HEAD
 	SEND_SIGNAL(the_storage, COMSIG_STORAGE_INSERTED, src, the_storage)
-=======
-	LEGACY_SEND_SIGNAL(the_storage, COMSIG_STORAGE_INSERTED, src, the_storage)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
@@ -446,7 +290,7 @@
 //If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
 //For non-projectile attacks this usually means the attack is blocked.
 //Otherwise should return 0 to indicate that the attack is not affected in any way.
-/obj/item/proc/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
+/obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	return 0
 
 /obj/item/proc/get_loc_turf()
@@ -529,11 +373,7 @@
 /obj/item/clean_blood()
 	. = ..()
 	if(blood_overlay)
-<<<<<<< HEAD
 		overlays.Remove(blood_overlay)
-=======
-		cut_overlay(blood_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/gloves/clean_blood()
 	.=..()
@@ -544,7 +384,7 @@
 		fluorescent = 1
 		blood_color = COLOR_LUMINOL
 		blood_overlay.color = COLOR_LUMINOL
-	//	update_icon()
+		update_icon()
 
 /obj/item/add_blood(mob/living/carbon/human/M as mob)
 	if(!..())
@@ -563,11 +403,7 @@
 	//apply the blood-splatter overlay if it isn't already in there
 	if(!blood_DNA.len)
 		blood_overlay.color = blood_color
-<<<<<<< HEAD
 		add_overlays(blood_overlay)
-=======
-		add_overlay(blood_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//if this blood isn't already in the list, add it
 	if(istype(M))
@@ -581,15 +417,16 @@ var/global/list/items_blood_overlay_by_type = list()
 	if(blood_overlay)
 		return
 
-	var/icon/ICO = items_blood_overlay_by_type[type]
-	if(ICO)
-		blood_overlay = image("icon" = ICO)
+	var/image/IMG = items_blood_overlay_by_type[type]
+	if(IMG)
+		blood_overlay = IMG
 	else
-		ICO = new /icon(icon, icon_state)
+		var/icon/ICO = new /icon(icon, icon_state)
 		ICO.Blend(new /icon('icons/effects/blood.dmi', rgb(255, 255, 255)), ICON_ADD) // fills the icon_state with white (except where it's transparent)
 		ICO.Blend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY)   // adds blood and the remaining white areas become transparant
-		items_blood_overlay_by_type[type] = ICO
-		blood_overlay = image("icon" = ICO)
+		IMG = image("icon" = ICO)
+		items_blood_overlay_by_type[type] = IMG
+		blood_overlay = IMG
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))
@@ -609,9 +446,7 @@ modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
-/obj/item/proc/zoom(tileoffset = 14,viewsize = 9, stayzoomed = FALSE) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
-	if(!usr)
-		return
+/obj/item/proc/zoom(var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 
 	var/devicename
 
@@ -632,7 +467,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		to_chat(usr, "You are too distracted to look through the [devicename]. Perhaps if it was in your active hand you could look through it.")
 		cannotzoom = 1
 
-	if((!zoom && !cannotzoom)|stayzoomed)
+	if(!zoom && !cannotzoom)
 		//if(usr.hud_used.hud_shown)
 			//usr.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
 		usr.client.view = viewsize
@@ -655,10 +490,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				usr.client.pixel_x = -viewoffset
 				usr.client.pixel_y = 0
 
-		if(!stayzoomed)
-			usr.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [name]" : "[name]"].")
-		var/mob/living/carbon/human/H = usr
-		H.using_scope = src
+		usr.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [name]" : "[name]"].")
+
 	else
 		usr.client.view = world.view
 		//if(!usr.hud_used.hud_shown)
@@ -670,8 +503,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 		if(!cannotzoom)
 			usr.visible_message("[zoomdevicename ? "[usr] looks up from the [name]" : "[usr] lowers the [name]"].")
-		var/mob/living/carbon/human/H = usr
-		H.using_scope = null
 	usr.parallax.update()
 	return
 
@@ -705,16 +536,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	for(var/action in hud_actions)
 		user.client.screen -= action
 
-/obj/item/proc/on_embed(mob/user)
-	return
-
-/obj/item/proc/on_embed_removal(mob/living/user)
-	if(!hud_actions)
-		return
-
-	for(var/action in hud_actions)
-		user.client.screen -= action
-
 /obj/item/proc/update_hud_actions()
 	if(!hud_actions)
 		return
@@ -724,71 +545,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		if(action)
 			action.update_icon()
 
-<<<<<<< HEAD
 /obj/item/proc/refresh_upgrades()
 	return
-=======
-/obj/item/get_storage_cost()
-	return (..() + extra_bulk)
-
-/obj/item/proc/refresh_upgrades()
-	damtype = initial(damtype)
-	force = initial(force)
-	armor_penetration = initial(armor_penetration)
-	item_flags = initial(item_flags)
-	name = initial(name)
-	max_upgrades = initial(max_upgrades)
-	allow_greyson_mods = initial(allow_greyson_mods)
-	color = initial(color)
-	sharp = initial(sharp)
-	prefixes = list()
-
-	extra_bulk = initial(extra_bulk)
-	flags = initial(flags)
-
-	//Now lets have each upgrade reapply its modifications
-	LEGACY_SEND_SIGNAL(src, COMSIG_APPVAL, src)
-
-	for (var/prefix in prefixes)
-		name = "[prefix] [name]"
-	SSnano.update_uis(src)
-
-	if(alt_mode_active)
-		alt_mode_activeate_two()
-
-	return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/proc/on_embed(mob/user)
 	return
 
-<<<<<<< HEAD
 /obj/item/proc/on_embed_removal(mob/living/user)
 	return
-=======
-//Soj cringe
-
-/obj/item/proc/verb_alt_mode_activeate()
-	set name = "Weapon: Toggle Alt Mode"
-	set category = "Object"
-	set src in usr
-
-	alt_mode_activeate_one(usr)
-
-/obj/item/proc/alt_mode_activeate_one(mob/user as mob)
-	alt_mode_active = !alt_mode_active
-	refresh_upgrades()
-	if(alt_mode_active)
-		visible_message(SPAN_DANGER("[user] [alt_mode_toggle]."))
-	else
-		visible_message(SPAN_DANGER("[user] beings to use their weapon in a more standard way."))
-
-/obj/item/proc/alt_mode_activeate_two()
-	damtype = alt_mode_damagetype
-	force = force *= alt_mode_lossrate
-	armor_penetration = armor_penetration *= alt_mode_lossrate
-	attack_verb = alt_mode_verbs
-	sharp = alt_mode_sharp
-	flags |= NOBLOODY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

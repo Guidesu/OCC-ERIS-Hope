@@ -5,15 +5,6 @@
 	var/width_x = 136
 	var/height_y = 136
 
-<<<<<<< HEAD
-=======
-// Skip deepmaint. DO NOT REMOVE ELSE, it becomes unreachable
-#if defined(UNIT_TESTS)
-/obj/procedural/dungenerator/New()
-	log_test("Skipping dungeon generation for unit tests")
-	return
-#else
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/procedural/dungenerator/New()
 	var/obj/procedural/jp_DungeonGenerator/generate = new /obj/procedural/jp_DungeonGenerator(src)
 	generate.setArea(locate(x - round(width_x/2) + 1, y + round(height_y/2) + 1, z), locate(x + round(width_x/2) - 1, y - round(height_y/2) - 1, z))
@@ -31,9 +22,5 @@
 	generate.setRoomMinSize(3)
 	generate.setRoomMaxSize(7)
 	generate.generate()
-<<<<<<< HEAD
 
 
-=======
-#endif
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,7 +1,6 @@
 /mob/living/simple_animal/mushroom
 	name = "walking mushroom"
-	desc = "It's a massive mushroom... with legs? Clearly a genetic abomination derived from science."
-	icon = 'icons/mob/mobs-monster.dmi'
+	desc = "It's a massive mushroom... with legs?"
 	icon_state = "mushroom"
 	mob_size = MOB_SMALL
 	speak_chance = 0
@@ -12,8 +11,6 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "whacks"
-	leather_amount = 0
-	bones_amount = 0
 	harm_intent_damage = 5
 	var/datum/seed/seed
 	var/harvest_time

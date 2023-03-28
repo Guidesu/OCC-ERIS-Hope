@@ -1,17 +1,12 @@
 /obj/machinery/optable
-	name = "operating table"
+	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "optable-idle"
 
 	layer = TABLE_LAYER
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
-=======
-	density = 1
-	anchored = 1.0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 1
 	active_power_usage = 5

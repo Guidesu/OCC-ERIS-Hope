@@ -1,6 +1,6 @@
 /datum/poll
 	var/name = "Voting"
-	var/question = "Voting, voting, candidates are communists!"
+	var/question = "Voting, voting, candidates are faggots!"
 	var/description = ""
 	var/time = 60	//in seconds
 	var/list/choice_types = list(/datum/vote_choice)	//Choices will be initialized from this list
@@ -183,8 +183,3 @@
 
 	log_vote(text)
 	to_chat(world, "<font color='purple'>[text]</font>")
-<<<<<<< HEAD
-=======
-/datum/poll/proc/IsAdminOnly()
-	return only_admin
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

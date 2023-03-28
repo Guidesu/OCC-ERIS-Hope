@@ -10,19 +10,15 @@
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
-<<<<<<< HEAD
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /obj/structure/lattice,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "e" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
-<<<<<<< HEAD
 "f" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /obj/structure/lattice,
@@ -30,15 +26,11 @@
 /area/crawler)
 "g" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
-=======
-"g" = (
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/lattice,
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "h" = (
 /obj/structure/railing/grey,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "i" = (
@@ -54,20 +46,12 @@
 "k" = (
 /obj/structure/railing/grey,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
-=======
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/techmaint,
-/area/crawler)
-"k" = (
-/obj/structure/railing/grey,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "l" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
 "m" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 4
@@ -121,13 +105,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "u" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-<<<<<<< HEAD
 "v" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/yellow{
 	dir = 8
@@ -214,10 +195,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
 	},
-=======
-"z" = (
-/obj/random/mob/roomba,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under,
 /area/crawler)
@@ -225,7 +202,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "I" = (
@@ -242,19 +218,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/techmaint,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "K" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
-<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/crawler)
 
@@ -273,11 +241,7 @@ a
 a
 c
 h
-<<<<<<< HEAD
 m
-=======
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 u
 u
 H
@@ -288,11 +252,7 @@ a
 a
 c
 h
-<<<<<<< HEAD
 m
-=======
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 u
 u
 H
@@ -301,7 +261,6 @@ a
 "}
 (4,1,1) = {"
 a
-<<<<<<< HEAD
 d
 i
 n
@@ -309,37 +268,21 @@ v
 t
 I
 d
-=======
-g
-k
-u
-u
-u
-K
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
 a
 e
 a
-<<<<<<< HEAD
 o
 z
 s
-=======
-u
-z
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 e
 b
 "}
 (6,1,1) = {"
 b
-<<<<<<< HEAD
 f
 j
 p
@@ -347,49 +290,26 @@ x
 B
 J
 f
-=======
-g
-k
-u
-u
-u
-K
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (7,1,1) = {"
 b
 g
 k
-<<<<<<< HEAD
 q
 w
 C
 J
 f
-=======
-u
-u
-u
-K
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (8,1,1) = {"
 b
 g
 k
-<<<<<<< HEAD
 r
 y
 D
-=======
-u
-u
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 K
 g
 b
@@ -398,22 +318,15 @@ b
 a
 e
 a
-<<<<<<< HEAD
 s
 w
 A
-=======
-u
-z
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 e
 b
 "}
 (10,1,1) = {"
 a
-<<<<<<< HEAD
 d
 i
 t
@@ -421,15 +334,6 @@ E
 F
 I
 d
-=======
-g
-k
-u
-u
-u
-K
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
@@ -437,13 +341,8 @@ a
 c
 h
 u
-<<<<<<< HEAD
 w
 G
-=======
-u
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 H
 c
 a
@@ -453,13 +352,8 @@ a
 c
 h
 u
-<<<<<<< HEAD
 w
 G
-=======
-u
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 H
 c
 a

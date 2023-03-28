@@ -25,38 +25,11 @@
 /mob/living/silicon/robot/check_HUDdatum()//correct a datum?
 	var/mob/living/silicon/robot/H = src
 
-<<<<<<< HEAD
 	if (H.defaultHUD == "BorgStyle") //пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ\пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if(GLOB.HUDdatums.Find(H.defaultHUD))//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			return TRUE
 	return FALSE
 
-=======
-	if (H.defaultHUD == "BorgStyle") //если у клиента моба прописан стиль\тип ХУДа
-		if(GLOB.HUDdatums.Find(H.defaultHUD))//Если существует такой тип ХУДА
-			return TRUE
-	return FALSE
-
-
-
-
-/mob/living/silicon/robot/create_HUD() //EKUDZA HAS HERE
-//	var/mob/living/silicon/robot/H = src
-//	var/datum/hud/cyborg/HUDdatum = GLOB.HUDdatums[H.defaultHUD]
-
-	create_HUDneed()
-	create_HUDinventory()
-	create_HUDfrippery()
-	create_HUDtech()
-	show_HUD()
-	return
-
-
-
-
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/silicon/robot/create_HUDinventory()
 	var/mob/living/silicon/robot/H = src
 	var/datum/hud/cyborg/HUDdatum = GLOB.HUDdatums[H.defaultHUD]
@@ -103,11 +76,7 @@
 /mob/living/silicon/robot/create_HUDfrippery()
 	var/mob/living/silicon/robot/H = src
 	var/datum/hud/cyborg/HUDdatum = GLOB.HUDdatums[H.defaultHUD]
-<<<<<<< HEAD
 	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
-=======
-	//Добавляем Элементы ХУДа (украшения)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for (var/list/whistle in HUDdatum.HUDfrippery)
 		var/obj/screen/frippery/F = new (whistle["icon_state"],whistle["loc"], whistle["dir"],H)
 		F.icon = HUDdatum.icon
@@ -119,19 +88,11 @@
 /mob/living/silicon/robot/create_HUDtech()
 	var/mob/living/silicon/robot/H = src
 	var/datum/hud/cyborg/HUDdatum = GLOB.HUDdatums[H.defaultHUD]
-<<<<<<< HEAD
 	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(damage,flash,pain... пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 	for (var/techobject in HUDdatum.HUDoverlays)
 		var/HUDtype = HUDdatum.HUDoverlays[techobject]["type"]
 		var/obj/screen/HUD = new HUDtype(_name = techobject, _parentmob = H)// _screen_loc = HUDdatum.HUDoverlays[techobject]["loc"]
 		if(HUDdatum.HUDoverlays[techobject]["icon"])//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ icon
-=======
-	//Добавляем технические элементы(damage,flash,pain... оверлеи)
-	for (var/techobject in HUDdatum.HUDoverlays)
-		var/HUDtype = HUDdatum.HUDoverlays[techobject]["type"]
-		var/obj/screen/HUD = new HUDtype(_name = techobject, _parentmob = H)// _screen_loc = HUDdatum.HUDover-lays[techobject]["loc"]
-		if(HUDdatum.HUDoverlays[techobject]["icon"])//Анализ на овверайд icon
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			HUD.icon = HUDdatum.HUDoverlays[techobject]["icon"]
 		else
 			HUD.icon = HUDdatum.icon
@@ -190,16 +151,12 @@
 		//Unfortunately adding the emag module to the list of modules has to be here. This is because a borg can
 		//be emagged before they actually select a module. - or some situation can cause them to get a new module
 		// - or some situation might cause them to get de-emagged or something.
-		if(r.HasTrait(CYBORG_TRAIT_EMAGGED) && !has_given_emaged_gifts)
+		if(r.emagged)
 			if(!(r.module.emag in r.module.modules))
-				to_chat(src, SPAN_DANGER("More modules unlocked!"))
 				r.module.modules.Add(r.module.emag)
-				has_given_emaged_gifts = TRUE
 		else
 			if(r.module.emag in r.module.modules)
-				to_chat(src, SPAN_DANGER("Some modules have been locked!"))
 				r.module.modules.Remove(r.module.emag)
-				has_given_emaged_gifts = FALSE
 
 		for(var/atom/movable/A in r.module.modules)
 			if( (A != r.module_state_1) && (A != r.module_state_2) && (A != r.module_state_3) )

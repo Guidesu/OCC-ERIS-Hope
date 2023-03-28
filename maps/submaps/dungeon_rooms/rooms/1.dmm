@@ -21,28 +21,14 @@
 /obj/structure/closet/onestar/tier1/mineral,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-<<<<<<< HEAD
 "g" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "h" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"N" = (
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/derelict/red_white_edges,
-/area/crawler)
-"T" = (
-/obj/structure/table/onestar,
-/turf/simulated/floor/tiled/derelict/red_white_edges,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -57,59 +43,35 @@ a
 "}
 (2,1,1) = {"
 a
-<<<<<<< HEAD
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 c
 c
 c
-<<<<<<< HEAD
 c
 g
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 c
 c
 f
-<<<<<<< HEAD
 c
-=======
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 c
 h
 c
 c
-<<<<<<< HEAD
 c
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -169,59 +131,35 @@ b
 "}
 (10,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 c
 c
 c
 c
-<<<<<<< HEAD
 c
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
-=======
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 c
 c
 c
-<<<<<<< HEAD
 c
 c
-=======
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
-<<<<<<< HEAD
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 c
 c
 c
-<<<<<<< HEAD
 c
 c
-=======
-T
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"

@@ -107,7 +107,7 @@
 /datum/poster/bay_24
 	icon_state="bsposter24"
 	name = "Responsible medbay habits, No #259"
-	desc = "A poster with a nervous looking geneticist on it states; \"Friends don't tell friends they have newly printed body parts. It can cause severe and irreparable emotional trauma. Always do the right thing and never tell them that they were hurt.\""
+	desc = "A poster with a nervous looking geneticist on it states; \"Friends Don't Tell Friends They're Clones. It can cause severe and irreparable emotional trauma. Always do the right thing and never tell them that they were dead.\""
 
 /datum/poster/bay_25
 	icon_state="bsposter25"
@@ -207,7 +207,7 @@
 /datum/poster/bay_44
 	icon_state="bsposter44"
 	name = "Time for a drink?"
-	desc = "This poster depicts a friendly-looking sablekyne holding a tray of drinks."
+	desc = "This poster depicts a friendly-looking Tajara holding a tray of drinks."
 
 /datum/poster/bay_45
 	icon_state="bsposter45"
@@ -263,8 +263,3 @@
 	icon_state="bsposter58"
 	name = "space carp information poster"
 	desc = "This poster showcases an old spacer saying on the dangers of migrant space carp."
-
-/datum/poster/gilld_chese
-	icon_state = "gilld_chese"
-	name = "gilld chese"
-	desc = "This is a poster of a small cat being fed a Deluxe Toasted Sandwich, one of the Artificers Guild's best culinary innovations on the use of Petrol Pumps."

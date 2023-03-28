@@ -1,11 +1,6 @@
 /obj/item/device/radio/intercom
-<<<<<<< HEAD
 	name = "ship intercom (General)"
 	desc = "Talk through this."
-=======
-	name = "colony intercom (General)"
-	desc = "Talk through this, and everyone on the colony will hear you."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "intercom"
 	anchored = TRUE
 	spawn_tags = null
@@ -17,28 +12,16 @@
 	var/area/linked_area
 
 /obj/item/device/radio/intercom/custom
-<<<<<<< HEAD
 	name = "ship intercom (Custom)"
-=======
-	name = "colony intercom (Custom)"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	broadcasting = 0
 	listening = 0
 
 /obj/item/device/radio/intercom/interrogation
-<<<<<<< HEAD
 	name = "ship intercom (Interrogation)"
 	frequency  = 1449
 
 /obj/item/device/radio/intercom/private
 	name = "ship intercom (Private)"
-=======
-	name = "colony intercom (Interrogation)"
-	frequency  = 1449
-
-/obj/item/device/radio/intercom/private
-	name = "colony intercom (Private)"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	frequency = AI_FREQ
 
 /obj/item/device/radio/intercom/department
@@ -47,19 +30,11 @@
 	listening = 1
 
 /obj/item/device/radio/intercom/department/medbay
-<<<<<<< HEAD
 	name = "ship intercom (Medbay)"
 	frequency = MED_I_FREQ
 
 /obj/item/device/radio/intercom/department/security
 	name = "ship intercom (Security)"
-=======
-	name = "colony intercom (Medbay)"
-	frequency = MED_I_FREQ
-
-/obj/item/device/radio/intercom/department/security
-	name = "colony intercom (Security)"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	frequency = SEC_I_FREQ
 
 /obj/item/device/radio/intercom/New()
@@ -121,11 +96,7 @@
 /obj/item/device/radio/intercom/proc/loop_area_check()
 	var/area/target_area = get_area(src)
 	if(!target_area?.apc)
-<<<<<<< HEAD
 		addtimer(CALLBACK(src, .proc/loop_area_check), 30 SECONDS) // We don't proces if there is no APC , no point in doing so is there ?
-=======
-		addtimer(CALLBACK(src, .proc/loop_area_check), 30 SECONDS, TIMER_STOPPABLE) // We don't proces if there is no APC , no point in doing so is there ?
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	linked_area = target_area
 	RegisterSignal(target_area, COMSIG_AREA_APC_DELETED, .proc/on_apc_removal)

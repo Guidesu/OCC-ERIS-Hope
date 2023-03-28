@@ -38,55 +38,23 @@ GLOBAL_LIST_EMPTY(spawntypes)
 	join_tag = "aft_late_cryo"
 	message = "has completed cryogenic revival"
 	spawn_datum_type = /datum/spawnpoint/cryo
-	disallow_job = list("Robot","Lodge Hunter","Lodge Hunt Master","Outsider","Lodge Herbalist")
+	disallow_job = list("Robot")
 
-<<<<<<< HEAD
-=======
-// Outsider spawn stuff
-/obj/landmark/join/late/cryo/outsider
-	name = "Outsider old-cyro spawn"
-	icon_state = "player-blue-cluster"
-	join_tag = "starboard_late_cryo"
-	message = null
-	spawn_datum_type = /datum/spawnpoint/cryo/outsider
-	disallow_job = list("Robot","Lodge Hunter","Lodge Hunt Master","Lodge Herbalist","Foreman","Salvager","Prospector","Foreman","Salvager","Prospector","Colonist","Chief Executive Officer","Cargo Technician","Lonestar Miner","Bartender","Chef","Gardener","Janitor","Artist","Chief Research Overseer","Soteria Scientist","Soteria Roboticist","Chief Biolab Overseer","Soteria Doctor","Soteria Psychiatrist","Soteria Lifeline Technician","Guild Master","Guild Adept","Blackshield Commander","Warrant Officer","Supply Specialist","Ranger","Corpsman","Blackshield Trooper","Marshal Officer","Sergeant","Premier","Steward","Prime","Vector")
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/landmark/join/late/cryo/starboard
 	name = "Starboard Cryogenic Storage"
 	icon_state = "player-blue-cluster"
 	join_tag = "starboard_late_cryo"
 	message = "has completed cryogenic revival"
 	spawn_datum_type = /datum/spawnpoint/cryo/starboard
-<<<<<<< HEAD
 	disallow_job = list("Robot")
-=======
-	disallow_job = list("Robot","Lodge Hunter","Lodge Hunt Master","Outsider","Lodge Herbalist")
-
-/obj/landmark/join/late/cryo/elevator
-	name = "Lower Colony Elevator"
-	icon_state = "player-blue-cluster"
-	join_tag = "late_elevator"
-	message = "has arrived from the lower level residential district"
-	spawn_datum_type = /datum/spawnpoint/cryo/elevator
-	disallow_job = list("Robot","Lodge Hunter","Lodge Hunt Master","Outsider","Lodge Herbalist")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/landmark/join/late/dormitory
 	name = "Dormitory"
 	icon_state = "player-blue-cluster"
 	join_tag = "late_dormitory"
-	message = null
+	message = "has awoken in the dormitory"
 	spawn_datum_type = /datum/spawnpoint/dormitory
-	restrict_job = list("Lodge Hunter","Lodge Hunt Master","Lodge Herbalist")
-
-/obj/landmark/join/late/dormitory_outsider
-	name = "Outsider Bed"
-	icon_state = "player-blue-cluster"
-	join_tag = "late_dormitory"
-	message = null
-	spawn_datum_type = /datum/spawnpoint/dormitory
-	restrict_job = list("Outsider")
+	disallow_job = list("Robot")
 
 /obj/landmark/join/late/cyborg
 	name = "Cyborg Storage"

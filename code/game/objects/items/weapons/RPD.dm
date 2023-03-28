@@ -14,18 +14,11 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2) //Redundant values that yer free ta' change later.
-<<<<<<< HEAD
 	matter = list(MATERIAL_STEEL = 10, MATERIAL_PHORON = 2, MATERIAL_PLASTIC = 5) //Redundant values that yer free ta' change later.
 	price_tag = 500 //Redundant values that yer free ta' change later.
 	var/use_power_cost = 1.5
 	var/obj/item/cell/cell
 	var/suitable_cell = /obj/item/cell/medium
-=======
-	matter = list(MATERIAL_STEEL = 10, MATERIAL_PLASMA = 2, MATERIAL_PLASTIC = 5) //Redundant values that yer free ta' change later.
-	price_tag = 500 //Redundant values that yer free ta' change later.
-	use_power_cost = 1.5
-	suitable_cell = /obj/item/cell/medium
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/wait = 0
 	var/pipe_type = 0
 	var/p_dir = 1

@@ -17,13 +17,6 @@
 	. = ..()
 	ensure_breath()
 
-<<<<<<< HEAD
-=======
-/obj/item/tank/onestar_regenerator/Initialize(mapload, ...)
-	. = ..()
-	ensure_breath()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/tank/onestar_regenerator/examine(mob/user)
 	. = ..(user, 0)
 

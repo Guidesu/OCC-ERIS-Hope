@@ -52,11 +52,7 @@
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
 "l" = (
-<<<<<<< HEAD
 /obj/structure/computerframe,
-=======
-/obj/random/structures/os,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
 "m" = (
@@ -69,11 +65,7 @@
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "n" = (
-<<<<<<< HEAD
 /obj/machinery/light/floor,
-=======
-/obj/random/mob/roomba/any,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "o" = (
@@ -83,10 +75,6 @@
 "p" = (
 /obj/machinery/power/terminal,
 /obj/structure/catwalk,
-<<<<<<< HEAD
-=======
-/obj/random/mob/roomba/any,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "q" = (
@@ -96,23 +84,16 @@
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "r" = (
-<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
-=======
-/obj/effect/floor_decal/industrial/warning,
-/obj/random/mob/roomba/any,
-/turf/simulated/floor/tiled/derelict,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "s" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/floor/bluegrid,
 /area/crawler)
-<<<<<<< HEAD
 "t" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -120,13 +101,10 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "u" = (
 /obj/machinery/power/smes/buildable,
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
-<<<<<<< HEAD
 "v" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/light/floor,
@@ -137,8 +115,6 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "x" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/derelict,
@@ -167,35 +143,6 @@
 /obj/crawler/crawler_wallbreaker,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"D" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/random/powercell,
-/turf/simulated/floor/tiled/derelict,
-/area/crawler)
-"E" = (
-/obj/machinery/power/terminal,
-/obj/structure/catwalk,
-/obj/item/tool_upgrade/augment/cell_mount,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
-/area/crawler)
-"M" = (
-/obj/random/powercell,
-/turf/simulated/floor/tiled/derelict,
-/area/crawler)
-"N" = (
-/obj/machinery/power/smes/buildable,
-/obj/random/powercell,
-/turf/simulated/floor/tiled/techmaint_panels,
-/area/crawler)
-"Q" = (
-/obj/random/powercell,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -212,13 +159,8 @@ a
 a
 c
 j
-<<<<<<< HEAD
 c
 r
-=======
-Q
-j
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 j
 c
@@ -230,13 +172,8 @@ d
 k
 p
 u
-<<<<<<< HEAD
 p
 u
-=======
-E
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -244,11 +181,7 @@ a
 a
 d
 l
-<<<<<<< HEAD
 p
-=======
-E
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 u
 p
 u
@@ -270,13 +203,8 @@ C
 b
 f
 f
-<<<<<<< HEAD
 f
 t
-=======
-D
-f
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 i
 A
@@ -286,15 +214,9 @@ C
 b
 g
 g
-<<<<<<< HEAD
 g
 g
 v
-=======
-n
-g
-x
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 z
 A
 C
@@ -302,11 +224,7 @@ C
 (8,1,1) = {"
 b
 g
-<<<<<<< HEAD
 n
-=======
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 g
 x
@@ -318,13 +236,8 @@ C
 a
 h
 a
-<<<<<<< HEAD
 n
 g
-=======
-g
-M
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 x
 z
 A
@@ -336,11 +249,7 @@ i
 h
 g
 g
-<<<<<<< HEAD
 x
-=======
-r
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 z
 A
 a
@@ -350,11 +259,7 @@ a
 i
 h
 g
-<<<<<<< HEAD
 g
-=======
-M
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 x
 z
 A
@@ -368,11 +273,7 @@ g
 g
 x
 z
-<<<<<<< HEAD
 w
-=======
-A
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"

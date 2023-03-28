@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/unary_atmos
 	board_type = "machine"
 
 /obj/item/electronics/circuitboard/unary_atmos/construct(var/obj/machinery/atmospherics/unary/U)
-=======
-/obj/item/circuitboard/unary_atmos
-	board_type = "machine"
-
-/obj/item/circuitboard/unary_atmos/construct(var/obj/machinery/atmospherics/unary/U)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
 	U.atmos_init()
 	U.build_network()
@@ -16,13 +9,8 @@
 		U.node1.atmos_init()
 		U.node1.build_network()
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/unary_atmos/heater
 	name = T_BOARD("gas heating system")
-=======
-/obj/item/circuitboard/unary_atmos/heater
-	build_name = "gas heating system"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/atmospherics/unary/heater
 	origin_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 1)
 	req_components = list(
@@ -31,13 +19,8 @@
 		/obj/item/stock_parts/capacitor = 2
 	)
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/unary_atmos/cooler
 	name = T_BOARD("gas cooling system")
-=======
-/obj/item/circuitboard/unary_atmos/cooler
-	build_name = "gas cooling system"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/atmospherics/unary/freezer
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	req_components = list(

@@ -1,9 +1,5 @@
 /obj/item/grenade/frag
-<<<<<<< HEAD
 	name = "NT DFG \"Pomme\""
-=======
-	name = "SA DF grenade \"Pomme\""
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A military-grade defensive fragmentation grenade, designed to be thrown from cover."
 	icon_state = "frag"
 	item_state = "frggrenade"
@@ -41,65 +37,10 @@
 	qdel(src)
 
 /obj/item/grenade/frag/nt
-<<<<<<< HEAD
 	name = "NT DFG \"Holy Thunder\""
-=======
-	name = "NT DF grenade \"Holy Thunder\""
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A military-grade defensive fragmentation grenade, designed to be thrown from cover."
 	icon_state = "frag_nt"
 	item_state = "frggrenade_nt"
 	matter = list(MATERIAL_BIOMATTER = 75)
 	fragment_damage = 7
 	damage_step = 3
-<<<<<<< HEAD
-=======
-
-/obj/item/grenade/frag/stinger
-	name = "Seinemetall Defense GmbH \"Stinger\""
-	desc = "A repurposed fragmentation grenade loaded in rubbers fragments, ready to serve the public trust. Lethal if used ontop of someone."
-	icon_state = "stinger"
-	item_state = "stinger"
-	loadable = TRUE
-	num_fragments = 70
-	fragment_type = /obj/item/projectile/bullet/pellet/fragment/rubber
-
-/obj/item/grenade/frag/pipebomb
-	name = "improvised pipebomb"
-	desc = "A jury rigged medium cell filled with plasma. Throw at authorities."
-	icon_state = "frag_pipebomb"
-	item_state = "fraggrenade_pipebomb"
-	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTEEL = 2, MATERIAL_PLASMA = 2, MATERIAL_PLASTIC = 3, MATERIAL_SILVER = 2)
-	num_fragments = 25
-	fragment_damage = 10
-	damage_step = 5
-
-/obj/item/grenade/frag/white_phosphorous
-	name = "SA WPG \"Sabac \""
-	desc = "A modernized incendiary hailing popular use within assault troops of all kinds. Use with care, highly flammable."
-	icon_state = "white_phos"
-	item_state = "fraggrenade"
-	fragment_type = /obj/item/projectile/bullet/pellet/fragment/ember
-	num_fragments = 10
-	fragment_damage = 5
-	damage_step = 5
-	spread_range = 7
-	var/datum/effect/effect/system/smoke_spread/white_phosphorous/smoke
-
-/obj/item/grenade/frag/white_phosphorous/prime()
-	playsound(loc, 'sound/effects/smoke.ogg', 50, 1, -3)
-	smoke.set_up(5, 0, usr.loc)
-	smoke.set_up(5, 0, get_turf(loc))
-	smoke.start()
-	..()
-
-/obj/item/grenade/frag/white_phosphorous/New()
-	..()
-	smoke = new
-	smoke.attach(src)
-
-/obj/item/grenade/frag/white_phosphorous/Destroy()
-	qdel(smoke)
-	smoke = null
-	return ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

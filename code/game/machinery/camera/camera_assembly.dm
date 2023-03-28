@@ -75,11 +75,7 @@
 		if(QUALITY_SCREW_DRIVING)
 			if(state == 3)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
-<<<<<<< HEAD
 					var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: CEV_Northern_Light,Security,Secret", "Set Network", camera_network ? camera_network : NETWORK_CEV_ERIS))
-=======
-					var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: Nadezhda colony,Security,Secret", "Set Network", camera_network ? camera_network : NETWORK_CEV_ERIS))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					if(!input)
 						to_chat(usr, "No input found please hang up and try your call again.")
 						return
@@ -151,11 +147,7 @@
 
 	..()
 
-<<<<<<< HEAD
 /obj/item/camera_assembly/on_update_icon()
-=======
-/obj/item/camera_assembly/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(anchored)
 		icon_state = "camera1"
 	else

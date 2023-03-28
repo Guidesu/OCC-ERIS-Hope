@@ -34,15 +34,9 @@
 /obj/screen/item_action/top_bar/gun/scope/on_update_icon()
 	..()
 	var/obj/item/gun/G = owner
-<<<<<<< HEAD
 	icon_state = "scope[G.zoom]"
 
 
-=======
-	if(G)
-		icon_state = "scope[G.zoom]"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/screen/item_action/top_bar/weapon_info
 	icon = 'icons/mob/screen/gun_actions.dmi'
 	screen_loc = "9:16,1:13"
@@ -59,7 +53,6 @@
 		if("safety")
 			toggle_safety(user)
 		if("Weapon Info")
-<<<<<<< HEAD
 			ui_interact(user)
 
 /obj/item/gun/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
@@ -68,16 +61,6 @@
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "weapon_stats.tmpl", name, 700, 550, state = state)
-=======
-			nano_ui_interact(user)
-
-/obj/item/gun/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
-	var/list/data = nano_ui_data(user)
-
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "weapon_stats.tmpl", name, 800, 600, state = state)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()

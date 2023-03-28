@@ -12,7 +12,6 @@
 
 /obj/item/device/Created()
 	.=..()
-<<<<<<< HEAD
 	QDEL_NULL(cell)
 
 /obj/item/device/Destroy()
@@ -69,11 +68,3 @@
 		if(user)
 			to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 		. = FALSE
-=======
-	//Quick and precise method to get rid of cells
-	for (var/obj/item/cell/C in contents)
-		for (var/a in vars)
-			if (vars[a] == C)
-				vars[a] = null
-				qdel(C)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

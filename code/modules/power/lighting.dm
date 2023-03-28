@@ -16,11 +16,7 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
-<<<<<<< HEAD
 	layer = WALL_OBJ_LAYER
-=======
-	layer = BELOW_MOB_LAYER
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/stage = 1
 	var/fixture_type = "tube"
 	var/sheets_refunded = 2
@@ -169,11 +165,7 @@
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = TRUE
-<<<<<<< HEAD
 	layer = WALL_OBJ_LAYER
-=======
-	layer = BELOW_MOB_LAYER
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 20
@@ -195,13 +187,6 @@
 	var/firealarmed = 0
 	var/atmosalarmed = 0
 
-<<<<<<< HEAD
-=======
-
-	var/over_ride_lighting = FALSE
-	var/over_ride_brightness_color = COLOR_LIGHTING_DEFAULT_BRIGHT
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // the smaller bulb light fixture
 
 /obj/machinery/light/floor
@@ -221,18 +206,6 @@
 
 /obj/machinery/light/small/autoattach
 	autoattach = 1
-<<<<<<< HEAD
-=======
-
-/obj/machinery/light/small/autoattach/deepmaints
-	over_ride_lighting = TRUE
-	over_ride_brightness_color = COLOR_LIGHTING_PURPLE_MACHINERY
-
-/obj/machinery/light/small/autoattach/deepmaints/New()
-	if(prob(50))
-		over_ride_brightness_color = COLOR_LIGHTING_RED_MACHINERY
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/light/spot
 	name = "spotlight"
@@ -274,11 +247,6 @@
 	if(location)
 		if(location.area_light_color)
 			brightness_color = location.area_light_color
-<<<<<<< HEAD
-=======
-			if(over_ride_lighting)
-				brightness_color = over_ride_brightness_color
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	update(0)
 
@@ -316,7 +284,6 @@
 			atmosalarmed = 1
 			firealarmed = 0
 			brightness_color = COLOR_LIGHTING_BLUE_MACHINERY
-
 		update()
 
 /obj/machinery/light/proc/set_red()
@@ -339,9 +306,6 @@
 
 			else
 				brightness_color = COLOR_LIGHTING_DEFAULT_BRIGHT
-
-			if(over_ride_lighting)
-				brightness_color = over_ride_brightness_color
 
 		update()
 
@@ -374,11 +338,6 @@
 					set_light(0)
 			else
 				use_power = ACTIVE_POWER_USE
-<<<<<<< HEAD
-=======
-				if(over_ride_lighting)
-					brightness_color = over_ride_brightness_color
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				set_light(brightness_range, brightness_power, brightness_color)
 	else
 		use_power = IDLE_POWER_USE
@@ -523,7 +482,7 @@
 			s.start()
 			//if(!user.mutations & COLD_RESISTANCE)
 			if (prob(75))
-				electrocute_mob(user, get_area(src), src, rand(0.7,1))
+				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
 
 
 // returns whether this light has power
@@ -666,18 +625,17 @@
 
 /obj/machinery/light/ex_act(severity)
 	switch(severity)
-		if(1)
+		if(1.0)
 			qdel(src)
 			return
-		if(2)
+		if(2.0)
 			if (prob(75))
 				broken()
-		if(3)
+		if(3.0)
 			if (prob(50))
 				broken()
 	return
 
-<<<<<<< HEAD
 //blob effect
 
 
@@ -692,8 +650,6 @@
 		use_power(light_range * LIGHTING_POWER_FACTOR, STATIC_LIGHT)
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // called when area power state changes
 /obj/machinery/light/power_change()
 	spawn(10)
@@ -728,7 +684,7 @@
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state
 	var/switchcount = 0	// number of times switched
-	matter = list(MATERIAL_GLASS = 1)
+	matter = list(MATERIAL_STEEL = 1)
 	var/rigged = 0		// true if rigged to explode
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
@@ -741,33 +697,23 @@
 	icon_state = "ltube"
 	base_state = "ltube"
 	item_state = "c_tube"
+	matter = list(MATERIAL_GLASS = 1)
 	brightness_range = 8
 	brightness_power = 3
 
 /obj/item/light/tube/large
 	w_class = ITEM_SIZE_SMALL
 	name = "large light tube"
-	matter = list(MATERIAL_GLASS = 2)
 	brightness_range = 15
 	brightness_power = 4
 
-<<<<<<< HEAD
-=======
-/obj/item/light/tube/power_saver
-	name = "Artificer \"Power Cord\" light tube"
-	icon_state = "ltube"
-	base_state = "ltube"
-	item_state = "c_tube"
-	brightness_range = 6
-	brightness_power = 3
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/light/bulb
 	name = "light bulb"
 	desc = "A replacement light bulb."
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	item_state = "contvapour"
+	matter = list(MATERIAL_GLASS = 1)
 	brightness_range = 5
 	brightness_power = 2
 
@@ -775,31 +721,13 @@
 	..()
 	shatter()
 
-<<<<<<< HEAD
-=======
-/obj/item/light/bulb/power_saver
-	name = "Artificer \"Power Cord\" light bulb"
-	icon_state = "ltube"
-	base_state = "ltube"
-	item_state = "c_tube"
-	brightness_range = 3
-	brightness_power = 2
-
-/obj/item/light/bulb/spotlight
-	name = "Artificer \"Seer\" light bulb"
-	icon_state = "ltube"
-	base_state = "ltube"
-	item_state = "c_tube"
-	brightness_range = 7
-	brightness_power = 4
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/light/bulb/fire
 	name = "fire bulb"
 	desc = "A replacement fire bulb."
 	icon_state = "fbulb"
 	base_state = "fbulb"
 	item_state = "egg4"
+	matter = list(MATERIAL_GLASS = 1)
 	brightness_range = 5
 	brightness_power = 2
 
@@ -829,11 +757,7 @@
 
 
 // attack bulb/tube with object
-<<<<<<< HEAD
 // if a syringe, can inject phoron to make it explode
-=======
-// if a syringe, can inject plasma to make it explode
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/light/attackby(var/obj/item/I, var/mob/user)
 	..()
 	if(istype(I, /obj/item/reagent_containers/syringe))
@@ -898,21 +822,3 @@
 			break
 	if(!gotdir)
 		qdel(src)
-<<<<<<< HEAD
-=======
-
-//Soj edits - readds these
-//blob effect
-
-
-// timed process
-// use power
-
-#define LIGHTING_POWER_FACTOR 20		//20W per unit luminosity
-
-
-/obj/machinery/light/Process()
-	if(on)
-		use_power(light_range * LIGHTING_POWER_FACTOR, STATIC_LIGHT)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

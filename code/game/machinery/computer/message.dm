@@ -6,11 +6,7 @@
 	icon_screen = "comm_logs"
 	light_color = "#00b000"
 	var/hack_icon = "error"
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/message_monitor
-=======
-	circuit = /obj/item/circuitboard/message_monitor
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Server linked to.
 	var/obj/machinery/message_server/linkedServer
 	//Sparks effect - For emag
@@ -128,7 +124,7 @@
 				for(var/n = ++i; n <= optioncount; n++)
 					dat += "<dd><font color='blue'>&#09;[n]. ---------------</font><br></dd>"
 			if((isAI(user) || isrobot(user)) && (user.mind.antagonist.len && user.mind.original == user))
-				//Malf/contractor AIs can bruteforce into the system to gain the Key.
+				//Malf/Traitor AIs can bruteforce into the system to gain the Key.
 				dat += "<dd><A href='?src=\ref[src];hack=1'><i><font color='Red'>*&@#. Bruteforce Key</font></i></font></a><br></dd>"
 			else
 				dat += "<br>"

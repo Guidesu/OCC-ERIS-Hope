@@ -15,53 +15,11 @@
 
 /var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
 
-<<<<<<<< HEAD:code/__HELPERS/logging.dm
-========
-//print a warning message to world.log
-#define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [UNLINT(src)] usr: [usr].")
-/proc/warning(msg)
-	msg = "## WARNING: [msg]"
-	log_world(msg)
-
-//not an error or a warning, but worth to mention on the world log, just in case.
-#define NOTICE(MSG) notice(MSG)
-/proc/notice(msg)
-	msg = "## NOTICE: [msg]"
-	log_world(msg)
-
-
-//print a testing-mode debug message to world.log and world
-#ifdef TESTING
-#define testing(msg) log_world("## TESTING: [msg]"); to_chat(world, "## TESTING: [msg]")
-#define testing_variable(variable, value) var variable = value
-#else
-#define testing(msg)
-#define testing_variable(variable, value)
-#endif
-
->>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:code/__HELPERS/_logging.dm
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 /proc/log_test(text)
 	// WRITE_LOG(GLOB.test_log, text)
 	log_world("## CI: [text]")
-<<<<<<<< HEAD:code/__HELPERS/logging.dm
 	//SEND_TEXT(world.log, text) // Occulus Edit - Done by the above, but better formatted.
-========
-	SEND_TEXT(world.log, text)
-#endif
-
-#if defined(REFERENCE_DOING_IT_LIVE)
-#define log_reftracker(msg) log_harddel("## REF SEARCH [msg]")
-
-/proc/log_harddel(text)
-	log_world("## HARDDEL: [text]")
-
-#elif defined(REFERENCE_TRACKING) // Doing it locally
-#define log_reftracker(msg) log_world("## REF SEARCH [msg]")
-
-#else //Not tracking at all
-#define log_reftracker(msg)
->>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:code/__HELPERS/_logging.dm
 #endif
 
 /proc/error(msg)
@@ -71,7 +29,6 @@
 		log_world("## ERROR: [msg][log_end]")
 	#endif
 
-<<<<<<<< HEAD:code/__HELPERS/logging.dm
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
@@ -86,8 +43,6 @@
 /proc/testing(msg)
 	log_world("## TESTING: [msg][log_end]")
 
-========
->>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:code/__HELPERS/_logging.dm
 /proc/game_log(category, text)
 	diary << "\[[time_stamp()]] [game_id] [category]: [text][log_end]"
 
@@ -152,43 +107,6 @@
 /proc/log_href_exploit(atom/user)
 	log_admin("[key_name_admin(user)] has potentially attempted an href exploit.")
 
-<<<<<<<< HEAD:code/__HELPERS/logging.dm
-========
-/**
- * Appends a tgui-related log entry. All arguments are optional.
- */
-/proc/log_tgui(user, message, context,
-		datum/tgui_window/window,
-		datum/src_object)
-	var/entry = ""
-	// Insert user info
-	if(!user)
-		entry += "<nobody>"
-	else if(istype(user, /mob))
-		var/mob/mob = user
-		entry += "[mob.ckey] (as [mob] at [mob.x],[mob.y],[mob.z])"
-	else if(istype(user, /client))
-		var/client/client = user
-		entry += "[client.ckey]"
-	// Insert context
-	if(context)
-		entry += " in [context]"
-	else if(window)
-		entry += " in [window.id]"
-	// Resolve src_object
-	if(!src_object && window?.locked_by)
-		src_object = window.locked_by.src_object
-	// Insert src_object info
-	if(src_object)
-		entry += "\nUsing: [src_object.type] [REF(src_object)]"
-	// Insert message
-	if(message)
-		entry += "\n[message]"
-	game_log("TGUI", entry)
-	// WRITE_LOG(GLOB.tgui_log, entry)
-
-
->>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:code/__HELPERS/_logging.dm
 /proc/log_to_dd(text)
 	log_world(text)
 	if(config.log_world_output)
@@ -202,24 +120,7 @@
 	log_debug(text)
 
 /proc/log_qdel(text)
-<<<<<<<< HEAD:code/__HELPERS/logging.dm
 	world_qdel_log << "\[[time_stamp()]] QDEL: [text]"
-========
-	world_qdel_log << "\[[time_stamp()]] [game_id] QDEL: [text][log_end]"
-
-/proc/log_asset(text)
-	game_log("ASSET", text)
-
-/// Logging for mapping errors
-/proc/log_mapping(text, skip_world_log)
-#ifdef UNIT_TESTS
-	GLOB.unit_test_mapping_logs += text
-#endif
-	log_world("## MAPPING: [text]")
-	if(skip_world_log)
-		return
-	log_world(text)
->>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:code/__HELPERS/_logging.dm
 
 //pretty print a direction bitflag, can be useful for debugging.
 /proc/print_dir(var/dir)
@@ -233,87 +134,58 @@
 
 	return english_list(comps, nothing_text="0", and_text="|", comma_text="|")
 
-/* Helper procs for building detailed log lines */
-/proc/key_name(whom, include_link = null, include_name = TRUE, highlight_special_characters = TRUE)
+//more or less a logging utility
+/proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/highlight_special_characters = 1)
 	var/mob/M
 	var/client/C
 	var/key
-	var/ckey
-	var/fallback_name
 
-	if(!whom)
-		return "*null*"
+	if(!whom)	return "*null*"
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
 		key = C.key
-		ckey = C.ckey
 	else if(ismob(whom))
 		M = whom
 		C = M.client
 		key = M.key
-		ckey = M.ckey
-	else if(istext(whom))
-		key = whom
-		ckey = ckey(whom)
-		// C = GLOB.directory[ckey]
-		// if(C)
-		// 	M = C.mob
 	else if(istype(whom, /datum/mind))
-		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
-		if(mind.current)
-			M = mind.current
-			if(M.client)
-				C = M.client
-		else
-			fallback_name = mind.name
-	else // Catch-all cases if none of the types above match
-		var/swhom = null
-
-		if(istype(whom, /atom))
-			var/atom/A = whom
-			swhom = "[A.name]"
-		else if(istype(whom, /datum))
-			swhom = "[whom]"
-
-		if(!swhom)
-			swhom = "*invalid*"
-
-		return "\[[swhom]\]"
+		var/datum/mind/D = whom
+		key = D.key
+		M = D.current
+		if(D.current)
+			C = D.current.client
+	else if(istype(whom, /datum))
+		var/datum/D = whom
+		return "*invalid:[D.type]*"
+	else
+		return "*invalid*"
 
 	. = ""
 
-	if(!ckey)
-		include_link = FALSE
-
 	if(key)
-		if(C?.holder && C.holder.fakekey && !include_name)
-			if(include_link)
-				. += "<a href='?priv_msg=[REF(C)]'>"
+		if(include_link && C)
+			. += "<a href='?priv_msg=\ref[C]'>"
+
+		if(C && C.holder && C.holder.fakekey && !include_name)
 			. += "Administrator"
 		else
-			if(include_link)
-				. += "<a href='?priv_msg=[REF(ckey)]'>"
 			. += key
-		if(!C)
-			. += "\[DC\]"
 
 		if(include_link)
-			. += "</a>"
+			if(C)	. += "</a>"
+			else	. += " (DC)"
 	else
 		. += "*no key*"
 
-	if(include_name)
+	if(include_name && M)
 		var/name
-		if(M)
-			if(M.real_name)
-				name += "/([M.real_name])"
-			else if(M.name)
-				name += "/([M.name])"
-		else if(fallback_name)
-			name += "/([fallback_name])"
+
+		if(M.real_name)
+			name = M.real_name
+		else if(M.name)
+			name = M.name
+
 
 		if(include_link && is_special_character(M) && highlight_special_characters)
 			. += "/(<font color='#FFA500'>[name]</font>)" //Orange
@@ -322,8 +194,8 @@
 
 	return .
 
-/proc/key_name_admin(whom, include_name = TRUE)
-	return key_name(whom, TRUE, include_name)
+/proc/key_name_admin(var/whom, var/include_name = 1)
+	return key_name(whom, 1, include_name)
 
 // Helper procs for building detailed log lines
 /datum/proc/get_log_info_line()
@@ -361,10 +233,10 @@
 
 
 // Helper proc for building detailed log lines
-/proc/datum_info_line(datum/d)
+/proc/datum_info_line(var/datum/d)
 	if(!istype(d))
 		return
-	if(!ismob(d))
+	if(!istype(d, /mob))
 		return "[d] ([d.type])"
 	var/mob/m = d
 	return "[m] ([m.ckey]) ([m.type])"

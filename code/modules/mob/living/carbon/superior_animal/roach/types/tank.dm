@@ -4,24 +4,14 @@
 	icon_state = "panzer"
 	meat_amount = 4
 	turns_per_move = 2
-	maxHealth = 50
-	health = 50
+	maxHealth = 60
+	health = 60
 	move_to_delay = 7
 	mob_size = MOB_MEDIUM
 	density = TRUE
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat/panzer
-<<<<<<< HEAD
 	rarity_value = 22.5
 
 // Panzers won't slip over on water or soap.
 /mob/living/carbon/superior_animal/roach/tank/slip(var/slipped_on,stun_duration=8)
-=======
-	knockdown_odds = 3
-
-	armor = list(melee = 15, bullet = 10, energy = 5, bomb = 5, bio = 20, rad = 0, agony = 0)
-	armor_penetration = 15
-
-// Panzers won't slip over on water or soap.
-/mob/living/carbon/superior_animal/roach/tank/slip(slipped_on,stun_duration=8)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return FALSE

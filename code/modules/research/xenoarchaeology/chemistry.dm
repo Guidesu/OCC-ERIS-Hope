@@ -15,7 +15,6 @@
 
 /obj/item/storage/box/solution_trays
 	name = "solution tray box"
-<<<<<<< HEAD
 	icon_state = "solution_trays"
 	initial_amount = 7
 	spawn_type = /obj/item/reagent_containers/glass/solution_tray
@@ -23,31 +22,11 @@
 /obj/item/storage/box/solution_trays/populate_contents()
 	for(var/i in 1 to initial_amount)
 		new spawn_type(src)
-=======
-	icon_state = "box"
-	illustration = "solution_trays"
-
-/obj/item/storage/box/solution_trays/populate_contents()
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
-	new /obj/item/reagent_containers/glass/solution_tray(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/glass/beaker/tungsten
 	name = "beaker (tungsten)"
 	preloaded_reagents = list("tungsten" = 60)
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/glass/beaker/oxygen
-	name = "beaker (oxygen)"
-	preloaded_reagents = list("oxygen" = 60)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/glass/beaker/sodium
 	name = "beaker (sodium)"
 	preloaded_reagents = list("sodium" = 60)

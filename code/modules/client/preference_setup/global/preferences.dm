@@ -95,13 +95,6 @@ var/list/_client_preferences_by_type
 			GLOB.lobbyScreen.play_music(preference_mob.client)
 	else
 		GLOB.lobbyScreen.stop_music(preference_mob.client)
-<<<<<<< HEAD
-=======
-
-/datum/client_preference/change_to_examine_tab
-	description = "Switch to examine tab upon examining a object"
-	key = "SWITCHEXAMINE"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/client_preference/play_ambiance
 	description ="Play ambience"
@@ -224,7 +217,6 @@ var/list/_client_preferences_by_type
 	description = "Enable gun crosshair"
 	key = "GUN_CURSOR"
 
-<<<<<<< HEAD
 // OCCULUS EDIT START: For compatibility with downstreams, these preferences are not in a modular file
 
 /datum/client_preference/spawn_silent_vagabond
@@ -238,44 +230,6 @@ var/list/_client_preferences_by_type
 	default_value = GLOB.PREF_NO
 
 // OCCULUS EDIT END
-=======
-/datum/client_preference/play_jukebox
-	description ="Play jukebox music"
-	key = "SOUND_JUKEBOX"
-
-/datum/client_preference/play_jukebox/changed(var/mob/preference_mob, var/new_value)
-	if(new_value == GLOB.PREF_NO)
-		preference_mob.stop_all_music()
-	else
-		preference_mob.update_music()
-
-/datum/client_preference/stay_in_hotkey_mode
-	description = "Keep hotkeys on mob change"
-	key = "KEEP_HOTKEY_MODE"
-	default_value = GLOB.PREF_YES
-
-/datum/client_preference/area_info_blurb
-	description = "Show area narration."
-	key = "AREA_INFO"
-
-/datum/client_preference/tgui_fancy
-	description ="Enable/Disable tgui fancy mode"
-	key = "tgui_fancy"
-
-/datum/client_preference/tgui_fancy/changed(mob/preference_mob, new_value)
-	for (var/datum/tgui/tgui as anything in preference_mob?.tgui_open_uis)
-		// Force it to reload either way
-		tgui.update_static_data(preference_mob)
-
-/datum/client_preference/tgui_lock
-	description ="TGUI Lock"
-	key = "tgui_lock"
-
-/datum/client_preference/tgui_lock/changed(mob/preference_mob, new_value)
-	for (var/datum/tgui/tgui as anything in preference_mob?.tgui_open_uis)
-		// Force it to reload either way
-		tgui.update_static_data(preference_mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /********************
 * General Staff Preferences *

@@ -21,7 +21,7 @@
 	var/flowing = 0	//for icons - becomes zero if the valve closes itself due to regulation mode
 
 	var/frequency = 0
-	var/id
+	var/id = null
 	var/datum/radio_frequency/radio_connection
 
 /obj/machinery/atmospherics/binary/passive_gate/New()
@@ -179,7 +179,6 @@
 	ui_interact(user)
 	return
 
-<<<<<<< HEAD
 /obj/machinery/atmospherics/binary/passive_gate/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -248,8 +247,6 @@
 	src.add_fingerprint(usr)
 	return
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/I, var/mob/user)
 	if(!(QUALITY_BOLT_TURNING in I.tool_qualities))
 		return ..()
@@ -271,44 +268,6 @@
 		investigate_log("was unfastened by [key_name(user)]", "atmos")
 		new /obj/item/pipe(loc, make_from=src)
 		qdel(src)
-
-//tgui stuff
-/obj/machinery/atmospherics/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "AtmosPump", name)
-		ui.open()
-
-/obj/machinery/atmospherics/binary/passive_gate/ui_data()
-	var/data = list()
-	data["on"] = unlocked
-	data["pressure"] = round(target_pressure)
-	data["max_pressure"] = round(max_pressure_setting)
-	return data
-
-/obj/machinery/atmospherics/binary/passive_gate/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("power")
-			unlocked = !unlocked
-			investigate_log("was [unlocked ? "disabled" : "enabled"] by [key_name(usr)]", "atmos")
-			. = TRUE
-		if("pressure")
-			var/pressure = params["pressure"]
-			if(pressure == "max")
-				pressure = max_pressure_setting
-				. = TRUE
-			else if(text2num(pressure) != null)
-				pressure = text2num(pressure)
-				. = TRUE
-			if(.)
-				target_pressure = clamp(pressure, 0, ONE_ATMOSPHERE*100)
-				investigate_log("had it's pressure changed to [target_pressure] by [key_name(usr)]", "atmos")
-	update_icon()
-
-
 
 #undef REGULATE_NONE
 #undef REGULATE_INPUT

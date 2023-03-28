@@ -12,11 +12,7 @@
 	density = TRUE
 	anchored = FALSE
 
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/shield_generator
-=======
-	circuit = /obj/item/circuitboard/shield_generator
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/needs_update = FALSE //If true, will update in process
 
@@ -52,12 +48,7 @@
 	var/list/default_modes = list()
 	var/generatingShield = FALSE //true when shield tiles are in process of being generated
 
-<<<<<<< HEAD
 	var/obj/effect/overmap/ship/linked_ship = null // To access position of Eris on the overmap
-=======
-	/// If true, will allow report_damage() to be called.
-	var/reportDamage = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// The shield mode flags which should be enabled on this generator by default
 
@@ -92,12 +83,7 @@
 	var/tendrils_deployed = FALSE				// Whether the dummy capacitors are currently extended
 
 
-<<<<<<< HEAD
 /obj/machinery/power/shield_generator/on_update_icon()
-=======
-
-/obj/machinery/power/shield_generator/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(running)
 		SetIconState("generator1")
@@ -120,10 +106,6 @@
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/power/shield_generator/Initialize()
 	. = ..()
 	connect_to_network()
@@ -156,11 +138,7 @@
 /obj/machinery/power/shield_generator/RefreshParts()
 	max_energy = 0
 	for(var/obj/item/stock_parts/smes_coil/S in component_parts)
-<<<<<<< HEAD
 		max_energy += (S.ChargeCapacity / (CELLRATE * 5))//Occulus Edit
-=======
-		max_energy += (S.ChargeCapacity / CELLRATE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	current_energy = between(0, current_energy, max_energy)
 
 	mitigation_max = MAX_MITIGATION_BASE
@@ -338,59 +316,16 @@
 		to_chat(user, "Wait until \the [src] cools down from emergency shutdown first!")
 		return
 
+	if(default_deconstruction(O, user))
+		return
 	if(default_part_replacement(O, user))
 		return
 
-	else
+	//TODO: Implement unwrenching in a proper centralised location. Having to copypaste this around sucks
+	if(QUALITY_BOLT_TURNING in O.tool_qualities)
+		wrench(user, O)
+		return
 
-<<<<<<< HEAD
-=======
-		var/list/usable_qualities = list(QUALITY_BOLT_TURNING, QUALITY_SCREW_DRIVING)
-
-		if(panel_open && circuit)
-			usable_qualities += QUALITY_PRYING
-
-		var/tool_type = O.get_tool_type(user, usable_qualities, src)
-		switch(tool_type)
-
-			if(QUALITY_BOLT_TURNING)
-				if(O.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
-					playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-					if(anchored)
-						to_chat(user, SPAN_NOTICE("You unsecure the [src] from the floor!"))
-						anchored = FALSE
-					else
-						if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
-						to_chat(user, SPAN_NOTICE("You secure the [src] to the floor!"))
-						anchored = TRUE
-
-					if(anchored)
-						connect_to_network()
-					else
-						disconnect_from_network()
-
-					return
-
-			if(QUALITY_PRYING)
-				if(O.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
-					to_chat(user, SPAN_NOTICE("You remove the components of \the [src] with [O]."))
-					dismantle()
-				return TRUE
-
-			if(QUALITY_SCREW_DRIVING)
-				var/used_sound = panel_open ? 'sound/machines/Custom_screwdriveropen.ogg' :  'sound/machines/Custom_screwdriverclose.ogg'
-				if(O.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
-					updateUsrDialog()
-					panel_open = !panel_open
-					to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the maintenance hatch of \the [src] with [O]."))
-					update_icon()
-				return TRUE
-
-
-			if(ABORT_CHECK)
-				return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/tool))
 		return src.attack_hand(user)
 
@@ -406,7 +341,7 @@
 			S.fail(1)
 
 
-/obj/machinery/power/shield_generator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/shield_generator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["running"] = running
@@ -459,7 +394,7 @@
 
 
 /obj/machinery/power/shield_generator/attack_hand(var/mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 	if(panel_open)
 		wires.Interact(user)
 
@@ -540,7 +475,7 @@
 		log_event(EVENT_RECONFIGURED, src)
 		. = 1
 
-	nano_ui_interact(usr)
+	ui_interact(usr)
 
 /obj/machinery/power/shield_generator/proc/field_integrity()
 	if(max_energy)
@@ -720,16 +655,12 @@
 	if (report_scheduled)
 		return
 
-	if (reportDamage)
-		report_scheduled = TRUE
-
-		addtimer(CALLBACK(src, .proc/report_damage), report_delay)
-
-
+	report_scheduled = TRUE
+	spawn(report_delay)
+		report_damage()
 
 //This proc sends reports for shield damage
 /obj/machinery/power/shield_generator/proc/report_damage()
-
 	var/do_report = FALSE //We only report if this is true
 	report_scheduled = FALSE //Reset this regardless of what we do here
 
@@ -768,7 +699,6 @@
 		spanclass = "danger"
 
 	command_announcement.Announce(span(spanclass, "[prefix]Shield integrity at [round(field_integrity())]%"), "Shield Status Report", msg_sanitized = TRUE)
-<<<<<<< HEAD
 
 
 /obj/machinery/power/shield_generator/proc/wrench(var/user, var/obj/item/O)
@@ -782,8 +712,6 @@
 			to_chat(user, SPAN_NOTICE("You secure the [src] to the floor!"))
 			anchored = TRUE
 		return
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //This proc keeps an internal log of shield impacts, activations, deactivations, and a vague log of config changes
 /obj/machinery/power/shield_generator/proc/log_event(var/event_type, var/atom/origin_atom)

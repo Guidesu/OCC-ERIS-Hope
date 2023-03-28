@@ -65,13 +65,8 @@
 
 /datum/game_mode/malfunction/verb/ai_destroy_station()
 	set category = "Hardware"
-<<<<<<< HEAD
 	set name = "Destroy Ship"
 	set desc = "Activates or deactivates self destruct sequence of this ship. Sequence takes two minutes, and if you are shut down before timer reaches zero it will be cancelled."
-=======
-	set name = "Destroy Colony"
-	set desc = "Activates or deactivates self destruct sequence of this colony. Sequence takes two minutes, and if you are shut down before timer reaches zero it will be cancelled."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mob/living/silicon/ai/user = usr
 	var/obj/item/device/radio/radio = new/obj/item/device/radio()
 
@@ -92,11 +87,7 @@
 		return
 	if(!ability_prechecks(user, 0, 0))
 		return
-<<<<<<< HEAD
 	to_chat(user, "***** SHIP SELF-DESTRUCT SEQUENCE INITIATED *****")
-=======
-	to_chat(user, "***** STATION SELF-DESTRUCT SEQUENCE INITIATED *****")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(user, "Self-destructing in 2 minutes. Use this command again to abort.")
 	user.bombing_station = 1
 	radio.autosay("Self destruct sequence has been activated. Self-destructing in 120 seconds.", "Self-Destruct Control")

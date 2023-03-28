@@ -31,16 +31,3 @@
 	heavy_range = 1.5
 	weak_range = 5
 	matter = list(MATERIAL_BIOMATTER = 100)
-<<<<<<< HEAD
-=======
-
-
-/obj/item/grenade/explosive/artileria
-	name = "Excelsior \"Artileria Flare\""
-	desc = "ARTILERIA! This is a standard artillery signaling flare used by Excelsior forces. Better stay well away from it!"
-	icon = 'icons/obj/lighting.dmi'
-	icon_state = "aflare-on"
-	item_state = "aflare-on"
-	heavy_range = 1.5
-	weak_range = 6
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

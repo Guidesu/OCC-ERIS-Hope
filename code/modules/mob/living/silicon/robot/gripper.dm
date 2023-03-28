@@ -4,9 +4,6 @@
 	name = "magnetic gripper"
 	desc = "A simple grasping tool specialized in construction and engineering work."
 	icon = 'icons/obj/device.dmi'
-
-	description_info = "Can be used to remove sticky tape from cameras on help intent."
-	description_antag = "Can be used for a strong brute attack on humans using harm intent."
 	icon_state = "gripper"
 	spawn_tags = null
 
@@ -14,39 +11,20 @@
 
 	//Has a list of items that it can hold.
 	var/list/can_hold = list(
-<<<<<<< HEAD
 		/obj/item/cell,
 		/obj/item/electronics/firealarm,
 		/obj/item/electronics/airalarm,
 		/obj/item/electronics/airlock,
 		/obj/item/electronics/tracker,
-=======
-		/obj/item/extinguisher,
-		/obj/item/cell,
-		/obj/item/firealarm_electronics,
-		/obj/item/airalarm_electronics,
-		/obj/item/airlock_electronics,
-		/obj/item/tracker_electronics,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/stock_parts,
 		/obj/item/frame,
 		/obj/item/camera_assembly,
 		/obj/item/tank,
-<<<<<<< HEAD
 		/obj/item/electronics/circuitboard,
 		/obj/item/device/assembly,//Primarily for making improved cameras, but opens many possibilities
 		/obj/item/computer_hardware,
 		/obj/item/stack/tile, //Repair floors yay
 		/obj/item/tool_upgrade	// OCCULUS EDIT - Make cyborgs be able to grab upgrades
-=======
-		/obj/item/circuitboard,
-		/obj/item/device/assembly,//Primarily for making improved cameras, but opens many possibilities
-		/obj/item/computer_hardware,
-		/obj/item/tool_upgrade,
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
-		/obj/item/stack/tile //Repair floors yay
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 	var/obj/item/wrapped // Item currently being held.
@@ -79,11 +57,7 @@
 
 
 
-<<<<<<< HEAD
 /obj/item/gripper/proc/grip_item(obj/item/I, mob/user, var/feedback = 1)
-=======
-/obj/item/gripper/proc/grip_item(obj/item/I as obj, mob/user as mob, var/feedback = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//This function returns 1 if we successfully took the item, or 0 if it was invalid. This information is useful to the caller
 	if (!wrapped)
 		if(is_type_in_list(I,can_hold))
@@ -103,11 +77,7 @@
 
 
 //This places a little image of the gripped item in the gripper, so you can see visually what you're holding
-<<<<<<< HEAD
 /obj/item/gripper/on_update_icon()
-=======
-/obj/item/gripper/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays.Cut()
 	if (wrapped && wrapped.icon)
 		var/mutable_appearance/MA = new(wrapped)
@@ -190,17 +160,6 @@
 	if(wrapped) //Already have an item.
 		return//This is handled in /mob/living/silicon/robot/GripperClickOn
 
-<<<<<<< HEAD
-=======
-	if(istype(target, /obj/machinery/camera) && user.a_intent == I_HELP)
-		var/obj/machinery/camera/cam = target
-		if(cam.taped)
-			to_chat(user, SPAN_NOTICE("You remove the tape from \the [cam] using the edge of your magnetic gripper."))
-			cam.icon_state = "camera"
-			cam.taped = 0
-			cam.set_status(1)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if (istype(target, /obj/item/storage) && !istype(target, /obj/item/storage/pill_bottle) && !istype(target, /obj/item/storage/secure))
 		var/obj/item/storage/S = target
 		for (var/obj/item/C in S.contents)
@@ -225,6 +184,11 @@
 	justdropped = 0
 
 
+
+
+
+
+
 /*
 	//Definitions of gripper subtypes
 */
@@ -238,13 +202,7 @@
 	can_hold = list(
 		/obj/item/cell,
 		/obj/item/stock_parts,
-<<<<<<< HEAD
 		/obj/item/electronics/circuitboard/miningdrill
-=======
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
-		/obj/item/circuitboard/miningdrill
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/item/gripper/paperwork
@@ -257,15 +215,7 @@
 		/obj/item/paper_bundle,
 		/obj/item/card/id,
 		/obj/item/book,
-<<<<<<< HEAD
 		/obj/item/newspaper
-=======
-		/obj/item/newspaper,
-		/obj/item/photo,
-		/obj/item/spacecash,
-		/obj/item/coin,
-		/obj/item/device/toner
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 /obj/item/gripper/research //A general usage gripper, used for toxins/robotics/xenobio/etc
@@ -282,72 +232,31 @@
 		/obj/item/device/flash, //to build borgs,
 		/obj/item/organ/internal/brain, //to insert into MMIs,
 		/obj/item/stack/cable_coil, //again, for borg building,
-<<<<<<< HEAD
 		/obj/item/electronics/circuitboard,
 		/obj/item/slime_extract,
 		/obj/item/reagent_containers/glass,
 		/obj/item/reagent_containers/food/snacks/monkeycube,
-=======
-		/obj/item/circuitboard,
-		/obj/item/slime_extract,
-		/obj/item/reagent_containers/glass,
-		/obj/item/reagent_containers/food/snacks/monkeycube,
-		/obj/item/reagent_containers/blood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/device/assembly,//For building bots and similar complex R&D devices
 		/obj/item/device/scanner/health,//For building medibots
 		/obj/item/disk,
 		/obj/item/device/scanner/plant,//For farmbot construction
 		/obj/item/tool/minihoe,//Farmbots and xenoflora
-<<<<<<< HEAD
 		/obj/item/computer_hardware
 		)
 
 /obj/item/gripper/chemistry //A gripper designed for chemistry, to allow borgs to work efficiently in the lab
 	name = "chemistry gripper"
-=======
-		/obj/item/seeds,
-		/obj/item/tank,
-		/obj/item/computer_hardware,
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
-		/obj/item/device/integrated_electronics,
-		/obj/item/integrated_circuit
-		)
-
-/obj/item/gripper/chemistry //A gripper designed for chemistry and medical, to allow borgs to work efficiently in the lab
-	name = "medical gripper"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "gripper-sci"
-	desc = "A specialised grasping tool designed for working in chemistry and pharmaceutical labs, as well as have basic surgical uses."
+	desc = "A specialised grasping tool designed for working in chemistry and pharmaceutical labs"
 
 	can_hold = list(
 		/obj/item/reagent_containers/glass,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/spray,
-<<<<<<< HEAD
 		/obj/item/storage/pill_bottle,
 		/obj/item/hand_labeler,
 		/obj/item/stack/material/phoron,
 		/obj/item/reagent_containers/food/snacks/meat
-=======
-		/obj/item/reagent_containers/blood,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/storage/pill_bottle,
-		/obj/item/hand_labeler,
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
-		/obj/item/am_shielding_container,
-		/obj/item/organ,
-		/obj/item/organ_module,
-		/obj/item/modification/organ,
-		/obj/item/device/mmi,
-		/obj/item/tank,
-		/obj/item/reagent_containers/food/snacks/meat, //For grinding up roaches
-		/obj/item/reagent_containers/food/snacks/grown, //For grinding up herbs
-
-		/obj/item/stack/material/plasma
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 /obj/item/gripper/service //Used to handle food, drinks, and seeds.
@@ -364,50 +273,13 @@
 		/obj/item/tool/broken_bottle,
 		/obj/item/paper,
 		/obj/item/newspaper,
-<<<<<<< HEAD
 		/obj/item/electronics/circuitboard/broken,
-=======
-		/obj/item/circuitboard/broken,
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/clothing/mask/smokable/cigarette,
 		///obj/item/reagent_containers/cooking_container //PArt of cooking overhaul, not yet ported
 		)
 
-<<<<<<< HEAD
 /obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
 
-=======
-/obj/item/gripper/ammo //Used to boxes, ammo and shells
-	name = "ammo gripper"
-	icon_state = "gripper-ammo"
-	desc = "A gripper used for loading guns and ammo into boxes."
-
-	can_hold = list(
-		/obj/item/ammo_casing,
-		/obj/item/ammo_kit,
-		/obj/item/ammo_magazine,
-		/obj/item/am_containment,
-		/obj/item/am_shielding_container,
-		/obj/item/mech_ammo_box
-		)
-
-
-/obj/item/gripper/upgrade //Used to boxes, ammo and shells
-	name = "tool mod gripper"
-	icon_state = "gripper-toolstuff"
-	desc = "A gripper used to upgrade a borgs tools only holds mods and spare fuel."
-
-	can_hold = list(
-		/obj/item/tool_upgrade,
-		/obj/item/weldpack/canister
-		)
-
-
-/obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gripper/no_use/attack_self(mob/user as mob)
 	return
 
@@ -417,6 +289,5 @@
 	icon_state = "gripper-sheet"
 
 	can_hold = list(
-		/obj/item/stack/material,
-		/obj/item/stack/sheet/refined_scrap
+		/obj/item/stack/material
 		)

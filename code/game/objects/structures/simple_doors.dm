@@ -37,8 +37,6 @@
 		set_opacity(TRUE)
 	if(material.products_need_process())
 		START_PROCESSING(SSobj, src)
-	if(material.radioactivity)
-		AddRadSource(src, round(material.radioactivity/3, 1)
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/structure/simple_door/Destroy()
@@ -125,19 +123,19 @@
 	else
 		icon_state = material.door_icon_base
 
-/obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/pickaxe))
-		var/obj/item/pickaxe/digTool = W
+/obj/structure/simple_door/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/weapon/pickaxe))
+		var/obj/item/weapon/pickaxe/digTool = W
 		user << "You start digging the [name]."
 		if(do_after(user,digTool.digspeed*hardness) && src)
 			user << "You finished digging."
 			Dismantle()
-	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
+	else if(istype(W,/obj/item/weapon)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/100
 		user << "You hit the [name] with your [W.name]!"
 		CheckHardness()
-	else if(istype(W,/obj/item/tool/weldingtool))
-		var/obj/item/tool/weldingtool/WT = W
+	else if(istype(W,/obj/item/weapon/tool/weldingtool))
+		var/obj/item/weapon/tool/weldingtool/WT = W
 		if(material.ignition_point && WT.remove_fuel(0, user))
 			TemperatureAct(150)
 	else
@@ -170,32 +168,32 @@
 /obj/structure/simple_door/process()
 	if(!material.radioactivity)
 		return
+	for(var/mob/living/L in range(1,src))
+		L.apply_effect(round(material.radioactivity/3),IRRADIATE,0)
 
 /obj/structure/simple_door/iron/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_IRON)
+	..(newloc, "iron")
 
 /obj/structure/simple_door/silver/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_SILVER)
+	..(newloc, "silver")
 
 /obj/structure/simple_door/gold/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_GOLD)
+	..(newloc, "gold")
 
 /obj/structure/simple_door/uranium/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_URANIUM)
+	..(newloc, "uranium")
 
 /obj/structure/simple_door/sandstone/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_SANDSTONE)
+	..(newloc, "sandstone")
 
-<<<<<<< HEAD
 /obj/structure/simple_door/phoron/New(var/newloc,var/material_name)
 	..(newloc, "phoron")
-=======
-/obj/structure/simple_door/plasma/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_PLASMA)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/simple_door/diamond/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_DIAMOND)
+	..(newloc, "diamond")
 
 /obj/structure/simple_door/wood/New(var/newloc,var/material_name)
-	..(newloc, MATERIAL_WOOD)
+	..(newloc, "wood")
+
+/obj/structure/simple_door/resin/New(var/newloc,var/material_name)
+	..(newloc, "resin")

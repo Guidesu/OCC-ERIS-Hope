@@ -1,6 +1,6 @@
 var/global/list/map_sectors = list()
 
-/area/overmap
+/area/overmap/
 	name = "System Map"
 	icon_state = "start"
 	requires_power = 0
@@ -19,33 +19,6 @@ var/global/list/map_sectors = list()
 /turf/unsimulated/map/New()
 	..()
 	name = "[x]-[y]"
-<<<<<<< HEAD
-=======
-	var/list/numbers = list()
-
-	if(x == 1 || x == GLOB.maps_data.overmap_size)
-		numbers += list("[round(y/10)]","[round(y%10)]")
-		if(y == 1 || y == GLOB.maps_data.overmap_size)
-			numbers += "-"
-	if(y == 1 || y == GLOB.maps_data.overmap_size)
-		numbers += list("[round(x/10)]","[round(x%10)]")
-
-	for(var/i = 1 to numbers.len)
-		var/image/I = image('icons/effects/numbers.dmi',numbers[i])
-		I.pixel_x = 5*i - 2
-		I.pixel_y = world.icon_size/2 - 3
-		if(y == 1)
-			I.pixel_y = 3
-			I.pixel_x = 5*i + 4
-		if(y == GLOB.maps_data.overmap_size)
-			I.pixel_y = world.icon_size - 9
-			I.pixel_x = 5*i + 4
-		if(x == 1)
-			I.pixel_x = 5*i - 2
-		if(x == GLOB.maps_data.overmap_size)
-			I.pixel_x = 5*i + 2
-		add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Proc to 'move' stars in spess
 //null direction stops movement

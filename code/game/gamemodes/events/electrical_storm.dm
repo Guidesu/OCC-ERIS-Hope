@@ -1,20 +1,14 @@
-/*
-
-Just not fun
-
 /datum/storyevent/electrical_storm
 	id = "elec_storm"
 	name = "Electrical Storm"
 
 
 	event_type = /datum/event/electrical_storm
-	event_pools = list(//EVENT_LEVEL_MUNDANE = POOL_THRESHOLD_MUNDANE, bumped to moderate as this is annoying
+	event_pools = list(EVENT_LEVEL_MUNDANE = POOL_THRESHOLD_MUNDANE,
 	EVENT_LEVEL_MODERATE = POOL_THRESHOLD_MODERATE)
 
-	ocurrences_max = 2 //Can only do this twice as its more annoying then fun
-
 	tags = list(TAG_SCARY, TAG_TARGETED, TAG_NEGATIVE)
-*/
+
 ////////////////////////////////////////////////
 
 /datum/event/electrical_storm
@@ -47,7 +41,7 @@ Just not fun
 			if(is_valid_apc(apc))
 				// Greatly reduce the chance for APCs in maintenance areas to be selected
 				var/area/A = get_area(apc)
-				if(!istype(A,/area/nadezhda/maintenance) || prob(25))
+				if(!istype(A,/area/eris/maintenance) || prob(25))
 					apcs += apc
 
 		for(var/i=1, i <= lightsoutAmount, i++)

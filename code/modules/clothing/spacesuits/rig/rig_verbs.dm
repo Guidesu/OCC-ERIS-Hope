@@ -7,7 +7,7 @@
 	set src = usr.contents
 
 	if(wearer && wearer.back == src)
-		nano_ui_interact(usr)
+		ui_interact(usr)
 
 /obj/item/rig/verb/toggle_vision()
 
@@ -48,15 +48,6 @@
 
 	if(!istype(wearer) || !wearer.back == src)
 		to_chat(usr, SPAN_WARNING("The hardsuit is not being worn."))
-<<<<<<< HEAD
-=======
-		return
-
-	// This is not great code, but the previous method made Linter-chan cry, and what I thought to do instead, replace the chest piece by a voidsuit, felt really weird.
-	// This is way smaller, more efficient, less loophole-y, and don't give me that weird feeling. -R4d6
-	if(istype(src, /obj/item/rig/ameridian_knight) && !active)
-		to_chat(usr, SPAN_WARNING("The helmet require the rig to be active."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(!check_suit_access(usr))
@@ -127,28 +118,6 @@
 
 	deploy(wearer)
 
-<<<<<<< HEAD
-=======
-/obj/item/rig/verb/deploynt_suit()
-
-	set name = "Retract Hardsuit"
-	set desc = "Retract helmet, gloves and boots."
-	set category = "Hardsuit"
-	set src = usr.contents
-
-	if(!istype(wearer) || !wearer.back == src)
-		to_chat(usr, SPAN_WARNING("The hardsuit is not being worn."))
-		return
-
-	if(!check_suit_access(usr))
-		return
-
-	if(!check_power_cost(usr))
-		return
-
-	retract(wearer)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/rig/verb/toggle_seals_verb()
 
 	set name = "Toggle Hardsuit"

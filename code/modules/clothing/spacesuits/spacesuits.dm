@@ -2,11 +2,7 @@
 //Note: Everything in modules/clothing/spacesuits should have the entire suit grouped together.
 //      Meaning the the suit is defined directly after the corrisponding helmet. Just like below!
 
-<<<<<<< HEAD
 /obj/item/clothing/head/space
-=======
-/obj/item/clothing/head/helmet/space
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "space helmet"
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
@@ -16,11 +12,7 @@
 		slot_r_hand_str = "s_helmet",
 		)
 	permeability_coefficient = 0.01
-<<<<<<< HEAD
 	armor = list(
-=======
-	armor_list = list(
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		melee = 10,
 		bullet = 10,
 		energy = 10,
@@ -37,16 +29,11 @@
 	siemens_coefficient = 0.9
 	w_class = ITEM_SIZE_NORMAL
 	species_restricted = list("exclude")
-<<<<<<< HEAD
 	flash_protection = FLASH_PROTECTION_MAJOR
 	price_tag = 100
 	spawn_blacklisted = TRUE
 	bad_type = /obj/item/clothing/head/space
 	style = STYLE_NEG_HIGH
-=======
-	flash_protection = FLASH_PROTECTION_MODERATE
-	obscuration = LIGHT_OBSCURATION
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/obj/machinery/camera/camera
 	var/list/camera_networks
@@ -92,17 +79,10 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	item_flags = STOPPRESSUREDAMAGE|THICKMATERIAL|COVER_PREVENT_MANIPULATION
-<<<<<<< HEAD
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	matter = list(MATERIAL_PLASTIC = 30, MATERIAL_STEEL = 10)
 	slowdown = 1
 	armor = list(
-=======
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	matter = list(MATERIAL_PLASTIC = 30, MATERIAL_STEEL = 10)
-	slowdown = 3
-	armor_list = list(
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		melee = 10,
 		bullet = 10,
 		energy = 10,
@@ -116,16 +96,9 @@
 	siemens_coefficient = 0.9
 	species_restricted = list("exclude")
 	equip_delay = 4 SECONDS
-<<<<<<< HEAD
 	bad_type = /obj/item/clothing/suit/space
 	style = STYLE_NEG_HIGH
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
-=======
-	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
-	stiffness = HEAVY_STIFFNESS
-	tool_qualities = list(QUALITY_ARMOR = 100)
-	max_upgrades = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/suit/space/equipped(mob/M)
 	check_limb_support()

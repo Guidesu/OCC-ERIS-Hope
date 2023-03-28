@@ -1,16 +1,11 @@
 /obj/structure/janitorialcart
 	name = "janitorial cart"
-	desc = "The ultimate in janitorial carts! Has space for water, mops, signs, trash bags, and more."
+	desc = "The ultimate in janitorial carts! Has space for water, mops, signs, trash bags, and more!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cart"
 	w_class = ITEM_SIZE_BULKY
-<<<<<<< HEAD
 	anchored = FALSE
 	density = TRUE
-=======
-	anchored = 0
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	reagent_flags = OPENCONTAINER
 	climbable = TRUE
 	//copypaste sorry
@@ -144,10 +139,10 @@
 
 
 /obj/structure/janitorialcart/attack_hand(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 	return
 
-/obj/structure/janitorialcart/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/structure/janitorialcart/ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["name"] = capitalize(name)
 	data["bag"] = mybag ? capitalize(mybag.name) : null
@@ -214,7 +209,6 @@
 
 
 
-<<<<<<< HEAD
 /obj/structure/janitorialcart/on_update_icon()
 	cut_overlays()
 
@@ -232,25 +226,6 @@
 		add_overlays("cart_replacer")
 	if(signs)
 		add_overlays("cart_sign[signs]")
-=======
-/obj/structure/janitorialcart/update_icon()
-	cut_overlays()
-
-	if(mybucket)
-		add_overlay("cart_bucket")
-		if(mybucket.reagents.total_volume >= 1)
-			add_overlay("water_cart")
-	if(mybag)
-		add_overlay("cart_garbage")
-	if(mymop)
-		add_overlay("cart_mop")
-	if(myspray)
-		add_overlay("cart_spray")
-	if(myreplacer)
-		add_overlay("cart_replacer")
-	if(signs)
-		add_overlay("cart_sign[signs]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 
@@ -426,11 +401,10 @@
 
 
 /obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		if(buckled_mob)
-			if(prob(85))
-				return buckled_mob.bullet_act(Proj)
-		visible_message(SPAN_WARNING("[Proj] ricochets off the [callme]!"))
+	if(buckled_mob)
+		if(prob(85))
+			return buckled_mob.bullet_act(Proj)
+	visible_message(SPAN_WARNING("[Proj] ricochets off the [callme]!"))
 
 
 /obj/item/key

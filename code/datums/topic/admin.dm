@@ -237,15 +237,10 @@
 			M.change_mob_type( /mob/observer/ghost , null, null, delmob )
 		if("angel")
 			M.change_mob_type( /mob/observer/eye/angel , null, null, delmob )
-<<<<<<< HEAD
 /*
 		if("larva")
 			M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
 */
-=======
-		//if("larva")
-		//	M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if("human")
 			M.change_mob_type( /mob/living/carbon/human , null, null, delmob, input["species"])
 		if("slime")
@@ -261,7 +256,7 @@
 		if("corgi")
 			M.change_mob_type( /mob/living/simple_animal/corgi , null, null, delmob )
 		if("ian")
-			M.change_mob_type( /mob/living/simple_animal/corgi/fluff/Ian , null, null, delmob )
+			M.change_mob_type( /mob/living/simple_animal/corgi/Ian , null, null, delmob )
 		if("crab")
 			M.change_mob_type( /mob/living/simple_animal/crab , null, null, delmob )
 		if("coffee")
@@ -394,17 +389,8 @@
 	body += source.formatJobGroup(M, "Science Positions", "e79fff", "sciencedept", science_positions)
 	//Church (Gold)
 	body += source.formatJobGroup(M, "Church Positions", "ecd37d", "churchdept", church_positions)
-<<<<<<< HEAD
-=======
-	//Prospector (Brown)
-	body += source.formatJobGroup(M, "Prospector Positions", "8B4513", "prospectordept", prospector_positions)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Civilian (Grey)
 	body += source.formatJobGroup(M, "Civilian Positions", "dddddd", "civiliandept", civilian_positions)
-	//Lonestar (Grey)
-	body += source.formatJobGroup(M, "Lonestar Positions", "dddddd", "lonestardept", cargo_positions)
-	//Off-colony (Black)
-	body += source.formatJobGroup(M, "Independent Positions", "191919", "offcolonydept", offcolony_positions)
 	//Non-Human (Green)
 	body += source.formatJobGroup(M, "Non-human Positions", "ccffcc", "nonhumandept", nonhuman_positions + "Antag HUD")
 	//Antagonist (Orange)
@@ -472,26 +458,8 @@
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
-<<<<<<< HEAD
-=======
-		if("prospectordept")
-			for(var/jobPos in prospector_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if("civiliandept")
 			for(var/jobPos in civilian_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("lonestardept")
-			for(var/jobPos in cargo_positions)
-				var/datum/job/temp = SSjob.GetJob(jobPos)
-				if(!temp) continue
-				joblist += temp.title
-		if("offcolonydept")
-			for(var/jobPos in offcolony_positions)
 				var/datum/job/temp = SSjob.GetJob(jobPos)
 				if(!temp) continue
 				joblist += temp.title
@@ -682,12 +650,8 @@
 			log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 			message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 
-<<<<<<< HEAD
 			if(!delayed)
 				del(M.client)
-=======
-			del(M.client)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			//qdel(M)	// See no reason why to delete mob. Important stuff can be lost. And ban can be lifted before round ends.
 		if("No")
 			var/no_ip = 0
@@ -699,12 +663,8 @@
 				if("Yes")
 					AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0, M.lastKnownIP, delayed_ban = delayed)
 				if("No")
-<<<<<<< HEAD
 					AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0, delayed_ban = delayed)
 					no_ip = 1
-=======
-					AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(M, "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>")
 			to_chat(M, "\red This is a permanent ban.")
 			if(config.banappeals)
@@ -717,14 +677,8 @@
 			var/banip = no_ip ? null : -1
 			source.DB_ban_record(BANTYPE_PERMA, M, -1, reason, banip, delayed_ban = delayed)
 
-<<<<<<< HEAD
 			if(!delayed)
 				del(M.client)
-=======
-			source.DB_ban_record(BANTYPE_PERMA, M, -1, reason)
-
-			del(M.client)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if("Cancel")
 			return
 
@@ -877,10 +831,7 @@
 		H.sanity.breakdowns += B
 		to_chat(usr, SPAN_NOTICE("[B] has occurred for [key_name(H)]."))
 		return
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/admin_topic/revive
 	keyword = "revive"
@@ -1183,7 +1134,6 @@
 		H.show(source.owner)
 
 
-<<<<<<< HEAD
 /datum/admin_topic/centcomfaxreply
 	keyword = "CentcomFaxReply"
 
@@ -1201,45 +1151,10 @@
 	// Create the reply message
 	var/obj/item/paper/P = new /obj/item/paper( null ) //hopefully the null loc won't cause trouble for us
 	P.name = "[command_name()]- [customname]"
-=======
-/datum/admin_topic/faxreply
-	keyword = "FaxReply"
-
-/datum/admin_topic/faxreply/Run(list/input)
-	var/mob/sender = locate(input["FaxReply"])
-	var/datum/faction/faction = GLOB.factions_list[input["faction"]]
-	var/obj/machinery/photocopier/faxmachine/fax = locate(input["originfax"])
-
-	//todo: sanitize
-	var/msg = input(source.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from [faction.name]", "") as message|null
-	if(!msg)
-		return
-
-	var/customname = input(source.owner, "Pick a title for the report", "Title", "[faction.fax_response] - ") as text|null
-
-	// Create the reply message
-	var/obj/item/paper/P = new /obj/item/paper( null ) //hopefully the null loc won't cause trouble for us
-	P.name = "[customname]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	P.info = msg
 	P.update_icon()
 
-	var/list/factions = list(faction.name)
-	if(alert("Modify Stamps?",, "No", "Yes") == "Yes")
-		do
-			switch(alert("Action:",, "Add", "Remove"))
-				if("Add")
-					var/F = input(source.owner, "Choose a stamp to add:") as null|anything in (GLOB.admin_factions_list - factions)
-					if(F)
-						factions += F
-				if("Remove")
-					var/F = input(source.owner, "Choose a stamp to remove:") as null|anything in (factions)
-					if(F)
-						factions -= F
-		while(alert("Continue modifying stamps?",, "Yes", "No") == "Yes")
-
 	// Stamps
-<<<<<<< HEAD
 	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 	stampoverlay.icon_state = "paper_stamp-cent"
 	if(!P.stamped)
@@ -1247,13 +1162,6 @@
 	P.stamped += /obj/item/stamp
 	P.add_overlays(stampoverlay)
 	P.stamps += "<HR><i>This paper has been stamped by the Central Command Quantum Relay.</i>"
-=======
-	for(var/F in factions)
-		faction = GLOB.factions_list[F]
-		if(!faction) continue
-		P.stamp("<i>[faction.stamptext]</i>", faction.stampshape, 0, -2, 2, -1)
-		P.stamped &= STAMP_ADMIN
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(fax.recievefax(P))
 		to_chat(source.owner, "\blue Message reply to transmitted successfully.")
@@ -1335,20 +1243,20 @@
 	source.view_log_panel(M)
 
 
-/datum/admin_topic/contractor
-	keyword = "contractor"
+/datum/admin_topic/traitor
+	keyword = "traitor"
 	require_perms = list(R_MOD|R_ADMIN)
 
-/datum/admin_topic/contractor/Run(list/input)
+/datum/admin_topic/traitor/Run(list/input)
 	if(!GLOB.storyteller)
 		alert("The game hasn't started yet!")
 		return
 
-	var/mob/M = locate(input["contractor"])
+	var/mob/M = locate(input["traitor"])
 	if(!ismob(M))
 		to_chat(usr, "This can only be used on instances of type /mob.")
 		return
-	source.show_contractor_panel(M)
+	source.show_traitor_panel(M)
 
 
 /datum/admin_topic/create_object
@@ -1658,7 +1566,7 @@
 						WANTED.backup_author = source.admincaster_signature                  //Submitted by
 						WANTED.is_admin_message = 1
 						news_network.wanted_issue = WANTED
-						for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters)
+						for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 							NEWSCASTER.newsAlert()
 							NEWSCASTER.update_icon()
 						source.admincaster_screen = 15
@@ -1667,14 +1575,14 @@
 						news_network.wanted_issue.body = source.admincaster_feed_message.body
 						news_network.wanted_issue.backup_author = source.admincaster_feed_message.backup_author
 						source.admincaster_screen = 19
-					log_admin("[key_name_admin(usr)] issued a Colony-wide Wanted Notification for [source.admincaster_feed_message.author]!")
+					log_admin("[key_name_admin(usr)] issued a Station-wide Wanted Notification for [source.admincaster_feed_message.author]!")
 			source.access_news_network()
 
 		if("cancel_wanted")
 			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
 				news_network.wanted_issue = null
-				for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters)
+				for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 					NEWSCASTER.update_icon()
 				source.admincaster_screen=17
 			source.access_news_network()
@@ -1760,16 +1668,3 @@
 
 	source.notes_show(ckey)
 
-<<<<<<< HEAD
-=======
-
-/datum/admin_topic/adminpmhistory
-	keyword = "adminpmhistory"
-	require_perms = list(R_MOD|R_ADMIN)
-
-/datum/admin_topic/adminpmhistory/Run(list/input)
-
-	var/mob/M = locate(input["adminpmhistory"])
-
-	source.adminpmhistory_show(M.ckey)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

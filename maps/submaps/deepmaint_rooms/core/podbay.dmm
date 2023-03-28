@@ -10,11 +10,7 @@
 /turf/simulated/floor/tiled/dark/panels,
 /area/deepmaint)
 "ad" = (
-<<<<<<< HEAD
 /obj/spawner/mob/biome_spawner_mob/low_chance,
-=======
-/obj/random/cluster/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/panels,
 /area/deepmaint)
 "ae" = (
@@ -81,14 +77,8 @@
 /area/deepmaint)
 "aq" = (
 /turf/simulated/shuttle/wall/escpod{
-<<<<<<< HEAD
 	tag = "icon-escpodwall25";
 	icon_state = "escpodwall25"
-=======
-	desc = "What the hell is Eris?";
-	icon_state = "escpodwall25";
-	tag = "icon-escpodwall25"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /area/deepmaint)
 "ar" = (
@@ -132,7 +122,6 @@
 /area/deepmaint)
 "az" = (
 /obj/structure/bed/chair/shuttle,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
@@ -142,20 +131,12 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"aA" = (
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aB" = (
 /obj/structure/bed/chair/shuttle,
 /obj/machinery/light{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
@@ -178,24 +159,6 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"aC" = (
-/obj/structure/bed/chair/shuttle,
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"aD" = (
-/obj/structure/table/rack,
-/obj/random/pack/gun_loot,
-/obj/random/pack/gun_loot,
-/obj/random/pack/gun_loot,
-/obj/random/pack/gun_loot,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/pack/gun_loot/low_chance,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aE" = (
 /turf/simulated/shuttle/wall/escpod{
@@ -220,19 +183,13 @@
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "aI" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/junk,
-=======
-/obj/random/junk,
-/obj/random/junk,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aJ" = (
 /obj/structure/girder,
 /obj/structure/barricade,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
@@ -274,25 +231,6 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/monofloor,
-/area/deepmaint)
-"aK" = (
-/obj/random/junk,
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/deepmaint)
-"aL" = (
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/deepmaint)
-"aN" = (
-/obj/item/remains/human,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/gun_normal,
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aO" = (
 /turf/simulated/shuttle/wall/escpod{
@@ -308,11 +246,7 @@
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "aQ" = (
-<<<<<<< HEAD
 /obj/spawner/scrap/sparse,
-=======
-/obj/random/scrap/sparse_even,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aR" = (
@@ -331,13 +265,9 @@
 	icon_state = "shuttle_chair";
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aT" = (
 /obj/structure/bed/chair/shuttle{
@@ -345,15 +275,10 @@
 	icon_state = "shuttle_chair";
 	dir = 1
 	},
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aU" = (
 /obj/structure/bed/chair/shuttle{
@@ -362,15 +287,10 @@
 	dir = 1
 	},
 /obj/machinery/light,
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aV" = (
 /obj/structure/bed/chair/shuttle{
@@ -378,7 +298,6 @@
 	icon_state = "shuttle_chair";
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
@@ -396,19 +315,6 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"aW" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"aX" = (
-/obj/structure/table/rack,
-/obj/random/firstaid,
-/obj/random/firstaid,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "aY" = (
 /turf/simulated/shuttle/wall/escpod{
@@ -460,14 +366,8 @@
 /area/deepmaint)
 "bg" = (
 /turf/simulated/shuttle/wall/escpod{
-<<<<<<< HEAD
 	tag = "icon-escpodwall7";
 	icon_state = "escpodwall7"
-=======
-	desc = "What the hell is Eris?";
-	icon_state = "escpodwall7";
-	tag = "icon-escpodwall7"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /area/deepmaint)
 "bh" = (
@@ -491,11 +391,7 @@
 /turf/simulated/floor/tiled/dark/techfloor_grid,
 /area/deepmaint)
 "bk" = (
-<<<<<<< HEAD
 /obj/spawner/mob/biome_spawner_mob/low_chance,
-=======
-/obj/random/cluster/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/deepmaint)
 "bl" = (
@@ -507,17 +403,10 @@
 /area/deepmaint)
 "bn" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "bo" = (
@@ -528,10 +417,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< HEAD
-=======
-/obj/random/pack/gun_loot,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/deepmaint)
 "bq" = (
@@ -558,56 +443,30 @@
 /area/deepmaint)
 "bu" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/material/building,
 /obj/spawner/material/building,
 /obj/spawner/material/building,
 /obj/spawner/material/building,
 /obj/spawner/material/building,
 /obj/spawner/material/building,
-=======
-/obj/random/material,
-/obj/random/material,
-/obj/random/material,
-/obj/random/material,
-/obj/random/material,
-/obj/random/material,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "bv" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
-=======
-/obj/random/material_rare,
-/obj/random/material_rare,
-/obj/random/material_rare,
-/obj/random/material_rare,
-/obj/random/material_rare,
-/obj/random/psi_megafauna,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "bw" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "bx" = (
@@ -631,13 +490,8 @@
 	dir = 4
 	},
 /obj/item/remains/human,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "bA" = (
@@ -651,7 +505,6 @@
 "bC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/remains/human,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -659,24 +512,13 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bD" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bE" = (
 /obj/structure/bed/chair/shuttle,
@@ -684,19 +526,14 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bF" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/decal/cleanable/blood,
 /obj/item/remains/human,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -704,18 +541,10 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bG" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/oil,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
@@ -731,9 +560,6 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bI" = (
 /obj/effect/decal/cleanable/blood,
@@ -742,7 +568,6 @@
 "bJ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
@@ -754,32 +579,20 @@
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
 	},
-=======
-/turf/simulated/floor/tiled/dark/monofloor,
-/area/deepmaint)
-"bK" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bL" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/remains/human,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -788,13 +601,6 @@
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
 	},
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bN" = (
 /obj/effect/decal/cleanable/blood,
@@ -802,32 +608,23 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bO" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	tag = "icon-cargofloor7";
 	icon_state = "cargofloor7"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/remains/human,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -849,20 +646,6 @@
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/gun_loot,
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"bQ" = (
-/obj/item/remains/human,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
 "bR" = (
@@ -876,7 +659,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
@@ -886,13 +668,6 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"bS" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bT" = (
 /obj/structure/bed/chair/shuttle{
@@ -903,43 +678,28 @@
 /obj/machinery/light,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bU" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "bV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< HEAD
 /turf/simulated/shuttle/floor{
 	icon_state = "cargofloor1"
 	},
 /area/deepmaint)
 "bW" = (
 /obj/spawner/junk,
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"bW" = (
-/obj/random/junk,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/panels,
 /area/deepmaint)
 "bX" = (
@@ -956,7 +716,6 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/dark/techfloor_grid,
 /area/deepmaint)
-<<<<<<< HEAD
 "ca" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/landmark/loot_biomes/mob/roach{
@@ -964,47 +723,6 @@
 	},
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
-=======
-"kl" = (
-/obj/random/pack/rare,
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/deepmaint)
-"mb" = (
-/obj/random/pack/machine/low_chance,
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/deepmaint)
-"ty" = (
-/obj/random/pack/machine/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/deepmaint)
-"tM" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/remains/human,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/deepmaint)
-"Al" = (
-/obj/random/pack/tech_loot,
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/deepmaint)
-"Dp" = (
-/obj/random/pack/machine,
-/turf/simulated/floor/tiled/dark,
-/area/deepmaint)
-"UZ" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/deepmaint)
-"XT" = (
-/obj/random/pack/gun_loot,
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 aa
@@ -1016,15 +734,9 @@ aa
 aa
 aa
 aa
-<<<<<<< HEAD
 aa
 aa
 aa
-=======
-Dp
-Dp
-Dp
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
@@ -1068,13 +780,8 @@ ax
 ax
 af
 af
-<<<<<<< HEAD
 bk
 af
-=======
-af
-bk
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 af
 ah
@@ -1119,15 +826,9 @@ aK
 aS
 bb
 ah
-<<<<<<< HEAD
 bl
 bs
 bl
-=======
-ty
-bs
-ty
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 al
 bC
@@ -1141,11 +842,7 @@ aa
 (6,1,1) = {"
 aa
 ab
-<<<<<<< HEAD
 af
-=======
-kl
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 am
 aA
 aK
@@ -1161,22 +858,14 @@ bD
 bL
 bS
 bc
-<<<<<<< HEAD
 af
-=======
-kl
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aa
 "}
 (7,1,1) = {"
 aa
 ab
-<<<<<<< HEAD
 af
-=======
-Al
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 an
 aB
 aL
@@ -1192,11 +881,7 @@ bE
 bM
 bT
 bd
-<<<<<<< HEAD
 af
-=======
-Al
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aa
 "}
@@ -1226,11 +911,7 @@ aa
 (9,1,1) = {"
 aa
 ab
-<<<<<<< HEAD
 af
-=======
-mb
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ap
 aD
 aL
@@ -1246,28 +927,17 @@ bG
 bO
 bV
 bf
-<<<<<<< HEAD
 af
-=======
-mb
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aa
 "}
 (10,1,1) = {"
 aa
 ab
-<<<<<<< HEAD
 af
 aq
 aD
 aM
-=======
-mb
-aq
-aD
-aH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aX
 bg
 af
@@ -1276,19 +946,11 @@ bw
 bn
 af
 aq
-<<<<<<< HEAD
 bH
 bJ
 bH
 bg
 af
-=======
-bP
-UZ
-bP
-bg
-mb
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aa
 "}
@@ -1304,19 +966,11 @@ bh
 af
 bo
 bx
-<<<<<<< HEAD
 ca
 af
 ar
 aE
 bP
-=======
-bo
-af
-ar
-aE
-tM
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aE
 bh
 af
@@ -1412,11 +1066,7 @@ av
 av
 bZ
 ag
-<<<<<<< HEAD
 ab
-=======
-ad
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (16,1,1) = {"
@@ -1431,11 +1081,7 @@ aI
 ag
 bp
 af
-<<<<<<< HEAD
 af
-=======
-XT
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ag
 aI
 aQ
@@ -1443,11 +1089,7 @@ aQ
 aQ
 aI
 ag
-<<<<<<< HEAD
 ad
-=======
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (17,1,1) = {"

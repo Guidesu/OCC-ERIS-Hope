@@ -6,11 +6,7 @@
 	var/id = null
 	var/active = 0
 	var/operating = 0
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 4

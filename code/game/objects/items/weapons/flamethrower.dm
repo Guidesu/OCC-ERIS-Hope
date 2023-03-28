@@ -10,22 +10,14 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
-<<<<<<< HEAD
 	origin_tech = list(TECH_COMBAT = 2, TECH_PHORON = 1)
-=======
-	origin_tech = list(TECH_COMBAT = 2, TECH_PLASMA = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	slot_flags = SLOT_BELT
 	matter = list(MATERIAL_STEEL = 5)
 	var/throw_amount = 50
 	var/lit = FALSE	//on or off
 	var/operating = 0//cooldown
 	var/turf/previousturf = null
-<<<<<<< HEAD
 	var/obj/item/tank/phoron/ptank = null
-=======
-	var/obj/item/tank/plasma/ptank = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/flamerange = 2
 	var/gas_mult = 2.5
@@ -37,14 +29,9 @@
 
 	return ..()
 
-<<<<<<< HEAD
 
 /obj/item/flamethrower/Process()
 	if(ptank.air_contents.gas["phoron"] < 1)
-=======
-/obj/item/flamethrower/Process()
-	if(ptank.air_contents.gas["plasma"] < 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		lit = FALSE
 		STOP_PROCESSING(SSobj, src)
 		var/turf/T = get_turf(src)
@@ -60,7 +47,6 @@
 		location.hotspot_expose(700, 2)
 	return
 
-<<<<<<< HEAD
 
 /obj/item/flamethrower/on_update_icon()
 	cut_overlays()
@@ -68,14 +54,6 @@
 		add_overlays("+ptank")
 	if(lit)
 		add_overlays("+lit")
-=======
-/obj/item/flamethrower/update_icon()
-	cut_overlays()
-	if(ptank)
-		add_overlay("+ptank")
-	if(lit)
-		add_overlay("+lit")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
@@ -93,15 +71,9 @@
 /obj/item/flamethrower/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.stat || user.restrained() || user.lying)	return
 
-<<<<<<< HEAD
 	if(istype(W,/obj/item/tank/phoron))
 		if(ptank)
 			to_chat(user, SPAN_NOTICE("There appears to already be a phoron tank loaded in [src]!"))
-=======
-	if(istype(W,/obj/item/tank/plasma))
-		if(ptank)
-			to_chat(user, SPAN_NOTICE("There appears to already be a plasma tank loaded in [src]!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 		user.drop_item()
 		ptank = W
@@ -111,10 +83,7 @@
 	..()
 	return
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/flamethrower/attack_self(mob/user as mob)
 	if(user.stat || user.restrained() || user.lying)	return
 	user.set_machine(src)
@@ -123,10 +92,7 @@
 	onclose(user, "flamethrower")
 	return
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/flamethrower/Topic(href,href_list[])
 	if(href_list["close"])
 		usr.unset_machine()
@@ -135,11 +101,7 @@
 	if(usr.stat || usr.restrained() || usr.lying)	return
 	usr.set_machine(src)
 	if(href_list["light"])
-<<<<<<< HEAD
 		if(!ptank || ptank.air_contents.gas["phoron"] < 1)
-=======
-		if(!ptank || ptank.air_contents.gas["plasma"] < 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(usr, SPAN_WARNING("You press the ignite button but nothing happens."))
 			return
 		lit = !lit
@@ -168,6 +130,7 @@
 	update_icon()
 	return
 
+
 //Called from turf.dm turf/dblclick
 /obj/item/flamethrower/proc/flame_turf(var/list/turflist)
 	if(!lit || operating)	return
@@ -189,10 +152,7 @@
 			attack_self(M)
 	return
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/flamethrower/proc/ignite_turf(turf/target)
 	//TODO: DEFERRED Consider checking to make sure tank pressure is high enough before doing this...
 	//Transfer 5% of current tank air contents to turf
@@ -206,10 +166,6 @@
 
 /obj/item/flamethrower/full/New(var/loc)
 	..()
-<<<<<<< HEAD
 	ptank = new /obj/item/tank/phoron/(src)
-=======
-	ptank = new /obj/item/tank/plasma/(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_icon()
 	return

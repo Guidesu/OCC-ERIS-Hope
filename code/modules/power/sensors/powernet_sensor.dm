@@ -8,17 +8,10 @@
 // This is used in NanoUI, for example.
 
 /obj/machinery/power/sensor
-<<<<<<< HEAD
 	name = "Powernet Sensor"
 	desc = "Small machine which transmits data about specific powernet"
 	anchored = TRUE
 	density = FALSE
-=======
-	name = "powernet sensor"
-	desc = "Small machine which transmits data about a specific powernet."
-	anchored = 1
-	density = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	level = BELOW_PLATING_LEVEL
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beacon" // If anyone wants to make better sprite, feel free to do so without asking me.

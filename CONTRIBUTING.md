@@ -4,7 +4,6 @@
 * Pull requests should not contain any debug output, variables or procs, unless these are of value to admins/coders for live debugging.
 * Pull requests should not contain changes that do not relate with functionality described in commit messages.
 * If pull request relates with existing github issue, it should be specified in commit message, for example, "Fix broken floor sprites, close #23" (see https://help.github.com/articles/closing-issues-via-commit-messages/ for additional info).
-<<<<<<< HEAD
 * If pull request contains map files changes, it should be previously proccessed by mapmerger tool (see /tool/mapmerger/install.txt for additional info). Pull request description should contain screenshots of map changes if it's not obvious from map files diff.
 * If pull request contains icon files changes, it should be previously proccessed by icon merger tool (see /tool/dmitool/merging.txt for additional info). Pull request description should contain screenshots of changed icon files.
 * If you have the permissions, please set appropriate labels on your PRs. Including, at the very least, Ready for Review to indicate that its done.
@@ -12,11 +11,6 @@
 * If your PR changes something visually, you should provide screenshots of how it looks ingame.
 * If your PR adds a new feature, you should try to provide a screenshot or video of it functioning properly ingame.
 
-=======
-* If pull request contains map files changes, it MUST be fitted for the correct format exstrenal tools like Strong DMM automatical do this, local in code tools currently do not work so it is best to use proper tool then Dream Makers base. Pull request description should contain screenshots of map changes if it's not obvious from map files diff.
-* If pull request contains icon files changes, the pull request description should contain screenshots of changed icon files, well this isn't required its more perferd then digging into the file or checking the Actions Tools for your sprite changes.
-* If you have the permissions, please set appropriate labels on your PRs. Including, at the very least, Good-To-Merge to indicate that its done.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 # Advice for new recruits
 Start small! Make your first couple of PRs focus on bugfixes or small balance tweaks until you get used to the system. The repo is littered with failed projects from people who got overambitious and burned out.
@@ -35,7 +29,7 @@ Any pull requests which add or change user-visible features should have a change
 
 
 # Coding Policies
-Eris and thus Sojourn has an unusual top-down development style, with future features largely planned out.
+Eris has an unusual top-down development style, with future features largely planned out.
 To avoid conflicts, it is strongly recommended to discuss any proposed changes in the discord, and get the approval of the development team, before starting work on something that may ultimately be rejected. We can work with your ideas and help fit them into the broader vision.
 
 When making adjustments to game balance, changes should be explained, and generally made in small steps unless there's an egregious problem. 15-25% at a time is the recommended change for balancing values.
@@ -70,10 +64,10 @@ Proc defines should contain full type path.
 
 ```
 /obj/item/pistol
-	proc
+    proc
 	fire()
 
-	proc/reload()
+    proc/reload()
 ```
 ***
 If, else, for, return, continue and break expressions should not be inline.
@@ -81,11 +75,11 @@ If, else, for, return, continue and break expressions should not be inline.
 ***Good:***
 ```
 if(condition)
-	foo()
+    foo()
 ```
 ```
 for(var/object in objects)
-	foo(object)
+    foo(object)
 ```
 ***Bad:***
 ```
@@ -100,17 +94,17 @@ Spaces are needed between function agruments (declaration and definition). Space
 
 ***Good:***
 ```
-/obj/item/pistol/fire(user, target)
-	if(can_fire() && target)
-		ammo--
-		var/corpse = target
+/obj/item/pistol/fire(var/user, var/target)
+    if(can_fire() && target)
+        ammo--
+        var/corpse = target
 ```
 ***Bad:***
 ```
-/obj/item/pistol/fire(user,target)
-	if ( can_fire()&&target )
-		ammo --
-		var/corpset=target
+/obj/item/pistol/fire(var/user,var/target)
+    if ( can_fire()&&target )
+        ammo --
+        var/corpset=target
 ```
 ***
 
@@ -232,18 +226,18 @@ Do not use src.var if it can be helped.
 
 ***Good:***
 ```
-/obj/set_name(newname)
+/obj/set_name(var/newname)
 	name = newname
 	
-/obj/set_name(_name)
+/obj/set_name(var/_name)
 	name = _name
 ```
 ***Bad:***
 ```
-/obj/set_name(name)
+/obj/set_name(var/name)
 	name = name
 	
-/obj/set_name(name)
+/obj/set_name(var/name)
 	src.name = name
 ```
 ***
@@ -252,26 +246,12 @@ Variables, types and methods should be named in "snake case". Constant values sh
 
 ***Good:***
 ```
-/proc/redraw_icons()
+proc/redraw_icons()
 #define SHIP_NAME "Eris"
 ```
 ***Bad:***
 ```
-/proc/Reload_gun()
+proc/Reload_gun()
 var/brigArea
-```
-***
-
-Procedure arguments should not contain `var/`. Specified input type e.g. `some_turf as turf` is inadvisable.
-
-***Good:***
-```
-/proc/rename_area(mob/user, area/A, new_name)
-
-```
-***Bad:***
-```
-/proc/rename_area(var/mob/user as mob, var/area/A as area, var/new_name as text)
-
 ```
 ***

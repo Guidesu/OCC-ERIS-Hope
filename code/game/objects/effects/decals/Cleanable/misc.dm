@@ -19,21 +19,6 @@
 	to_chat(user, SPAN_NOTICE("[src] sifts through your fingers."))
 	qdel(src)
 
-<<<<<<< HEAD
-=======
-/obj/effect/decal/cleanable/greenglow/Initialize(mapload, ...)
-	. = ..()
-	AddRadSource(src, 2, 4) // Values taken from the process proc below
-	set_light(1.5 ,1, "#00FF7F")
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 120 SECONDS)
-
-/obj/effect/decal/cleanable/greenglow/Process()
-	. = ..()
-	for(var/mob/living/carbon/l in range(4))
-		if(prob(2))
-			to_chat(l, SPAN_WARNING("Your skin itches."))
-		l.apply_effect(2, IRRADIATE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
@@ -45,19 +30,6 @@
 	icon_state = "dirt"
 	mouse_opacity = 0
 
-<<<<<<< HEAD
-=======
-/obj/effect/decal/cleanable/dirt/Initialize(mapload, ...)
-	. = ..()
-	if(prob(66)) //66% to just delete areself to help against effect/decal lag
-		qdel(src)
-
-/obj/effect/decal/cleanable/dirt/snow
-	name = "snow"
-	desc = "A low dusting of the dark blue snow."
-	icon_state = "snow"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/decal/cleanable/reagents
 	desc = "Someone should clean that up."
 	gender = PLURAL
@@ -66,7 +38,6 @@
 	icon = 'icons/obj/reagentfillings.dmi'
 	mouse_opacity = 0
 	random_rotation = FALSE
-<<<<<<< HEAD
 	bad_type = /obj/effect/decal/cleanable/reagents
 	spawn_tags = null
 
@@ -74,18 +45,6 @@
 	if(!reagents)
 		create_reagents(reagents_to_add.total_volume)
 
-=======
-
-/obj/effect/decal/cleanable/reagents/proc/add_reagents(loc, var/datum/reagents/reagents_to_add)
-	if(!reagents_to_add)
-		return
-	if(!reagents) create_reagents(1)
-	var/space_to_add = reagents_to_add.total_volume + reagents.total_volume
-	if(space_to_add > reagents.maximum_volume)
-		var/datum/reagents/R = reagents
-		create_reagents(space_to_add, TRUE)
-		R.trans_to_holder(reagents, R.total_volume)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	reagents_to_add.trans_to_holder(reagents, reagents_to_add.total_volume)
 
 /obj/effect/decal/cleanable/reagents/New(var/datum/reagents/reagents_to_add = null)
@@ -104,25 +63,10 @@
 		alpha = min(reagents.total_volume * 30, 255)
 		START_PROCESSING(SSobj, src)
 
-<<<<<<< HEAD
 /obj/effect/decal/cleanable/reagents/splashed/add_reagents(var/datum/reagents/reagents_to_add)
 	alpha = min(alpha + reagents_to_add.total_volume * 30, 255)
 	color = BlendRGB(color, reagents_to_add.get_color(), 0.6)
 	..()
-=======
-/obj/effect/decal/cleanable/clean_blood(var/ignore = 0)
-	..()
-	STOP_PROCESSING(SSobj, src) //Were cleaned
-
-/obj/effect/decal/cleanable/reagents/splashed/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/effect/decal/cleanable/reagents/splashed/add_reagents(var/datum/reagents/reagents_to_add)
-	..()
-	alpha = min(alpha + reagents_to_add.total_volume * 30, 255)
-	color = BlendRGB(color, reagents_to_add.get_color(), 0.6)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/reagents/splashed/Process()
 	if(!reagents.total_volume)
@@ -135,14 +79,8 @@
 	icon_state = "powderpile"
 
 /obj/effect/decal/cleanable/reagents/piled/add_reagents(var/datum/reagents/reagents_to_add)
-<<<<<<< HEAD
 	color = BlendRGB(color, reagents_to_add.get_color(), 0.8)
 	..()
-=======
-	..()
-	color = BlendRGB(color, reagents_to_add.get_color(), 0.8)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/flour
 	name = "flour"
@@ -180,21 +118,6 @@
 /obj/effect/decal/cleanable/greenglow/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
-
-/obj/effect/decal/cleanable/slimecorpse // Slimepeople remains
-	name = "runny slime pool"
-	icon = 'icons/effects/effects.dmi'
-	desc = "Liquified remains of what appears to have been a slime lifeform before. Its composition is too thin to be able to gellify once more into form..."
-	icon_state = "toxic_puddle"
-	anchored = TRUE
-
-/obj/effect/decal/cleanable/filth
-	name = "filth"
-	desc = "Disgusting. Someone from last shift didn't do their job properly."
-	icon = 'icons/effects/blood.dmi'
-	icon_state = "mfloor1"
-	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
-	color = "#464f33"
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"
@@ -235,7 +158,6 @@
 	random_icon_states = list("vomit_1", "vomit_2", "vomit_3", "vomit_4")
 	sanity_damage = 1
 	var/list/viruses = list()
-	sanity_damage = 1
 
 	Destroy()
 		. = ..()
@@ -272,6 +194,8 @@
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
+
+
 
 /obj/effect/decal/cleanable/rubble
 	name = "rubble"

@@ -9,7 +9,6 @@
 	underwear_type = null
 
 /datum/category_item/underwear/bottom/briefs
-<<<<<<< HEAD
 	name = "Briefs, white"
 	icon_state = "m1"
 	underwear_name = "briefs"
@@ -43,15 +42,6 @@
 	icon_state = "m6"
 	has_color = TRUE
 
-=======
-	name = "Briefs"
-	icon_state = "briefs"
-	has_color = TRUE
-
-/datum/category_item/underwear/bottom/briefs/is_default(var/gender)
-	return gender != FEMALE
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/category_item/underwear/bottom/boxers_loveheart
 	name = "Boxers, Loveheart"
 	icon_state = "boxers_loveheart"
@@ -110,7 +100,6 @@
 	name = "Long John Bottoms"
 	icon_state = "ljonb"
 	has_color = TRUE
-<<<<<<< HEAD
 
 /datum/category_item/underwear/bottom/neko
 	name = "Neko Panties"
@@ -126,15 +115,3 @@
 	name = "Thin Panties"
 	icon_state = "panties_thin"
 	has_color = TRUE
-=======
-	
-/datum/category_item/underwear/bottom/leotard
-	name = "Leotard"
-	icon_state = "leotard_bra_color"
-	has_color = TRUE
-	
-/datum/category_item/underwear/bottom/leotard_turt
-	name = "Leotard Turtleneck"
-	icon_state = "leotard_turt_color"
-	has_color = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

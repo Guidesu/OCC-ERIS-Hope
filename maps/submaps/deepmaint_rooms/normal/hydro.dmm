@@ -9,7 +9,6 @@
 /obj/effect/window_lwall_spawn/smartspawn,
 /turf/simulated/floor/plating,
 /area/deepmaint)
-<<<<<<< HEAD
 "d" = (
 /obj/spawner/mob/roaches/cluster/low_chance,
 /turf/simulated/floor/tiled/steel/brown_platform,
@@ -53,50 +52,6 @@
 /area/deepmaint)
 "l" = (
 /turf/simulated/floor/dirt,
-=======
-"e" = (
-/obj/structure/table/woodentable,
-/obj/random/rations,
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
-"f" = (
-/obj/structure/table/woodentable,
-/obj/random/rations,
-/obj/random/rations,
-/obj/random/rations,
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
-"g" = (
-/obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
-"h" = (
-/obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/asteroid/grass,
-/area/deepmaint)
-"i" = (
-/obj/structure/table/woodentable,
-/obj/random/pack/rare,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/gun_shotgun/low_chance,
-/turf/simulated/floor/asteroid/grass,
-/area/deepmaint)
-"j" = (
-/obj/structure/table/woodentable,
-/obj/random/pack/rare/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/firstaid/low_chance,
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
-"k" = (
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
-"l" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/asteroid/grass,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "m" = (
 /turf/simulated/floor/wood,
@@ -115,16 +70,11 @@
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "q" = (
-<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
-=======
-/obj/random/traps/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "r" = (
 /obj/structure/table/woodentable,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -138,14 +88,6 @@
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
 /turf/simulated/floor/dirt,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/tool_upgrade/rare/low_chance,
-/turf/simulated/floor/asteroid/grass,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 "t" = (
 /obj/machinery/light/small,
@@ -157,51 +99,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/deepmaint)
-<<<<<<< HEAD
-=======
-"F" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/wood,
-/area/deepmaint)
-"I" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/brown_platform,
-/area/deepmaint)
-"N" = (
-/obj/random/cluster/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/brown_platform,
-/area/deepmaint)
-"Q" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/cargo,
-/area/deepmaint)
-"S" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/asteroid/dirt,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
-<<<<<<< HEAD
 d
 a
-=======
-a
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 n
 n
 n
 a
 a
 a
-<<<<<<< HEAD
 a
-=======
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 a
@@ -220,20 +130,12 @@ a
 a
 c
 e
-<<<<<<< HEAD
 k
-=======
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 q
 c
 r
-<<<<<<< HEAD
 s
-=======
-r
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -241,29 +143,17 @@ a
 a
 c
 f
-<<<<<<< HEAD
 l
 c
 p
 c
 k
-=======
-k
-c
-p
-c
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 r
 c
 a
 "}
 (5,1,1) = {"
-<<<<<<< HEAD
 a
-=======
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 g
 t
@@ -273,29 +163,17 @@ b
 u
 h
 c
-<<<<<<< HEAD
 a
-=======
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (6,1,1) = {"
 a
 c
-<<<<<<< HEAD
 h
-=======
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 m
 o
 p
 o
-<<<<<<< HEAD
 m
-=======
-F
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 c
 a
@@ -309,11 +187,7 @@ b
 q
 b
 u
-<<<<<<< HEAD
 g
-=======
-h
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -321,11 +195,7 @@ a
 a
 c
 i
-<<<<<<< HEAD
 k
-=======
-l
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 p
 c
@@ -358,7 +228,6 @@ b
 c
 c
 b
-<<<<<<< HEAD
 a
 "}
 (11,1,1) = {"
@@ -371,20 +240,6 @@ n
 n
 a
 d
-=======
-I
-"}
-(11,1,1) = {"
-a
-I
-a
-a
-Q
-n
-n
-N
-a
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 "}

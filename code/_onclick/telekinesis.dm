@@ -3,7 +3,7 @@
 
 	This needs more thinking out, but I might as well.
 */
-var/const/tk_maxrange = 7 //Do not increase further - stops abusing of TK mechanics using scopes and/or binoculars.
+var/const/tk_maxrange = 15
 
 /*
 	Telekinetic attack:
@@ -157,22 +157,14 @@ var/const/tk_maxrange = 7 //Do not increase further - stops abusing of TK mechan
 		return
 	new /obj/effect/overlay/pulse(get_turf(focus), 5)
 
-<<<<<<< HEAD
 /obj/item/tk_grab/on_update_icon()
-=======
-/obj/item/tk_grab/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(focus)
 		var/old_layer = focus.layer
 		var/old_plane = focus.plane
 		focus.layer = layer+0.01
 		focus.set_plane(ABOVE_HUD_PLANE)
-<<<<<<< HEAD
 		add_overlays(focus)
 		//this is kind of ick, but it's better than using icon()
-=======
-		add_overlay(focus )//this is kind of ick, but it's better than using icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		focus.layer = old_layer
 		focus.set_plane(old_plane)

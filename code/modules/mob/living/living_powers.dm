@@ -18,39 +18,19 @@
 
 
 /mob/living/proc/activate_ai()
-<<<<<<< HEAD
 	AI_inactive = FALSE
 	life_cycles_before_sleep = initial(life_cycles_before_sleep)
-=======
-	if(AI_inactive && stat != DEAD)//Were not alive to wake up
-		AI_inactive = FALSE
-		life_cycles_before_sleep = initial(life_cycles_before_sleep)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/proc/try_activate_ai()
 	if(AI_inactive)
 		activate_ai()
 
-<<<<<<< HEAD
 
 /mob/living/proc/check_surrounding_area(var/dist = 7)
 
 	if(faction == "neutral")
 		return TRUE
 	for (var/mob/living/exosuit/M in GLOB.mechas_list)
-=======
-/mob/living/proc/check_surrounding_area(var/dist = 7)
-	if(faction == "neutral")
-		return TRUE
-
-	if(faction == "station")
-		return TRUE
-
-	if(faction == "CEV Eris")
-		return TRUE
-
-	for (var/obj/mecha/M in GLOB.mechas_list)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (M.z == src.z && get_dist(src, M) <= dist)
 			return TRUE
 
@@ -62,12 +42,9 @@
 				return TRUE
 
 	return FALSE
-<<<<<<< HEAD
 
 /mob/living/proc/switch_scaling()
 	set name = "Switch scaling mode"
 	set category = "Preferences"
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

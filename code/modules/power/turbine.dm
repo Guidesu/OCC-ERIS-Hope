@@ -26,20 +26,14 @@
 	var/lastgen
 
 /obj/machinery/computer/turbine_computer
-	name = "gas turbine control computer"
+	name = "Gas turbine control computer"
 	desc = "A computer to remotely control a gas turbine"
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "tech_key"
 	icon_screen = "turbinecomp"
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/turbine_control
 	anchored = TRUE
 	density = TRUE
-=======
-	circuit = /obj/item/circuitboard/turbine_control
-	anchored = 1
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/machinery/compressor/compressor
 	var/list/obj/machinery/door/blast/doors
 	var/id = 0
@@ -95,7 +89,6 @@
 
 
 	if(rpm>50000)
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/pipes.dmi', "comp-o4", FLY_LAYER))
 	else if(rpm>10000)
 		add_overlays(image('icons/obj/pipes.dmi', "comp-o3", FLY_LAYER))
@@ -103,15 +96,6 @@
 		add_overlays(image('icons/obj/pipes.dmi', "comp-o2", FLY_LAYER))
 	else if(rpm>500)
 		add_overlays(image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER))
-=======
-		add_overlay(image('icons/obj/pipes.dmi', "comp-o4", FLY_LAYER))
-	else if(rpm>10000)
-		add_overlay(image('icons/obj/pipes.dmi', "comp-o3", FLY_LAYER))
-	else if(rpm>2000)
-		add_overlay(image('icons/obj/pipes.dmi', "comp-o2", FLY_LAYER))
-	else if(rpm>500)
-		add_overlay(image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	 //TODO: DEFERRED
 
 /obj/machinery/power/turbine/New()
@@ -157,11 +141,7 @@
 		outturf.assume_air(removed)
 
 	if(lastgen > 100)
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER))
-=======
-		add_overlay(image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	for(var/mob/M in viewers(1, src))

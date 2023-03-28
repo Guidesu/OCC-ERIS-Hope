@@ -6,13 +6,8 @@
 	speed_mod = 5 SECONDS
 	base = 1
 
-<<<<<<< HEAD
 	name_stages = list("CEV Northern Light", "unknown vessel", "unknown spatial phenomenon")//Occulus Edit
 	icon_stages = list("eris", "ship", "poi")
-=======
-	//name_stages = list("CEV Eris", "unknown vessel", "unknown spatial phenomenon")
-	//icon_stages = list("eris", "ship", "poi")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	start_x = 9
 	start_y = 10
@@ -52,11 +47,7 @@
 	)*/
 
 /obj/effect/overmap/ship/eris/Process()
-<<<<<<< HEAD
 	overmap_event_handler.scan_loc(src, loc, can_scan()) // Eris uses its sensors to scan nearby events
-=======
-	//overmap_event_handler.scan_loc(src, loc, can_scan()) // Eris uses its sensors to scan nearby events
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	.=..()
 
 /obj/machinery/computer/shuttle_control/explore/exploration_shuttle

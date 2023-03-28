@@ -1,16 +1,8 @@
 /datum/stat_holder
-<<<<<<< HEAD
 	var/mob/living/holder
 	var/list/stat_list = list()
 	var/list/datum/perk/perks = list()
 	var/list/obj/effect/perk_stats = list() // Holds effects representing perks, to display them in stat()
-=======
-	var/tmp/mob/living/holder
-	var/list/stat_list = list()
-	var/list/datum/perk/perks = list()
-	var/list/obj/effect/perk_stats = list() // Holds effects representing perks, to display them in stat()
-	var/initialized = FALSE //Whether or not the stats have had time to be properly filled. Not always used. For players, it is set in human/Stat(), used for Stat-dependant organs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat_holder/New(mob/living/L)
 	holder = L
@@ -19,18 +11,7 @@
 		stat_list[S.name] = S
 
 /datum/stat_holder/Destroy()
-<<<<<<< HEAD
 	holder = null
-=======
-	if(holder)
-		holder.stats = null
-		holder = null
-
-	QDEL_LIST(perks) //i dont know if this is needed but hey
-	QDEL_LIST(perk_stats)
-
-	stat_list.Cut()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /datum/stat_holder/proc/check_for_shared_perk(ability_bitflag)
@@ -46,7 +27,6 @@
 			return TRUE
 	return FALSE
 */
-<<<<<<< HEAD
 /datum/stat_holder/proc/addTempStat(statName, Value, timeDelay, id = null)
 	var/datum/stat/S = stat_list[statName]
 	S.addModif(timeDelay, Value, id)
@@ -56,50 +36,19 @@
 /datum/stat_holder/proc/removeTempStat(statName, id)
 	if(!id)
 		crash_with("no id passed to removeTempStat(")
-=======
-
-/datum/stat_holder/proc/addTempStat(statName, Value, timeDelay, id = null)
-	var/datum/stat/S = stat_list[statName]
-	S.addModif(timeDelay, Value, id)
-	LEGACY_SEND_SIGNAL(holder, COMSIG_STAT, S.name, S.getValue(), S.getValue(TRUE))
-
-/datum/stat_holder/proc/removeTempStat(statName, id)
-	if(!id)
-		CRASH("no id passed to removeTempStat(")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/stat/S = stat_list[statName]
 	S.remove_modifier(id)
 
 /datum/stat_holder/proc/getTempStat(statName, id)
 	if(!id)
-<<<<<<< HEAD
 		crash_with("no id passed to getTempStat(")
-=======
-		CRASH("no id passed to getTempStat(")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/stat/S = stat_list[statName]
 	return S.get_modifier(id)
 
 /datum/stat_holder/proc/changeStat(statName, Value)
 	var/datum/stat/S = stat_list[statName]
 	S.changeValue(Value)
-	LEGACY_SEND_SIGNAL(holder, COMSIG_STAT, S.name, S.getValue(), S.getValue(TRUE))
 
-/datum/stat_holder/proc/changeStat_withcap(statName, Value)
-	var/datum/stat/S = stat_list[statName]
-	S.changeValue_withcap(Value)
-	LEGACY_SEND_SIGNAL(holder, COMSIG_STAT, S.name, S.getValue(), S.getValue(TRUE))
-
-/datum/stat_holder/proc/setStat(statName, Value)
-	var/datum/stat/S = stat_list[statName]
-	S.setValue(Value)
-
-<<<<<<< HEAD
-/datum/stat_holder/proc/getStat(statName, pure = FALSE)
-	if (!islist(statName))
-		var/datum/stat/S = stat_list[statName]
-		return S ? S.getValue(pure) : 0
-=======
 /datum/stat_holder/proc/setStat(statName, Value)
 	var/datum/stat/S = stat_list[statName]
 	S.setValue(Value)
@@ -107,11 +56,7 @@
 /datum/stat_holder/proc/getStat(statName, pure = FALSE)
 	if (!islist(statName))
 		var/datum/stat/S = stat_list[statName]
-		LEGACY_SEND_SIGNAL(holder, COMSIG_STAT, S.name, S.getValue(), S.getValue(TRUE))
 		return S ? S.getValue(pure) : 0
-	else
-		log_debug("passed list to getStat(), statName without a list: [statName]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //	Those are accept list of stats
 //	Compound stat checks.
@@ -155,7 +100,6 @@
 	var/avg = getSumOfStat(namesList, pure)
 	return avg / namesList.len
 
-<<<<<<< HEAD
 /datum/stat_holder/proc/copyTo(var/datum/stat_holder/recipient)
 	for(var/i in stat_list)
 		var/datum/stat/S = stat_list[i]
@@ -193,44 +137,6 @@
 	if(P)
 		perks -= P
 		P.remove()
-=======
-// return value from 0 to 1 based on value of stat, more stat value less return value
-// use this proc to get multiplier for decreasing delay time (exaple: "50 * getMult(STAT_ROB, STAT_LEVEL_ADEPT)"  this will result in 5 seconds if stat STAT_ROB = 0 and result will be 0 if STAT_ROB = STAT_LEVEL_ADEPT)
-/datum/stat_holder/proc/getMult(statName, statCap = STAT_LEVEL_MAX, pure = FALSE)
-    if(!statName)
-        return
-    return 1 - max(0,min(1,getStat(statName, pure)/statCap))
-
-/datum/stat_holder/proc/getPerk(perkType)
-	RETURN_TYPE(/datum/perk)
-	var/datum/perk/path = ispath(perkType) ? perkType : text2path(perkType) // Adds support for textual argument so that it can be called through VV easily
-	if(path)
-		return locate(path) in perks
-
-/// The main, public proc to add a perk to a mob. Accepts a path or a stringified path.
-/datum/stat_holder/proc/addPerk(perkType)
-	. = FALSE
-	if(!getPerk(perkType))
-		var/datum/perk/P = new perkType
-		perks += P
-		P.assign(holder)
-		perk_stats += P.statclick
-		. = TRUE
-
-
-/// The main, public proc to remove a perk from a mob. Accepts a path or a stringified path.
-/datum/stat_holder/proc/removePerk(perkType)
-	var/datum/perk/P = getPerk(perkType)
-	if(P)
-		perks -= P
-		P.remove()
-		perk_stats -= P.statclick
-
-/datum/stat_holder/proc/removeAllPerks()
-	for(var/datum/perk/P in (perk_stats || perks))
-		removePerk(P)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat_mod
 	var/time = 0
@@ -252,11 +158,8 @@
 	var/desc = "Basic characteristic, you are not supposed to see this. Report to admins."
 	var/value = STAT_VALUE_DEFAULT
 	var/list/mods = list()
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat/proc/addModif(delay, affect, id)
 	for(var/elem in mods)
@@ -269,22 +172,6 @@
 			SM.value = affect
 			return
 	mods += new /datum/stat_mod(delay, affect, id)
-<<<<<<< HEAD
-=======
-
-/datum/stat/proc/remove_modifier(id)
-	for(var/elem in mods)
-		var/datum/stat_mod/SM = elem
-		if(SM.id == id)
-			mods.Remove(SM)
-			return
-
-/datum/stat/proc/get_modifier(id)
-	for(var/elem in mods)
-		var/datum/stat_mod/SM = elem
-		if(SM.id == id)
-			return SM
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat/proc/remove_modifier(id)
 	for(var/elem in mods)
@@ -315,16 +202,6 @@
 			value = round((60+affectover))
 	else( value = value + affect)//Occulus Edit End
 
-/datum/stat/proc/changeValue_withcap(affect)
-	if(value > STAT_VALUE_MAXIMUM)
-		return
-
-	if(value + affect > STAT_VALUE_MAXIMUM)
-		value = STAT_VALUE_MAXIMUM
-	else
-		value = value + affect
-
-
 /datum/stat/proc/getValue(pure = FALSE)
 	if(pure)
 		return value
@@ -341,21 +218,12 @@
 /datum/stat/proc/setValue(value)
 	src.value = value
 
-<<<<<<< HEAD
 /datum/stat/proc/copyTo(var/datum/stat/recipient)
 	recipient.value = getValue(TRUE)
-=======
-//Unused but might be good for later additions
-/datum/stat/proc/setValue_withcap(value)
-	if(value > STAT_VALUE_MAXIMUM)
-		src.value = STAT_VALUE_MAXIMUM
-	else
-		src.value = value
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat/productivity
 	name = STAT_MEC
-	desc = "The world hadn't ever had so many moving parts or so few labels. Character's ability in building and using various tools."
+	desc = "The world hadn't ever had so many moving parts or so few labels. Character's ability in building and using various tools.."
 
 /datum/stat/cognition
 	name = STAT_COG
@@ -367,28 +235,15 @@
 
 /datum/stat/robustness
 	name = STAT_ROB
-<<<<<<< HEAD
 	desc = "Violence is what people do when they run out of good ideas. Increases your health, damage in unarmed combat, affect the knockdown chance."
-=======
-	desc = "Violence is what people do when they run out of good ideas. Increases your damage in unarmed combat, and your proficiency at it."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stat/toughness
 	name = STAT_TGH
-	desc = "You're a tough guy, but I'm a nightmare wrapped in the apocalypse. Enhances your resistance to gases and poisons, and helps you stand your ground when they try to knock you down."
+	desc = "You're a tough guy, but I'm a nightmare wrapped in the apocalypse. Enhances your resistance to poisons and also raises your speed in uncomfortable clothes."
 
 /datum/stat/aiming
 	name = STAT_VIG
-	desc = "Be pure! Be vigilant! But never behave. Having sharp eyes and nerves of steel improves your proficiency with guns and overcoming fear from creatures' roars, among other feats."
-
-/datum/stat/vivification
-	name = STAT_VIV
-	desc = "The body can take only so much stimulation under normal circumstances. It takes a lot to train the body to handle drugs, be they helpful or harmful."
-
-/datum/stat/anatomy
-	name = STAT_ANA
-	desc = "The body itself; the more you know about how far you can push it, the easier it becomes to edge closer towards death's door."
-
+	desc = "Here, paranoia is nothing but a useful trait. Improves your ability to control recoil on guns, helps you resist insanity."
 
 // Use to perform stat checks
 /mob/proc/stat_check(stat_path, needed)

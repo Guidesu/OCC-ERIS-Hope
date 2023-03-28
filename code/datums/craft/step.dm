@@ -15,14 +15,8 @@
 	var/end_msg = ""
 	var/tool_name
 	var/list/craft_items = list()
-<<<<<<< HEAD
 
 
-=======
-	/// gets set during asset init
-	var/iconfile = ""
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/craft_step/New(list/params, datum/craft_recipe/parent)
 	var/max_params = 2
 	if(ispath(params))
@@ -83,21 +77,13 @@
 			end_msg = "%USER% applied %ITEM% to %TARGET%"
 		if(1)
 			if(reqed_material)
-<<<<<<< HEAD
 				desc = "Attach [amt] [tool_name] <img style='margin-bottom:-8px' src= [sanitizeFileName("[material_stack_type(reqed_material)].png")] height=24 width=24>"
-=======
-				desc = "Attach [amt] [tool_name] <img style=\"margin-bottom:-8px\" src=\"[iconfile]\" height=\"24\" width=\"24\">"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
-				desc = "Attach [tool_name] <img style=\"margin-bottom:-8px\" src=\"[iconfile]\" height=\"24\" width=\"24\">"
+				desc = "Attach [tool_name] <img style='margin-bottom:-8px' src= [sanitizeFileName("[reqed_type].png")] height=24 width=24>"
 			start_msg = "%USER% starts attaching %ITEM% to %TARGET%"
 			end_msg = "%USER% attached %ITEM% to %TARGET%"
 		else
-<<<<<<< HEAD
 			desc = "Attach [amt] [tool_name] <img style='margin-bottom:-8px' src= [reqed_type ? sanitizeFileName("[reqed_type].png") : sanitizeFileName("[material_stack_type(reqed_material)].png")] height=24 width=24>"
-=======
-			desc = "Attach [amt] [tool_name] <img style=\"margin-bottom:-8px\" src=\"[iconfile]\" height=\"24\" width=\"24\">"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			start_msg = "%USER% starts attaching %ITEM% to %TARGET%"
 			end_msg = "%USER% attached %ITEM% to %TARGET%"
 
@@ -166,17 +152,10 @@
 			return
 
 	else if(reqed_quality)
-<<<<<<< HEAD
 		if (!(istype(I, /obj/item)))//Occulus Edit Sanity checking for a bug. If we get a turf passed in here, just exit cleanly
 			to_chat(user, SPAN_WARNING("Something bad happened, Work aborted"))
 			building = FALSE
 			return//End Occulus Edit
-=======
-		if(!istype(I,/obj/item/tool) && !istype(I,/obj/item/mecha_parts/mecha_equipment)) //Making it so mech equipment can also craft
-			to_chat(user, SPAN_WARNING("You need to use a tool to complete this step."))
-			building = FALSE
-			return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/q = I.get_tool_quality(reqed_quality)
 		if(!q)
 			to_chat(user, SPAN_WARNING("Wrong type of tool. You need a tool with [reqed_quality] quality"))
@@ -184,11 +163,7 @@
 			return
 		if(target)
 			announce_action(start_msg, user, I, target)
-<<<<<<< HEAD
 		if(!I.use_tool(user, target || user, time, reqed_quality, FAILCHANCE_NORMAL, list(STAT_MEC, STAT_COG)))
-=======
-		if(!I.use_tool(user, target || user, time, reqed_quality, FAILCHANCE_NORMAL, list(STAT_MEC, STAT_COG))) //FIXME: up here we pass a list down to getStat, which expects no list
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_WARNING("Work aborted"))
 			building = FALSE
 			return

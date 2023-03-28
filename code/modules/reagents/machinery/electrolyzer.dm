@@ -1,20 +1,12 @@
 /obj/machinery/electrolyzer
 	name = "electrolyzer"
-<<<<<<< HEAD
-=======
-	desc = "An advanced chemistry machine used for electrolysis of chemicals."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/machines/chemistry.dmi'
 	icon_state = "electrolysis"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/electrolyzer
-=======
-	circuit = /obj/item/circuitboard/electrolyzer
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	layer = BELOW_OBJ_LAYER
 	var/obj/item/reagent_containers/beaker
 	var/obj/item/reagent_containers/separation_beaker
@@ -67,11 +59,7 @@
 	QDEL_NULL(separation_beaker)
 	return ..()
 
-<<<<<<< HEAD
 /obj/machinery/electrolyzer/on_update_icon()
-=======
-/obj/machinery/electrolyzer/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(stat & NOPOWER)
 		icon_state = "[initial(icon_state)]_off"
 		return
@@ -111,7 +99,6 @@
 	if(istype(I, /obj/item/reagent_containers) && I.is_open_container() && (!beaker || !separation_beaker))
 		. = TRUE //no afterattack
 		var/obj/item/reagent_containers/B = I
-<<<<<<< HEAD
 		I.forceMove(src)
 		I.add_fingerprint(user)
 		if(!beaker)
@@ -122,20 +109,6 @@
 		SSnano.update_uis(src)
 		update_icon()
 		return
-=======
-		if(user.drop_from_inventory(B))
-			user.drop_from_inventory(B)
-			B.forceMove(src)
-			B.add_fingerprint(user)
-			if(!beaker)
-				beaker = B
-			else if(!separation_beaker)
-				separation_beaker = B
-			to_chat(user, SPAN_NOTICE("You add [B] to [src]."))
-			SSnano.update_uis(src)
-			update_icon()
-			return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, params)
@@ -171,28 +144,14 @@
 
 
 /obj/machinery/electrolyzer/attack_hand(mob/user)
-<<<<<<< HEAD
-=======
-	if(!user.stats?.getPerk(PERK_NERD) && !user.stats?.getPerk(PERK_MEDICAL_EXPERT) && !user.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Are we missing the perk AND to low on bio? Needs bio 15 so cog 30 to bypass
-		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(..())
 		return TRUE
 
 	user.set_machine(src)
-<<<<<<< HEAD
 	ui_interact(user)
 
 /obj/machinery/electrolyzer/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	var/list/data = ui_data()
-=======
-	nano_ui_interact(user)
-
-/obj/machinery/electrolyzer/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -207,24 +166,14 @@
 
 
 
-<<<<<<< HEAD
 /obj/machinery/electrolyzer/ui_data()
-=======
-/obj/machinery/electrolyzer/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/data = list()
 	data["on"] = on
 
 	if(beaker)
-<<<<<<< HEAD
 		data["beaker"] = beaker.reagents.ui_data()
 	if(separation_beaker)
 		data["separation_beaker"] = separation_beaker.reagents.ui_data()
-=======
-		data["beaker"] = beaker.reagents.nano_ui_data()
-	if(separation_beaker)
-		data["separation_beaker"] = separation_beaker.reagents.nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data["has_power"] = (stat & NOPOWER) ? FALSE : TRUE
 	return data
 
@@ -261,7 +210,6 @@
 
 /obj/item/device/makeshift_electrolyser
 	name = "makeshift electrolyzer"
-<<<<<<< HEAD
 	icon = 'icons/obj/machines/chemistry.dmi'
 	icon_state = "electrolysis_makeshift"
 	rarity_value = 50
@@ -269,31 +217,13 @@
 	suitable_cell = /obj/item/cell/small
 	var/on = FALSE
 	var/tick_cost = 3
-=======
-	desc = "A makeshift chemistry machine used for electrolysis of chemicals."
-	icon = 'icons/obj/machines/chemistry.dmi'
-	icon_state = "electrolysis_makeshift"
-	var/on = FALSE
-	var/tick_cost = 3
-	cell = null
-	suitable_cell = /obj/item/cell/small
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/reagent_containers/beaker
 	var/obj/item/reagent_containers/separation_beaker
 
 /obj/item/device/makeshift_electrolyser/Destroy()
 	QDEL_NULL(beaker)
-<<<<<<< HEAD
 	return ..()
 
-=======
-	QDEL_NULL(cell)
-	return ..()
-
-/obj/item/device/makeshift_electrolyser/get_cell()
-	return cell
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/makeshift_electrolyser/MouseDrop_T(atom/movable/C, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !C.Adjacent(user))
 		return ..()
@@ -306,7 +236,6 @@
 	if(istype(C, /obj/item/reagent_containers) && C.is_open_container() && (!beaker || !separation_beaker))
 		. = TRUE //no afterattack
 		var/obj/item/reagent_containers/B = C
-<<<<<<< HEAD
 		C.forceMove(src)
 		C.add_fingerprint(user)
 		if(!beaker)
@@ -319,38 +248,13 @@
 
 /obj/item/device/makeshift_electrolyser/handle_atom_del(atom/A)
 	..()
-=======
-		if(user.drop_from_inventory(C))
-			user.drop_from_inventory(C)
-			C.forceMove(src)
-			C.add_fingerprint(user)
-			if(!beaker)
-				beaker = B
-			else if(!separation_beaker)
-				separation_beaker = B
-			to_chat(user, SPAN_NOTICE("You add [B] to [src]."))
-			SSnano.update_uis(src)
-			return
-
-/obj/item/device/makeshift_electrolyser/handle_atom_del(atom/A)
-	..()
-	if(A == cell)
-		cell = null
-		update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(A == beaker)
 		beaker = null
 		update_icon()
 
 /obj/item/device/makeshift_electrolyser/proc/turn_on(mob/user)
-<<<<<<< HEAD
 	if(!cell_use_check(tick_cost, user))
 		playsound(loc, 'sound/machines/button.ogg', 50, 1)
-=======
-	if(!cell || !cell.check_charge(tick_cost))
-		playsound(loc, 'sound/machines/button.ogg', 50, 1)
-		user << SPAN_WARNING("[src] battery is dead or missing.")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	on = TRUE
 	START_PROCESSING(SSobj, src)
@@ -362,11 +266,7 @@
 
 /obj/item/device/makeshift_electrolyser/Process()
 	if(on)
-<<<<<<< HEAD
 		if(!cell_use_check(tick_cost))
-=======
-		if(!cell || !cell.checked_use(tick_cost))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			visible_message(SPAN_NOTICE("[src]'s electrodes stopped bubbling."), range = 4)
 			turn_off()
 		if(beaker && beaker.reagents.total_volume)
@@ -376,25 +276,11 @@
 			SSnano.update_uis(src)
 
 
-<<<<<<< HEAD
 /obj/item/device/makeshift_electrolyser/attack_self(mob/user)
 	user.set_machine(src)
 	ui_interact(user)
 	add_fingerprint(user)
 
-=======
-/obj/item/device/makeshift_electrolyser/attack_self(mob/user as mob)
-	user.set_machine(src)
-	nano_ui_interact(user)
-	add_fingerprint(user)
-
-/obj/item/device/makeshift_electrolyser/MouseDrop(over_object)
-	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
-		cell = null
-	else
-		return ..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/makeshift_electrolyser/attackby(obj/item/C, mob/living/user)
 	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
 		to_chat(user, SPAN_NOTICE("You add [C] to [src]."))
@@ -415,13 +301,8 @@
 		return
 	return ..()
 
-<<<<<<< HEAD
 /obj/item/device/makeshift_electrolyser/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	var/list/data = ui_data()
-=======
-/obj/item/device/makeshift_electrolyser/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -436,7 +317,6 @@
 
 
 
-<<<<<<< HEAD
 /obj/item/device/makeshift_electrolyser/ui_data()
 	var/data = list()
 	data["on"] = on
@@ -446,28 +326,13 @@
 		data["beaker"] = beaker.reagents.ui_data()
 	if(separation_beaker)
 		data["separation_beaker"] = separation_beaker.reagents.ui_data()
-=======
-/obj/item/device/makeshift_electrolyser/nano_ui_data()
-	var/data = list()
-	data["on"] = on
-	data["has_power"] = cell ? cell.check_charge(tick_cost) : FALSE
-
-	if(beaker)
-		data["beaker"] = beaker.reagents.nano_ui_data()
-	if(separation_beaker)
-		data["separation_beaker"] = separation_beaker.reagents.nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return data
 
 /obj/item/device/makeshift_electrolyser/attack_hand(mob/user)
 	if(loc != user && ..())
 		return TRUE
 	user.set_machine(src)
-<<<<<<< HEAD
 	ui_interact(user)
-=======
-	nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/makeshift_electrolyser/Topic(href, href_list)
 	if(..())

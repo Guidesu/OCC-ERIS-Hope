@@ -13,7 +13,6 @@
 		name += " ([labelled])"
 
 	cut_overlays()
-<<<<<<< HEAD
 	update_overlays()
 
 // Updates the plant overlay.
@@ -22,31 +21,18 @@
 	var/list/new_overlays = .
 	for(var/overlay in new_overlays)
 		add_overlays(overlay)
-=======
-	// Updates the plant overlay.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!isnull(seed))
 		if(mechanical && health <= (seed.get_trait(TRAIT_ENDURANCE) / 2))
-<<<<<<< HEAD
 			add_overlays("over_lowhealth3")
-=======
-			add_overlay("over_lowhealth3")
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(dead)
 			var/ikey = "[seed.get_trait(TRAIT_PLANT_ICON)]-dead"
 			var/image/dead_overlay = plant_controller.plant_icon_cache["[ikey]"]
 			if(!dead_overlay)
 				dead_overlay = image('icons/obj/hydroponics_growing.dmi', "[ikey]")
 				dead_overlay.color = DEAD_PLANT_COLOUR
-<<<<<<< HEAD
 			associate_with_overlays(dead_overlay)
-=======
-			add_overlay(dead_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			if(!seed.growth_stages)
-				to_chat(world, SPAN_DANGER("THIS PART WAS CALLED"))
 				seed.update_growth_stages()
 			if(!seed.growth_stages)
 				to_chat(world, SPAN_DANGER("Seed type [seed.get_trait(TRAIT_PLANT_ICON)] cannot find a growth stage value."))
@@ -61,19 +47,11 @@
 				overlay_stage = maturation ? max(1,round(age/maturation)) : 1
 			var/ikey = "[seed.get_trait(TRAIT_PLANT_ICON)]-[overlay_stage]"
 			var/image/plant_overlay = plant_controller.plant_icon_cache["[ikey]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"]
-			if(frozen == 1)
-				plant_overlay = image('icons/obj/hydroponics_growing.dmi', "[ikey]")
-				plant_overlay.color = FROZEN_PLANT_COLOUR
 			if(!plant_overlay)
 				plant_overlay = image('icons/obj/hydroponics_growing.dmi', "[ikey]")
 				plant_overlay.color = seed.get_trait(TRAIT_PLANT_COLOUR)
 				plant_controller.plant_icon_cache["[ikey]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"] = plant_overlay
-<<<<<<< HEAD
 			associate_with_overlays(plant_overlay)
-=======
-			add_overlay(plant_overlay)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(harvest && overlay_stage == seed.growth_stages)
 				ikey = "[seed.get_trait(TRAIT_PRODUCT_ICON)]"
 				var/image/harvest_overlay = plant_controller.plant_icon_cache["product-[ikey]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"]
@@ -81,7 +59,6 @@
 					harvest_overlay = image('icons/obj/hydroponics_products.dmi', "[ikey]")
 					harvest_overlay.color = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 					plant_controller.plant_icon_cache["product-[ikey]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]"] = harvest_overlay
-<<<<<<< HEAD
 				associate_with_overlays(harvest_overlay)
 	//Draw the cover.
 	if(closed_system)
@@ -106,26 +83,6 @@
 			set_density(0)
 		set_opacity(0)
 
-=======
-				add_overlay(harvest_overlay)
-
-	//Draw the cover.
-	if(closed_system)
-		add_overlay("hydrocover")
-
-	//Updated the various alert icons.
-	if(mechanical)
-		if(waterlevel <= 10)
-			add_overlay("over_lowwater3")
-		if(nutrilevel <= 2)
-			add_overlay("over_lownutri3")
-		if(weedlevel >= 5 || pestlevel >= 5 || toxins >= 40)
-			add_overlay("over_alert3")
-		if(harvest)
-			add_overlay("over_harvest3")
-		if(frozen)
-			add_overlay("over_frozen3")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// Update bioluminescence.
 	if(seed)

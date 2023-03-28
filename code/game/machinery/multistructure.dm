@@ -103,19 +103,12 @@
 	var/MS_type
 
 
-<<<<<<< HEAD
 /obj/machinery/multistructure/Initialize()
-=======
-/obj/machinery/multistructure/Initialize(mapload)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	// Will attempt to create MS on spawn
 	check_MS()
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/multistructure/attackby(obj/item/I, mob/user)
 	check_MS()
 	if(default_deconstruction(I, user))

@@ -14,7 +14,7 @@ var/datum/hivemind/hive_mind_ai
 	var/evo_points = 0
 	var/evo_points_max = 1000
 	var/evo_level = 0					//level of hivemind in general. This is our progress of EP, since they are resets after new node creation
-	var/failure_chance = 25				//how often will be created dummy machines. This chance reduces by 1 each 10 EP
+	var/failure_chance = 45				//how often will be created dummy machines. This chance reduces by 1 each 10 EP
 	var/list/hives = list() 			//all functional hives stored here
 	//i know, whitelist is bad, but it's required here
 
@@ -27,22 +27,22 @@ var/datum/hivemind/hive_mind_ai
 											/obj/machinery/button,					/obj/machinery/status_display,
 											/obj/machinery/floor_light,				/obj/machinery/flasher,
 											/obj/machinery/filler_object,			/obj/machinery/hivemind_machine,
-<<<<<<< HEAD
 											/obj/machinery/cryopod, 				/obj/machinery/portable_atmospherics,//Occulus Edit: Restrict Canisters, Pumps, and Portable trays from being converted
 											/obj/machinery/conveyor,				/obj/machinery/power/supermatter//Occulus edit: Blacklisted Conveyor objects
 											)
-=======
-											/obj/machinery/cryopod,					/obj/machinery/portable_atmospherics/hydroponics/soil,
-											/obj/machinery/portable_atmospherics/canister) //hivemind no longer can convert soil(its dirt) and canisters (its a metal cylinder with a valve))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//internals
 	var/list/global_abilities_cooldown = list()
 	var/list/EP_price_list = list()
 
-/datum/hivemind/New(_name, _surname)
+
+/datum/hivemind/New()
 	..()
-	name	= _name		? _name		: pick(GLOB.hive_names)
-	surname	= _surname	? _surname	: pick(GLOB.hive_surnames)
+	name = pick("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen",
+				"NanoNurse", "Vivisector", "Ex Costa", "Apostasy", "Gnosis", "Balaam", "Ophite",
+				"Sarif", "VersaLife", "Slylandro", "SHODAN")
+
+	surname = pick("Mk I", "Mk II", "Mk III", "Mk IV", "Mk V", "v0.9",
+					"v1.0", "v2.0", "2418-B", "Open Beta", "Pre-Release")
 
 	var/list/all_machines = subtypesof(/obj/machinery/hivemind_machine) - /obj/machinery/hivemind_machine/node
 	//price list building

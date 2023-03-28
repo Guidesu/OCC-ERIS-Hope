@@ -12,11 +12,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	var/obj/item/loaded_item = null
 	var/decon_mod = 0
 	var/busy = FALSE
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/destructive_analyzer
-=======
-	circuit = /obj/item/circuitboard/destructive_analyzer
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	idle_power_usage = 30
 	active_power_usage = 2500
@@ -96,11 +92,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 			busy = TRUE
 			loaded_item = I
 			to_chat(user, SPAN_NOTICE("You add \the [I] to \the [src]."))
-<<<<<<< HEAD
 			FLICK("d_analyzer_la", src)
-=======
-			flick("d_analyzer_la", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			addtimer(CALLBACK(src, .proc/reset_busy), 1 SECONDS)
 			return TRUE
 	return
@@ -120,11 +112,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		return
 
 	busy = TRUE
-<<<<<<< HEAD
 	FLICK("d_analyzer_process", src)
-=======
-	flick("d_analyzer_process", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	addtimer(CALLBACK(src, .proc/finish_deconstructing), 2.4 SECONDS)
 	return TRUE
 
@@ -134,12 +122,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		return
 	if(linked_console)
 		linked_console.handle_item_analysis(loaded_item)
-<<<<<<< HEAD
 
-=======
-	for(var/mob/living/carbon/human/H in viewers(src))
-		LEGACY_SEND_SIGNAL(H, COMSING_DESTRUCTIVE_ANALIZER, loaded_item)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(loaded_item,/obj/item/stack))
 		var/obj/item/stack/S = loaded_item
 		if(S.amount <= 1)
@@ -164,8 +147,4 @@ Note: Must be placed within 3 tiles of the R&D Console
 	if(loaded_item)
 		loaded_item.forceMove(loc)
 		loaded_item = null
-<<<<<<< HEAD
 		update_icon()
-=======
-		update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

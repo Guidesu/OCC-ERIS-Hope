@@ -1,11 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 
 /obj/machinery/containment_field
-<<<<<<< HEAD
 	name = "Containment Field"
-=======
-	name = "containment field"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A crackling, humming field of electromagnetic energy. Its kinetic force is more than enough to halt the course of a gravitational singularity, so it's probably not safe for you to touch."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "Contain_F"

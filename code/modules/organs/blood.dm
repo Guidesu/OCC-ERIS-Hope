@@ -1,16 +1,10 @@
 /****************************************************
 				BLOOD SYSTEM
 ****************************************************/
-<<<<<<< HEAD
 
 /mob/living/carbon
 	var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
 
-=======
-/mob/living/carbon
-	var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human
 	var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
@@ -32,11 +26,7 @@
 
 /mob/living/carbon/proc/get_blood_data()
 	var/data = list()
-<<<<<<< HEAD
 	data["donor"] = weakref(src)
-=======
-	data["donor"] = WEAKREF(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!data["virus2"])
 		data["virus2"] = list()
 	data["virus2"] |= virus_copylist(virus2)
@@ -46,38 +36,22 @@
 	data["blood_type"] = dna.b_type
 	data["species"] = species.name
 	var/list/temp_chem = list()
-<<<<<<< HEAD
 	for(var/datum/reagent/R in reagents.reagent_list)
 		temp_chem[R.type] = R.volume
 	data["trace_chem"] = temp_chem
 	data["blood_colour"] = blood_color //Occulus Edit - For colored blood
-=======
-	for(var/datum/reagent/R in reagents?.reagent_list) //TODO: Remove "?." operations.
-		temp_chem[R.type] = R.volume
-	data["trace_chem"] = temp_chem
-	data["blood_colour"] = blood_color
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data["resistances"] = null
 	data["carrion"] = is_carrion(src)
 	return data
 
 //Resets blood data
 /mob/living/carbon/human/proc/fixblood()
-<<<<<<< HEAD
 	for(var/datum/reagent/organic/blood/B in vessel.reagent_list)
 		if(B.id == "blood")
 			 //Occulus edit - For custom blood color
 			var/data = list("donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_colour"= blood_color,"blood_type"=dna.b_type,	\
 							"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list())
 			B.initialize_data(data)
-=======
-	if (!QDELETED(src))
-		for(var/datum/reagent/organic/blood/B in vessel.reagent_list)
-			if(B.id == "blood")
-				B.data = list(	"donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_colour"= blood_color,"blood_type"=dna.b_type,	\
-								"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list())
-				B.initialize_data(get_blood_data())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
@@ -87,10 +61,7 @@
 	if(!species.has_process[OP_HEART])
 		return
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!organ_list_by_process(OP_HEART).len)	//not having a heart is bad for health - true
 		setOxyLoss(max(getOxyLoss(),60))
 		adjustOxyLoss(10)
@@ -186,7 +157,7 @@
 
 	if (!injected || !our)
 		return
-	if(blood_incompatible(injected.data["blood_type"],our.data["blood_type"],injected.data["species"],our.data["species"]) && (!bloodstr.has_reagent("nosfernium")))
+	if(blood_incompatible(injected.data["blood_type"],our.data["blood_type"],injected.data["species"],our.data["species"]) )
 		reagents.add_reagent("toxin",amount * 0.5)
 		reagents.update_total()
 	else
@@ -253,11 +224,7 @@ proc/blood_splatter(var/target,var/datum/reagent/organic/blood/source,var/large)
 
 	var/obj/effect/decal/cleanable/blood/drip/drop = B
 	if(istype(drop) && drips && drips.len && !large)
-<<<<<<< HEAD
 		drop.associate_with_overlays(drips)
-=======
-		drop.add_overlay(drips)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		drop.drips |= drips
 
 	// If there's no data to copy, call it quits here.
@@ -338,11 +305,7 @@ proc/blood_splatter(var/target,var/datum/reagent/organic/blood/source,var/large)
 			open_check = TRUE
 
 	var/blood_volume = get_blood_volume()
-<<<<<<< HEAD
 	if( heart_efficiency <= 1 || (pulse == PULSE_NONE && !(status_flags & FAKEDEATH) && !robo_check))
-=======
-	if( heart_efficiency <= 0 || (pulse == PULSE_NONE && !(status_flags & FAKEDEATH) && !robo_check))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		blood_volume *= 0.25
 	else
 		var/pulse_mod = 1
@@ -353,11 +316,7 @@ proc/blood_splatter(var/target,var/datum/reagent/organic/blood/source,var/large)
 				pulse_mod *= 1.1
 			if(PULSE_2FAST, PULSE_THREADY)
 				pulse_mod *= 1.25
-<<<<<<< HEAD
 		blood_volume *= max(0.3, (1-((100 - heart_efficiency) / 100))) * pulse_mod
-=======
-		blood_volume *= max(0.3, (heart_efficiency / 100)) * pulse_mod
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!open_check && chem_effects[CE_BLOODCLOT])
 		blood_volume *= max(0, 1-chem_effects[CE_BLOODCLOT])

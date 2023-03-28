@@ -11,22 +11,14 @@
 	icon_state = "railing0"
 	matter = list(MATERIAL_STEEL = 4)
 	var/broken = 0
-<<<<<<< HEAD
 	var/health=70
 	var/maxhealth=70
-=======
-	health = 70
-	var/maxhealth = 70
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/check = 0
 	var/reinforced = FALSE
 	var/reinforcement_security = 0 // extra health from being reinforced, hardcoded to 40 on add
 	var/icon_modifier = ""	//adds string to icon path for color variations
-<<<<<<< HEAD
 	can_buckle = TRUE //Occulus Addition
 	buckle_require_restraints = 1 //Occulus Addition
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/railing/grey
 	name = "grey railing"
@@ -34,17 +26,6 @@
 	icon_modifier = "grey_"
 	icon_state = "grey_railing0"
 
-<<<<<<< HEAD
-=======
-/obj/structure/railing/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	if(istype(user))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		user.do_attack_animation(src)
-		visible_message(SPAN_DANGER("[user] smashes into [src]!"))
-		take_damage(damage)
-		return 1
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/Initialize()
 	. = ..()
 	update_icon(FALSE)
@@ -68,15 +49,13 @@
 		R.update_icon()
 	. = ..()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0, direction)
+/obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(!mover)
 		return 1
 
 	if(!reinforced && istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
-	if (isnull(direction))
-		direction = get_dir(loc, target)
-	if(direction == dir)
+	if(get_dir(loc, target) == dir)
 		return !density
 	else
 		return 1
@@ -90,11 +69,7 @@
 				to_chat(user, SPAN_WARNING("It looks severely damaged!"))
 			if(0.25 to 0.5)
 				to_chat(user, SPAN_WARNING("It looks damaged!"))
-<<<<<<< HEAD
 			if(0.5 to 1.0)
-=======
-			if(0.5 to 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, SPAN_NOTICE("It has a few scrapes and dents."))
 	if(reinforced)
 		var/reinforcement_text = "It is reinforced with rods"
@@ -162,11 +137,7 @@
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-<<<<<<< HEAD
 /obj/structure/railing/on_update_icon(var/UpdateNeighbors = 1)
-=======
-/obj/structure/railing/update_icon(var/UpdateNeighbors = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	NeighborsCheck(UpdateNeighbors)
 	cut_overlays()
 	if (!check || !anchored)
@@ -175,7 +146,6 @@
 		icon_state = "[icon_modifier][reinforced ? "reinforced_": null]railing1"
 		//left side
 		if (check & 32)
-<<<<<<< HEAD
 			add_overlays(image ('icons/obj/railing.dmi', src, "[icon_modifier]corneroverlay"))
 		if ((check & 16) || !(check & 32) || (check & 64))
 			add_overlays(image ('icons/obj/railing.dmi', src, "[icon_modifier]frontoverlay_l"))
@@ -191,23 +161,6 @@
 						add_overlays(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = -32))
 					if (WEST)
 						add_overlays(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = 32))
-=======
-			add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]corneroverlay"))
-		if ((check & 16) || !(check & 32) || (check & 64))
-			add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]frontoverlay_l"))
-		if (!(check & 2) || (check & 1) || (check & 4))
-			add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]frontoverlay_r"))
-			if(check & 4)
-				switch (src.dir)
-					if (NORTH)
-						add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = 32))
-					if (SOUTH)
-						add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = -32))
-					if (EAST)
-						add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = -32))
-					if (WEST)
-						add_overlay(image ('icons/obj/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = 32))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/railing/verb/rotate()
 	set name = "Rotate Railing Counter-Clockwise"
@@ -340,11 +293,7 @@
 			if(!anchored)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					user.visible_message(SPAN_NOTICE("\The [user] dismantles \the [src]."), SPAN_NOTICE("You dismantle \the [src]."))
-<<<<<<< HEAD
 					drop_materials(get_turf(user))
-=======
-					drop_materials(get_turf(user), user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					qdel(src)
 			if(reinforced)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
@@ -383,13 +332,13 @@
 
 /obj/structure/railing/ex_act(severity)
 	switch(severity)
-		if(1)
+		if(1.0)
 			qdel(src)
 			return
-		if(2)
+		if(2.0)
 			qdel(src)
 			return
-		if(3)
+		if(3.0)
 			qdel(src)
 			return
 		else
@@ -400,14 +349,9 @@
 		return
 
 	usr.visible_message(SPAN_WARNING("[user] starts climbing onto \the [src]!"))
-	add_fingerprint(user)
 	climbers |= user
 
-<<<<<<< HEAD
 	var/delay = (issmall(user) ? 20 : 34)
-=======
-	var/delay = (issmall(user) ? 20 : 34) * user.mod_climb_delay //basiclly this will let you clime things insainly fast when you have leap perk normal if you dont
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/duration = max(delay * user.stats.getMult(STAT_VIG, STAT_LEVEL_EXPERT), delay * 0.66)
 	if(!do_after(user, duration))
 		climbers -= user
@@ -441,10 +385,5 @@
 
 /obj/structure/railing/bullet_act(obj/item/projectile/P, def_zone)
 	. = ..()
-<<<<<<< HEAD
 	take_damage(P.get_structure_damage())
 	
-=======
-	if (!(P.testing))
-		take_damage(P.get_structure_damage())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

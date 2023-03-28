@@ -100,14 +100,8 @@ Class Procs:
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEM_SIZE_GARGANTUAN
 
-<<<<<<< HEAD
 	var/stat = 0
 	var/emagged = 0
-=======
-	price_tag = 100
-
-	var/emagged = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/use_power = IDLE_POWER_USE
 		//0 = dont run the auto
 		//1 = run auto, use idle
@@ -115,36 +109,13 @@ Class Procs:
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/power_channel = STATIC_EQUIP //STATIC_EQUIP, STATIC_ENVIRON or STATIC_LIGHT
-<<<<<<< HEAD
 	var/list/component_parts //list of all the parts used to build it, if made from certain kinds of frames.
-=======
-	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/uid
-	var/panel_open = FALSE
-	var/simple_machinery = FALSE
+	var/panel_open = 0
 	var/global/gl_uid = 1
-<<<<<<< HEAD
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
 	var/obj/item/electronics/circuitboard/circuit
-=======
-	var/interact_offline = FALSE // Can the machine be interacted with while de-powered.
-	var/obj/item/circuitboard/circuit = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/frame_type = FRAME_DEFAULT
-	var/anchor_direction = null //The immediate directions an object can be anchored to a machine. If null, any direction is allowed.
-	var/anchor_type = null //What type of object can be anchored to a machine
-	var/current_power_usage = 0 // How much power are we currently using, dont change by hand, change power_usage vars and then use set_power_use
-	var/area/current_power_area // What area are we powering currently
-
-	var/blue_ink_tk_blocker = FALSE
-
-/obj/machinery/attack_tk(mob/user)
-	if(blue_ink_tk_blocker)
-		to_chat(usr, SPAN_WARNING("\blue Your psionic power has been inhibited by a force."))
-		return
-	else
-		..()
 
 	var/current_power_usage = 0 // How much power are we currently using, dont change by hand, change power_usage vars and then use set_power_use
 	var/area/current_power_area // What area are we powering currently
@@ -170,7 +141,6 @@ Class Procs:
 	set_power_use(NO_POWER_USE)
 	return ..()
 
-
 /obj/machinery/Process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
@@ -185,17 +155,10 @@ Class Procs:
 	switch(severity)
 		if(1.0)
 			qdel(src)
-<<<<<<< HEAD
 		if(2)
 			if(prob(50))
 				qdel(src)
 		if(3)
-=======
-		if(2.0)
-			if(prob(50))
-				qdel(src)
-		if(3.0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(prob(25))
 				qdel(src)
 
@@ -363,11 +326,7 @@ Class Procs:
 
 	return FALSE //If got no qualities - continue base attackby proc
 
-<<<<<<< HEAD
 /obj/machinery/proc/default_part_replacement(obj/item/storage/part_replacer/R, mob/user)
-=======
-/obj/machinery/proc/default_part_replacement(var/obj/item/storage/part_replacer/R, var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!istype(R))
 		return 0
 	if(!component_parts)
@@ -417,7 +376,7 @@ Class Procs:
 	qdel(src)
 	return 1
 
-///called on deconstruction before the final deletion
+//called on deconstruction before the final deletion
 /obj/machinery/proc/on_deconstruction()
 	return
 
@@ -469,13 +428,4 @@ Class Procs:
 
 // Unwrenching = unpluging from a power source
 /obj/machinery/wrenched_change()
-<<<<<<< HEAD
 	update_power_use()
-=======
-	update_power_use()
-
-/obj/machinery/get_item_cost(export)
-	. = ..()
-	for(var/atom/movable/i in component_parts)
-		. += SStrade.get_new_cost(i)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

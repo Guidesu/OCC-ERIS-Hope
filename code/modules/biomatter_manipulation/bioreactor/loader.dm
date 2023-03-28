@@ -12,10 +12,7 @@
 	layer = LOW_OBJ_LAYER
 	var/dir_input = WEST
 	var/dir_output = NORTH
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_loader
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/multistructure/bioreactor_part/loader/Initialize()
@@ -50,8 +47,4 @@
 		target.forceMove(loc)
 		spawn(1)
 			target.forceMove(src)
-<<<<<<< HEAD
 			FLICK("loader_take", src)
-=======
-			flick("loader_take", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

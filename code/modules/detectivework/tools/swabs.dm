@@ -136,8 +136,4 @@
 	name = "[initial(name)] ([sample_str] - [source])"
 	desc = "[initial(desc)] The label on the vial reads 'Sample of [sample_str] from [source].'."
 	icon_state = "swab_used"
-<<<<<<< HEAD
 	used = TRUE
-=======
-	used = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

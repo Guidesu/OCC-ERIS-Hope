@@ -17,8 +17,8 @@
 		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = 1),
 		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading),
 		"mosaic, large" =     list("path" = /obj/effect/floor_decal/chapel),
-		"1" =                 list("path" = /obj/effect/floor_decal/sign/a/one),
-		"2" =                 list("path" = /obj/effect/floor_decal/sign/a/two),
+		"1" =                 list("path" = /obj/effect/floor_decal/sign),
+		"2" =                 list("path" = /obj/effect/floor_decal/sign/two),
 		"A" =                 list("path" = /obj/effect/floor_decal/sign/a),
 		"B" =                 list("path" = /obj/effect/floor_decal/sign/b),
 		"C" =                 list("path" = /obj/effect/floor_decal/sign/c),
@@ -27,7 +27,7 @@
 		"V" =                 list("path" = /obj/effect/floor_decal/sign/v),
 		"CMO" =               list("path" = /obj/effect/floor_decal/sign/cmo),
 		"Ex" =                list("path" = /obj/effect/floor_decal/sign/ex),
-		"Psy" =               list("path" = /obj/effect/floor_decal/sign/psy),
+		"Psy" =               list("path" = /obj/effect/floor_decal/sign/p),
 		"remove all decals" = list("path" = /obj/effect/floor_decal/reset)
 		)
 	var/list/paint_dirs = list(
@@ -48,11 +48,7 @@
 
 	var/turf/simulated/floor/F = A
 	if(!istype(F))
-<<<<<<< HEAD
 		to_chat(user, SPAN_WARNING("\The [src] can only be used on ship flooring."))
-=======
-		to_chat(user, SPAN_WARNING("\The [src] can only be used on station flooring."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(!F.flooring || !F.flooring.can_paint || F.broken || F.burnt)
@@ -160,7 +156,6 @@
 	if(new_dir && !isnull(paint_dirs[new_dir]))
 		paint_dir = new_dir
 		to_chat(usr, SPAN_NOTICE("You set \the [src] direction to '[paint_dir]'."))
-<<<<<<< HEAD
 
 /obj/item/device/floor_painter/mech_painter
 	name = "mech painter"
@@ -188,5 +183,3 @@
 
 /obj/item/device/floor_painter/mech_painter/attack_self(var/mob/user)
 	choose_colour()
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,8 +1,10 @@
 /*
 	The migration subsystem handles burrows and the movement of various NPC mobs aboard Eris.
+
 	It allows mobs to move between burrows, dispatches reinforcements to distress calls from mobs under attack,
 	and keeps track of all the burrows, negating any need for them to process individually most of the time
 	This subsystem also handles spreading plants through burrows
+
 */
 var/list/global/populated_burrows = list()
 var/list/global/unpopulated_burrows = list()
@@ -26,10 +28,10 @@ SUBSYSTEM_DEF(migration)
 	var/migrate_chance = 15 //The chance, during each migration, for each populated burrow, that mobs will move from there to somewhere else
 
 
-	var/roundstart_burrows = 30
+	var/roundstart_burrows = 120
 	var/migrate_time = 80 SECONDS //How long it takes to move mobs from one burrow to another
-	var/reinforcement_time = 10 SECONDS //How long it takes for reinforcements to arrive
-	var/plantspread_burrows_num = 2 //How many other burrows will each one with plants send them to
+	var/reinforcement_time = 20 SECONDS //How long it takes for reinforcements to arrive
+	var/plantspread_burrows_num = 3 //How many other burrows will each one with plants send them to
 
 
 	var/last_fungus_growth = 0		//Eclipse edit: Putting this here for now. Deals with maint fungus spreading.
@@ -90,7 +92,7 @@ This proc will attempt to create a burrow against a wall, within view of the tar
 		//To be valid, the floor needs to have a wall in a cardinal direction
 		for (var/d in cardinal)
 			var/turf/T = get_step(F, d)
-			if (T && T.is_wall)
+			if (T.is_wall)
 				//Its got a wall!
 				possible_turfs[F] = T //We put this floor and its wall into the possible turfs list
 
@@ -388,7 +390,6 @@ This proc will attempt to create a burrow against a wall, within view of the tar
 	while (i < plantspread_burrows_num && sorted.len)
 		var/obj/structure/burrow/C = sorted[1] //Grab the first element
 		sorted.Cut(1,2)//And remove it from the list
-		var/turf/simulated/T = get_turf(C)
 
 
 		//It already has plants, no good
@@ -402,10 +403,6 @@ This proc will attempt to create a burrow against a wall, within view of the tar
 
 		//Chance to reject it anyways to make plant spreading less predictable
 		if (prob(60))
-			continue
-
-		//We don't want maintshrooms to spread into places that are too bright
-		if (B.plant.type == /datum/seed/mushroom/maintshroom && T.get_lumcount() > 0.5)
 			continue
 
 		//If it has no plants yet, it should be okay to send things to it

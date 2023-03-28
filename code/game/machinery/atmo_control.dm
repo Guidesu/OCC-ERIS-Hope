@@ -1,7 +1,7 @@
 /obj/machinery/air_sensor
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "gsensor1"
-	name = "gas sensor"
+	name = "Gas Sensor"
 
 	anchored = TRUE
 	var/state = 0
@@ -65,8 +65,8 @@
 	radio_connection = SSradio.add_object(src, frequency, RADIO_ATMOSIA)
 
 /obj/machinery/air_sensor/Initialize()
-	set_frequency(frequency)
 	. = ..()
+	set_frequency(frequency)
 
 obj/machinery/air_sensor/Destroy()
 	SSradio.remove_object(src,frequency)
@@ -77,18 +77,14 @@ obj/machinery/air_sensor/Destroy()
 	icon_keyboard = "atmos_key"
 	icon_screen = "tank"
 
-	name = "computer"
+	name = "Computer"
 
 	var/frequency = 1439
 	var/list/sensors = list()
 
 	var/list/sensor_information = list()
 	var/datum/radio_frequency/radio_connection
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/air_management
-=======
-	circuit = /obj/item/circuitboard/air_management
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 obj/machinery/computer/general_air_control/Destroy()
 	SSradio.remove_object(src, frequency)
@@ -173,11 +169,7 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	var/input_flow_setting = 200
 	var/pressure_setting = ONE_ATMOSPHERE * 45
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/air_management/tank_control
-=======
-	circuit = /obj/item/circuitboard/air_management/tank_control
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/computer/general_air_control/large_tank_control/return_text()
@@ -185,7 +177,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	//if(signal.data)
 	//	input_info = signal.data // Attempting to fix intake control -- TLE
 
-	output += "<B>tank control system</B><BR><BR>"
+	output += "<B>Tank Control System</B><BR><BR>"
 	if(input_info)
 		var/power = (input_info["power"])
 		var/volume_rate = round(input_info["volume_rate"], 0.1)
@@ -296,11 +288,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 
 	var/input_flow_setting = 700
 	var/pressure_setting = 100
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/air_management/supermatter_core
-=======
-	circuit = /obj/item/circuitboard/air_management/supermatter_core
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/computer/general_air_control/supermatter_core/return_text()
@@ -308,7 +296,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 	//if(signal.data)
 	//	input_info = signal.data // Attempting to fix intake control -- TLE
 
-	output += "<B>core cooling control system</B><BR><BR>"
+	output += "<B>Core Cooling Control System</B><BR><BR>"
 	if(input_info)
 		var/power = (input_info["power"])
 		var/volume_rate = round(input_info["volume_rate"], 0.1)
@@ -418,11 +406,7 @@ Min Core Pressure: [pressure_limit] kPa<BR>"}
 
 	var/cutoff_temperature = 2000
 	var/on_temperature = 1200
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/air_management/injector_control
-=======
-	circuit = /obj/item/circuitboard/air_management/injector_control
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/general_air_control/fuel_injection/Process()
 	if(automation)
@@ -456,7 +440,7 @@ Min Core Pressure: [pressure_limit] kPa<BR>"}
 /obj/machinery/computer/general_air_control/fuel_injection/return_text()
 	var/output = ..()
 
-	output += "<B>fuel injection system</B><BR>"
+	output += "<B>Fuel Injection System</B><BR>"
 	if(device_info)
 		var/power = device_info["power"]
 		var/volume_rate = device_info["volume_rate"]

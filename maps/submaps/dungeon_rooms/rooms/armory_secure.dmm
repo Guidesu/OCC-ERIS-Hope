@@ -11,11 +11,7 @@
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "d" = (
-<<<<<<< HEAD
 /obj/machinery/porta_turret/One_star,
-=======
-/obj/random/turret/os,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "e" = (
@@ -27,13 +23,8 @@
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "g" = (
-<<<<<<< HEAD
 /obj/spawner/contraband,
 /obj/spawner/mob/roomba,
-=======
-/obj/random/mob/roomba,
-/obj/random/contraband,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "h" = (
@@ -50,22 +41,14 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 4
 	},
-=======
-/obj/random/structures/os,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "k" = (
 /obj/random/mob/roomba,
-<<<<<<< HEAD
 /obj/spawner/firstaid,
-=======
-/obj/random/firstaid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "l" = (
@@ -79,52 +62,29 @@
 /area/crawler)
 "n" = (
 /obj/random/mob/roomba,
-<<<<<<< HEAD
 /obj/spawner/contraband,
-=======
-/obj/random/contraband,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "o" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
 /obj/spawner/gun/energy_cheap,
 /obj/spawner/gun/energy_cheap,
 /obj/spawner/gun/shotgun,
-=======
-/obj/random/gun_energy_cheap,
-/obj/random/gun_energy_cheap,
-/obj/random/gun_shotgun,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "p" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
 /obj/spawner/gun/energy_cheap,
 /obj/spawner/gun/shotgun,
 /obj/spawner/contraband,
-=======
-/obj/random/gun_energy_cheap,
-/obj/random/gun_shotgun,
-/obj/random/contraband,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "q" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/gun/normal,
 /obj/spawner/gun/normal,
 /obj/spawner/gun/normal/low_chance,
 /obj/spawner/gun/shotgun,
-=======
-/obj/random/gun_normal,
-/obj/random/gun_normal,
-/obj/random/gun_normal/low_chance,
-/obj/random/gun_shotgun,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "s" = (

@@ -1,31 +1,20 @@
 //NASA Voidsuit
 /obj/item/clothing/head/space/void
 	name = "void helmet"
-	desc = "A high-tech dark red space suit helmet."
+	desc = "A high-tech dark red space suit helmet. Used for AI satellite maintenance."
 	icon_state = "void"
 
 	heat_protection = HEAD
-<<<<<<< HEAD
 	armor = list(
 		melee = 30,
 		bullet = 20,
 		energy = 15,
-=======
-	armor_list = list(
-		melee = 30,
-		bullet = 20,
-		energy = 10,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		bomb = 25,
 		bio = 100,
 		rad = 75
 	)
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-<<<<<<< HEAD
 	flash_protection = FLASH_PROTECTION_MAJOR
-=======
-	obscuration = LIGHT_OBSCURATION
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	light_overlay = "helmet_light"
 	spawn_tags = null
 
@@ -33,21 +22,12 @@
 	name = "voidsuit"
 	icon_state = "void"
 	item_state = "void"
-<<<<<<< HEAD
 	desc = "A high-tech dark red space suit. Used for AI satellite maintenance."
 	slowdown = 0.3
 	armor = list(
 		melee = 30,
 		bullet = 20,
 		energy = 15,
-=======
-	desc = "A high-tech dark red space suit."
-	slowdown = 1
-	armor_list = list(
-		melee = 30,
-		bullet = 20,
-		energy = 10,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		bomb = 25,
 		bio = 100,
 		rad = 75
@@ -58,7 +38,6 @@
 	breach_threshold = 5
 	resilience = 0.09
 	can_breach = 1
-<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_VOID_SUIT
 	rarity_value = 10
 	accompanying_object = /obj/item/clothing/shoes/magboots
@@ -70,29 +49,12 @@
 
 /obj/item/clothing/suit/space/void/Initialize()
 	. = ..()
-=======
-	stiffness = HEAVY_STIFFNESS // Very hard to aim in
-	//Inbuilt devices.
-	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
-	var/obj/item/clothing/head/helmet/helmet = /obj/item/clothing/head/helmet/space/void   // Deployable helmet, if any.
-	var/obj/item/tank/tank = null              // Deployable tank, if any.
-
-	valid_accessory_slots = list()
-	restricted_accessory_slots = list()
-
-
-/obj/item/clothing/suit/space/void/Initialize()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(boots && ispath(boots))
 		boots = new boots(src)
 	if(helmet && ispath(helmet))
 		helmet = new helmet(src)
 	if(tank && ispath(tank))
 		tank = new tank(src)
-<<<<<<< HEAD
-=======
-	. = ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/suit/space/void/examine(user)
 	..(user)
@@ -143,22 +105,14 @@
 	if(helmet)
 		if(H.head)
 			to_chat(M, "You are unable to deploy your suit's helmet as \the [H.head] is in the way.")
-<<<<<<< HEAD
 		else if(H.equip_to_slot_if_possible(helmet, slot_head))
-=======
-		else if (H.equip_to_slot_if_possible(helmet, slot_head))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(M, "Your suit's helmet deploys with a hiss.")
 			helmet.canremove = 0
 
 	if(tank)
 		if(H.s_store) //In case someone finds a way.
 			to_chat(M, "Alarmingly, the valve on your suit's installed tank fails to engage.")
-<<<<<<< HEAD
 		else if(H.equip_to_slot_if_possible(tank, slot_s_store))
-=======
-		else if (H.equip_to_slot_if_possible(tank, slot_s_store))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(M, "The valve on your suit's installed tank safely engages.")
 			tank.canremove = 0
 
@@ -238,11 +192,7 @@
 	if(!isliving(usr))
 		return
 
-<<<<<<< HEAD
 	if(!Adjacent(usr, get_turf(src)))
-=======
-	if (!Adjacent(usr, get_turf(src)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(usr, SPAN_WARNING("You're too far away to eject the tank."))
 		return
 
@@ -280,28 +230,15 @@
 		to_chat(user, SPAN_WARNING("You cannot modify \the [src] while it is being worn."))
 		return
 
-<<<<<<< HEAD
 	if(istype(W,/obj/item/tool/screwdriver))
 		if(boots || tank)
 			var/choice = input("What component would you like to remove?") as null|anything in list(boots,tank)
-=======
-	if(istype(W,/obj/item/tool/wrench))
-		if(boots || tank || helmet)
-			var/choice = input("What component would you like to remove?") as null|anything in list(boots,tank,helmet)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!choice) return
 
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
 				tank.forceMove(get_turf(src))
 				src.tank = null
-<<<<<<< HEAD
-=======
-			if(choice == helmet)
-				to_chat(user, "You pop \the [helmet] out of \the [src]'s helmet casing.")
-				helmet.forceMove(get_turf(src))
-				src.helmet = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else if(choice == boots)
 				to_chat(user, "You detatch \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
@@ -322,27 +259,13 @@
 	if(istype(W,/obj/item/tank))
 		if(tank)
 			to_chat(user, "\The [src] already has an airtank installed.")
-<<<<<<< HEAD
 		else if(istype(W,/obj/item/tank/phoron))
-=======
-		else if(istype(W,/obj/item/tank/plasma))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
 		else
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
 			user.drop_item()
 			W.forceMove(src)
 			tank = W
-			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		return
-	if(istype(W,/obj/item/clothing/head/helmet/space/void))
-		if(helmet)
-			to_chat(user, "\The [src] already has a void helmet.")
-		else
-			to_chat(user, "You insert \the [W] into \the [src]'s helmet casing.")
-			user.drop_item()
-			W.forceMove(src)
-			helmet = W
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		return
 

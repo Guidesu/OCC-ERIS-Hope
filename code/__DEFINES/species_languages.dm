@@ -1,8 +1,7 @@
 // Species flags.
 #define NO_BLOOD          0x1    // Vessel var is not filled with blood, cannot bleed out.
 #define NO_BREATHE        0x2    // Cannot suffocate or take oxygen loss.
-#define NO_SCAN           0x4    // Cannot be scanned in a DNA machine/genome-stolen. Doesn't work with new genetics.
-
+#define NO_SCAN           0x4    // Cannot be scanned in a DNA machine/genome-stolen.
 #define NO_PAIN           0x8    // Cannot suffer halloss/recieves deceptive health indicator.
 #define NO_SLIP           0x10   // Cannot fall over.
 #define NO_POISON         0x20   // Cannot not suffer toxloss.
@@ -15,7 +14,6 @@
 #define CAN_JOIN          0x2    // Species is selectable in chargen.
 #define IS_RESTRICTED     0x4    // Is not a core/normally playable species. (castes, mutantraces)
 
-
 // Languages.
 #define LANGUAGE_COMMON "Galactic Common"
 #define LANGUAGE_CYRILLIC "Techno-Russian"
@@ -26,50 +24,11 @@
 #define LANGUAGE_DRONE "Drone Talk"
 #define LANGUAGE_MONKEY "Chimpanzee"
 
-
-// Species appearance flags
-#define HAS_SKIN_TONE     0x1    // Skin tone selectable in chargen. (0-255)
-#define HAS_SKIN_COLOR    0x2    // Skin colour selectable in chargen. (RGB)
-#define HAS_LIPS          0x4    // Lips are drawn onto the mob icon. (lipstick)
-#define HAS_UNDERWEAR     0x8    // Underwear is drawn onto the mob icon.
-#define HAS_EYE_COLOR     0x10   // Eye colour selectable in chargen. (RGB)
-#define HAS_HAIR_COLOR    0x20   // Hair colour selectable in chargen. (RGB)
-
-// Languages.
-#define LANGUAGE_COMMON		"English Common"
-#define LANGUAGE_CYRILLIC	"Interslavic"
-#define LANGUAGE_ILLYRIAN	"Illyrian"
-#define LANGUAGE_JIVE		"Jive"
-#define LANGUAGE_EURO		"Eurolang"
-#define LANGUAGE_JANA	    "Jana"
-#define LANGUAGE_LATIN 		"Latin"
-#define LANGUAGE_ROMANA		"Lingua Romana"
-#define LANGUAGE_YASSARI	"Yassari"
-
-//Alein / Species specific langauges.
-#define LANGUAGE_ROBOT "Robot Talk"
-#define LANGUAGE_OPIFEXEE "Opifexee"
-#define LANGUAGE_CHTMANT "Chthive"
-#define LANGUAGE_KRIOSAN "Kriosan"
-#define LANGUAGE_AKULA "Akula"
-#define LANGUAGE_MARQUA "Marqua"
-#define LANGUAGE_PLANT "Native Plant"
-#define LANGUAGE_SYNTHETIC "Technical Cant"
-#define LANGUAGE_MERP "Narad Pidgin"
-
-// Special / Antag langauges.
-#define LANGUAGE_MONKEY "Chimpanzee"
-#define LANGUAGE_DRONE "Drone Talk"
-
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"
 #define LANGUAGE_CORTICAL "Cortical Link"
 #define LANGUAGE_CULT "Cult"
-
 #define LANGUAGE_OCCULT "Occult"
-
-#define LANGUAGE_OCCULT "Occult Projection"
-
 #define LANGUAGE_BLITZ "Blitzshell Communique"
 
 // Language flags.

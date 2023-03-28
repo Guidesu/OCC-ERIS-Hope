@@ -14,7 +14,6 @@
 	name = "oxygen tank"
 	desc = "A tank of oxygen."
 	icon_state = "oxygen"
-	item_state = "oxygen"
 	force = WEAPON_FORCE_PAINFUL
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	default_pressure = 6*ONE_ATMOSPHERE
@@ -26,7 +25,6 @@
 		to_chat(user, text(SPAN_WARNING("The meter on \the [src] indicates you are almost out of oxygen!")))
 
 
-<<<<<<< HEAD
 /obj/item/tank/oxygen/red
 	desc = "A tank of oxygen, this one is red."
 	icon_state = "oxygen_red"
@@ -34,17 +32,6 @@
 /obj/item/tank/oxygen/yellow
 	desc = "A tank of oxygen, this one is yellow."
 	icon_state = "oxygen_yellow"
-=======
-/obj/item/tank/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
-	icon_state = "oxygen_f"
-	item_state = "oxygen_f"
-
-/obj/item/tank/oxygen/red
-	desc = "A tank of oxygen, this one is red."
-	icon_state = "oxygen_fr"
-	item_state = "oxygen_fr"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /*
@@ -54,13 +41,8 @@
 	name = "anesthetic tank"
 	desc = "A tank with an N2O/O2 gas mix."
 	icon_state = "anesthetic"
-<<<<<<< HEAD
 	default_pressure = 3*ONE_ATMOSPHERE
 	rarity_value = 30
-=======
-	item_state = "an_tank"
-	default_pressure = 3*ONE_ATMOSPHERE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tank/anesthetic/spawn_gas()
 	air_contents.adjust_multi(
@@ -78,10 +60,7 @@
 	icon_state = "air"
 	force = WEAPON_FORCE_PAINFUL
 	default_pressure = 6*ONE_ATMOSPHERE
-<<<<<<< HEAD
 	slot_flags = SLOT_BACK
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tank/air/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["oxygen"] < 1 && loc==user)
@@ -99,27 +78,17 @@
 /*
  * Phoron
  */
-<<<<<<< HEAD
 /obj/item/tank/phoron
 	name = "phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-=======
-/obj/item/tank/plasma
-	name = "plasma tank"
-	desc = "Contains dangerous plasma. Do not inhale. Warning: extremely flammable."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "plasma"
 	force = WEAPON_FORCE_NORMAL
 	gauge_icon = null
 	flags = CONDUCT
 	slot_flags = null	//they have no straps!
 	default_pressure = 3*ONE_ATMOSPHERE
-<<<<<<< HEAD
 	default_gas = "phoron"
 	rarity_value = 30
-=======
-	default_gas = "plasma"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /*
@@ -141,34 +110,11 @@
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
 	rarity_value = 10
 
-<<<<<<< HEAD
 /obj/item/tank/emergency_oxygen/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["oxygen"] < 0.2 && loc==user)
 		to_chat(user, text(SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!")))
 		user << sound('sound/effects/alert.ogg')
 
-=======
-/obj/item/tank/emergency_nitgen
-	name = "opifex nitrogen tanks"
-	desc = "A set of double rigged nitrogen tanks used by opifex crew in place of oxygen tanks. Used only by Opifex unless you wish to pass out and die."
-	icon_state = "opifex_double"
-	gauge_icon = "indicator-tank-double"
-	gauge_cap = 4
-	flags = CONDUCT
-	slot_flags = SLOT_BELT
-	w_class = ITEM_SIZE_SMALL
-	force = WEAPON_FORCE_NORMAL
-	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
-	default_pressure = 3*ONE_ATMOSPHERE
-	default_gas = "nitrogen"
-	volume = 10
-
-/obj/item/tank/emergency_oxygen/examine(mob/user)
-	if(..(user, 0) && air_contents.gas["oxygen"] < 0.2 && loc==user)
-		to_chat(user, text(SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!")))
-		user << sound('sound/effects/alert.ogg')
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/tank/emergency_oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
 	icon_state = "emergency_engi"
@@ -204,14 +150,9 @@
 	force = WEAPON_FORCE_PAINFUL
 	icon_state = "nitrogen"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
-<<<<<<< HEAD
 	default_pressure = 9*ONE_ATMOSPHERE
 	default_gas = "nitrogen"
 	rarity_value = 30
-=======
-	default_pressure = 3*ONE_ATMOSPHERE
-	default_gas = "nitrogen"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tank/nitrogen/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["nitrogen"] < 10)

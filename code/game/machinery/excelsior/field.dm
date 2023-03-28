@@ -1,26 +1,20 @@
 //Todo: make this thing work under new shield system
 /obj/machinery/shieldwallgen/excelsior
-	name = "excelsior shield generator"
+
+	name = "Excelsior Shield Generator"
 	desc = "A shield generator."
 	icon = 'icons/obj/machines/excelsior/field.dmi'
 	stun_chance = 3
 	shield_type = /obj/machinery/shieldwall/excelsior
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/excelsiorshieldwallgen
-=======
-	circuit = /obj/item/circuitboard/excelsiorshieldwallgen
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	req_access = list()
-
-/obj/machinery/shieldwallgen/excelsior/attack_hand(mob/user as mob)
-	..()
-	log_and_message_admins(" - Exc Shieldwall being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
 
 /obj/machinery/shieldwallgen/excelsior/can_stun(var/mob/M)
 	if(is_excelsior(M))
 		return FALSE
 
 	return TRUE
+
 
 /obj/machinery/shieldwallgen/excelsior/allowed(var/mob/user)
 	if(is_excelsior(user))
@@ -43,13 +37,7 @@
 
 	if(stunmode)
 		to_chat(usr, SPAN_NOTICE("You toggle on [src]'s stun mode."))
-<<<<<<< HEAD
 	else
-=======
-		log_and_message_admins(" - Exc Shieldwall being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[usr]") //So we can go to it
-	else
-		log_and_message_admins(" - Exc Shieldwall being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[usr]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(usr, SPAN_NOTICE("You toggle off [src]'s stun mode."))
 
 

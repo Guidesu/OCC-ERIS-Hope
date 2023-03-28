@@ -10,7 +10,6 @@
 /obj/structure/closet/onestar/tier3,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
-<<<<<<< HEAD
 "d" = (
 /obj/machinery/light/built{
 	dir = 1
@@ -19,8 +18,6 @@
 /obj/structure/closet/onestar/tier3,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "e" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -40,7 +37,6 @@
 	},
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-<<<<<<< HEAD
 "i" = (
 /obj/machinery/light/built{
 	dir = 4
@@ -50,43 +46,22 @@
 	},
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "j" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "k" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
-=======
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
-/obj/random/junkfood/rotten,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "l" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
 /obj/spawner/gun/energy_cheap/low_chance,
-=======
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
-/obj/random/junkfood/rotten,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "m" = (
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
-<<<<<<< HEAD
 "n" = (
 /obj/machinery/light/built{
 	dir = 8
@@ -96,34 +71,26 @@
 	},
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "o" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/crawler)
-<<<<<<< HEAD
 "p" = (
 /obj/machinery/light/small/built{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "q" = (
 /obj/machinery/door/airlock/vault/bolted,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
-<<<<<<< HEAD
 "r" = (
 /obj/machinery/light/small/built{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "s" = (
 /obj/crawler/crawler_wallbreaker,
 /turf/simulated/wall/untinted/onestar_reinforced,
@@ -137,7 +104,6 @@
 /obj/structure/closet/onestar/tier2,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
-<<<<<<< HEAD
 "v" = (
 /obj/machinery/light/built{
 	dir = 1
@@ -155,28 +121,10 @@
 /obj/structure/table/rack,
 /obj/spawner/gun/shotgun,
 /obj/spawner/gun/shotgun/low_chance,
-=======
-"w" = (
-/obj/structure/table/onestar,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"x" = (
-/obj/structure/table/onestar,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
-/obj/random/junkfood/rotten,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "y" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/gun/shotgun/low_chance,
 /obj/spawner/gun/normal/low_chance,
 /obj/spawner/gun/energy_cheap/low_chance,
@@ -191,278 +139,14 @@
 "A" = (
 /obj/structure/table/rack,
 /obj/spawner/gun/shotgun,
-=======
-/obj/random/gun_normal,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_energy,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"z" = (
-/obj/structure/table/onestar,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"A" = (
-/obj/structure/table/onestar,
-/obj/random/junkfood/low_chance,
-/obj/random/junkfood/rotten,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "B" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/gun/shotgun/low_chance,
 /obj/spawner/gun/energy_cheap/low_chance,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
-=======
-/obj/random/gun_shotgun,
-/obj/random/gun_shotgun/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_energy,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"C" = (
-/obj/structure/table/rack,
-/obj/random/gun_shotgun/low_chance,
-/obj/random/gun_normal/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_energy,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"D" = (
-/obj/structure/table/rack,
-/obj/random/gun_shotgun/low_chance,
-/obj/random/gun_normal/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_energy,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"E" = (
-/obj/structure/table/rack,
-/obj/random/gun_normal,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_ballistic,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"F" = (
-/obj/structure/table/rack,
-/obj/random/gun_shotgun,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_ballistic,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"G" = (
-/obj/structure/table/onestar,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"H" = (
-/obj/structure/table/onestar,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"I" = (
-/obj/structure/table/onestar,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/obj/random/powercell/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"J" = (
-/obj/structure/table/rack,
-/obj/random/gun_shotgun/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_ballistic,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"K" = (
-/obj/structure/table/rack,
-/obj/random/gun_shotgun/low_chance,
-/obj/random/gun_normal/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_energy_cheap/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/gun_combat/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo/shotgun/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_fancy/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/ammo_lowcost/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_ammo,
-/obj/random/dungeon_gun_ballistic,
-/obj/random/dungeon_gun_mods/low_chance,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"O" = (
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/crawler)
-"V" = (
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/derelict/red_white_edges,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -481,20 +165,13 @@ c
 f
 k
 a
-<<<<<<< HEAD
 w
 p
 w
-=======
-y
-f
-E
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
 a
-<<<<<<< HEAD
 d
 f
 k
@@ -502,26 +179,13 @@ a
 x
 f
 A
-=======
-c
-f
-l
-a
-B
-f
-F
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
 a
 u
 f
-<<<<<<< HEAD
 k
-=======
-w
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 q
@@ -534,15 +198,9 @@ a
 g
 a
 t
-<<<<<<< HEAD
 m
 m
 k
-=======
-O
-m
-G
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 "}
 (6,1,1) = {"
@@ -551,15 +209,9 @@ b
 o
 o
 b
-<<<<<<< HEAD
 i
 e
 k
-=======
-e
-e
-H
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 "}
 (7,1,1) = {"
@@ -567,11 +219,7 @@ s
 t
 o
 o
-<<<<<<< HEAD
 a
-=======
-V
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 t
 b
 a
@@ -583,15 +231,9 @@ b
 o
 o
 b
-<<<<<<< HEAD
 n
 h
 k
-=======
-h
-h
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 "}
 (9,1,1) = {"
@@ -600,26 +242,16 @@ a
 g
 a
 t
-<<<<<<< HEAD
 m
 m
 k
-=======
-O
-m
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 "}
 (10,1,1) = {"
 a
 u
 f
-<<<<<<< HEAD
 l
-=======
-x
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 q
@@ -628,7 +260,6 @@ a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 v
 f
 k
@@ -636,34 +267,17 @@ a
 y
 f
 B
-=======
-u
-f
-z
-a
-C
-f
-J
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
 c
 f
-<<<<<<< HEAD
 k
 a
 z
 r
 z
-=======
-A
-a
-D
-f
-K
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"

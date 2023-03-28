@@ -22,13 +22,8 @@
 	for (var/obj/item/coin/C in contents)
 		if (istype(C,/obj/item/coin/diamond))
 			amt_diamond++;
-<<<<<<< HEAD
 		if (istype(C,/obj/item/coin/phoron))
 			amt_phoron++;
-=======
-		if (istype(C,/obj/item/coin/plasma))
-			amt_plasma++;
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (istype(C,/obj/item/coin/iron))
 			amt_iron++;
 		if (istype(C,/obj/item/coin/silver))
@@ -82,13 +77,8 @@
 				COIN = locate(/obj/item/coin/iron,src.contents)
 			if(MATERIAL_DIAMOND)
 				COIN = locate(/obj/item/coin/diamond,src.contents)
-<<<<<<< HEAD
 			if("phoron")
 				COIN = locate(/obj/item/coin/phoron,src.contents)
-=======
-			if("plasma")
-				COIN = locate(/obj/item/coin/plasma,src.contents)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(MATERIAL_URANIUM)
 				COIN = locate(/obj/item/coin/uranium,src.contents)
 		if(!COIN)

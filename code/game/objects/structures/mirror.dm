@@ -1,7 +1,7 @@
 //wip wip wup
 /obj/structure/mirror
 	name = "mirror"
-	desc = "A SalonPro brand mirror. Use this to style your hair just right."
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE
@@ -30,7 +30,7 @@
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			AC.flags = appearance_changer_flags
 			ui_users[user] = AC
-		AC.nano_ui_interact(user)
+		AC.ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(shattered)	return
@@ -42,12 +42,11 @@
 
 /obj/structure/mirror/bullet_act(var/obj/item/projectile/Proj)
 
-	if (!(Proj.testing))
-		if(prob(Proj.get_structure_damage() * 2))
-			if(!shattered)
-				shatter()
-			else
-				playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
+	if(prob(Proj.get_structure_damage() * 2))
+		if(!shattered)
+			shatter()
+		else
+			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 	..()
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
@@ -84,7 +83,7 @@
 
 /obj/item/mirror
 	name = "mirror"
-	desc = "A SalonPro brand mirror, but portable!"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! Now a portable version."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "mirror"
 	var/list/ui_users = list()
@@ -97,7 +96,7 @@
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			AC.flags = APPEARANCE_HAIR
 			ui_users[user] = AC
-		AC.nano_ui_interact(user)
+		AC.ui_interact(user)
 
 /obj/item/mirror/Destroy()
 	for(var/user in ui_users)

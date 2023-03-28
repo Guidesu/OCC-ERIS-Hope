@@ -22,10 +22,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 
 	var/list/owner_roles = new
 
-<<<<<<< HEAD
 	var/list/linked_implants = list()
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/passive_gain = 0.1 //Number of telecrystals this uplink gains per minute.
 	//The total uses is only increased when this is a whole number
@@ -107,7 +104,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		toggle()
 	interact(user)
 
-// Checks to see if the value meets the target. Like a frequency being a contractor_frequency, in order to unlock a headset.
+// Checks to see if the value meets the target. Like a frequency being a traitor_frequency, in order to unlock a headset.
 // If true, it accesses trigger() and returns 1. If it fails, it returns false. Use this to see if you need to close the
 // current item's menu.
 /obj/item/device/uplink/hidden/proc/check_trigger(mob/user as mob, var/value)
@@ -119,7 +116,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/device/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/uplink/hidden/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/title = "Remote Uplink"
 	var/data[0]
 	var/list/implants_in_list = list()
@@ -142,13 +139,8 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	data["welcome"] = welcome
 	data["crystals"] = uses
 	data["menu"] = nanoui_menu
-<<<<<<< HEAD
 	data["has_contracts"] = uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT)\
 	                                     : !!length(owner_roles & ROLES_CONTRACT)
-=======
-	data["has_contracts"] = uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT_VIEW)\
-	                                     : !!length(owner_roles & ROLES_CONTRACT_VIEW)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data += nanoui_data
 
 	// update the ui if it exists, returns null if no ui is passed/found
@@ -164,7 +156,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 
 // Interaction code. Gathers a list of items purchasable from the paren't uplink and displays it. It also adds a lock button.
 /obj/item/device/uplink/interact(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 // The purchasing code.
 /obj/item/device/uplink/hidden/Topic(href, href_list)
@@ -260,11 +252,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 
 				nanoui_data["exploit_exists"] = 1
 				break
-<<<<<<< HEAD
 	else if(nanoui_menu == 3 && (uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT) : !!length(owner_roles & ROLES_CONTRACT)))
-=======
-	else if(nanoui_menu == 3 && (uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT_VIEW) : !!length(owner_roles & ROLES_CONTRACT_VIEW)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/list/available_contracts = list()
 		var/list/completed_contracts = list()
 		for(var/datum/antag_contract/C in GLOB.various_antag_contracts)
@@ -318,13 +306,12 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		hidden_uplink.trigger(user)
 
 /obj/item/device/radio/headset/uplink
-	contractor_frequency = 1445
+	traitor_frequency = 1445
 
 /obj/item/device/radio/headset/uplink/New(loc, mind, crystal_amount = DEFAULT_TELECRYSTAL_AMOUNT)
 	..(loc)
 	hidden_uplink = new(src, mind, crystal_amount)
 	hidden_uplink.uses = DEFAULT_TELECRYSTAL_AMOUNT
-	hidden_uplink.trigger_code = 1445
 
 
 
@@ -337,11 +324,8 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	icon_state = "beacon"
 	density = TRUE
 	anchored = TRUE
-<<<<<<< HEAD
 	var/obj/item/device/uplink/hidden/uplink
 	var/telecrystals = 100
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/owner_roles //Can be a list of roles or a single role
 
 /obj/structure/uplink/New()

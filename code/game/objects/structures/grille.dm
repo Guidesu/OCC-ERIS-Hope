@@ -1,5 +1,5 @@
 /obj/structure/grille
-	desc = "A flimsy lattice of metal rods with screws to secure it to the floor."
+	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
 	name = "grille"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
@@ -8,7 +8,7 @@
 	flags = CONDUCT
 	layer = BELOW_OBJ_LAYER
 	explosion_resistance = 1
-	health = 50
+	var/health = 50
 	var/destroyed = 0
 
 
@@ -51,75 +51,49 @@
 /obj/structure/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0)) return 1
 	if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return TRUE
+		return 1
 	else
 		if(istype(mover, /obj/item/projectile))
 			return prob(30)
 		else
 			return !density
 
-
-/obj/structure/grille/bullet_act(obj/item/projectile/Proj)
-	if(!Proj)
-		return
+/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+	if(!Proj)	return
 
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
 	var/damage = Proj.get_structure_damage()
-	var/passthrough = FALSE
+	var/passthrough = 0
 
-	if(!damage)
-		return
+	if(!damage) return
 
-	//The current math for this is the projectile damage -10 for its odds, I.e 50 damage is a 40% odds to penitrate through
+	//20% chance that the grille provides a bit more cover than usual. Support structure for example might take up 20% of the grille's area.
 	//If they click on the grille itself then we assume they are aiming at the grille itself and the extra cover behaviour is always used.
 	for(var/i in Proj.damage_types)
 		if(i == BRUTE)
 			//bullets
 			if(Proj.original == src || prob(20))
 				Proj.damage_types[i] *= between(0, Proj.damage_types[i]/60, 0.5)
-<<<<<<< HEAD
 				if(prob(max((damage-10)/25, 0))*100)
 					passthrough = 1
 			else
 				Proj.damage_types[i] *= between(0, Proj.damage_types[i]/60, 1)
 				passthrough = 1
-=======
-				if(prob(max((damage-10), 0)))
-					passthrough = TRUE
-			else
-				Proj.damage_types[i] *= between(0, Proj.damage_types[i]/60, 1)
-				passthrough = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(i == BURN)
 			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
 			if(!(Proj.original == src || prob(20)))
 				Proj.damage_types[i] *= 0.5
-<<<<<<< HEAD
 				passthrough = 1
-=======
-				passthrough = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(passthrough)
 		. = PROJECTILE_CONTINUE
 		damage = between(0, (damage - Proj.get_structure_damage())*(Proj.damage_types[BRUTE] ? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
 
-<<<<<<< HEAD
 	src.health -= damage*0.2
 	spawn(0) healthcheck() //spawn to make sure we return properly if the grille is deleted
 
 /obj/structure/grille/attackby(obj/item/I, mob/user)
-=======
-	if (!(Proj.testing))
-		health -= damage*2
-		healthCheck() //spawn to make sure we return properly if the grille is deleted
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/obj/structure/grille/attackby(obj/item/I, mob/user)
-	if(user.a_intent == I_HELP && istype(I, /obj/item/gun))
-		var/obj/item/gun/G = I
-		G.gun_brace(user, src)
-		return
 	var/list/usable_qualities = list(QUALITY_WIRE_CUTTING)
 	if(anchored)
 		usable_qualities.Add(QUALITY_SCREW_DRIVING)
@@ -132,6 +106,15 @@
 				if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					new /obj/item/stack/rods(get_turf(src), destroyed ? 1 : 2)
 					qdel(src)
+					return
+			return
+
+		if(QUALITY_SCREW_DRIVING)
+			if(anchored)
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+					anchored = !anchored
+					user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] the grille.</span>", \
+										 "<span class='notice'>You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor.</span>")
 					return
 			return
 
@@ -186,16 +169,12 @@
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		health -= I.force * I.structure_damage_factor
-<<<<<<< HEAD
 	healthcheck()
-=======
-	healthCheck()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	return
 
 
-/obj/structure/grille/healthCheck()
+/obj/structure/grille/proc/healthcheck()
 	if(health <= 0)
 		if(!destroyed)
 			density = FALSE
@@ -240,24 +219,15 @@
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
 			health -= 1
-			healthCheck()
+			healthcheck()
 	..()
 
-/obj/structure/grille/attack_generic(mob/user, damage, attack_verb)
-	if(istype(user))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		user.do_attack_animation(src)
-		visible_message(SPAN_DANGER("[user] smashes into [src]!"))
-		take_damage(damage)
-		return TRUE
-
-/obj/structure/grille/proc/take_damage(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message(SPAN_WARNING("\The [src] breaks down!"))
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(usr))
-		qdel(src)
+/obj/structure/grille/attack_generic(var/mob/user, var/damage, var/attack_verb)
+	visible_message(SPAN_DANGER("[user] [attack_verb] the [src]!"))
+	attack_animation(user)
+	health -= damage
+	spawn(1) healthcheck()
+	return 1
 
 /obj/structure/grille/hitby(AM as mob|obj)
 	..()
@@ -271,33 +241,33 @@
 		tforce = I.throwforce
 	health = max(0, health - tforce)
 	if(health <= 0)
-		destroyed = TRUE
+		destroyed=1
 		new /obj/item/stack/rods(get_turf(src))
-		density = FALSE
+		density=0
 		update_icon()
 
 // Used in mapping to avoid
 /obj/structure/grille/broken
-	destroyed = TRUE
+	destroyed = 1
 	icon_state = "grille-b"
 	density = FALSE
 	New()
 		..()
 		health = rand(-5, -1) //In the destroyed but not utterly threshold.
-		healthCheck() //Send this to healthCheck just in case we want to do something else with it.
+		healthcheck() //Send this to healthcheck just in case we want to do something else with it.
 
 /obj/structure/grille/cult
 	name = "cult grille"
-	desc = "A matrix built out of an unknown material, with some sort of force field blocking air around it."
+	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it"
 	icon_state = "grillecult"
 	health = 40 //Make it strong enough to avoid people breaking in too easily
 
 /obj/structure/grille/cult/CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
 	if(air_group)
-		return FALSE //Make sure air doesn't drain
+		return 0 //Make sure air doesn't drain
 	..()
 
-/obj/structure/grille/get_fall_damage(turf/from, turf/dest)
+/obj/structure/grille/get_fall_damage(var/turf/from, var/turf/dest)
 	var/damage = health * 0.4
 
 	if (from && dest)

@@ -15,11 +15,7 @@
 		to_chat(owner_mob, SPAN_WARNING("[src] doesn't have a host"))
 		return
 	if(!istype(wearer.species, /datum/species/human))
-<<<<<<< HEAD
 		to_chat(owner_mob, SPAN_WARNING("[src] only works on humans"))
-=======
-		to_chat(owner_mob, SPAN_WARNING("[src] only works on humanoids"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(!(wearer.stat == DEAD))
@@ -40,11 +36,7 @@
 		active = FALSE
 		if(wearer?.stat == DEAD)
 			while(number_of_spiders)
-<<<<<<< HEAD
 				new /obj/spawner/mob/spiders(wearer.loc)
-=======
-				new /obj/random/mob/spiders(wearer.loc)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				number_of_spiders--
 			wearer.gib()
 			die()

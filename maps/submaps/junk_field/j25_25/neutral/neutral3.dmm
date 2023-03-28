@@ -2,7 +2,6 @@
 "aa" = (
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
 "ad" = (
 /obj/spawner/pack/machine,
 /turf/simulated/floor/tiled/dark/danger/airless,
@@ -67,169 +66,11 @@
 "aE" = (
 /mob/living/simple_animal/hostile/carp,
 /turf/simulated/floor/tiled/dark/danger/airless,
-=======
-"ab" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
-"ac" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ad" = (
-/obj/random/structures,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"ae" = (
-/obj/structure/girder,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"af" = (
-/obj/random/lowkeyrandom/low_chance,
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"ag" = (
-/obj/random/structures,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"ah" = (
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/random/scrap/sparse_even/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ak" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"al" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 8
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"am" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 9
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"an" = (
-/obj/structure/scrap/poor/large,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ao" = (
-/obj/random/scrap/sparse_even/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aq" = (
-/obj/random/junk,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ar" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 10;
-	tag = "icon-intact (SOUTHWEST)"
-	},
-/obj/machinery/meter,
-/mob/living/simple_animal/hostile/carp/baby,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"as" = (
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"au" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"av" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aw" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ax" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ay" = (
-/obj/machinery/atmospherics/valve/digital/open{
-	dir = 4;
-	name = "Nitrogen Outlet Valve"
-	},
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aA" = (
-/obj/machinery/firealarm{
-	pixel_y = 28
-	},
-/mob/living/simple_animal/hostile/carp/baby,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/template_noop)
-"aB" = (
-/obj/machinery/door/firedoor,
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"aC" = (
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aE" = (
-/obj/random/mob/carp,
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aF" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 8
-	},
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aG" = (
-/obj/machinery/atmospherics/binary/passive_gate{
-	dir = 4;
-	name = "O2 to Propulsion"
-	},
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aH" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark/danger,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aI" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "aJ" = (
@@ -264,142 +105,18 @@
 "bf" = (
 /mob/living/simple_animal/hostile/carp,
 /turf/simulated/floor/tiled/techmaint/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aJ" = (
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aK" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aL" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4;
-	tag = "icon-intact (EAST)"
-	},
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aM" = (
-/mob/living/simple_animal/hostile/carp/pike,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"aN" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
-"aO" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/meter,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aP" = (
-/obj/structure/railing,
-/obj/random/scrap/sparse_even/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aQ" = (
-/obj/structure/lattice,
-/obj/random/junk,
-/turf/template_noop,
-/area/template_noop)
-"aR" = (
-/obj/random/mob/carp,
-/turf/template_noop,
-/area/template_noop)
-"aS" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/machinery/meter,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aT" = (
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"aU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"aV" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 6
-	},
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"aW" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"aX" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aY" = (
-/obj/machinery/atmospherics/binary/passive_gate{
-	dir = 8;
-	name = "N2 to Core"
-	},
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"aZ" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 4;
-	tag = "icon-map (EAST)"
-	},
-/obj/structure/scrap_cube,
-/turf/simulated/floor/tiled/dark/danger,
-/area/template_noop)
-"ba" = (
-/turf/simulated/wall,
-/area/template_noop)
-"bb" = (
-/obj/machinery/light/small,
-/obj/structure/scrap/poor/large,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"be" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/meter,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bf" = (
-/obj/random/mob/carp,
-/turf/simulated/floor/tiled/techmaint,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bg" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 27
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bh" = (
 /obj/structure/railing{
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
-<<<<<<< HEAD
 /obj/spawner/junkfood/rotten,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
@@ -420,55 +137,20 @@
 "bo" = (
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bi" = (
-/obj/random/traps,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"bj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bk" = (
-/obj/structure/railing,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bl" = (
-/obj/structure/sign/warning/nosmoking/largeburnt{
-	pixel_y = 32
-	},
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bo" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bp" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/material/glass{
 	amount = 120
 	},
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/techfloor_grid/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bq" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/material/steel{
 	amount = 120
 	},
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/techfloor_grid/airless,
 /area/template_noop)
@@ -480,33 +162,20 @@
 /obj/item/tank/emergency_oxygen{
 	pixel_x = -8
 	},
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/template_noop)
-"br" = (
-/obj/structure/table/reinforced,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/clothing/mask/breath{
 	pixel_x = 4
 	},
 /obj/item/clothing/mask/breath{
 	pixel_x = 4
 	},
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/techfloor_grid/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bs" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
 	name = "Wasting Room"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/techfloor_grid/airless,
 /area/template_noop)
 "bt" = (
@@ -525,29 +194,6 @@
 /obj/item/tank/emergency_oxygen/double,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/template_noop)
-"bt" = (
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"bv" = (
-/obj/machinery/door/firedoor,
-/obj/effect/window_lwall_spawn/plasma,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"bx" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 10
-	},
-/obj/random/techpart,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"by" = (
-/obj/structure/table/reinforced,
-/obj/machinery/light/small,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bz" = (
 /obj/structure/cable/green{
@@ -555,24 +201,14 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bA" = (
 /obj/structure/railing{
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bB" = (
 /obj/structure/catwalk,
@@ -580,19 +216,11 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "bC" = (
 /obj/effect/window_lwall_spawn/smartspawn,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bC" = (
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bD" = (
 /obj/structure/railing{
@@ -604,7 +232,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "bK" = (
@@ -617,57 +244,12 @@
 "bS" = (
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/plating/airless,
-=======
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bE" = (
-/obj/structure/railing,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/random/scrap/sparse_even/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bF" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4;
-	tag = "icon-railing0 (EAST)"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/random/scrap/sparse_even/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bK" = (
-/obj/structure/catwalk,
-/obj/structure/sign/warning/nosmoking/largeburnt{
-	pixel_y = 32
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bL" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bM" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bS" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bW" = (
 /obj/machinery/door/airlock/maintenance_engineering{
 	name = "Engineering Maintenance";
 	req_access = list(10)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
 /area/template_noop)
 "bX" = (
@@ -686,24 +268,6 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/dark/techfloor/airless,
-=======
-/turf/simulated/floor/tiled/techmaint_cargo,
-/area/template_noop)
-"bX" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/structure/catwalk,
-/obj/structure/sign/atmos/atmos_o2{
-	pixel_x = -32
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ca" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"cb" = (
-/turf/simulated/floor/tiled/dark/techfloor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ci" = (
 /obj/machinery/door/firedoor,
@@ -711,7 +275,6 @@
 	name = "Atmospherics Maintenance";
 	req_access = list(24)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
 /area/template_noop)
 "ck" = (
@@ -725,37 +288,11 @@
 /obj/structure/table/rack,
 /obj/spawner/lowkeyrandom,
 /turf/simulated/floor/tiled/techmaint/airless,
-=======
-/turf/simulated/floor/tiled/techmaint_cargo,
-/area/template_noop)
-"cj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/template_noop)
-"ck" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/template_noop)
-"cn" = (
-/obj/random/structures,
-/turf/simulated/floor/tiled/techmaint_panels,
-/area/template_noop)
-"cp" = (
-/obj/structure/table/rack,
-/obj/random/lowkeyrandom,
-/turf/simulated/floor/tiled/techmaint,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cv" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/template_noop)
 "cx" = (
@@ -769,28 +306,12 @@
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /turf/simulated/floor/tiled/techmaint/airless,
-=======
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"cz" = (
-/obj/structure/table/reinforced,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/turf/simulated/floor/tiled/techmaint,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/reinforced,
-<<<<<<< HEAD
 /obj/spawner/tank,
 /turf/simulated/floor/tiled/techmaint/airless,
-=======
-/obj/random/tank,
-/turf/simulated/floor/tiled/techmaint,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cB" = (
 /obj/machinery/door/firedoor,
@@ -798,21 +319,12 @@
 	name = "Atmospherics Maintenance";
 	req_access = list(24)
 	},
-<<<<<<< HEAD
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
-=======
-/turf/simulated/floor/tiled/techmaint_cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cE" = (
 /obj/structure/railing{
@@ -824,16 +336,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /obj/spawner/powercell/low_chance,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/random/powercell/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cF" = (
 /obj/structure/railing{
@@ -849,19 +353,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /obj/spawner/traps/wire_splicing/low_chance,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/random/traps/wire_splicing/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cG" = (
 /obj/structure/catwalk,
@@ -875,17 +368,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cH" = (
 /obj/structure/catwalk,
@@ -894,17 +377,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cI" = (
 /obj/structure/railing,
@@ -921,17 +394,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cJ" = (
 /obj/structure/railing{
@@ -944,32 +407,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"cK" = (
-/obj/structure/railing,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cL" = (
 /obj/structure/railing,
@@ -978,17 +416,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cM" = (
 /obj/structure/railing,
@@ -1002,17 +430,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cO" = (
 /obj/structure/cable/green{
@@ -1020,17 +438,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cP" = (
 /obj/structure/railing{
@@ -1042,19 +450,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-<<<<<<< HEAD
 /obj/spawner/traps/wire_splicing/low_chance,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/random/traps/wire_splicing/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cQ" = (
 /obj/structure/catwalk,
@@ -1063,39 +460,20 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "cT" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cV" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "cW" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"cW" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cX" = (
 /obj/structure/catwalk,
@@ -1104,12 +482,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cY" = (
 /obj/structure/railing,
@@ -1117,11 +490,7 @@
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cZ" = (
 /obj/structure/railing,
@@ -1129,16 +498,10 @@
 	dir = 4;
 	tag = "icon-railing0 (EAST)"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "db" = (
 /obj/structure/sign/vacuum,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"db" = (
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "dc" = (
@@ -1149,23 +512,14 @@
 	locked = 1;
 	name = "Internal Atmospherics Airlock"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/cargo/airless,
-=======
-/turf/simulated/floor/tiled/steel/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "dd" = (
 /obj/structure/railing{
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/visible/universal,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "de" = (
 /obj/structure/cable/green{
@@ -1177,17 +531,11 @@
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/machinery/atmospherics/pipe/simple/visible/universal,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "df" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1202,19 +550,6 @@
 "dj" = (
 /obj/effect/window_lwall_spawn/smartspawn,
 /turf/simulated/floor/plating/airless,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"di" = (
-/turf/simulated/floor/plating,
-/area/template_noop)
-"dj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "dk" = (
 /obj/structure/cable/green{
@@ -1222,7 +557,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-<<<<<<< HEAD
 /obj/effect/window_lwall_spawn/smartspawn,
 /turf/simulated/floor/plating/airless,
 /area/template_noop)
@@ -1242,199 +576,11 @@ bn
 bn
 bn
 ae
-=======
-/obj/machinery/atmospherics/pipe/simple/visible/blue,
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating,
-/area/template_noop)
-"dm" = (
-/obj/structure/railing,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"dt" = (
-/obj/structure/catwalk,
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"fu" = (
-/obj/structure/lattice,
-/obj/random/junk/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"fY" = (
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"gs" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"hj" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 8
-	},
-/obj/random/techpart,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"iS" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"jH" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
-/obj/random/techpart,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"kD" = (
-/obj/random/tool,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"kS" = (
-/obj/structure/scrap_cube,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"mo" = (
-/obj/random/junk/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"oM" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/random/scrap/dense_even,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"pP" = (
-/obj/structure/lattice,
-/obj/random/scrap/dense_even,
-/turf/template_noop,
-/area/template_noop)
-"rn" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"sX" = (
-/obj/structure/catwalk,
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"tW" = (
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"wa" = (
-/obj/structure/scrap_cube,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/template_noop)
-"zU" = (
-/obj/structure/scrap_cube,
-/obj/random/tool,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"Bp" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/dark/techfloor,
-/area/template_noop)
-"CB" = (
-/obj/structure/scrap_cube,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"FC" = (
-/obj/structure/lattice,
-/obj/random/mob/carp,
-/turf/template_noop,
-/area/template_noop)
-"HE" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"KV" = (
-/obj/random/scrap/dense_even,
-/turf/simulated/floor/tiled/techmaint,
-/area/template_noop)
-"Ls" = (
-/obj/random/techpart,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Na" = (
-/obj/random/lowkeyrandom/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"NP" = (
-/turf/simulated/floor/tiled/steel/cargo,
-/area/template_noop)
-"NQ" = (
-/obj/structure/railing{
-	dir = 8;
-	tag = "icon-railing0 (WEST)"
-	},
-/obj/structure/scrap/poor/large,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"NX" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 9
-	},
-/obj/structure/scrap/poor/large,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Qr" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 10
-	},
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Sn" = (
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Sq" = (
-/obj/random/scrap/dense_even,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ZO" = (
-/obj/structure/lattice,
-/obj/random/lowkeyrandom/low_chance,
-/turf/template_noop,
-/area/template_noop)
-
-(1,1,1) = {"
-iS
-aJ
-ae
-aa
-mo
-fY
-ab
-ab
-ab
-ae
-mo
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 aa
 aa
-<<<<<<< HEAD
 aa
 aa
 aa
@@ -1523,101 +669,11 @@ bt
 dj
 aa
 aa
-=======
-fY
-aa
-fu
-aa
-aa
-aa
-HE
-ae
-ab
-"}
-(2,1,1) = {"
-ab
-NP
-ab
-fY
-aa
-db
-db
-bs
-db
-db
-ZO
-aa
-aR
-iS
-fu
-db
-db
-db
-db
-fY
-aa
-ab
-ab
-HE
-aJ
-"}
-(3,1,1) = {"
-aJ
-bf
-ae
-ao
-aa
-db
-bk
-rn
-bf
-db
-db
-db
-iS
-db
-db
-db
-ao
-aq
-db
-db
-ab
-fu
-aa
-fY
-aa
-"}
-(4,1,1) = {"
-ab
-HE
-kD
-ae
-ab
-db
-bl
-db
-bA
-db
-zU
-db
-ae
-db
-cn
-bf
-bD
-aP
-CB
-aT
-aa
-fY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 "}
 (5,1,1) = {"
-<<<<<<< HEAD
 aa
 bn
 bx
@@ -1666,63 +722,12 @@ cZ
 ca
 aA
 aa
-=======
-fY
-ZO
-aJ
-aB
-aa
-aB
-an
-aJ
-ao
-db
-af
-bW
-bf
-db
-cn
-bt
-cE
-bE
-bt
-aT
-aa
-aa
-aa
-mo
-aa
-"}
-(6,1,1) = {"
-ab
-aJ
-aJ
-db
-ZO
-db
-db
-db
-aJ
-db
-db
-db
-bt
-db
-db
-cv
-cF
-bF
-ca
-db
-Na
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 aa
 "}
 (7,1,1) = {"
-<<<<<<< HEAD
 bn
 bx
 bo
@@ -1746,36 +751,10 @@ aA
 aa
 aa
 aa
-=======
-fu
-Ls
-bo
-db
-aR
-ab
-iS
-db
-aq
-db
-bS
-db
-bL
-bh
-db
-bB
-cG
-bL
-KV
-db
-aa
-aa
-aR
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (8,1,1) = {"
-<<<<<<< HEAD
 bn
 bx
 bx
@@ -1798,37 +777,12 @@ ag
 aA
 aa
 aa
-=======
-ab
-aJ
-aJ
-aB
-fY
-fu
-ab
-db
-aJ
-as
-aJ
-dm
-bL
-db
-db
-bt
-cH
-bL
-ag
-db
-aa
-mo
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 "}
 (9,1,1) = {"
 ae
-<<<<<<< HEAD
 bx
 bx
 aA
@@ -1852,36 +806,10 @@ aa
 aa
 aa
 aa
-=======
-aJ
-HE
-db
-db
-db
-db
-db
-db
-db
-ae
-db
-bL
-db
-cn
-ca
-oM
-bL
-bt
-aT
-aa
-aa
-aa
-Na
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (10,1,1) = {"
 aa
-<<<<<<< HEAD
 bx
 bx
 aZ
@@ -1902,35 +830,12 @@ cW
 ca
 dj
 bn
-=======
-Sn
-ac
-aD
-aS
-aB
-ab
-bv
-aQ
-ab
-ab
-db
-bK
-db
-cn
-bt
-cH
-bL
-ca
-aT
-iS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 aa
 "}
 (11,1,1) = {"
-<<<<<<< HEAD
 aa
 bx
 bx
@@ -1982,64 +887,10 @@ aA
 bn
 bn
 aa
-=======
-fY
-kS
-aJ
-ad
-aE
-aB
-pP
-bv
-ab
-fY
-aa
-ae
-ab
-db
-db
-cz
-cH
-bL
-bf
-db
-db
-aa
-aa
-mo
-aa
-"}
-(12,1,1) = {"
-ab
-ak
-hj
-aF
-aO
-aB
-ab
-bv
-ZO
-ab
-aR
-aa
-fY
-aJ
-db
-cA
-cH
-bL
-bt
-df
-db
-fu
-ab
-fY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (13,1,1) = {"
 aa
-<<<<<<< HEAD
 bx
 bx
 aZ
@@ -2062,35 +913,10 @@ aA
 aA
 ae
 bn
-=======
-aJ
-au
-aG
-aT
-db
-db
-db
-ae
-Sq
-aa
-fY
-aa
-ae
-db
-db
-cI
-bL
-db
-db
-db
-ae
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (14,1,1) = {"
-<<<<<<< HEAD
 bn
 bx
 bx
@@ -2114,37 +940,11 @@ bx
 bx
 bx
 bn
-=======
-ab
-aj
-av
-aH
-aU
-be
-ak
-aN
-ae
-an
-aa
-mo
-ab
-bo
-aJ
-bW
-cH
-bL
-dc
-aJ
-ao
-bo
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (15,1,1) = {"
 aa
-<<<<<<< HEAD
 bn
 bx
 ah
@@ -2194,63 +994,11 @@ di
 aA
 bn
 bn
-=======
-ab
-aw
-ah
-aT
-ab
-HE
-aw
-db
-bL
-db
-db
-db
-db
-db
-db
-cJ
-cV
-db
-ba
-db
-ae
-ab
-mo
-aa
-"}
-(16,1,1) = {"
-mo
-ab
-aw
-aC
-db
-ae
-Sq
-bx
-aU
-bM
-bM
-bX
-bM
-bC
-ao
-ae
-cK
-sX
-aT
-di
-db
-ab
-ZO
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (17,1,1) = {"
 aa
-<<<<<<< HEAD
 bn
 bx
 aC
@@ -2271,35 +1019,12 @@ cW
 aA
 aA
 aA
-=======
-FC
-gs
-aC
-aT
-iS
-aJ
-bo
-aT
-NQ
-db
-tW
-ca
-db
-db
-db
-cK
-bL
-db
-db
-db
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 aa
 "}
 (18,1,1) = {"
-<<<<<<< HEAD
 aa
 bx
 bx
@@ -2316,44 +1041,18 @@ bt
 bi
 cp
 aA
-=======
-fY
-aJ
-ax
-aK
-aV
-ab
-bo
-bo
-db
-bo
-db
-bf
-CB
-bi
-cp
-db
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 cL
 cW
 dd
 dj
-<<<<<<< HEAD
 bn
 aa
 aa
 aa
-=======
-iS
-mo
-aa
-mo
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (19,1,1) = {"
 aa
-<<<<<<< HEAD
 bx
 bx
 aZ
@@ -2369,32 +1068,11 @@ aA
 ci
 aA
 aA
-=======
-ak
-am
-aL
-aW
-db
-db
-db
-db
-db
-db
-db
-db
-ci
-db
-db
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 cM
 cX
 de
 dk
-<<<<<<< HEAD
 bn
-=======
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
@@ -2402,7 +1080,6 @@ aa
 "}
 (20,1,1) = {"
 aa
-<<<<<<< HEAD
 bx
 bx
 aZ
@@ -2452,62 +1129,10 @@ bW
 at
 aA
 bn
-=======
-al
-jH
-ar
-aX
-aB
-aJ
-bo
-ab
-iS
-ab
-db
-cb
-Bp
-bp
-db
-cK
-bL
-db
-db
-db
-db
-ae
-aa
-Na
-"}
-(21,1,1) = {"
-ab
-NX
-ay
-ad
-aY
-aB
-iS
-aa
-aR
-Na
-fu
-db
-wa
-cj
-bq
-db
-cK
-bL
-bi
-bW
-CB
-db
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (22,1,1) = {"
-<<<<<<< HEAD
 bn
 bx
 bx
@@ -2531,36 +1156,10 @@ aA
 aA
 aA
 bn
-=======
-ZO
-aJ
-Qr
-aO
-aZ
-aB
-ab
-aa
-fY
-ab
-ab
-db
-aA
-ck
-br
-db
-cO
-cY
-aM
-db
-db
-db
-FC
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (23,1,1) = {"
-<<<<<<< HEAD
 aa
 bn
 bx
@@ -2593,47 +1192,12 @@ bn
 bx
 bx
 dh
-=======
-fY
-ab
-aJ
-HE
-db
-db
-aa
-mo
-fY
-ae
-db
-db
-bg
-bj
-by
-db
-cP
-cZ
-bt
-db
-iS
-ZO
-ab
-ae
-ab
-"}
-(24,1,1) = {"
-aa
-ab
-aJ
-aJ
-ba
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aI
 aa
 aa
 aa
 bb
 ae
-<<<<<<< HEAD
 bn
 bn
 bn
@@ -2659,38 +1223,11 @@ aa
 aa
 aa
 aa
-=======
-iS
-fu
-ab
-bz
-cB
-cQ
-dt
-bt
-db
-aa
-mo
-an
-ae
-ab
-"}
-(25,1,1) = {"
-mo
-aa
-fY
-ab
-ab
-Na
-fY
-fY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
 aa
 aa
-<<<<<<< HEAD
 ae
 aA
 aA
@@ -2702,18 +1239,4 @@ aa
 bx
 ar
 bn
-=======
-Na
-ae
-db
-db
-aT
-aT
-db
-Na
-aa
-HE
-HE
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

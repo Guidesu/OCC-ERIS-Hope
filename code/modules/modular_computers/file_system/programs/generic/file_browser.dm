@@ -23,11 +23,7 @@
 		open_file = href_list["PRG_openfile"]
 	if(href_list["PRG_newtextfile"])
 		. = 1
-<<<<<<< HEAD
 		var/newname = sanitize(input(usr, "Enter file name or leave blank to cancel:", "File rename"))
-=======
-		var/newname = sanitize(input(usr, "Enter file name or leave blank to cancel:", "File rename") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname)
 			return 1
 		var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
@@ -77,11 +73,7 @@
 		var/datum/computer_file/file = HDD.find_file_by_name(href_list["PRG_rename"])
 		if(!file || !istype(file))
 			return 1
-<<<<<<< HEAD
 		var/newname = sanitize(input(usr, "Enter new file name:", "File rename", file.filename))
-=======
-		var/newname = sanitize(input(usr, "Enter new file name:", "File rename", file.filename) as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(file && newname)
 			file.filename = newname
 	if(href_list["PRG_edit"])
@@ -100,11 +92,7 @@
 		var/oldtext = html_decode(F.stored_data)
 		oldtext = replacetext(oldtext, "\[br\]", "\n")
 
-<<<<<<< HEAD
 		var/newtext = sanitize(replacetext(input(usr, "Editing file [open_file]. You may use most tags used in paper formatting:", "Text Editor", oldtext), "\n", "\[br\]"), MAX_TEXTFILE_LENGTH)
-=======
-		var/newtext = sanitize(replacetext(input(usr, "Editing file [open_file]. You may use most tags used in paper formatting:", "Text Editor", oldtext) as text|null, "\n", "\[br\]"), MAX_TEXTFILE_LENGTH)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newtext)
 			return
 
@@ -163,7 +151,7 @@
 /datum/nano_module/program/computer_filemanager
 	name = "File Manager"
 
-/datum/nano_module/program/computer_filemanager/nano_ui_data()
+/datum/nano_module/program/computer_filemanager/ui_data()
 	var/list/data = host.initial_data()
 
 	var/datum/computer_file/program/filemanager/PRG
@@ -177,10 +165,10 @@
 
 	else
 		if(PRG.computer.hard_drive)
-			data["internal_disk"] = PRG.computer.hard_drive.nano_ui_data()
+			data["internal_disk"] = PRG.computer.hard_drive.ui_data()
 
 		if(PRG.computer.portable_drive)
-			data["portable_disk"] = PRG.computer.portable_drive.nano_ui_data()
+			data["portable_disk"] = PRG.computer.portable_drive.ui_data()
 
 		if(PRG.open_file)
 			var/datum/computer_file/data/file
@@ -196,8 +184,8 @@
 
 	return data
 
-/datum/nano_module/program/computer_filemanager/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nano_topic_state/state = GLOB.default_state)
-	var/list/data = nano_ui_data()
+/datum/nano_module/program/computer_filemanager/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+	var/list/data = ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

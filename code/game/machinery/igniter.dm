@@ -60,7 +60,7 @@
 // Wall mounted remote-control igniter.
 
 /obj/machinery/sparker
-	name = "mounted igniter"
+	name = "Mounted igniter"
 	desc = "A wall-mounted ignition device."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "migniter"
@@ -68,11 +68,7 @@
 	var/disable = 0
 	var/last_spark = 0
 	var/base_state = "migniter"
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 4

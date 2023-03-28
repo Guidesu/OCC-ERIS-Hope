@@ -4,28 +4,9 @@
 	desc = "A cockroach egg, can be eaten with proper preparation. It seems to pulse slightly with an inner life."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "roach_egg"
-<<<<<<< HEAD
 	w_class = ITEM_SIZE_TINY
 	health = 5
 	var/amount_grown = 0
-=======
-	preloaded_reagents = list("egg" = 9, "blattedin" = 3)
-	w_class = ITEM_SIZE_TINY
-	health = 5
-	var/amount_grown = 0
-	var/spawn_type = /mob/living/carbon/superior_animal/roach/roachling
-	var/datum/genetics/genetics_holder/unnatural_mutations = new()
-
-/obj/item/roach_egg/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(istype(O,/obj/machinery/microwave))
-		return ..()
-	if(!proximity || !O.is_refillable())
-		return
-	to_chat(user, "You crack \the [src] into \the [O].")
-	reagents.trans_to(O, reagents.total_volume)
-	user.drop_from_inventory(src)
-	qdel(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/roach_egg/attackby(var/obj/item/I, var/mob/user)
 	if(I.attack_verb.len)
@@ -33,23 +14,13 @@
 	else
 		visible_message(SPAN_WARNING("\The [src] have been attacked with \the [I][(user ? " by [user]." : ".")]"))
 
-<<<<<<< HEAD
 	health -= (I.force / 2.0)
-=======
-	health -= (I.force / 2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	healthcheck()
 
 /obj/item/roach_egg/bullet_act(var/obj/item/projectile/Proj)
 	..()
-<<<<<<< HEAD
 	health -= Proj.get_structure_damage()
 	healthcheck()
-=======
-	if (!(Proj.testing))
-		health -= Proj.get_structure_damage()
-		healthcheck()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/roach_egg/proc/healthcheck()
 	if(health <= 0)
@@ -79,15 +50,9 @@
 
 	. = ..()
 
-<<<<<<< HEAD
 /obj/item/roach_egg/Process()	
 	if (isturf(src.loc) || istype(src.loc, /obj/structure/closet) || istype(src.loc, /obj/item/organ/external)) // suppresses hatching when not in a suitable loc
 		if(amount_grown >= 100)
-=======
-/obj/item/roach_egg/Process()
-	if (isturf(src.loc) || istype(src.loc, /obj/structure/closet) || istype(src.loc, /obj/item/organ/external)) // suppresses hatching when not in a suitable loc
-		if(amount_grown >= 50) //Roaches hatch REALLY fast compared to spooders
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/obj/item/organ/external/O
 			if(istype(loc, /obj/item/organ/external)) // In case you want to implant some roach eggs into someone, gross!
 				O = loc
@@ -97,16 +62,8 @@
 				O.implants -= src // Remove from implants and spawn the roachling on the ground
 				src.loc = O.owner ? O.owner.loc : O.loc
 
-<<<<<<< HEAD
 			var/spawn_type = /mob/living/carbon/superior_animal/roach/roachling
 			new spawn_type(src.loc, src)
-=======
-			if(unnatural_mutations.mutation_pool.len > 0)
-				var/mob/living/baby = new spawn_type(src.loc, src)
-				baby.unnatural_mutations = unnatural_mutations.Copy()
-			else
-				new spawn_type(src.loc, src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			qdel(src)
 		else
 			amount_grown += rand(0,2)

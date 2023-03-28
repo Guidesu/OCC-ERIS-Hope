@@ -5,17 +5,9 @@
 /obj/effect/overmap_event/proc/del_event()
 	STOP_PROCESSING(SSobj, src)
 	if(OE)
-<<<<<<< HEAD
 		for(var/obj/effect/overmap/ship/victim in GLOB.ships)
 			OE.leave(victim)
 
-=======
-		for(var/obj/effect/overmap/ship/victim in world)
-			if(istype(victim, /obj/effect/overmap/ship))
-				OE.leave(victim)
-
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/overmap_event/proc/handle_wraparound()
 	var/low_edge = 1
 	var/high_edge = GLOB.maps_data.overmap_size - 1
@@ -62,11 +54,7 @@
 			qdel(src)
 	else
 		return //we're not flying off anywhere
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/overmap_event/movable
 	var/movable = 0
 	var/temporary = 0
@@ -93,13 +81,8 @@
 
 /obj/effect/overmap_event/movable/Process()
 	if(movable == 1)
-<<<<<<< HEAD
 		walk(src,moving_vector,170,0)
 		handle_wraparound()
-=======
-		SSmove_manager.move(src,moving_vector,170,0)
-		//handle_wraparound()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/overmap_event/movable/Initialize()
 	. = ..()
@@ -147,15 +130,10 @@
 
 
 /////////                      ........::::::%%%SPACE_COMET
-<<<<<<< HEAD
-=======
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/overmap_event/movable/comet
 	start_x = 2
 	start_y = 2
 	eventtype = /datum/overmap_event/meteor/comet_tail_core
-<<<<<<< HEAD
 	icon_state = "poi"
 
 	name_stages = list("comet core", "unknown object", "unknown spatial phenomenon")
@@ -165,17 +143,11 @@
 	. = ..()
 
 	icon_stages[1] = pick(list("asteroid0", "asteroid1", "asteroid2", "asteroid3"))
-=======
-	icon_state = "ship_moving"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/overmap_event/movable/comet/Move()
 	if(type == /obj/effect/overmap_event/movable/comet)
 		var/obj/effect/overmap_event/movable/comet/cometmedium/CT = new /obj/effect/overmap_event/movable/comet/cometmedium()
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		CT.moving_vector = moving_vector
 		CT.Move(src.loc)
 	..()
@@ -183,23 +155,16 @@
 /obj/effect/overmap_event/movable/comet/cometmedium
 	movable = 0
 	eventtype = /datum/overmap_event/meteor/comet_tail_medium
-<<<<<<< HEAD
 	icon_state = "poi"
 
 	name_stages = list("comet tail", "unknown field", "unknown spatial phenomenon")
 	icon_stages = list("generic", "field", "poi")
-=======
-	icon_state = "meteor1"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/overmap_event/movable/comet/cometmedium/Initialize()
 	. = ..()
 
-<<<<<<< HEAD
 	icon_stages[1] = pick(list("meteors0", "meteors1", "meteors2", "meteors3"))
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!config.use_overmap)
 		return
 	walk(src,turn(moving_vector, pick(45,-45,90,-90)),rand(100,160),0)
@@ -219,7 +184,6 @@
 
 		del_event()
 		qdel(src)
-<<<<<<< HEAD
 
 /obj/effect/overmap_event/movable/comet/comettail
 	movable = 0
@@ -228,32 +192,16 @@
 
 	name_stages = list("thin comet tail", "unknown field", "unknown spatial phenomenon")
 	icon_stages = list("generic", "field", "poi")
-=======
-*/
-/*
-/obj/effect/overmap_event/movable/comet/comettail
-	movable = 0
-	eventtype = /datum/overmap_event/meteor/comet_tail
-	icon_state = "dust1"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/overmap_event/movable/comet/comettail/Initialize()
 	. = ..()
 
-<<<<<<< HEAD
 	icon_stages[1] = pick(list("dust0", "dust1", "dust2", "dust3"))
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!config.use_overmap)
 		return
 	spawn(450)
 		del_event()
 		qdel(src)
-<<<<<<< HEAD
 
 //////                                                                           SPACE_COMET%%%::::::........
-=======
-*/
-//////                                                                           SPACE_COMET%%%::::::........
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

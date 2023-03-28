@@ -117,20 +117,13 @@ This file contains the underlying code for stash datums
 	var/direction_string = ""
 	var/atom/stash_location //Probably a turf, but could be inside something
 
-<<<<<<< HEAD
-=======
-	var/map_image = FALSE //Whether we spawn a photo when creating the stash note
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/atom/stash_container = null //Reference to the container our stash is inside
-
 
 
 
 //This proc selects the turf where the stash will be spawned
 /datum/stash/proc/select_location()
-	if(!select_direction())
-		return
+	select_direction()
 
 	if (selected_direction == DIRECTION_LANDMARK)
 		//If we're using landmark spawning then we do that
@@ -166,50 +159,23 @@ This file contains the underlying code for stash datums
 	create_direction()
 
 /datum/stash/proc/select_direction()
-
-	var/possible_landmark
-	if(directions & DIRECTION_LANDMARK)
-		possible_landmark = pick_landmark(/obj/landmark/storyevent/midgame_stash_spawn)
-
-
 	//First of all, lets select how we're going to direct the user. This is not purely random
 
 	//If there's only one possible direction, then we take that
-<<<<<<< HEAD
 	if (directions == DIRECTION_COORDS || directions == DIRECTION_LANDMARK)
-=======
-	if (directions == DIRECTION_COORDS || (directions == DIRECTION_LANDMARK && possible_landmark) || directions == DIRECTION_IMAGE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		selected_direction = directions
-		return TRUE
+
 	else
-<<<<<<< HEAD
 		if ((directions & DIRECTION_LANDMARK) && prob(50))
 			//Landmark returns the unique navigation text tied to the landmark object, failing this, the area it is within.
-=======
-		if ((directions & DIRECTION_IMAGE) && prob(50))
-			//Image is interesting, so 50% chance to do that if allowed
-			selected_direction = DIRECTION_IMAGE
-			return TRUE
-		else if ((directions & DIRECTION_LANDMARK) && possible_landmark && prob(75))
-			//Landmark is also interesting, high probability to do that
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			selected_direction = DIRECTION_LANDMARK
-			return TRUE
 		else
 			//Coords is the fallback, and returns exact coordinates.
 			selected_direction = DIRECTION_COORDS
-			return TRUE
 
 
 //This proc is called after location is set, it creates the necessary info to direct the user
 /datum/stash/proc/create_direction()
-<<<<<<< HEAD
-=======
-	if (selected_direction == DIRECTION_IMAGE)
-		map_image = TRUE
-		create_direction_string()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (selected_direction == DIRECTION_COORDS)
 		create_direction_string(stash_location)
 	if (selected_direction == DIRECTION_LANDMARK)
@@ -340,7 +306,6 @@ This file contains the underlying code for stash datums
 	Note Creation
 **************************/
 //Creates the note that tells the player how to reach the goodies
-/*
 /datum/stash/proc/spawn_note(var/atom/spawner)
 	//The passed spawner is where we will create the note
 	var/obj/item/paper/note = new note_paper_type(spawner)
@@ -348,12 +313,6 @@ This file contains the underlying code for stash datums
 	note.info = lore
 	note.update_icon()
 
-<<<<<<< HEAD
-=======
-	//If theres a photo, attach it to the note
-	if (map_image)
-		note.attackby(createpicture(stash_location, null, CAPTURE_MODE_HISTORICAL, radius = 3))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return note
 
 //Does final creation on lore, override this to do fancy things
@@ -361,11 +320,7 @@ This file contains the underlying code for stash datums
 	lore = replacetext(lore, "%D", direction_string)
 	//Todo, find out why textclass isnt working
 	lore = "<div [textclass ? "class='[textclass]'" : ""] style='font-size: [text_size]px; padding: [padding]px'>[lore]</div>"
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
 	Helper procs
 */
@@ -394,8 +349,4 @@ This file contains the underlying code for stash datums
 
 	//Now we pickweight our datum
 	if (category)
-<<<<<<< HEAD
 		return pickweight_n_take(possible_stashes)
-=======
-		return pickweight_n_take(possible_stashes)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

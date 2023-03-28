@@ -420,7 +420,7 @@
 	icon = 'icons/atmos/digital_tvalve.dmi'
 
 	var/frequency = 0
-	var/id
+	var/id = null
 	var/datum/radio_frequency/radio_connection
 
 /obj/machinery/atmospherics/tvalve/mirrored/digital/bypass

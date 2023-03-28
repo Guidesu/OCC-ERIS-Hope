@@ -3,15 +3,6 @@
 	var/required_slot_flags
 	var/required_free_body_parts
 
-/obj/item/underwear/Destroy()
-
-	if (istype(loc, /mob/living/carbon/human) && !QDELETED(loc))
-		var/mob/living/carbon/human/wearer = loc
-
-		wearer.worn_underwear -= src
-
-	. = ..()
-
 /obj/item/underwear/afterattack(var/atom/target, var/mob/user, var/proximity)
 	if(!proximity)
 		return // Might as well check
@@ -23,7 +14,7 @@
 /obj/item/underwear/proc/CanEquipUnderwear(var/mob/user, var/mob/living/carbon/human/H)
 	if(!CanAdjustUnderwear(user, H, "put on"))
 		return FALSE
-	if(!(H.species && (H.form.appearance_flags & HAS_UNDERWEAR)))
+	if(!(H.species && (H.species.appearance_flags & HAS_UNDERWEAR)))
 		to_chat(user, "<span class='warning'>\The [H]'s species cannot wear underwear of this nature.</span>")
 		return FALSE
 	if(is_path_in_list(type, H.worn_underwear))
@@ -48,7 +39,7 @@
 	var/list/covering_items = H.get_covering_equipped_items(required_free_body_parts)
 	if(covering_items.len)
 		var/obj/item/I = covering_items[1]
-		var/datum/gender/G = GLOB.gender_datums[I.gender]
+		var/datum/gender/G = gender_datums[I.gender]
 		if(adjustment_verb)
 			to_chat(user, "<span class='warning'>Cannot [adjustment_verb] \the [src]. [english_list(covering_items)] [covering_items.len == 1 ? G.is : "are"] in the way.</span>")
 		return FALSE

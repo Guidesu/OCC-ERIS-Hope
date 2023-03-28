@@ -1,5 +1,4 @@
 /obj/item/gun/projectile/automatic
-<<<<<<< HEAD
 	name = "automatic projectile gun"
 	desc = "A debug firearm, which should be reported if present in-game. Uses 9mm rounds."
 	icon = 'icons/obj/guns/projectile/generic_smg.dmi'
@@ -11,45 +10,20 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	ammo_type = /obj/item/ammo_casing/pistol
-=======
-	name = "old automatic projectile gun"
-	desc = "A no longer produced hologram of the base of all moder day smgs. Uses 9mm rounds."
-	icon = 'icons/obj/guns/projectile/generic_smg.dmi'
-	icon_state = "generic_smg"
-	w_class = ITEM_SIZE_NORMAL
-	load_method = SINGLE_CASING|SPEEDLOADER //Default is speedloader because all might not have magazine sprites.
-	max_shells = 1 //Automatic quick fix idk why this was set to 22 but it was. Issue fixed
-	caliber = CAL_PISTOL
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	slot_flags = SLOT_BELT
-	ammo_type = /obj/item/ammo_casing/pistol_35
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	burst_delay = 2
 	fire_sound = 'sound/weapons/guns/fire/smg_fire.ogg'
 	unload_sound = 'sound/weapons/guns/interact/smg_magout.ogg'
 	reload_sound = 'sound/weapons/guns/interact/smg_magin.ogg'
 	cocked_sound = 'sound/weapons/guns/interact/smg_cock.ogg'
-<<<<<<< HEAD
 	zoom_factor = 0 //Default zoom factor you want on all automatic weapons.
 	bad_type = /obj/item/gun/projectile/automatic
 	gun_parts = list(/obj/item/part/gun = 3 ,/obj/item/stack/material/steel = 15)
 	init_firemodes = list(
 		FULL_AUTO_400,
-=======
-	zoom_factors = list()
-	gun_tags = list(GUN_PROJECTILE, GUN_INTERNAL_MAG)
-	auto_rack = TRUE
-	init_firemodes = list(
-		FULL_AUTO_300,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		SEMI_AUTO_NODELAY,
 		BURST_3_ROUND,
 		BURST_5_ROUND
 		)
-
-	wield_delay = 1 SECOND
-	wield_delay_factor = 0.3 // 30 vig for insta wield
-	gun_parts = list(/obj/item/part/gun = 3 ,/obj/item/stack/material/steel = 15)
 
 
 //Automatic firing
@@ -115,6 +89,6 @@
 		//Create and assign the click handler
 		//A click handler intercepts mouseup/drag/down events which allow fullauto firing
 		CH = new /datum/click_handler/fullauto()
-		CH.receiver = gun //receiver is the gun that gets the fire events
+		CH.reciever = gun //Reciever is the gun that gets the fire events
 		L.client.CH = CH //Put it on the client
 		CH.owner = L.client //And tell it where it is

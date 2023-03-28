@@ -30,20 +30,16 @@ Class Procs:
 
 */
 
-#define check(c) (c && c.valid())
+/turf/var/tmp/connection_manager/connections
 
-/turf
-	var/tmp/connection_manager/connections
+/connection_manager/var/connection/N
+/connection_manager/var/connection/S
+/connection_manager/var/connection/E
+/connection_manager/var/connection/W
 
-/connection_manager
-	var/connection/N
-	var/connection/S
-	var/connection/E
-	var/connection/W
-
-#ifdef MULTIZAS
-	var/connection/U
-	var/connection/D
+#ifdef ZLEVELS
+/connection_manager/var/connection/U
+/connection_manager/var/connection/D
 #endif
 
 /connection_manager/proc/get(d)
@@ -61,7 +57,7 @@ Class Procs:
 			if(check(W)) return W
 			else return null
 
-		#ifdef MULTIZAS
+		#ifdef ZLEVELS
 		if(UP)
 			if(check(U)) return U
 			else return null
@@ -77,7 +73,7 @@ Class Procs:
 		if(EAST) E = c
 		if(WEST) W = c
 
-		#ifdef MULTIZAS
+		#ifdef ZLEVELS
 		if(UP) U = c
 		if(DOWN) D = c
 		#endif
@@ -87,7 +83,7 @@ Class Procs:
 	if(check(S)) S.update()
 	if(check(E)) E.update()
 	if(check(W)) W.update()
-	#ifdef MULTIZAS
+	#ifdef ZLEVELS
 	if(check(U)) U.update()
 	if(check(D)) D.update()
 	#endif
@@ -97,9 +93,10 @@ Class Procs:
 	if(check(S)) S.erase()
 	if(check(E)) E.erase()
 	if(check(W)) W.erase()
-	#ifdef MULTIZAS
+	#ifdef ZLEVELS
 	if(check(U)) U.erase()
 	if(check(D)) D.erase()
 	#endif
 
-#undef check
+/connection_manager/proc/check(connection/c)
+	return c && c.valid()

@@ -6,7 +6,7 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
-	health = 100
+	var/health = 100
 
 /obj/structure/bed/nest/update_icon()
 	return
@@ -71,15 +71,15 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/nest/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))
 		M.show_message(SPAN_WARNING("[user] hits [src] with [W]!"), 1)
-	healthCheck()
+	healthcheck()
 
-/obj/structure/bed/nest/healthCheck()
+/obj/structure/bed/nest/proc/healthcheck()
 	if(health <=0)
 		density = FALSE
 		qdel(src)

@@ -17,7 +17,6 @@
 	if(client && !stat)
 		typing_indicator.invisibility = invisibility
 		if(get_preference_value(/datum/client_preference/show_typing_indicator) == GLOB.PREF_HIDE)
-<<<<<<< HEAD
 			remove_overlays(typing_indicator)
 		else
 			if(state)
@@ -27,17 +26,6 @@
 			else
 				if(typing)
 					remove_overlays(typing_indicator)
-=======
-			cut_overlay(typing_indicator)
-		else
-			if(state)
-				if(!typing)
-					add_overlay(typing_indicator)
-					typing = TRUE
-			else
-				if(typing)
-					cut_overlay(typing_indicator)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					typing = FALSE
 			return state
 

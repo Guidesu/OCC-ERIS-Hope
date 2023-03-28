@@ -5,11 +5,6 @@
 	anchored = TRUE // -- TLE
 	movement_handlers = list(/datum/movement_handler/no_move)
 
-<<<<<<< HEAD
-=======
-	death_threshold = HEALTH_THRESHOLD_DEAD
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/silicon/decoy/Initialize()
 	src.icon = 'icons/mob/AI.dmi'
 	src.icon_state = "ai"

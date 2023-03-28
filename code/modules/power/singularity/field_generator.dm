@@ -6,24 +6,20 @@ field_generator power level display
    The icon used for the field_generator need to have 'num_power_levels' number of icon states
    named 'Field_Gen +p[num]' where 'num' ranges from 1 to 'num_power_levels'
 
-   The power level is displayed using over-lays. The current displayed power level is stored in 'powerlevel'.
+   The power level is displayed using overlays. The current displayed power level is stored in 'powerlevel'.
    The overlay in use and the powerlevel variable must be kept in sync.  A powerlevel equal to 0 means that
-   no power level overlay is currently in the over-lays list.
+   no power level overlay is currently in the overlays list.
    -Aygar
 */
 
 #define field_generator_max_power 250000
 /obj/machinery/field_generator
-	name = "field generator"
+	name = "Field Generator"
 	desc = "A large thermal battery that projects a high amount of energy when powered."
 	icon = 'icons/obj/machines/field_generator.dmi'
 	icon_state = "Field_Gen"
 	anchored = 0
-<<<<<<< HEAD
 	density = TRUE
-=======
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
@@ -41,7 +37,6 @@ field_generator power level display
 	var/field_power_draw = 2000	//power needed per field object
 
 
-<<<<<<< HEAD
 /obj/machinery/field_generator/on_update_icon()
 	cut_overlays()
 	if(!active)
@@ -49,26 +44,13 @@ field_generator power level display
 			add_overlays("+a[warming_up]")
 	if(fields.len)
 		add_overlays("+on")
-=======
-/obj/machinery/field_generator/update_icon()
-	cut_overlays()
-	if(!active)
-		if(warming_up)
-			add_overlay("+a[warming_up]")
-	if(fields.len)
-		add_overlay("+on")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
 	level = between(0, level, num_power_levels)
 	if(level)
-<<<<<<< HEAD
 		add_overlays("+p[level]")
-=======
-		add_overlay("+p[level]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return
 
@@ -173,16 +155,9 @@ field_generator power level display
 	return 0
 
 /obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
-<<<<<<< HEAD
 	if(istype(Proj, /obj/item/projectile/beam))
 		power += Proj.damage_types[BURN] * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-=======
-	if (!(Proj.testing))
-		if(istype(Proj, /obj/item/projectile/beam))
-			power += Proj.damage_types[BURN] * EMITTER_DAMAGE_POWER_TRANSFER
-			update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return 0
 
 

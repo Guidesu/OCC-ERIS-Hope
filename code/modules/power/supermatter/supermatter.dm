@@ -287,27 +287,26 @@
 /obj/machinery/power/supermatter/bullet_act(var/obj/item/projectile/Proj)
 	var/turf/L = loc
 	if(!istype(L))		// We don't run process() when we are in space
-		return FALSE	// This stops people from being able to really power up the supermatter
+		return 0	// This stops people from being able to really power up the supermatter
 				// Then bring it inside to explode instantly upon landing on a valid turf.
 
 
 	var/proj_damage = Proj.get_structure_damage()
-	if (!(Proj.testing))
-		if(istype(Proj, /obj/item/projectile/beam))
-			power += proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
-		else
-			damage += proj_damage * config_bullet_energy
-	return FALSE
+	if(istype(Proj, /obj/item/projectile/beam))
+		power += proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
+	else
+		damage += proj_damage * config_bullet_energy
+	return 0
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		nano_ui_interact(user)
+		ui_interact(user)
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... \his body starts to glow and bursts into flames before flashing into ash.</span>",\
@@ -317,7 +316,7 @@
 	Consume(user)
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/supermatter/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -342,7 +341,6 @@
 		ui.set_auto_update(1)
 
 
-<<<<<<< HEAD
 
 /obj/machinery/power/supermatter/proc/transfer_energy()
 	var/transfer_energy = power * POWER_FACTOR * COLLECTOR_TRANSFER_FACTOR
@@ -352,15 +350,6 @@
 			//for collectors using standard plasma tanks at 1013 kPa, the actual power generated will be this transfer_energy*20*29 = transfer_energy*580
 			R.receive_pulse(transfer_energy * (min(3/(distance != 0 ? distance : 1), 1))**2)
 
-=======
-
-/obj/machinery/power/supermatter/proc/transfer_energy()
-	var/transfer_energy = power * POWER_FACTOR * COLLECTOR_TRANSFER_FACTOR
-	for(var/obj/machinery/power/rad_collector/R in GLOB.rad_collectors)
-		if (get_dist(R, src) <= 15) //Better than using orange() every process.
-			R.receive_pulse(transfer_energy*(5/(get_dist(R, src)))**2)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
 

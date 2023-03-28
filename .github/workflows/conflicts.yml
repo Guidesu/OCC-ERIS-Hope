@@ -11,7 +11,3 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: 'Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
-=======
-          WAIT_MS: 10000
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

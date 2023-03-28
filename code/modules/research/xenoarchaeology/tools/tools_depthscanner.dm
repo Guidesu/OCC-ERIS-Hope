@@ -6,14 +6,13 @@
 /obj/item/device/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
-	icon = 'icons/obj/xenoarchaeology.dmi'
-	icon_state = "depth_scanner"
-	item_state = "depth_scanner"
+	icon = 'icons/obj/pda.dmi'
+	icon_state = "crap"
+	item_state = "analyzer"
 	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/list/positive_locations = list()
 	var/datum/depth_scan/current
-	matter = list(MATERIAL_STEEL = 1, MATERIAL_GLASS = 1)
 
 /datum/depth_scan
 	var/time = ""

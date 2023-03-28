@@ -14,20 +14,12 @@
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_fem
-<<<<<<< HEAD
 	name = "Babydoll shirt"
-=======
-	name = "Baby Doll shirt"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "undershirt_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long
-<<<<<<< HEAD
 	name = "Longsleeve Shirt"
-=======
-	name = "Long Sleeve Shirt"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "undershirt_long"
 	has_color = TRUE
 
@@ -37,11 +29,7 @@
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shirt_long_fem
-<<<<<<< HEAD
 	name = "Longsleeve Shirt, feminine"
-=======
-	name = "Long Sleeve Shirt, feminine"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "undershirt_long_fem"
 	has_color = TRUE
 
@@ -96,11 +84,7 @@
 	icon_state = "lover_s"
 
 /datum/category_item/underwear/undershirt/shirt_heart_fem
-<<<<<<< HEAD
 	name = "Shirt, heart, babydoll"
-=======
-	name = "Shirt, heart, baby doll"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "lover_fem_s"
 
 /datum/category_item/underwear/undershirt/shirt_nt
@@ -112,37 +96,21 @@
 	icon_state = "ilovent_s"
 
 /datum/category_item/underwear/undershirt/shirt_love_nt_fem
-<<<<<<< HEAD
 	name = "Shirt, I<3NT, babydoll"
 	icon_state = "ilovent_fem_s"
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt
 	name = "Shortsleeve shirt"
-=======
-	name = "Shirt, I<3NT, baby doll"
-	icon_state = "ilovent_fem_s"
-
-/datum/category_item/underwear/undershirt/shortsleeve_shirt
-	name = "Short Sleeve shirt"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "shortsleeve"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt_fem
-<<<<<<< HEAD
 	name = "Shortsleeve babydoll shirt"
-=======
-	name = "Short Sleeve baby doll shirt"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "shortsleeve_fem"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shortsleeve_shirt_fem_vneck
-<<<<<<< HEAD
 	name = "Shortsleeve babydoll shirt, v-neck"
-=======
-	name = "Short Sleeve baby doll shirt, v-neck"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "shortsleeve_fem_vneck"
 	has_color = TRUE
 
@@ -164,11 +132,7 @@
 	icon_state = "blueshirtsport_s"
 
 /datum/category_item/underwear/undershirt/shirt_tiedye
-<<<<<<< HEAD
 	name = "Shirt, tiedye"
-=======
-	name = "Shirt, tie-dye"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "shirt_tiedye_s"
 
 /datum/category_item/underwear/undershirt/shirt_blue_striped
@@ -197,7 +161,6 @@
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/longstripe_black
-<<<<<<< HEAD
 	name = "Longsleeve Striped Shirt, Black"
 	icon_state = "longstripe"
 
@@ -222,49 +185,4 @@
 /datum/category_item/underwear/undershirt/shibarialt
 	name = "Shibari (w/ sleeves)"
 	icon_state = "shibari_sleeves"
-=======
-	name = "Long Sleeve Striped Shirt, Black"
-	icon_state = "longstripe"
-
-/datum/category_item/underwear/undershirt/longstripe_blue
-	name = "Long Sleeve Striped Shirt, Blue"
-	icon_state = "longstripe_blue"
-
-/datum/category_item/underwear/undershirt/tiedye
-	name = "Tie-dye Shirt"
-	icon_state = "tiedye"
-
-/datum/category_item/underwear/undershirt/bandage
-	name = "Bandage Shirt"
-	icon_state = "bandage_shirt"
-	has_color = TRUE
-	
-/datum/category_item/underwear/undershirt/midriffkeyhole
-	name = "Midriff keyhole Shirt"
-	icon_state = "midriffkeyhole"
-
-/datum/category_item/underwear/undershirt/cropped_tanktop
-	name = "Cropped Tank Top, feminine, v-neck"
-	icon_state = "tanktop_cropped_vneck"
-	has_color = TRUE
-	
-/datum/category_item/underwear/undershirt/tanktop_midriff
-	name = "Tanktop, midriff"
-	icon_state = "tank_midriff"
-	has_color = TRUE
-	
-/datum/category_item/underwear/undershirt/cropped_tanktop_midriff
-	name = "Cropped Tanktop, midriff"
-	icon_state = "tank_midriff_short"
-	has_color = TRUE
-	
-/datum/category_item/underwear/undershirt/blouse_fem
-	name = "Blouse, feminine"
-	icon_state = "blouse_fem"
-	has_color = TRUE
-	
-/datum/category_item/underwear/undershirt/sweater
-	name = "Sweater"
-	icon_state = "sweater"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	has_color = TRUE

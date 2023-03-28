@@ -2,9 +2,9 @@
 
 /obj/machinery/power/emitter
 	name = "emitter"
-	desc = "It is a heavy duty industrial laser. This model has been modified to be completely silent after several complaints from engineers."
+	desc = "It is a heavy duty industrial laser."
 	icon = 'icons/obj/singularity.dmi'
-	icon_state = "emitter" //New sprites done by Eris spriter -CeUvi many thanks!
+	icon_state = "emitter"
 	anchored = 0
 	density = TRUE
 	req_access = list(access_engine_equip)
@@ -138,7 +138,7 @@
 		var/burst_time = (min_burst_delay + max_burst_delay)/2 + 2*(burst_shots-1)
 		var/power_per_shot = active_power_usage * (burst_time/10) / burst_shots
 
-		//playsound(src.loc, 'sound/weapons/emitter.ogg', 25, -1, -1)
+		playsound(src.loc, 'sound/weapons/emitter.ogg', 25, 1)
 		if(prob(35))
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(5, 1, src)
@@ -200,17 +200,12 @@
 			to_chat(user, SPAN_WARNING("The lock seems to be broken!"))
 			return
 		if(src.allowed(user))
-<<<<<<< HEAD
 			if(active)
 				src.locked = !src.locked
 				to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 			else
 				src.locked = 0 //just in case it somehow gets locked
 				to_chat(user, SPAN_WARNING("The controls can only be locked when [src] is online."))
-=======
-			src.locked = !src.locked
-			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			to_chat(user, SPAN_WARNING("Access denied."))
 		return

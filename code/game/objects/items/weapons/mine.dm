@@ -6,14 +6,9 @@
 	w_class = ITEM_SIZE_BULKY
 	matter = list(MATERIAL_STEEL = 35)
 	matter_reagents = list("fuel" = 40)
-<<<<<<< HEAD
 	layer = ABOVE_OBJ_LAYER //should fix all layering problems? or am i crazy stupid and understood it wrong
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_MINE_ITEM
-=======
-	layer = HIDE_LAYER
-	//layer = BELOW_MOB_LAYER //fixed the wrong layer - Plasmatik //This one is to easy to spot, so we hide them a bit more - Kaz/Trilby
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/prob_explode = 90
 	var/pulse_difficulty = FAILCHANCE_NORMAL
 
@@ -34,22 +29,6 @@
 	var/excelsior = FALSE
 	anchored = FALSE
 
-<<<<<<< HEAD
-=======
-/obj/item/mine/Initialize()
-	. = ..()
-	update_icon()
-
-/obj/item/mine/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		if(prob(90))
-			explode()
-
-/obj/item/mine/armed
-	armed = TRUE
-	deployed = TRUE
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/mine/excelsior
 	name = "Excelsior mine"
 	desc = "An anti-personnel mine. IFF technology grants safe passage to Excelsior agents, and a merciful brief end to others, unless they have a Pulse tool nearby."
@@ -69,7 +48,6 @@
 /obj/item/mine/old/armed
 	armed = TRUE
 	deployed = TRUE
-<<<<<<< HEAD
 	rarity_value = 55
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TRAP_ARMED
@@ -79,32 +57,18 @@
 	desc = "An improvised explosive mounted in a bear trap. Dangerous to step on, but easy to defuse."
 	icon_state = "mine_improv"
 	matter = list(MATERIAL_STEEL = 25, MATERIAL_PHORON = 5)
-=======
-
-/obj/item/mine/improvised
-	name = "makeshift mine"
-	desc = "An improvised explosive mounted in a bear trap. Dangerous to step on, but easy to defuse."
-	icon_state = "mine_improv"
-	matter = list(MATERIAL_STEEL = 25, MATERIAL_PLASMA = 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	prob_explode = 75
 	pulse_difficulty = FAILCHANCE_ZERO
 	explosion_h_size = 0
 	explosion_l_size = 1
 	explosion_f_size = 5
 
-<<<<<<< HEAD
 /obj/item/mine/improv/armed
 	armed = TRUE
 	deployed = TRUE
 	rarity_value = 44
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TRAP_ARMED
-=======
-/obj/item/mine/improvised/armed
-	armed = TRUE
-	deployed = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/mine/ignite_act()
 	explode()
@@ -112,7 +76,6 @@
 /obj/item/mine/proc/explode()
 	var/turf/T = get_turf(src)
 	explosion(T,explosion_d_size,explosion_h_size,explosion_l_size,explosion_f_size)
-<<<<<<< HEAD
 //	fragment_explosion(T, spread_radius, fragment_type, num_fragments, null, damage_step,50) Occulus Edit - Even tremendously nerfing this doesn't fix the problems with it. I'm axing the fragments
 	qdel(src)
 
@@ -150,58 +113,6 @@
 	update_icon()
 
 /obj/item/mine/attack_hand(mob/user)
-=======
-	fragment_explosion(T, spread_radius, fragment_type, num_fragments, null, damage_step)
-	if(src)
-		qdel(src)
-
-/obj/item/mine/update_icon()
-	cut_overlays()
-
-	if(armed)
-		add_overlay(image(icon,"mine_light"))
-
-/obj/item/mine/attack_self(mob/user)
-	if(locate(/obj/structure/multiz/ladder) in get_turf(user))
-		to_chat(user, SPAN_NOTICE("You cannot place \the [src] here, there is a ladder."))
-		return
-	if(locate(/obj/structure/multiz/stairs) in get_turf(user))
-		to_chat(user, SPAN_NOTICE("You cannot place \the [src] here, it needs a flat surface."))
-		return
-	if(!armed)
-		user.visible_message(
-			SPAN_DANGER("[user] starts to deploy \the [src]."),
-			SPAN_DANGER("you begin deploying \the [src]!")
-			)
-
-		if (do_after(user, 25))
-			user.visible_message(
-				SPAN_DANGER("[user] has deployed \the [src]."),
-				SPAN_DANGER("you have deployed \the [src]!")
-				)
-
-			deployed = TRUE
-			user.drop_from_inventory(src)
-			anchored = TRUE
-			armed = TRUE
-			update_icon()
-			log_and_message_admins(" - Mine armed at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
-	update_icon()
-
-/obj/item/mine/attack_hand(mob/user)
-	src.add_fingerprint(user)
-	if(excelsior)
-		for(var/datum/antagonist/A in user.mind.antagonist)
-			if(A.id == ROLE_EXCELSIOR_REV && deployed)
-				user.visible_message(
-					SPAN_NOTICE("You summon up Excelsior's collective training and carefully deactivate the mine for transport.")
-					)
-				deployed = FALSE
-				anchored = FALSE
-				armed = FALSE
-				update_icon()
-				return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (deployed)
 		if(pulse_difficulty == FAILCHANCE_ZERO)
 			user.visible_message(
@@ -238,10 +149,6 @@
 	. =..()
 
 /obj/item/mine/attackby(obj/item/I, mob/user)
-<<<<<<< HEAD
-=======
-	src.add_fingerprint(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(QUALITY_PULSING in I.tool_qualities)
 
 		if (deployed)
@@ -258,10 +165,6 @@
 			anchored = FALSE
 			armed = FALSE
 			update_icon()
-<<<<<<< HEAD
-=======
-			log_and_message_admins(" - Mine disarmed at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	else
 		if (deployed)   //now touching it with stuff that don't pulse will also be a bad idea
@@ -281,13 +184,6 @@
 			visible_message(SPAN_DANGER("\The [src]'s triggering mechanism is disrupted by the slope and does not go off."))
 			return ..()
 		if(isliving(AM))
-<<<<<<< HEAD
-=======
-			if(excelsior)
-				for(var/datum/antagonist/A in AM.mind.antagonist)
-					if(A.id == ROLE_EXCELSIOR_REV)
-						return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/true_prob_explode = prob_explode - AM.skill_to_evade_traps()
 			if(prob(true_prob_explode))
 				explode()
@@ -304,14 +200,18 @@
 					"You detach \the [detonator] from [src].")
 				detonator.forceMove(get_turf(src))
 				detonator = null
+
 	if (istype(I,/obj/item/device/assembly_holder))
 		if(detonator)
 			to_chat(user, SPAN_WARNING("There is another device in the way."))
 			return ..()
+
 		user.visible_message("\The [user] begins attaching [I] to \the [src].", "You begin attaching [I] to \the [src]")
 		if(do_after(user, 20, src))
 			user.visible_message("<span class='notice'>The [user] attach [I] to \the [src].", "\blue  You attach [I] to \the [src].</span>")
+
 			detonator = I
 			user.unEquip(I,src)
+
 	return ..()
 */

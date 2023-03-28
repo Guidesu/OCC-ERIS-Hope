@@ -19,21 +19,12 @@
 	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", dir = src.dir)
 	O.layer = ABOVE_MOB_LAYER
-<<<<<<< HEAD
 	add_overlays(O)
 	if(buckled_mob)
 		buckled_mob.set_dir(dir)
 
 /obj/structure/bed/chair/wheelchair/attackby(obj/item/I, mob/living/user)
 	if((QUALITY_BOLT_TURNING in I.tool_qualities) || (QUALITY_WIRE_CUTTING in I.tool_qualities) || istype(I, /obj/item/stack))
-=======
-	add_overlay(O)
-	if(buckled_mob)
-		buckled_mob.set_dir(dir)
-
-/obj/structure/bed/chair/wheelchair/attackby(obj/item/W as obj, mob/user as mob)
-	if(isWrench(W) || istype(W,/obj/item/stack) || isWirecutter(W))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	..()
 
@@ -211,7 +202,6 @@
 	desc = "A folded wheelchair that can be carried around."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "wheelchair_folded"
-<<<<<<< HEAD
 	w_class = ITEM_SIZE_HUGE
 	var/obj/structure/bed/chair/wheelchair/unfolded
 
@@ -231,33 +221,10 @@
 			return 0
 		if(pulling)
 			return 0 // You can't fold a wheelchair when somebody holding the handles.
-=======
-	item_state = "wheelchair"
-	w_class = ITEM_SIZE_HUGE // Can't be put in backpacks. Oh well.
-
-/obj/item/wheelchair/attack_self(mob/user)
-		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
-		R.add_fingerprint(user)
-		R.name = src.name
-		R.color = src.color
-		qdel(src)
-
-/obj/structure/bed/chair/wheelchair/MouseDrop(over_object, src_location, over_location)
-	..()
-	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return
-		if(buckled_mob)	return 0
-		if(usr==pulling)	return 0 /*You can't fold a wheelchair when you're busy holding the handles.*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		visible_message("[usr] collapses \the [src.name].")
 		var/obj/item/wheelchair/R = new/obj/item/wheelchair(get_turf(src))
 		R.name = src.name
 		R.color = src.color
-<<<<<<< HEAD
 		R.unfolded = src
 		src.forceMove(R)
-=======
-		spawn(0)
-			qdel(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return

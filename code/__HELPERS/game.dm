@@ -19,27 +19,17 @@
 			return A
 	return 0
 
-// get the area's name
-/proc/get_area_name_litteral(atom/X, format_text = FALSE)
-	var/area/A = isarea(X) ? X : get_area(X)
-	if(!A)
-		return null
-	return format_text ? format_text(A.name) : A.name
-
 /proc/get_area_master(const/O)
 	var/area/A = get_area(O)
 	if (isarea(A))
 		return A
 
-<<<<<<< HEAD
 /proc/in_range(source, user)
 	if(get_dist(source, user) <= 1)
 		return TRUE
 
 	return FALSE //not in range and not telekinetic
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Like view but bypasses luminosity check
 
 /proc/hear(range, atom/source)
@@ -49,7 +39,6 @@
 	var/list/heard = view(range, source)
 	var/list/extra_heard = view(range+3, source) - heard
 	if(extra_heard.len)
-<<<<<<< HEAD
 		for(var/ear in extra_heard)
 			if(!ishuman(ear))
 				continue
@@ -57,33 +46,9 @@
 			if(!H.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
 				continue
 			heard += ear
-=======
-		for(var/mob/living/carbon/human/H in extra_heard)
-			if(!H.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
-				continue
-			heard += H
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	source.luminosity = lum
 
 	return heard
-
-/proc/hear_movables(range, atom/source)
-
-	. = list()
-
-	var/lum = source.luminosity
-	source.luminosity = world.view
-	for (var/atom/movable/AM in view(range+3, source))
-		if ((get_dist(AM, source) > range))
-			if (ishuman(AM))
-				var/mob/living/carbon/human/H = AM
-				if(!H.stats.getPerk(PERK_EAR_OF_QUICKSILVER))
-					continue
-				. += H
-		else
-			. += AM
-
-	source.luminosity = lum
 
 /proc/circlerange(center=usr, radius=3)
 
@@ -176,10 +141,6 @@
 	return hear
 
 
-//Uses dview to quickly return mobs and objects in view,
-// then adds additional mobs or objects if they are in range 'smartly',
-// based on their presence in lists of players or registered objects
-// Type: 1-audio, 2-visual, 0-neither
 /proc/get_mobs_and_objs_in_view_fast(turf/T, range, list/mobs, list/objs, checkghosts = GHOSTS_ALL_HEAR)
 	var/list/hear = list()
 	DVIEW(hear, range, T, INVISIBILITY_MAXIMUM)
@@ -278,11 +239,7 @@
 				return 0
 	return 1
 
-<<<<<<< HEAD
 proc/isInSight(atom/A, atom/B)
-=======
-/proc/isInSight(atom/A, atom/B)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
@@ -294,12 +251,6 @@ proc/isInSight(atom/A, atom/B)
 
 	else
 		return 0
-
-/proc/get_client_by_ckey(key)
-	for(var/mob/M in SSmobs.mob_list)
-		if(M.ckey == lowertext(key))
-			return M.client
-	return null
 
 /proc/get_cardinal_step_away(atom/start, atom/finish) //returns the position of a step from start away from finish, in one of the cardinal directions
 	//returns only NORTH, SOUTH, EAST, or WEST
@@ -380,7 +331,7 @@ proc/isInSight(atom/A, atom/B)
 		for(var/client/C in show_to)
 			C.images -= I
 
-/datum/projectile_data
+datum/projectile_data
 	var/src_x
 	var/src_y
 	var/time
@@ -604,7 +555,6 @@ proc/isInSight(atom/A, atom/B)
 	if (L.len)
 		return pick(L)
 
-<<<<<<< HEAD
 /proc/flick_overlay_view(image/I, atom/target, duration, gc_after) //wrapper for the above, flicks to everyone who can see the target atom
 	var/list/viewing = list()
 	for(var/m in viewers(target))
@@ -613,21 +563,12 @@ proc/isInSight(atom/A, atom/B)
 			viewing += M.client
 	flick_overlay(I, viewing, duration, gc_after)
 
-=======
-//Tells everyone thats living and is a SSmobs to wake up their AI when aplicable
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /proc/activate_mobs_in_range(atom/caller , distance)
 	var/turf/starting_point = get_turf(caller)
 	if(!starting_point)
 		return FALSE
 	for(var/mob/living/potential_attacker in SSmobs.mob_living_by_zlevel[starting_point.z])
-<<<<<<< HEAD
 		if(!(potential_attacker.stat < DEAD))
-=======
-		if(potential_attacker == caller)
-			continue
-		if(potential_attacker.stat == DEAD)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			continue
 		if(!(get_dist(starting_point, potential_attacker) <= distance))
 			continue

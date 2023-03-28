@@ -1,6 +1,6 @@
 /obj/structure/wire_splicing
 	name = "wire splicing"
-	desc = "The wire has frayed and worn away, creating a hazard that needs to be repaired. This can be removed by wire cutters."
+	desc = "Looks like someone was very drunk when doing this, or just didn't care. This can be removed by wirecutters."
 	icon = 'icons/obj/traps.dmi'
 	icon_state = "wire_splicing1"
 	density = FALSE
@@ -14,6 +14,7 @@
 
 /obj/structure/wire_splicing/Initialize(roundstart)
 	.=..()
+
 
 	//Wire splice can only exist on a cable. Lets try to place it in a good location
 	if (!(locate(/obj/structure/cable) in loc))
@@ -138,11 +139,7 @@
 				if(prob(fail_chance))
 					if(!shock(user, FALSE)) //why not
 						to_chat(user, SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up."))
-<<<<<<< HEAD
 					used_now = FALSE
-=======
-						used_now = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					return
 				if(messiness >= 10)
 					messiness = 10
@@ -152,8 +149,4 @@
 				icon_state = "wire_splicing[messiness]"
 				to_chat(user, SPAN_NOTICE("You added one more wire."))
 				used_now = FALSE
-<<<<<<< HEAD
-=======
-				log_and_message_admins(" - Wire splicing trap being added to at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 

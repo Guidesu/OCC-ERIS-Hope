@@ -19,14 +19,6 @@
 
 /obj/item/device/assembly_holder/Destroy()
 	remove_hearing()
-
-	if(left_assembly)
-		left_assembly.holder = null //no more holder, so set it to null
-	if(right_assembly)
-		right_assembly.holder = null //i COULD do this with weakrefs...
-
-	left_assembly = null
-	right_assembly = null
 	. = ..()
 
 /obj/item/device/assembly_holder/proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
@@ -55,7 +47,6 @@
 	return TRUE
 
 
-<<<<<<< HEAD
 /obj/item/device/assembly_holder/on_update_icon()
 	cut_overlays()
 	if(left_assembly)
@@ -66,18 +57,6 @@
 		src.add_overlays("[right_assembly.icon_state]_right")
 		for(var/O in right_assembly.attached_overlays)
 			add_overlays("[O]_r")
-=======
-/obj/item/device/assembly_holder/update_icon()
-	cut_overlays()
-	if(left_assembly)
-		add_overlay("[left_assembly.icon_state]_left")
-		for(var/O in left_assembly.attached_overlays)
-			add_overlay("[O]_l")
-	if(right_assembly)
-		src.add_overlay("[right_assembly.icon_state]_right")
-		for(var/O in right_assembly.attached_overlays)
-			add_overlay("[O]_r")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(master)
 		master.update_icon()
 

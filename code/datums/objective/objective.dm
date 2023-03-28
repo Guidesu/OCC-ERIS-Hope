@@ -12,7 +12,7 @@ var/global/list/all_objectives_types = null
 /datum/objective
 	var/datum/antagonist/antag = null
 	var/datum/mind/owner = null			//Who owns the objective.
-	var/datum/antag_faction/owner_faction = null
+	var/datum/faction/owner_faction = null
 	var/explanation_text = "Nothing"	//What that person is supposed to do.
 	var/datum/mind/target = null		//If they are focused on a particular person.
 	var/target_amount = 0				//If they are focused on a particular number. Steal objectives have their own counter.
@@ -27,7 +27,7 @@ var/global/list/all_objectives_types = null
 		antag.objectives += src
 		if(antag.owner)
 			owner = antag.owner
-	else if (istype(new_owner, /datum/antag_faction))
+	else if (istype(new_owner, /datum/faction))
 		owner_faction = new_owner
 		owner_faction.objectives += src
 	if(!_target)
@@ -167,8 +167,4 @@ var/global/list/all_objectives_types = null
 
 /datum/objective/proc/time2hours(unit)
 	var/time = unit/(60 MINUTES)
-<<<<<<< HEAD
 	return time
-=======
-	return time
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

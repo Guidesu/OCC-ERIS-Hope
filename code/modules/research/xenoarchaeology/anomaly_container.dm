@@ -1,11 +1,7 @@
 /obj/structure/anomaly_container
 	name = "anomaly container"
 	desc = "Used to safely contain and move anomalies."
-<<<<<<< HEAD
 	icon = 'zzzz_modular_occulus/icons/obj/xenoarchaeology.dmi'
-=======
-	icon = 'icons/obj/xenoarchaeology.dmi'
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "anomaly_container"
 	density = 1
 

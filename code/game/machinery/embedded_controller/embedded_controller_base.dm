@@ -34,20 +34,16 @@ obj/machinery/embedded_controller/radio/Destroy()
 	if(!user.IsAdvancedToolUser())
 		return 0
 
-	src.nano_ui_interact(user)
+	src.ui_interact(user)
 
-/obj/machinery/embedded_controller/nano_ui_interact()
+/obj/machinery/embedded_controller/ui_interact()
 	return
 
 /obj/machinery/embedded_controller/radio
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 	power_channel = STATIC_ENVIRON
-<<<<<<< HEAD
 	density = FALSE
-=======
-	density = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/id_tag
 	//var/radio_power_use = 50 //power used to xmit signals

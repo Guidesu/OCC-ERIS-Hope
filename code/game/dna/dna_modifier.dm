@@ -41,28 +41,16 @@
 	desc = "It scans DNA structures."
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "scanner_0"
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
-=======
-	density = 1
-	anchored = 1.0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 50
 	active_power_usage = 300
 	interact_offline = 1
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/clonescanner
 	var/locked = 0
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_containers/glass/beaker
-=======
-	circuit = /obj/item/circuitboard/clonescanner
-	var/locked = 0
-	var/mob/living/carbon/occupant = null
-	var/obj/item/reagent_containers/glass/beaker = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/opened = 0
 
 /obj/machinery/dna_scannernew/relaymove(mob/user)
@@ -87,11 +75,7 @@
 /obj/machinery/dna_scannernew/proc/eject_occupant()
 	src.go_out()
 	for(var/obj/O in src)
-<<<<<<< HEAD
 		if((!istype(O,/obj/item/reagent_containers)) && (!istype(O,/obj/item/electronics/circuitboard/clonescanner)) && (!istype(O,/obj/item/stock_parts)) && (!istype(O,/obj/item/stack/cable_coil)))
-=======
-		if((!istype(O,/obj/item/reagent_containers)) && (!istype(O,/obj/item/circuitboard/clonescanner)) && (!istype(O,/obj/item/stock_parts)) && (!istype(O,/obj/item/stack/cable_coil)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			O.loc = get_turf(src)//Ejects items that manage to get in there (exluding the components)
 	if(!occupant)
 		for(var/mob/M in src)//Failsafe so you can get mobs out
@@ -205,26 +189,17 @@
 	return
 
 /obj/machinery/computer/scan_consolenew
-	name = "DNA modifier access console"
+	name = "DNA Modifier Access Console"
 	desc = "Scand DNA."
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
-<<<<<<< HEAD
 	density = TRUE
 	circuit = /obj/item/electronics/circuitboard/scan_consolenew
 	var/selected_ui_block = 1
 	var/selected_ui_subblock = 1
 	var/selected_se_block = 1
 	var/selected_se_subblock = 1
-=======
-	density = 1
-	circuit = /obj/item/circuitboard/scan_consolenew
-	var/selected_ui_block = 1.0
-	var/selected_ui_subblock = 1.0
-	var/selected_se_block = 1.0
-	var/selected_se_subblock = 1.0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/selected_ui_target = 1
 	var/selected_ui_target_hex = 1
 	var/radiation_duration = 2.0
@@ -232,30 +207,16 @@
 	var/list/datum/dna2/record/buffers[3]
 	var/irradiating = 0
 	var/injector_ready = 0	//Quick fix for issue 286 (screwdriver the screen twice to restore injector)	-Pete
-<<<<<<< HEAD
 	var/obj/machinery/dna_scannernew/connected
 	var/obj/item/disk/data/disk
 	var/selected_menu_key
 	anchored = TRUE
-=======
-	var/obj/machinery/dna_scannernew/connected = null
-	var/obj/item/disk/data/disk = null
-	var/selected_menu_key = null
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 400
 	var/waiting_for_user_input=0 // Fix for #274 (Mash create block injector without answering dialog to make unlimited injectors) - N3X
 
-<<<<<<< HEAD
 /obj/machinery/computer/scan_consolenew/attackby(obj/item/I, mob/user)
-=======
-/obj/machinery/computer/scan_consolenew/attackby(obj/item/I as obj, mob/user as mob)
-	if(!user.stats?.getPerk(PERK_SI_SCI) && !usr.stat_check(STAT_COG, 80)) //Outdated tech
-		to_chat(usr, SPAN_WARNING("This is a bit beyond your cognitive understanding."))
-		return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (istype(I, /obj/item/disk/data)) //INSERT SOME diskS
 		if (!src.disk)
 			user.drop_from_inventory(I)
@@ -323,19 +284,16 @@
 
 /obj/machinery/computer/scan_consolenew/attack_ai(user as mob)
 	src.add_hiddenprint(user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/scan_consolenew/attack_hand(user as mob)
-	if(!usr.stats?.getPerk(PERK_SI_SCI) && !usr.stat_check(STAT_COG, 80)) //Again outdated tech
-		to_chat(usr, SPAN_WARNING("This is a bit beyond your cognitive understanding."))
-		return
 	if(!..())
-		nano_ui_interact(user)
+		ui_interact(user)
 
  /**
-  * The nano_ui_interact proc is used to open and update Nano UIs
-  * If nano_ui_interact is not used then the UI will not update correctly
-  * nano_ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
+  * The ui_interact proc is used to open and update Nano UIs
+  * If ui_interact is not used then the UI will not update correctly
+  * ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
@@ -343,7 +301,7 @@
   *
   * @return nothing
   */
-/obj/machinery/computer/scan_consolenew/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/scan_consolenew/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 
 	if(user == connected.occupant || user.stat)
 		return

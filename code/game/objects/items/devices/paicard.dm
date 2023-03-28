@@ -1,6 +1,5 @@
 /obj/item/device/paicard
 	name = "personal AI device"
-	desc = "A portable device for a personal AI helper."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pai"
 	item_state = "electronic"
@@ -21,11 +20,7 @@
 
 /obj/item/device/paicard/New()
 	..()
-<<<<<<< HEAD
 	add_overlays("pai-off")
-=======
-	add_overlay("pai-off")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn
@@ -280,20 +275,12 @@
 
 /obj/item/device/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
 	src.pai = personality
-<<<<<<< HEAD
 	src.add_overlays("pai-happy")
-=======
-	src.add_overlay("pai-happy")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/paicard/proc/removePersonality()
 	src.pai = null
 	src.cut_overlays()
-<<<<<<< HEAD
 	src.add_overlays("pai-off")
-=======
-	src.add_overlay("pai-off")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/paicard
 	var/current_emotion = 1
@@ -301,7 +288,6 @@
 	if(pai)
 		src.cut_overlays()
 		switch(emotion)
-<<<<<<< HEAD
 			if(1) src.add_overlays("pai-happy")
 			if(2) src.add_overlays("pai-cat")
 			if(3) src.add_overlays("pai-extremely-happy")
@@ -317,23 +303,6 @@
 			if(13) src.add_overlays("pai-smirk")
 			if(14) src.add_overlays("pai-exclamation")
 			if(15) src.add_overlays("pai-question")
-=======
-			if(1) src.add_overlay("pai-happy")
-			if(2) src.add_overlay("pai-cat")
-			if(3) src.add_overlay("pai-extremely-happy")
-			if(4) src.add_overlay("pai-face")
-			if(5) src.add_overlay("pai-laugh")
-			if(6) src.add_overlay("pai-off")
-			if(7) src.add_overlay("pai-sad")
-			if(8) src.add_overlay("pai-angry")
-			if(9) src.add_overlay("pai-what")
-			if(10) src.add_overlay("pai-neutral")
-			if(11) src.add_overlay("pai-silly")
-			if(12) src.add_overlay("pai-nose")
-			if(13) src.add_overlay("pai-smirk")
-			if(14) src.add_overlay("pai-exclamation")
-			if(15) src.add_overlay("pai-question")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		current_emotion = emotion
 
 /obj/item/device/paicard/proc/alertUpdate()

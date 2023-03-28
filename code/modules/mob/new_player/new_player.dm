@@ -134,38 +134,7 @@
 			discord_redirect(usr)//AEIOU addition
 			return 0
 		if(SSticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
-			if(!ready)
-				// Warn the player if they are trying to spawn without a brain
-				var/datum/body_modification/mod = client.prefs.get_modification(BP_BRAIN)
-				if(istype(mod, /datum/body_modification/limb/amputation))
-					if(alert(src,"Are you sure you wish to spawn without a brain? This will likely cause you to do die immediately. \
-								If not, go to the Augmentation section of Setup Character and change the \"brain\" slot from Removed to the desired kind of brain.", \
-								"Player Setup", "Yes", "No") == "No")
-						ready = 0
-						return
-
-				// Warn the player if they are trying to spawn without eyes
-				mod = client.prefs.get_modification(BP_EYES)
-				if(istype(mod, /datum/body_modification/limb/amputation))
-					if(alert(src,"Are you sure you wish to spawn without eyes? It will likely be difficult to see without them. \
-								If not, go to the Augmentation section of Setup Character and change the \"eyes\" slot from Removed to the desired kind of eyes.", \
-								"Player Setup", "Yes", "No") == "No")
-						ready = 0
-						return
-				var/datum/preferences/records_check = client.prefs.get_records()
-				if(!records_check)
-					if(alert(src,"Are you sure you wish to spawn without records? Our rules require them!. \
-								If not, go to the Backround section of Setup Character and set Records. \
-								Our records templates and requirement specifics can be found at: https://liberty13.space/wiki/Example_Paperwork#Character_Records", \
-								"Player Setup", "Yes", "No") == "No")
-						ready = 0
-						return
-			if(!BC_IsKeyAllowedToConnect(ckey) && !usr.client.holder)
-				alert("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-					   but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!" , "Border Control Active")
-				ready = 0
-			else
-				ready = text2num(href_list["ready"])
+			ready = text2num(href_list["ready"])
 		else
 			ready = 0
 
@@ -224,27 +193,6 @@
 			to_chat(usr, "\red The round is either not ready, or has already finished...")
 			return
 
-		// Warn the player if they are trying to spawn without a brain
-		var/datum/body_modification/mod = client.prefs.get_modification(BP_BRAIN)
-		if(istype(mod, /datum/body_modification/limb/amputation))
-			if(alert(src,"Are you sure you wish to spawn without a brain? This will likely cause you to do die immediately. \
-			              If not, go to the Augmentation section of Setup Character and change the \"brain\" slot from Removed to the desired kind of brain.", \
-						  "Player Setup", "Yes", "No") == "No")
-				return 0
-
-		// Warn the player if they are trying to spawn without eyes
-		mod = client.prefs.get_modification(BP_EYES)
-		if(istype(mod, /datum/body_modification/limb/amputation))
-			if(alert(src,"Are you sure you wish to spawn without eyes? It will likely be difficult to see without them. \
-			              If not, go to the Augmentation section of Setup Character and change the \"eyes\" slot from Removed to the desired kind of eyes.", \
-						  "Player Setup", "Yes", "No") == "No")
-				return 0
-		var/datum/preferences/records_check = client.prefs.get_records()
-		if(!records_check)
-			if(alert(src,"Are you sure you wish to spawn without records? You will likely be arrested. \
-						If not, go to the Backround section of Setup Character and set Records.", \
-						"Player Setup", "Yes", "No") == "No")
-				return 0
 		if(!check_rights(R_ADMIN, 0))
 			var/datum/species/S = all_species[client.prefs.species]
 			if((S.spawn_flags & IS_WHITELISTED) && !is_alien_whitelisted(src, client.prefs.species))
@@ -254,11 +202,6 @@
 			if(!(S.spawn_flags & CAN_JOIN))
 				src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 				return 0
-
-		if(!BC_IsKeyAllowedToConnect(ckey) && !usr.client.holder)
-			alert("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-				   but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!" , "Border Control Active")
-			return 0
 
 		LateChoices()
 
@@ -326,18 +269,11 @@
 /mob/new_player/proc/AttemptLateSpawn(rank, var/spawning_at)
 	if(src != usr)
 		return 0
-	if(!BC_IsKeyAllowedToConnect(ckey) && !usr.client.holder)
-		alert("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-			but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!" , "Border Control Active")
-		return FALSE
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "\red The round is either not ready, or has already finished...")
-<<<<<<< HEAD
 		return 0
 	if(!is_player_whitelisted(src))
 		discord_redirect(src)//Aeiou addition
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return 0
 	if(!config.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
@@ -411,13 +347,10 @@
 	for(var/datum/job/job in SSjob.occupations)
 		if(job && IsJobAvailable(job.title))
 			if(job.is_restricted(client.prefs))
-<<<<<<< HEAD
 				continue
 			// // // BEGIN ECLIPSE EDITS // // //
 			//Jobban/job whitelist fixes
 			if(job.whitelist_only && !is_job_whitelisted(client, job.title))	//do they not pass whitelist?
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				continue
 			if(jobban_isbanned(client, job.title))			//are they banned?
 				continue
@@ -444,24 +377,13 @@
 		chosen_species = all_species[client.prefs.species]
 		use_species_name = chosen_species.get_station_variant() //Only used by pariahs atm.
 
-	var/use_form_name
-	var/datum/species_form/chosen_form
-	if(client.prefs.species_form)
-		chosen_form = GLOB.all_species_form_list[client.prefs.species_form]
-		use_form_name = chosen_form.get_station_variant() //Not used at all but whatever.
-
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(!is_species_whitelisted(chosen_species) && !has_admin_rights())
-			use_species_name = null
-		if(!is_form_whitelisted(chosen_form) && !has_admin_rights())
-			use_form_name = null
-		new_character = new(loc, use_species_name, use_form_name)
+		if(is_species_whitelisted(chosen_species) || has_admin_rights())
+			new_character = new(loc, use_species_name)
 
 	if(!new_character)
 		new_character = new(loc)
-	if(chosen_species)
-		chosen_species.add_stats(new_character)
 
 	new_character.lastarea = get_area(loc)
 
@@ -505,19 +427,6 @@
 		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
 
-/*	new_character.species_aan = client.prefs.species_aan
-	new_character.species_color_key = client.prefs.species_color
-	new_character.species_name = client.prefs.custom_species
-
-	new_character.ears = GLOB.ears_styles_list[client.prefs.ears_style]
-	new_character.ears_colors = client.prefs.ears_colors
-	new_character.tail = GLOB.tail_styles_list[client.prefs.tail_style]
-	new_character.tail_colors = client.prefs.tail_colors
-	new_character.wings = GLOB.wings_styles_list[client.prefs.wings_style]
-	new_character.wings_colors = client.prefs.wings_colors
-
-	new_character.body_markings = client.prefs.body_markings*/
-
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
 
@@ -542,10 +451,6 @@
 	if(!S) return 1
 	return is_alien_whitelisted(src, S.name) || !(S.spawn_flags & IS_WHITELISTED)
 
-/mob/new_player/proc/is_form_whitelisted(datum/species_form/F)
-	if(!F) return 1
-	return F.playable
-
 /mob/new_player/get_species()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
@@ -561,7 +466,7 @@
 
 /mob/new_player/get_gender()
 	if(!client || !client.prefs) ..()
-	return GLOB.gender_datums[client.prefs.gender]
+	return client.prefs.gender
 
 /mob/new_player/is_ready()
 	return ready && ..()
@@ -569,7 +474,7 @@
 /mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
 	return
 
-/mob/new_player/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0)
+/mob/new_player/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
 	return
 
 mob/new_player/MayRespawn()

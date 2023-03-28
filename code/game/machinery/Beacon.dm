@@ -1,19 +1,12 @@
 /obj/machinery/bluespace_beacon
-	name = "bluespace gigabeacon"
-	desc = "A device that draws power from bluespace and creates a permanent short range tracking beacon."
+
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beaconf"
-<<<<<<< HEAD
 	name = "Bluespace Gigabeacon"
 	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
 	level = BELOW_PLATING_LEVEL		// underfloor
 	layer = LOW_OBJ_LAYER
 	anchored = TRUE
-=======
-	level = BELOW_PLATING_LEVEL		// underfloor
-	layer = LOW_OBJ_LAYER
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 0
 	var/obj/item/device/radio/beacon/Beacon

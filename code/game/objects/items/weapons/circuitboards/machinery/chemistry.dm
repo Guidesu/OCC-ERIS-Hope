@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/chemmaster
 	name = T_BOARD("ChemMaster 3000")
-=======
-/obj/item/circuitboard/chemmaster
-	build_name = "ChemMaster 3000"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/chem_master
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
@@ -14,13 +9,8 @@
 		/obj/item/reagent_containers/glass/beaker = 2
 	)
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/chem_heater
 	name = T_BOARD("Chemical Heater")
-=======
-/obj/item/circuitboard/chem_heater
-	build_name = "Chemical Heater"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/chem_heater
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
@@ -29,13 +19,8 @@
 		/obj/item/stock_parts/console_screen = 1
 	)
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/chemical_dispenser
 	name = T_BOARD("Chemical Dispenser")
-=======
-/obj/item/circuitboard/chemical_dispenser
-	build_name = "Chemical Dispenser"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/chemical_dispenser
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
@@ -47,7 +32,6 @@
 		/obj/item/cell/medium = 1
 	)
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/chemical_dispenser/industrial
 	name = T_BOARD("Industrial Chemical Dispenser")//Occulus Edit: Spelling Fix
 	build_path = /obj/machinery/chemical_dispenser/industrial
@@ -62,62 +46,6 @@
 
 /obj/item/electronics/circuitboard/electrolyzer
 	name = T_BOARD("Electrolyzer")
-=======
-/obj/item/circuitboard/chemical_dispenser/soda
-	build_name = "Soft Drink Chemical Dispenser"
-	build_path = /obj/machinery/chemical_dispenser/soda
-	board_type = "machine"
-	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/cell/medium = 1
-	)
-
-/obj/item/circuitboard/chemical_dispenser/coffee_master
-	build_name = "Coffee Chemical Dispenser"
-	build_path = /obj/machinery/chemical_dispenser/coffee_master
-	board_type = "machine"
-	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/cell/medium = 1
-	)
-
-/obj/item/circuitboard/chemical_dispenser/beer
-	build_name = "Booze Chemical Dispenser"
-	build_path = /obj/machinery/chemical_dispenser/beer
-	board_type = "machine"
-	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/cell/medium = 1
-	)
-
-/obj/item/circuitboard/chemical_dispenser/industrial
-	build_name = "Industrial Chemical Dispenser"
-	build_path = /obj/machinery/chemical_dispenser/industrial
-	board_type = "machine"
-	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/cell/medium = 1
-	)
-
-/obj/item/circuitboard/electrolyzer
-	build_name = "Electrolyzer"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/electrolyzer
 	board_type = "machine"
 	origin_tech = list(TECH_BIO = 3)

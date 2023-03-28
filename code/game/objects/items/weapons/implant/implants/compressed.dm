@@ -2,36 +2,19 @@
 	name = "compressed matter implant"
 	desc = "Based on compressed matter technology, can store a single item."
 	icon_state = "implant_storage"
-<<<<<<< HEAD
 	implant_overlay = "implantstorage_storage"
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/activation_emote = "sigh"
 	var/obj/item/scanned
 	is_legal = FALSE
-<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=4, TECH_BLUESPACE=5, TECH_COVERT=4)
 	spawn_tags = null
 
-=======
-	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=4, TECH_BLUESPACE=5, TECH_ILLEGAL=4)
-	var/entropy_value = 5 //modular for admins to punish people taht scan bigger items
-
-	overlay_icon = "storage"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/compressed/trigger(emote, mob/living/source)
 	if(!scanned)
 		return
 
 	if(emote == activation_emote)
 		to_chat(source, "The air glows as \the [scanned.name] uncompresses.")
-<<<<<<< HEAD
-=======
-		bluespace_entropy(entropy_value, get_turf(src))
-		log_and_message_admins(" - [scanned.name] teleported form a compressed matter implant at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[source]") //So we can go to it
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		activate()
 
 /obj/item/implant/compressed/activate()
@@ -47,32 +30,12 @@
 		source.mind.store_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The implanted compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
 
-<<<<<<< HEAD
 
 /obj/item/implanter/compressed
 	name = "implanter (C)"
 	implant = /obj/item/implant/compressed
 	spawn_tags = null
 
-=======
-/obj/item/implanter/compressed
-	name = "implanter (compressed matter)"
-	desc = "An implanter containing a Compressed Matter implant, to store a single item for smuggling."
-	icon_state = "cimplanter1"
-	implant = /obj/item/implant/compressed
-	price_tag = 4000
-
-/obj/item/implanter/compressed/update_icon()
-	if(implant)
-		var/obj/item/implant/compressed/c = implant
-		if(!c.scanned)
-			icon_state = "cimplanter1"
-		else
-			icon_state = "cimplanter2"
-	else
-		icon_state = "cimplanter0"
-	return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implanter/compressed/attack(mob/living/M, mob/living/user)
 	var/obj/item/implant/compressed/c = implant
@@ -100,5 +63,4 @@
 
 		A.forceMove(c)
 		c.scanned = A
-		log_and_message_admins(" - [A.name] teleported into a compressed matter implant at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
 		update_icon()

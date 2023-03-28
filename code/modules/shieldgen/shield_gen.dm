@@ -56,8 +56,8 @@
 	s.start()
 
 /obj/machinery/shield_gen/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/card/id))
-		var/obj/item/card/id/C = I
+	if(istype(I, /obj/item/weapon/card/id))
+		var/obj/item/weapon/card/id/C = I
 		if(access_captain in C.access || access_security in C.access || access_engine in C.access)
 			src.locked = !src.locked
 			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
@@ -238,19 +238,11 @@
 		if (src.active)
 			SetIconState("generator1")
 		else
-<<<<<<< HEAD
 			SetIconState("generator0")
 		cut_overlays()
 		if (owned_capacitor)
 			var/I = image(icon,"capacitor_connected", dir = turn(owned_capacitor.dir, 180))
 			add_overlays(I)
-=======
-			icon_state = "generator0"
-		cut_overlays()
-		if (owned_capacitor)
-			var/I = image(icon,"capacitor_connected", dir = turn(owned_capacitor.dir, 180))
-			add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //TODO MAKE THIS MULTIZ COMPATIBLE
 //grab the border tiles in a circle around this machine

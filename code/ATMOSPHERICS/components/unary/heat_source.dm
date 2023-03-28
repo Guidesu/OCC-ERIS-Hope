@@ -10,11 +10,7 @@
 	anchored = TRUE
 	use_power = NO_POWER_USE
 	idle_power_usage = 5			//5 Watts for thermostat related circuitry
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/unary_atmos/heater
-=======
-	circuit = /obj/item/circuitboard/unary_atmos/heater
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/max_temperature = T20C + 680
 	var/internal_volume = 600	//L
@@ -82,15 +78,9 @@
 	update_icon()
 
 /obj/machinery/atmospherics/unary/heater/attack_hand(mob/user)
-<<<<<<< HEAD
 	ui_interact(user)
 
 /obj/machinery/atmospherics/unary/heater/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
-=======
-	nano_ui_interact(user)
-
-/obj/machinery/atmospherics/unary/heater/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["on"] = use_power ? 1 : 0

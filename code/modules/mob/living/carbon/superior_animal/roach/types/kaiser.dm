@@ -8,7 +8,6 @@ Has ability of every roach.
 	desc = "A glorious emperor of roaches."
 	icon = 'icons/mob/64x64.dmi'
 	icon_state = "kaiser_roach"
-<<<<<<< HEAD
 	icon_living = "kaiser_roach"
 	icon_dead = "kaiser_roach_dead"
 	density = TRUE
@@ -18,19 +17,10 @@ Has ability of every roach.
 	turns_per_move = 4
 	maxHealth = 2000
 	health = 2000
-=======
-	icon_dead = "kaiser_roach_dead"
-	density = TRUE
-
-	turns_per_move = 6
-	maxHealth = 1000
-	health = 1000
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	contaminant_immunity = TRUE
 
 	var/datum/reagents/gas_sac
 
-<<<<<<< HEAD
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	move_to_delay = 8
@@ -46,81 +36,33 @@ Has ability of every roach.
 	ranged = 1 // RUN, COWARD!
 	projectiletype = /obj/item/projectile/roach_spit
 	fire_verb = "spits glowing bile"
-=======
-	armor = list(melee = 30, bullet = 25, energy = 10, bomb = 50, bio = 20, rad = 100, agony = 0)
-
-	knockdown_odds = 10
-	melee_damage_lower = 20
-	melee_damage_upper = 35
-	move_to_delay = 8
-	mob_size =  3  // The same as Hivemind Tyrant
-	status_flags = 0
-	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
-
-	flash_resistances = 9.9 // were not fully flash proof but almost...
-	armor_penetration = 75
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/distress_call_stage = 3
 
 	var/health_marker_1 = 1500
 	var/health_marker_2 = 1000
 	var/health_marker_3 = 500
-<<<<<<< HEAD
 	var/list/nanite_swarms = list()//Occulus Edit
 	var/max_swarms = 21 //Occulus Edit. 25 maximum swarms, as we release 5 clusters at once
 
 /mob/living/carbon/superior_animal/roach/kaiser/New()
 	..()
-=======
-
-	blattedin_revives_left = 0
-
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat/kaiser
-	meat_amount = 15
-	sanity_damage = 3
-	has_special_parts = TRUE
-	special_parts = list(/obj/item/animal_part/kingly_pheromone_gland)
-	ranged = TRUE // RUN, COWARD!
-	limited_ammo = TRUE //Do we run out of ammo?
-	rounds_left = 2 //We get 2 shots then go for melee, this makes us a threat
-	projectiletype = /obj/item/projectile/roach_spit/large
-	fire_verb = "spits glowing bile"
-
-	inherent_mutations = list(MUTATION_GIGANTISM, MUTATION_RAND_UNSTABLE, MUTATION_RAND_UNSTABLE, MUTATION_RAND_UNSTABLE)
-
-/mob/living/carbon/superior_animal/roach/kaiser/getTargets()
-	. = ..()
-
-	rounds_left = 2 //Reload us, after all we are now targeting someone new
-	ranged = TRUE //Were reloaded we can be ranged once more
-
-/mob/living/carbon/superior_animal/roach/kaiser/New()
-	. = ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	gas_sac = new /datum/reagents(100, src)
 	pixel_x = -16  // For some reason it doesn't work when I overload them in class definition, so here it is.
 	pixel_y = -16
 
 
 /mob/living/carbon/superior_animal/roach/kaiser/handle_ai()
-<<<<<<< HEAD
 	if(!..())
 		return FALSE
 
 	if(can_call_reinforcements())
 		new /obj/spawner/mob/roaches/cluster(get_turf(src)) //Occulus Edit: More. More. More
-=======
-	. = ..()
-
-	if(can_call_reinforcements())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		distress_call()
 
 	gas_sac.add_reagent("blattedin", 1)
 	if(prob(7))
 		gas_attack()
-<<<<<<< HEAD
 	if(target_mob && prob(5) && nanite_swarms.len < max_swarms)//Occulus Edit Start - Kaiser Nanites
 		var/sound/screech = pick('sound/machines/robots/robot_talk_light1.ogg','sound/machines/robots/robot_talk_light2.ogg','sound/machines/robots/robot_talk_heavy4.ogg')
 		playsound(src, screech, 30, 1, -3)
@@ -145,9 +87,6 @@ Has ability of every roach.
 
 /mob/living/carbon/superior_animal/roach/kaiser/eyecheck()//Occulus Edit
 	return 2//Flash immunity. Flashbang resist. Occulus Edit end
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // TOXIC ABILITIES
 /mob/living/carbon/superior_animal/roach/kaiser/UnarmedAttack(atom/A, proximity)
@@ -157,11 +96,7 @@ Has ability of every roach.
 		var/mob/living/L = A
 		if(prob(10))
 			var/damage = rand(melee_damage_lower, melee_damage_upper)
-<<<<<<< HEAD
 			L.apply_effect(200, IRRADIATE) // as much as a radioactive AMR shot or five times the gestrahlte's
-=======
-			L.apply_effect(200, IRRADIATE) // Looks like a lot but its really not // Because for players it cap at 100. -R4d6
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			L.damage_through_armor(damage, TOX, attack_flag = ARMOR_BIO)
 			playsound(src, 'sound/voice/insect_battle_screeching.ogg', 30, 1, -3)
 			L.visible_message(SPAN_DANGER("\the [src] globs up some glowing bile all over \the [L]!"))
@@ -176,11 +111,7 @@ Has ability of every roach.
 
 	S.attach(location)
 	S.set_up(gas_sac, gas_sac.total_volume, 0, location)
-<<<<<<< HEAD
 	src.visible_message(SPAN_DANGER("\the [src] secretes strange vapors!"))
-=======
-	visible_message(SPAN_DANGER("\the [src] secretes strange vapors!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	spawn(0)
 		S.start()
@@ -188,14 +119,11 @@ Has ability of every roach.
 	gas_sac.clear_reagents()
 	return TRUE
 
-<<<<<<< HEAD
 /mob/living/carbon/superior_animal/roach/support/findTarget()
 	. = ..()
 	if(. && gas_attack())
 		visible_emote("charges at [.] in clouds of poison!")
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // FUHRER ABILITIES
 /mob/living/carbon/superior_animal/roach/kaiser/proc/distress_call()
 	if (!distress_call_stage)
@@ -207,15 +135,9 @@ Has ability of every roach.
 
 	if (distress_call_stage)
 		distress_call_stage--
-<<<<<<< HEAD
 		playsound(src.loc, 'sound/voice/shriek1.ogg', 100, 1, 8, 8)
 		spawn(2)
 			playsound(src.loc, 'sound/voice/shriek1.ogg', 100, 1, 8, 8)
-=======
-		playsound(loc, 'sound/voice/shriek1.ogg', 100, 1, 8, 8)
-		spawn(2)
-			playsound(loc, 'sound/voice/shriek1.ogg', 100, 1, 8, 8)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		visible_message(SPAN_DANGER("[src] emits a horrifying wail as nearby burrows stir to life!"))
 		for (var/obj/structure/burrow/B in find_nearby_burrows(src))
 			B.distress(TRUE)
@@ -230,7 +152,6 @@ Has ability of every roach.
 		return TRUE
 	return FALSE
 
-<<<<<<< HEAD
 /mob/living/carbon/superior_animal/roach/kaiser/slip(var/slipped_on)
 	return FALSE
 
@@ -243,21 +164,6 @@ Has ability of every roach.
 		return TRUE //Setting this to true because the only current usage is attack, and it says it hesitates.
 	//fruits and veggies are not there own type, they are all the grown type and contain certain reagents. This is why it didnt work before
 	if(isnull(thefood.seed.chems["singulo"]))
-=======
-/mob/living/carbon/superior_animal/roach/kaiser/slip(slipped_on)
-	return FALSE
-
-//RIDING
-/mob/living/carbon/superior_animal/roach/kaiser/try_tame(mob/living/carbon/user, obj/item/reagent_containers/food/snacks/grown/thefood)
-	if(!istype(thefood))
-		return FALSE
-	if(prob(40))
-		// TODO: Make Kaiser bite user's arm off here.
-		visible_message("[src] hesitates for a moment... and then charges at [user]!")
-		return TRUE //Setting this to true because the only current usage is attack, and it says it hesitates.
-	//fruits and veggies are not there own type, they are all the grown type and contain certain reagents. This is why it didnt work before
-	if(isnull(thefood.seed.chems["singulo"])) // You need something injected with the 'Singulo' drink to tame this.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	visible_message("[src] scuttles towards [user], examining the [thefood] they have in their hand.")
 	can_buckle = TRUE
@@ -274,12 +180,6 @@ Has ability of every roach.
 			can_buckle = FALSE
 			return FALSE
 		friends += user
-<<<<<<< HEAD
-=======
-		colony_friend = TRUE
-		friendly_to_colony = TRUE
-		buckle_movable = TRUE //THIS SHOW IS JUST STARTING KID
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		visible_message("[src] reluctantly stops thrashing around...")
 		return TRUE
 	visible_message("[src] snaps out of its trance and rushes at [user]!")

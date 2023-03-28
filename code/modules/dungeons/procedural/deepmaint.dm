@@ -42,13 +42,6 @@ var/global/list/big_deepmaint_room_templates = list()
 
 /obj/procedural/jp_DungeonGenerator/deepmaint
 	name = "Deep Maintenance Procedural Generator"
-<<<<<<< HEAD
-=======
-	regen_specific = TRUE
-	regen_light = /obj/machinery/light/small/autoattach/deepmaints
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
 	Finds a line of walls adjacent to the line of turfs given
 */
@@ -81,11 +74,7 @@ var/global/list/big_deepmaint_room_templates = list()
 */
 
 /obj/procedural/jp_DungeonGenerator/deepmaint/proc/makeLadders()
-<<<<<<< HEAD
 	var/ladders_to_place = 6
-=======
-	var/ladders_to_place = 20
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(numRooms < ladders_to_place)
 		return
 	var/list/obj/procedural/jp_DungeonRoom/done_rooms = list()
@@ -156,33 +145,21 @@ var/global/list/big_deepmaint_room_templates = list()
 	if(wall_line.len)
 		for(var/turf/W in nicheline)
 			if(prob(30))
-<<<<<<< HEAD
 				new /obj/spawner/pack/machine(W)
 		for(var/turf/W in wall_line)
 			if(locate(/obj/machinery/light/small/autoattach, W))
 				var/obj/machinery/light/small/autoattach/L = locate(/obj/machinery/light/small/autoattach, W)
-=======
-				new /obj/random/pack/deep_machine(W)
-		for(var/turf/W in wall_line)
-			if(locate(/obj/machinery/light/small/autoattach/deepmaints, W))
-				var/obj/machinery/light/small/autoattach/deepmaints/L = locate(/obj/machinery/light/small/autoattach/deepmaints, W)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				qdel(L)
 			W.ChangeTurf(/turf/simulated/floor/tiled/techmaint_perforated)
 			for(var/turf/simulated/wall/A in getAdjacent(W))
 				A.update_connections(1)
 			if(prob(70))
-<<<<<<< HEAD
 				new /obj/spawner/pack/machine(W)
-=======
-				new /obj/random/pack/deep_machine(W)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	else
 		return FALSE
 
 /obj/procedural/jp_DungeonGenerator/deepmaint/proc/findNicheTurfs(var/list/turfs)
-<<<<<<< HEAD
     var/list/L = list()
     for(var/turf/F in turfs)
         if(F.is_wall || !(F in path_turfs))
@@ -193,28 +170,12 @@ var/global/list/big_deepmaint_room_templates = list()
             L += F
 
     return L
-=======
-	var/list/L = list()
-	for(var/turf/F in turfs)
-		if(F.is_wall || !(F in path_turfs))
-			if(L.len < 3)
-				L = list()
-			break
-		else
-			L += F
-
-	return L
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/procedural/jp_DungeonGenerator/deepmaint/proc/populateCorridors()
 	var/niche_count = 20
 	var/try_count = niche_count * 7 //In case it somehow zig-zags all of the corridors and stucks in a loop
-<<<<<<< HEAD
 	var/trap_count = 150
-=======
-	var/trap_count = 200
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/path_turfs_copy = path_turfs.Copy()
 	while(niche_count > 0 && try_count > 0)
 		try_count = try_count - 1
@@ -226,14 +187,7 @@ var/global/list/big_deepmaint_room_templates = list()
 		trap_count = trap_count - 1
 		var/turf/N = pick(path_turfs_copy)
 		path_turfs_copy -= N
-<<<<<<< HEAD
 		new /obj/spawner/traps(N)
-=======
-		if(prob(60))
-			new /obj/random/traps(N)
-		else
-			new /obj/random/mob/psi_monster(N)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/turf/T in path_turfs)
 		if(prob(30))
 			new /obj/effect/decal/cleanable/dirt(T) //Wanted to put rust on the floors in deep maint, but by god, the overlay looks like ASS
@@ -243,16 +197,7 @@ var/global/list/big_deepmaint_room_templates = list()
 /obj/procedural/dungenerator/deepmaint
 	name = "Deep Maint Gen"
 
-<<<<<<< HEAD
 
-=======
-// Skip deepmaint. DO NOT REMOVE ELSE, it becomes unreachable
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
-/obj/procedural/dungenerator/deepmaint/New()
-	log_test("Skipping deepmaint generation for unit tests")
-	return
-#else
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/procedural/dungenerator/deepmaint/New()
 	while(1)
 		if(Master.current_runlevel)
@@ -261,7 +206,6 @@ var/global/list/big_deepmaint_room_templates = list()
 		else
 			sleep(150)
 	spawn()
-<<<<<<< HEAD
 		var/start = REALTIMEOFDAY
 		var/obj/procedural/jp_DungeonGenerator/deepmaint/generate = new /obj/procedural/jp_DungeonGenerator/deepmaint(src)
 		testing("Beginning procedural generation of [name] -  Z-level [z].")
@@ -277,23 +221,6 @@ var/global/list/big_deepmaint_room_templates = list()
 		generate.setMaxPathLength(0)
 		generate.setMinLongPathLength(0)
 		generate.setLongPathChance(0)
-=======
-		//testing_variable(start, REALTIMEOFDAY)
-		var/obj/procedural/jp_DungeonGenerator/deepmaint/generate = new /obj/procedural/jp_DungeonGenerator/deepmaint(src)
-		testing("Beginning procedural generation of [name] -  Z-level [z].")
-		generate.name = name
-		generate.setArea(locate(30, 30, z), locate(140, 140, z))
-		generate.setWallType(/turf/simulated/wall)
-		generate.setLightChance(1)
-		generate.setFloorType(/turf/simulated/floor/tiled/techmaint_perforated)
-		generate.setAllowedRooms(list(/obj/procedural/jp_DungeonRoom/preexist/square/submap/deepmaint/big))
-		generate.setNumRooms(6) //6 deepmaints "core" rooms
-		generate.setExtraPaths(2)
-		generate.setMinPathLength(5)
-		generate.setMaxPathLength(80)
-		generate.setMinLongPathLength(5)
-		generate.setLongPathChance(10)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		generate.setPathEndChance(100)
 		generate.setRoomMinSize(10)
 		generate.setRoomMaxSize(10)
@@ -302,7 +229,6 @@ var/global/list/big_deepmaint_room_templates = list()
 
 		sleep(90)
 
-<<<<<<< HEAD
 		generate.setArea(locate(20, 20, z), locate(150, 150, z))
 		generate.setAllowedRooms(list(/obj/procedural/jp_DungeonRoom/preexist/square/submap/deepmaint))
 		generate.setNumRooms(15)
@@ -312,17 +238,6 @@ var/global/list/big_deepmaint_room_templates = list()
 		generate.setMinLongPathLength(0)
 		generate.setLongPathChance(0)
 		generate.setPathEndChance(100)
-=======
-		generate.setArea(locate(10, 19, z), locate(165, 165, z))
-		generate.setAllowedRooms(list(/obj/procedural/jp_DungeonRoom/preexist/square/submap/deepmaint))
-		generate.setNumRooms(30) // 30 or so smaller rooms
-		generate.setExtraPaths(3)
-		generate.setMinPathLength(3)
-		generate.setMaxPathLength(65) //Small Rooms are 65 at most appart
-		generate.setMinLongPathLength(5)
-		generate.setLongPathChance(10)
-		generate.setPathEndChance(80)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		generate.setRoomMinSize(5)
 		generate.setRoomMaxSize(5)
 		generate.setPathWidth(2)
@@ -332,8 +247,4 @@ var/global/list/big_deepmaint_room_templates = list()
 		generate.populateCorridors()
 		generate.makeLadders()
 		testing("Finished procedural generation of [name]. [generate.errString(generate.out_error)] -  Z-level [z], in [(REALTIMEOFDAY - start) / 10] seconds.")
-<<<<<<< HEAD
-=======
-#endif
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 

@@ -9,12 +9,6 @@
 	rarity_value = 5.55
 	var/obj/item/card/id/stored_card
 
-<<<<<<< HEAD
-=======
-	var/obj/item/card/id/stored_card = null
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/computer_hardware/card_slot/Destroy()
 	if(stored_card)
 		stored_card.forceMove(drop_location())

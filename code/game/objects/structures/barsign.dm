@@ -1,10 +1,10 @@
-/obj/structure/sign/neon/barsign
+/obj/structure/sign/double/barsign
 	icon = 'icons/obj/barsigns.dmi'
 	icon_state = "empty"
 	anchored = TRUE
 	var/cult = 0
 
-/obj/structure/sign/neon/barsign/proc/get_valid_states(initial=1)
+/obj/structure/sign/double/barsign/proc/get_valid_states(initial=1)
 	. = icon_states(icon)
 	. -= "on"
 	. -= "narsiebistro"
@@ -12,7 +12,7 @@
 	if(initial)
 		. -= "Off"
 
-/obj/structure/sign/neon/barsign/examine(mob/user)
+/obj/structure/sign/double/barsign/examine(mob/user)
 	..()
 	switch(icon_state)
 		if("Off")
@@ -24,26 +24,22 @@
 		else
 			to_chat(user, "It says '[icon_state]'")
 
-/obj/structure/sign/neon/barsign/New()
+/obj/structure/sign/double/barsign/New()
 	..()
 	icon_state = pick(get_valid_states())
 
-/obj/structure/sign/neon/barsign/attackby(obj/item/I, mob/user)
+/obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
 	if(cult)
 		return ..()
 
 	var/obj/item/card/id/card = I.GetIdCard()
 	if(istype(card))
 		if(access_bar in card.GetAccess())
-			var/sign_type = input(user, "What would you like to change the bar sign to?") as null|anything in get_valid_states(0)
+			var/sign_type = input(user, "What would you like to change the barsign to?") as null|anything in get_valid_states(0)
 			if(!sign_type)
 				return
 			icon_state = sign_type
-<<<<<<< HEAD
 			to_chat(user, SPAN_NOTICE("You change the barsign."))
-=======
-			to_chat(user, SPAN_NOTICE("You change the bar sign."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			to_chat(user, SPAN_WARNING("Access denied."))
 		return

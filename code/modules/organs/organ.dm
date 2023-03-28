@@ -1,23 +1,15 @@
 /obj/item/organ
 	name = "organ"
 	icon = 'icons/obj/surgery.dmi'
-<<<<<<< HEAD
 	germ_level = 0
 	matter = list(MATERIAL_BIOMATTER = 20)
 	bad_type = /obj/item/organ
 	spawn_tags = SPAWN_TAG_ORGAN
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// Strings.
 	var/surgery_name					// A special name that replaces item name in surgery messages
 	var/organ_tag = "organ"				// Unique identifier.
-<<<<<<< HEAD
 	var/parent_organ_base = BP_CHEST	// Base organ holding this object.
-=======
-	var/additional_limb_parts = list()  // Other parts to put on top, if the limb is incomplete.
-	var/parent_organ_base = BP_CHEST			// Organ holding this object.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/dead_icon
 
 	// Status tracking.
@@ -35,37 +27,20 @@
 	var/list/autopsy_data = list()		// Trauma data for forensics.
 	var/list/trace_chemicals = list()	// Traces of chemicals in the organ.
 	var/datum/dna/dna
-	var/datum/species/species			//TODO: Fix this
-	var/datum/species_form/form
-
-	var/inserted_and_processing = TRUE //Organs are removed from the object subsystem when inserted inside of a person.
-									   //This makes sure they can turn off processing while implanted in someone.
+	var/datum/species/species
 
 	// Damage vars.
-<<<<<<< HEAD
 	var/min_bruised_damage = 10			// Damage before considered bruised
 	var/min_broken_damage = 30			// Damage before becoming broken
 	var/max_damage						// Damage cap
 	var/rejecting						// Is this organ already being rejected?
 
 	var/death_time						// limits organ self recovery
-=======
-	var/min_bruised_damage = 10      	// Damage before considered bruised
-	var/min_broken_damage = 30       	// Damage before becoming broken
-	var/max_damage                   	// Damage cap
-	var/rejecting                    	// Is this organ already being rejected?
-	matter = list(MATERIAL_BIOMATTER = 20)
-
-	var/death_time // limits organ self recovery
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/Destroy()
 	if(parent || owner)
 		removed()
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	QDEL_NULL(dna)
 	species = null
 	STOP_PROCESSING(SSobj, src)
@@ -82,35 +57,21 @@
 		max_damage = min_broken_damage * 2
 
 	if(istype(holder))
-<<<<<<< HEAD
 		species = all_species["Human"]
 		if(holder.dna)
 			dna = holder.dna.Clone()
 			species = all_species[dna.species]
 
-=======
-		species = holder.species
-		if(!species) species = all_species[SPECIES_HUMAN]
-		form = holder.form
-		if(!form) form = GLOB.all_species_form_list[FORM_HUMAN]
-		if(holder.dna)
-			dna = holder.dna.Clone()
-			species = all_species[dna.species]
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!blood_DNA)
 				blood_DNA = list()
 			blood_DNA[dna.unique_enzymes] = dna.b_type
 		else
 			log_debug("[src] at [loc] spawned without a proper DNA.")
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(parent_organ_base)
 			replaced(holder.get_organ(parent_organ_base))
 		else
 			replaced_mob(holder)
-<<<<<<< HEAD
 
 // Surgery hooks
 /obj/item/organ/attack_self(mob/living/user)
@@ -123,21 +84,8 @@
 		return
 	return ..()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-// Surgery hooks
-/obj/item/organ/attack_self(mob/living/user)
-	if(do_surgery(user, null))
-		return
-	return ..()
-
-/obj/item/organ/attackby(obj/item/I, mob/living/user)
-	if(do_surgery(user, I))
-		return
-	return ..()
-
-/obj/item/organ/proc/set_dna(datum/dna/new_dna)
+/obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
 		if(!blood_DNA)
@@ -147,11 +95,7 @@
 		species = all_species[new_dna.species]
 
 /obj/item/organ/proc/die()
-<<<<<<< HEAD
 	if(BP_IS_ROBOTIC(src))
-=======
-	if(BP_IS_ROBOTIC(src) || status & ORGAN_DEAD)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	damage = max_damage
 	status |= ORGAN_DEAD
@@ -173,33 +117,17 @@
 	if(istype(loc, /obj/item/device/mmi) || istype(loc, /mob/living/simple_animal/spider_core))
 		return TRUE
 
-<<<<<<< HEAD
 	if(istype(loc, /obj/structure/closet/body_bag/cryobag) || istype(loc, /obj/structure/closet/crate/freezer) || istype(loc, /obj/item/storage/freezer))
 		return TRUE
 
 	return FALSE
 
-=======
-	var/list/stasis_types = list(
-		/obj/structure/closet/body_bag/cryobag,
-		/obj/structure/closet/crate/freezer,
-		/obj/item/storage/freezer,
-		/obj/machinery/smartfridge,
-		/obj/machinery/vending
-	)
-
-	if(is_type_in_list(loc, stasis_types))
-		return TRUE
-
-	return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/Process()
 
 	if(loc != owner)
 		owner = null
 
-<<<<<<< HEAD
 	//dead already, no need for more processing
 	if(status & ORGAN_DEAD)
 		return
@@ -233,39 +161,14 @@
 		handle_rejection()
 		handle_germ_effects()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//check if we've hit max_damage
 	if(damage >= max_damage)
 		die()
-
-	//dead already, no need for more processing
-	if(status & ORGAN_DEAD)
-		return
-	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(is_in_stasis())
-		return
-
-	if(BP_IS_ROBOTIC(src))
-		return
-
-	if(!owner)
-		if(reagents)
-			var/datum/reagent/organic/blood/B = locate(/datum/reagent/organic/blood) in reagents.reagent_list
-			if(B && prob(40))
-				reagents.remove_reagent("blood",0.1)
-				blood_splatter(src,B,1)
-		if(config.organs_decay)
-			if(prob(5))
-				take_damage(12, TOX)	// Will cause toxin accumulation wounds
-	else
-		handle_rejection()
 
 /obj/item/organ/examine(mob/user)
 	..(user)
 	if(status & ORGAN_DEAD)
 		to_chat(user, SPAN_NOTICE("The decay has set in."))
-<<<<<<< HEAD
 
 /obj/item/organ/proc/handle_germ_effects()
 	//** Handle the effects of infections
@@ -290,8 +193,6 @@
 
 		if (prob(3))	//about once every 30 seconds
 			take_damage(1,silent=prob(30))
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
@@ -303,10 +204,19 @@
 		else
 			rejecting++ //Rejection severity increases over time.
 			if(rejecting % 10 == 0) //Only fire every ten rejection ticks.
-				take_damage(round(rejecting / 50), TOX)		// Will cause toxin accumulation wounds
+				switch(rejecting)
+					if(1 to 50)
+						germ_level++
+					if(51 to 200)
+						germ_level += rand(1,2)
+					if(201 to 500)
+						germ_level += rand(2,3)
+					if(501 to INFINITY)
+						germ_level += rand(3,5)
+						owner.reagents.add_reagent("toxin", rand(1,2))
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
-	return FALSE
+	return 0
 
 /obj/item/organ/proc/rejuvenate()
 	damage = 0
@@ -320,7 +230,6 @@
 /obj/item/organ/proc/is_broken()
 	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
 
-<<<<<<< HEAD
 //Germs
 /obj/item/organ/proc/handle_antibiotics()
 	var/antibiotics = 0
@@ -337,10 +246,8 @@
 	else
 		germ_level -= 2 //at germ_level == 1000, this will cure the infection in 5 minutes
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //Adds autopsy data for used_weapon.
-/obj/item/organ/proc/add_autopsy_data(used_weapon, damage)
+/obj/item/organ/proc/add_autopsy_data(var/used_weapon, var/damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -352,7 +259,6 @@
 	W.time_inflicted = world.time
 
 //Note: external organs have their own version of this proc
-<<<<<<< HEAD
 /obj/item/organ/proc/take_damage(amount, var/silent=0)
 	if(BP_IS_ROBOTIC(src))
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
@@ -365,49 +271,17 @@
 
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
-=======
-/obj/item/organ/proc/take_damage(amount, damage_type, wounding_multiplier = 1, silent)
-	if(!BP_IS_ROBOTIC(src))
-		//only show this if the organ is not robotic
-		if(owner && parent && amount > 0 && !silent)
-			owner.custom_pain("Something inside your [parent.name] hurts a lot.", 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/emp_act(severity)
 	if(!BP_IS_ROBOTIC(src))
 		return
-
-	//Robotic body parts conduct EMPs way better than flesh
-	if(parent && BP_IS_ROBOTIC(parent))
-		switch (severity)
-			if(1)
-				take_damage(40, BURN) //Deals half the organs damage
-			if(2)
-				take_damage(30, BURN)
-			if(3)
-				take_damage(20, BURN)
-	else
-		switch (severity)
-			if(1)
-				take_damage(25, BURN) //Deals half the organs damage
-			if(2)
-				take_damage(20, BURN)
-			if(3)
-				take_damage(10, BURN)
-
-
-// Gets the limb this organ is located in, if any
-/obj/item/organ/proc/get_limb()
-	if(parent)
-		return parent
-
-	if(owner)
-		return owner.get_organ(parent_organ_base)
-
-	else if(istype(loc, /obj/item/organ/external))
-		return loc
-
-	return null
+	switch (severity)
+		if (1)
+			take_damage(9)
+		if (2)
+			take_damage(3)
+		if (3)
+			take_damage(1)
 
 // Gets the limb this organ is located in, if any
 /obj/item/organ/proc/get_limb()
@@ -437,10 +311,7 @@
 	if(owner)
 		removed_mob(user)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/organ/proc/removed_mob(mob/living/user)
 	var/datum/reagent/organic/blood/organ_blood = locate(/datum/reagent/organic/blood) in reagents?.reagent_list
 	if(!organ_blood || !organ_blood.data["blood_DNA"])
@@ -459,10 +330,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/organ/proc/replaced(obj/item/organ/external/affected)
 	parent = affected
 	forceMove(parent)
@@ -474,11 +342,8 @@
 	owner = target
 	forceMove(owner)
 	STOP_PROCESSING(SSobj, src)
-<<<<<<< HEAD
 	if(BP_IS_ROBOTIC(src))
 		SEND_SIGNAL(owner, COMSIG_HUMAN_ROBOTIC_MODIFICATION)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/datum/reagent/organic/blood/transplant_blood = locate(/datum/reagent/organic/blood) in reagents?.reagent_list
 	transplant_data = list()
@@ -519,8 +384,4 @@
 	return TRUE
 
 /obj/item/organ/proc/is_usable()
-<<<<<<< HEAD
 	return !(status & (ORGAN_CUT_AWAY|ORGAN_MUTATED|ORGAN_DEAD))
-=======
-	return !(status & (ORGAN_CUT_AWAY|ORGAN_DEAD))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

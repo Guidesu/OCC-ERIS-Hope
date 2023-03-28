@@ -8,9 +8,5 @@
 	icon_state = "port"
 	layer = LOW_OBJ_LAYER
 	density = FALSE
-<<<<<<< HEAD
 	idle_power_usage = 80
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_port
-=======
-	idle_power_usage = 80
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

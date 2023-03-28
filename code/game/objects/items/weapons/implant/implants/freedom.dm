@@ -3,14 +3,9 @@
 
 /obj/item/implant/freedom
 	name = "freedom implant"
-<<<<<<< HEAD
 	desc = "Use this if you ever get tied up. Has a cooldown of ten minutes."
 	icon_state = "implant_freedom"
 	implant_overlay = "implantstorage_freedom"
-=======
-	desc = "Use this to escape from those evil Red Shirts."
-	icon_state = "implant_freedom"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/activation_emote = "chuckle"
 	var/uses = 1.0
 	var/install_organ = INSTALL_HANDS
@@ -18,25 +13,15 @@
 	origin_tech = list(TECH_COMBAT=5, TECH_MAGNET=3, TECH_BIO=4, TECH_COVERT=2)
 	allowed_organs = list(BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT)
 
-<<<<<<< HEAD
-=======
-	overlay_icon = "freedom"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/freedom/trigger(emote, mob/living/carbon/source)
 	if (src.uses < 1)
 		to_chat (source, "You don't feel anything")
 		return
 	if (emote == src.activation_emote)
 		src.uses--
-<<<<<<< HEAD
 		spawn(10 MINUTES)
 			src.uses++
 		to_chat(source, "You feel a faint click.")
-=======
-		to_chat(source, "You feel a faint click.")
-		log_and_message_admins(" - Freedom implant used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[source]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (source.handcuffed && install_organ == INSTALL_HANDS)
 			var/obj/item/W = source.handcuffed
 			source.handcuffed = null
@@ -63,21 +48,13 @@
 					W.layer = initial(W.layer)
 
 /obj/item/implant/freedom/on_install(mob/living/carbon/source, obj/item/organ/O)
-<<<<<<< HEAD
 	if(O.organ_tag in list(BP_L_FOOT, BP_R_FOOT))
-=======
-	if(O.organ_tag in list(BP_L_LEG, BP_R_LEG))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		install_organ = INSTALL_FOOTS
 
 /obj/item/implant/freedom/on_install(mob/living/source)
 
 	activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch_s", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
-<<<<<<< HEAD
 	uses = 1
-=======
-	uses = rand(2, 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(source.mind)
 		source.mind.store_memory("Freedom matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
@@ -107,7 +84,4 @@
 /obj/item/implanter/freedom
 	name = "implanter (freedom)"
 	implant = /obj/item/implant/freedom
-<<<<<<< HEAD
 	spawn_tags = null
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

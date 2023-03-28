@@ -1,11 +1,5 @@
 /obj/item/device/lighting/toggleable/flashlight
 	action_button_name = "Toggle Flashlight"
-<<<<<<< HEAD
-=======
-	var/tick_cost = 0.2
-	cell = null
-	suitable_cell = /obj/item/cell/small
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = WEST
 	suitable_cell = /obj/item/cell/small
 	rarity_value = 5
@@ -23,37 +17,12 @@
 	var/light_direction
 	var/lightspot_hitObstacle = FALSE
 
-<<<<<<< HEAD
-=======
-	description_info = "Can be used on other people's eyes to check for brain damage, and if they're drugged or have the x-ray mutation"
-	description_antag = "Can be used to flash people on harm intent, provided they do not have any protection"
-
-/obj/item/device/lighting/toggleable/flashlight/Initialize()
-	. = ..()
-	if(!cell && suitable_cell)
-		cell = new suitable_cell(src)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/lighting/toggleable/flashlight/Destroy()
 	QDEL_NULL(light_spot)
 	return ..()
 
-<<<<<<< HEAD
 /obj/item/device/lighting/toggleable/flashlight/proc/calculate_dir(turf/old_loc)
 	if(istype(src.loc,/obj/item/storage) || istype(src.loc,/obj/structure/closet))
-=======
-/obj/item/device/lighting/toggleable/flashlight/get_cell()
-	return cell
-
-/obj/item/device/lighting/toggleable/flashlight/handle_atom_del(atom/A)
-	..()
-	if(A == cell)
-		cell = null
-		update_icon()
-
-/obj/item/device/lighting/toggleable/flashlight/proc/calculate_dir(var/turf/old_loc)
-	if (istype(src.loc,/obj/item/storage) || istype(src.loc,/obj/structure/closet))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	if(istype(src.loc,/mob/living))
 		var/mob/living/L = src.loc
@@ -76,11 +45,7 @@
 	var/hitSomething = FALSE
 	light_direction = new_dir
 
-<<<<<<< HEAD
 	if(istype(src.loc,/obj/item/storage) || istype(src.loc,/obj/structure/closet))	//no point in finding spot for light if flashlight is inside container
-=======
-	if (istype(src.loc,/obj/item/storage) || istype(src.loc,/obj/structure/closet))	//no point in finding spot for light if flashlight is inside container
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		place_lightspot(NT)
 		return
 
@@ -98,13 +63,8 @@
 		if(SOUTH)
 			for(var/i = 1,i <= light_spot_range, i++)
 				var/turf/T = locate(L.x,L.y - i,L.z)
-<<<<<<< HEAD
 				if(lightSpotPassable(T))
 					if(T.is_space())
-=======
-				if (lightSpotPassable(T))
-					if(T?.is_space())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						break
 					NT = T
 				else
@@ -140,6 +100,7 @@
 	if(light_spot && on && !T.is_space())
 		light_spot.forceMove(T)
 		light_spot.icon_state = "nothing"
+		light_spot.transform = initial(light_spot.transform)
 		light_spot.set_light(light_spot_radius, light_spot_power)
 
 		if(cell && cell.percent() <= 25)
@@ -159,20 +120,15 @@
 				if(4)
 					light_spot.icon_state = "lightspot_far"
 		if(angle)
-			light_spot.add_new_transformation(/datum/transform_type/modular, list(rotation = angle, flag = FLASHLIGHT_LIGHT_SPOT_ROTATION_TRANSFORM, priority = FLASHLIGHT_LIGHT_SPOT_ROTATION_TRANSFORM_PRIORITY, override = TRUE))
+			light_spot.transform = turn(light_spot.transform, angle)
 		else
-			var/to_rotate = 0
 			switch(light_direction)	//icon pointing north by default
-				if (NORTH)
-					to_rotate = 0
 				if(SOUTH)
-					to_rotate = 180
+					light_spot.transform = turn(light_spot.transform, 180)
 				if(EAST)
-					to_rotate = 90
+					light_spot.transform = turn(light_spot.transform, 90)
 				if(WEST)
-					to_rotate = 270
-
-			light_spot.add_new_transformation(/datum/transform_type/modular, list(rotation = to_rotate, flag = FLASHLIGHT_LIGHT_SPOT_ROTATION_TRANSFORM, priority = FLASHLIGHT_LIGHT_SPOT_ROTATION_TRANSFORM_PRIORITY, override = TRUE))
+					light_spot.transform = turn(light_spot.transform, -90)
 
 /obj/item/device/lighting/toggleable/flashlight/proc/lightSpotPassable(var/turf/T)
 	if(is_opaque(T))
@@ -224,10 +180,6 @@
 /obj/item/device/lighting/toggleable/flashlight/turn_on(mob/user)
 	if(!cell_check(tick_cost, user))
 		playsound(loc, 'sound/machines/button.ogg', 50, 1)
-<<<<<<< HEAD
-=======
-		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	. = ..()
 	set_light(2,radiance_power)
@@ -284,17 +236,13 @@
 	add_fingerprint(user)
 	if(on && user.targeted_organ == BP_EYES)
 
-		if((CLUMSY in user.mutations) && prob(15))	//too dumb to use flashlight properly
+		if((CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-<<<<<<< HEAD
 				if(istype(C) && (C.body_parts_covered & EYES))
-=======
-				if(istype(C) && (C.body_parts_covered & EYES) && C.flash_protection > 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
 					return
 
@@ -307,11 +255,7 @@
 
 			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [M]'s eyes."), \
 							 	 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
-<<<<<<< HEAD
 			if(H != user)	//can't look into your own eyes buster // OCCULUS Edit - Fixes looking at pupil dilation
-=======
-			if(H != user)	//can't look into your own eyes buster
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(M.stat == DEAD || M.blinded)	//mob is dead or fully blind
 					to_chat(user, SPAN_WARNING("\The [M]'s pupils do not react to the light!"))
 					return
@@ -333,20 +277,9 @@
 				else
 					to_chat(user, SPAN_NOTICE("\The [M]'s pupils narrow."))
 
-<<<<<<< HEAD
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //can be used offensively
 			if(M.HUDtech.Find("flash"))
 				FLICK("flash", M.HUDtech["flash"])
-=======
-				if(user.a_intent == I_HURT)
-					user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //can be used offensively
-					M.flash(0, FALSE , FALSE , FALSE, 2)
-					return
-
-			if(user.a_intent == I_HURT)
-				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //can be used offensively
-				M.flash(0, FALSE , FALSE , FALSE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		return ..()
 
@@ -371,32 +304,18 @@
 	light_spot_radius = 4
 	light_spot_power = 3
 	light_spot_range = 4
-<<<<<<< HEAD
 	tick_cost = 0.8
 	suitable_cell = /obj/item/cell/medium
 
 /obj/item/device/lighting/toggleable/flashlight/seclite
 	name = "Aegis flashlight"
-=======
-	tick_cost = 0.4
-	suitable_cell = /obj/item/cell/medium
-
-/obj/item/device/lighting/toggleable/flashlight/seclite
-	name = "security flashlight"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A hand-held security flashlight."
 	icon_state = "seclite"
 	item_state = "seclite"
+	light_spot_radius = 3
 	light_spot_power = 2.5
-<<<<<<< HEAD
 
 /obj/item/device/lighting/toggleable/flashlight/seclite/on_update_icon()
-=======
-	price_tag = 8
-	tick_cost = 0.2
-
-/obj/item/device/lighting/toggleable/flashlight/seclite/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 
 	if(on)

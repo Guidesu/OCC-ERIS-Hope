@@ -3,7 +3,6 @@
 /obj/item/storage/box/samplebags
 	name = "sample bag box"
 	desc = "A box claiming to contain sample bags."
-<<<<<<< HEAD
 	initial_amount = 7
 	spawn_type = /obj/item/evidencebag
 
@@ -13,15 +12,6 @@
 		S.name = "sample bag"
 		S.desc = "a bag for holding research samples."
 
-=======
-	New()
-		for(var/i=0, i<7, i++)
-			var/obj/item/evidencebag/S = new(src)
-			S.name = "sample bag"
-			S.desc = "a bag for holding research samples."
-		..()
-		return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //////////////////////////////////////////////////////////////////
 
@@ -58,12 +48,9 @@
 		var/turf/simulated/mineral/T = item_to_sample
 		T.geologic_data.UpdateNearbyArtifactInfo(T)
 		geo_data = T.geologic_data
-<<<<<<< HEAD
 	else if(istype(item_to_sample, /obj/item/ore))
 		var/obj/item/ore/O = item_to_sample
 		geo_data = O.geologic_data
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(geo_data)
 		if(filled_bag)
@@ -87,13 +74,8 @@
 			//update the sample bag
 			filled_bag.icon_state = "evidence"
 			var/image/I = image("icon"=R, "layer"=FLOAT_LAYER)
-<<<<<<< HEAD
 			filled_bag.add_overlays(I)
 			filled_bag.add_overlays("evidence")
-=======
-			filled_bag.add_overlay(I)
-			filled_bag.add_overlay("evidence")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			filled_bag.w_class = ITEM_SIZE_TINY
 
 			to_chat(user, "\blue You take a core sample of the [item_to_sample].")

@@ -9,16 +9,10 @@
 	throw_speed = 4
 	throw_range = 20
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
-<<<<<<< HEAD
 	//spawn_blacklisted = TRUE//antag_item_targets??
 	var/obj/item/disk/nuclear/the_disk
 	var/obj/item/disk/nuclear/slot
 	var/obj/machinery/nuclearbomb/pointbomb
-=======
-	var/obj/item/disk/nuclear/the_disk = null
-	var/obj/item/disk/nuclear/slot = null
-	var/obj/machinery/nuclearbomb/pointbomb = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/active = FALSE
 
 
@@ -49,20 +43,12 @@
 	else
 		..()
 
-<<<<<<< HEAD
 /obj/item/pinpointer/on_update_icon()
-=======
-/obj/item/pinpointer/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if (slot)
 		var/tooloverlay = "disknukeloaded"
-<<<<<<< HEAD
 		add_overlays((tooloverlay))
-=======
-		add_overlay((tooloverlay))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/pinpointer/proc/workdisk()

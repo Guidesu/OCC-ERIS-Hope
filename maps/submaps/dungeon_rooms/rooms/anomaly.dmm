@@ -20,7 +20,6 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/plating/under,
 /area/crawler)
-<<<<<<< HEAD
 "f" = (
 /obj/structure/catwalk,
 /obj/machinery/light/built{
@@ -28,8 +27,6 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "g" = (
 /turf/simulated/floor/tiled/dark/cargo,
 /area/crawler)
@@ -84,7 +81,6 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
-<<<<<<< HEAD
 "o" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -94,13 +90,10 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "p" = (
 /obj/structure/inflatable/wall,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
-<<<<<<< HEAD
 "q" = (
 /obj/structure/inflatable/wall,
 /turf/space,
@@ -114,8 +107,6 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "s" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -174,11 +165,7 @@ a
 c
 i
 i
-<<<<<<< HEAD
 o
-=======
-i
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 i
 c
@@ -208,11 +195,7 @@ a
 "}
 (5,1,1) = {"
 a
-<<<<<<< HEAD
 f
-=======
-j
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 j
 j
 p
@@ -226,11 +209,7 @@ b
 g
 g
 g
-<<<<<<< HEAD
 q
-=======
-p
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 y
 c
@@ -241,11 +220,7 @@ b
 g
 x
 x
-<<<<<<< HEAD
 q
-=======
-p
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 v
 c
@@ -256,11 +231,7 @@ b
 g
 x
 x
-<<<<<<< HEAD
 q
-=======
-p
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 z
 c
@@ -268,11 +239,7 @@ b
 "}
 (9,1,1) = {"
 a
-<<<<<<< HEAD
 f
-=======
-j
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 j
 j
 p
@@ -308,11 +275,7 @@ a
 c
 k
 k
-<<<<<<< HEAD
 r
-=======
-k
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 k
 k
 c

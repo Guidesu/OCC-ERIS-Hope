@@ -21,7 +21,7 @@
 	src.blacklist = species_blacklist
 
 
-/datum/nano_module/appearance_changer/Topic(ref, href_list, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/appearance_changer/Topic(ref, href_list, var/datum/topic_state/state = GLOB.default_state)
 	if(..())
 		return 1
 
@@ -41,14 +41,6 @@
 			if(owner.change_gender(href_list["gender"]))
 				cut_and_generate_data()
 				return 1
-<<<<<<< HEAD
-=======
-	/*if(href_list["build"])
-		if(can_change(APPEARANCE_BUILD))
-			if(owner.change_build(href_list["build"]))
-				cut_and_generate_data()
-				return 1*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//if(href_list["skin_tone"])
 		// TODO: enable after baymed
 		/*if(can_change_skin_tone())
@@ -108,7 +100,7 @@
 					return 1
 	return 0
 
-/datum/nano_module/appearance_changer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/appearance_changer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	if(!owner || !owner.species)
 		return
 
@@ -134,19 +126,6 @@
 			genders[++genders.len] =  list("gender_name" = gender2text(gender), "gender_key" = gender)
 		data["genders"] = genders
 
-<<<<<<< HEAD
-=======
-/*	data["change_build"] = can_change(APPEARANCE_BUILD)
-	if(data["change_build"])
-		data["builds"] = list()
-		if (owner.gender == MALE)
-			for (var/a in male_body_builds)
-				data["builds"] += a
-		else
-			for (var/a in female_body_builds)
-				data["builds"] += a*/
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data["change_skin_tone"] = can_change_skin_tone()
 	data["change_skin_color"] = can_change_skin_color()
 	data["change_eye_color"] = can_change(APPEARANCE_EYE_COLOR)
@@ -186,7 +165,7 @@
 	return owner && (flags & APPEARANCE_SKIN)// && owner.species.appearance_flags & HAS_A_SKIN_TONE	// TODO: enable after baymed
 
 /datum/nano_module/appearance_changer/proc/can_change_skin_color()
-	return owner && (flags & APPEARANCE_SKIN) && owner.form.appearance_flags & HAS_SKIN_COLOR
+	return owner && (flags & APPEARANCE_SKIN) && owner.species.appearance_flags & HAS_SKIN_COLOR
 
 /datum/nano_module/appearance_changer/proc/cut_and_generate_data()
 	// Making the assumption that the available species remain constant

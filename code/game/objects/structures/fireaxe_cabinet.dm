@@ -10,12 +10,8 @@
 	var/unlocked
 	var/shattered
 	var/obj/item/tool/fireaxe/fireaxe
-<<<<<<< HEAD
-=======
-	req_one_access = list(access_heads, access_engine)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/obj/structure/fireaxecabinet/attack_generic(mob/user, damage, attack_verb, wallbreaker)
+/obj/structure/fireaxecabinet/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
 	attack_animation(user)
 	playsound(user, 'sound/effects/Glasshit.ogg', 50, 1)
 	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
@@ -24,14 +20,12 @@
 		return
 	if(shattered)
 		return
-	shattered = TRUE
-	unlocked = TRUE
-	open = TRUE
-	sanity_damage = 0.1 //Broken window theory
+	shattered = 1
+	unlocked = 1
+	open = 1
 	playsound(user, 'sound/effects/Glassbr3.ogg', 100, 1)
 	update_icon()
 
-<<<<<<< HEAD
 /obj/structure/fireaxecabinet/on_update_icon()
 	cut_overlays()
 	if(fireaxe)
@@ -40,26 +34,16 @@
 		add_overlays(image(icon, "fireaxe_window_broken"))
 	else if(!open)
 		add_overlays(image(icon, "fireaxe_window"))
-=======
-/obj/structure/fireaxecabinet/update_icon()
-	cut_overlays()
-	if(fireaxe)
-		add_overlay(image(icon, "fireaxe_item"))
-	if(shattered)
-		add_overlay(image(icon, "fireaxe_window_broken"))
-	else if(!open)
-		add_overlay(image(icon, "fireaxe_window"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/fireaxecabinet/New()
 	..()
 	fireaxe = new(src)
 	update_icon()
 
-/obj/structure/fireaxecabinet/attack_ai(mob/user)
+/obj/structure/fireaxecabinet/attack_ai(var/mob/user)
 	toggle_lock(user)
 
-/obj/structure/fireaxecabinet/attack_hand(mob/user)
+/obj/structure/fireaxecabinet/attack_hand(var/mob/user)
 	if(!unlocked)
 		to_chat(user, SPAN_WARNING("\The [src] is locked."))
 		return
@@ -92,22 +76,12 @@
 		fireaxe = null
 	return ..()
 
-/obj/structure/fireaxecabinet/attackby(obj/item/O, mob/user)
+/obj/structure/fireaxecabinet/attackby(var/obj/item/O, var/mob/user)
 
 	if(istype(O, /obj/item/tool/multitool))
 		toggle_lock(user)
 		return
 
-<<<<<<< HEAD
-=======
-	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/ID = O
-		if(has_access(list(), req_one_access, ID.GetAccess()))
-			toggle_lock(user)
-		else
-			to_chat(user, SPAN_NOTICE("You try to unlock the cabinet, but nothing happens."))
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/tool/fireaxe))
 		if(open)
 			if(fireaxe)
@@ -126,25 +100,25 @@
 
 	return ..()
 
-/obj/structure/fireaxecabinet/proc/toggle_open(mob/user)
+/obj/structure/fireaxecabinet/proc/toggle_open(var/mob/user)
 	if(shattered)
-		open = TRUE
-		unlocked = TRUE
+		open = 1
+		unlocked = 1
 	else
 		user.setClickCooldown(10)
 		open = !open
 		to_chat(user, "<span class='notice'>You [open ? "open" : "close"] \the [src].</span>")
 	update_icon()
 
-/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
+/obj/structure/fireaxecabinet/proc/toggle_lock(var/mob/user)
 
 
 	if(open)
 		return
 
 	if(shattered)
-		open = TRUE
-		unlocked = TRUE
+		open = 1
+		unlocked = 1
 	else
 		user.setClickCooldown(10)
 		to_chat(user, "<span class='notice'>You begin [unlocked ? "enabling" : "disabling"] \the [src]'s maglock.</span>")
@@ -152,8 +126,7 @@
 		if(!do_after(user, 20,src))
 			return
 
-		if(shattered)
-			return
+		if(shattered) return
 
 		unlocked = !unlocked
 		playsound(user, 'sound/machines/lockreset.ogg', 50, 1)

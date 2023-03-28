@@ -13,15 +13,9 @@
 	edge = TRUE
 	sharp = TRUE
 	var/deployed = FALSE
-<<<<<<< HEAD
-=======
-	var/prob_catch = 100
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	price_tag = 50 //So its worth making or gathering
-
-	var/base_damage = 45
-	var/fail_damage = 15
+	var/base_damage = 20
+	var/fail_damage = 5
 	var/base_difficulty = 85
 	var/time_to_escape = 40
 	var/target_zone
@@ -30,13 +24,11 @@
 	var/list/aware_mobs = list() //List of refs of mobs that examined this trap. Won't trigger it when walking.
 	var/prob_catch = 100 //prob catch to mob
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/beartrap/Initialize()
 	.=..()
 	update_icon()
+
 
 /***********************************
 	Releasing Mobs
@@ -50,11 +42,7 @@ Every failure causes the trap to dig deeper and hurt the victim more
 
 Freeing yourself is much harder than freeing someone else. Calling for help is advised if practical
 */
-<<<<<<< HEAD
 /obj/item/beartrap/proc/attempt_release(mob/living/user, obj/item/I)
-=======
-/obj/item/beartrap/proc/attempt_release(var/mob/living/user, var/obj/item/I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!buckled_mob || QDELETED(buckled_mob))
 		return //Nobody there to rescue?
 
@@ -125,6 +113,8 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	//Play a metal creaking sound
 	playsound(src, 'sound/machines/airlock_creaking.ogg', 10, 1, -3,-3)
 
+
+
 	//Now a do_after
 	if(!do_after(user, time_to_escape))
 		//If you abort it's an automatic fail
@@ -147,11 +137,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 
 //Using a crowbar allows you to lever the trap open, better success rate
 /obj/item/beartrap/attackby(obj/item/C, mob/living/user)
-<<<<<<< HEAD
 	if (C.has_quality(QUALITY_PRYING) && buckled_mob)
-=======
-	if (C.has_quality(QUALITY_PRYING))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		attempt_release(user, C)
 		return
 	if (deployed && C.w_class > ITEM_SIZE_SMALL)//Occulus Edit Start - Triggering traps with medium items!
@@ -186,21 +172,13 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		return
 	.=..()
 
-<<<<<<< HEAD
 /obj/item/beartrap/attack_generic(mob/user, damage)
-=======
-/obj/item/beartrap/attack_generic(var/mob/user, var/damage)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (buckled_mob)
 		attempt_release(user)
 		return
 	.=..()
 
-<<<<<<< HEAD
 /obj/item/beartrap/attack_robot(mob/user)
-=======
-/obj/item/beartrap/attack_robot(var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (buckled_mob)
 		attempt_release(user)
 		return
@@ -218,11 +196,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	STOP_PROCESSING(SSobj, src)
 
 //Attempting to resist out of a beartrap will be counted as using your hand on the trap.
-<<<<<<< HEAD
 /obj/item/beartrap/resist_buckle(mob/user)
-=======
-/obj/item/beartrap/resist_buckle(var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (user == buckled_mob && !user.stunned)
 		//We check stunned here, and a failure stuns the victim. This prevents someone from just spam-resisting and instantly killing themselves
 		if (user.client)
@@ -241,12 +215,9 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	if(locate(/obj/structure/multiz/ladder) in get_turf(user))
 		to_chat(user, SPAN_NOTICE("You cannot place \the [src] here, there is a ladder."))
 		return
-<<<<<<< HEAD
 	if(locate(/obj/structure/multiz/stairs) in get_turf(user))
 		to_chat(user, SPAN_NOTICE("You cannot place \the [src] here, it needs a flat surface."))
 		return
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!deployed && can_use(user))
 		user.visible_message(
 			SPAN_DANGER("[user] starts to deploy \the [src]."),
@@ -266,21 +237,13 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 			user.drop_from_inventory(src)
 			update_icon()
 			anchored = TRUE
-<<<<<<< HEAD
-=======
-			log_and_message_admins(" - Beartrap set at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /***********************************
 	Hurting Mobs
 ***********************************/
 
 //If an attempt to release the mob fails, it digs in and deals more damage
-<<<<<<< HEAD
 /obj/item/beartrap/proc/fail_attempt(user, difficulty)
-=======
-/obj/item/beartrap/proc/fail_attempt(var/user, var/difficulty)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!buckled_mob)
 		return
 
@@ -305,11 +268,8 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		if (user == buckled_mob)
 			to_chat(user, SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?"))
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/beartrap/proc/attack_mob(mob/living/L)
 	//Small mobs won't trigger the trap
 	//Imagine a mouse running harmlessly over it
@@ -324,22 +284,14 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	if(L.lying)
 		target_zone = ran_zone()
 	else
-<<<<<<< HEAD
 		target_zone = pick(BP_L_FOOT, BP_R_FOOT, BP_L_LEG , BP_R_LEG)
-=======
-		target_zone = pick(BP_L_LEG, BP_R_LEG)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	deployed = FALSE
 	can_buckle = initial(can_buckle)
 	playsound(src, 'sound/effects/impacts/beartrap_shut.ogg', 100, 1,10,10)//Really loud snapping sound
 
 	//armour
-<<<<<<< HEAD
 	if( L.damage_through_armor(base_damage, BRUTE, target_zone, ARMOR_MELEE, used_weapon = src) )//Occulus Edit, this should have been base damage to begin with!
-=======
-	if( L.damage_through_armor(fail_damage, BRUTE, target_zone, ARMOR_MELEE, used_weapon = src) )
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//No damage - no stun
 		L.Stun(4) //A short stun prevents spamming failure attempts
 		shake_camera(L, 2, 1)
@@ -349,14 +301,13 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	can_buckle = TRUE
 	buckle_mob(L)
 	to_chat(L, SPAN_DANGER("The steel jaws of \the [src] bite into you, trapping you in place!"))
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//If the victim is nonhuman and has no client, start processing.
 	if (!ishuman(L) && !L.client)
 		START_PROCESSING(SSobj, src)
+
+
 
 /*
 Beartraps process when a clientless mob is trapped in them.
@@ -368,11 +319,7 @@ Very rarely it might escape
 
 	//If its dead or gone, stop processing
 	//Also stop if a player took control of it, they can try to free themselves
-<<<<<<< HEAD
 	if (QDELETED(L) || L.is_dead() || L.loc != loc || L.client)
-=======
-	if (QDELETED(L) || is_dead(L) || L.loc != loc || L.client)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		release_mob()		// Reset the trap properly if the roach was gibbed during the processing.
 		return PROCESS_KILL
 
@@ -384,11 +331,8 @@ Very rarely it might escape
 	if (prob(struggle_prob))
 		attempt_release(L)
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/beartrap/Crossed(AM as mob|obj)
 	if(deployed && isliving(AM))
 		if(locate(/obj/structure/multiz/ladder) in get_turf(loc))
@@ -398,13 +342,7 @@ Very rarely it might escape
 			visible_message(SPAN_DANGER("\The [src]'s triggering mechanism is disrupted by the slope and does not go off."))
 			return ..()
 		var/mob/living/L = AM
-		var/true_prob_catch = prob_catch - L.skill_to_evade_traps()
-		if("\ref[L]" in aware_mobs)
-			if(MOVING_DELIBERATELY(L))
-				return ..()
-			else
-				true_prob_catch -= 30
-		if(!prob(true_prob_catch))
+		if(("\ref[L]" in aware_mobs) && MOVING_DELIBERATELY(L))
 			return ..()
 		prob_catch = initial(prob_catch)
 		prob_catch -= L.skill_to_evade_traps(prob_catch)
@@ -429,18 +367,16 @@ Very rarely it might escape
 		to_chat(user, SPAN_NOTICE("You're aware of this trap, now. You won't set it off when walking carefully."))
 		aware_mobs |= "\ref[user]"
 
-<<<<<<< HEAD
 
 /obj/item/beartrap/on_update_icon()
-=======
-/obj/item/beartrap/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 	if(!deployed)
 		icon_state = "[initial(icon_state)]0"
 	else
 		icon_state = "[initial(icon_state)]1"
+
+
 
 /**********************************
 	Makeshift Trap
@@ -451,21 +387,15 @@ Very rarely it might escape
 	Has integrity that depletes and it will eventually break
 */
 /obj/item/beartrap/makeshift
-<<<<<<< HEAD
 	base_damage = 16
 	fail_damage = 4
 	base_difficulty = 80
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "jury-rigged mechanical trap"
 	desc = "A wicked looking construct of spiky bits of metal and wires. Will snap shut on anyone who steps in it. It'll do some nasty damage."
 	icon_state = "sawtrap"
-	price_tag = 30 //So its worth making or gathering
-	base_damage = 30
-	fail_damage = 20
-	base_difficulty = 80
 	matter = list(MATERIAL_STEEL = 15)
 	var/integrity = 100
+
 
 //It takes 5 damage whenever it snaps onto a mob
 /obj/item/beartrap/makeshift/attack_mob(mob/living/L)
@@ -487,16 +417,14 @@ Very rarely it might escape
 
 	break_apart()
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/beartrap/makeshift/proc/break_apart()
 	visible_message(SPAN_DANGER("\the [src] shatters into fragments!"))
 	new /obj/item/stack/material/steel(loc, 10)
 	new /obj/item/material/shard/shrapnel(loc)
 	new /obj/item/material/shard/shrapnel(loc)
 	qdel(src)
+
 
 /**********************************
 	Armed Subtypes
@@ -509,19 +437,13 @@ Very rarely it might escape
 /obj/item/beartrap/armed
 	deployed = TRUE
 	anchored = TRUE
-<<<<<<< HEAD
 	rarity_value = 33.3
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_TRAP_ARMED
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/beartrap/makeshift/armed
 	deployed = TRUE
 	anchored = TRUE
-<<<<<<< HEAD
 	rarity_value = 22.2
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_TRAP_ARMED
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

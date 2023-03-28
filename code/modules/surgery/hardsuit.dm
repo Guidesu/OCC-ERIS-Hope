@@ -1,14 +1,7 @@
 //Procedures in this file: hardsuit removal
-<<<<<<< HEAD
 
 /datum/old_surgery_step/hardsuit
 	required_tool_quality = QUALITY_WELDING
-=======
-// TODO: Refactor this procedure into surgery proper to apply proper overlays since actual surgery has higher priority than this fallback method.
-
-/datum/old_surgery_step/hardsuit
-	required_tool_quality = QUALITY_DRILLING // Solves problems for both FBP's and carbons.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	required_stat = STAT_MEC
 
 	can_infect = 0
@@ -23,13 +16,8 @@
 
 /datum/old_surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message(
-<<<<<<< HEAD
 		SPAN_NOTICE("[user] starts cutting through the support systems of [target]'s [target.back] with \the [tool]."),
 		SPAN_NOTICE("You start cutting through the support systems of [target]'s [target.back] with \the [tool].")
-=======
-		SPAN_NOTICE("[user] starts drilling through the support systems of [target]'s [target.back] with \the [tool]."),
-		SPAN_NOTICE("You start drilling through the support systems of [target]'s [target.back] with \the [tool].")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	..()
 
@@ -39,13 +27,8 @@
 		return
 	rig.reset()
 	user.visible_message(
-<<<<<<< HEAD
 		SPAN_NOTICE("[user] has cut through the support systems of [target]'s [rig] with \the [tool]."),
 		SPAN_NOTICE("You have cut through the support systems of [target]'s [rig] with \the [tool].")
-=======
-		SPAN_NOTICE("[user] has drilled through the support systems of [target]'s [rig] with \the [tool]."),
-		SPAN_NOTICE("You have drilled through the support systems of [target]'s [rig] with \the [tool].")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /datum/old_surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

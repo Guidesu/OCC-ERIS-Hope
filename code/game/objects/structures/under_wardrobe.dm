@@ -59,7 +59,7 @@
 	show_browser(H, dat, "window=wardrobe;size=400x250")
 
 /obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(var/mob/living/carbon/human/H)
-	if(!istype(H) || !H.form || !(H.form.appearance_flags & HAS_UNDERWEAR))
+	if(!istype(H) || !H.species || !(H.species.appearance_flags & HAS_UNDERWEAR))
 		return FALSE
 	return TRUE
 
@@ -83,8 +83,8 @@
 			return
 
 		var/list/metadata_list = list()
-		for(var/datum/gear_tweak/color/tweak in UWI.tweaks)
-			var/datum/gear_tweak/color/gt = tweak
+		for(var/tweak in UWI.tweaks)
+			var/datum/gear_tweak/gt = tweak
 			var/metadata = gt.get_metadata(H, title = "Adjust underwear")
 			if(!metadata)
 				return
@@ -104,11 +104,7 @@
 			return
 		LAZYSET(amount_of_underwear_by_id_card, id, ++current_quota)
 
-<<<<<<< HEAD
 		var/obj/UW = UWI.create_underwear(loc, metadata_list, 'icons/inventory/underwear/mob.dmi')
-=======
-		var/obj/UW = UWI.create_underwear(loc, metadata_list, H.form.underwear_icon)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		UW.forceMove(loc)
 		H.put_in_hands(UW)
 

@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/mech_recharger
 	name = T_BOARD("mech recharger")
-=======
-/obj/item/circuitboard/mech_recharger
-	build_name = "mech recharger"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/mech_recharger
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 2, TECH_POWER = 2, TECH_ENGINEERING = 2)

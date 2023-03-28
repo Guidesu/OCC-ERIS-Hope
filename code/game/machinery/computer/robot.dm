@@ -6,24 +6,16 @@
 	icon_screen = "robot"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
 	req_access = list(access_robotics)
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/robotics
 
 	var/safety = 1
 
 /obj/machinery/computer/robotics/attack_hand(var/mob/user)
-=======
-	circuit = /obj/item/circuitboard/robotics
-
-	var/safety = 1
-
-/obj/machinery/computer/robotics/attack_hand(var/mob/user as mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(..())
 		return
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/robotics/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/robotics/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["robots"] = get_cyborgs(user)
 	data["safety"] = safety
@@ -65,11 +57,7 @@
 			return
 
 		// Antagonistic cyborgs? Left here for downstream
-<<<<<<< HEAD
 		if(target.mind && player_is_antag(target.mind) && target.emagged)
-=======
-		if(target.mind && player_is_antag(target.mind) && target.HasTrait(CYBORG_TRAIT_EMAGGED))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(target, "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered.")
 			target.ResetSecurityCodes()
 		else
@@ -123,11 +111,7 @@
 			to_chat(user, "Access Denied")
 			return
 
-<<<<<<< HEAD
 		if(target.emagged)
-=======
-		if(target.HasTrait(CYBORG_TRAIT_EMAGGED))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, "Robot is already hacked.")
 			return
 
@@ -140,11 +124,7 @@
 
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] emagged [target.name] using robotic console!"))
 		log_game("[key_name(usr)] emagged [target.name] using robotic console!")
-<<<<<<< HEAD
 		target.emagged = 1
-=======
-		target.AddTrait(CYBORG_TRAIT_EMAGGED)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(target, SPAN_NOTICE("Failsafe protocols overriden. New tools available."))
 
 	// Arms the emergency self-destruct system
@@ -215,8 +195,8 @@
 		robot["hackable"] = 0
 		// Antag AIs know whether linked cyborgs are hacked or not.
 		if(operator && isAI(operator) && (R.connected_ai == operator) && (operator.mind.antagonist.len && operator.mind.original == operator))
-			robot["hacked"] = R.HasTrait(CYBORG_TRAIT_EMAGGED) ? 1 : 0
-			robot["hackable"] = R.HasTrait(CYBORG_TRAIT_EMAGGED) ? 0 : 1
+			robot["hacked"] = R.emagged ? 1 : 0
+			robot["hackable"] = R.emagged? 0 : 1
 		robots.Add(list(robot))
 	return robots
 

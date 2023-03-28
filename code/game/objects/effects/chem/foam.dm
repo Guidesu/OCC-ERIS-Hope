@@ -130,14 +130,14 @@
 // wall formed by metal foams, dense and opaque, but easy to break
 
 /obj/structure/foamedmetal
-	name = "foamed metal"
-	desc = "A lightweight foamed metal wall."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "metalfoam"
 	density = TRUE
 	opacity = 1 // changed in New()
 	anchored = TRUE
 	layer = EDGED_TURF_LAYER
+	name = "foamed metal"
+	desc = "A lightweight foamed metal wall."
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
 /obj/structure/foamedmetal/New()
@@ -158,10 +158,9 @@
 /obj/structure/foamedmetal/ex_act(severity)
 	qdel(src)
 
-/obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		if(metal == 1 || prob(50))
-			qdel(src)
+/obj/structure/foamedmetal/bullet_act()
+	if(metal == 1 || prob(50))
+		qdel(src)
 
 /obj/structure/foamedmetal/attack_hand(var/mob/user)
 	if ((HULK in user.mutations) || (prob(75 - metal * 25)))

@@ -5,7 +5,6 @@
 	var/desc = "regular old playing card."
 
 /obj/item/deck
-<<<<<<< HEAD
 	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/obj/playing_cards.dmi'
 	var/list/cards = list()
@@ -16,19 +15,10 @@
 	icon_state = "card_holder"
 
 /obj/item/deck/cards
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "deck of cards"
 	desc = "A simple deck of playing cards."
 	icon_state = "deck"
 
-<<<<<<< HEAD
-=======
-	w_class = ITEM_SIZE_SMALL
-	icon = 'icons/obj/playing_cards.dmi'
-	var/list/cards = list()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/deck/cards/New()
 	..()
 
@@ -250,11 +240,7 @@
 		for(var/datum/playingcard/P in cards)
 			to_chat(user, "The [P.name].")
 
-<<<<<<< HEAD
 /obj/item/hand/on_update_icon(var/direction = 0)
-=======
-/obj/item/hand/update_icon(var/direction = 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!cards.len)
 		qdel(src)
@@ -275,11 +261,7 @@
 		var/image/I = new(src.icon, (concealed ? "[P.back_icon]" : "[P.card_icon]") )
 		I.pixel_x += (-5+rand(10))
 		I.pixel_y += (-5+rand(10))
-<<<<<<< HEAD
 		add_overlays(I)
-=======
-		add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/offset = FLOOR(20/cards.len, 1)
@@ -311,11 +293,7 @@
 			else
 				I.pixel_x = -7+(offset*i)
 		I.transform = M
-<<<<<<< HEAD
 		add_overlays(I)
-=======
-		add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		i++
 
 /obj/item/hand/dropped(mob/user as mob)

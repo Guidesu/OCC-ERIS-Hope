@@ -26,13 +26,9 @@
 	spawn(lifetime)
 		qdel(src)
 
-/obj/effect/overlay/pulse/heatwave
-	icon_state = "sparks"
-	name = "heatwave sparks"
-
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
-	icon = 'icons/turf/flooring/beach2.dmi'
+	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm1"
 	density = TRUE
 	layer = WALL_OBJ_LAYER
@@ -40,7 +36,7 @@
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
-	icon = 'icons/turf/flooring/beach2.dmi'
+	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm2"
 	density = TRUE
 	layer = WALL_OBJ_LAYER
@@ -48,7 +44,7 @@
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
-	icon = 'icons/turf/flooring/beach.dmi'
+	icon = 'icons/misc/beach.dmi'
 	icon_state = "coconuts"
 
 /obj/effect/overlay/bluespacify
@@ -63,26 +59,9 @@
 	icon = 'icons/effects/effects.dmi'
 	layer = WALL_OBJ_LAYER
 	icon_state = "scorch"
-<<<<<<< HEAD
 
 /obj/effect/overlay/temp
 	anchored = TRUE
-=======
-	var/serial_type_index = ""
-
-/obj/effect/overlay/bmark/attackby(obj/item/I, mob/user)
-	..()
-	if(istype(I, /obj/item/device/bullet_scanner))
-		if(serial_type_index)
-			to_chat(user, "<span class='info'>Bullet Hole Caliberation: [serial_type_index].</span>")
-			return
-		else
-			to_chat(user, "<span class='info'>Bullet Hole Caliberation: ERROR.</span>")
-
-
-/obj/effect/overlay/temp
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = 0
 	var/duration = 10
@@ -92,11 +71,7 @@
 	if(randomdir)
 		dir = pick(GLOB.cardinal)
 
-<<<<<<< HEAD
 	FLICK("[icon_state]", src) //Because we might be pulling it from a pool, flick whatever icon it uses so it starts at the start of the icon's animation.
-=======
-	flick("[icon_state]", src) //Because we might be pulling it from a pool, flick whatever icon it uses so it starts at the start of the icon's animation.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	..()
 	spawn(duration)

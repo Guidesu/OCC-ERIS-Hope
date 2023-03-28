@@ -13,10 +13,7 @@
 	var/last_battery_percent = 0							// Used for deciding if battery percentage has chandged
 	var/last_world_time = "00:00"
 	var/list/last_header_icons
-
 	var/computer_emagged = FALSE							// Whether the computer is emagged.
-	var/emagged_level_up = FALSE							// When do we turn from Labtop to Console bitflag
-
 	var/apc_powered = FALSE									// Set automatically. Whether the computer used APC power last tick.
 	var/base_active_power_usage = 50						// Power usage when the computer is open (screen is active) and can be interacted with. Remember hardware can use power too.
 	var/base_idle_power_usage = 5							// Power usage when the computer is idle and screen is off (currently only applies to laptops)
@@ -51,13 +48,8 @@
 	var/obj/item/computer_hardware/hard_drive/hard_drive						// Hard Drive component of this computer. Stores programs and files.
 
 	// Optional hardware (improves functionality, but is not critical for computer to work in most cases)
-<<<<<<< HEAD
 	var/obj/item/cell/cell													// An internal power source for this computer. Can be recharged.
 	var/suitable_cell = /obj/item/cell/medium								//What type of battery do we take?
-=======
-	cell = null													// An internal power source for this computer. Can be recharged.
-	suitable_cell = /obj/item/cell/medium								//What type of battery do we take?
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/computer_hardware/card_slot/card_slot						// ID Card slot component of this computer. Mostly for HoP modification console that needs ID slot for modification.
 	var/obj/item/computer_hardware/printer/printer							// Printer component of this computer, for your everyday paperwork needs.
 	var/obj/item/computer_hardware/hard_drive/portable/portable_drive		// Portable data storage
@@ -71,8 +63,4 @@
 	var/modifiable = TRUE	// can't be modified or damaged if false
 
 	var/stores_pen = FALSE
-<<<<<<< HEAD
 	var/obj/item/pen/stored_pen
-=======
-	var/obj/item/pen/stored_pen
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

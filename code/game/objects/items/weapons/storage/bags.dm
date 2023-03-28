@@ -19,14 +19,9 @@
 	icon = 'icons/obj/storage.dmi'
 	allow_quick_gather = TRUE
 	allow_quick_empty = TRUE
-<<<<<<< HEAD
 	display_contents_with_number = TRUE
-=======
-	display_contents_with_number = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_to_pickup = TRUE
 	slot_flags = SLOT_BELT
-	price_tag = 25
 
 // -----------------------------
 //          Trash bag
@@ -37,10 +32,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trashbag0"
 	item_state = "trashbag"
-	display_contents_with_number = TRUE
-	price_tag = 30
 
-<<<<<<< HEAD
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
 	can_hold = list() // any
@@ -48,15 +40,6 @@
 	max_storage_space = DEFAULT_NORMAL_STORAGE
 
 /obj/item/storage/bag/trash/on_update_icon()
-=======
-	w_class = ITEM_SIZE_BULKY
-	max_w_class = ITEM_SIZE_SMALL
-	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
-	max_storage_space = DEFAULT_BULKY_STORAGE
-
-/obj/item/storage/bag/trash/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(contents.len == 0)
 		icon_state = "trashbag0"
 	else if(contents.len < 12)
@@ -66,65 +49,20 @@
 	else
 		icon_state = "trashbag3"
 
-/obj/item/storage/bag/trash/holding
-	name = "trash bag of holding"
-	desc = "The latest and greatest in custodial convenience, a trash bag that is capable of holding vast quantities of garbage. Why someone used highly dangerous bluespace for this is a question left unanswered."
-	icon_state = "bluetrashbag"
-	max_w_class = ITEM_SIZE_BULKY
-	max_storage_space = DEFAULT_HUGE_STORAGE * 1.25
-	matter = list(MATERIAL_PLASTIC = 10, MATERIAL_GOLD = 5, MATERIAL_DIAMOND = 1, MATERIAL_URANIUM = 1)
-	price_tag = 300
 
-<<<<<<< HEAD
 //The custodial robot gets a larger bag since it only has one and no cart
 /obj/item/storage/bag/trash/robot
 	max_storage_space = DEFAULT_BULKY_STORAGE * 2
 	spawn_tags = null
 
 /obj/item/storage/bag/trash/robot/on_update_icon()
-=======
-/obj/item/storage/bag/trash/holding/New()
-	..()
-	item_flags |= BLUESPACE
-	bluespace_entropy(10, get_turf(src))
-
-/obj/item/storage/bag/trash/holding/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.item_flags & BLUESPACE)
-		to_chat(user, SPAN_WARNING("The bluespace interfaces of the two devices conflict and malfunction, producing a loud explosion."))
-		if (ishuman(user))
-			var/mob/living/carbon/human/H = user
-			var/held = W.get_equip_slot()
-			if (held == slot_l_hand)
-				var/obj/item/organ/external/E = H.get_organ(BP_L_ARM)
-				E.droplimb(0, DISMEMBER_METHOD_BLUNT)
-			else if (held == slot_r_hand)
-				var/obj/item/organ/external/E = H.get_organ(BP_R_ARM)
-				E.droplimb(0, DISMEMBER_METHOD_BLUNT)
-		user.drop_item()
-		return
-	..()
-
-/obj/item/storage/bag/trash/holding/update_icon()
-	return
-
-/obj/item/storage/bag/trash/big
-	name = "large trash bag"
-	desc = "It's the ultra-heavy-duty yellow polymer kind. Time to take out the trash!"
-	icon_state = "superbag0"
-	item_state = "trashbag"
-	max_storage_space = DEFAULT_BULKY_STORAGE * 1.5
-	price_tag = 60
-
-/obj/item/storage/bag/trash/big/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(contents.len == 0)
-		icon_state = "superbag0"
-	else if(contents.len < 14)
-		icon_state = "superbag1"
+		icon_state = "trashbag0"
 	else if(contents.len < 24)
-		icon_state = "superbag2"
+		icon_state = "trashbag1"
+	else if(contents.len < 42)
+		icon_state = "trashbag2"
 	else
-<<<<<<< HEAD
 		icon_state = "trashbag3"
 
 /obj/item/storage/bag/trash/holding
@@ -142,9 +80,6 @@
 
 /obj/item/storage/bag/trash/holding/on_update_icon()
 	return
-=======
-		icon_state = "superbag3"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // -----------------------------
 //        Plastic Bag
@@ -159,14 +94,9 @@
 
 	w_class = ITEM_SIZE_BULKY
 	max_w_class = ITEM_SIZE_SMALL
-<<<<<<< HEAD
 	max_storage_space = DEFAULT_BULKY_STORAGE
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
-=======
-	max_storage_space = DEFAULT_SMALL_STORAGE
-	can_hold = list() // any
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // -----------------------------
 //        Mining Satchel
@@ -179,9 +109,8 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = ITEM_SIZE_NORMAL
-	max_storage_space = 240 //So they can hold a full stack of ore
+	max_storage_space = 100
 	max_w_class = ITEM_SIZE_NORMAL
-<<<<<<< HEAD
 	can_hold = list(/obj/item/ore)
 
 /obj/item/storage/bag/ore/holding
@@ -193,21 +122,6 @@
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_GOLD = 4, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
 	origin_tech = list(TECH_BLUESPACE = 4)
 	can_hold = list(/obj/item/ore,
-=======
-	can_hold = list(/obj/item/stack/ore)
-	var/stored_ore = list()
-	var/last_update = 0
-
-/obj/item/storage/bag/ore/holding
-	name = "satchel of holding"
-	desc = "A revolution in convenience, this satchel allows for immense ore or produce storage."
-	icon_state = "satchel_bspace"
-	max_storage_space = DEFAULT_HUGE_STORAGE * 10
-	max_w_class = ITEM_SIZE_BULKY
-	matter = list(MATERIAL_STEEL = 4, MATERIAL_GOLD = 4, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
-	origin_tech = list(TECH_BLUESPACE = 4)
-	can_hold = list(/obj/item/stack/ore,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	                /obj/item/reagent_containers/food/snacks/grown,
 	                /obj/item/seeds,
 	                /obj/item/grown,
@@ -216,28 +130,7 @@
 
 /obj/item/storage/bag/ore/holding/New()
 	..()
-<<<<<<< HEAD
 	bluespace_entropy(10, get_turf(src))
-=======
-	item_flags |= BLUESPACE
-	bluespace_entropy(4, get_turf(src))
-
-/obj/item/storage/bag/ore/holding/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.item_flags & BLUESPACE)
-		to_chat(user, SPAN_WARNING("The bluespace interfaces of the two devices conflict and malfunction, producing a loud explosion."))
-		if (ishuman(user))
-			var/mob/living/carbon/human/H = user
-			var/held = W.get_equip_slot()
-			if (held == slot_l_hand)
-				var/obj/item/organ/external/E = H.get_organ(BP_L_ARM)
-				E.droplimb(0, DISMEMBER_METHOD_BLUNT)
-			else if (held == slot_r_hand)
-				var/obj/item/organ/external/E = H.get_organ(BP_R_ARM)
-				E.droplimb(0, DISMEMBER_METHOD_BLUNT)
-		user.drop_item()
-		return
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // -----------------------------
 //          Produce bag
@@ -254,37 +147,7 @@
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/reagent_containers/food/snacks/egg,
-<<<<<<< HEAD
 		/obj/item/reagent_containers/food/snacks/meat)
-=======
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/chickenbreast)
-
-
-// -----------------------------
-//          Xenobio bag
-// -----------------------------
-
-/obj/item/storage/bag/xenobio
-	name = "xenobio bag"
-	desc = "A mini backpack meant for storing everything you would want to have large storage of in xenobio."
-	icon = 'icons/obj/hydroponics_machines.dmi'
-	icon_state = "xenobag"
-	max_storage_space = 50
-	max_w_class = ITEM_SIZE_NORMAL
-	w_class = ITEM_SIZE_NORMAL
-	can_hold = list(/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/food/snacks/monkeycube,
-		/obj/item/slime_extract,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/stack/material/plasma,
-		/obj/item/slime_thermals,
-		/obj/item/slime_potion/slime_docile,
-		/obj/item/slime_potion/slime_docile_adult,
-		/obj/item/slime_potion/slimes_speed,
-		/obj/item/slime_potion/slimesteroid,
-		/obj/item/slimesteroid2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 // -----------------------------
@@ -304,17 +167,6 @@
 	storage_slots = 7
 	allow_quick_empty = TRUE // this function is superceded
 
-<<<<<<< HEAD
-=======
-/obj/item/storage/bag/sheetsnatcher/guild
-	name = "advanced sheet snatcher"
-	desc = "An advanced verson of a patented storage system designed for any kind of mineral sheet."
-	icon_state = "sheetsnatcher_guild"
-	item_state = "sheetsnatcher_guild"
-	capacity = 900
-	storage_slots = 21
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(!istype(W,/obj/item/stack/material))
 		if(!stop_messages)
@@ -354,11 +206,7 @@
 
 	if(!inserted || !S.amount)
 		usr.remove_from_mob(S)
-<<<<<<< HEAD
 		usr.update_icons() //update our overlays
-=======
-		usr.update_icons() //update our over-lays
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (usr.client)
 			usr.client.screen -= S
 		S.dropped(usr)
@@ -402,7 +250,6 @@
 		S.amount = S.max_amount
 
 	return ..(S,new_location)
-<<<<<<< HEAD
 
 // -----------------------------
 //    Sheet Snatcher (Cyborg)
@@ -412,8 +259,6 @@
 	name = "sheet snatcher 9000"
 	capacity = 500//Borgs get more because >specialization
 	spawn_frequency = 0
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // -----------------------------
 //           Cash Bag
@@ -423,11 +268,7 @@
 	name = "money bag"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "moneybag"
-<<<<<<< HEAD
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
-=======
-	desc = "A bag for carrying lots of cash. It has got a big dollar sign printed on the front."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	storage_slots = 40
 	max_storage_space = 100
 	max_w_class = ITEM_SIZE_NORMAL
@@ -439,25 +280,3 @@
 	. = ..()
 	if(prob(20))
 		icon_state = "moneybagalt"
-<<<<<<< HEAD
-=======
-
-// -----------------------------
-//          Chemistry bag
-// -----------------------------
-
-/obj/item/storage/bag/chemistry
-	name = "chemistry bag"
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "chemistry_bag"
-	storage_slots = 10
-	max_storage_space = 100
-	max_w_class = ITEM_SIZE_NORMAL
-	w_class = ITEM_SIZE_NORMAL
-	display_contents_with_number = FALSE
-	can_hold = list(/obj/item/reagent_containers/pill,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/genetics/sample
-	)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

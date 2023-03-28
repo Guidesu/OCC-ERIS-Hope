@@ -3,15 +3,11 @@
 /// (Mixing)Glass.
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/glass
-<<<<<<< HEAD
 	name = " "
-=======
-	name = "Glass based bottle"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/base_name = " "
 	desc = ""
 	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle"
+	icon_state = "null"
 	item_state = "null"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
@@ -20,14 +16,9 @@
 	reagent_flags = OPENCONTAINER
 	unacidable = 1 //glass doesn't dissolve in acid
 	matter = list(MATERIAL_GLASS = 1)
-<<<<<<< HEAD
 	bad_type = /obj/item/reagent_containers/glass
 	var/label_icon_state
 	var/lid_icon_state
-=======
-	var/label_icon_state = null
-	var/lid_icon_state = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/label_text = ""
 
@@ -114,26 +105,6 @@
 			return TRUE
 	return ..()
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/glass/pre_attack(atom/target, mob/user, params)
-	if(user.a_intent == I_DISARM)
-		if(is_drainable() && reagents.total_volume && istype(target, /obj/structure/sink))
-			to_chat(user, SPAN_NOTICE("You pour the solution into [target]."))
-			reagents.remove_any(reagents.total_volume)
-			return TRUE
-		if(is_open_container() && reagents.total_volume && istype(target, /obj/item/reagent_containers/glass))
-			if(reagents && !target.reagents.get_free_space())
-				to_chat(user, SPAN_NOTICE("[target] is full."))
-				return TRUE
-			else
-				playsound(src,'sound/effects/Liquid_transfer_mono.ogg',50,1)
-				to_chat(user, SPAN_NOTICE("You pour as much as you can into [target]."))
-				reagents.trans_to_obj(target, reagents.total_volume)
-			return TRUE
-	return ..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(force && !(flags & NOBLUDGEON) && user.a_intent == I_HURT)
 		return ..()
@@ -185,8 +156,4 @@
 /obj/item/reagent_containers/glass/MouseDrop(obj/over_object,src_location,over_location)
 	. = ..()
 	if(istype(over_object, /obj/structure/reagent_dispensers))
-<<<<<<< HEAD
 		reagents.trans_to(over_object, amount_per_transfer_from_this, ignore_isinjectable = 1)
-=======
-		reagents.trans_to(over_object, amount_per_transfer_from_this, ignore_isinjectable = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

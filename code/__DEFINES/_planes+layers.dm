@@ -51,6 +51,8 @@ What is the naming convention for planes or layers?
 //Defines for atom layers and planes
 //KEEP THESE IN A NICE ACSCENDING ORDER, PLEASE
 
+#define CLICKCATCHER_PLANE -99
+
 #define PLANE_SPACE -95
 #define PLANE_SPACE_PARALLAX -80
 
@@ -60,9 +62,6 @@ What is the naming convention for planes or layers?
 #define FLOOR_PLANE -2
 #define GAME_PLANE -1
 
-////////////////////////////////////////////////////////////////////////////////////////
-#define PLANE_WORLD				0	// BYOND's default value for plane, the "base plane"
-////////////////////////////////////////////////////////////////////////////////////////
 
 //Partial porting of bay defines, with our own values reinserted as placeholder
 //The full list of planes and layers needs ported
@@ -186,19 +185,6 @@ What is the naming convention for planes or layers?
 	layer = initial(layer)
 
 
-
 /image/proc/plating_decal_layerise()
 	plane = SPACE_LAYER
 	layer = TURF_PLATING_DECAL_LAYER
-
-// Check if a mob can "logically" see an atom plane
-#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))
-
-
-//Bay port start
-
-#define DEFAULT_APPEARANCE_FLAGS (PIXEL_SCALE)
-
-/atom/appearance_flags = DEFAULT_APPEARANCE_FLAGS
-/image/appearance_flags = DEFAULT_APPEARANCE_FLAGS
-//Bay port end

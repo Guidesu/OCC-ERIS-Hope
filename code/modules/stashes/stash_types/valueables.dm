@@ -6,26 +6,21 @@
 	contents_list_base = list(/obj/spawner/credits/c5000 = 1)
 
 	contents_list_random = list(/obj/item/stack/material/diamond/random = 10,
+	/obj/item/stack/telecrystal/random = 5,
 	/obj/item/stack/material/platinum/random = 10,
 	/obj/item/stack/material/gold/random = 15,
 	/obj/item/stack/material/silver/random = 25,
-<<<<<<< HEAD
 	/obj/item/moneybag/vault = 15,
 	/obj/spawner/credits/c5000 = 30,
 	/obj/spawner/credits/c1000 = 60,
 	/obj/spawner/credits/c500 = 90)
-=======
-	/obj/random/credits/c5000 = 30,
-	/obj/random/credits/c1000 = 60,
-	/obj/random/credits/c500 = 90)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stash/valueable/poker
 
 	lore = "Logbook <br>\
 	Made out like a bandit in poker last night but the boys think there's something to it. It isn't my\
 	 damn fault the kids don't know what a fucking tell is. Two hearts does not make a good bluff, \
-	 dumbass. I actually think they might shake me down for it, but they don't know the colony like I do.\
+	 dumbass. I actually think they might shake me down for it, but they don't know the ship like I do.\
 	  Here ya go, idiots. Better than a thousand words.<br> %D"
 
 /datum/stash/valueable/sinner
@@ -39,7 +34,6 @@
  I only hope I can pay for all I have done. I have buried Judas and his silver at %D, and will find my own bleeding acre."
 	contents_list_external = list(/obj/item/remains/human = 1)
 
-<<<<<<< HEAD
 /datum/stash/valueable/relics
 	contents_list_extra = list(/obj/item/tool/knife/neotritual = 2,
 	/obj/item/implant/core_implant/cruciform = 4,
@@ -54,17 +48,11 @@ I have taken the Church relics and secreted them here <br>\
  With or without recovering my cross, I am certain of the immortal reward that awaits us all when this mortal coil passes.<br>\
  Steel yourself for the trials ahead, and godspeed."
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/stash/valueable/pirate
 	base_type = /datum/stash/valueable/pirate
 	contents_list_extra = list(/obj/item/melee/energy/sword/pirate = 1, /obj/item/clothing/glasses/eyepatch)
-<<<<<<< HEAD
 /*
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/stash/valueable/pirate/treasure
 	directions = DIRECTION_IMAGE
 
@@ -72,7 +60,6 @@ I have taken the Church relics and secreted them here <br>\
  at the place of the map, for the recovery of our plunder. <br>\
 <br>\
 Should any of us fail to assemble, he shall be suspect, and should any plunder be absent, the missing party be hunted unto death. <br>\
-<<<<<<< HEAD
 This oath we take of the pirate's code."
 */
 /datum/stash/valueable/pirate/hostage
@@ -81,6 +68,3 @@ This oath we take of the pirate's code."
 I'm going to be at %D. I've packed my bags for the tenth time this trip all by myself, and I am going to wait for fat old you again.<br>\
  I might hide under the floor like some rat in a mink coat just because you can't defend me from a handful of ruffians.<br>\
  If nothing else, I should be easy to ransom? Do you think you can manage that sweetie?"
-=======
-This oath we take of the thive's code."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -13,16 +13,10 @@
 	{{if data.occupant}}
 		<div class="item">
 			<div class="itemLabel">
-				Critical Health:
+			Occupant status:
 			</div>
 			<div class="itemContent">
-				{{:data.crit_health}}% ({{:data.stat}})
-			</div>
-			<div class="itemLabel">
-				Organ Health:
-			</div>
-			<div class="itemContent">
-				{{:data.internal_health}}%
+				Health: {{:data.health}}% ({{:data.stat}}).
 			</div>
 			<div class="itemLabel">
 				Pulse:
@@ -56,9 +50,6 @@
 			</div>
 			<div class="itemContent">
 			{{:helper.link(data.filtering ? "Dialysis active" : "Dialysis inactive", null, {'filter' : !data.filtering})}}
-			</div>
-			<div class="itemContent">
-			{{:helper.link(data.pump ? "Stomach pump active" : "Stomach pump inactive", null, {'pump' : !data.pump})}}
 			</div>
 			<div class="itemContent">
 				{{:helper.link("Eject occupant", null, {'eject' : 0})}}

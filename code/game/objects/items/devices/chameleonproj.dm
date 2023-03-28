@@ -1,15 +1,6 @@
-#define CHAMELEON_MIN_PIXELS 32
-
-GLOBAL_LIST_INIT(champroj_blacklist, list(/obj/item/disk/nuclear))
-GLOBAL_LIST_INIT(champroj_whitelist, list())
-
 /obj/item/device/chameleon
 	name = "chameleon projector"
-<<<<<<< HEAD
 	desc = "This is chameleion projector. Chose an item and activate projector. You're beautiful!"
-=======
-	desc = "A projection device allowing for high-tech imitation."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "shield0"
 	flags = CONDUCT
 	slot_flags = SLOT_BELT
@@ -22,45 +13,14 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 	suitable_cell = /obj/item/cell/small
 	spawn_blacklisted = TRUE
 	var/can_use = 1
-<<<<<<< HEAD
 	var/obj/effect/dummy/chameleon/active_dummy
 	var/saved_item = /obj/item/trash/cigbutt
 	var/saved_icon = 'icons/inventory/face/icon.dmi'
 	var/saved_icon_state = "cigbutt"
-=======
-	var/obj/effect/dummy/chameleon/active_dummy = null
-	var/saved_item
-	var/saved_icon
-	var/saved_icon_state
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/saved_overlays
 
 	var/tick_cost = 2 //how much charge is consumed per process tick from the cell
 	var/move_cost = 4 //how much charge is consumed per movement
-<<<<<<< HEAD
-=======
-	suitable_cell = /obj/item/cell/small
-
-/obj/item/device/chameleon/Initialize()
-	.=..()
-	if(. && !cell && suitable_cell)
-		cell = new suitable_cell(src)
-
-/obj/item/device/chameleon/get_cell()
-	return cell
-
-/obj/item/device/chameleon/handle_atom_del(atom/A)
-	..()
-	if(A == cell)
-		cell = null
-
-/obj/item/device/chameleon/examine(mob/user)
-	..()
-	if(cell)
-		to_chat(user, SPAN_NOTICE("\The [src]'s cell reads \"[round(cell.percent())]%\""))
-	else
-		to_chat(user, SPAN_WARNING("\The [src] has no cell."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/chameleon/dropped()
 	disrupt()
@@ -78,58 +38,17 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 	if(active_dummy && !cell_use_check(tick_cost))
 		toggle()
 
-/obj/item/device/chameleon/Process()
-	if(active_dummy)
-		if(cell)
-			cell.checked_use(tick_cost)
-
-/obj/item/device/chameleon/MouseDrop(over_object)
-	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell,usr))
-		cell = null
-	else
-		return ..()
-
-/obj/item/device/chameleon/attackby(var/obj/item/C, mob/living/user)
-	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
-		cell = C
-		return
-	..()
-
 /obj/item/device/chameleon/afterattack(atom/target, mob/user , proximity)
 	if (istype(target, /obj/item/storage)) return
 	if(!proximity) return
 	if(!active_dummy)
-<<<<<<< HEAD
 		if(istype(target,/obj/item) && !istype(target, /obj/item/disk/nuclear))
-=======
-		if(scan_item(target))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			playsound(get_turf(src), 'sound/weapons/flash.ogg', 100, 1, -6)
 			to_chat(user, SPAN_NOTICE("Scanned [target]."))
 			saved_item = target.type
 			saved_icon = target.icon
 			saved_icon_state = target.icon_state
 			saved_overlays = target.overlays
-		to_chat(user, SPAN_WARNING("\The [target] is an invalid target."))
-
-/obj/item/device/chameleon/proc/scan_item(var/obj/item/I)
-	if(!istype(I))
-		return FALSE
-	if(GLOB.champroj_blacklist.Find(I.type))
-		return FALSE
-	if(GLOB.champroj_whitelist.Find(I.type))
-		return TRUE
-	var/icon/icon_to_check = icon(I.icon, I.icon_state, I.dir)
-	var/total_pixels = 0
-	for(var/y = 0 to icon_to_check.Width())
-		for(var/x = 0 to icon_to_check.Height())
-			if(icon_to_check.GetPixel(x, y))
-				total_pixels++
-	if(total_pixels < CHAMELEON_MIN_PIXELS)
-		GLOB.champroj_blacklist.Add(I.type)
-		return FALSE
-	GLOB.champroj_whitelist.Add(I.type)
-	return TRUE
 
 /obj/item/device/chameleon/proc/toggle()
 	if(!can_use || !saved_item) return
@@ -141,11 +60,7 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 		to_chat(usr, SPAN_NOTICE("You deactivate the [src]."))
 		var/obj/effect/overlay/T = new(get_turf(src))
 		T.icon = 'icons/effects/effects.dmi'
-<<<<<<< HEAD
 		FLICK("emppulse",T)
-=======
-		flick("emppulse",T)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		STOP_PROCESSING(SSobj, src)
 		spawn(8) qdel(T)
 	else
@@ -158,11 +73,7 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 		to_chat(usr, SPAN_NOTICE("You activate the [src]."))
 		var/obj/effect/overlay/T = new/obj/effect/overlay(get_turf(src))
 		T.icon = 'icons/effects/effects.dmi'
-<<<<<<< HEAD
 		FLICK("emppulse",T)
-=======
-		flick("emppulse",T)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		START_PROCESSING(SSobj, src)
 		spawn(8) qdel(T)
 
@@ -189,13 +100,8 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 /obj/effect/dummy/chameleon
 	name = ""
 	desc = ""
-<<<<<<< HEAD
 	density = FALSE
 	anchored = TRUE
-=======
-	density = 0
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/device/chameleon/master = null
 
 /obj/effect/dummy/chameleon/proc/activate(var/obj/O, var/mob/M, new_icon, new_iconstate, new_overlays, var/obj/item/device/chameleon/C)
@@ -203,11 +109,7 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 	desc = O.desc
 	icon = new_icon
 	icon_state = new_iconstate
-<<<<<<< HEAD
 	set_overlays(new_overlays)
-=======
-	copy_overlays(new_overlays, TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set_dir(O.dir)
 	M.loc = src
 	master = C
@@ -228,19 +130,11 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 		to_chat(M, SPAN_WARNING("Your chameleon-projector deactivates."))
 	master.disrupt()
 
-<<<<<<< HEAD
 /obj/effect/dummy/chameleon/bullet_act()
 	for(var/mob/M in src)
 		to_chat(M, SPAN_WARNING("Your chameleon-projector deactivates."))
-=======
-/obj/effect/dummy/chameleon/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		for(var/mob/M in src)
-			to_chat(M, SPAN_WARNING("Your chameleon-projector deactivates."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
-	if (!(Proj.testing))
-		master.disrupt()
+	master.disrupt()
 
 /obj/effect/dummy/chameleon/relaymove(var/mob/user, direction)
 	if(istype(loc, /turf/space)) return //No magical space movement!

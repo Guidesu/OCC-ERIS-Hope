@@ -24,7 +24,7 @@
 	return found_machines
 
 /obj/machinery/computer/telecomms/server
-	name = "telecommunications server monitor"
+	name = "Telecommunications Server Monitor"
 	icon_screen = "comm_logs"
 
 	var/screen = 0				// the screen number:
@@ -90,12 +90,7 @@
 						// -- Determine race of orator --
 
 						var/race = C.parameters["race"]			   // The actual race of the mob
-						var/language = C.parameters["language"]  // The language spoken, or null/""
-
-						// -- Censor Codespeak in telecom logs, simpler than making codes readable/unreadable depending on user --
-
-						if(findtext(C.parameters["message"], "@", length(C.parameters["message"])))
-							C.parameters["message"] = "REDACTED"
+						var/language = C.parameters["language"] // The language spoken, or null/""
 
 						// -- If the orator is a human, or universal translate is active, OR mob has universal speech on --
 

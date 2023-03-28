@@ -270,12 +270,6 @@ var/list/footstep_tile = list(\
 		'sound/effects/footstep/tile3.wav',\
 		'sound/effects/footstep/tile4.wav')
 
-var/list/footstep_water = list(\
-		'sound/effects/footstep/water1.ogg',\
-		'sound/effects/footstep/water2.ogg',\
-		'sound/effects/footstep/water3.ogg',\
-		'sound/effects/footstep/water4.ogg')
-
 var/list/footstep_wood = list(\
 		'sound/effects/footstep/wood1.ogg',\
 		'sound/effects/footstep/wood2.ogg',\
@@ -314,8 +308,6 @@ var/list/rummage_sound = list(\
 			toplay = pick(footstep_plating)
 		if ("tile")
 			toplay = pick(footstep_tile)
-		if ("water")
-			toplay = pick(footstep_water)
 		if ("wood")
 			toplay = pick(footstep_wood)
 
@@ -327,12 +319,6 @@ var/list/rummage_sound = list(\
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return
 
-<<<<<<< HEAD
-=======
-	if(islist(soundin))
-		soundin = pick(soundin)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	soundin = get_sfx(soundin) // same sound for everyone
 	frequency = vary && isnull(frequency) ? get_rand_frequency() : frequency // Same frequency for everybody
 
@@ -359,10 +345,6 @@ var/list/rummage_sound = list(\
 
 			if(T && (T.z == turf_source.z || zrange && abs(T.z - turf_source.z) <= zrange))
 				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, extrarange, override_env, envdry, envwet, use_pressure)
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 var/const/FALLOFF_SOUNDS = 0.5
 
@@ -385,11 +367,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	//sound volume falloff with pressure
 	var/pressure_factor = 1.0
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/turf/T = get_turf(src)
 	// 3D sounds, the technology is here!
 	if(T && isturf(turf_source))
@@ -590,4 +568,3 @@ var/const/FALLOFF_SOUNDS = 0.5
 	if (timer_handle)
 		deltimer(timer_handle)
 	qdel(src)
-

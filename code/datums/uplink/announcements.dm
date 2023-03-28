@@ -3,13 +3,11 @@
 *****************/
 /datum/uplink_item/abstract/announcements
 	category = /datum/uplink_category/services
-	antag_roles = ROLES_UPLINK_BASE
 
 /datum/uplink_item/abstract/announcements/buy(var/obj/item/device/uplink/U, var/mob/user)
 	. = ..()
 	if(.)
 		log_and_message_admins("has triggered a falsified [src]", user)
-<<<<<<< HEAD
 
 /datum/uplink_item/abstract/announcements/announce
 	name = "Shipwide Announcement"
@@ -17,14 +15,6 @@
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
 	desc = "Broadcasts a message anonymously to the entire vessel. Triggers immediately after supplying additional data."
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
-=======
-/*
-/datum/uplink_item/abstract/announcements/announce/New()
-	..()
-	name = "Colony-wide Announcement"
-	item_cost = 2
-	desc = "Broadcasts a message anonymously to the entire colony. Triggers immediately after supplying additional data."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/abstract/announcements/announce/get_goods(var/obj/item/device/uplink/U, var/loc, var/mob/user, var/list/args)
 	var/message = input(user, "What would you like the text of the announcement to be? Write as much as you like, The title will appear as Unknown Broadcast", "False Announcement") as text|null
@@ -32,7 +22,7 @@
 		return FALSE
 	command_announcement.Announce(message, "Unknown Broadcast")
 	return 1
-*/
+
 /datum/uplink_item/abstract/announcements/fake_crew_arrival
 	name = "Crew Arrival Announcement/Records"
 	desc = "Creates a fake crew arrival announcement as well as fake crew records, using your current appearance (including held items!) and worn id card. Trigger with care!"
@@ -91,7 +81,7 @@
 
 	AnnounceArrival(general.fields["name"], general.fields["rank"], "has completed cryogenic revival")
 	return 1
-/*
+
 /datum/uplink_item/abstract/announcements/fake_ion_storm
 	name = "Ion Storm Announcement"
 	desc = "Interferes with the ship's ion sensors. Triggers immediately upon investment."
@@ -112,7 +102,6 @@
 	var/datum/event/radiation_storm/syndicate/S =  new(null, EVENT_LEVEL_MODERATE)
 	S.Initialize()
 	return 1
-<<<<<<< HEAD
 
 /datum/uplink_item/abstract/announcements/fake_serb
 	name = "Unknown ship Announcement"
@@ -125,6 +114,3 @@
 	command_announcement.Announce(initial(merc.arrival_message), initial(merc.announcer) || "[boss_name]")
 	qdel(merc)
 	return 1
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

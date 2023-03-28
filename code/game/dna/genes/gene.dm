@@ -71,11 +71,7 @@
 * @params M The subject.
 * @params g Gender (m or f)
 */
-<<<<<<< HEAD
 /datum/dna/gene/proc/OnDrawUnderlays(var/mob/M, var/g)
-=======
-/datum/dna/gene/proc/OnDrawUnderlays(var/mob/M, var/g, var/species_form)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return 0
 
 

@@ -58,11 +58,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(!istype(I, /obj/item/tool/sword/nt_sword))
 		return FALSE
 	var/obj/item/tool/sword/nt_sword/NT = I
-<<<<<<< HEAD
 	if(NT.isBroken)
 		return FALSE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!(NT.flags & NOBLUDGEON))
 		if(user.a_intent == I_HELP)
 			return FALSE
@@ -73,11 +70,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		if(prob(10))
 			for(var/mob/living/carbon/human/H in viewers(user))
-<<<<<<< HEAD
 //				SEND_SIGNAL(H, SWORD_OF_TRUTH_OF_DESTRUCTION, src)
-=======
-				LEGACY_SEND_SIGNAL(H, SWORD_OF_TRUTH_OF_DESTRUCTION, src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			qdel(src)
 		. = TRUE
 
@@ -87,12 +80,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /mob/living/attackby(obj/item/I, mob/living/user, var/params)
 	if(!ismob(user))
 		return FALSE
-<<<<<<< HEAD
 	var/surgery_check = can_operate(src, user)
 	if(surgery_check && do_surgery(src, user, I, surgery_check)) //Surgery
-=======
-	if(can_operate(src, user) && do_surgery(src, user, I)) //Surgery
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	return I.attack(src, user, user.targeted_organ)
 
@@ -139,20 +128,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	var/power = force
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-<<<<<<< HEAD
 		power *= H.damage_multiplier
 	if(HULK in user.mutations)
 		power *= 2
 	target.hit_with_weapon(src, user, power, hit_zone)
 	return
-=======
-		var/obj/item/organ/external/current_hand = H.organs_by_name[H.hand ? BP_L_ARM : BP_R_ARM]
-		power = power + ((current_hand.limb_efficiency - 100) / 10) //Organ damage in the arms reduces melee damage, Improved efficiency increases melee damage. Slap Harder.
-		power *= H.damage_multiplier
-	if(HULK in user.mutations)
-		power *= 2
-	if(effective_faction.Find(target.faction)) // Is the mob's in our list of factions we're effective against?
-		power *= damage_mult // Increase the damage
-	target.hit_with_weapon(src, user, power, hit_zone)
-	return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

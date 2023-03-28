@@ -9,13 +9,8 @@
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
 
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
-=======
-	density = 1
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	active_power_usage = 5000
@@ -120,14 +115,6 @@
 
 	if(jobban_isbanned(user,"Robot"))
 		to_chat(user, SPAN_DANGER("You are banned from playing synthetics and cannot spawn as a drone."))
-<<<<<<< HEAD
-=======
-		return
-
-	if(!BC_IsKeyAllowedToConnect(user.ckey) && !usr.client.holder)
-		user << SPAN_DANGER("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-			    but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(!user.MayRespawn(1, MINISYNTH) && !aibound)

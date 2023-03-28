@@ -4,14 +4,10 @@
 /obj/structure/strangebeacon
 	icon = 'icons/obj/machines/excelsior/objects.dmi'
 	icon_state = "strange_beacon"
-<<<<<<< HEAD
 	desc = "It looks like ancient, and strange beacon."
 	rarity_value = 10
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_STRANGEBEACON
-=======
-	desc = "It looks ancient."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/nosignal = FALSE
 	var/entropy_value = 6
 
@@ -54,8 +50,4 @@
 	while(counter < counterfinish)
 		counter++
 		sleep(rand(4,7))
-<<<<<<< HEAD
 		explosion(pick(bombarda), 1, 2, 3, 3)
-=======
-		explosion(pick(bombarda), 1, 2, 3, 3)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

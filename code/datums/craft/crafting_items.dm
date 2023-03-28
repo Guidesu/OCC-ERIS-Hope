@@ -12,28 +12,19 @@
 
 /obj/item/part
 	icon ='icons/obj/crafts.dmi'
-<<<<<<< HEAD
 	rarity_value = 10
 	spawn_frequency = 10
 	price_tag = 300
 	bad_type = /obj/item/part
-=======
-	price_tag = 300
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	spawn_tags = SPAWN_TAG_PART
 
 /obj/item/part/armor
 	name = "armor part"
-<<<<<<< HEAD
 	desc = "Spare part for clothing."
-=======
-	desc = "Spare part of armor."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "armor_part"
 	spawn_tags = SPAWN_TAG_PART_ARMOR
 	matter = list(MATERIAL_PLASTIC = 5, MATERIAL_WOOD = 5, MATERIAL_CARDBOARD = 5, MATERIAL_STEEL = 5)
 
-<<<<<<< HEAD
 /obj/item/part/gun
 	name = "gun part"
 	desc = "Spare part of a gun."
@@ -45,49 +36,6 @@
 /obj/item/part/gun/New()
 	. = ..()
 	icon_state = "gun_part_[rand(1,6)]"
-=======
-/obj/item/part/armor/artwork
-	desc = "This is an artistically-made armor part."
-
-/obj/item/part/armor/artwork/Initialize()
-	name = get_weapon_name(capitalize = TRUE)
-	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
-	price_tag += rand(0, 500)
-	return ..()
-
-/obj/item/part/armor/artwork/get_item_cost(export)
-	. = ..()
-	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
-	. += comp_sanity.affect * 100
-
-/obj/item/part/gun
-	name = "gun part"
-	desc = "Spare part of gun."
-	icon_state = "gun_part_1"
-	spawn_tags = SPAWN_TAG_GUN_PART
-	w_class = ITEM_SIZE_SMALL
-	matter = list(MATERIAL_PLASTEEL = 5)
-	var/generic = TRUE
-
-/obj/item/part/gun/Initialize()
-	. = ..()
-	if(generic)
-		icon_state = "gun_part_[rand(1,6)]"
-
-/obj/item/part/gun/artwork
-	desc = "This is an artistically-made gun part."
-
-/obj/item/part/gun/artwork/Initialize()
-	name = get_weapon_name(capitalize = TRUE)
-	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
-	price_tag += rand(0, 500)
-	return ..()
-
-/obj/item/part/gun/artwork/get_item_cost(export)
-	. = ..()
-	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
-	. += comp_sanity.affect * 100
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/craft_frame
 	name = "item assembly"
@@ -95,20 +43,13 @@
 	icon ='icons/obj/crafts.dmi'
 	icon_state = "gun_frame"
 	matter = list()
-<<<<<<< HEAD
 	bad_type = /obj/item/craft_frame
 	spawn_frequency = 0
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/req_sat = STAT_MEC
 	var/suitable_part
 	var/view_only = 0
 	var/tags_to_spawn = list()
-<<<<<<< HEAD
 	var/req_parts = 10
-=======
-	var/req_parts = 5
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/complete = FALSE
 	var/total_items = 20
 	var/list/items = list()
@@ -119,10 +60,7 @@
 	desc = "Add some weapon parts to complete this, use your knowledge of mechanics and create a gun."
 	matter = list(MATERIAL_PLASTEEL = 5)
 	suitable_part = /obj/item/part/gun
-<<<<<<< HEAD
 	spawn_frequency = 0
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	tags_to_spawn = list(SPAWN_GUN)
 
 /obj/item/craft_frame/examine(user, distance)
@@ -151,15 +89,9 @@
 	complete = TRUE
 
 /obj/item/craft_frame/proc/generate_guns()
-<<<<<<< HEAD
 	for(var/i in 1 to total_items)
 		var/list/canidates = SSspawn_data.valid_candidates(tags_to_spawn, null, FALSE, i*100, i*500, TRUE, null, paths, null)
 		paths += list(SSspawn_data.pick_spawn(canidates))
-=======
-/*	for(var/i in 1 to total_items)
-		var/list/canidates = SSspawn_data.valid_candidates(tags_to_spawn, null, FALSE, i*300, i*500, TRUE, null, paths, null)
-		paths += list(SSspawn_data.pick_spawn(canidates))*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/path in paths)
 		items += new path()
 
@@ -173,11 +105,7 @@
 		to_chat(user, SPAN_WARNING("[src] is not yet complete."))
 	else
 		view_only = round(total_items * (1 - user.stats.getMult(req_sat, 100))/2) +1 // 1 choice per 10 stat + 1
-<<<<<<< HEAD
 		if(user.stats.getPerk(/datum/perk/oddity/gunsmith))
-=======
-		if(user.stats.getPerk(PERK_GUNSMITH))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			view_only += 3
 		ui_interact(user)
 		SSnano.update_uis(src)
@@ -185,14 +113,6 @@
 /obj/item/craft_frame/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
 	var/list/data = list()
 
-<<<<<<< HEAD
-=======
-	var/datum/asset/craftIcons = get_asset_datum(/datum/asset/simple/craft)
-	var/datum/asset/materialIcons = get_asset_datum(/datum/asset/simple/materials)
-	if (craftIcons.send(user.client) || materialIcons.send(user.client))
-		user.client.browse_queue_flush() // stall loading nanoui until assets actualy gets sent
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/listed_products = list()
 	for(var/key = 1 to view_only)
 		var/obj/item/I = items[key]
@@ -223,12 +143,6 @@
 	var/turf/T = get_turf(src)
 	O.forceMove(T)
 	user.put_in_hands(O)
-<<<<<<< HEAD
-=======
-/*
-	This on eris is desided for spawning with "additional items" like ammo or mags so when you make the gun you can also have a mag/ammo for it. We dont have this system
-	If someone were to make it or port it that be greate to have.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/gun/projectile))
 		var/list/aditional_objects = SSspawn_data.all_accompanying_obj_by_path[O.type]
 		var/atom/movable/aditional_obj
@@ -238,11 +152,7 @@
 				if(!prob(initial(AM.prob_aditional_object)))
 					continue
 				aditional_obj = new thing (T)
-<<<<<<< HEAD
 		user.put_in_hands(aditional_obj)
-=======
-		user.put_in_hands(aditional_obj)*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(user, SPAN_NOTICE("You have used [src] to craft a [O.name]."))
 	spawn(1)
 		if(!QDELETED(src))

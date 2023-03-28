@@ -67,13 +67,6 @@ hivebots
 mimics
 drones
 pirates
-<<<<<<< HEAD
-=======
-russians
-ukrainians
-englishmen
-americans
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 creatures
 men
 gods
@@ -92,12 +85,6 @@ wizards
 witches
 druids
 cyborgs
-<<<<<<< HEAD
-=======
-germans
-dutchmen
-frenchmen
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 mummies
 vampires
 elves
@@ -105,8 +92,4 @@ dwarves
 halfling
 orcs
 moths
-<<<<<<< HEAD
 blobs
-=======
-blobs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -5,13 +5,8 @@
 #define add_clothing_protection(A)	\
 	var/obj/item/clothing/C = A; \
 	flash_protection += C.flash_protection; \
-<<<<<<< HEAD
 	ear_protection += C.ear_protection; \
 	equipment_tint_total += C.tint; // Occulus edit, added ear_protection
-=======
-	psi_blocking += C.psi_blocking; \
-	equipment_tint_total += C.tint;
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/can_eat(var/food, var/feedback = 1)
 	var/list/status = can_eat_status()
@@ -33,30 +28,12 @@
 		return TRUE
 	if(stats.getStat(STAT_COG) >= HUMAN_REQ_COG_FOR_REG || stats.getStat(STAT_BIO) >= HUMAN_REQ_BIO_FOR_REG)
 		return TRUE
-<<<<<<< HEAD
 	/*
 	if(stats.check_for_shared_perk(PERK_SHARED_SEE_CONSUMER_REAGENTS))
 		return 2
 	*/
 	return FALSE
 
-=======
-	return FALSE
-
-/mob/living/carbon/human/can_see_common_reagents()
-	if(stats.check_for_shared_perk(PERK_SHARED_SEE_COMMON_REAGENTS))
-		return TRUE
-	return FALSE
-
-/mob/living/carbon/human/can_see_illegal_reagents()
-	if(istype(glasses, /obj/item/clothing/glasses/hud/security) || istype(glasses, /obj/item/clothing/glasses/sechud))
-		return TRUE
-	else if(stats.check_for_shared_perk(PERK_SHARED_SEE_ILLEGAL_REAGENTS))
-		return TRUE
-	return FALSE
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/can_force_feed(var/feeder, var/food, var/feedback = 1)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
@@ -83,13 +60,12 @@
 /mob/living/carbon/human/proc/update_equipment_vision()
 	ear_protection = 0 //Occulus edit
 	flash_protection = 0
-	psi_blocking = 0
 	equipment_tint_total = 0
 	equipment_see_invis	= 0
 	equipment_vision_flags = 0
 	equipment_prescription = FALSE
 	equipment_darkness_modifier = 0
-//	equipment_cut_over-lays()
+//	equipment_overlays.Cut()
 
 	if(istype(src.head, /obj/item/clothing/head))
 		add_clothing_protection(head)
@@ -99,10 +75,6 @@
 		add_clothing_protection(wear_mask)
 	if(istype(wearing_rig,/obj/item/rig))
 		process_rig(wearing_rig)
-	if(istype(using_scope,/obj/item/gun))
-		process_scope(using_scope)
-
-	psi_blocking += psi_blocking_additive //So we dont null are perks or other sources of psi blocking
 
 /mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G, var/forceactive)
 	if(G && (G.active || forceactive))
@@ -110,7 +82,7 @@
 		equipment_vision_flags |= G.vision_flags
 		equipment_prescription = equipment_prescription || G.prescription
 //		if(G.overlay)
-//			equipment_add_overlay(G.overlay)
+//			equipment_overlays |= G.overlay
 //		if (src.HUDtech.Find("glassesoverlay"))//i process that ocerlay
 //			var/obj/screen/glasses_overlay/GO = src.HUDtech["glassesoverlay"]
 //			GO.update_icon()
@@ -141,39 +113,6 @@
 	else
 		..()
 
-<<<<<<< HEAD
-=======
-/mob/living/carbon/human/proc/get_all_slots() //General code for checking all external slots for something. Does not search inside objects in slots.
-	. = get_head_slots() | get_body_slots()
-
-/mob/living/carbon/human/proc/get_body_slots()
-	return list(
-		l_hand,
-		r_hand,
-		back,
-		s_store,
-		handcuffed,
-		legcuffed,
-		wear_suit,
-		gloves,
-		shoes,
-		belt,
-		wear_id,
-		l_store,
-		r_store,
-		w_uniform
-		)
-
-/mob/living/carbon/human/proc/get_head_slots()
-	return list(
-		head,
-		wear_mask,
-		glasses,
-		r_ear,
-		l_ear,
-		)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/proc/process_scope(mob/user)
 	var/obj/item/gun/A = using_scope
 	equipment_darkness_modifier += A.darkness_view
@@ -182,8 +121,4 @@
 		if(equipment_see_invis)
 			equipment_see_invis = min(equipment_see_invis, A.see_invisible_gun)
 		else
-<<<<<<< HEAD
 			equipment_see_invis = A.see_invisible_gun
-=======
-			equipment_see_invis = A.see_invisible_gun
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -7,13 +7,9 @@ SUBSYSTEM_DEF(mapping)
 	var/dmm_suite/maploader = null
 	var/list/teleportlocs = list()
 	var/list/ghostteleportlocs = list()
-<<<<<<< HEAD
 
 /datum/controller/subsystem/mapping/Initialize(start_timeofday)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/datum/controller/subsystem/mapping/Initialize(start_timeofday)
 	if(config.generate_asteroid)
 		// These values determine the specific area that the map is applied to.
 		// Because we do not use Bay's default map, we check the config file to see if custom parameters are needed, so we need to avoid hardcoding.
@@ -33,11 +29,7 @@ SUBSYSTEM_DEF(mapping)
 		if(!GLOB.maps_data.overmap_z)
 			build_overmap()
 		else
-<<<<<<< HEAD
 			testing("Overmap already exist in GLOB.maps_data for [GLOB.maps_data.overmap_z].")
-=======
-			testing("Overmap already exist in maps_data for [GLOB.maps_data.overmap_z].")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		testing("Overmap generation disabled in config.")
 
@@ -72,51 +64,33 @@ SUBSYSTEM_DEF(mapping)
 		if (picked)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
-<<<<<<< HEAD
 
 	ghostteleportlocs = sortAssoc(ghostteleportlocs)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	ghostteleportlocs = sortAssoc(ghostteleportlocs)
 	return ..()
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/controller/subsystem/mapping/proc/build_overmap()
 	testing("Building overmap...")
 	world.incrementMaxZ()
 	GLOB.maps_data.overmap_z = world.maxz
 	var/list/turfs = list()
 	for (var/square in block(locate(1,1,GLOB.maps_data.overmap_z), locate(GLOB.maps_data.overmap_size, GLOB.maps_data.overmap_size, GLOB.maps_data.overmap_z)))
-<<<<<<< HEAD
 		// Switch to space turf with green grid overlay
 		var/turf/space/T = square
 		T.SetIconState("grid")
 		T.update_starlight()
-=======
-		var/turf/T = square
-		if(T.x == GLOB.maps_data.overmap_size || T.y == GLOB.maps_data.overmap_size)
-			T = T.ChangeTurf(/turf/unsimulated/map/edge)
-		else
-			T = T.ChangeTurf(/turf/unsimulated/map/)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		turfs += T
 		CHECK_TICK
 
 	var/area/overmap/A = new
 	A.contents.Add(turfs)
 
-<<<<<<< HEAD
     // Spawn star at the center of the overmap
 	var/turf/T = locate(round(GLOB.maps_data.overmap_size/2),round(GLOB.maps_data.overmap_size/2),GLOB.maps_data.overmap_z)
 	new /obj/effect/star(T)
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	GLOB.maps_data.sealed_levels |= GLOB.maps_data.overmap_z
 	testing("Overmap build complete.")
 
@@ -124,31 +98,19 @@ SUBSYSTEM_DEF(mapping)
 	flags |= SS_NO_INIT
 
 /hook/roundstart/proc/init_overmap_events()
-<<<<<<< HEAD
 	if (config.use_overmap)
 		if (GLOB.maps_data.overmap_z)
 			testing("Creating overmap events...")
 			var/t1 = world.tick_usage
 			overmap_event_handler.create_events(GLOB.maps_data.overmap_z, GLOB.maps_data.overmap_size, GLOB.maps_data.overmap_event_areas)
 			testing("Overmap events created in [(world.tick_usage-t1)*0.01*world.tick_lag] seconds")
-=======
-	if(config.use_overmap)
-		if(GLOB.maps_data.overmap_z)
-			testing("Creating overmap events...")
-			//testing_variable(t1, world.tick_usage)
-			overmap_event_handler.create_events(GLOB.maps_data.overmap_z, GLOB.maps_data.overmap_size, GLOB.maps_data.overmap_event_areas)
-			//testing("Overmap events created in [(world.tick_usage-t1)*0.01*world.tick_lag] seconds")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			testing("Overmap failed to create events.")
 			return FALSE
 	return TRUE
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/controller/subsystem/mapping/proc/load_map_templates()
 	for(var/T in subtypesof(/datum/map_template))
 		var/datum/map_template/template = T
@@ -156,8 +118,4 @@ SUBSYSTEM_DEF(mapping)
 			continue
 		template = new T()
 		map_templates[template.name] = template
-<<<<<<< HEAD
 	return TRUE
-=======
-	return TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

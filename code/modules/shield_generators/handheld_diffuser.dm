@@ -7,10 +7,6 @@
 	suitable_cell = /obj/item/cell/small
 	spawn_frequency = 0
 	var/active_power_use = 10 KILOWATTS * CELLRATE
-<<<<<<< HEAD
-=======
-	cell = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/enabled = 0
 
 /obj/item/device/shield_diffuser/on_update_icon()
@@ -66,16 +62,3 @@
 	. = ..()
 	to_chat(usr, "It is [enabled ? "enabled" : "disabled"].")
 	to_chat(usr, "It has enough charge for [cell ? round(cell.charge / active_power_use) : 0] more uses.")
-<<<<<<< HEAD
-=======
-
-/obj/item/device/shield_diffuser/MouseDrop(over_object)
-	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
-		cell = null
-		return 1
-
-/obj/item/device/shield_diffuser/attackby(obj/item/C, mob/living/user)
-	if(istype(C, /obj/item/cell/small) && !cell && insert_item(C, user))
-		src.cell = C
-		return 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

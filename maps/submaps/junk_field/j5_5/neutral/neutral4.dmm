@@ -1,17 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "b" = (
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
 "d" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
@@ -37,45 +31,11 @@
 "j" = (
 /mob/living/simple_animal/hostile/carp,
 /turf/simulated/floor/plating/under/airless,
-=======
-"c" = (
-/obj/random/scrap/dense_weighted/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"d" = (
-/turf/simulated/wall/r_wall,
-/area/template_noop)
-"f" = (
-/obj/structure/girder,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"g" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"i" = (
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"j" = (
-/obj/random/mob/carp/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"p" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"v" = (
-/obj/random/junk,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "D" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
 
 (1,1,1) = {"
 a
@@ -93,34 +53,6 @@ f
 "}
 (3,1,1) = {"
 f
-=======
-"Q" = (
-/obj/structure/girder,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"V" = (
-/obj/random/material/low_chance,
-/turf/simulated/wall/r_wall,
-/area/template_noop)
-
-(1,1,1) = {"
-a
-v
-c
-D
-c
-"}
-(2,1,1) = {"
-D
-c
-i
-V
-Q
-"}
-(3,1,1) = {"
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 j
 d
@@ -128,7 +60,6 @@ D
 "}
 (4,1,1) = {"
 d
-<<<<<<< HEAD
 h
 e
 d
@@ -137,16 +68,6 @@ b
 (5,1,1) = {"
 D
 e
-=======
-i
-c
-V
-b
-"}
-(5,1,1) = {"
-p
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 D
 f
 D

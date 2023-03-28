@@ -19,8 +19,4 @@
 /obj/structure/mopbucket/on_reagent_change()
 	cut_overlays()
 	if(reagents.total_volume >= 1)
-<<<<<<< HEAD
 		associate_with_overlays("water_mopbucket")
-=======
-		add_overlay("water_mopbucket")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

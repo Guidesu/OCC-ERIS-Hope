@@ -33,7 +33,7 @@
 	var/output_pressure_max = DEFAULT_PRESSURE_DELTA
 
 	var/frequency = 0
-	var/id
+	var/id = null
 	var/datum/radio_frequency/radio_connection
 
 	var/pressure_checks = PRESSURE_CHECK_EXTERNAL
@@ -75,11 +75,7 @@
 	else
 		vent_icon += "[use_power ? "[pump_direction ? "out" : "in"]" : "off"]"
 
-<<<<<<< HEAD
 	add_overlays(icon_manager.get_atmos_icon("device", , , vent_icon))
-=======
-	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/atmospherics/binary/dp_vent_pump/update_underlays()
 	if(..())

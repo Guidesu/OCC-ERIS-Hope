@@ -31,30 +31,30 @@
 /mob/living/carbon/human/isMonkey()
 	return istype(species, /datum/species/monkey)
 
-/proc/isdeaf(A)
+proc/isdeaf(A)
 	if(isliving(A))
 		var/mob/living/M = A
 		return (M.sdisabilities & DEAF) || M.ear_deaf
 	return 0
 
-/proc/hasorgans(A) // Fucking really??
+proc/hasorgans(A) // Fucking really??
 	return ishuman(A)
 
-/proc/iscuffed(A)
+proc/iscuffed(A)
 	if(iscarbon(A))
 		var/mob/living/carbon/C = A
 		if(C.handcuffed)
 			return 1
 	return 0
 
-/proc/hassensorlevel(A, var/level)
+proc/hassensorlevel(A, var/level)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
 		return U.sensor_mode >= level
 	return 0
 
-/proc/getsensorlevel(A)
+proc/getsensorlevel(A)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -160,12 +160,7 @@ var/list/global/organ_rel_size = list(
 	var/miss_chance = 10
 	if (zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
-
-	//See-through people are harder to hit
-	if(CLOAKING in target.mutations)
-		miss_chance += 15
-
-	miss_chance = clamp(miss_chance + miss_chance_mod, 0, 90)
+	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
 		if(prob(70))
 			return null
@@ -214,11 +209,7 @@ var/list/global/organ_rel_size = list(
 	if(re_encode)
 		. = html_encode(.)
 
-<<<<<<< HEAD
 proc/slur(phrase)
-=======
-/proc/slur(phrase)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
@@ -231,9 +222,9 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
-		switch(rand(1,7))
-			if(1,3,5)	newletter="[lowertext(newletter)]"
-			if(2,4,6)	newletter="[uppertext(newletter)]"
+		switch(rand(1,15))
+			if(1,3,5,8)	newletter="[lowertext(newletter)]"
+			if(2,4,6,15)	newletter="[uppertext(newletter)]"
 			if(7)	newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
 			//if(11,12)	newletter="<big>[newletter]</big>"
@@ -241,7 +232,6 @@ proc/slur(phrase)
 		newphrase+="[newletter]";counter-=1
 	return html_encode(newphrase)
 
-<<<<<<< HEAD
 /proc/stutter(n)
 	var/te = html_decode(n)
 	n = length(n)//length of the entire word
@@ -263,45 +253,8 @@ proc/slur(phrase)
 		t += n_letter //since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
 	return sanitize(jointext(t, null))
-=======
-/proc/stutter(phrase)
-	phrase = html_decode(phrase)
 
-	var/list/split_phrase = splittext(phrase," ") //Split it up into words.
-
-	var/list/unstuttered_words = split_phrase.Copy()
-	var/i = rand(1,3)
-	for(,i > 0,i--) //Pick a few words to stutter on.
-
-		if (!unstuttered_words.len)
-			break
-		var/word = pick(unstuttered_words)
-		unstuttered_words -= word //Remove from unstuttered words so we don't stutter it again.
-		var/index = split_phrase.Find(word) //Find the word in the split phrase so we can replace it.
-
-		//Search for dipthongs (two letters that make one sound.)
-		var/first_sound = copytext(word,1,3)
-		var/first_letter = copytext(word,1,2)
-		if(lowertext(first_sound) in list("ch","th","sh"))
-			first_letter = first_sound
-
-		//Repeat the first letter to create a stutter.
-		var/rnum = rand(1,3)
-		switch(rnum)
-			if(1)
-				word = "[first_letter]-[word]"
-			if(2)
-				word = "[first_letter]-[first_letter]-[word]"
-			if(3)
-				word = "[first_letter]-[word]"
-
-		split_phrase[index] = word
-
-	return sanitize(jointext(split_phrase," "))
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-
-/proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
+proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
 	var/returntext = ""
 	for(var/i = 1, i <= length(t), i++)
@@ -325,10 +278,7 @@ The difference with stutter is that this proc can stutter more than 1 letter
 The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
 It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
 */
-<<<<<<< HEAD
 	var/te = html_decode(n)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/t = ""
 	n = length(n)
 	var/p = 1
@@ -336,15 +286,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		var/n_letter
 		var/n_mod = rand(1,4)
 		if(p+n_mod>n+1)
-<<<<<<< HEAD
 			n_letter = copytext_char(te, p, n+1)
 		else
 			n_letter = copytext_char(te, p, p+n_mod)
-=======
-			n_letter = copytext(n, p, n+1)
-		else
-			n_letter = copytext(n, p, p+n_mod)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (prob(50))
 			if (prob(30))
 				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
@@ -648,14 +592,11 @@ proc/is_blind(A)
 /mob/proc/in_perfect_health()
 	return
 
-/mob/proc/in_good_health()
-	return
-
 /mob/living/in_perfect_health()
-	if(stat == DEAD)
+	if (stat == DEAD)
 		return FALSE
 
-	if(usr.health != usr.maxHealth)
+	if (brainloss || bruteloss || cloneloss || fireloss || halloss || oxyloss || toxloss)
 		return FALSE
 
 
@@ -671,17 +612,7 @@ proc/is_blind(A)
 
 	return ..()
 
-/mob/living/carbon/human/in_good_health()
-	if(stat == DEAD)
-		return FALSE
-
-	if(health != maxHealth)
-		return FALSE
-
-	return TRUE
-
-
-/mob/get_sex()
+/mob/proc/get_sex()
 	return gender
 
 //Tries to find the mob's email.
@@ -709,7 +640,6 @@ proc/is_blind(A)
 			A.tumble()
 	embedded = list()
 
-<<<<<<< HEAD
 /mob/proc/skill_to_evade_traps(prob_catch)
 	if(!stats)
 		return 0
@@ -721,28 +651,11 @@ proc/is_blind(A)
 			prob_evade += prob_evade*30/STAT_LEVEL_GODLIKE
 		if(stats.getPerk(PERK_RAT))
 			prob_evade *= 2
-=======
-/mob/proc/skill_to_evade_traps()
-	if(!stats)
-		return 0
-	var/prob_evade = 0
-	var/base_prob_evade = 30
-	if(MOVING_DELIBERATELY(src))
-		prob_evade += base_prob_evade
-	if(!stats)
-		return prob_evade
-	prob_evade += base_prob_evade * (stats.getStat(STAT_VIG)/STAT_LEVEL_GODLIKE - weight_coeff())
-	if(stats.getPerk(PERK_SURE_STEP))
-		prob_evade += base_prob_evade*30/STAT_LEVEL_GODLIKE
-	//if(stats.getPerk(PERK_RAT))
-	//	prob_evade += base_prob_evade/1.5
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return prob_evade
 
 /mob/proc/mob_playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet, use_pressure = TRUE)
 	if(isliving(src))
 		var/mob/living/L = src
-<<<<<<< HEAD
 		vol *= L.noise_coeff
 		extrarange *= L.noise_coeff
 	playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance,  ignore_walls, zrange, override_env, envdry, envwet, use_pressure)
@@ -765,49 +678,3 @@ proc/is_blind(A)
 	result[2] = ainvis
 
 	return result
-=======
-		vol *= L.noise_coeff + weight_coeff()
-		extrarange *= L.noise_coeff + weight_coeff()
-	playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance,  ignore_walls, zrange, override_env, envdry, envwet, use_pressure)
-
-/mob/proc/weight_coeff()
-	return get_max_w_class()/(ITEM_SIZE_TITANIC)
-
-
-//Soj edit
-/mob/proc/get_health()
-	return health
-
-/**
- * Wrapper for walk_to. Most cases of walk_to should be instead substituted for this, although this has slightly worse performance than stock walk_to.
- *
- * Args:
- * All the same as walk_to.
- * deathcheck = FALSE: If deathcheck == TRUE, and Ref.stat == DEAD, we will return FALSE.
- * respect_override = TRUE: If TRUE, we will check ref's walk_override_timer variable (set whenever this proc is called with override = TRUE), and if its more or equal to world.time, we return.
- * temporary_walk = FALSE: If this or override is true, we calculate a timer based on distance and the Lag arg. If this is true, we set a timer to walk_to(Ref, 0) based on
- * the aforementioned timer. The proc set for this timer is walk_to_wrapper_timer. See it's doc for more info.
- * override = FALSE: If true, we set the ref's walk_override_timer to world.time + the aforementioned timer. See respect_override for more info.
-**/
-/proc/walk_to_wrapper(atom/movable/Ref, Trg, Min=0, Lag=0, Speed=0, deathcheck = FALSE, respect_override = TRUE, temporary_walk = FALSE, override = FALSE)
-	if (deathcheck && Ref.stat == DEAD)
-		return FALSE
-	if (respect_override && (Ref.walk_override_timer >= world.time))
-		return FALSE
-	if (override || temporary_walk)
-		var/timer = ((get_dist(Ref, Trg) * (Lag * 1.2)) + 3) // WARNING. ARBITRARY MATH. I DO NOT KNOW IF THIS WILL WORK.
-		if (override)
-			Ref.walk_override_timer = (world.time + timer)
-		if (temporary_walk)
-			var/current_time = world.time
-			Ref.walk_to_initial_time = current_time
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/walk_to_wrapper_timer, Ref, 0, current_time), timer)
-	walk_to(Ref, Trg, Min, Lag, Speed)
-	return TRUE
-
-/// For use in walk_to_wrapper exclusively. If another temporary walk has been called while this timer was active, this walk is cancelled already, so we return.
-/proc/walk_to_wrapper_timer(atom/movable/Ref, Trg, initial)
-	if (initial != Ref.walk_to_initial_time) //so multiple movements dont interrupt eachother
-		return FALSE
-	walk_to(Ref, Trg)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

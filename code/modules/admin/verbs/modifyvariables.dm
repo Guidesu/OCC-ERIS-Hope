@@ -18,7 +18,7 @@ var/list/VVckey_edit = list("key", "ckey")
 
 /client/proc/mod_list_add_ass()
 	var/class = "text"
-	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default", "null")
+	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
 	if(src.holder)
 		var/datum/marked_datum = holder.marked_datum()
 		if(marked_datum)
@@ -57,9 +57,6 @@ var/list/VVckey_edit = list("key", "ckey")
 		if("icon")
 			var_value = input("Pick icon:","Icon") as null|icon
 
-		if("null")
-			var_value = null
-
 		if("marked datum")
 			var_value = holder.marked_datum()
 
@@ -71,7 +68,7 @@ var/list/VVckey_edit = list("key", "ckey")
 /client/proc/mod_list_add(var/list/L, atom/O, original_name, objectvar)
 
 	var/class = "text"
-	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default", "null")
+	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
 	if(src.holder)
 		var/datum/marked_datum = holder.marked_datum()
 		if(marked_datum)
@@ -110,9 +107,6 @@ var/list/VVckey_edit = list("key", "ckey")
 		if("icon")
 			var_value = input("Pick icon:","Icon") as icon
 
-		if("null")
-			var_value = null
-
 		if("marked datum")
 			var_value = holder.marked_datum()
 
@@ -129,7 +123,7 @@ var/list/VVckey_edit = list("key", "ckey")
 	message_admins("[key_name_admin(src)] modified [original_name]'s [objectvar]: ADDED=[var_value]")
 
 /client/proc/mod_list(var/list/L, atom/O, original_name, objectvar)
-	if(!check_rights(R_ADMIN | R_DEBUG))
+	if(!check_rights(R_ADMIN))
 		return
 	if(!istype(L,/list)) src << "Not a List."
 
@@ -144,48 +138,40 @@ var/list/VVckey_edit = list("key", "ckey")
 		if(istext(a) && L[a] != null)
 			assoc = 1 //This is pretty weak test but i can't think of anything else
 			to_chat(usr, "List appears to be associative.")
-<<<<<<< HEAD
 
 	var/list/names = null
 	if(!assoc)
 		names = sortList(L)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/variable
-	var/list/selector = list()
-	for(var/i in 1 to LAZYLEN(L))
-		selector["[i]: [L[i]][assoc ? " -- [L[L[i]]]" : ""]"] = i
+	var/assoc_key
+	if(assoc)
+		variable = input("Which var?","Var") as null|anything in L + "(ADD VAR)"
+	else
+		variable = input("Which var?","Var") as null|anything in names + "(ADD VAR)"
 
-	var/index = input("Which var?","Var") as null|anything in selector + list("(ADD VAR)" = "(ADD VAR)")
-	var/position
-
-	if(index == "(ADD VAR)")
+	if(variable == "(ADD VAR)")
 		mod_list_add(L, O, original_name, objectvar)
 		return
 
-	index = selector[index]
 	if(assoc)
-		position = L[index]
-		variable = L[position]
-	else
-		position = index
-		variable = L[position]
+		assoc_key = variable
+		variable = L[assoc_key]
 
-	if(!position || assoc && !istext(position))
+	if(!assoc && !variable || assoc && !assoc_key)
 		return
 
 	var/default
 
 	var/dir
 
-	if(objectvar in VVlocked)
+	if(variable in VVlocked)
 		if(!check_rights(R_DEBUG))
 			return
-	if(objectvar in VVckey_edit)
+	if(variable in VVckey_edit)
 		if(!check_rights(R_FUN|R_DEBUG))
 			return
-	if(objectvar in VVicon_edit_lock)
+	if(variable in VVicon_edit_lock)
 		if(!check_rights(R_FUN|R_DEBUG))
 			return
 
@@ -252,9 +238,7 @@ var/list/VVckey_edit = list("key", "ckey")
 			to_chat(usr, "If a direction, direction is: [dir]")
 
 	var/class = "text"
-	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object")
-	if(!assoc)
-		class_input += "null"
+	var/list/class_input = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
 
 	if(src.holder)
 		var/datum/marked_datum = holder.marked_datum()
@@ -271,18 +255,25 @@ var/list/VVckey_edit = list("key", "ckey")
 	if(marked_datum && class == "marked datum ([marked_datum.type])")
 		class = "marked datum"
 
-	var/original_var = L[position]
+	var/original_var
+	if(assoc)
+		original_var = L[assoc_key]
+	else
+		original_var = L[L.Find(variable)]
 
 	var/new_var
 	switch(class) //Spits a runtime error if you try to modify an entry in the contents list. Dunno how to fix it, yet.
 
 		if("list")
 			mod_list(variable, O, original_name, objectvar)
-/*
+
 		if("restore to default")
 			new_var = initial(variable)
-			L[variable] = new_var //This makes no sense, a list element has no real default, or initial.
-*/
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
+
 		if("edit referenced object")
 			modify_variables(variable)
 
@@ -290,53 +281,73 @@ var/list/VVckey_edit = list("key", "ckey")
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: REMOVED=[html_encode("[variable]")]")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: REMOVED=[variable]")
 			message_admins("[key_name_admin(src)] modified [original_name]'s [objectvar]: REMOVED=[variable]")
-			L.Cut(index, index+1)
+			L -= variable
 			return
 
 		if("text")
 			new_var = input("Enter new text:","Text") as text
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("num")
 			new_var = input("Enter new number:","Num") as num
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("type")
 			new_var = input("Enter type:","Type") in typesof(/obj,/mob,/area,/turf)
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("reference")
 			new_var = input("Select reference:","Reference") as mob|obj|turf|area in world
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("mob reference")
 			new_var = input("Select reference:","Reference") as mob in world
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("file")
 			new_var = input("Pick file:","File") as file
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("icon")
 			new_var = input("Pick icon:","Icon") as icon
-			L[position] = new_var
-
-		if("null")
-			new_var = null
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 		if("marked datum")
 			new_var = holder.marked_datum()
 			if(!new_var)
 				return
-			L[position] = new_var
+			if(assoc)
+				L[assoc_key] = new_var
+			else
+				L[L.Find(variable)] = new_var
 
 	log_world("### ListVarEdit by [src]: [O.type] [objectvar]: [original_var]=[new_var]")
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: [original_var]=[new_var]")
 	message_admins("[key_name_admin(src)] modified [original_name]'s varlist [objectvar]: [original_var]=[new_var]")
 
 /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
-	if(!check_rights(R_ADMIN | R_DEBUG))
+	if(!check_rights(R_ADMIN))
 		return
 
 	for(var/p in forbidden_varedit_object_types)
@@ -364,10 +375,6 @@ var/list/VVckey_edit = list("key", "ckey")
 				return
 
 		variable = param_var_name
-
-		if (GLOB.gvars_datum_protected_varlist[variable])
-			to_chat(usr, "\red This variable is protected from VV.")
-			return
 
 		var_value = O.vars[variable]
 
@@ -419,11 +426,6 @@ var/list/VVckey_edit = list("key", "ckey")
 		names = sortList(names)
 
 		variable = input("Which var?","Var") as null|anything in names
-
-		if (GLOB.gvars_datum_protected_varlist[variable])
-			to_chat(usr, "\red This variable is protected from VV.")
-			return
-
 		if(!variable)	return
 		var_value = O.vars[variable]
 
@@ -519,10 +521,6 @@ var/list/VVckey_edit = list("key", "ckey")
 	var/datum/marked_datum = holder.marked_datum()
 	if(marked_datum && class == "marked datum ([marked_datum.type])")
 		class = "marked datum"
-
-	if (GLOB.gvars_datum_protected_varlist[variable])
-		to_chat(usr, "\red This variable is protected from VV.")
-		return
 
 	switch(class)
 

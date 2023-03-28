@@ -13,15 +13,10 @@
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
 	matter = list(MATERIAL_PLASTIC = 3)
-<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_ITEM_UTILITY
 	rarity_value = 10
 	var/mopping = 0
 	var/mopcount = 0
-=======
-	var/mopspeed  = 30
-	price_tag = 12
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/mopmode = MOPMODE_TILE
 	var/sweep_time = 7
@@ -41,7 +36,7 @@
 
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay && !istype(A, /obj/effect/overlay/water)))
+	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
 			return
@@ -53,7 +48,7 @@
 		if (mopmode == MOPMODE_TILE)
 			//user.visible_message(SPAN_WARNING("[user] begins to clean \the [T]."))
 			user.setClickCooldown(3)
-			if(do_after(user, mopspeed, T))
+			if(do_after(user, 30, T))
 				if(T)
 					T.clean(src, user)
 				to_chat(user, SPAN_NOTICE("You have finished mopping!"))
@@ -110,13 +105,12 @@
 		for (var/mob/living/L in T)
 			attack(L)
 
-		if (turf_clear_for_cleaning(T))
+		if (turf_clear(T))
 			T.clean_partial(src, user, 1)
 		else if (user)
 			//You hit a wall!
-			//Stunning you is dumb and unfun - Trilby
-			//user.setClickCooldown(15)
-			//user.set_move_cooldown(15)
+			user.setClickCooldown(30)
+			user.set_move_cooldown(30)
 			shake_camera(user, 1, 1)
 			playsound(T,"thud", 20, 1, -3)
 			to_chat(user, SPAN_DANGER("There's not enough space for broad sweeps here!"))
@@ -142,25 +136,6 @@
 		return
 	..()
 
-/obj/item/mop/guild
-	name = "articulated mop"
-	desc = "An Artificer's Guild-modified mop. Sports a pistol-actuated mop head making it able to hold more cleaning suds and sweep faster. \
-	The handle is also telescopic allowing for easier storage."
-	icon = 'icons/obj/janitor.dmi'
-	icon_state = "engimop"
-	force = WEAPON_FORCE_WEAK+1
-	throwforce = WEAPON_FORCE_WEAK+1
-	throw_speed = 5
-	throw_range = 10
-	w_class = ITEM_SIZE_SMALL
-	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	matter = list(MATERIAL_PLASTIC = 12, MATERIAL_GLASS = 4, MATERIAL_STEEL = 4)
-	mopspeed  = 15
-	sweep_time = 4
-
-/obj/item/mop/guild/Initialize()
-	. = ..()
-	create_reagents(60)
 
 #undef MOPMODE_TILE
 #undef MOPMODE_SWEEP

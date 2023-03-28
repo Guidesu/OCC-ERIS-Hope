@@ -25,13 +25,9 @@
 	var/obj/structure/biomatter_tank/biotank
 	var/obj/canister
 	var/pipes_opened = FALSE
-<<<<<<< HEAD
 	var/pipes_cleanness = 100
 
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_biotank
-=======
-	var/pipes_cleanness = 200
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/multistructure/bioreactor_part/biotank_platform/Initialize()
@@ -53,7 +49,6 @@
 		return
 	switch(get_dirtiness_level())
 		if(DIRT_LVL_LOW)
-<<<<<<< HEAD
 			to_chat(user, SPAN_NOTICE("The pipes are slightly dirty, you can see signs of biomass clinging to the walls of the pipes."))
 		if(DIRT_LVL_MEDIUM)
 			to_chat(user, SPAN_WARNING("You can see solid chunks of biomass blocking a significant part of the pipes."))
@@ -67,21 +62,6 @@
 	cut_overlays()
 	if(pipes_cleanness <= 90)
 		add_overlays("[icon_state]-dirty_[get_dirtiness_level()]")
-=======
-			to_chat(user, SPAN_NOTICE("Pipes are a bit worn, it's also slightly dirty. You see a signs of biomass inside these pipes."))
-		if(DIRT_LVL_MEDIUM)
-			to_chat(user, SPAN_WARNING("It's very dirty. Solid biomass block at least half of space inside the pipes. Better to clean it up."))
-		if(DIRT_LVL_HIGH)
-			to_chat(user, SPAN_WARNING("You see a high amount of biomass. Pipes are fully blocked. You need to clean this first if you want bioreactor to work."))
-		else
-			to_chat(user, SPAN_NOTICE("Pipes looks clean."))
-
-
-/obj/machinery/multistructure/bioreactor_part/biotank_platform/update_icon()
-	cut_overlays()
-	if(pipes_cleanness <= 90)
-		add_overlay("[icon_state]-dirty_[get_dirtiness_level()]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/multistructure/bioreactor_part/biotank_platform/Process()
@@ -94,11 +74,7 @@
 /obj/machinery/multistructure/bioreactor_part/biotank_platform/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/mop))
 		var/dirtiness_lvl = get_dirtiness_level()
-<<<<<<< HEAD
 		to_chat(user, SPAN_NOTICE("You begin cleaning pipes with [I]... O-of, what a smell!"))
-=======
-		to_chat(user, SPAN_NOTICE("You begin cleaning pipes with your [I]... O-of, what a smell!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(do_after(user, CLEANING_TIME * dirtiness_lvl, src))
 			to_chat(user, SPAN_NOTICE("You cleaned up the pipes."))
 			pipes_cleanness = initial(pipes_cleanness)
@@ -114,14 +90,8 @@
 	..()
 
 
-<<<<<<< HEAD
 /obj/machinery/multistructure/bioreactor_part/biotank_platform/proc/take_amount(new_amount)
 	biotank.reagents.add_reagent("biomatter", new_amount)
-=======
-/obj/machinery/multistructure/bioreactor_part/biotank_platform/proc/take_amount(var/amount)
-	biotank.reagents.add_reagent("biomatter", amount)
-	GLOB.biomatter_neothecnology_amt += amount
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //Pipe wearout. Wearout var - is amount of 'dirt' that will be applied to our pipes
@@ -174,19 +144,11 @@
 	return ..()
 
 
-<<<<<<< HEAD
 /obj/structure/biomatter_tank/on_update_icon()
 	cut_overlays()
 	if(canister && platform.pipes_opened)
 		var/image/pipe_overlay = image(icon = 'icons/obj/machines/bioreactor.dmi', icon_state = "port-pipe", pixel_y = -9)
 		add_overlays(pipe_overlay)
-=======
-/obj/structure/biomatter_tank/update_icon()
-	cut_overlays()
-	if(canister && platform.pipes_opened)
-		var/image/pipe_overlay = image(icon = 'icons/obj/machines/bioreactor.dmi', icon_state = "port-pipe", pixel_y = -9)
-		add_overlay(pipe_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/biomatter_tank/attack_hand(mob/user)
@@ -211,11 +173,7 @@
 		playsound(loc, 'sound/machines/Custom_blastdoorclose.ogg', 100, 1)
 
 
-<<<<<<< HEAD
 /obj/structure/biomatter_tank/attackby(obj/item/I, mob/user)
-=======
-/obj/structure/biomatter_tank/attackby(var/obj/item/I, var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/tool_type = I.get_tool_type(user, list(QUALITY_BOLT_TURNING), src)
 	switch(tool_type)
 		if(QUALITY_BOLT_TURNING)
@@ -226,7 +184,6 @@
 				to_chat(user, SPAN_WARNING("Nothing to connect to!"))
 				return
 			var/turf/user_interaction_loc = user.loc
-<<<<<<< HEAD
 			var/set_canister = FALSE
 			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = STAT_MEC))
 				if(canister)
@@ -237,16 +194,6 @@
 					to_chat(user, SPAN_NOTICE("You [canister ? "connect [canister] to" : "disconnect [canister] from"] [src]."))
 					toxin_attack(user, rand(5, 15))
 			if(!set_canister)
-=======
-			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY,  required_stat = STAT_MEC))
-				if(canister)
-					unset_canister(canister)
-				else
-					set_canister(possible_canister)
-				to_chat(user, SPAN_NOTICE("You [canister ? "connect [canister] to" : "disconnect [canister] from"] [src]."))
-				toxin_attack(user, rand(5, 15))
-			else
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, SPAN_WARNING("Ugh. You done something wrong!"))
 				shake_animation()
 				if(reagents.total_volume)
@@ -254,7 +201,6 @@
 					spill_biomass(user_interaction_loc)
 			update_icon()
 
-<<<<<<< HEAD
 /obj/structure/biomatter_tank/proc/set_canister(obj/target_tank)
 	. = target_tank.set_anchored(TRUE)
 	if(!.)
@@ -276,22 +222,6 @@
 	platform.MS_bioreactor.metrics_screen.icon_state = initial(platform.MS_bioreactor.metrics_screen.icon_state)
 	playsound(platform.MS_bioreactor.output_port.loc, 'sound/machines/Custom_extout.ogg', 100, 1)
 	. = TRUE
-=======
-
-/obj/structure/biomatter_tank/proc/set_canister(obj/target_tank)
-	target_tank.anchored = TRUE
-	canister = target_tank
-	platform.MS_bioreactor.metrics_screen.icon_state = "screen_process"
-	flick("screen_activation", platform.MS_bioreactor.metrics_screen)
-	playsound(platform.MS_bioreactor.output_port.loc, 'sound/machines/Custom_extin.ogg', 100, 1)
-
-
-/obj/structure/biomatter_tank/proc/unset_canister(obj/target_tank)
-	target_tank.anchored = FALSE
-	canister = null
-	platform.MS_bioreactor.metrics_screen.icon_state = initial(platform.MS_bioreactor.metrics_screen.icon_state)
-	playsound(platform.MS_bioreactor.output_port.loc, 'sound/machines/Custom_extout.ogg', 100, 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 #undef DIRT_LVL_LOW

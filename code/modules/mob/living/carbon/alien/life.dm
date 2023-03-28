@@ -48,7 +48,7 @@
 		updatehealth()
 		handle_stunned()
 		handle_weakened()
-		if(health <= death_threshold)
+		if(health <= 0)
 			death()
 			blinded = 1
 			silent = 0

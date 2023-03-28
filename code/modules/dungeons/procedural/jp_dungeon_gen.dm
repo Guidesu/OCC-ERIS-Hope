@@ -10,10 +10,7 @@
 	Adapted for Eris and more modern byond versions by me.
 	Quite a bit was modified/removed/re-done.
 	Pathing was made strict/all objects here are subtype of obj/procedural.
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 - Nestor/drexample (full permission to bug me if you have questions or code suggestions)
 */
 /obj/procedural/jp_DungeonGenerator
@@ -42,12 +39,6 @@
 	var/pathWidth = 2 //The default width of paths connecting the rooms
 	var/lightSpawnChance = 0 //Chance to spawn a light during path generation
 
-<<<<<<< HEAD
-=======
-	var/regen_specific = FALSE
-	var/regen_light = /obj/machinery/light/small/autoattach
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/border_turfs //Internal list. No touching, unless you really know what you're doing.
 
 	var/list/examined //Internal list, used for pre-existing region stuff
@@ -111,24 +102,16 @@
 
 
 /*
-<<<<<<< HEAD
 
 	Same as above, but skips X tiles from original one
 
-=======
-	Same as above, but skips X tiles from original one
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 
 /obj/procedural/jp_DungeonGenerator/proc/getAdjacentFurther(turf/t, var/num = 1)
 	//Doesn't just go list(get_step(blah blah), get_step(blah blah) etc. because that could return null if on the border of the map
 	.=list()
 	var/counter = num
-<<<<<<< HEAD
 	var/k
-=======
-	var/k = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	k = get_step(t,NORTH)
 	while(counter > 0)
 		if(k)
@@ -175,33 +158,19 @@
 
 
 /*
-<<<<<<< HEAD
 
 	Spawns a lightbulb, adjacent to a wall
 
-=======
-	Spawns a lightbulb, adjacent to a wall
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 
 
 /obj/procedural/jp_DungeonGenerator/proc/AddLight(t)
-<<<<<<< HEAD
 	new /obj/machinery/light/small/autoattach(t)
 
 /*
 
 	Sets chance a light source spawns in the paths generated (in percent), per tile
 
-=======
-	if(regen_specific)
-		new regen_light(t)
-	else
-		new /obj/machinery/light/small/autoattach(t)
-
-/*
-	Sets chance a light source spawns in the paths generated (in percent), per tile
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 
 /obj/procedural/jp_DungeonGenerator/proc/setLightChance(r)
@@ -209,13 +178,9 @@
 
 
 /*
-<<<<<<< HEAD
 
 	Post-initializes all submaps
 
-=======
-	Post-initializes all submaps
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 
 /obj/procedural/jp_DungeonGenerator/proc/initializeSubmaps()
@@ -557,10 +522,7 @@
 	Actually goes out on a limb and generates the dungeon. This procedure runs in the
 	background, because it's very slow. The various out_ variables will be updated after
 	the generator has finished running. I suggest spawn()ing off the call to the generator.
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	After this procedure finishes executing, you should have a beautiful shiny dungeon,
 	with all rooms reachable from all other rooms. If you don't, first check the parameters
 	you've passed to the generator - if you've set the number of rooms to 0, or haven't set
@@ -1311,20 +1273,10 @@ the arms of the plus sign - there are only four.
 
 
 /obj/procedural/jp_DungeonRoom/preexist/square/submap/finalise()
-<<<<<<< HEAD
 	if(border.len < 1)
 		testing("ROOM [my_map.name] HAS NO BORDERS! at [centre.x], [centre.y]!")
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(my_map)
 		my_map.load(centre, centered = TRUE, orientation = SOUTH, post_init = 1)
 	else
 		gen.out_error = gen.ERROR_NO_SUBMAPS
 
-<<<<<<< HEAD
-=======
-#ifdef TESTING
-	if(!LAZYLEN(border))
-		testing("ROOM [my_map.name] HAS NO BORDERS! at [centre.x], [centre.y]!")
-#endif
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,10 +1,6 @@
 bar
 ship
-<<<<<<< HEAD
 Solarian ship
-=======
-Voidwolf ship
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 rage cage
 garden
 farm
@@ -18,7 +14,6 @@ snowy trench
 prison cell
 engine compartment
 escape pod
-<<<<<<< HEAD
 Nanotrasen Medical Division
 Nanotrasen Research Division
 Free Trade Union
@@ -30,18 +25,6 @@ Mining hulk
 CEV Northern Light
 Bar
 Club
-=======
-Soteria Medical Division
-Soteria Research Division
-Lonestar Shipping Solutions
-Artificer Guild
-Marshal
-Absolutism Church
-Vasily Dokuchaev
-Mining hulk
-Nadezhda
-Bar
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Brig of a ship
 Engineering Department
 Medical Department

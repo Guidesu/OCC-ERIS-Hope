@@ -19,11 +19,7 @@
 /datum/computer_file/binary/plantgene/proc/update_name()
 	filename = "PL_GENE_[plant_controller.gene_tag_masks[genetype]]_[genesource_uid]"
 
-<<<<<<< HEAD
 /datum/computer_file/binary/plantgene/ui_data()
-=======
-/datum/computer_file/binary/plantgene/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list(
 		"filename" = filename,
 		"source" = genesource,
@@ -45,12 +41,8 @@
 	var/mysterious                 // Only used for the random seed packets.
 	var/can_self_harvest = 0       // Mostly used for living mobs.
 	var/growth_stages = 0          // Number of stages the plant passes through before it is mature.
-	var/list/materials					// List used to determine material values for recycling in autolathe
-	var/list/origin_tech 	= list()	// List used to determine research values for recyling in deconstructive analyzer
 	var/list/traits = list()       // Initialized in New()
 	var/list/mutants               // Possible predefined mutant varieties, if any.
-	var/list/greatMutants				  // Possible floral gun mutations
-	var/list/evolutions		=list()       // Possible floral evolutions
 	var/list/chems                 // Chemicals that plant produces in products/injects into victim.
 	var/list/consume_gasses        // The plant will absorb these gasses during its life.
 	var/list/exude_gasses          // The plant will exude these gasses during its life.
@@ -107,11 +99,7 @@
 		update_growth_stages()
 
 /datum/seed/proc/get_trait(trait)
-<<<<<<< HEAD
 	return traits["[trait]"]
-=======
-	return traits[trait]
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/seed/proc/get_trash_type()
 	return trash_type
@@ -120,7 +108,7 @@
 	if(!isnull(degrade)) nval *= degrade
 	if(!isnull(ubound))  nval = min(nval,ubound)
 	if(!isnull(lbound))  nval = max(nval,lbound)
-	traits[trait] =  nval
+	traits["[trait]"] =  nval
 
 /datum/seed/proc/create_spores(turf/T)
 	if(!T)
@@ -456,7 +444,6 @@
 			"thermite",
 			"tramadol",
 			"cryptobiolin",
-			"cronexidone",
 			"dermaline",
 			"dexalin",
 			"phoron",
@@ -622,7 +609,7 @@
 
 			if(!chems) chems = list()
 
-			var/list/gene_value = gene.values[TRAIT_CHEMS]
+			var/list/gene_value = gene.values["[TRAIT_CHEMS]"]
 			for(var/rid in gene_value)
 
 				var/list/gene_chem = gene_value[rid]
@@ -640,39 +627,26 @@
 					else
 						chems[rid][i] = gene_chem[i]
 
-			var/list/new_gasses = gene.values[TRAIT_EXUDE_GASSES]
+			var/list/new_gasses = gene.values["[TRAIT_EXUDE_GASSES]"]
 			if(islist(new_gasses))
 				if(!exude_gasses) exude_gasses = list()
 				exude_gasses |= new_gasses
 				for(var/gas in exude_gasses)
 					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
 
-			gene.values[TRAIT_EXUDE_GASSES] = null
-			gene.values[TRAIT_CHEMS] = null
+			gene.values["[TRAIT_EXUDE_GASSES]"] = null
+			gene.values["[TRAIT_CHEMS]"] = null
 
 		if(GENE_DIET)
-			var/list/new_gasses = gene.values[TRAIT_CONSUME_GASSES]
+			var/list/new_gasses = gene.values["[TRAIT_CONSUME_GASSES]"]
 			consume_gasses |= new_gasses
-			gene.values[TRAIT_CONSUME_GASSES] = null
+			gene.values["[TRAIT_CONSUME_GASSES]"] = null
 		if(GENE_METABOLISM)
 			has_mob_product = gene.values["mob_product"]
 			gene.values["mob_product"] = null
-		if(GENE_OUTPUT)
-			var/list/new_gasses = gene.values["[TRAIT_EXUDE_GASSES]"]
-			if(islist(new_gasses))
-				if(!exude_gasses) exude_gasses = list()
-				exude_gasses = new_gasses.Copy()
-				for(var/gas in exude_gasses)
-					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
-				set_trait(TRAIT_EXUDE_GASSES,1)
-			else
-				set_trait(TRAIT_EXUDE_GASSES,0)
-				exude_gasses = list()
 
-			gene.values["[TRAIT_EXUDE_GASSES]"] = null
-			gene.values["[TRAIT_CHEMS]"] = null
 	for(var/trait in gene.values)
-		set_trait(trait,gene.values[trait])
+		set_trait(trait,gene.values["[trait]"])
 
 	update_growth_stages()
 
@@ -694,8 +668,8 @@
 
 	switch(genetype)
 		if(GENE_BIOCHEMISTRY)
-			P.values[TRAIT_CHEMS] =        chems
-			P.values[TRAIT_EXUDE_GASSES] = exude_gasses
+			P.values["[TRAIT_CHEMS]"] =        chems
+			P.values["[TRAIT_EXUDE_GASSES]"] = exude_gasses
 			traits_to_copy = list(TRAIT_POTENCY)
 		if(GENE_OUTPUT)
 			traits_to_copy = list(TRAIT_PRODUCES_POWER,TRAIT_BIOLUM)
@@ -709,7 +683,7 @@
 		if(GENE_VIGOUR)
 			traits_to_copy = list(TRAIT_PRODUCTION,TRAIT_MATURATION,TRAIT_YIELD,TRAIT_SPREAD,TRAIT_WALL_HUGGER)
 		if(GENE_DIET)
-			P.values[TRAIT_CONSUME_GASSES] = consume_gasses
+			P.values["[TRAIT_CONSUME_GASSES]"] = consume_gasses
 			traits_to_copy = list(TRAIT_CARNIVOROUS,TRAIT_PARASITE,TRAIT_NUTRIENT_CONSUMPTION,TRAIT_WATER_CONSUMPTION)
 		if(GENE_ENVIRONMENT)
 			traits_to_copy = list(TRAIT_IDEAL_HEAT,TRAIT_IDEAL_LIGHT,TRAIT_LIGHT_TOLERANCE)
@@ -723,11 +697,7 @@
 			traits_to_copy = list(TRAIT_TELEPORTING)
 
 	for(var/trait in traits_to_copy)
-<<<<<<< HEAD
 		P.values["[trait]"] = get_trait(trait)
-=======
-		P.values[trait] = get_trait(trait)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return P
 
 //Place the plant products at the feet of the user.
@@ -742,11 +712,7 @@
 		if(istype(user)) to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 		// Users with green thumb perk gain sanity when harvesting plants
-<<<<<<< HEAD
 		if(ishuman(user) && user.stats && user.stats.getPerk(/datum/perk/greenthumb) && !harvest_sample)
-=======
-		if(ishuman(user) && user.stats && user.stats.getPerk(PERK_GREENTHUMB) && !harvest_sample)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/mob/living/carbon/human/H = user
 			if(H.sanity)
 				H.sanity.changeLevel(2.5)
@@ -778,11 +744,6 @@
 					to_chat(user, SPAN_NOTICE("You have managed to harvest more!"))
 				total_yield = max(1,total_yield)
 
-				if(user.stats.getPerk(PERK_MASTER_HERBALIST))
-					total_yield += 2
-					to_chat(user, SPAN_NOTICE("Thanks to your folken herbalistic teachings, you managed to harvest even more!"))
-				total_yield = max(2,total_yield)
-
 		for(var/i = 0;i<total_yield;i++)
 			var/obj/item/product
 			if(has_mob_product)
@@ -813,58 +774,6 @@
 					var/mob/living/simple_animal/mushroom/mush = product
 					mush.seed = src
 
-/datum/seed/proc/selfharvest(turf/location,yield_mod,harvest_sample,force_amount)
-	if(!location)
-		return
-
-
-		//This may be a new line. Update the global if it is.
-	if(name == "new line" || !(name in plant_controller.seeds))
-		uid = plant_controller.seeds.len + 1
-		name = "[uid]"
-		plant_controller.seeds[name] = src
-
-	var/total_yield = 0
-	if(!isnull(force_amount))
-		total_yield = force_amount
-	else
-		if(get_trait(TRAIT_YIELD) > -1)
-			if(isnull(yield_mod) || yield_mod < 1)
-				yield_mod = 0
-				total_yield = get_trait(TRAIT_YIELD)
-			else
-				total_yield = get_trait(TRAIT_YIELD) + rand(yield_mod)
-			total_yield = max(1,total_yield)
-
-			total_yield = max(2,total_yield)
-
-	for(var/i = 0;i<total_yield;i++)
-		var/obj/item/product
-
-		if(has_mob_product)
-			product = new has_mob_product(location,name)
-
-		else
-			product = new /obj/item/reagent_containers/food/snacks/grown(get_turf(location),name)
-		if(get_trait(TRAIT_PRODUCT_COLOUR))
-			if(!ismob(product))
-				product.color = get_trait(TRAIT_PRODUCT_COLOUR)
-				if(istype(product,/obj/item/reagent_containers/food))
-					var/obj/item/reagent_containers/food/food = product
-					food.filling_color = get_trait(TRAIT_PRODUCT_COLOUR)
-		if(mysterious)
-			product.name += "?"
-			product.desc += " On second thought, something about this one looks strange."
-
-		if(get_trait(TRAIT_BIOLUM))
-			var/clr
-			if(get_trait(TRAIT_BIOLUM_COLOUR))
-				clr = get_trait(TRAIT_BIOLUM_COLOUR)
-			product.set_light(get_trait(TRAIT_BIOLUM), l_color = clr)
-			//Handle spawning in living, mobile products.
-		if(isliving(product))
-			product.visible_message(SPAN_NOTICE("The pod disgorges [product]!"))
-
 // When the seed in this machine mutates/is modified, the tray seed value
 // is set to a new datum copied from the original. This datum won't actually
 // be put into the global datum list until the product is harvested, though.
@@ -883,13 +792,9 @@
 	new_seed.has_mob_product =  has_mob_product
 	//Copy over everything else.
 	if(mutants)        new_seed.mutants = mutants.Copy()
-	if(greatMutants)   new_seed.greatMutants = greatMutants.Copy()
 	if(chems)          new_seed.chems = chems.Copy()
 	if(consume_gasses) new_seed.consume_gasses = consume_gasses.Copy()
 	if(exude_gasses)   new_seed.exude_gasses = exude_gasses.Copy()
-	if(materials)	   new_seed.materials = materials.Copy()
-	if(evolutions)	   new_seed.evolutions = evolutions.Copy()
-	if(origin_tech)    new_seed.origin_tech = origin_tech.Copy()
 
 	new_seed.seed_name =            "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
 	new_seed.display_name =         "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"

@@ -1,9 +1,5 @@
 /obj/item/implant/carrion_spider/identity
-<<<<<<< HEAD
 	name = "identity spider"
-=======
-	name = "identity stealing spider"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "spiderling_identity"
 	spider_price = 25
 

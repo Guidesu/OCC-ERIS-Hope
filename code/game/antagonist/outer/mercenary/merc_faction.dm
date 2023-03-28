@@ -1,31 +1,17 @@
-<<<<<<< HEAD
 ///Occulus eddit, de-serbian mercs///
 #define WELCOME_SERBS "You are a crack, elite mercenary, part of a team of professional soldiers or acting on your own. You are currently aboard your base preparing for a mission targeting the CEV Northern Light on behalf of Sol, or someone else.<br>\
-=======
-#define WELCOME_SERBS "You are a void wolf, part of a team of professional smugglers and mercenaries. You are currently aboard your base preparing for a mission targeting the Nadezhda Colony.<br>\
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	<br>\
 	In your base you will find your armoury full of weapon crates and the EVA capable SCAF armour. It is advised that you take a pistol, a rifle, a knife and a SCAF suit for basic equipment.<br>\
 	Once you have your basic gear, you may also wish to take along a specialist weapon, like the RPG-7 or the Pulemyot Kalashnikova. Each of the specialist weapons is powerful but very bulky, you will need to wear it over your back.<br>\
 	<br>\
 	Discuss your specialties with your team, choose a broad range of weapons that will allow your group to overcome a variety of obstacles. Search the base and load up everything onto your ship which may be useful, you will not be able to easily return here once you depart.<br>\
-<<<<<<< HEAD
 	When ready, use the console on your shuttle bridge to depart for the Northern Light. Travelling will take several minutes, and you will be detected before you even arrive, stealth is not an option. Once you arrive, you have a time limit to complete your mission."
-=======
-	When ready, use the console on your shuttle bridge to depart for the colony. Travelling will take several minutes and you will be detected before you even arrive, stealth is not an option. Once you arrive, you have a time limit to complete your mission."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/datum/antag_faction/mercenary
+/datum/faction/mercenary
 	id = FACTION_SERBS
-<<<<<<< HEAD
 	name = "Mercenaries" //Also this is an Occulu edit
 	antag = "soldier"
 	antag_plural = "soldiers"
-=======
-	name = "Void Wolf"
-	antag = "mercenary"
-	antag_plural = "mercenaries"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	welcome_text = WELCOME_SERBS
 
 	hud_indicator = "mercenary"
@@ -36,24 +22,17 @@
 
 	var/objectives_num
 	var/list/possible_objectives = list(
-<<<<<<< HEAD
 	/datum/objective/harm = 15,
 	/datum/objective/steal = 55,
 	/datum/objective/assassinate = 35,
 	/datum/objective/abduct = 15)
-=======
-	/datum/objective/harm = 25,
-	/datum/objective/steal = 65,
-	/datum/objective/assassinate = 45,
-	/datum/objective/abduct = 25)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/objective_quantity = 6
 
 	//How long the mercenaries get to do their mission
 
 
 
-/datum/antag_faction/mercenary/create_objectives()
+/datum/faction/mercenary/create_objectives()
 	objectives.Cut()
 	pick_objectives(src, possible_objectives, objective_quantity)
 
@@ -62,7 +41,7 @@
 	..()
 
 
-/datum/antag_faction/mercenary/add_leader(var/datum/antagonist/member, var/announce = TRUE)
+/datum/faction/mercenary/add_leader(var/datum/antagonist/member, var/announce = TRUE)
 	.=..()
 	if (.)
 		//put the commander outfit on
@@ -78,7 +57,7 @@
 /* Special inventory proc for mercenaries. Includes the content of their base and ship. So any loot that they haul
 back to their ship counts for objectives.
 This could potentially return a list of thousands of atoms, but thats fine. Its not as much work as it sounds */
-/datum/antag_faction/mercenary/get_inventory()
+/datum/faction/mercenary/get_inventory()
 	var/list/contents = ..()
 	var/list/search_areas = list(/area/shuttle/mercenary, /area/centcom/merc_base)
 	for (var/a in search_areas)

@@ -22,7 +22,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  */
 /obj/machinery/librarypubliccomp
 	name = "visitor computer"
-	desc = "This public computer can search the library inventory."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "computer"
 	anchored = TRUE
@@ -33,7 +32,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	var/author
 	var/SQLquery
 
-/obj/machinery/librarypubliccomp/attack_hand(mob/user)
+/obj/machinery/librarypubliccomp/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Library Visitor</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -116,8 +115,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 // TODO: Make this an actual /obj/machinery/computer that can be crafted from circuit boards and such
 // It is August 22nd, 2012... This TODO has already been here for months.. I wonder how long it'll last before someone does something about it.
 /obj/machinery/librarycomp
-	name = "check-in/out computer"
-	desc = "This staff computer can access the library inventory and archives."
+	name = "Check-In/Out Computer"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "computer"
 	anchored = TRUE
@@ -134,7 +132,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 	var/bibledelay = 0 // LOL NO SPAM (1 minute delay) -- Doohl
 
-/obj/machinery/librarycomp/attack_hand(mob/user)
+/obj/machinery/librarycomp/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Book Inventory Management</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -232,16 +230,12 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	user << browse(dat, "window=library")
 	onclose(user, "library")
 
-/obj/machinery/librarycomp/emag_act(remaining_charges, mob/user)
+/obj/machinery/librarycomp/emag_act(var/remaining_charges, var/mob/user)
 	if (src.density && !src.emagged)
 		src.emagged = 1
 		return 1
 
-<<<<<<< HEAD
 /obj/machinery/librarycomp/attackby(obj/item/W as obj, mob/user as mob)
-=======
-/obj/machinery/librarycomp/attackby(obj/item/W, mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(W, /obj/item/barcodescanner))
 		var/obj/item/barcodescanner/scanner = W
 		scanner.computer = src
@@ -397,23 +391,18 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  */
 /obj/machinery/libraryscanner
 	name = "scanner"
-	desc = "This machine can upload literature to the library database."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	anchored = TRUE
 	density = TRUE
 	var/obj/item/book/cache		// Last scanned book
 
-<<<<<<< HEAD
 /obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
-=======
-/obj/machinery/libraryscanner/attackby(obj/O, mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/book))
 		user.drop_item()
 		O.loc = src
 
-/obj/machinery/libraryscanner/attack_hand(mob/user)
+/obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Scanner Control Interface</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	if(cache)
@@ -451,24 +440,19 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  * Book binder
  */
 /obj/machinery/bookbinder
-	name = "book binder"
-	desc = "A machine for turning paper into properly binded books."
+	name = "Book Binder"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "binder"
 	anchored = TRUE
 	density = TRUE
 
-<<<<<<< HEAD
 /obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
-=======
-/obj/machinery/bookbinder/attackby(obj/O, mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/paper))
 		user.drop_item()
 		O.loc = src
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
 		src.visible_message("[src] begins to hum as it warms up its printing drums.")
-		sleep(rand(5,20)) //Insainly fast do to how intensive sleep is
+		sleep(rand(200,400))
 		src.visible_message("[src] whirs as it prints and binds a new book.")
 		var/obj/item/book/b = new(src.loc)
 		b.dat = O:info

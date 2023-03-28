@@ -5,7 +5,6 @@
 /obj/item/implant
 	name = "implant"
 	icon = 'icons/obj/device.dmi'
-<<<<<<< HEAD
 	icon_state = "implant_health"
 	w_class = ITEM_SIZE_TINY
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_GLASS = 1)
@@ -13,14 +12,6 @@
 	var/mob/living/carbon/human/wearer
 	var/obj/item/organ/external/part
 	var/implant_overlay = "implantstorage_deathalarm"
-=======
-	icon_state = "implant_deathalarm"
-	w_class = ITEM_SIZE_TINY
-	matter = list(MATERIAL_STEEL = 1, MATERIAL_GLASS = 1)
-	var/implanted = FALSE
-	var/mob/living/carbon/human/wearer = null
-	var/obj/item/organ/external/part = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/allow_reagents = FALSE
 	var/malfunction = MALFUNCTION_NONE
 	var/is_legal = TRUE
@@ -28,18 +19,9 @@
 	var/position_flag = 0
 	var/external = FALSE
 	var/cruciform_resist = FALSE
-<<<<<<< HEAD
 	var/scanner_hidden = FALSE	//Does this implant show up on the body scanner
 
 /obj/item/implant/attackby(obj/item/I, mob/user)
-=======
-	var/is_metal = TRUE
-	var/scanner_hidden = FALSE
-
-	var/overlay_icon = "deathalarm"
-
-/obj/item/implant/attackby(obj/item/I as obj, mob/user as mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if (istype(I, /obj/item/implanter))
 		var/obj/item/implanter/M = I
@@ -50,10 +32,7 @@
 			M.update_icon()
 		return TRUE
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/proc/trigger(emote, mob/living/source)
 /obj/item/implant/proc/activate()
 	return TRUE
@@ -101,16 +80,6 @@
 
 	on_install(target, affected)
 	wearer.update_implants()
-	for(var/mob/living/carbon/human/H in viewers(target))
-		LEGACY_SEND_SIGNAL(H, COMSIG_HUMAN_INSTALL_IMPLANT, target, src)
-
-
-	if(ishuman(target) && is_metal)
-		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/internal/psionic_tumor/installed_tumor = H.random_organ_by_process(BP_PSION)
-		if(installed_tumor)
-			installed_tumor.remove_implanted(src)
-
 	return TRUE
 
 /obj/item/implant/proc/can_install(var/mob/living/target, var/obj/item/organ/external/E)
@@ -121,8 +90,7 @@
 /obj/item/implant/proc/uninstall()
 	on_uninstall()
 	forceMove(get_turf(wearer))
-	if(part)
-		part.implants.Remove(src)
+	part.implants.Remove(src)
 	part = null
 	implanted = FALSE
 	if(ishuman(wearer))
@@ -139,13 +107,8 @@
 
 /obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
 	to_chat(wearer, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
-<<<<<<< HEAD
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
-=======
-	if(part)
-		part.take_damage(15, BURN, used_weapon = "Electronics meltdown")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		var/mob/living/M = wearer
 		M.apply_damage(15,BURN)
@@ -160,11 +123,7 @@
 	icon_state = initial(icon_state)
 	malfunction = initial(malfunction)
 
-<<<<<<< HEAD
 /obj/item/implant/proc/get_mob_overlay(var/gender)
-=======
-/obj/item/implant/proc/get_mob_overlay(var/gender, var/form)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return null
 
 /obj/item/implant/Destroy()

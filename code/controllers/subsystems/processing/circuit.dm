@@ -47,29 +47,17 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 		var/name = initial(A.name)
 		all_assemblies[name] = path
 		cached_assemblies[A] = new path
-<<<<<<< HEAD
 /*	for(var/path in typesof(/obj/item/implant/integrated_circuit))
-=======
-	for(var/path in typesof(/obj/item/implant/integrated_circuit))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/obj/item/implant/integrated_circuit/I = path
 		var/name = initial(I.name)
 		all_assemblies[name] = path
 		cached_assemblies[I] = new path
-<<<<<<< HEAD
 */
 	circuit_fabricator_recipe_list["Assemblies"] = subtypesof(/obj/item/device/electronic_assembly) - list(/obj/item/device/electronic_assembly/medium, /obj/item/device/electronic_assembly/large, /obj/item/device/electronic_assembly/drone, /obj/item/device/electronic_assembly/wallmount)
 
 	circuit_fabricator_recipe_list["Assemblies"] -= typesof(/obj/item/device/electronic_assembly/implant)
 	//circuit_fabricator_recipe_list["Assemblies"] += typesof(/obj/item/implant/integrated_circuit)
 
-=======
-
-	circuit_fabricator_recipe_list["Assemblies"] = subtypesof(/obj/item/device/electronic_assembly) - list(/obj/item/device/electronic_assembly/medium, /obj/item/device/electronic_assembly/large, /obj/item/device/electronic_assembly/drone, /obj/item/device/electronic_assembly/wallmount)
-
-	circuit_fabricator_recipe_list["Assemblies"] -= typesof(/obj/item/device/electronic_assembly/implant)
-	circuit_fabricator_recipe_list["Assemblies"] += typesof(/obj/item/implant/integrated_circuit)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	circuit_fabricator_recipe_list["Tools"] = list(
 		/obj/item/device/integrated_electronics/wirer,
 		/obj/item/device/integrated_electronics/debugger,

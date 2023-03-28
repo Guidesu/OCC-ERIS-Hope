@@ -12,17 +12,11 @@
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_REAGENT_DISPENSER
 	var/volume = 1500
-<<<<<<< HEAD
 	var/starting_reagent
-=======
-	var/starting_volume = 0
-	var/starting_reagent = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
 	var/contents_cost
 
-<<<<<<< HEAD
 /obj/structure/reagent_dispensers/Initialize(mapload, bolt=FALSE)
 	. = ..()
 	create_reagents(volume)
@@ -60,28 +54,6 @@
 	else
 		return ..()
 
-=======
-/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_refillable())
-		return 0 //so we can refill them via their afterattack.
-	else
-		return ..()
-
-/obj/structure/reagent_dispensers/New()
-	create_reagents(volume)
-
-	if (starting_reagent)
-		//If a starting volume is not 0, use that for the volume amount
-		if(starting_volume)
-			reagents.add_reagent(starting_reagent, starting_volume)
-		else
-			reagents.add_reagent(starting_reagent, volume)
-
-	if (!possible_transfer_amounts)
-		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
-	..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
@@ -108,10 +80,9 @@
 			if (prob(5))
 				explode()
 				return
-/obj/structure/reagent_dispensers/get_item_cost(export)
-	if(export)
-		return ..() + round(reagents.total_volume * 0.125)
-	return ..() + contents_cost
+
+
+
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -121,31 +92,25 @@
 	amount_per_transfer_from_this = 10
 	volume = 1500
 	starting_reagent = "water"
-	price_tag = 25
+	price_tag = 50
 	contents_cost = 150
 
 /obj/structure/reagent_dispensers/watertank/derelict
 	icon_state = "watertank-derelict"
-<<<<<<< HEAD
 	spawn_blacklisted = TRUE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/reagent_dispensers/watertank/huge
 	name = "high-capacity water tank"
 	desc = "A high-capacity water tank. It is used to store HUGE amounts of water."
 	icon_state = "hvwatertank"
 	volume = 3000
-	price_tag = 50
+	price_tag = 100
 	contents_cost = 300
 	rarity_value = 30
 
 /obj/structure/reagent_dispensers/watertank/huge/derelict
 	icon_state = "hvwatertank-derelict"
 	spawn_blacklisted = TRUE
-
-/obj/structure/reagent_dispensers/watertank/huge/derelict
-	icon_state = "hvwatertank-derelict"
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fuel tank"
@@ -155,7 +120,7 @@
 	amount_per_transfer_from_this = 10
 	volume = 500
 	starting_reagent = "fuel"
-	price_tag = 25
+	price_tag = 50
 	contents_cost = 750
 	var/modded = FALSE
 	var/obj/item/device/assembly_holder/rig
@@ -164,24 +129,18 @@
 	icon_state = "weldtank-derelict"
 	spawn_blacklisted = TRUE
 
-/obj/structure/reagent_dispensers/fueltank/derelict
-	icon_state = "weldtank-derelict"
-
 /obj/structure/reagent_dispensers/fueltank/huge
 	name = "high-capacity fuel tank"
 	desc = "A high-capacity tank full of industrial welding fuel. Do not consume."
 	icon_state = "hvweldtank"
 	volume = 1000
-	price_tag = 50
+	price_tag = 100
 	contents_cost = 1500
 	rarity_value = 30
 
 /obj/structure/reagent_dispensers/fueltank/huge/derelict
 	icon_state = "hvweldtank-derelict"
 	spawn_blacklisted = TRUE
-
-/obj/structure/reagent_dispensers/fueltank/huge/derelict
-	icon_state = "hvweldtank-derelict"
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	if(!..(user, 2))
@@ -198,11 +157,7 @@
 			usr.visible_message(SPAN_NOTICE("\The [usr] detaches \the [rig] from \the [src]."), SPAN_NOTICE("You detach [rig] from \the [src]"))
 			rig.loc = get_turf(usr)
 			rig = null
-<<<<<<< HEAD
 			set_overlays(new/list())
-=======
-			cut_overlays()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/user)
 	src.add_fingerprint(user)
@@ -235,11 +190,7 @@
 			var/icon/test = getFlatIcon(I)
 			test.Shift(NORTH,1)
 			test.Shift(EAST,6)
-<<<<<<< HEAD
 			add_overlays(test)
-=======
-			add_overlay(test)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/obj/item/tool/T = I
 	if(istype(T) && T.use_fuel_cost)
@@ -250,13 +201,12 @@
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())
-		if (!(Proj.testing))
-			if(istype(Proj.firer))
-				message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
-				log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+		if(istype(Proj.firer))
+			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 
-			if(!istype(Proj ,/obj/item/projectile/plasma/lastertag) && !istype(Proj ,/obj/item/projectile/beam/practice) )
-				explode()
+		if(!istype(Proj ,/obj/item/projectile/beam/lastertag) && !istype(Proj ,/obj/item/projectile/beam/practice) )
+			explode()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	explode()
@@ -271,7 +221,7 @@
 	else if (reagents.total_volume > 100)
 		explosion(src.loc,0,1,3)
 	else if (reagents.total_volume > 50)
-		explosion(src.loc,0,1,2)
+		explosion(src.loc,-1,1,2)
 	if(src)
 		qdel(src)
 
@@ -305,16 +255,6 @@
 	starting_reagent = "condensedcapsaicin"
 	spawn_blacklisted = TRUE
 
-/obj/structure/reagent_dispensers/ammonia
-	name = "ammonia dispenser"
-	desc = "Contains ammonia meant to clean things and mix to make spacecleaner."
-	icon_state = "ammoniatank"
-	anchored = 1
-	density = 0
-	amount_per_transfer_from_this = 10
-	volume = 1000
-	starting_reagent = "cleaner"
-	possible_transfer_amounts = list(1,5,10,25,50,100)
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"
@@ -326,82 +266,27 @@
 	anchored = TRUE
 	volume = 500
 	starting_reagent = "water"
-<<<<<<< HEAD
 	spawn_blacklisted = TRUE
-=======
-	var/cups = 20
-	var/cup_type = /obj/item/reagent_containers/food/drinks/sillycup
-	sanity_damage = 0.1 //Talk around these RP!
-
-/obj/structure/reagent_dispensers/water_cooler/attack_hand(var/mob/user)
-	if(cups > 0)
-		var/visible_messages = DispenserMessages(user)
-		visible_message(visible_messages[1], visible_messages[2])
-		var/cup = new cup_type(loc)
-		user.put_in_active_hand(cup)
-		cups--
-	else
-		to_chat(user, RejectionMessage(user))
-
-/obj/structure/reagent_dispensers/water_cooler/proc/DispenserMessages(var/mob/user)
-	return list("\The [user] grabs a paper cup from \the [src].", "You grab a paper cup from \the [src]'s cup compartment.")
-
-/obj/structure/reagent_dispensers/water_cooler/proc/RejectionMessage(var/mob/user)
-	return "\The [src]'s cup dispenser is empty."
-
-/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I, mob/user)
-	if(QUALITY_BOLT_TURNING in I.tool_qualities)
-		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
-			src.add_fingerprint(user)
-			if(anchored)
-				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
-			else
-				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-
-			if(do_after(user, 20, src))
-				if(!src) return
-				to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]secured \the [src]!"))
-				anchored = !anchored
-			return
-	else
-		return ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg"
-	icon_state = "beer_keg" //Sprite by greenteaguzzler
+	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	volume = 1000
 	starting_reagent = "beer"
-	price_tag = 25
+	price_tag = 50
 	contents_cost = 700
 	spawn_blacklisted = TRUE
 
 
-<<<<<<< HEAD
 /obj/structure/reagent_dispensers/cahorsbarrel
 	name = "Saint's Wing Cahors barrel"
 	desc = "A barrel of sweet church wine used in rituals. Mekhanites keep the recipe a secret, making it a rather coveted drink."
-=======
-/obj/structure/reagent_dispensers/meadkeg
-	name = "mead keg"
-	desc = "A keg of honey and beer"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "barrel"
-	amount_per_transfer_from_this = 10
-	volume = 1000
-	starting_reagent = "mead"
-	price_tag = 25
-	contents_cost = 1200
-
-/obj/structure/reagent_dispensers/cahorsbarrel
-	name = "Absolutism Cahors barrel"
-	desc = "Barrel a day - keeps liver away."
-	icon_state = "barrel_alt"
 	volume = 1000
 	starting_reagent = "ntcahors"
-	price_tag = 25
+	price_tag = 50
 	contents_cost = 950
 	spawn_blacklisted = TRUE
 
@@ -410,15 +295,9 @@
 	desc = "A dispenser of virus food."
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
-<<<<<<< HEAD
 	anchored = TRUE
 	density = FALSE
 	volume = 1000
-=======
-	anchored = 1
-	density = 0
-	volume = 50000
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	starting_reagent = "virusfood"
 	spawn_blacklisted = TRUE
 
@@ -431,7 +310,6 @@
 	density = FALSE
 	volume = 1000
 	starting_reagent = "sacid"
-<<<<<<< HEAD
 	spawn_blacklisted = TRUE
 
 //this is big movable beaker
@@ -517,16 +395,3 @@
 		for(var/I in reagents.reagent_list)
 			var/datum/reagent/R = I
 			to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
-=======
-
-/obj/structure/reagent_dispensers/premiumwhiskey
-	name = "Special Blend Whiskey Barrel"
-	desc = "A barrel full of Special Blend whiskey, the finest whiskey this side of the galaxy, and every other side as well."
-	icon_state = "premiumwhiskey"
-	amount_per_transfer_from_this = 10
-	volume = 1000 //Limited, rare stock! But still should be plenty to go around for everyone
-	starting_reagent = "specialwhiskey"
-	price_tag = 30
-	contents_cost = 1000 // This keg's not meant to be ordered through cargo, you start every shift with it and that's it! Big profits though...
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

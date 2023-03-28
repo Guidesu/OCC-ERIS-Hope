@@ -58,11 +58,7 @@
 	else
 		not_heard = "[verb] something" //TODO get rid of the null language and just prevent speech if language is null
 
-<<<<<<< HEAD
 	message = trim(message)
-=======
-	message = capitalize(trim(message))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(speech_problem_flag)
 		var/list/handle_r = handle_speech_problems(message)
@@ -147,16 +143,8 @@
 	//now mobs
 	var/speech_bubble_test = say_test(message)
 	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"h[speech_bubble_test]")
-<<<<<<< HEAD
 	QDEL_IN(speech_bubble, 30)
 
-=======
-	speech_bubble.layer = ABOVE_MOB_LAYER
-
-	QDEL_IN(speech_bubble, 30)
-
-	log_say("[name]/[key] (WHISPER) : [message]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/speech_bubble_recipients = list()
 	for(var/mob/M in listening)
 		if(M.client)

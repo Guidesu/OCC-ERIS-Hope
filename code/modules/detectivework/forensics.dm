@@ -26,22 +26,16 @@ atom/proc/add_fibers(mob/living/carbon/human/M)
 	var/suit_coverage = 0
 	if(M.wear_suit)
 		fibertext = "Material from \a [M.wear_suit]."
-<<<<<<< HEAD
 		// OCCULUS EDIT: Check if the suit has no_fibers
 		var/obj/item/clothing/worn_suit = M.wear_suit
 		if (!worn_suit.no_fibers)
 			if(prob(10*item_multiplier) && !(fibertext in suit_fibers))
 				suit_fibers += fibertext
 		// OCCULUS EDIT END
-=======
-		if(prob(30*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += fibertext
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		suit_coverage = M.wear_suit.body_parts_covered
 
 	if(M.w_uniform && (M.w_uniform.body_parts_covered & ~suit_coverage))
 		fibertext = "Fibers from \a [M.w_uniform]."
-<<<<<<< HEAD
 		// OCCULUS EDIT: Check if the suit has no_fibers
 		var/obj/item/clothing/worn_uniform = M.w_uniform
 		if (!worn_uniform.no_fibers)
@@ -57,15 +51,6 @@ atom/proc/add_fibers(mob/living/carbon/human/M)
 			if(prob(20*item_multiplier) && !(fibertext in suit_fibers))
 				suit_fibers += "Material from a pair of [M.gloves.name]."
 		// OCCULUS EDIT END
-=======
-		if(prob(45*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += fibertext
-
-	if(M.gloves && (M.gloves.body_parts_covered & ~suit_coverage))
-		fibertext = "Material from a pair of [M.gloves.name]."
-		if(prob(60*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += "Material from a pair of [M.gloves.name]."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/data/record/forensic
 	name = "forensic data"

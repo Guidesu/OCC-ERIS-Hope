@@ -1,14 +1,10 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEM_SIZE_GARGANTUAN
-<<<<<<< HEAD
 	spawn_frequency = 10
 	rarity_value = 10
 	//spawn_tags = SPAWN_TAG_STRUCTURE
 	bad_type = /obj/structure
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/climbable
 	var/breakable
 	var/parts
@@ -131,11 +127,11 @@
 				return 0
 	return 1
 
-/obj/structure/proc/do_climb(mob/living/user)
+/obj/structure/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] starts climbing onto \the [src]!"))
+	usr.visible_message(SPAN_WARNING("[user] starts climbing onto \the [src]!"))
 	climbers |= user
 
 	var/delay = (issmall(user) ? 20 : 34) * user.mod_climb_delay
@@ -148,12 +144,11 @@
 		climbers -= user
 		return
 
-	user.forceMove(get_turf(src))
+	usr.forceMove(get_turf(src))
 
 	if (get_turf(user) == get_turf(src))
-		user.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
+		usr.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
 	climbers -= user
-	add_fingerprint(user)
 
 /obj/structure/proc/structure_shaken()
 	for(var/mob/living/M in climbers)

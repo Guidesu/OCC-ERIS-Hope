@@ -20,9 +20,9 @@
 		mat.Scale(0.9)
 		M.set_plane(FLOOR_PLANE)
 		M.layer = 1
-		animate(M, alpha = 50, pixel_y = -16, transform = mat,  time = duration*1.2, easing = SINE_EASING, flags = ANIMATION_END_NOW)
+		animate(M, alpha = 50, pixel_y = -16, transform = mat,  time = duration*1.2, easing = SINE_EASING)
 	else
-		animate(M, alpha = 0, pixel_y = 64, time = duration*1.2, easing = SINE_EASING, flags = ANIMATION_END_NOW)
+		animate(M, alpha = 0, pixel_y = 64, time = duration*1.2, easing = SINE_EASING)
 
 
 /datum/vertical_travel_method/jetpack/cache_values()

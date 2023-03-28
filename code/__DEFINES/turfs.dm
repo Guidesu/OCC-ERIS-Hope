@@ -12,10 +12,7 @@
 #define TURF_ACID_IMMUNE       			2048
 #define TURF_HIDES_THINGS				4096
 #define TURF_CAN_HAVE_RANDOM_BORDER		4096
-<<<<<<< HEAD
 #define TURF_RIPPABLE				8192 //Occulus Edit for remove plating verb
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 
@@ -30,30 +27,11 @@
 #define DECK_HEIGHT 3	//3 metres in vertical height between decks
 //Note that the height of a turf's airspace is defined elsewhere as 2.5 metres, this adds extra to account for floor thickness
 
-<<<<<<< HEAD
 #define RANGE_TURFS(RADIUS, CENTER) \
 	block(\
 	locate(max(CENTER.x-(RADIUS),1),			max(CENTER.y-(RADIUS),1),			CENTER.z),\
 	locate(min(CENTER.x+(RADIUS),world.maxx),	min(CENTER.y+(RADIUS),world.maxy),	CENTER.z)\
   )
-=======
-//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
-///Returns a list of turf in a square
-#define RANGE_TURFS(RADIUS, CENTER) \
-	RECT_TURFS(RADIUS, RADIUS, CENTER)
-
-#define RECT_TURFS(H_RADIUS, V_RADIUS, CENTER) \
-	block( \
-	locate(max(CENTER.x-(H_RADIUS),1),          max(CENTER.y-(V_RADIUS),1),          CENTER.z), \
-	locate(min(CENTER.x+(H_RADIUS),world.maxx), min(CENTER.y+(V_RADIUS),world.maxy), CENTER.z) \
-	)
-
-#define trange(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define get_turf(atom) get_step(atom, 0)
 
@@ -69,13 +47,3 @@
 	var/vecZ = (A.y - B.y)*DECK_HEIGHT
 
 	return abs(sqrt((vecX*vecX) + (vecY*vecY) +(vecZ*vecZ)))
-<<<<<<< HEAD
-=======
-
-/// Turf will be passable if density is 0
-#define TURF_PATHING_PASS_DENSITY 0
-/// Turf will be passable depending on [CanPass] return value
-#define TURF_PATHING_PASS_PROC 1
-/// Turf is never passable
-#define TURF_PATHING_PASS_NO 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

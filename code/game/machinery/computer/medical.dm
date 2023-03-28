@@ -7,7 +7,6 @@
 	icon_screen = "medcomp"
 	light_color = COLOR_LIGHTING_GREEN_MACHINERY
 	req_one_access = list(access_moebius, access_forensics_lockers)
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/med_data
 	var/obj/item/card/id/scan
 	var/authenticated
@@ -18,18 +17,6 @@
 	var/a_id
 	var/temp
 	var/printing
-=======
-	circuit = /obj/item/circuitboard/med_data
-	var/obj/item/card/id/scan = null
-	var/authenticated = null
-	var/rank = null
-	var/screen = null
-	var/datum/data/record/active1 = null
-	var/datum/data/record/active2 = null
-	var/a_id = null
-	var/temp = null
-	var/printing = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/med_data/verb/eject_id()
 	set category = "Object"
@@ -59,9 +46,9 @@
 /obj/machinery/computer/med_data/attack_hand(mob/user as mob)
 	if(..())
 		return
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/med_data/nano_ui_interact(mob/user)
+/obj/machinery/computer/med_data/ui_interact(mob/user)
 	var/dat
 	if (src.temp)
 		dat = text("<TT>[src.temp]</TT><BR><BR><A href='?src=\ref[src];temp=1'>Clear Screen</A>")
@@ -564,7 +551,7 @@
 
 
 /obj/machinery/computer/med_data/laptop
-	name = "medical laptop"
+	name = "Medical Laptop"
 	desc = "A cheap laptop."
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"

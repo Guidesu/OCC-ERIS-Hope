@@ -10,10 +10,7 @@ GLOBAL_LIST_INIT(art_sculpting_method, file2list("strings/artist_strings/descrip
 
 GLOBAL_LIST_INIT(art_styles, file2list("strings/artist_strings/descriptors/art_style.txt"))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_types.txt"))
 
 //When you need something simple (for random Artist Artwork)
@@ -29,17 +26,12 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 
 /proc/get_artwork_crew_name(only_first_name = FALSE, only_last_name = FALSE)
 	var/list/names = list()
-<<<<<<< HEAD
 	var/art_crew_name = "Who?"
-=======
-	var/art_crew_name = "Nadezhda" //Default name. This current will be better then "Who?."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/mob/living/carbon/human/H in (GLOB.human_mob_list & GLOB.player_list))
 		if(!isOnStationLevel(H))
 			continue
 		if(H.mind && player_is_antag(H.mind))
 			continue
-<<<<<<< HEAD
 		if(only_first_name)
 			//names.Add(H.first_name && H.first_name)
 			names.Add(H.real_name) // OCCULUS EDIT - reeee whatever this family name thing is
@@ -47,15 +39,6 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 			names.Add(H.family_name)
 		else
 			names.Add(H.real_name)
-=======
-		//This error'd out and I really couldn't figure out why but disabling it didn't have much of a downside. Commented out for now. TODO: fix this. - Kazkin
-		/*if(only_first_name)
-			names.Add(H.first_name && H.first_name)
-		else if(only_last_name && H.last_name)
-			names.Add(H.last_name)
-		else
-			names.Add(H.real_name)*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(names.len)
 		art_crew_name = pick(names)
 	return art_crew_name
@@ -75,13 +58,8 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 	return name
 
 /proc/get_art_secret_name()
-<<<<<<< HEAD
 	var/list/adjectives = list("big", "terrifying", "mysterious", "fantastic", "secret", "haunting", "mysterious")//Occulus edit: spelling
 	return "\the [pick(adjectives)] secret of [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]"
-=======
-	var/list/adjectives = list("big", "terrifying", "mysterious", "fantastic", "secret", "haunting", "mysteriouss")
-	return "the [pick(adjectives)] secret of [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/get_travel_actios()
 	var/location
@@ -89,7 +67,6 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 		location = get_art_mob_places()
 	else
 		location = pick(GLOB.art_locations)
-<<<<<<< HEAD
 	return "\the [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]s [pick("trip","journey")] to the [location]"
 
 /proc/get_art_mob_places()
@@ -99,17 +76,6 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 /proc/get_art_of_name()
 	var/list/nouns = list("heart", "soul", "honor", "beauty", "feet", "true face", "true form")
 	return "\the [pick(nouns)] of [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]"
-=======
-	return "the [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]s [pick("trip","journey")] to the [location]"
-
-/proc/get_art_mob_places()
-	var/list/mobs_places = list("cave", "hideout", "nest")
-	return "the [pick(GLOB.art_names_of_creatures_plural)] [pick(mobs_places)]"
-
-/proc/get_art_of_name()
-	var/list/nouns = list("heart", "soul", "honor", "beauty", "feet", "true face", "true form")
-	return "the [pick(nouns)] of [get_artwork_crew_name(pick(TRUE, FALSE), pick(TRUE, FALSE))]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/proc/get_random_material()
 	var/list/nmatter = get_matter()
@@ -119,13 +85,8 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 	return "[pick(GLOB.art_sculpting_method)] [get_random_material()]"
 
 /obj/proc/make_art_review()
-<<<<<<< HEAD
 	var/list/emotions = list("fear", "joy", "laughter", "sadness", "respect", "terror", "vigor") //Occulus Edit: spelling
 	desc += " \A [pick(GLOB.art_styles)] [pick(GLOB.art_types)] [get_sculpting_method()]. [pick("Inspires", "Infuses")] [pick(emotions)] to those who look at it."
-=======
-	var/list/emotions = list("fear", "joy", "laughter", "sadness", "respect", "terror", "vigor", "encourages")
-	desc += " A [pick(GLOB.art_styles)] [pick(GLOB.art_types)] [get_sculpting_method()]. [pick("Inspires", "Infuses")] [pick(emotions)] to those who look at it."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/projectile/make_art_review()
 	desc += " [get_art_gun_desc(src)]"

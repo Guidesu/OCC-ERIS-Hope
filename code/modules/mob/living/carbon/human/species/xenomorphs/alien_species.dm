@@ -13,6 +13,8 @@
 	siemens_coefficient = 0
 	gluttonous = GLUT_ANYTHING
 
+	eyes = "blank_eyes"
+
 	brute_mod = 0.25 // Hardened carapace.
 	burn_mod = 1.1    // Weak to fire.
 
@@ -27,6 +29,13 @@
 	spawn_flags = IS_RESTRICTED
 
 	reagent_tag = IS_XENOS
+
+	blood_color = "#05EE05"
+	flesh_color = "#282846"
+	gibbed_anim = "gibbed-a"
+	dusted_anim = "dust-a"
+	death_message = "lets out a waning guttural screech, green blood bubbling from its maw."
+	death_sound = 'sound/voice/hiss6.ogg'
 
 	speech_sounds = list('sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg')
 	speech_chance = 100
@@ -104,6 +113,7 @@
 		H.adjustBruteLoss(-heal_rate)
 		H.adjustFireLoss(-heal_rate)
 		H.adjustOxyLoss(-heal_rate)
+		H.adjustToxLoss(-heal_rate)
 		if (prob(5))
 			to_chat(H, "<span class='alium'>You feel a soothing sensation come over you...</span>")
 		return 1
@@ -131,14 +141,11 @@
 	caste_name = "drone"
 	weeds_phoron_rate = 15
 	slowdown = 1
-<<<<<<< HEAD
 	tail = "xenos_drone_tail"
 	species_rarity_value = 5
-=======
-	rarity_value = 5
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	default_form = /datum/species_form/alien/drone
+	icobase = 'icons/mob/human_races/xenos/r_xenos_drone.dmi'
+	deform =  'icons/mob/human_races/xenos/r_xenos_drone.dmi'
 
 	has_organ = list(
 		BP_HEART =  /obj/item/organ/internal/heart,
@@ -150,7 +157,8 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/ventcrawl
+		/mob/living/proc/ventcrawl,
+		/mob/living/carbon/human/proc/regurgitate
 	)
 
 /datum/species/xenos/drone/handle_post_spawn(var/mob/living/carbon/human/H)
@@ -167,8 +175,10 @@
 	caste_name = "hunter"
 	slowdown = -2
 	total_health = 150
+	tail = "xenos_hunter_tail"
 
-	default_form = /datum/species_form/alien/hunter
+	icobase = 'icons/mob/human_races/xenos/r_xenos_hunter.dmi'
+	deform =  'icons/mob/human_races/xenos/r_xenos_hunter.dmi'
 
 	has_organ = list(
 		BP_HEART =  /obj/item/organ/internal/heart,
@@ -182,7 +192,8 @@
 		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/gut,
 		/mob/living/carbon/human/proc/leap,
-		/mob/living/carbon/human/proc/psychic_whisper
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/regurgitate
 	)
 
 /datum/species/xenos/sentinel
@@ -191,8 +202,10 @@
 	caste_name = "sentinel"
 	slowdown = 0
 	total_health = 125
+	tail = "xenos_sentinel_tail"
 
-	default_form = /datum/species_form/alien/sentinel
+	icobase = 'icons/mob/human_races/xenos/r_xenos_sentinel.dmi'
+	deform =  'icons/mob/human_races/xenos/r_xenos_sentinel.dmi'
 
 	has_organ = list(
 		BP_HEART =  /obj/item/organ/internal/heart,
@@ -204,7 +217,8 @@
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/tackle
+		/mob/living/carbon/human/proc/tackle,
+		/mob/living/carbon/human/proc/regurgitate,
 	)
 
 /datum/species/xenos/queen
@@ -215,14 +229,11 @@
 	weeds_phoron_rate = 20
 	caste_name = "queen"
 	slowdown = 4
-<<<<<<< HEAD
 	tail = "xenos_queen_tail"
 	species_rarity_value = 10
-=======
-	rarity_value = 10
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	default_form = /datum/species_form/alien/queen
+	icobase = 'icons/mob/human_races/xenos/r_xenos_queen.dmi'
+	deform =  'icons/mob/human_races/xenos/r_xenos_queen.dmi'
 
 	has_organ = list(
 		BP_HEART =  /obj/item/organ/internal/heart,
@@ -236,7 +247,8 @@
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
-		/mob/living/carbon/human/proc/psychic_whisper
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/regurgitate,
 	)
 
 /datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)

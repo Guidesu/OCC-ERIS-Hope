@@ -64,25 +64,11 @@
 #define CONDUCT            	0x2   	// Conducts electricity. (metal etc.)
 #define ON_BORDER          	0x4   	// Item has priority to check when entering or leaving.
 #define NOBLOODY           	0x8   	// Used for items if they don't want to get a blood overlay.
-<<<<<<< HEAD
 #define PHORONGUARD        	0x10 	// Does not get contaminated by phoron.
-=======
-// OPENCONTAINER is defined in Eris as a reagent_flag as opposed to a generic flag.
-// NOREACT will likely be the same.
-#define PLASMAGUARD        	0x10 	// Does not get contaminated by plasma.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define PROXMOVE           	0x20  	// Does this object require proximity checking in Enter()?
 #define SILENT				0x40 	// Sneaky shoes and silenced tools
 #define LOUD			    0x80 	// Loud as hell tools
 #define HONKING			    0x100 	// Honking tools
-<<<<<<< HEAD
-=======
-// 0x80 not used for no reason, feel free
-#define OVERLAY_QUEUED      0x100 // Atom queued to SSoverlay for COMPILE_over-lays
-#define INITIALIZED			0x200
-#define ADMIN_SPAWNED		0x400
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Flags for items (equipment)
 #define THICKMATERIAL              0x1  // Prevents syringes, parapens and hyposprays if equiped to slot_suit or slot_head.
@@ -94,12 +80,7 @@
 #define COVER_PREVENT_MANIPULATION 0x40 // Only clothing with this flag will prevent manipulation under it. Its for space suits and such, unlike from usual Bay12 rules of clothing manipulation.
 #define DRAG_AND_DROP_UNEQUIP      0x80 // Allow you put intems in hands with drag and drop
 #define EQUIP_SOUNDS               0x100// Play sound when equipped/unequipped
-<<<<<<< HEAD
 #define ABSTRACT			       0x200//For items that don't really exist. Can't be put on tables or interacted with.
-=======
-#define ABSTRACT			       0x200// For items that don't really exist. Can't be put on tables or interacted with.
-#define BLUESPACE                  0x400// For items that use bluespace technology
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Flags for pass_flags.
 #define PASSTABLE  0x1
@@ -108,13 +89,11 @@
 
 // Bitmasks for the flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
-#define HIDEGLOVES		0x1
-#define HIDESUITSTORAGE	0x2
-#define HIDEJUMPSUIT	0x4
-#define HIDESHOES		0x8
-#define HIDETAIL		0x10
-#define HIDETAUR		0x20
-#define HIDEWINGS		0x40
+#define HIDEGLOVES      0x1
+#define HIDESUITSTORAGE 0x2
+#define HIDEJUMPSUIT    0x4
+#define HIDESHOES       0x8
+#define HIDETAIL        0x10
 
 // WARNING: The following flags apply only to the helmets and masks!
 #define HIDEMASK 0x1
@@ -122,10 +101,7 @@
 #define HIDEEYES 0x4 // Glasses.
 #define HIDEFACE 0x8 // Dictates whether we appear as "Unknown".
 
-<<<<<<< HEAD
 //This flag applies to gloves, uniforms, shoes, masks, ear items, glasses
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define ALWAYSDRAW	0x16//If set, this item is always rendered even if its slot is hidden by other clothing
 //Note that the item may still not be visible if its sprite is actually covered up.
 
@@ -145,11 +121,8 @@
 #define slot_head_str		"slot_head"
 #define slot_wear_suit_str	"slot_suit"
 #define slot_s_store_str    "slot_s_store"
-<<<<<<< HEAD
 #define slot_wear_mask_str	"slot_wear_mask" //Syzygy Edit
 #define slot_belt_str		"slot_belt" //Occulus Edit
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Bitflags for clothing parts.
 #define HEAD        0x1
@@ -241,12 +214,8 @@
 #define INV_W_UNIFORM_DEF_ICON 'icons/inventory/uniform/mob.dmi'
 #define INV_ACCESSORIES_DEF_ICON 'icons/inventory/accessory/mob.dmi'
 #define INV_SUIT_DEF_ICON 'icons/inventory/suit/mob.dmi'
-<<<<<<< HEAD
 #define INV_BELT_DEF_ICON 'icons/invenstory/belt/mob.dmi'
 
-=======
-#define INV_BELT_DEF_ICON 'icons/inventory/belt/mob.dmi'
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Defines for loot stashes
 #define DIRECTION_COORDS 	1
@@ -258,22 +227,3 @@
 #define STORY_CRIME	"Crime"
 #define STORY_MUTINY "Mutiny"
 #define STORY_MALFUNCTION "Malfunction"
-<<<<<<< HEAD
-=======
-
-//Recoil for suits
-#define LIGHT_STIFFNESS 0.5
-#define MEDIUM_STIFFNESS 1
-#define HEAVY_STIFFNESS 1.5
-
-//Slowdown for suits - unused but eris put it here
-#define LIGHT_SLOWDOWN 0.1
-#define MEDIUM_SLOWDOWN 0.2
-#define HEAVY_SLOWDOWN 1
-
-//Offset for helmets
-#define LIGHT_OBSCURATION 2
-#define MEDIUM_OBSCURATION 3
-#define HEAVY_OBSCURATION 5
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

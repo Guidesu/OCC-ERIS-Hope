@@ -23,19 +23,11 @@
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/head/ushanka(src)
-<<<<<<< HEAD
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
-=======
-	new /obj/item/clothing/under/costume/history/soviet(src)
-	new /obj/item/clothing/under/costume/history/soviet(src)
-	new /obj/item/clothing/under/costume/history/soviet(src)
-	new /obj/item/clothing/under/costume/history/soviet(src)
-	new /obj/item/clothing/under/costume/history/soviet(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/closet/thunderdome
@@ -61,7 +53,6 @@
 	new /obj/item/gun/energy/laser(src)
 	new /obj/item/gun/energy/laser(src)
 	new /obj/item/gun/energy/laser(src)
-<<<<<<< HEAD
 	new /obj/item/melee/baton(src)
 	new /obj/item/melee/baton(src)
 	new /obj/item/melee/baton(src)
@@ -71,17 +62,6 @@
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
-=======
-	new /obj/item/tool/baton(src)
-	new /obj/item/tool/baton(src)
-	new /obj/item/tool/baton(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/thunderdome/tdgreen
 	name = "green-team Thunderdome closet"
@@ -97,7 +77,6 @@
 	new /obj/item/gun/energy/laser(src)
 	new /obj/item/gun/energy/laser(src)
 	new /obj/item/gun/energy/laser(src)
-<<<<<<< HEAD
 	new /obj/item/melee/baton(src)
 	new /obj/item/melee/baton(src)
 	new /obj/item/melee/baton(src)
@@ -107,17 +86,6 @@
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
 	new /obj/item/clothing/head/armor/helmet/thunderdome(src)
-=======
-	new /obj/item/tool/baton(src)
-	new /obj/item/tool/baton(src)
-	new /obj/item/tool/baton(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/oldstyle
 	name = "old closet"

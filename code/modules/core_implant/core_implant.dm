@@ -2,14 +2,12 @@
 	name = "core implant"
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEM_SIZE_SMALL
-	origin_tech = list(TECH_MATERIAL = 9, TECH_BIO = 9, TECH_DATA = 9, TECH_ENGINEERING = 12, TECH_COMBAT = 8, TECH_BLUESPACE  = 7, TECH_PLASMA = 6)
-	matter = list(MATERIAL_PLASTEEL = 5, MATERIAL_GOLD = 4, MATERIAL_SILVER = 4, MATERIAL_PLASTIC = 2, MATERIAL_PLASMA = 3, MATERIAL_URANIUM = 5, MATERIAL_GLASS = 1, MATERIAL_BIOMATTER = 3, MATERIAL_DIAMOND = 10)
+	origin_tech = list(TECH_MATERIAL=2, TECH_BIO=7, TECH_DATA=5)
 	external = TRUE
 	var/implant_type = /obj/item/implant/core_implant
 	var/active = FALSE
 	var/activated = FALSE			//true, if cruciform was activated once
 
-	var/security_clearance = CLEARANCE_NONE
 	var/address = null
 	var/power = 0
 	var/max_power = 0
@@ -22,12 +20,7 @@
 	var/list/upgrades = list()
 
 	var/list/access = list()	// Core implant can grant access levels to its user
-	var/path = ""
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/core_implant/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	deactivate()
@@ -114,13 +107,10 @@
 		L |= M.GetAccess()
 	return L
 
-<<<<<<< HEAD
 /obj/item/implant/core_implant/on_uninstall()
 	for(var/datum/core_module/M in modules)
 		M.on_implant_uninstall()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/core_implant/hear_talk(mob/living/carbon/human/H, message, verb, datum/language/speaking, speech_volume, message_pre_problems)
 	var/group_ritual_leader = FALSE
 	for(var/datum/core_module/group_ritual/GR in src.modules)
@@ -133,28 +123,17 @@
 	else
 		for(var/RT in known_rituals)
 			var/datum/ritual/R = GLOB.all_rituals[RT]
-<<<<<<< HEAD
 			var/true_message = message //Occulus Edit: I'm sorry this must be fixed
 			if(R.ignore_stuttering)
 				true_message = message_pre_problems //Occulus Edit: I refuse to allow eregius spelling errors
 			if(R.compare(true_message))
-=======
-			var/ture_message = message
-			if(R.ignore_stuttering)
-				ture_message = message_pre_problems
-			if(R.compare(ture_message))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(R.power > src.power)
 					to_chat(H, SPAN_DANGER("Not enough energy for the [R.name]."))
 					return
 				if(!R.is_allowed(src))
 					to_chat(H, SPAN_DANGER("You are not allowed to perform [R.name]."))
 					return
-<<<<<<< HEAD
 				R.activate(H, src, R.get_targets(true_message))//Occulus Edit: Spelling
-=======
-				R.activate(H, src, R.get_targets(ture_message))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 
 /obj/item/implant/core_implant/proc/hear_other(mob/living/carbon/human/H, message)
@@ -173,12 +152,9 @@
 /obj/item/implant/core_implant/proc/restore_power(var/value)
 	power = min(max_power, power + value)
 
-<<<<<<< HEAD
 /obj/item/implant/core_implant/proc/auto_restore_power()
 	restore_power(power_regen)
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/core_implant/Process()
 	if(!active)
 		return
@@ -235,23 +211,6 @@
 	for(var/module_type in J.core_upgrades)
 		add_module(new module_type)
 
-<<<<<<< HEAD
-=======
-/obj/item/implant/core_implant/proc/install_default_modules_by_path(/obj/item/implant/core_implant/cruciform)
-	if(path == "tess")
-		add_module(new CRUCIFORM_TESS)
-	else if(path == "lemn")
-		add_module(new CRUCIFORM_LEMN)
-	else if(path == "mono")
-		add_module(new CRUCIFORM_MONO)
-	else if(path == "divi")
-		add_module(new CRUCIFORM_DIVI)
-	else if(path == "fact")
-		add_module(new CRUCIFORM_FACT)
-	else if(path == "omni")
-		add_module(new CRUCIFORM_OMNI)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/core_implant/proc/process_modules()
 	for(var/datum/core_module/CM in modules)
 		if(CM.time > 0 && CM.install_time + CM.time <= world.time)

@@ -3,20 +3,12 @@
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
-=======
-"b" = (
-/obj/random/scrap/dense_weighted/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "d" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "e" = (
 /obj/structure/railing,
 /obj/structure/lattice,
-<<<<<<< HEAD
 /turf/template_noop,
 /area/template_noop)
 "f" = (
@@ -26,34 +18,17 @@
 "g" = (
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/random/mob/carp/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"f" = (
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "h" = (
 /obj/structure/railing{
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
-<<<<<<< HEAD
 /turf/template_noop,
 /area/template_noop)
 "i" = (
 /obj/spawner/junkfood/rotten/low_chance,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"i" = (
-/obj/random/junkfood/rotten/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "j" = (
 /obj/structure/lattice,
@@ -63,34 +38,21 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
-=======
-"n" = (
-/obj/random/scrap/dense_weighted/low_chance,
-/obj/random/lowkeyrandom/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "r" = (
 /turf/template_noop,
 /area/template_noop)
 "w" = (
 /obj/structure/girder,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "x" = (
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "F" = (
 /obj/structure/lattice,
 /obj/structure/railing,
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
 
 (1,1,1) = {"
 r
@@ -98,66 +60,22 @@ F
 x
 w
 a
-=======
-"G" = (
-/obj/structure/lattice,
-/obj/random/lowkeyrandom/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"L" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"M" = (
-/obj/structure/lattice,
-/obj/structure/railing,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"U" = (
-/obj/structure/girder,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Y" = (
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-
-(1,1,1) = {"
-r
-M
-b
-w
-L
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 a
 F
 f
 d
-<<<<<<< HEAD
 x
 "}
 (3,1,1) = {"
 r
 e
 g
-=======
-b
-"}
-(3,1,1) = {"
-Y
-e
-n
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 a
 "}
 (4,1,1) = {"
-<<<<<<< HEAD
 a
 a
 h
@@ -169,18 +87,5 @@ w
 a
 r
 a
-=======
-G
-a
-h
-j
-b
-"}
-(5,1,1) = {"
-U
-a
-r
-L
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}

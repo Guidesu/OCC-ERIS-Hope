@@ -6,15 +6,12 @@
 	item_state = "pneumatic"
 	slot_flags = SLOT_BACK
 	w_class = ITEM_SIZE_HUGE
-	flags = CONDUCT
+	flags =  CONDUCT
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
 	fire_sound = 'sound/weapons/tablehit1.ogg'
 	twohanded = TRUE
-<<<<<<< HEAD
 	rarity_value = 10//no price tag, high rarity
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
 	var/max_w_class = ITEM_SIZE_NORMAL                                 // Hopper intake size.
@@ -129,11 +126,7 @@
 		if(T) T.assume_air(removed)
 	..()
 
-<<<<<<< HEAD
 /obj/item/gun/launcher/pneumatic/on_update_icon()
-=======
-/obj/item/gun/launcher/pneumatic/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tank)
 		icon_state = "pneumatic-tank"
 		set_item_state("-tank")
@@ -153,11 +146,7 @@
 
 	var/buildstate = 0
 
-<<<<<<< HEAD
 /obj/item/cannonframe/on_update_icon()
-=======
-/obj/item/cannonframe/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "pneumatic[buildstate]"
 
 /obj/item/cannonframe/examine(mob/user)

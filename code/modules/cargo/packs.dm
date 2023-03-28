@@ -5,7 +5,7 @@
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-var/list/all_supply_groups = list("Operations","Enforcement","Hospitality","Engineering","Medical / Science","Hydroponics","Mining","Supply","Resource Integration Gear","Recreation","Clothing", "Xanorath Syndicate")
+var/list/all_supply_groups = list("Operations","Security","Hospitality","Engineering","Medical / Science","Hydroponics","Mining","Supply","Miscellaneous")
 
 /datum/supply_pack
 	var/name = "Crate"
@@ -44,25 +44,11 @@ var/list/all_supply_groups = list("Operations","Enforcement","Hospitality","Engi
 
 /datum/supply_pack/proc/fill(obj/structure/closet/crate/C)
 	for(var/item in contains)
-		var/atom/movable/n_item
-		if(ispath(item, /obj/random))
-			var/obj/randomcatcher/CATCH = new /obj/randomcatcher
-			n_item = CATCH.get_item(item)
-		else
-			n_item = new item(C)
-		n_item.surplus_tag = TRUE
-		var/list/n_contents = n_item.GetAllContents()
-		for(var/atom/movable/I in n_contents)
-			n_item.surplus_tag = TRUE
-		/*So you can't really just buy crates, then instantly resell them for a potential profit depending on if the crate hasn't had its cost scaled properly.
-		* Yes, there are limits, I could itterate over every content of the item too and set its surplus_tag to TRUE
-		* But that doesn't work with stackables when you can just make a new stack, and gets comp-expensive and not worth it just to spite people getting extra numbers
-		*/
+		var/n_item = new item(C)
 		if(src.amount && istype(n_item, /obj/item/stack/material/steel))
 			var/obj/item/stack/material/n_sheet = n_item
 			n_sheet.amount = src.amount
 
-<<<<<<< HEAD
 //----------------------------------------------
 //-----------------OPERATIONS-------------------
 //----------------------------------------------
@@ -1536,8 +1522,6 @@ var/list/all_supply_groups = list("Operations","Enforcement","Hospitality","Engi
 	crate_name = "Collectable hats crate! Brought to you by Bass.inc!"
 	group = "Miscellaneous"
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/supply_pack/randomised/fill(obj/structure/closet/crate/C)
 	var/list/L = contains.Copy()
 	var/item
@@ -1548,7 +1532,6 @@ var/list/all_supply_groups = list("Operations","Enforcement","Hospitality","Engi
 	else
 		for(var/i in 1 to num_contained)
 			item = pick(L)
-<<<<<<< HEAD
 			new item(C)
 
 /datum/supply_pack/randomised/contraband
@@ -1725,6 +1708,3 @@ var/list/all_supply_groups = list("Operations","Enforcement","Hospitality","Engi
 	group = "Medical / Science"
 	contraband = TRUE
 	containertype = /obj/structure/closet/crate/medical
-=======
-			new item(C)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

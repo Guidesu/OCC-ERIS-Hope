@@ -86,22 +86,15 @@
 		//inv3.icon_state = "inv3"
 	for (var/obj/screen/HUDelement in HUDinventory)
 		HUDelement.underlays.Cut()
-	update_robot_modules_display()
 	updateicon()
 
 /mob/living/silicon/robot/proc/activated(obj/item/O)
 	if(module_state_1 == O || module_state_2 == O || module_state_3 == O)
 		updateicon()
-<<<<<<< HEAD
 		return 1
 	else
 		return 0
 
-=======
-		return TRUE
-	else
-		return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Helper procs for cyborg modules on the UI.
 //These are hackish but they help clean up code elsewhere.
@@ -282,12 +275,6 @@
 		O.equipped(src, slot_robot_equip_3)
 	else
 		to_chat(src, SPAN_NOTICE("You need to disable a module first!"))
-<<<<<<< HEAD
-=======
-
-/mob/living/silicon/robot/proc/get_all_slots()  //Proc for robots to search their slots for stuff. Useful particularly for mining robot ore bags.
-	return list(module_state_1, module_state_2, module_state_3)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //Attempt to grip the item in a gripper.

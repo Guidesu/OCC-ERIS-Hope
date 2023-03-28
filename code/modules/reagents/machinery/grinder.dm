@@ -1,49 +1,21 @@
 #define REAGENTS_PER_SHEET 20
 
 /obj/machinery/reagentgrinder
-<<<<<<< HEAD
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/nano_template
-=======
-	name = "All-In-One Grinder"
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "juicer1"
-	layer = BELOW_OBJ_LAYER
-	density = 0
-	anchored = 0
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 5
-	active_power_usage = 100
-	var/nano_template = "grinder.tmpl"
-	circuit = /obj/item/circuitboard/reagentgrinder
-	var/inuse = 0
-	var/obj/item/reagent_containers/beaker = null
-
-	var/grinding_time = 60
-
-	var/items_to_process = 1
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/limit = 10
 	var/list/holdingitems = list()
 	var/list/sheet_reagents = list(
 		/obj/item/stack/material/iron = "iron",
-<<<<<<< HEAD
 		/obj/item/stack/material/uranium = "uranium",
 		/obj/item/stack/material/phoron = "phoron",
-=======
-		/obj/item/stack/material/steel = "iron",
-		/obj/item/stack/material/uranium = "uranium",
-		/obj/item/stack/material/plasma = "plasma",
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/stack/material/gold = "gold",
 		/obj/item/stack/material/silver = "silver",
 		/obj/item/stack/material/mhydrogen = "hydrogen",
 	)
 
-<<<<<<< HEAD
 /obj/machinery/reagentgrinder/MouseDrop_T(atom/movable/I, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !I.Adjacent(user) || user.incapacitated())
 		return ..()
@@ -61,35 +33,6 @@
 		return
 	if(istype(I,/obj/item/tool) || istype(I,/obj/item/storage/part_replacer)) //Occulus edit: Grinders no longer attempt to grind tools
 		return  //Occulus Edit: Grinders no longer attempt to grind tools
-=======
-/obj/machinery/reagentgrinder/RefreshParts()
-	var/man_rating = 0
-	var/man_amount = 0
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		man_rating += M.rating
-		man_amount++
-	man_rating -= man_amount
-
-	limit = (25 + (man_rating * 5))
-	grinding_time = (60 - man_rating)
-
-/obj/machinery/reagentgrinder/MouseDrop_T(atom/movable/I, mob/user, src_location, over_location, src_control, over_control, params)
-	if(!Adjacent(user) || !I.Adjacent(user) || user.incapacitated())
-		return ..()
-	insert(I, user)
-	. = ..()
-
-/obj/machinery/reagentgrinder/attackby(obj/item/I, mob/user)
-	if(default_deconstruction(I, user))
-		return
-
-	if(default_part_replacement(I, user))
-		return
-	//Useability tweak for borgs
-	if (istype(I,/obj/item/gripper))
-		nano_ui_interact(user)
-		return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return insert(I, user)
 
 /obj/machinery/reagentgrinder/proc/insert(obj/item/I, mob/user)
@@ -137,28 +80,17 @@
 	SSnano.update_uis(src)
 	return 0
 
-<<<<<<< HEAD
-=======
-/obj/machinery/reagentgrinder/attack_ai(mob/user as mob)
-	return 0
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/reagentgrinder/attack_hand(mob/user)
 	. = ..()
 	if(.)
 		return
 
 	user.set_machine(src)
-<<<<<<< HEAD
 	ui_interact(user)
-=======
-	nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/reagentgrinder/on_deconstruction()
 	eject()
 
-<<<<<<< HEAD
 /obj/machinery/reagentgrinder/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	if(!nano_template)
 		return
@@ -172,21 +104,6 @@
 		ui.open()
 
 /obj/machinery/reagentgrinder/ui_data()
-=======
-/obj/machinery/reagentgrinder/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	if(!nano_template)
-		return
-
-	var/list/data = nano_ui_data()
-
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, nano_template, name, 600, 550)
-		ui.set_initial_data(data)
-		ui.open()
-
-/obj/machinery/reagentgrinder/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 
 	data["contents"] = list()
@@ -238,7 +155,6 @@
 
 
 /obj/machinery/reagentgrinder/portable
-<<<<<<< HEAD
 	name = "All-In-One Grinder"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
@@ -252,35 +168,18 @@
 
 /obj/item/electronics/circuitboard/reagentgrinder
 	name = T_BOARD("reagent grinder")
-=======
-	density = FALSE
-	anchored = FALSE
-
-
-/obj/item/circuitboard/reagentgrinder
-	build_name = "reagent grinder"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	board_type = "machine"
 	build_path = /obj/machinery/reagentgrinder/portable
 	origin_tech = list(TECH_BIO = 1)
 	req_components = list(
-<<<<<<< HEAD
 		/obj/item/stock_parts/manipulator = 2
-=======
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/reagent_containers/glass/beaker/large = 1,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/machinery/reagentgrinder/portable/Initialize()
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 
-<<<<<<< HEAD
 /obj/machinery/reagentgrinder/portable/on_update_icon()
-=======
-/obj/machinery/reagentgrinder/portable/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "juicer"+num2text(!isnull(beaker))
 	return
 
@@ -295,42 +194,16 @@
 		update_icon()
 		return 0
 
-<<<<<<< HEAD
 	return ..()
 
 /obj/machinery/reagentgrinder/portable/ui_data()
-=======
-	if(default_deconstruction(I, user))
-		return
-
-	if(default_part_replacement(I, user))
-		return
-
-	return ..()
-
-/obj/machinery/reagentgrinder/portable/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = ..()
 	data["on"] = inuse
 
 	if(beaker)
-<<<<<<< HEAD
 		data["beaker"] = beaker.reagents.ui_data()
 	return data
 
-=======
-		data["beaker"] = beaker.reagents.nano_ui_data()
-	return data
-
-/obj/machinery/reagentgrinder/portable/AltClick(mob/living/user)
-	if(user.incapacitated())
-		to_chat(user, SPAN_WARNING("You can't do that right now!"))
-		return
-	if(!in_range(src, user))
-		return
-	src.detach()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/reagentgrinder/portable/Topic(href, href_list)
 	if(..())
 		return 1
@@ -362,7 +235,7 @@
 	inuse = 1
 
 	// Reset the machine.
-	spawn(grinding_time)
+	spawn(60)
 		inuse = 0
 		SSnano.update_uis(src)
 
@@ -382,7 +255,6 @@
 	icon = 'icons/obj/machines/grinder.dmi'
 	icon_state = "grinder"
 	reagent_flags = NO_REACT
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/industrial_grinder
 	limit = 25
 	nano_template = "industrial_grinder.tmpl"
@@ -393,17 +265,6 @@
 	build_path = /obj/machinery/reagentgrinder/industrial
 	origin_tech = list(TECH_BIO = 1)
 	rarity_value = 10
-=======
-	circuit = /obj/item/circuitboard/industrial_grinder
-	limit = 25
-	nano_template = "industrial_grinder.tmpl"
-
-/obj/item/circuitboard/industrial_grinder
-	build_name = "industrial grinder"
-	board_type = "machine"
-	build_path = /obj/machinery/reagentgrinder/industrial
-	origin_tech = list(TECH_BIO = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/scanning_module = 1,
@@ -418,7 +279,6 @@
 		return
 	grind()
 
-<<<<<<< HEAD
 /obj/machinery/reagentgrinder/industrial/on_update_icon()
 	cut_overlays()
 
@@ -429,24 +289,6 @@
 	var/list/data = ..()
 
 	data["reagents"] = reagents.ui_data()
-=======
-/obj/machinery/reagentgrinder/industrial/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/reagent_containers/borghypo) || istype(I, /obj/item/reagent_containers/spray)) //prevents borg items
-		return
-	..() //So we run the rest
-
-
-/obj/machinery/reagentgrinder/industrial/update_icon()
-	cut_overlays()
-
-	if(panel_open)
-		add_overlay(image(icon, "[icon_state]_p"))
-
-/obj/machinery/reagentgrinder/industrial/nano_ui_data()
-	var/list/data = ..()
-
-	data["reagents"] = reagents.nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return data
 
 /obj/machinery/reagentgrinder/industrial/Topic(href, href_list)
@@ -468,15 +310,6 @@
 	P.pixel_x = rand(-7, 7)
 	P.pixel_y = rand(-7, 7)
 	P.icon_state = pick(BOTTLE_SPRITES)
-<<<<<<< HEAD
-=======
-	if(P.icon_state == "potion")
-		P.filling_states = "10;20;40;50;60"
-		P.label_icon_state = "label_potion"
-	if(P.icon_state == "tincture")
-		P.filling_states = "3;5;10;15;20;25;27;30;35;40;45;50;55;60"
-		P.label_icon_state = "label_tincture"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	P.toggle_lid()
 
 /obj/machinery/reagentgrinder/industrial/proc/grind()
@@ -492,43 +325,27 @@
 
 	SSnano.update_uis(src)
 
-<<<<<<< HEAD
 
 
 /obj/item/storage/makeshift_grinder
 	name = "makeshift grinder"
 	desc = "Mortar and pestle to grind ingridients."
-=======
-/obj/item/storage/makeshift_grinder
-	name = "makeshift grinder"
-	desc = "A mortar and pestle, used to grind ingredients."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/machines/chemistry.dmi'
 	icon_state = "mortar"
 	storage_slots = 3
 	unacidable = 1
-<<<<<<< HEAD
 	rarity_value = 25
 	spawn_tags = SPAWN_TAG_ITEM_UTILITY
 	reagent_flags = REFILLABLE | DRAINABLE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,30,60)
-=======
-	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,30,60)
-	reagent_flags = REFILLABLE | DRAINABLE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/storage/makeshift_grinder/Initialize(mapload, ...)
 	. = ..()
 	create_reagents(60)
 
 /obj/item/storage/makeshift_grinder/attack_self(mob/user)
-<<<<<<< HEAD
 	var/time_to_finish = 60 - (40 * user.stats.getMult(STAT_TGH, STAT_LEVEL_ADEPT))
-=======
-	var/time_to_finish = 60 - (40 * user.stats.getMult(STAT_BIO, STAT_LEVEL_ADEPT))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/repeating_sound/toolsound = new/datum/repeating_sound(8,time_to_finish,0.15, src, 'sound/effects/impacts/thud2.ogg', 50, 1)
 	user.visible_message(SPAN_NOTICE("[user] grind contents of \the [src]."), SPAN_NOTICE("You starting to grind contents of \the [src]."))
 	if(do_after(user,time_to_finish))
@@ -576,11 +393,7 @@
 	if(istype(I, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/container = I
 		if(!container.standard_pour_into(user, src)) . = ..()
-<<<<<<< HEAD
 	else if (LAZYLEN(I.reagents)) . = ..()
-=======
-	else if (I.reagents?.total_volume) . = ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else to_chat(user, SPAN_NOTICE("\icon[I] \the [I] seems that it is not suitable for a \icon[src] [src]."))
 	update_icon()
 
@@ -642,11 +455,7 @@
 		to_chat(user, SPAN_NOTICE("It's filled with [reagents.total_volume]/[reagents.maximum_volume] units of reagents."))
 
 
-<<<<<<< HEAD
 /obj/item/storage/makeshift_grinder/on_update_icon()
-=======
-/obj/item/storage/makeshift_grinder/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	cut_overlays()
 	if(reagents.total_volume)

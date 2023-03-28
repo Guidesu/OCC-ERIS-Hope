@@ -125,8 +125,6 @@ var/global/list/image/fluidtrack_cache=list()
 		dirs |= comingdir|realgoing
 		if(islist(blood_DNA))
 			blood_DNA |= DNA.Copy()
-		if(islist(shoe_types))
-			shoe_types |= shoe_types.Copy()
 		if(updated)
 			update_icon()
 
@@ -135,7 +133,7 @@ var/global/list/image/fluidtrack_cache=list()
 		color = "#FFFFFF"
 		var/truedir=0
 
-		// Update ONLY the over-lays that have changed.
+		// Update ONLY the overlays that have changed.
 		for(var/datum/fluidtrack/track in stack)
 			var/stack_idx=setdirs["[track.direction]"]
 			var/state=coming_state
@@ -152,13 +150,8 @@ var/global/list/image/fluidtrack_cache=list()
 			track.fresh=0
 			track.overlay=I
 			stack[stack_idx]=track
-<<<<<<< HEAD
 			add_overlays(I)
-=======
-			add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		updatedtracks=0 // Clear our memory of updated tracks.
-
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "wet footprints"

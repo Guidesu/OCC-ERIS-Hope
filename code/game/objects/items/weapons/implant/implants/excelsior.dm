@@ -1,28 +1,17 @@
 /obj/item/implant/excelsior
 	name = "excelsior implant"
 	icon_state = "implant_excel"
-<<<<<<< HEAD
 	implant_overlay = "implantstorage_excel"
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	allowed_organs = list(BP_HEAD)
 	origin_tech = list(TECH_COVERT = 2)
 	var/antag_id = ROLE_EXCELSIOR_REV
 	var/faction_id = FACTION_EXCELSIOR
 	var/global/possible_disguises = list(
-<<<<<<< HEAD
 		/obj/item/implant/chem,
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/implant/death_alarm
 	)
 	var/disguise
 
-<<<<<<< HEAD
-=======
-	overlay_icon = "excel"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/excelsior/Initialize()
 	. = ..()
 	if(length(possible_disguises))
@@ -40,10 +29,7 @@
 /obj/item/implanter/excelsior
 	name = "implanter-complant"
 	implant = /obj/item/implant/excelsior
-<<<<<<< HEAD
 	spawn_tags = null
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implant/excelsior/broken
 	name = "broken excelsior implant"
@@ -114,7 +100,6 @@
 	for(var/datum/antagonist/A in wearer.mind.antagonist)
 		if(A.id == antag_id)
 			A.remove_antagonist()
-<<<<<<< HEAD
 	wearer.visible_message(SPAN_DANGER("As \the [src] is removed from \the [wearer]..."))
 	if(prob(66))
 		wearer.visible_message(SPAN_DANGER("\The [wearer]'s [part.name] violently explodes from within!"))
@@ -122,12 +107,6 @@
 		part.droplimb(FALSE, DROPLIMB_BLUNT)
 	else
 		wearer.visible_message(SPAN_NOTICE("Something fizzles in \the [wearer]'s [part.name], but nothing interesting happens."))
-=======
-
-	//if(prob(66))
-	//	wearer.adjustBrainLoss(200)
-	//	part.droplimb(FALSE, DISMEMBER_METHOD_BLUNT)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //The leader version of the implant is the one given to antags spawned by the storyteller.
 //It has no special gameplay properties and is not attainable in normal gameplay, it just exists to

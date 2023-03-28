@@ -1,37 +1,10 @@
 /mob/living/carbon/superior_animal/proc/harvest(mob/user)
-<<<<<<< HEAD
-=======
-	drop_embedded()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/actual_meat_amount = max(1,(meat_amount/2))
-	var/actual_leather_amount = max(0,(leather_amount/2))
-	var/actual_bones_amount = max(0,(bones_amount/2))
-
-	if(user.stats.getPerk(PERK_BUTCHER)) // Master Butcher will now give full amounts defined in the creature's variables. Otherwise, it's only half, and no special items.
-		actual_leather_amount = max(0,(leather_amount))
-		actual_meat_amount = max(1,(meat_amount))
-		actual_bones_amount = max(0,(bones_amount))
-		if(has_special_parts)
-			for(var/animal_part in special_parts)
-				new animal_part(get_turf(src))
-
-	if(actual_leather_amount > 0 && (stat == DEAD))
-		for(var/i=0;i<actual_leather_amount;i++)
-			new /obj/item/stack/material/leather(get_turf(src))
-
-	if(actual_bones_amount > 0 && (stat == DEAD))
-		for(var/i=0;i<actual_bones_amount;i++)
-			new /obj/item/stack/material/bone(get_turf(src))
-
-	if(meat_type && actual_meat_amount > 0 && (stat == DEAD))
+	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
+		drop_embedded()
 		for(var/i=0;i<actual_meat_amount;i++)
-			if(ispath(src.meat_type, /obj/item/reagent_containers/food/snacks/meat))
-				var/obj/item/reagent_containers/food/snacks/meat/butchered_meat = new meat_type(get_turf(src))
-				butchered_meat.name = "[src.name] [butchered_meat.name]"
-				butchered_meat.initialize_genetics(src)
-			else
-				var/obj/item/non_meat = new meat_type(get_turf(src))
-				non_meat.name = "[src.name] [non_meat.name]"
+			var/obj/item/meat = new meat_type(get_turf(src))
+			meat.name = "[src.name] [meat.name]"
 		if(issmall(src))
 			user.visible_message(SPAN_DANGER("[user] chops up \the [src]!"))
 			var/obj/effect/decal/cleanable/blood/blood_effect = new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
@@ -39,59 +12,32 @@
 			blood_effect.update_icon()
 			qdel(src)
 		else
-			if(user.stats.getPerk(PERK_BUTCHER))
-				user.visible_message(SPAN_DANGER("[user] butchers \the [src] cleanly!"))
-				var/obj/effect/decal/cleanable/blood/blood_effect = new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-				blood_effect.basecolor = bloodcolor
-				blood_effect.update_icon()
-				qdel(src)
-			else
-				user.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
-				gib()
+			user.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
+			gib()
 
 /mob/living/carbon/superior_animal/update_lying_buckled_and_verb_status()
-	lying_prev = lying
-
-	. = ..()
+	..()
 
 	check_AI_act()
 
 /mob/living/carbon/superior_animal/bullet_act(obj/item/projectile/P, def_zone)
 	. = ..()
-<<<<<<< HEAD
 	updatehealth()
-=======
 
-	if (!(P.testing))
-		if(stance == HOSTILE_STANCE_ATTACK)
-			if(destroy_surroundings)
-				destroySurroundings()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-
-		updatehealth()
-		SEND_SIGNAL(src, COMSIG_ATTACKED, P, P.original_firer)
-
-/mob/living/carbon/superior_animal/attackby(obj/item/I, mob/living/user, params)
-	activate_ai() //If were attacked by something and havent woken up yet. Were awake now >:T
-	if (meat_type && (stat == DEAD) && (QUALITY_CUTTING in I.tool_qualities) && user.a_intent ==  I_HELP)
+/mob/living/carbon/superior_animal/attackby(obj/item/I, mob/living/user, var/params)
+	if (meat_type && (stat == DEAD) && (QUALITY_CUTTING in I.tool_qualities))
 		if (I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_CUTTING, FAILCHANCE_NORMAL, required_stat = STAT_BIO))
 			harvest(user)
 	else
-
-		if(stance == HOSTILE_STANCE_ATTACK && stat == CONSCIOUS )
-			if(destroy_surroundings)
-				destroySurroundings()
 		. = ..()
-
 		updatehealth()
-		SEND_SIGNAL(src, COMSIG_ATTACKED, I, user, params)
 
-/mob/living/carbon/superior_animal/resolve_item_attack(obj/item/I, mob/living/user, hit_zone)
+/mob/living/carbon/superior_animal/resolve_item_attack(obj/item/I, mob/living/user, var/hit_zone)
 	//mob.attackby -> item.attack -> mob.resolve_item_attack -> item.apply_hit_effect
-	return TRUE
+	return 1
 
 /mob/living/carbon/superior_animal/attack_hand(mob/living/carbon/M as mob)
-	. = ..()
+	..()
 	var/mob/living/carbon/human/H = M
 
 	switch(M.a_intent)
@@ -100,11 +46,7 @@
 
 		if (I_GRAB)
 			if(M == src || anchored)
-<<<<<<< HEAD
 				return 0
-=======
-				return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			for(var/obj/item/grab/G in src.grabbed_by)
 				if(G.assailant == M)
 					to_chat(M, SPAN_NOTICE("You already grabbed [src]."))
@@ -118,33 +60,28 @@
 
 			if (M in friends)
 				grabbed_by_friend = TRUE // disables AI for easier wrangling
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			M.put_in_active_hand(G)
 			G.synch()
-			LAssailant_weakref = WEAKREF(M)
+			LAssailant = M
 
 			M.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			visible_message(SPAN_WARNING("[M] has grabbed [src] passively!"))
-			SEND_SIGNAL(src, COMSIG_ATTACKED, null, M)
-			return TRUE
+
+			return 1
 
 		if (I_DISARM)
-			if (!weakened && (prob(30 + (H.stats.getStat(STAT_ROB) * 0.1))))
-				M.visible_message("\red [M] has knocked \the [src] over!")
+			if (!weakened && prob(30))
+				M.visible_message("\red [M] has shoved \the [src]")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				Weaken(3)
 
-				return TRUE
+				return 1
 			else
 				M.visible_message("\red [M] failed to shove \the [src]")
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 
 			M.do_attack_animation(src)
-			SEND_SIGNAL(src, COMSIG_ATTACKED, null, M)
 
 		if (I_HURT)
 			var/damage = 3
@@ -164,33 +101,28 @@
 				updatehealth()
 				M.do_attack_animation(src)
 
-				SEND_SIGNAL(src, COMSIG_ATTACKED, null, M)
-				return TRUE
+				return 1
 
 /mob/living/carbon/superior_animal/ex_act(severity)
 	..()
-<<<<<<< HEAD
 	if(!blinded)
 		if (HUDtech.Find("flash"))
 			FLICK("flash", HUDtech["flash"])
-=======
-	flash(5, FALSE ,FALSE ,FALSE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/b_loss = null
 	var/f_loss = null
 	switch (severity)
-		if (1)
+		if (1.0)
 			gib()
 			return
 
-		if (2)
+		if (2.0)
 			b_loss += 60
 			f_loss += 60
 			ear_damage += 30
 			ear_deaf += 120
 
-		if (3)
+		if (3.0)
 			b_loss += 30
 			if (prob(50))
 				Paralyse(1)
@@ -208,27 +140,20 @@
 		return
 
 	if(stat == DEAD)
-		blinded = TRUE
-		silent = FALSE
+		blinded = 1
+		silent = 0
 	else
 		updatehealth() // updatehealth calls death if health <= 0
 		handle_stunned()
 		handle_weakened()
-<<<<<<< HEAD
 		if(health <= 0)
 			blinded = TRUE
 			silent = 0
 			return 1
-=======
-		if(health <= death_threshold)
-			blinded = TRUE
-			silent = FALSE
-			return TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(paralysis && paralysis > 0)
 			handle_paralysed()
-			blinded = TRUE
+			blinded = 1
 			stat = UNCONSCIOUS
 			if(halloss > 0)
 				adjustHalLoss(-3)
@@ -236,7 +161,7 @@
 		if(sleeping)
 			adjustHalLoss(-3)
 			sleeping = max(sleeping-1, 0)
-			blinded = TRUE
+			blinded = 1
 			stat = UNCONSCIOUS
 		else if(resting)
 			if(halloss > 0)
@@ -249,39 +174,28 @@
 
 		update_icons()
 
-	return TRUE
+	return 1
 
-/mob/living/carbon/superior_animal/adjustBruteLoss(amount)
+/mob/living/carbon/superior_animal/adjustBruteLoss(var/amount)
 	. = ..()
 	if (overkill_gib && (amount >= overkill_gib) && (getBruteLoss() >= maxHealth*2))
 		if (bodytemperature > T0C)
 			gib()
 
-/mob/living/carbon/superior_animal/adjustFireLoss(amount)
+/mob/living/carbon/superior_animal/adjustFireLoss(var/amount)
 	. = ..()
 	if (overkill_dust && (amount >= overkill_dust) && (getFireLoss() >= maxHealth*2))
 		dust()
 
-/mob/living/carbon/superior_animal/adjustToxLoss(amount)
-	if (toxin_immune)
-		return
-	. = ..()
-
 /mob/living/carbon/superior_animal/updatehealth()
 	. = ..() //health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-<<<<<<< HEAD
 	if (health <= 0 && stat != DEAD)
-=======
-	activate_ai()
-	if (health <= death_threshold && stat != DEAD) //stops constantly procing death
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		death()
 
-/mob/living/carbon/superior_animal/gib(anim = icon_gib)
+/mob/living/carbon/superior_animal/gib(var/anim = icon_gib, var/do_gibs = 1)
 	if (!anim)
 		anim = 0
 
-<<<<<<< HEAD
 	sleep(1)
 
 	for(var/obj/item/I in src)
@@ -292,55 +206,27 @@
 	if (do_gibs)
 		gibs(src.loc, null, /obj/effect/gibspawner/generic, fleshcolor, bloodcolor)
 	. = ..(anim,FALSE)
-=======
-	for(var/obj/item/I in src)
-		drop_from_inventory(I)
-		I.throw_at(get_edge_target_turf(src,pick(alldirs)), rand(1,3), round(30/I.w_class))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	AI_inactive = TRUE //Optimation, were dead
-	playsound(src.loc, 'sound/effects/splat.ogg', max(10,min(50,maxHealth)), 1)
-	if (do_gibs)
-		gibs(src.loc, null, gibspawner_type, fleshcolor, bloodcolor)
-	. = ..(anim,FALSE)
-
-/mob/living/carbon/superior_animal/dust(anim = icon_dust, remains = dust_remains)
+/mob/living/carbon/superior_animal/dust(var/anim = icon_dust, var/remains = dust_remains)
 	if (!anim)
 		anim = 0
 
 	playsound(src.loc, 'sound/effects/Custom_flare.ogg', max(10,min(50,maxHealth)), 1)
-	AI_inactive = TRUE //Optimation, were dead
 	. = ..(anim,remains)
 
-/mob/living/carbon/superior_animal/death(gibbed,message = deathmessage)
+/mob/living/carbon/superior_animal/death(var/gibbed,var/message = deathmessage)
+	if (stat != DEAD)
+		target_mob = null
+		stance = initial(stance)
+		stop_automated_movement = initial(stop_automated_movement)
+		walk(src, 0)
 
-<<<<<<< HEAD
 		density = FALSE
 		layer = LYING_MOB_LAYER
-=======
-	if (is_dead(src))
-		return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	target_mob = null
-	lost_sight = FALSE
-	target_location = null
-	stance = initial(stance)
-	stop_automated_movement = initial(stop_automated_movement)
-	following = null
-	last_followed = null
-
-	density = FALSE
-	layer = LYING_MOB_LAYER
-
-	AI_inactive = TRUE //Optimation, were dead
-	density = FALSE //In death were no longer blocking.
-	target_mob = null
 	. = ..()
 
 /mob/living/carbon/superior_animal/rejuvenate()
-	if(AI_inactive)
-		activate_ai() //I LIVE AGAIN
 	density = initial(density)
 	layer = initial(layer)
 
@@ -350,13 +236,12 @@
 	. = ..()
 	adjustToxLoss(2)
 
-/mob/living/carbon/superior_animal/get_cold_protection(temperature)
+/mob/living/carbon/superior_animal/get_cold_protection(var/temperature)
 	return cold_protection
 
-/mob/living/carbon/superior_animal/get_heat_protection(temperature)
+/mob/living/carbon/superior_animal/get_heat_protection(var/temperature)
 	return heat_protection
 
-<<<<<<< HEAD
 /mob/living/carbon/superior_animal/handle_environment(datum/gas_mixture/environment)
 	bad_environment = FALSE
 	if(!environment)
@@ -427,21 +312,16 @@
 		evacuate()
 
 /mob/living/carbon/superior_animal/handle_breath(datum/gas_mixture/breath)
-=======
-/*/mob/living/carbon/superior_animal/handle_breath(datum/gas_mixture/breath)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(status_flags & GODMODE)
 		return
 
-	if (is_dead(src))
-
-	failed_last_breath = FALSE
+	failed_last_breath = 0
 
 	if (!(breath_required_type || breath_poison_type))
 		return
 
 	if(breath_required_type && (!breath || (breath.total_moles == 0)))
-		failed_last_breath = TRUE
+		failed_last_breath = 1
 		adjustOxyLoss(2)
 		return
 
@@ -452,7 +332,7 @@
 		var/inhale_pp = (inhaling/breath.total_moles)*breath_pressure
 		if(inhale_pp < min_breath_required_type)
 			adjustOxyLoss(2)
-			failed_last_breath = TRUE
+			failed_last_breath = 1
 
 	if (breath_poison_type)
 		var/poison = breath.gas[breath_poison_type]
@@ -460,46 +340,22 @@
 		if(toxins_pp > min_breath_poison_type)
 			adjustToxLoss(2)
 
-	return TRUE */
+	return 1
 
-//Disables roaches/spiders/xenos ect form mess with atmo to prevent lag of that kind
-/mob/living/carbon/superior_animal/handle_post_breath(datum/gas_mixture/breath)
-	return
-	//if(breath)
-	//	loc.assume_air(breath) //by default, exhale
-
-/* this is now handled upwards in living_defense
-/mob/living/carbon/superior_animal/handle_fire(flammable_gas, turf/location)
-	if(never_stimulate_air)
-		if (fire_stacks > 0)
-			ExtinguishMob() //We dont simulate air thus we dont simulate fire
+/mob/living/carbon/superior_animal/handle_fire()
+	if(..())
 		return
 
-	// if its lower than 0 , just bring it back to 0
-	fire_stacks = fire_stacks > 0 ? min(0, ++fire_stacks) : fire_stacks
-	// branchless programming , faster than conventional the more we avoid if checks
-	var/handling_needed = on_fire && (fire_stacks < 0 || flammable_gas < 1)
-	if(handling_needed)
-		ExtinguishMob() //Fire's been put out.
-		return TRUE
-	if(!on_fire)
-		return FALSE
-	adjustFireLoss(2 * bodytemperature / max_bodytemperature) // scaling with how much you are over your body temp
-	bodytemperature += fire_stacks * 5 // 5 degrees per firestack
-	if(isturf(location))
-		location.hotspot_expose( FIRESTACKS_TEMP_CONV(fire_stacks), 50, 1)
+	var/burn_temperature = fire_burn_temperature()
+	var/thermal_protection = get_heat_protection(burn_temperature)
+
+	if (thermal_protection < 1 && bodytemperature < burn_temperature)
+		bodytemperature += round(BODYTEMP_HEATING_MAX*(1-thermal_protection), 1)
 
 /mob/living/carbon/superior_animal/update_fire()
-<<<<<<< HEAD
 	remove_overlays(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
 	if(on_fire)
 		add_overlays(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
-=======
-	cut_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
-	if(on_fire)
-		add_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //The most common cause of an airflow stun is a sudden breach. Evac conditions generally
 /mob/living/carbon/superior_animal/airflow_stun()
@@ -514,25 +370,3 @@
 	var/obj/structure/burrow/B = find_visible_burrow(src)
 	if (B)
 		B.evacuate()
-
-
-/mob/living/carbon/superior_animal/proc/pick_armor()
-	return
-
-/mob/living/carbon/superior_animal/attack_generic(mob/user, damage, attack_message)
-
-	if(!damage || !istype(user))
-		return
-
-	var/penetration = 0
-	if(istype(user, /mob/living))
-		var/mob/living/L = user
-		penetration = L.armor_penetration
-
-	damage_through_armor(damage, BRUTE, attack_flag=ARMOR_MELEE, armour_pen=penetration)
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
-	src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [user.name] ([user.ckey])</font>")
-	src.visible_message(SPAN_DANGER("[user] has [attack_message] [src]!"))
-	user.do_attack_animation(src)
-	spawn(1) updatehealth()
-	return TRUE

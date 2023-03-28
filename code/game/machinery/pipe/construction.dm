@@ -1131,8 +1131,4 @@
 		return 1
 	new/obj/machinery/meter( src.loc )
 	W.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_BOLT_TURNING, FAILCHANCE_ZERO, required_stat = STAT_MEC)
-<<<<<<< HEAD
 	qdel(src)
-=======
-	qdel(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

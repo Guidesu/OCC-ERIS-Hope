@@ -1,5 +1,4 @@
 /obj/machinery/autolathe_disk_cloner
-<<<<<<< HEAD
 	name = "Autolathe disk cloner"
 	desc = "Machine used for copying recipes from unprotected autolathe disks."
 	icon = 'icons/obj/machines/disk_cloner.dmi'
@@ -7,15 +6,6 @@
 	circuit = /obj/item/electronics/circuitboard/autolathe_disk_cloner
 	density = TRUE
 	anchored = TRUE
-=======
-	name = "Excelsior autolathe disk cloner"
-	desc = "Machine used for freeing recipes from protected autolathe disks."
-	icon = 'icons/obj/machines/disk_cloner.dmi'
-	icon_state = "disk_cloner"
-	circuit = /obj/item/circuitboard/autolathe_disk_cloner
-	density = 1
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 500
@@ -43,14 +33,17 @@
 	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
 		laser_rating += ML.rating
 
-	//Redid these to make each little upgrade worth taking.
-	copying_delay = min(120*14 / (3*scanner_rating + 2*laser_rating), 120) //480 / (3s + 2l)
-	hack_fail_chance = min(40*16 / (2*scanner_rating + 3*laser_rating), 75) //560 / (2s + 3l)
+	if(scanner_rating+laser_rating >= 9)
+		copying_delay = 30
+	else if(scanner_rating+laser_rating >= 6)
+		copying_delay = 60
+	else
+		copying_delay = 120
 
-	if(!hacked && laser_rating >= 4 && scanner_rating >= 2)
-		hacked = 2 //It'll reset if not emagged.
-	else if(hacked == 2)
-		hacked = FALSE
+	hack_fail_chance = ((scanner_rating+laser_rating) >= 9) ? 20 : 40
+
+	if(laser_rating >= 4 && scanner_rating >= 2)
+		hacked = TRUE
 
 /obj/machinery/autolathe_disk_cloner/attackby(var/obj/item/I, var/mob/user)
 	if(default_deconstruction(I, user))
@@ -73,7 +66,7 @@
 			to_chat(user, SPAN_NOTICE("[src]'s slots is full."))
 
 	user.set_machine(src)
-	nano_ui_interact(user)
+	ui_interact(user)
 	update_icon()
 
 
@@ -101,29 +94,29 @@
 		return TRUE
 
 	user.set_machine(src)
-	nano_ui_interact(user)
+	ui_interact(user)
 	update_icon()
 
 
-/obj/machinery/autolathe_disk_cloner/nano_ui_data()
+/obj/machinery/autolathe_disk_cloner/ui_data()
 	var/list/data = list(
 		"copying" = copying,
 		"hacked" = hacked
 	)
 
 	if(original)
-		data["disk1"] = original.nano_ui_data()
+		data["disk1"] = original.ui_data()
 		data["copyingtotal"] = original.stored_files.len
 
 	if(copy)
-		data["disk2"] = copy.nano_ui_data()
+		data["disk2"] = copy.ui_data()
 		data["copyingnow"] = copy.stored_files.len
 
 	return data
 
 
-/obj/machinery/autolathe_disk_cloner/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data()
+/obj/machinery/autolathe_disk_cloner/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -187,8 +180,10 @@
 	SSnano.update_uis(src)
 	update_icon()
 	if(original && copy && !copy.used_capacity)
-		var/designgrade = istype(copy, /obj/item/computer_hardware/hard_drive/portable/design) //Design disks ignore capacity restrictions.
 		copy.name = original.name
+
+		if(!hacked)
+			copy.name += " \[copy\]"
 
 		for(var/f in original.stored_files)
 			if(!(original && copy) || !copying || !f)
@@ -224,7 +219,7 @@
 				copying_file = original_file.clone()
 
 			// Store the copied file. If the disc is corrupted, faulty, out of space - stop the copying process.
-			if(!copy.store_file(copying_file, designgrade))
+			if(!copy.store_file(copying_file))
 				break
 
 			SSnano.update_uis(src)
@@ -236,7 +231,6 @@
 	update_icon()
 
 
-<<<<<<< HEAD
 /obj/machinery/autolathe_disk_cloner/on_update_icon()
 	cut_overlays()
 
@@ -261,30 +255,4 @@
 
 		if(copying)
 			add_overlays(image(icon, icon_state = "disk_cloner_cloning"))
-=======
-/obj/machinery/autolathe_disk_cloner/update_icon()
-	cut_overlays()
-
-	if(panel_open)
-		add_overlay(image(icon, icon_state = "disk_cloner_panel"))
-
-	if(!stat)
-		add_overlay(image(icon, icon_state = "disk_cloner_screen"))
-		add_overlay(image(icon, icon_state = "disk_cloner_keyboard"))
-
-		if(original)
-			add_overlay(image(icon, icon_state = "disk_cloner_screen_disk1"))
-
-			if(original.stored_files.len)
-				add_overlay(image(icon, icon_state = "disk_cloner_screen_list1"))
-
-		if(copy)
-			add_overlay(image(icon, icon_state = "disk_cloner_screen_disk2"))
-
-			if(copy.stored_files.len)
-				add_overlay(image(icon, icon_state = "disk_cloner_screen_list2"))
-
-		if(copying)
-			add_overlay(image(icon, icon_state = "disk_cloner_cloning"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 

@@ -3,125 +3,38 @@
 ///////////////////VOTES//////////////////////
 //////////////////////////////////////////////
 
-/*To prevent abuse and rule-by-salt, the evac vote weights each player's vote based on a few parameters
-	If you are alive and have been for a while, then you have the normal 1 vote
-	If you are dead, or just spawned, you get only 0.6 votes
-	If you are an antag or a head of staff, you get 1.2 votes
-*/
-
-#define VOTE_WEIGHT_LOW	0.6
-#define VOTE_WEIGHT_NORMAL	1
-#define VOTE_WEIGHT_HIGH	1.2 //To tie 2 dead votes but not over-rule 2 living
-#define MINIMUM_VOTE_LIFETIME	15 MINUTES
-
 /datum/poll/restart
-	name = "End Round"
-	question = "End Shift?"
-	time = 90
+	name = "Restart"
+	question = "Restart Round"
+	time = 60
 	choice_types = list(/datum/vote_choice/restart, /datum/vote_choice/countinue_round)
-	next_vote = 255 MINUTES //Minimum round length before it can be called for the first time
-	cooldown = 15 MINUTES //Cooldown is set to 15 mins as 1 hour is a bit much when things change so much in so little time + maxium 8 hour rounds means we should be a bit more forgiven.
 
-	// Overriden by implementation of IsAdminOnly
-	//only_admin = TRUE
-
-	multiple_votes = TRUE //Duel votes are fun
-	can_revote = TRUE
-	can_unvote = TRUE //In case you heck up
 	only_admin = TRUE
 
-	see_votes = FALSE //No swaying
-	minimum_win_percentage = 0.6
-	var/non_admin = TRUE
+	multiple_votes = FALSE
+	can_revote = TRUE
+	can_unvote = FALSE
 
-/datum/poll/restart/proc/lower_minium()
-	minimum_win_percentage -= 0.1
-
-	if(minimum_win_percentage <= 0.2)
-		SSticker.shift_end(15 MINUTES)
-		for (var/mob/M as mob in SSmobs.mob_list)
-			to_chat(M, "<br><center><span class='danger'><b><font size=4>The round is ending do to exceeding 8 hours.</font></b><br></span></center><br>")
-
-/datum/poll/restart/admin
-	non_admin = FALSE
-	name = "Supper Majority: End Round"
-	question = "End Shift?"
-	choice_types = list(/datum/vote_choice/restart, /datum/vote_choice/countinue_round)
-	minimum_win_percentage = 0.75
-	next_vote = 255 MINUTES //Minimum round length before it can be called for the first time
-	cooldown = 30 MINUTES //Cooldown is set to 30 mins as 1 hour is a bit much when things change so much in so little time + maxium 8 hour rounds means we should be a bit more forgiven.
-	only_admin = FALSE
-
-/datum/poll/restart/get_vote_power(var/client/C)
-	if (!istype(C))
-		return 0 //Shouldnt be possible, but safety
-
-	var/mob/M = C.mob
-	if (!M || isghost(M) || isnewplayer(M) || ismouse(M) || isdrone(M))
-		return VOTE_WEIGHT_LOW
-
-	var/datum/mind/mind = M.mind
-	if (!mind)
-		//If you don't have a mind in your mob, you arent really alive
-		return VOTE_WEIGHT_LOW
-
-	//Antags control the story of the round, they should be able to delay evac in order to enact their
-	//fun and interesting plans
-	if (player_is_antag(mind))
-		return VOTE_WEIGHT_HIGH
-
-	//How long has this player been alive
-	//This comes after the antag check because that's more important
-	var/lifetime = world.time - mind.creation_time
-	if (lifetime <= MINIMUM_VOTE_LIFETIME)
-		//If you just spawned for the vote, your weight is still low
-		return VOTE_WEIGHT_LOW
-
-
-	//Heads of staff are in a better position to understand the state of the ship and round,
-	//their vote is more important.
-	//This is after the lifetime check to prevent exploits of instaspawning as a head when a vote is called
-	if (M.is_head_role())
-		return VOTE_WEIGHT_HIGH
-
-
-
-	//If we get here, its just a normal player who's been playing for at least 15 minutes. Normal weight
-	return VOTE_WEIGHT_NORMAL
-
-/datum/poll/restart/on_end()
-	if(non_admin)
-		lower_minium()
-		SSvote.recall_vote_loop()
-	..()
-
-#undef VOTE_WEIGHT_LOW
-#undef VOTE_WEIGHT_NORMAL
-#undef VOTE_WEIGHT_HIGH
-#undef MINIMUM_VOTE_LIFETIME
-
-/datum/poll/restart/IsAdminOnly()
-	if(only_admin) //config.allow_vote_restart
-		return TRUE
-	else
-		return FALSE
-
+	see_votes = TRUE
 
 /datum/vote_choice/restart
-	text = "End Shift"
+	text = "Restart Round"
 
 /datum/vote_choice/restart/on_win()
-<<<<<<< HEAD
 	to_chat(world, "<b>World restarting due to vote...<b>")
 	sleep(50)
 	log_game("Rebooting due to restart vote")
 	world.Reboot()
-=======
-	SSticker.shift_end(15 MINUTES)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/vote_choice/countinue_round
-	text = "Continue Shift"
+	text = "Continue Round"
+
+
+
+
+
+
+
 
 /*********************
 	Storyteller
@@ -129,18 +42,16 @@
 /datum/poll/storyteller
 	name = "Storyteller"
 	question = "Choose storyteller"
-	next_vote = 60 MINUTES //After an hour if people want let them re-vote the story teller
 	time = 120
 	choice_types = list()
 	minimum_voters = 0
 	only_admin = FALSE
 
-	multiple_votes = TRUE
+	multiple_votes = FALSE
 	can_revote = TRUE
 	can_unvote = TRUE
-	cooldown = 60 MINUTES //Unlike other votes were not to spamable do to how annoying this can get
+	cooldown = 30 MINUTES
 	see_votes = TRUE
-	only_admin = FALSE
 
 	var/pregame = FALSE
 
@@ -244,7 +155,7 @@
 	Evacuate Ship
 **********************/
 /datum/poll/evac
-	name = "Evacuate Colony"
+	name = "Evacuate Ship"
 	question = "Do you want to call evacuation and restart the round?"
 	time = 120
 //	minimum_win_percentage = 0.6 Occulus Edit, we are moving this to a simple majority
@@ -264,7 +175,7 @@
 #define MINIMUM_VOTE_LIFETIME	15 MINUTES
 /datum/poll/evac
 	choice_types = list(/datum/vote_choice/evac, /datum/vote_choice/noevac)
-	only_admin = TRUE
+	only_admin = FALSE
 	can_revote = TRUE
 	can_unvote = TRUE
 
@@ -321,39 +232,14 @@
 	text = "Stay aboard"
 
 
-/datum/poll/chaos_level_increase
-	name = "Increase Chaos Level"
-	question = "Do you want to increase the chaos level?"
-	description = "Higher chaos level makes storyteller events much more likely."
-	time = 120
-	minimum_win_percentage = 0.75 //High % needed for something that alters the whole round
-	cooldown = 30 MINUTES
-	next_vote = 90 MINUTES //Same lenght as bluespace jump
-	choice_types = list(/datum/vote_choice/yes_chaos_level, /datum/vote_choice/no_chaos_level)
-	only_admin = FALSE
-	can_revote = TRUE
-	can_unvote = TRUE
-
-
-/datum/vote_choice/yes_chaos_level
-	text = "Increase the chaos level!"
-
-/datum/vote_choice/yes_chaos_level/on_win()
-	GLOB.chaos_level += 1
-	for (var/mob/M as mob in SSmobs.mob_list)
-		to_chat(M, "<br><center><span class='danger'><b><font size=4>Chaos Level Increased</font></b><br></span></center><br>")
-
-/datum/vote_choice/no_chaos_level
-	text = "We have enough chaos already!"
 
 
 
 /datum/poll/custom
 	name = "Custom"
 	question = "Why is there no text here?"
-	time = 120
+	time = 60
 	choice_types = list()
-	next_vote = 10 MINUTES //Minimum round length before it can be called for the first time
 
 	only_admin = TRUE
 

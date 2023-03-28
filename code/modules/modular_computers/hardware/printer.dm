@@ -7,8 +7,6 @@
 	hardware_size = 1
 	var/stored_paper = 10
 	var/max_paper = 10
-	var/last_print
-	var/print_language = LANGUAGE_COMMON
 
 /obj/item/computer_hardware/printer/diagnostics(var/mob/user)
 	..()
@@ -25,11 +23,7 @@
 	// Damaged printer causes the resulting paper to be somewhat harder to read.
 	if(damage > damage_malfunction)
 		text_to_print = stars(text_to_print, 100-malfunction_probability)
-<<<<<<< HEAD
 	new/obj/item/paper(drop_location(), text_to_print, paper_title)
-=======
-	new/obj/item/paper(drop_location(), text_to_print, paper_title, print_language)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	stored_paper--
 	return 1

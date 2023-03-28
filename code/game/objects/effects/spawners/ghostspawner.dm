@@ -124,11 +124,6 @@
 		STAT_COG = 8
 	)
 
-<<<<<<< HEAD
-=======
-	var/list/ghost_role_perks = list()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/husk = null
 	//these vars are for lazy mappers to override parts of the outfit
 	//these cannot be null by default, or mappers cannot set them to null if they want nothing in that slot
@@ -159,11 +154,6 @@
 /obj/effect/mob_spawn/human/proc/add_stats(var/mob/living/carbon/human/target)
 	for(var/name in src.stat_modifiers)
 		target.stats.changeStat(name, stat_modifiers[name])
-<<<<<<< HEAD
-=======
-	for(var/ghost_role_perks in src.ghost_role_perks)
-		target.stats.addPerk(ghost_role_perks)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /obj/effect/mob_spawn/human/Initialize()
@@ -171,11 +161,7 @@
 		outfit = new outfit()
 	if(!outfit)
 		outfit = new outfit
-<<<<<<< HEAD
 	return ..() 
-=======
-	return ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
 	if(mob_species)
@@ -191,16 +177,8 @@
 //remnants of the opened sleepers
 /obj/structure/empty_sleeper
 	icon = 'icons/obj/Cryogenic2.dmi'
-<<<<<<< HEAD
 	icon_state = "sleeper_0"
 
 obj/effect/mob_spawn/human/Destroy()
 	new/obj/structure/empty_sleeper(get_turf(src))
 	return ..()
-=======
-	icon_state = "sleeper"
-
-obj/effect/mob_spawn/human/Destroy()
-	new/obj/structure/empty_sleeper(get_turf(src))
-	return ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

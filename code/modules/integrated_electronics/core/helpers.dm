@@ -24,15 +24,9 @@
 	if(islist(new_data))
 		for(var/i in 1 to length(new_data))
 			if (istype(new_data) && !isweakref(new_data))
-<<<<<<< HEAD
 				new_data[i] = weakref(new_data[i])
 	if (istype(new_data) && !isweakref(new_data))
 		new_data = weakref(new_data)
-=======
-				new_data[i] = WEAKREF(new_data[i])
-	if (istype(new_data) && !isweakref(new_data))
-		new_data = WEAKREF(new_data)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
@@ -182,8 +176,4 @@
 	return "[signature]:[data]"
 
 /proc/check_data_signature(signature, data)
-<<<<<<< HEAD
 	return (compute_signature(data) == signature)
-=======
-	return (compute_signature(data) == signature)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

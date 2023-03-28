@@ -13,7 +13,6 @@
 	old_chance = 50
 	rarity_value = 10
 
-<<<<<<< HEAD
 /obj/structure/closet/random/miscellaneous/populate_contents()
 	new /obj/spawner/contraband/low_chance(src)
 	new /obj/spawner/contraband/low_chance(src)
@@ -34,30 +33,6 @@
 
 
 /obj/structure/closet/random/tech
-=======
-/obj/structure/closet/random_miscellaneous/populate_contents()
-	new /obj/random/contraband/low_chance(src)
-	new /obj/random/contraband/low_chance(src)
-	new /obj/random/pack/rare/low_chance(src)
-	new /obj/random/junk(src)
-	new /obj/random/junk(src)
-	new /obj/random/junk(src)
-	new /obj/random/lowkeyrandom(src)
-	new /obj/random/lowkeyrandom(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/pack/tech_loot/low_chance(src)
-	new /obj/random/pack/cloth/low_chance(src)
-	new /obj/random/pack/cloth/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
-	new /obj/random/gun_parts/low(src)
-	if(prob(20))
-		new /obj/random/gun_parts/frames(src)
-
-/obj/structure/closet/random_tech
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "\improper technical closet"
 	desc = "Somewhat old closet with wrench sign on it."
 	icon_state = "eng"
@@ -65,7 +40,6 @@
 	old_chance = 10
 	rarity_value = 15
 
-<<<<<<< HEAD
 /obj/structure/closet/random/tech/populate_contents()
 	new /obj/spawner/lowkeyrandom/low_chance(src)
 	new /obj/spawner/lowkeyrandom/low_chance(src)
@@ -84,33 +58,9 @@
 	desc = "Somewhat old closet with spare parts in it."
 	icon_state = "eng"
 	icon_door = "eng_tool" //OCCULUS EDIT. FUCKING ERIS!
-=======
-/obj/structure/closet/random_tech/populate_contents()
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/pack/tech_loot(src)
-	new /obj/random/pack/tech_loot(src)
-	new /obj/random/pack/tech_loot(src)
-	new /obj/random/pack/tech_loot(src)
-	new /obj/random/pouch/hardcase_scrap(src)
-	new /obj/random/pack/tech_loot/low_chance(src)
-	new /obj/random/pack/tech_loot/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
-	if(prob(30))
-		new /obj/random/gun_parts/frames(src)
-
-/obj/structure/closet/random_spareparts
-	name = "\improper spare parts closet"
-	desc = "Somewhat old closet with spare parts in it."
-	icon_state = "eng"
-	icon_door = "eng_tool"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	old_chance = 10
 	rarity_value = 50
 
-<<<<<<< HEAD
 /obj/structure/closet/random/spareparts/populate_contents() //OCCULUS EDIT. FUCKING ERIS
 	new /obj/spawner/lowkeyrandom/low_chance(src)
 	new /obj/spawner/lowkeyrandom/low_chance(src)
@@ -133,30 +83,6 @@
 
 
 
-=======
-/obj/structure/closet/random_tech/populate_contents()
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/techpart(src)
-	new /obj/random/techpart(src)
-	new /obj/random/techpart(src)
-	new /obj/random/techpart(src)
-	new /obj/random/techpart(src)
-	new /obj/random/techpart(src)
-	new /obj/random/tool_upgrade(src)
-	new /obj/random/tool_upgrade(src)
-	new /obj/random/tool_upgrade(src)
-	new /obj/random/lathe_disk(src)
-	new /obj/random/lathe_disk/low_chance(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/pack/tech_loot/low_chance(src)
-	new /obj/random/pack/tech_loot/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
-	if(prob(20))
-		new /obj/random/gun_parts/frames(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/closet/random/milsupply
@@ -166,7 +92,6 @@
 	old_chance = 10
 	rarity_value = 50
 
-<<<<<<< HEAD
 /obj/structure/closet/random/milsupply/populate_contents()
 	new /obj/spawner/lowkeyrandom/low_chance(src)
 	new /obj/spawner/lowkeyrandom/low_chance(src)
@@ -192,37 +117,6 @@
 
 
 
-=======
-/obj/structure/closet/random_milsupply/populate_contents()
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/pack/rare(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/pack/gun_loot/low_chance(src)
-	new /obj/random/medical/low_chance(src)
-	new /obj/random/medical/low_chance(src)
-	new /obj/random/medical/low_chance(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/gun_parts/frames(src)
-	new /obj/random/gun_parts/frames(src)
-	if(prob(80))
-		new /obj/random/gun_parts/frames(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/random/medsupply
 	name = "\improper medical supply closet"
@@ -230,7 +124,6 @@
 	icon_state = "freezer"
 	old_chance = 10
 
-<<<<<<< HEAD
 /obj/structure/closet/random/medsupply/populate_contents()
 	new /obj/spawner/lowkeyrandom/low_chance(src)
 	new /obj/spawner/lowkeyrandom/low_chance(src)
@@ -248,28 +141,10 @@
 
 
 
-=======
-/obj/structure/closet/random_medsupply/populate_contents()
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/medical_lowcost(src)
-	new /obj/random/medical_lowcost(src)
-	new /obj/random/medical_lowcost(src)
-	new /obj/random/medical_lowcost(src)
-	new /obj/random/medical(src)
-	new /obj/random/medical(src)
-	new /obj/random/medical(src)
-	new /obj/random/medical/low_chance(src)
-	new /obj/random/medical/low_chance(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/secure_closet/rare_loot
 	name = "\improper sealed military supply closet"
-	desc = "The access panel looks old. There is probably no ID's around that can open it."
+	desc = "The access pannel looks old. There is probably no ID's around that can open it."
 	req_access = list(access_cent_specops) //You are suppose to hack it
 	icon_state = "syndicate"
 	spawn_blacklisted = FALSE
@@ -277,7 +152,6 @@
 	rarity_value = 100
 
 /obj/structure/closet/secure_closet/rare_loot/populate_contents()
-<<<<<<< HEAD
 	new /obj/spawner/pack/rare(src)
 	new /obj/spawner/pack/rare(src)
 	new /obj/spawner/pack/rare(src)
@@ -288,27 +162,6 @@
 	new /obj/spawner/pack/gun_loot(src)
 	new /obj/spawner/pack/gun_loot(src)
 
-=======
-	new /obj/random/pack/rare(src)
-	new /obj/random/pack/rare(src)
-	new /obj/random/pack/rare(src)
-	new /obj/random/pack/rare(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pack/gun_loot(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/cluster/roaches/lower_chance(src)
-	new /obj/random/gun_parts(src)
-	new /obj/random/gun_parts(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/gun_parts/frames(src)
-	new /obj/random/gun_parts/frames(src)
-	if(prob(80))
-		new /obj/random/gun_parts/frames(src)
-		new /obj/random/gun_parts/frames(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //Closet with unfair bullshit inside
@@ -320,7 +173,6 @@
 	rarity_value = 12.5
 	spawn_blacklisted = TRUE
 
-<<<<<<< HEAD
 /obj/structure/closet/random/hostilemobs/populate_contents()
 	new /obj/spawner/pack/rare(src) //To reward players for fighting this bullshit
 	new /obj/spawner/pack/rare(src)
@@ -348,38 +200,3 @@
 	new /obj/spawner/rations(src)
 	new /obj/spawner/rations(src)
 	new /obj/spawner/mob/roaches/cluster/beacon(src)
-=======
-/obj/structure/closet/random_hostilemobs/populate_contents()
-	new /obj/random/pack/rare(src) //To reward players for fighting this bullshit
-	new /obj/random/pack/rare(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/rations(src)
-	new /obj/random/rations(src)
-	new /obj/random/rations(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/cluster/roaches(src)
-	if(prob(30))
-		new /obj/random/gun_parts/frames(src)
-
-// Used for scrap beacon
-/obj/structure/closet/random_hostilemobs/beacon/populate_contents()
-	new /obj/random/pack/rare(src) //To reward players for fighting this bullshit
-	new /obj/random/pack/rare(src)
-	new /obj/random/gun_parts/low(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/lowkeyrandom/low_chance(src)
-	new /obj/random/pouch/hardcase_scrap/low_chance(src)
-	new /obj/random/rations(src)
-	new /obj/random/rations(src)
-	new /obj/random/rations(src)
-	new /obj/random/cluster/roaches/beacon(src)
-	if(prob(15))
-		new /obj/random/gun_parts/frames(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

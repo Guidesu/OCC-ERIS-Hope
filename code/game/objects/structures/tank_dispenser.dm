@@ -29,7 +29,6 @@
 	update_icon()
 
 
-<<<<<<< HEAD
 /obj/structure/dispenser/on_update_icon()
 	cut_overlays()
 	switch(oxygentanks)
@@ -38,16 +37,6 @@
 	switch(phorontanks)//Occulus Edit
 		if(1 to 4)	add_overlays("plasma-[phorontanks]")//Occulus Edit
 		if(5 to INFINITY) overlays += "plasma-5"//Occulus Edit
-=======
-/obj/structure/dispenser/update_icon()
-	cut_overlays()
-	switch(oxygentanks)
-		if(1 to 3)	add_overlay("oxygen-[oxygentanks]")
-		if(4 to INFINITY) add_overlay("oxygen-4")
-	switch(plasmatanks)
-		if(1 to 4)	add_overlay("plasma-[plasmatanks]")
-		if(5 to INFINITY) add_overlay("plasma-5")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/dispenser/attack_ai(mob/user)
 	if(user.Adjacent(src))
@@ -77,7 +66,6 @@
 			to_chat(user, SPAN_NOTICE("[src] is full."))
 		updateUsrDialog()
 		return
-<<<<<<< HEAD
 	if(istype(I, /obj/item/tank/phoron))
 		if(phorontanks < 10)
 			user.drop_item()
@@ -86,16 +74,6 @@
 			phorontanks++
 			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
 			if(phorontanks < 6)
-=======
-	if(istype(I, /obj/item/tank/plasma))
-		if(plasmatanks < 10)
-			user.drop_item()
-			I.forceMove(src)
-			platanks.Add(I)
-			plasmatanks++
-			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
-			if(plasmatanks < 6)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				update_icon()
 		else
 			to_chat(user, SPAN_NOTICE("[src] is full."))
@@ -125,22 +103,13 @@
 		else
 			tank = new /obj/item/tank/oxygen(loc)
 		oxygentanks--
-<<<<<<< HEAD
 	if(href_list["phoron"] && phorontanks > 0)
-=======
-	if(href_list["plasma"] && plasmatanks > 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(platanks.len)
 			tank = platanks[platanks.len]
 			platanks.Remove(tank)
 		else
-<<<<<<< HEAD
 			tank = new /obj/item/tank/phoron(loc)
 		phorontanks--
-=======
-			tank = new /obj/item/tank/plasma(loc)
-		plasmatanks--
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(tank)
 		tank.forceMove(drop_location())

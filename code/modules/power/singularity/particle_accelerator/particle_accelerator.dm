@@ -263,20 +263,12 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return 0
 
 /obj/machinery/particle_accelerator
-<<<<<<< HEAD
 	name = "Particle Accelerator"
-=======
-	name = "particle accelerator"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A large component of an even larger particle accelerator."
 	icon = 'icons/obj/machines/particle_accelerator2.dmi'
 	icon_state = "none"
 	anchored = 0
-<<<<<<< HEAD
 	density = TRUE
-=======
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 	idle_power_usage = 0
 	active_power_usage = 0

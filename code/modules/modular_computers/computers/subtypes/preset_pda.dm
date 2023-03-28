@@ -22,11 +22,8 @@
 	hard_drive.store_file(new /datum/computer_file/program/wordprocessor())
 	hard_drive.store_file(new /datum/computer_file/program/records())
 	hard_drive.store_file(new /datum/computer_file/program/bounty_board_app())
-	hard_drive.store_file(new /datum/computer_file/program/trade/order())
-	//if(prob(30)) //harmless tax software // We don't have antags that can use it and it can get confused with the other one. -R4d6
-	//	hard_drive.store_file(new /datum/computer_file/program/uplink())
-	if(prob(60))
-		hard_drive.store_file(new /datum/computer_file/program/tax())
+	if(prob(50)) //harmless tax software
+		hard_drive.store_file(new /datum/computer_file/program/uplink())
 
 // PDA types
 
@@ -40,18 +37,9 @@
 /obj/item/modular_computer/pda/forensics
 	icon_state = "pda-s"
 	scanner_type = /obj/item/computer_hardware/scanner/reagent
-<<<<<<< HEAD
 
 
 /obj/item/modular_computer/pda/moebius
-=======
-
-/obj/item/modular_computer/pda/corpsman
-	icon_state = "pda-s"
-	scanner_type = /obj/item/computer_hardware/scanner/medical
-
-/obj/item/modular_computer/pda/science
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hard_drive_type = /obj/item/computer_hardware/hard_drive/small/adv
 
 /obj/item/modular_computer/pda/moebius/install_default_programs()
@@ -59,7 +47,6 @@
 	hard_drive.store_file(new /datum/computer_file/program/signaller)
 	hard_drive.store_file(new /datum/computer_file/program/chem_catalog)
 
-<<<<<<< HEAD
 /obj/item/modular_computer/pda/moebius/science
 	icon_state = "pda-nt"
 	scanner_type = /obj/item/computer_hardware/scanner/reagent
@@ -73,21 +60,6 @@
 	scanner_type = /obj/item/computer_hardware/scanner/reagent
 
 /obj/item/modular_computer/pda/moebius/roboticist
-=======
-/obj/item/modular_computer/pda/science/science
-	icon_state = "pda-nt"
-	scanner_type = /obj/item/computer_hardware/scanner/reagent
-
-/obj/item/modular_computer/pda/science/medical
-	icon_state = "pda-m"
-	scanner_type = /obj/item/computer_hardware/scanner/medical
-
-/obj/item/modular_computer/pda/science/chemistry
-	icon_state = "pda-m"
-	scanner_type = /obj/item/computer_hardware/scanner/reagent
-
-/obj/item/modular_computer/pda/science/roboticist
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "pda-robot"
 
 
@@ -160,10 +132,6 @@
 /obj/item/modular_computer/pda/club_worker/install_default_programs()
 	..()
 	hard_drive.store_file(new /datum/computer_file/program/drink_catalog())
-<<<<<<< HEAD
-=======
-	hard_drive.store_file(new /datum/computer_file/program/cook_catalog())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 // PDA box

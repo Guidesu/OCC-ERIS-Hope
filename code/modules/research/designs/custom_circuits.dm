@@ -13,19 +13,13 @@
 /datum/design/research/item/detailer
 	name = "Custom circuit detailer tool"
 	build_path = /obj/item/device/integrated_electronics/detailer
-<<<<<<< HEAD
 	sort_string = "VBVAC"
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	category = CAT_CIRCUITS
 
 /datum/design/research/item/analyzer
 	name = "Custom circuit analyzer tool"
 	build_path = /obj/item/device/integrated_electronics/analyzer
-<<<<<<< HEAD
 	sort_string = "VBVAD"
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	category = CAT_CIRCUITS
 
 /datum/design/research/item/custom_circuit_assembly
@@ -53,28 +47,16 @@
 	build_path = /obj/item/device/electronic_assembly/large
 	sort_string = "VCAAD"
 
-<<<<<<< HEAD
 ///datum/design/research/item/custom_circuit_assembly/implant
 //	name = "Implant custom assembly"
 //	desc = "An customizable assembly for very small devices, implanted into living entities."
 //	build_path = /obj/item/implant/integrated_circuit
 //	sort_string = "VCAAE"
-=======
-/datum/design/research/item/custom_circuit_assembly/implant
-	name = "Implant custom assembly"
-	desc = "An customizable assembly for very small devices, implanted into living entities."
-	build_path = /obj/item/implant/integrated_circuit
-	sort_string = "VCAAE"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/design/research/item/custom_circuit_assembly/printer
 	name = "Integrated circuit printer"
 	desc = "A portable(ish) machine made to print tiny modular circuitry out of metal."
-<<<<<<< HEAD
 	build_path = /obj/item/device/integrated_circuit_printer // Occulus Edit
-=======
-	build_path = /obj/item/device/integrated_circuit_printer
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	sort_string = "VCAAF"
 
 /datum/design/research/item/custom_circuit_assembly/advanced_designs
@@ -87,8 +69,4 @@
 	name = "Integrated circuit printer cloning disk - instance printing"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one allow printer to print assemblies in seconds, litterally."
 	build_path = /obj/item/disk/integrated_circuit/upgrade/clone
-<<<<<<< HEAD
 	sort_string = "VCAAH"
-=======
-	sort_string = "VCAAH"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

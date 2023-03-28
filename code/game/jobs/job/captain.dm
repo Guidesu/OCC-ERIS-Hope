@@ -1,30 +1,20 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
-/datum/job/premier
-	title = "Premier"
-	flag = PREMIER
+/datum/job/captain
+	title = "Captain"
+	flag = CAPTAIN
 	department = DEPARTMENT_COMMAND
-	head_position = TRUE
-	aster_guild_member = TRUE
+	head_position = 1
 	department_flag = COMMAND
-<<<<<<< HEAD
 	faction = "CEV Northern Light"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your heart, wisdom and NanoTrasen"
-=======
-	faction = MAP_FACTION
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "your heart and wisdom"
-	difficulty = "Very Hard."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	selection_color = "#ccccff"
 	req_admin_notify = 1
-	playtimerequired = 2500
-	wage = WAGE_COMMAND
+	wage = WAGE_NONE //The captain doesn't get paid, he's the one who does the paying
+	//The ship account is his, and he's free to draw as much salary as he likes
 
-<<<<<<< HEAD
 	wl_config_heads = TRUE		//Eclipse edit.
 
 
@@ -46,24 +36,6 @@ You are a free agent, able to go where you will. Your loyalty given to whoever y
 	loyalties = "Your first loyalty is to The Board of Investors. The board appointed you here as their representative and CEO. Do not disappoint them. <br>\
 	Your second loyalty is to the Northern Light, your ship. It is the pinnacle of your career, and you are nothing without it. If it were to be destroyed, you and your descendants would be ruined for centuries. <br>\
 	Your third loyalty is to your command staff. They represent their entire faction while on-duty. Listen to their counsel. Ensure their interests are served. Keep them happy"
-=======
-	ideal_character_age = 50 // Old geezer captains ftw
-	minimum_character_age = 30
-	outfit_type = /decl/hierarchy/outfit/job/captain
-
-	perks = list(PERK_SOMELLIER)
-
-	description = "The Premier is the prime mediator of the colony itself, acting as a trusted advisor amongst their peers.<br>\
-You are trusted with control of the colony primary accounts, and are also able to control access within the colony.<br>\
-Your primary objective is to oversee council decisions, change access levels, and act as both lawyer and consultant in various decisions.<br>\
-You are not the supreme leader of the colony and your word is only an advisement. The only person you can give legal orders to is the Steward.<br>\
-The heads of the factions which make up the council each have their own agendas. Their interests must be served to avoid issues.<br>\
-Treat your command officers with respect, and listen to their council. Try not to micromanage their departments or interfere in their affairs."
-
-	duties = "Work between the varying interests of council members to achieve colony stability.<br>\
-	Offer advise and counsel when approached, particularly during important decisions.<br>\
-	Manage the colony primary accounts and access levels accordingly."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	stat_modifiers = list(
 		STAT_ROB = 15,
@@ -71,9 +43,7 @@ Treat your command officers with respect, and listen to their council. Try not t
 		STAT_BIO = 15,
 		STAT_MEC = 15,
 		STAT_VIG = 25,
-		STAT_COG = 15,
-		STAT_VIV = 1,
-		STAT_ANA = 1
+		STAT_COG = 15
 	)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
@@ -92,32 +62,26 @@ Treat your command officers with respect, and listen to their council. Try not t
 	get_access()
 		return get_all_station_access()
 
-/obj/landmark/join/start/premier
-	name = "Premier"
+/obj/landmark/join/start/captain
+	name = "Captain"
 	icon_state = "player-gold-officer"
-	join_tag = /datum/job/premier
+	join_tag = /datum/job/captain
 
-/datum/job/pg
-	title = "Steward"
-	flag = STEWARD
+
+
+/datum/job/hop
+	title = "First Officer"
+	flag = FIRSTOFFICER
 	department = DEPARTMENT_COMMAND
-	head_position = FALSE
-	aster_guild_member = TRUE
+	head_position = 1
 	department_flag = COMMAND
-<<<<<<< HEAD
 	faction = "CEV Northern Light"
-=======
-	faction = MAP_FACTION
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Premier"
-	difficulty = "Hard."
+	supervisors = "the captain"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
-	playtimerequired = 1200
 	wage = WAGE_COMMAND
-<<<<<<< HEAD
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 15)
 	perks = list(/datum/perk/sommelier)
 	ideal_character_age = 50
@@ -145,26 +109,9 @@ Replace the captain if they become incapacitated, need to take a break, or suffe
 Act as the captain's sidekick, bodyguard, and last line of defense in a crisis or mutiny situation"
 
 	loyalties = "Your first and only loyalty is to the captain. Unless you're an antagonist and have a good reason for betrayal, you should remain loyal to the death. You are the only one they can truly trust"
-=======
-	ideal_character_age = 35
-	minimum_character_age = 25
-
-	health_modifier = 5
-	description = "The Steward is the loyal right-hand of the Premier. Serving as a personal guard, follow him wherever he goes.<br>\
-	Your primary, and perhaps only, responsibility is to ensure the safety of the Premier at all costs - even your own life if necessary.<br>\
-	However, you are an adviser as well as a bodyguard. Discreetly inform him of mistakes. Make sure he follows the law and remains popular.<br>\
-	You may be assigned special tasks by the Premier for whatever reason. Ensure these orders are fulfilled.<br>\
-	Do not embarass him, and especially do not harm his relations with faction leaders. You may not do much talking, but you have great impact."
-
-	duties = "Act as a bodyguard, adviser, and confidant to the Premier.<br>\
-	Remain conscious of any potential threats to the safety of the Premier.<br>\
-	Perform tasks as assigned by the Premier - such as filling paperwork or reassigning roles.<br>\
-	Demonstrate true loyalty and do not let your superior down."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
 
-	perks = list(PERK_SOMELLIER)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
 							 /datum/computer_file/program/card_mod,
@@ -176,26 +123,20 @@ Act as the captain's sidekick, bodyguard, and last line of defense in a crisis o
 		return get_all_station_access()
 
 	stat_modifiers = list(
-		STAT_VIG = 35,
-		STAT_TGH = 30,
-		STAT_ROB = 25,
-		STAT_BIO = 25,
-		STAT_MEC = 25,
-		STAT_COG = 25,
-		STAT_VIV = 2,
-		STAT_ANA = 2
+		STAT_ROB = 15,
+		STAT_TGH = 15,
+		STAT_BIO = 10,
+		STAT_MEC = 10,
+		STAT_VIG = 20,
+		STAT_COG = 10
 	)
 
-/obj/landmark/join/start/pg
-	name = "Steward"
+/obj/landmark/join/start/hop
+	name = "First Officer"
 	icon_state = "player-gold"
-<<<<<<< HEAD
 	join_tag = /datum/job/hop
 
 /datum/job/ensign //Occulus Edit - We define this here for list ordering
 	title = "Ensign" //Occulus Edit - We define this here for list ordering
 
 
-=======
-	join_tag = /datum/job/pg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

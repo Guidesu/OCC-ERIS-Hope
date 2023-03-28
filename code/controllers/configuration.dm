@@ -12,7 +12,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/log_ooc = 0						// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
-	var/fps = 40						// Exactly what it says on the tin. Client
 	var/log_admin = 0					// log admin actions
 	var/log_debug = 1					// log debug output
 	var/log_game = 0					// log game events
@@ -28,9 +27,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/log_world_output = 0			// log log_world(messages)
 	var/sql_enabled = 1					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
-	var/allow_vote_restart = 0 			// allow votes to e
-	var/automatic_restart_time = 0		// server will begin ending the round at this time
-	var/automatic_restart_delay = 0		// warning on how long until things restart
+	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
 	var/allow_admin_jump = 1			// allows admin jumping
@@ -44,14 +41,11 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	//var/enable_authentication = 0		// goon authentication
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
 	var/objectives_disabled = 0 			//if objectives are disabled or not
-	var/protect_roles_from_antagonist = 0// If security and such can be contractor/cult/other
+	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
-<<<<<<< HEAD
 	var/fps = 40
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/socket_talk	= 0					// use socket_talk to communicate with other processes
 	var/list/resource_urls
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
@@ -66,7 +60,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players after this many minutes, if non-0
-	var/show_mods = 1
+	var/show_mods = 0
 	var/show_mentors = 0
 	var/mods_can_tempban = 0
 	var/mods_can_job_tempban = 0
@@ -95,8 +89,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
 	var/debugparanoid = 0
-	var/borderControl = 0
-
 
 	var/language
 	var/serverurl
@@ -118,26 +110,17 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/static/panic_bunker = FALSE			//Only allow ckeys who have already been seen by the DB. Only makes sense if you have a DB.
 	var/static/paranoia_logging = FALSE		//Log new byond accounts and first-time joins
 
-<<<<<<< HEAD
 	//Alert level description
 	var/alert_desc_green = "All threats to the ship have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 	var/alert_desc_blue_upto = "The ship has received reliable information about possible hostile activity on the ship. Security staff may have weapons visible, random searches are permitted."
 	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
 	var/alert_desc_red_upto = "There is an immediate serious threat to the ship. Security may have weapons unholstered at all times. Random searches are allowed and advised."
 	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the ship. Security may have weapons unholstered at all times, random searches are allowed and advised."
-=======
-
-	//Alert level description
-	var/alert_desc_green = "All threats to the colony have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The colony has received reliable information about possible hostile activity within or near its territory. Security staff may have weapons visible, random searches are permitted."
-	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the colony. Security may have weapons unholstered at all times. Random searches are allowed and advised. Active colonists are suggested to remain armed at all times and assist security as volunteer militia."
-	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised. Martial law remains in effect."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/forbid_singulo_possession = 0
 
 	var/organs_decay
+	var/default_brain_health = 400
 
 	//Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
 	//so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
@@ -153,8 +136,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/use_loyalty_implants = 0
 
 	var/welder_vision = 1
-	var/generate_asteroid = 1
-	var/admin_memo_system = 0
+	var/generate_asteroid = 0
 	var/no_click_cooldown = 0
 
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in config.txt
@@ -190,9 +172,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/start_location = "asteroid" // Start location defaults to asteroid.
 
 	// Event settings
-	var/expected_round_length	= 3 * 60 * 60 * 10 // 3 hours
-	var/round_end_time			= 0 //0 means no round end
-	var/round_end_grace_period	= 0 //0 means the round will not insist on ending.
+	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
 	// If the first delay has a custom start time
 	// No custom time, no custom time, between 80 to 100 minutes respectively.
 	var/list/event_first_run   = list(
@@ -242,23 +222,17 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 	var/emojis = 0
 
-<<<<<<< HEAD
 	var/paper_input = TRUE
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/random_submap_orientation = FALSE // If true, submaps loaded automatically can be rotated.
 
 	var/webhook_url
 	var/webhook_key
 
-<<<<<<< HEAD
 	var/static/regex/ic_filter_regex //For the cringe filter.
 
 	var/generate_loot_data = FALSE //for loot rework
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/profiler_permission = R_DEBUG | R_SERVER
 
 	var/allow_ic_printing = TRUE
@@ -335,9 +309,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 				if ("debug_paranoid")
 					config.debugparanoid = 1
 
-				if ("border_control")
-					config.borderControl = text2num(value)
-
 				if ("log_admin")
 					config.log_admin = 1
 
@@ -376,11 +347,9 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				if ("log_runtime")
 					config.log_runtime = 1
-					var/newfilename = "data/logs/runtimes/runtime-[time2text(start_time, "YYYY-MM-DD")].log"
-					var/newlog = file(newfilename)
+					var/newlog = file("data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log")
 					if(runtime_diary != newlog)
 						world.log << "Now logging runtimes to data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log"
-						runtime_diary_filename = newfilename
 						runtime_diary = newlog
 
 				if ("generate_asteroid")
@@ -394,12 +363,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				if ("allow_vote_restart")
 					config.allow_vote_restart = 1
-
-				if ("automatic_restart_time")
-					config.automatic_restart_time = text2num(value) SECONDS
-
-				if ("automatic_restart_delay")
-					config.automatic_restart_delay = text2num(value) SECONDS
 
 				if ("allow_vote_mode")
 					config.allow_vote_mode = 1
@@ -423,11 +386,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 					config.vote_delay = text2num(value)
 
 				if ("disable_ic_printing")
-<<<<<<< HEAD
 					config.allow_ic_printing = FALSE
-=======
-					//config.allow_ic_printing = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				if ("vote_period")
 					config.vote_period = text2num(value)
@@ -609,12 +568,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				if("fps")
 					fps = text2num(value)
-<<<<<<< HEAD
-=======
-
-				if("fps")
-					fps = text2num(value)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				if("tick_limit_mc_init")
 					tick_limit_mc_init = text2num(value)
@@ -705,12 +658,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 				if("expected_round_length")
 					config.expected_round_length = MinutesToTicks(text2num(value))
 
-				if("round_end_time")
-					config.round_end_time = MinutesToTicks(text2num(value))
-
-				if("round_end_grace_period")
-					config.round_end_grace_period = MinutesToTicks(text2num(value))
-
 				if("disable_welder_vision")
 					config.welder_vision = 0
 
@@ -775,19 +722,12 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 					if(values.len > 0)
 						language_prefixes = values
 
-<<<<<<< HEAD
-=======
-				if ("lobby_screens")
-					config.lobby_screens = splittext(value, ";")
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if("empty_server_restart_time")
 					config.empty_server_restart_time = text2num(value)
 
 				if("emojis")
 					config.emojis = 1
 
-<<<<<<< HEAD
 				if("paper_input")
 					config.paper_input = text2num(value)
 
@@ -819,22 +759,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 					config.start_location = "space ruins"
 				if("generate_loot_data")
 					config.generate_loot_data = TRUE
-=======
-				if("enable_mob_sleep")
-					config.enable_mob_sleep = 1
-
-				if("hub_visible")
-					world.visibility = 1
-
-				if("webhook_key")
-					config.webhook_key = value
-
-				if("profiler_permission")
-					profiler_permission = text2num(value)
-
-				if("webhook_url")
-					config.webhook_url = value
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
 
@@ -855,6 +779,10 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 					config.organ_damage_spillover_multiplier = value / 100
 				if("organs_can_decay")
 					config.organs_decay = 1
+				if("default_brain_health")
+					config.default_brain_health = text2num(value)
+					if(!config.default_brain_health || config.default_brain_health < 1)
+						config.default_brain_health = initial(config.default_brain_health)
 				if("bones_can_break")
 					config.bones_can_break = value
 				if("limbs_can_break")
@@ -869,9 +797,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-	fps = round(fps)
-	if(fps <= 0)
-		fps = initial(fps)
 
 /datum/configuration/proc/loadsql(filename)  // -- TLE
 	var/list/Lines = file2list(filename)

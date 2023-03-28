@@ -24,8 +24,7 @@
 	SSresearch.initialize_design_file(src)
 
 /datum/computer_file/binary/design/proc/on_design_set()
-	if (design)
-		set_filename(design.id)
+	set_filename(design.id)
 
 /datum/computer_file/binary/design/proc/set_copy_protection(enabled)
 	copy_protected = enabled
@@ -40,10 +39,7 @@
 		point_cost = 1
 	else
 		point_cost = cost
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(point_cost)
 		set_copy_protection(TRUE)
 
@@ -66,17 +62,12 @@
 		return TRUE
 
 	var/obj/item/computer_hardware/hard_drive/portable/disk = holder
-<<<<<<< HEAD
 	disk.license -= point_cost
-=======
-	if(disk.license > 0)
-		disk.license -= point_cost
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 
-/datum/computer_file/binary/design/nano_ui_data()
-	var/list/data = design.nano_ui_data().Copy()
+/datum/computer_file/binary/design/ui_data()
+	var/list/data = design.ui_data().Copy()
 	data["copy_protected"] = copy_protected
 	data["filename"] = filename
 	data["point_cost"] = point_cost

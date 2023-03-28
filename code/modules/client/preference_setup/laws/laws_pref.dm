@@ -29,10 +29,7 @@
 
 /datum/category_item/player_setup_item/law_pref/content()
 	. = list()
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. += "<b>Your Species Has No Laws</b><br>"
 	. = jointext(.,null)
 

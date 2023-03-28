@@ -23,11 +23,6 @@
 		set_frequency(frequency)
 	return
 
-/obj/item/device/assembly/signaler/Destroy()
-
-	radio_connection = null
-
-	. = ..()
 
 /obj/item/device/assembly/signaler/activate()
 	if(cooldown > 0)	return 0
@@ -50,28 +45,17 @@
 	set_frequency(sanitize_frequency(round(new_freq), RADIO_LOW_FREQ, RADIO_HIGH_FREQ))
 
 /obj/item/device/assembly/signaler/interact(mob/user, flag1)
-<<<<<<< HEAD
 	ui_interact(user)
 
 /obj/item/device/assembly/signaler/ui_data()
-=======
-	nano_ui_interact(user)
-
-/obj/item/device/assembly/signaler/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list(
 		"freq" = frequency,
 		"code" = code
 		)
 	return data
 
-<<<<<<< HEAD
 /obj/item/device/assembly/signaler/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	var/list/data = ui_data(user)
-=======
-/obj/item/device/assembly/signaler/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nano_topic_state/state = GLOB.default_state)
-	var/list/data = nano_ui_data(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

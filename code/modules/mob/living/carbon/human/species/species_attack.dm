@@ -8,6 +8,8 @@
 /datum/unarmed_attack/claws
 	attack_verb = list("scratched", "clawed", "slashed")
 	attack_noun = list("claws")
+	eye_attack_text = "claws"
+	eye_attack_text_victim = "sharp claws"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	sharp = TRUE
@@ -43,29 +45,14 @@
 				if(5)		user.visible_message("<span class='danger'>[user] tears \his [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
 
 /datum/unarmed_attack/claws/strong
-	damage = 3
+	attack_verb = list("slashed")
+	damage = 5
+	shredding = 1
 
 /datum/unarmed_attack/bite/strong
-	damage = 3
-
-/datum/unarmed_attack/needle
-	attack_name = "Knuckle Spines"
-	attack_verb = list("stabbed", "jabbed", "shanked")
-	attack_noun = list("stab", "jab", "shank")
-	damage = 2
-	armor_penetration = 10
-
-/datum/unarmed_attack/horns
-	deal_halloss = 9
-	attack_noun = list("ram","headbutt")
-	attack_verb = list("rammed", "headbutted")
-	damage = 1
-
-/datum/unarmed_attack/tail
-	deal_halloss = 6
-	attack_noun = list("smack","lash")
-	attack_verb = list("smacked", "lashed")
-	damage = 0
+	attack_verb = list("mauled")
+	damage = 8
+	shredding = 1
 
 /datum/unarmed_attack/slime_glomp
 	attack_verb = list("glomped")

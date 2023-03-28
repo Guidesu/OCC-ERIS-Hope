@@ -1,11 +1,7 @@
 /obj/structure/bs_crystal_structure
 	name = "strange crystal structure"
 	desc = "Strange blue crystal structure."
-<<<<<<< HEAD
 	icon = 'icons/obj/bluespace_crystal_structure.dmi'
-=======
-	icon = 'icons/obj/telescience.dmi'
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "crystal"
 	anchored = TRUE
 	density = TRUE
@@ -24,26 +20,15 @@
 		/obj/item/bluespace_crystal,
 		/obj/item/hand_tele,
 		/obj/item/device/radio/uplink,
-<<<<<<< HEAD
 		/obj/item/tool/knife/dagger/bluespace,
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/reagent_containers/glass/beaker/bluespace,
 		/obj/item/bluespace_harpoon,
 		/obj/item/seeds/bluespacetomatoseed
 	)
 	var/entropy_value = 8
-<<<<<<< HEAD
 
 /obj/structure/bs_crystal_structure/New()
 	..()
-=======
-	sanity_damage = 1 //Looks nice!
-
-/obj/structure/bs_crystal_structure/New()
-	..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/turf/simulated/floor/F in range(2, src.loc))
 		if(!F.is_wall && !F.is_hole)
 			destination_candidates.Add(F)
@@ -113,15 +98,7 @@
 			go_to_bluespace(get_turf(src), entropy_value, FALSE, I, teleport_destination)
 		for(var/mob/M in target_turf_contents)
 			go_to_bluespace(get_turf(src), entropy_value, FALSE, M, teleport_destination)
-<<<<<<< HEAD
 			new /obj/item/bluespace_dust(target_turf)
 
 			next_teleportation = pick(timer_min, timer_max)
 			teleportation_timer = addtimer(CALLBACK(src, .proc/teleport_random_item), next_teleportation)
-=======
-
-		new /obj/item/bluespace_dust(target_turf)
-
-		next_teleportation = pick(timer_min, timer_max)
-		teleportation_timer = addtimer(CALLBACK(src, .proc/teleport_random_item), next_teleportation)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

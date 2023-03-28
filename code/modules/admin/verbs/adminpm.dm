@@ -28,12 +28,14 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 				targets["[T.mob.real_name](as [T.mob.name]) - [T]"] = T
 		else
 			targets["(No Mob) - [T]"] = T
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sortList(targets)
+	var/list/sorted = sortList(targets)
+	var/target = input(src,"To whom shall we send a message?","Admin PM",null) in sorted|null
 	cmd_admin_pm(targets[target],null)
+
+
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client
-<<<<<<< HEAD
 
 /client/proc/cmd_admin_pm(var/client/C, var/msg = null, var/type = "PM")
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -43,36 +45,16 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 	if(!istype(C,/client))
 		if(holder)	to_chat(src, "<font color='red'>Error: Private-Message: Client not found.</font>")
 		else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
-=======
-/client/proc/cmd_admin_pm(var/client/C, var/msg = null, var/type = "PM")
-	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."))
-		return
-
-	if(!istype(C,/client))
-		if(holder)
-			to_chat(src, "<font color='red'>Error: Private-Message: Client not found.</font>")
-		else
-			to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
 		msg = input(src,"Message:", "Private message to [key_name(C, 0, holder ? 1 : 0)]") as message|null	//SYZYGY EDIT - Multiline textbox for PMs
 
-		if(!msg)
-			return
+		if(!msg)	return
 		if(!C)
-<<<<<<< HEAD
 			if(holder)	to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
 			else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
-=======
-			if(holder)
-				to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
-			else
-				to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
@@ -116,28 +98,17 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 					else
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
-<<<<<<< HEAD
 	to_chat(src, "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]</span>: <span class='message linkify'>[msg]</span></span></span>")
 	to_chat(C, "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>: <span class='message linkify'>[msg]</span></span></span>")
-=======
-
-	to_chat(C, "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[key_name(src, TRUE, C.holder ? 1 : 0)]</span>: <span class='message linkify'>[msg]</span></span></span>")
-	to_chat(src, "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]</span>: <span class='message linkify'>[msg]</span></span></span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//play the recieving admin the adminhelp sound (if they have them enabled)
 	//non-admins shouldn't be able to disable this
 	if(C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)
 		sound_to(C, 'sound/effects/adminhelp.ogg')
 
-<<<<<<< HEAD
 	send_adminalert2adminchat(message = "PM: [key_name(src)]->[key_name(C)]: [msg]")
-=======
-	lobby_message(message = "PM: [key_name(src)]->[key_name(C)]: [msg]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
-	log_adminPMHistory(C.ckey, src.ckey, msg)
 
 
 	//we don't use message_admins here because the sender/receiver might get it too
@@ -146,11 +117,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 		if(X == C || X == src)
 			continue
 		if(X.key != key && X.key != C.key && (X.holder.rights & R_ADMIN|R_MOD|R_MENTOR))
-<<<<<<< HEAD
 			to_chat(X, "<span class='pm'><span class='other'>" + create_text_tag("pm_other", "PM:", X) + " <span class='name'>[key_name(src, X, 0)]</span> to <span class='name'>[key_name(C, X, 0)]</span>: <span class='message linkify'>[msg]</span></span></span>")
-=======
-			to_chat(X, "<span class='pm'><span class='other'>" + create_text_tag("pm_other", "PM:", X) + " <span class='name'>[key_name(src, X, 0)]</span> to <span class='name'>[key_name(C, X, 0)]</span>: <span class='message'>[msg]</span></span></span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//Check if the mob being PM'd has any open admin tickets.
 	var/tickets = list()
@@ -173,10 +140,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 		for(var/datum/ticket/i in tickets)
 			i.addResponse(src, msg)
 		return
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /client/proc/cmd_admin_irc_pm(sender)
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -204,9 +168,5 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_panel, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 	for(var/client/X in admins)
 		if(X == src)
 			continue
-<<<<<<< HEAD
 		if(X.holder.rights & R_ADMIN|R_MOD)
-=======
-		if(X.holder.rights & R_ADMIN|R_MOD|R_DEBUG)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(X, "<span class='pm'><span class='other'>" + create_text_tag("pm_other", "PM:", X) + " <span class='name'>[key_name(src, X, 0)]</span> to <span class='name'>IRC-[sender]</span>: <span class='message'>[msg]</span></span></span>")

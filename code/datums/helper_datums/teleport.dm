@@ -182,11 +182,7 @@
 			if(beltholding.len)
 				to_chat(MM, SPAN_DANGER("The bluespace interface of your belt of holding interferes with the teleport!"))
 			if(trashholding.len)
-<<<<<<< HEAD
 				to_chat(MM, SPAN_DANGER("The bluespace interface of your trashbag of holding interferes with the teleport!"))
-=======
-				to_chat(MM, SPAN_DANGER("The bluespace interface of your trash bag of holding interferes with the teleport!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(satchelholding.len)
 				to_chat(MM, SPAN_DANGER("The bluespace interface of your satchel of holding interferes with the teleport!"))
 	return 1
@@ -209,15 +205,9 @@
 		return 0
 
 	if(isAdminLevel(destination.z))
-<<<<<<< HEAD
 		if(istype(teleatom, /mob/living/exosuit))
 			var/mob/living/exosuit/MM = teleatom
 			MM.occupant_message(SPAN_DANGER("\The [MM.pilots.Join(" and ")] would not survive the jump to a location so far away!"))
-=======
-		if(istype(teleatom, /obj/mecha))
-			var/obj/mecha/MM = teleatom
-			to_chat(MM.occupant, SPAN_DANGER("\The [MM] would not survive the jump to a location so far away!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return 0
 		if(!isemptylist(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
 			teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))

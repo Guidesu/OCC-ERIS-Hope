@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*/obj/machinery/autodoc
 	name = "Autodoc"
 	icon = 'icons/obj/autodoc.dmi'
@@ -12,22 +11,6 @@
 	var/mob/living/carbon/occupant
 	var/datum/autodoc/autodoc_processor
 	var/locked
-=======
-/obj/machinery/autodoc
-	var/mob/living/carbon/occupant
-	var/datum/autodoc/autodoc_processor
-	var/locked
-	name = "Autodoc"
-	icon = 'icons/obj/autodoc.dmi'
-	icon_state = "powered_off"
-	density = 1
-	anchored = 1
-
-	circuit = /obj/item/circuitboard/autodoc
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 60
-	active_power_usage = 10000
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/autodoc/New()
 	. = ..()
@@ -36,11 +19,7 @@
 	autodoc_processor.damage_heal_amount = 20
 
 
-<<<<<<< HEAD
 /obj/machinery/autodoc/relaymove(mob/user)
-=======
-/obj/machinery/autodoc/relaymove(mob/user as mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (user.stat)
 		return
 	src.go_out()
@@ -85,18 +64,10 @@
 	if (!occupant || locked)
 		return
 	if(autodoc_processor.active)
-<<<<<<< HEAD
 		to_chat(usr, SPAN_WARNING("Autodoc is locked down! Abort all oberations if you need to go out or wait until all operations would be done."))
 		return
 	for(var/obj/O in src)
 		O.forceMove(loc)
-=======
-		to_chat(usr, SPAN_WARNING("Autodoc is locked down! Abort all oberations if you need to go out or wait untill all operations would be done."))
-		return
-	for(var/obj/O in src)
-		O.forceMove(loc)
-	autodoc_processor.stop()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	occupant.forceMove(loc)
 	occupant.reset_view()
 	occupant.unset_machine()
@@ -110,16 +81,8 @@
 	src.occupant = L
 	src.add_fingerprint(usr)
 	if(stat & (NOPOWER|BROKEN))
-<<<<<<< HEAD
 		autodoc_processor.set_patient(L)
 		ui_interact(L)
-=======
-		update_icon()
-		return
-	else
-		autodoc_processor.set_patient(L)
-		nano_ui_interact(L)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		update_use_power(2)
 		L.set_machine(src)
 	update_icon()
@@ -167,35 +130,20 @@
 		return
 	if(occupant)
 		locked = autodoc_processor.active
-<<<<<<< HEAD
 		ui_interact(occupant)
 	update_icon()
 
 /obj/machinery/autodoc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FORCE_OPEN, var/datum/topic_state/state = GLOB.default_state)
 	autodoc_processor.ui_interact(user, ui_key, ui, force_open, state)
-=======
-	update_icon()
-
-/obj/machinery/autodoc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FORCE_OPEN, var/datum/nano_topic_state/state = GLOB.default_state)
-	autodoc_processor.nano_ui_interact(user, ui_key, ui, force_open, state)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/autodoc/Topic(href, href_list)
 	return autodoc_processor.Topic(href, href_list)
 
-<<<<<<< HEAD
 /obj/machinery/autodoc/on_update_icon()
-=======
-/obj/machinery/autodoc/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(stat & (NOPOWER|BROKEN) || !occupant)
 		icon_state = "powered_off"
 	else
 		icon_state = "powered_on"
 	if(autodoc_processor.active)
-<<<<<<< HEAD
 		icon_state = "active"
 */
-=======
-		icon_state = "active"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

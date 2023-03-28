@@ -29,16 +29,11 @@
 	contained = new mask_type (src)
 	update_icon()
 
-<<<<<<< HEAD
 /obj/structure/medical_stand/on_update_icon()
-=======
-/obj/structure/medical_stand/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if (tank)
 		if (breather)
-<<<<<<< HEAD
 			add_overlays("tube_active")
 		else
 			add_overlays("tube")
@@ -61,30 +56,6 @@
 			add_overlays("line_active")
 		else
 			add_overlays("line")
-=======
-			add_overlay("tube_active")
-		else
-			add_overlay("tube")
-		if(istype(tank,/obj/item/tank/anesthetic))
-			add_overlay("tank_anest")
-		else if(istype(tank,/obj/item/tank/nitrogen))
-			add_overlay("tank_nitro")
-		else if(istype(tank,/obj/item/tank/oxygen))
-			add_overlay("tank_oxyg")
-		else if(istype(tank,/obj/item/tank/plasma))
-			add_overlay("tank_plasma")
-		//else if(istype(tank,/obj/item/tank/hydrogen))
-		//	add_overlay("tank_hydro")
-		else
-			add_overlay("tank_other")
-
-	if(beaker)
-		add_overlay("beaker")
-		if(attached)
-			add_overlay("line_active")
-		else
-			add_overlay("line")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/datum/reagents/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
@@ -99,11 +70,7 @@
 				if(91 to INFINITY)	filling.icon_state = "reagent100"
 			if (filling.icon)
 				filling.icon += reagents.get_color()
-<<<<<<< HEAD
 				add_overlays(filling)
-=======
-				add_overlay(filling)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/medical_stand/Destroy()
 	STOP_PROCESSING(SSobj,src)
@@ -186,13 +153,8 @@
 					visible_message("\The [attached] is taken off \the [src]")
 					attached = null
 				else if(ishuman(target))
-<<<<<<< HEAD
 					usr.visible_message(SPAN_NOTICE("\The [usr] begins inserting needle into [target]'s vein."),
 									SPAN_NOTICE("You begin inserting needle into [target]'s vein."))
-=======
-					usr.visible_message(SPAN_NOTICE("\The [usr] begins searching for a vein to connect [target] into \the [src]..."),
-									SPAN_NOTICE("You begin inserting a needle into [target]'s vein."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					if(!do_mob(usr, target, 10))
 						usr.visible_message(SPAN_NOTICE("\The [usr]'s hand slips and pricks \the [target]."),
 									SPAN_NOTICE("Your hand slips and pricks \the [target]."))

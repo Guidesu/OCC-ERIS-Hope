@@ -9,13 +9,8 @@
 	var/off_state = "black_goggles"
 	var/active = TRUE
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-<<<<<<< HEAD
 	var/obj/screen/overlay
 	var/obj/item/clothing/glasses/hud/hud	// Hud glasses, if any
-=======
-	var/obj/screen/screenOverlay = null
-	var/obj/item/clothing/glasses/hud/hud = null	// Hud glasses, if any
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	if(toggleable)
@@ -56,8 +51,4 @@
 /obj/item/clothing/glasses/attackby(obj/item/Z, mob/user)
 	if(istype(Z,/obj/item/clothing/glasses/attachable_lenses))
 		var/obj/item/clothing/glasses/attachable_lenses/lenses = Z
-<<<<<<< HEAD
 		lenses.handle_insertion(src, user)
-=======
-		lenses.handle_insertion(src, user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

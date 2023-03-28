@@ -30,7 +30,7 @@
 	mouse_opacity = 1
 	reagent_flags = DRAINABLE
 
-	health = 5
+	var/health = 5
 	var/max_health = 60
 	var/growth_threshold = 0
 	var/growth_type = 0
@@ -110,7 +110,9 @@
 			//Disabled for mold because it looks bad
 			//0 is in here several times to weight it a bit more towards normal
 			var/rot = pick(list(0,0,0, 90, 180, -90))
-			add_new_transformation(/datum/transform_type/modular, list(rotation = rot, flag = PLANT_INITIAL_ROTATION_TRANSFORM, priority = PLANT_INITIAL_ROTATION_TRANSFORM_PRIORITY))
+			var/matrix/M = matrix()
+			M.Turn(rot)
+			transform = M
 	else
 		max_growth = seed.growth_stages
 		growth_threshold = max_health/seed.growth_stages
@@ -123,7 +125,7 @@
 	spread_distance = ((growth_type>0) ? round(spread_chance*1.0) : round(spread_chance*0.5))
 	update_icon()
 
-	if(seed.get_trait(TRAIT_CHEMS)?:len)
+	if(seed.get_trait(TRAIT_CHEMS) > 0)
 		src.create_reagents(5*(seed.chems.len))
 		for (var/reagent in seed.chems)
 			src.reagents.add_reagent(reagent, 5)
@@ -273,21 +275,21 @@ var/list/global/cutoff_plant_icons = list()
 			newDir = 1
 		else
 			wall_mount = get_step(loc, newDir)
-			var/to_turn = 0
+			var/matrix/M = matrix()
 			// should make the plant flush against the wall it's meant to be growing from.
 
 			//M.Translate(0,offset)
 
 			switch(newDir)
 				if(WEST)
-					to_turn = 90
+					M.Turn(90)
 				if(NORTH)
-					to_turn = 180
+					M.Turn(180)
 					offset_to(wall_mount, WALL_HUG_OFFSET*0.5) //Due to perspective, there's more space to the north
 					//So plants that hug a north wall will be offset 50% more
 				if(EAST)
-					to_turn = 270
-			add_new_transformation(/datum/transform_type/modular, list(rotation = to_turn, flag = PLANT_SPREAD_ROTATION_TRANSFORM, priority = PLANT_SPREAD_ROTATION_TRANSFORM_PRIORITY))
+					M.Turn(270)
+			src.transform = M
 
 			if (newDir == SOUTH)
 				//Lets cutoff part of the plant
@@ -321,8 +323,4 @@ var/list/global/cutoff_plant_icons = list()
 		else if (!reagents.get_free_space())
 			to_chat(usr, SPAN_NOTICE("It looks juicy."))
 		else
-<<<<<<< HEAD
 			to_chat(usr, SPAN_NOTICE("It looks a bit dry."))
-=======
-			to_chat(usr, SPAN_NOTICE("It looks a bit dry."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

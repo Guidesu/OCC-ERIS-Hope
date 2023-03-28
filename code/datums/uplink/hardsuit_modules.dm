@@ -14,7 +14,6 @@
 	item_cost = 5
 	path = /obj/item/rig_module/fabricator/energy_net
 
-<<<<<<< HEAD
 /datum/uplink_item/item/hardsuit_modules/ewar_voice
 	name = "Electrowarfare Suite and Voice Synthesiser"
 	item_cost = 4
@@ -31,19 +30,6 @@
 	path = /obj/item/rig_module/chem_dispenser
 
 /datum/uplink_item/item/hardsuit_modules/portable_autodoc
-=======
-/datum/uplink_item/item/ewar_voice
-	name = "Electrowarfare Suite and Voice Synthesizer"
-	item_cost = 4
-	path = /obj/item/storage/box/syndie_kit/ewar_voice
-
-/datum/uplink_item/item/chem_injector
-	name = "Mounted chemical injector"
-	item_cost = 3
-	path = /obj/item/rig_module/modular_injector
-
-/datum/uplink_item/item/portable_autodoc
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "Portable autodoc"
 	item_cost = 16
 	path = /obj/item/rig_module/autodoc

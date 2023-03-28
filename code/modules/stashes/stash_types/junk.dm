@@ -19,18 +19,14 @@
 	story_type = STORY_CRIME
 	directions = DIRECTION_IMAGE
 	lore = "Dear Diary,<br>\
-<<<<<<< HEAD
 That prick HoP keeps doing inspections of personal lockers, claiming some idiot terrorist\
-=======
-That prick premier keeps doing inspections of personal lockers, claiming some idiot terrorist\
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 threat. I think he just wants to go poking around through my unmentionables, but still, he'll start \
 wondering where all these little odds and ends come from, or what kind of favors he can get. I'll \
 just stuff it here for now, and he can go stuff himself. %D"
 */
 /datum/stash/junk/illicit_trade
 	story_type = STORY_CRIME
-	lore =  "Hey jackass! The colony's computer monitors the emails, the radios, and probably turns on \
+	lore =  "Hey jackass! The ship's computer monitors the emails, the radios, and probably turns on \
 	the fucking microphones when we aren't looking. So here, let me help you out. That shit you wanted\
 	 is HERE.<br>%D <br>\
 	 <br>\
@@ -64,7 +60,7 @@ Signed your pal who isn't named Bob."
 
 /datum/stash/junk/guild/crackdown
 	story_type = STORY_CRIME
-	lore = "Fellows,<br>\
+	lore = "Guildsman,<br>\
  With the recent crackdown on what sorts of merchandise we can sell I am going to teach you a vital lesson in entrepreneurship.<br>\
  <br>\
 
@@ -75,15 +71,11 @@ Signed your pal who isn't named Bob."
 /datum/stash/junk/guild/protection
 	contents_list_external = list(/obj/item/remains/human = 1) //Corrupt security murdered this guy for not paying protection money
 	story_type = STORY_CRIME
-	lore = "CEO,<br>\
+	lore = "Guild Master,<br>\
  The current protection racket for our little lemonade stand is exceeding tolerable levels.<br>\
  I have relocated to %D, just in case you'd think I made off with the lot.<br>\
  <br>\
-<<<<<<< HEAD
  Send people my way if they ask, but when Aegis starts bitching about where I went, get it on tape, would you?"
-=======
- Send people my way if they ask, but when those thugs start bitching about where I went, get it on tape, would you?"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/stash/junk/guild/drop
@@ -93,6 +85,6 @@ Signed your pal who isn't named Bob."
 	Its here for you. %D. <br>\
 	Now I've done my end of the deal, so I'd best find your end of the deal where it belongs.<br>\
 	<br>\
-	You merchants have your reputation to uphold, do you not?<br>\
+	You guilds-men have your reputation to uphold, do you not?<br>\
 	<br>\
 	Johannes"

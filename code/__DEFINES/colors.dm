@@ -66,7 +66,6 @@
 #define COLOR_PALE_YELLOW      "#c1bb7a"
 #define COLOR_GRAY20           "#333333"
 
-<<<<<<< HEAD
 #define	PIPE_COLOR_GREY		"#e4e7ea"	//yes white is grey
 #define	PIPE_COLOR_RED		"#c1293f"
 #define	PIPE_COLOR_BLUE		"#1f92c2"
@@ -76,8 +75,6 @@
 #define	PIPE_COLOR_BLACK	"#34383d"
 #define	PIPE_COLOR_ORANGE	"#b95a00"
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define	COMMS_COLOR_DEFAULT    "#ff00ff"
 #define	COMMS_COLOR_ENTERTAIN  "#666666"
 #define	COMMS_COLOR_AI         "#ff00ff"
@@ -89,14 +86,8 @@
 #define	COMMS_COLOR_EXPLORER   "#929820"
 #define	COMMS_COLOR_ENGINEER   "#a66300"
 #define	COMMS_COLOR_SECURITY   "#930000"
-#define	COMMS_COLOR_PROSPECTOR "#209848"
-#define	COMMS_COLOR_BLSHIELD   "#00440f"
 #define	COMMS_COLOR_COMMAND    "#204090"
-<<<<<<< HEAD
 #define	COMMS_COLOR_   "#5c5c7c"
-=======
-#define	COMMS_COLOR_CENTCOM   "#5c5c7c"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define	COMMS_COLOR_SYNDICATE  "#6d3f40"
 
 #define GLASS_COLOR            "#74b1ee"

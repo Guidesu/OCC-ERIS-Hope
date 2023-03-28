@@ -125,7 +125,6 @@ var/list/slot_equipment_priority = list(
 			Item.forceMove(src.back)
 			return backpack
 	return ..()
-<<<<<<< HEAD
 /mob/living/carbon/human/proc/quick_equip_storage(obj/item/Item)
 	var/potential = src.get_inactive_hand()
 	if(istype(src.back,/obj/item/storage))
@@ -163,19 +162,3 @@ var/list/slot_equipment_priority = list(
 		equip_to_slot_if_possible(store.contents[store.contents.len], return_hand)
 		return TRUE
 	return FALSE
-=======
-
-/mob/proc/equip_to_mob_best_effort(obj/item/Item)
-	if(!Item)
-		return
-
-	if(equip_to_appropriate_slot(Item))
-		return Item
-
-	if(src.equip_to_storage(Item))
-		return Item
-
-	Item.loc = get_turf(src.loc)
-
-	return Item
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

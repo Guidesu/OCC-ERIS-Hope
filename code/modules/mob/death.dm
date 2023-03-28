@@ -1,7 +1,6 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
 /mob/proc/gib(anim="gibbed-m",do_gibs)
-	if(cant_gib) return
 	death(1)
 	transforming = TRUE
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
@@ -10,44 +9,26 @@
 	invisibility = 101
 	update_lying_buckled_and_verb_status()
 	GLOB.dead_mob_list -= src
-	if(do_gibs) gibs(loc, dna, gibspawner)
 
-<<<<<<< HEAD
 	if(do_gibs) gibs(loc, dna)
 
 	var/atom/movable/overlay/animation = null
-=======
-	var/atom/movable/overlay/animation = null
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (anim)
 		animation = new(loc)
 		animation.icon_state = "blank"
 		animation.icon = 'icons/mob/mob.dmi'
 		animation.master = src
-<<<<<<< HEAD
 		FLICK(anim, animation)
 	addtimer(CALLBACK(src, .proc/check_delete, animation), 15)
-=======
-		flick(anim, animation)
-		addtimer(CALLBACK(src, .proc/check_delete, animation), 15)
-	else
-		qdel(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/proc/check_delete(var/atom/movable/overlay/animation)
 	if(animation)	qdel(animation)
 	if(src)			qdel(src)
 
-
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
 /mob/proc/dust(anim = "dust-m", remains = /obj/effect/decal/cleanable/ash, iconfile = 'icons/mob/mob.dmi')
-<<<<<<< HEAD
-=======
-	if(cant_gib) return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	death(1)
 	if (istype(loc, /obj/item/holder))
 		var/obj/item/holder/H = loc
@@ -58,10 +39,7 @@
 	canmove = 0
 	icon = null
 	invisibility = 101
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	new remains(loc)
 
 	remove_from_dead_mob_list()
@@ -71,24 +49,14 @@
 		animation.icon_state = "blank"
 		animation.icon = iconfile
 		animation.master = src
-<<<<<<< HEAD
 		FLICK(anim, animation)
 	addtimer(CALLBACK(src, .proc/check_delete, animation), 15)
 
-=======
-		flick(anim, animation)
-		addtimer(CALLBACK(src, .proc/check_delete, animation), 15)
-	else
-		qdel(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/proc/death(gibbed,deathmessage="seizes up and falls limp...",show_dead_message = "You have died.")
 	if(stat == DEAD)
-		return FALSE
+		return 0
 
-	SSmove_manager.stop_looping(src)
-
-	activate_mobs_in_range(src, 5) //Its quite clear to everyone close by when something dies
 	facing_dir = null
 
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
@@ -100,17 +68,8 @@
 			O.forceMove(loc)
 		embedded = list()
 
-<<<<<<< HEAD
 	for(var/mob/living/carbon/human/H in oviewers(src))
 		H.sanity.onSeeDeath(src)
-=======
-	for(var/obj/item/implant/carrion_spider/control/C in src)
-		C.return_mind()
-
-	for(var/mob/living/carbon/human/H in oviewers(src))
-		H.sanity.onSeeDeath(src)
-		LEGACY_SEND_SIGNAL(H, COMSIG_MOB_DEATH, src) //im not going to use this for the mob spawner becuase i dont understand signals enough
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	stat = DEAD
 	for(var/obj/item/implant/carrion_spider/control/C in src)
@@ -127,11 +86,7 @@
 	drop_l_hand()
 
 	//Bay statistics system would be hooked in here, but we're not porting it
-	if(!gibbed)
-		SetParalysis(0)
-		SetStunned(0)
-		SetWeakened(0)
-		SetDrowsyness(0)
+
 
 	if(isliving(src))
 		var/mob/living/L = src
@@ -141,8 +96,6 @@
 			H.DEADelize()
 	if(client)
 		kill_CH() //We dead... clear any prepared abilities...
-		to_chat(src,"<span class='deadsay'>[show_dead_message]</span>")
-		log_and_message_admins("[src] has died at [loc].")
 
 	timeofdeath = world.time
 	if (isanimal(src))
@@ -155,13 +108,10 @@
 		mind.store_memory("Time of death: [stationtime2text()]", 0)
 	switch_from_living_to_dead_mob_list()
 	updateicon()
-	update_icons()
-
-	if (spawned_from)
-		spawned_from.currently_spawned[type] -= src
-		spawned_from = null
-
+	to_chat(src,"<span class='deadsay'>[show_dead_message]</span>")
 	return 1
+
+
 
 
 //This proc retrieves the relevant time of death from

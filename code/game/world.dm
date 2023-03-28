@@ -1,18 +1,12 @@
 
 /*
 	The initialization of the game happens roughly like this:
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	1. All global variables are initialized (including the global_init and tgstation's master controller instances including subsystems).
 	2. The map is initialized, and map objects are created.
 	3. world/New() runs.
 	4. tgstation's MC runs initialization for various subsystems (refer to its own defines for the load order).
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 var/global/datum/global_init/init = new ()
 
@@ -27,16 +21,6 @@ var/global/datum/global_init/init = new ()
 
 	initialize_chemical_reagents()
 	initialize_chemical_reactions()
-<<<<<<< HEAD
-=======
-	initialize_mutation_recipes()
-
-
-	// Set up roundstart seed list.
-	plant_controller = new()
-
-	initialize_cooking_recipes()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	qdel(src) //we're done
 
@@ -90,24 +74,14 @@ var/game_id
  * All atoms in both compiled and uncompiled maps are initialized()
  */
 /world/New()
-<<<<<<< HEAD
 	//enable the debugger for VSC
 	enable_auxtools_debugger()
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
 	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-<<<<<<< HEAD
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
-=======
-
-	// TODO: globalize me
-	var/latest_changelog = file("html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
-	changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	world_qdel_log = file("data/logs/[date_string] qdel.log")	// GC Shutdown log
 
@@ -125,23 +99,14 @@ var/game_id
 	load_mods()
 	//end-emergency fix
 
-<<<<<<< HEAD
-=======
-	TgsNew()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	generate_body_modification_lists()
 
 	update_status()
 
 	. = ..()
 
-<<<<<<< HEAD
 	// Set up roundstart seed list.
 	plant_controller = new()
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
@@ -151,20 +116,15 @@ var/game_id
 
 	Master.Initialize(10, FALSE)
 
-<<<<<<< HEAD
 	call_restart_webhook()
 
 	#ifdef UNIT_TESTS
 	// load_unit_test_changes() // ??
-=======
-	#ifdef UNIT_TESTS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	HandleTestRun()
 	#endif
 
 	if(config.ToRban)
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/ToRban_autoupdate))
-<<<<<<< HEAD
 	return
 
 /world/proc/HandleTestRun()
@@ -172,16 +132,6 @@ var/game_id
 	// Master.sleep_offline_after_initializations = FALSE
 	world.sleep_offline = FALSE // iirc mc SHOULD handle this
 	SSticker.start_immediately = TRUE
-=======
-
-	call_restart_webhook()
-
-/world/proc/HandleTestRun()
-	//trigger things to run the whole process
-	Master.sleep_offline_after_initializations = FALSE
-	SSticker.start_immediately = TRUE
-	// config hacks
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	config.empty_server_restart_time = 0
 	config.vote_autogamemode_timeleft = 0
 	// CONFIG_SET(number/round_end_countdown, 0)
@@ -189,30 +139,10 @@ var/game_id
 #ifdef UNIT_TESTS
 	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
 #else
-<<<<<<< HEAD
 	cb = VARSET_CALLBACK(global, universe_has_ended, TRUE) // yes i ended the universe.
 #endif
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/addtimer, cb, 10 SECONDS))
 
-=======
-	cb = VARSET_CALLBACK(global, universe_has_ended, TRUE)
-#endif
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
-
-/world/proc/SetupLogs()
-	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
-	if(!override_dir)
-		var/realtime = world.realtime
-		var/texttime = time2text(realtime, "YYYY/MM/DD")
-		GLOB.log_directory = "data/logs/[texttime]/round-"
-		if(game_id)
-			GLOB.log_directory += "[game_id]"
-		else
-			var/timestamp = replacetext(time_stamp(), ":", ".")
-			GLOB.log_directory += "[timestamp]"
-	else
-		GLOB.log_directory = "data/logs/[override_dir]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
@@ -258,17 +188,11 @@ var/world_topic_spam_protect_time = world.timeofday
 	qdel(src) //shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
-<<<<<<< HEAD
 	/* spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 	 */
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
-=======
-
-	if(reason || fast_track) //special reboot, do none of the normal stuff
-		if(usr)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
@@ -280,23 +204,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[config.server]")
 
-<<<<<<< HEAD
 	#ifdef UNIT_TESTS
 	FinishTestRun()
 	return
 	#endif
 
 	..()
-=======
-	TgsReboot()
-
-	#ifdef UNIT_TESTS
-	FinishTestRun()
-	#else
-	..()
-	#endif
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /hook/startup/proc/loadMode()
 	world.load_storyteller()
@@ -439,11 +352,7 @@ var/failed_old_db_connections = 0
 		log_world("Feedback database connection established.")
 	return 1
 
-<<<<<<< HEAD
 /proc/setup_database_connection()
-=======
-proc/setup_database_connection()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
@@ -489,16 +398,6 @@ proc/establish_db_connection()
 
 	fps = new_value
 
-<<<<<<< HEAD
 /world/Del()
 	disable_auxtools_debugger() //If we dont do this, we get phantom threads which can crash DD from memory access violations
 	..()
-=======
-// SoJ Edits
-/hook/startup/proc/loadAd()
-	world.load_ad()
-	return 1
-
-/world/proc/load_ad()
-	server_ad = file2text("config/advert.txt")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

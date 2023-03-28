@@ -2,7 +2,7 @@
 	name = "Standard Gear"
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	uniform = /obj/item/clothing/under/color
+	uniform = /obj/item/clothing/under/color/grey
 	l_ear = /obj/item/device/radio/headset
 	shoes = /obj/item/clothing/shoes/color/black
 	id_slot = slot_wear_id
@@ -20,10 +20,3 @@
 		if(H.mind.initial_email_login)
 			C.associated_email_login = H.mind.initial_email_login.Copy()
 	return C
-
-///decl/hierarchy/outfit/job/equip(mob/living/carbon/human/H, rank, assignment, equip_adjustments)
-//	var/obj/item/oddity/secdocs/D = /obj/item/oddity/secdocs
-//	if(D.inv_spawn_count > 0 && !backpack_contents[D] && prob(5))
-//		backpack_contents[D] = 1
-//		--D.inv_spawn_count
-//	..()

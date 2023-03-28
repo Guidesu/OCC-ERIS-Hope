@@ -5,11 +5,7 @@
 	icon_state = "computer"
 	icon_keyboard = "tech_key"
 	icon_screen = "engine"
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/engines
-=======
-	circuit = /obj/item/circuitboard/engines
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/state = "status"
 	var/obj/effect/overmap/ship/linked
 
@@ -25,9 +21,9 @@
 	if(!isAI(user))
 		user.set_machine(src)
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/engines/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/engines/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		to_chat(user, "<span class='warning'>Unable to connect to ship control systems.</span>")
 		return

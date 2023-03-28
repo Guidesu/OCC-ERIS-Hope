@@ -28,16 +28,14 @@
 	//float over to our destination, if we have one
 	destination = dest_turf
 	if(destination)
-		SSmove_manager.move_to(src, destination)
+		walk_to(src, destination)
 
 
 /obj/effect/effect/smoke/chem/Destroy()
 	if (reagents)
 		reagents.my_atom = null
 		QDEL_NULL(reagents)
-	SSmove_manager.stop_looping(src)
-	destination = null
-	weak_reference = null
+	walk(src, 0)
 	return ..()
 
 /obj/effect/effect/smoke/chem/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
@@ -92,11 +90,6 @@
 	..()
 	chemholder = new/obj()
 	chemholder.create_reagents(500)
-
-/datum/effect/effect/system/smoke_spread/chem/Destroy()
-	QDEL_NULL(chemholder)
-	return ..()
-
 
 //Sets up the chem smoke effect
 // Calculates the max range smoke can travel, then gets all turfs in that view range.
@@ -169,15 +162,6 @@
 					continue
 				else if (ismob(A))
 					chemholder.reagents.touch_mob(A)
-					if(istype(A, /mob/living/carbon))
-						var/mob/living/carbon/H = A
-						var/internals = H.get_breath_from_internal()
-						var/gasmask = FALSE
-						if(H.wear_mask)
-							gasmask = H.wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT
-						if(!internals && !gasmask)
-							chemholder.reagents.trans_to_mob(H, 5, CHEM_INGEST, copy = FALSE)
-							chemholder.reagents.trans_to_mob(H, 5, CHEM_BLOOD, copy = FALSE)
 				else if(isobj(A) && !A.simulated)
 					chemholder.reagents.touch_obj(A)
 
@@ -273,13 +257,9 @@
 					continue
 				if(!(target in targetTurfs))
 					continue
-				var/currentblock
-				ATMOS_CANPASS_TURF(currentblock, current, target)
-				if(currentblock) //this is needed to stop chemsmoke from passing through thin window walls
+				if(current.c_airblock(target)) //this is needed to stop chemsmoke from passing through thin window walls
 					continue
-				var/targetblock
-				ATMOS_CANPASS_TURF(targetblock, target, current)
-				if(targetblock)
+				if(target.c_airblock(current))
 					continue
 				pending += target
 

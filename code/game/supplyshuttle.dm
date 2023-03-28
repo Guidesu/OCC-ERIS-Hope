@@ -6,17 +6,17 @@
 //Computers are in /code/game/machinery/computer/supply.dm
 
 var/list/mechtoys = list(
-	/obj/item/toy/figure/mecha/ripley,
-	/obj/item/toy/figure/mecha/fireripley,
-	/obj/item/toy/figure/mecha/deathripley,
-	/obj/item/toy/figure/mecha/gygax,
-	/obj/item/toy/figure/mecha/durand,
-	/obj/item/toy/figure/mecha/honk,
-	/obj/item/toy/figure/mecha/marauder,
-	/obj/item/toy/figure/mecha/seraph,
-	/obj/item/toy/figure/mecha/mauler,
-	/obj/item/toy/figure/mecha/odysseus,
-	/obj/item/toy/figure/mecha/phazon
+	/obj/item/toy/prize/ripley,
+	/obj/item/toy/prize/fireripley,
+	/obj/item/toy/prize/deathripley,
+	/obj/item/toy/prize/gygax,
+	/obj/item/toy/prize/durand,
+	/obj/item/toy/prize/honk,
+	/obj/item/toy/prize/marauder,
+	/obj/item/toy/prize/seraph,
+	/obj/item/toy/prize/mauler,
+	/obj/item/toy/prize/odysseus,
+	/obj/item/toy/prize/phazon
 )
 
 /obj/item/paper/manifest
@@ -31,35 +31,12 @@ var/list/mechtoys = list(
 	density = FALSE
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	matter = list(MATERIAL_PLASTIC = 4)
 	explosion_resistance = 5
 	var/list/mobs_can_pass = list(
 		/mob/living/carbon/slime,
 		/mob/living/simple_animal/mouse,
 		/mob/living/silicon/robot/drone
 		)
-	maxHealth = 30 //Weak plastic strips easy to break
-	health = 30
-
-/obj/structure/plasticflaps/proc/damage(damage)
-	health -= damage
-	if(health <= 0)
-		qdel(src)
-
-/obj/structure/plasticflaps/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes", var/wallbreaker)//Occulus Edit
-	if(damage)
-		damage(damage)
-		attack_animation(user)
-		visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))
-		return 1
-
-/obj/structure/plasticflaps/attackby(obj/item/I, mob/user)
-	if((QUALITY_BOLT_TURNING in I.tool_qualities) && (!istype(src, /obj/structure/plasticflaps/mining)))
-		to_chat(user, SPAN_NOTICE("You start disassembling the [src]..."))
-		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-			to_chat(user, SPAN_NOTICE("You dissasembled the [src]!"))
-			drop_materials(drop_location(), user)
-			qdel(src)
 
 /obj/structure/plasticflaps/CanPass(atom/A, turf/T)
 	if(istype(A) && A.checkpass(PASSGLASS))

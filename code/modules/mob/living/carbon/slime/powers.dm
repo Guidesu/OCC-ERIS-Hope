@@ -21,11 +21,7 @@
 		return "I cannot feed on other slimes..."
 	if (!Adjacent(M))
 		return "This subject is too far away..."
-<<<<<<< HEAD
 	if (iscarbon(M) && M.getCloneLoss() >= M.maxHealth - HEALTH_THRESHOLD_DEAD || isanimal(M) && M.stat == DEAD)
-=======
-	if (iscarbon(M) && M.getFireLoss() >= M.maxHealth * 1.5 || isanimal(M) && M.stat == DEAD)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return "This subject does not have an edible life energy..."
 	for(var/mob/living/carbon/slime/met in view())
 		if(met.Victim == M && met != src)
@@ -47,7 +43,7 @@
 			UpdateFeed(M)
 
 			if(iscarbon(M))
-				Victim.adjustFireLoss(rand(5,6))
+				Victim.adjustCloneLoss(rand(5,6))
 				Victim.adjustToxLoss(rand(1,2))
 				if(Victim.health <= 0)
 					Victim.adjustToxLoss(rand(2,4))
@@ -89,12 +85,11 @@
 
 	if(M && invalidFeedTarget(M)) // This means that the slime drained the victim
 		if(!client)
-			var/mob/living/carbon/LAssailant = (Victim.LAssailant_weakref?.resolve())
-			if(Victim && !rabid && !attacked && LAssailant != Victim && prob(50))
-				if(!(LAssailant in Friends))
-					Friends[LAssailant] = 1
+			if(Victim && !rabid && !attacked && Victim.LAssailant && Victim.LAssailant != Victim && prob(50))
+				if(!(Victim.LAssailant in Friends))
+					Friends[Victim.LAssailant] = 1
 				else
-					++Friends[LAssailant]
+					++Friends[Victim.LAssailant]
 
 		else
 			to_chat(src, SPAN_NOTICE("This subject does not have a strong enough life energy anymore..."))
@@ -170,8 +165,4 @@
 		else
 			to_chat(src, SPAN_NOTICE("I am not ready to reproduce yet..."))
 	else
-<<<<<<< HEAD
 		to_chat(src, SPAN_NOTICE("I am not old enough to reproduce yet..."))
-=======
-		to_chat(src, SPAN_NOTICE("I am not old enough to reproduce yet..."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

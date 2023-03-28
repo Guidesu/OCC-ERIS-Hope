@@ -3,7 +3,6 @@
 /turf/simulated/floor/tiled/dark/danger,
 /area/deepmaint)
 "b" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/danger,
 /area/deepmaint)
@@ -11,11 +10,6 @@
 /obj/spawner/mob/roaches/cluster/low_chance,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/danger,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "d" = (
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
@@ -23,27 +17,15 @@
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "f" = (
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "g" = (
 /obj/structure/catwalk,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "h" = (
 /obj/spawner/junk,
-=======
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/plating/under,
-/area/deepmaint)
-"h" = (
-/obj/random/junk,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "i" = (
@@ -74,40 +56,24 @@
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "n" = (
-<<<<<<< HEAD
 /obj/spawner/pack/rare,
-=======
-/obj/random/pack/rare,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/reinforced{
 	name = "engine floor";
 	oxygen = 0
 	},
 /area/deepmaint)
 "o" = (
-<<<<<<< HEAD
-=======
-/obj/random/mob/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/reinforced{
 	name = "engine floor";
 	oxygen = 0
 	},
 /area/deepmaint)
 "p" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
 "q" = (
 /obj/machinery/power/supermatter/shard,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/deepmaint)
-"q" = (
-/obj/random/psi_megafauna,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/reinforced{
 	name = "engine floor";
 	oxygen = 0
@@ -132,13 +98,8 @@
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
-<<<<<<< HEAD
 "v" = (
 /obj/spawner/mob/roaches/cluster/low_chance,
-=======
-"R" = (
-/obj/random/cluster/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/danger,
 /area/deepmaint)
 
@@ -153,11 +114,7 @@ d
 a
 b
 a
-<<<<<<< HEAD
 v
-=======
-R
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 b
@@ -199,11 +156,7 @@ f
 a
 "}
 (5,1,1) = {"
-<<<<<<< HEAD
 c
-=======
-d
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 j
 l
@@ -268,11 +221,7 @@ h
 a
 "}
 (10,1,1) = {"
-<<<<<<< HEAD
 a
-=======
-R
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 e
 f
@@ -295,9 +244,5 @@ d
 a
 b
 a
-<<<<<<< HEAD
 v
-=======
-a
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

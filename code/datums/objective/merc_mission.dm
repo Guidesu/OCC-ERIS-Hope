@@ -1,32 +1,3 @@
-/*
-/datum/shuttle/autodock/multi/antag/mercenary
-	name = "Mercenary"
-	warmup_time = 0
-	cloaked = 0
-	destination_tags = list(
-		"nav_merc_northeast",
-		"nav_merc_southwest",
-		"nav_merc_dock",
-		"nav_merc_start",
-		)
-	shuttle_area = /area/shuttle/mercenary
-	default_docking_controller = "merc_shuttle"
-	current_location = "nav_merc_start"
-	landmark_transition = "nav_merc_transition"
-	announcer = "Nadezhda Colony Sensor Array"
-	home_waypoint = "nav_merc_start"
-	arrival_message = "Attention, unidentified vessel detected on long range sensors. \nVessel is approaching on an intercept course. \nHailing frequencies open."
-	departure_message = "Attention, unknown vessel has departed"
-*/
-
-
-
-
-
-
-
-
-
 //Possible mission states
 #define MISSION_STATUS_SETUP 0	//Mercs are still at their base getting equipped
 #define MISSION_STATUS_IN_PROGRESS	1	//Mission has started, timer is ticking
@@ -45,7 +16,7 @@
 /datum/objective/timed/merc/check_completion()
 	if (failed)
 		return FALSE
-/*
+
 	var/datum/shuttle/autodock/multi/antag/mercenary/MS = SSshuttle.get_shuttle("Mercenary")
 
 	if (!MS)
@@ -57,7 +28,7 @@
 		//The shuttle still near Eris, fail
 		//This will succeed as long as they're enroute away from eris
 		return FALSE
-*/
+
 	return TRUE
 
 
@@ -87,11 +58,8 @@
 
 //The faction datum processes to tick down the mission timer
 /datum/objective/timed/merc/Process()
-<<<<<<< HEAD
 #ifdef MISSION_NO_TIME_LIMIT
 #else
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	mission_timer -= 1 SECONDS
 	if (!ended && mission_timer <= 0)
 		end_mission()

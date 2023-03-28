@@ -4,34 +4,23 @@
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = slot_glasses
 	sort_category = "Glasses and Eyewear"
-	cost = 0
 
-/datum/gear/eyes/aviators
-	display_name = "aviators selection"
-	path = /obj/item/clothing/glasses/aviator
-	flags = GEAR_HAS_TYPE_SELECTION
-	cost = 1
+/datum/gear/eyes/glasses
+	display_name = "Glasses, prescription"
+	path = /obj/item/clothing/glasses/regular
 
-<<<<<<< HEAD
 /datum/gear/eyes/glasses/prescriptionhipster
 	display_name = "Glasses, hipster"
 	path = /obj/item/clothing/glasses/regular/hipster
 
 /datum/gear/eyes/glasses/monocle
 	display_name = "Monocle"
-=======
-/datum/gear/eyes/monocle
-	display_name = "monocle"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/clothing/glasses/monocle
-	cost = 0
 
-/datum/gear/eyes/binoclard_lenses
-	display_name = "binoclard lenses"
-	path = /obj/item/clothing/glasses/binoclard_lenses
-	cost = 0
+/datum/gear/eyes/scanning_goggles
+	display_name = "scanning goggles"
+	path = /obj/item/clothing/glasses/regular/scanners
 
-<<<<<<< HEAD
 /datum/gear/eyes/green_goggles
 	display_name = "green goggles"
 	path = /obj/item/clothing/glasses/regular/goggles
@@ -64,27 +53,3 @@
 	display_name = "sunglasses, presciption"
 	path = /obj/item/clothing/glasses/sunglasses/prescription
 	cost = 2
-=======
-/datum/gear/eyes/regular
-	display_name = "glasses selection"
-	path = /obj/item/clothing/glasses/regular
-	flags = GEAR_HAS_TYPE_SELECTION
-	cost = 0
-
-/datum/gear/eyes/binoclard
-	display_name = "binoclard glasses selection"
-	path = /obj/item/clothing/glasses/binoclard_lenses
-	flags = GEAR_HAS_TYPE_SELECTION
-	cost = 0
-
-/datum/gear/eyes/sunglasses
-	display_name = "sunglasses selection"
-	path = /obj/item/clothing/glasses/sunglasses
-	flags = GEAR_HAS_TYPE_SELECTION
-	cost = 1
-
-/datum/gear/eyes/strapless
-	display_name = "eyepatch, strapless"
-	path = /obj/item/clothing/glasses/eyepatch_strapless
-	cost = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

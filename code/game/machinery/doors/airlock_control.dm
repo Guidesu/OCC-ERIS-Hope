@@ -156,11 +156,7 @@
 	icon_state = "airlock_sensor_off"
 	name = "airlock sensor"
 
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	power_channel = STATIC_ENVIRON
 
 	var/id_tag
@@ -302,11 +298,7 @@
 	icon_state = "access_button_standby"
 	name = "access button"
 
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	power_channel = STATIC_ENVIRON
 
 	var/master_tag

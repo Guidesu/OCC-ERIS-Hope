@@ -18,11 +18,7 @@ ADMIN_VERB_ADD(/client/proc/admin_memo, R_ADMIN, FALSE)
 /client/proc/admin_memo_write()
 	var/savefile/F = new(MEMOFILE)
 	if(F)
-<<<<<<< HEAD
 		var/memo = sanitize(input(src,"Type your memo\n(Leaving it blank will delete your current memo):","Write Memo",null) as null|message, extra = 0)
-=======
-		var/memo = input(src,"Type your memo\n(Leaving it blank will delete your current memo):","Write Memo",null) as null|message
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		switch(memo)
 			if(null)
 				return

@@ -1,17 +1,13 @@
 /decl/hierarchy/outfit/job/captain
-	name = OUTFIT_JOB_NAME("Command - Premier")
-	head = /obj/item/clothing/head/rank/captain
+	name = OUTFIT_JOB_NAME("Captain")
+	head = /obj/item/clothing/head/caphat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/captain
 	l_ear = /obj/item/device/radio/headset/heads/captain
 	shoes = /obj/item/clothing/shoes/color/brown
 	id_type = /obj/item/card/id/gold
 	pda_type = /obj/item/modular_computer/pda/captain
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/storage/box/ids = 1, /obj/item/tool/knife/dagger/ceremonial = 1)
-=======
-	backpack_contents = list(/obj/item/storage/hcases/preimer = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/hierarchy/outfit/job/captain/New()
 	..()
@@ -32,11 +28,7 @@
 				qdel(medal)
 
 /decl/hierarchy/outfit/job/hop
-<<<<<<< HEAD
 	name = OUTFIT_JOB_NAME("Head of Personnel")
-=======
-	name = OUTFIT_JOB_NAME("Command - Steward")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	uniform = /obj/item/clothing/under/rank/first_officer
 	suit = /obj/item/clothing/suit/armor/vest
 	l_ear = /obj/item/device/radio/headset/heads/hop
@@ -44,8 +36,4 @@
 	gloves = /obj/item/clothing/gloves/thick
 	id_type = /obj/item/card/id/hop
 	pda_type = /obj/item/modular_computer/pda/heads/hop
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/storage/box/ids = 1, /obj/item/tool/knife/dagger/ceremonial = 1)
-=======
-	backpack_contents = list(/obj/item/storage/hcases/preimer = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

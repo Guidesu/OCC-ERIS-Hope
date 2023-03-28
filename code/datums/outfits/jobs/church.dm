@@ -10,7 +10,6 @@
 	BACKPACK_OVERRIDE_NEOTHEOLOGY
 
 /decl/hierarchy/outfit/job/church/chaplain
-<<<<<<< HEAD
 	name = OUTFIT_JOB_NAME("Children of Mekhane Preacher")
 	l_ear = /obj/item/device/radio/headset/heads/preacher
 	id_type = /obj/item/card/id/chaplain
@@ -38,20 +37,3 @@
 	name = OUTFIT_JOB_NAME("Janitor")
 	uniform = /obj/item/clothing/under/rank/church
 	shoes = /obj/item/clothing/shoes/jackboots/neotheology
-=======
-	name = OUTFIT_JOB_NAME("Church - Prime")
-	l_ear = /obj/item/device/radio/headset/heads/preacher
-	id_type = /obj/item/card/id/chaplain
-	uniform = /obj/item/clothing/under/rank/preacher
-	suit = /obj/item/clothing/suit/storage/chaplain/coat
-	head = /obj/item/clothing/head/preacher
-	shoes = /obj/item/clothing/shoes/reinforced
-	gloves = /obj/item/clothing/gloves/thick
-	backpack_contents = list(/obj/item/book/ritual/cruciform/priest = 1, /obj/item/clothing/accessory/cross = 1)
-
-/decl/hierarchy/outfit/job/church/acolyte
-	name = OUTFIT_JOB_NAME("Church - Vector")
-	uniform = /obj/item/clothing/under/rank/acolyte
-	shoes = /obj/item/clothing/shoes/reinforced
-	gloves = /obj/item/clothing/gloves/thick
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

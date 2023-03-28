@@ -1,16 +1,8 @@
 /datum/wires/rig
-<<<<<<< HEAD
 	random = 1
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	holder_type = /obj/item/rig
 	wire_count = 5
-	descriptions = list(
-			new /datum/wire_description(RIG_SECURITY, "Security"),
-			new /datum/wire_description(RIG_AI_OVERRIDE, "AI override"),
-			new /datum/wire_description(RIG_SYSTEM_CONTROL, "System control"),
-			new /datum/wire_description(RIG_INTERFACE_LOCK, "Interface lock"),
-			new /datum/wire_description(RIG_INTERFACE_SHOCK, "Interface shock"))
+
 //The defines for the wires are moved to rig.dm, as they are used there
 /*
  * Rig security can be snipped to disable ID access checks on rig.
@@ -25,7 +17,8 @@
 	switch(index)
 		if(RIG_SECURITY)
 			if(mended)
-				rig.security_check_enabled = TRUE
+				rig.req_access = initial(rig.req_access)
+				rig.req_one_access = initial(rig.req_one_access)
 		if(RIG_INTERFACE_SHOCK)
 			rig.electrified = mended ? 0 : -1
 			rig.shock(usr,100)

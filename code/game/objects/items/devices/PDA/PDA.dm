@@ -37,11 +37,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
 	var/mimeamt = 0 //How many silence left when infected with mime.exe
-<<<<<<< HEAD
 	var/note = "Congratulations, your ship has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
-=======
-	var/note = "Congratulations, your colony has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/notehtml = ""
 	var/cart = "" //A place to stick cartridge menu information
 	var/detonate = 1 // Can the PDA be blown up?
@@ -323,7 +319,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	return ..()
 
 
-/obj/item/device/pda/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/pda/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	ui_tick++
 	var/datum/nanoui/old_ui = SSnano.get_open_ui(user, src, "main")
 	var/auto_update = 1
@@ -492,7 +488,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				for(var/datum/feed_message/FM in FC.messages)
 					++index
 					if(FM.img)
-						user << browse_rsc(FM.img, "tmp_photo[index].png")
+						send_asset(usr.client, "newscaster_photo_[sanitize(FC.channel_name)]_[index].png")
 					// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
 					var/body = replacetext(FM.body, "\n", "<br>")
 					messages[++messages.len] = list("author" = FM.author, "body" = body, "message_type" = FM.message_type, "time_stamp" = FM.time_stamp, "has_image" = (FM.img != null), "caption" = FM.caption, "index" = index)
@@ -526,7 +522,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(active_uplink_check(user))
 		return
 
-	nano_ui_interact(user) //NanoUI requires this proc
+	ui_interact(user) //NanoUI requires this proc
 	return
 
 /obj/item/device/pda/Topic(href, href_list)
@@ -641,11 +637,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 //MESSENGER/NOTE FUNCTIONS===================================
 
 		if ("Edit")
-<<<<<<< HEAD
 			var/n = input(U, "Please enter message", name, notehtml)
-=======
-			var/n = input(U, "Please enter message", name, notehtml) as null|message
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if (in_range(src, U) && loc == U)
 				n = sanitizeSafe(n, extra = 0)
 				if (mode == 1)
@@ -830,11 +822,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 //EXTRA FUNCTIONS===================================
 
-	if (mode == 2||mode == 21)//To clear message over-lays.
+	if (mode == 2||mode == 21)//To clear message overlays.
 		new_message = 0
 		update_icon()
 
-	if (mode == 6||mode == 61)//To clear news over-lays.
+	if (mode == 6||mode == 61)//To clear news overlays.
 		new_news = 0
 		update_icon()
 
@@ -849,15 +841,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	cut_overlays()
 	if(new_message || new_news)
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/pda.dmi', "pda-r"))
 	if(locate(/obj/item/pen) in src)
 		add_overlays(image('icons/obj/pda.dmi', "pda_pen"))
-=======
-		add_overlay(image('icons/obj/pda.dmi', "pda-r"))
-	if(locate(/obj/item/pen) in src)
-		add_overlay(image('icons/obj/pda.dmi', "pda_pen"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/pda/proc/detonate_act(var/obj/item/device/pda/P)
 	//TODO: sometimes these attacks show up on the message server
@@ -1347,13 +1333,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 /obj/item/device/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
 	if (isliving(AM))
 		var/mob/living/M = AM
-<<<<<<< HEAD
 		if((locate(/obj/structure/multiz/stairs) in get_turf(loc)) || (locate(/obj/structure/multiz/ladder) in get_turf(loc)))
 			visible_message(SPAN_DANGER("\The [M] carefully avoids stepping down on \the [src]."))
 			return
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(M.slip("the PDA",8) && M.real_name != src.owner && istype(src.cartridge, /obj/item/cartridge/clown))
 			if(src.cartridge.charges < 5)
 				src.cartridge.charges++

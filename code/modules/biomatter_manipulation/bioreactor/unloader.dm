@@ -8,11 +8,8 @@
 	active_power_usage = 180
 	var/dir_output = NORTH
 
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_unloader
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/multistructure/bioreactor_part/unloader/Process()
 	if(!MS)
@@ -41,8 +38,4 @@
 
 
 #undef CLEANING_TIME
-<<<<<<< HEAD
 #undef CLONE_DAMAGE_PER_TICK
-=======
-#undef BIOREACTOR_DAMAGE_PER_TICK
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

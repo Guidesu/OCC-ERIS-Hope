@@ -8,18 +8,11 @@ var/global/ntnet_card_uid = 1
 	matter_reagents = list("silicon" = 20)
 	icon_state = "netcard"
 	hardware_size = 1
-<<<<<<< HEAD
 	rarity_value = 8.33
 	var/identification_id			// Identification ID. Technically MAC address of this device. Can't be changed by user.
 	var/identification_string = ""	// Identification string, technically nickname seen in the network. Can be set by user.
 	var/long_range = FALSE
 	var/ethernet = FALSE	// Hard-wired, therefore always on, ignores NTNet wireless checks.
-=======
-	var/identification_id = null	// Identification ID. Technically MAC address of this device. Can't be changed by user.
-	var/identification_string = "" 	// Identification string, technically nickname seen in the network. Can be set by user.
-	var/long_range = FALSE
-	var/ethernet = FALSE // Hard-wired, therefore always on, ignores NTNet wireless checks.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/radio_frequency/radio_connection	// Used by signaller code
 	var/frequency = 1457
 	malfunction_probability = 1
@@ -34,11 +27,7 @@ var/global/ntnet_card_uid = 1
 	SSradio.remove_object(src, frequency)
 	return ..()
 
-<<<<<<< HEAD
 /obj/item/computer_hardware/network_card/diagnostics(mob/user)
-=======
-/obj/item/computer_hardware/network_card/diagnostics(var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	to_chat(user, "NIX Unique ID: [identification_id]")
 	to_chat(user, "NIX User Tag: [identification_string]")
@@ -92,10 +81,7 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_adv"
 	hardware_size = 1
 	price_tag = 100
-<<<<<<< HEAD
 	rarity_value = 16.66
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/computer_hardware/network_card/wired
 	name = "wired network card"
@@ -106,18 +92,6 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_ethernet"
 	hardware_size = 3
 
-<<<<<<< HEAD
-=======
-/obj/item/computer_hardware/network_card/adv_wired
-	name = "advanced wired network card"
-	desc = "An advanced network card for usage with standard frequencies. This one supports wired connection and it's transmitter is strong enough to connect even when far away."
-	long_range = TRUE
-	ethernet = TRUE
-	origin_tech = list(TECH_DATA = 7, TECH_ENGINEERING = 5)
-	power_usage = 150 // Better range but higher power usage.
-	icon_state = "netcard_ethernet"
-	hardware_size = 3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Returns a string identifier of this network card
 /obj/item/computer_hardware/network_card/proc/get_network_tag()
@@ -127,11 +101,7 @@ var/global/ntnet_card_uid = 1
 	return ntnet_global.check_banned(identification_id)
 
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
-<<<<<<< HEAD
 /obj/item/computer_hardware/network_card/proc/get_signal(specific_action = 0)
-=======
-/obj/item/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
 		return 0
 

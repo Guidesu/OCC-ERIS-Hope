@@ -2,17 +2,12 @@
 "a" = (
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
 "b" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "c" = (
 /turf/simulated/floor/grass,
-=======
-"c" = (
-/turf/simulated/floor/asteroid/grass,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "d" = (
 /obj/structure/railing/grey{
@@ -51,13 +46,6 @@
 /obj/crawler/crawler_wallbreaker,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"Y" = (
-/obj/random/structures/os,
-/turf/simulated/floor/asteroid/grass,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -83,21 +71,13 @@ a
 "}
 (3,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-Y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 e
 e
 e
 o
-<<<<<<< HEAD
 c
-=======
-Y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
@@ -115,15 +95,9 @@ a
 a
 d
 a
-<<<<<<< HEAD
 b
 e
 b
-=======
-e
-e
-e
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 d
 p
@@ -131,19 +105,11 @@ p
 (6,1,1) = {"
 p
 e
-<<<<<<< HEAD
 b
 e
 h
 e
 b
-=======
-e
-e
-h
-e
-e
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 p
 "}
@@ -161,19 +127,11 @@ p
 (8,1,1) = {"
 p
 e
-<<<<<<< HEAD
 b
 e
 e
 e
 b
-=======
-e
-e
-e
-e
-e
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 p
 "}
@@ -181,15 +139,9 @@ p
 a
 f
 a
-<<<<<<< HEAD
 b
 e
 b
-=======
-e
-e
-e
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 f
 p
@@ -207,21 +159,13 @@ a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-Y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 e
 h
 e
 o
-<<<<<<< HEAD
 c
-=======
-Y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"

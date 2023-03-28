@@ -29,18 +29,12 @@
 
 /obj/machinery/disease2/isolator/attackby(var/obj/O as obj, var/mob/user)
 	if(!istype(O,/obj/item/reagent_containers/syringe)) return
-<<<<<<< HEAD
 	var/obj/item/reagent_containers/syringe/S = O
-=======
-	//var/obj/item/reagent_containers/syringe/S = O
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(sample)
 		to_chat(user, "\The [src] is already loaded.")
 		return
-	else
-		to_chat(user, "\The [src] has a slot for a syringe style you've never seen before.")
-/* Currently bugged. Unable to interact with machine after inserting syringe. Quick fix of not being able to insert anything for now. ~Aeger
+
 	sample = S
 	user.drop_item()
 	S.loc = src
@@ -50,13 +44,12 @@
 	update_icon()
 
 	src.attack_hand(user)
-*/
 
 /obj/machinery/disease2/isolator/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN)) return
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/disease2/isolator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/disease2/isolator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/data[0]

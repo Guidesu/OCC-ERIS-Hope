@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 //This entire file is an occulus edit
-=======
-//This entire file is an occulus edited
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Dummy object for holding items in vehicles.
 //Prevents items from being interacted with.
@@ -14,13 +10,8 @@
 	name = "vehicle"
 	icon = 'icons/obj/vehicles.dmi'
 	layer = MOB_LAYER - 0.1 //It sits below the mob layer.
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
-=======
-	density = 1
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	animate_movement=1
 	light_range = 3
 
@@ -29,20 +20,14 @@
 	buckle_lying = 0
 
 	var/attack_log = null
-<<<<<<< HEAD
 	var/on = FALSE
 	var/health = 0	//do not forget to set health for your vehicle!
 	var/maxhealth = 0
-=======
-	var/on = 0
-	health = 0	//do not forget to set health for your vehicle!
-	maxHealth = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
 	var/open = 0	//Maint panel
 	var/locked = 1
-
+	var/stat = 0
 	var/emagged = 0
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
@@ -98,7 +83,7 @@
 	var/list/usable_qualities = list(QUALITY_PRYING, QUALITY_SCREW_DRIVING)
 	if(open)
 		usable_qualities.Add(QUALITY_WIRE_CUTTING)
-	if(open && health < maxHealth)
+	if(open && health < maxhealth)
 		usable_qualities.Add(QUALITY_WELDING)
 
 
@@ -133,7 +118,7 @@
 
 		if(QUALITY_WELDING)
 			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY,  required_stat = STAT_MEC))
-				health = min(maxHealth, health+10)
+				health = min(maxhealth, health+10)
 				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 				user.visible_message("\red [user] repairs [src]!","\blue You repair [src]!")
 			return
@@ -153,16 +138,14 @@
 			if("brute")
 				health -= I.force * brute_dam_coeff
 		..()
-		healthCheck()
+		healthcheck()
 	else
 		..()
 
 /obj/vehicle/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		health -= Proj.get_structure_damage()
+	health -= Proj.get_structure_damage()
 	..()
-	if (!(Proj.testing))
-		healthCheck()
+	healthcheck()
 
 /obj/vehicle/ex_act(severity)
 	switch(severity)
@@ -172,13 +155,13 @@
 		if(2.0)
 			health -= rand(5,10)*fire_dam_coeff
 			health -= rand(10,20)*brute_dam_coeff
-			healthCheck()
+			healthcheck()
 			return
 		if(3.0)
 			if (prob(50))
 				health -= rand(1,5)*fire_dam_coeff
 				health -= rand(1,5)*brute_dam_coeff
-				healthCheck()
+				healthcheck()
 				return
 	return
 
@@ -254,7 +237,7 @@
 
 	qdel(src)
 
-/obj/vehicle/healthCheck()
+/obj/vehicle/proc/healthcheck()
 	if(health <= 0)
 		explode()
 
@@ -400,5 +383,5 @@
 	src.health -= damage
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
-	spawn(1) healthCheck()
+	spawn(1) healthcheck()
 	return 1

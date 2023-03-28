@@ -109,11 +109,7 @@
 			if(alert("Would you like to save your changes first?",,"Yes","No") == "Yes")
 				save_file(open_file)
 
-<<<<<<< HEAD
 		var/newname = sanitize(input(usr, "Enter file name:", "New File"))
-=======
-		var/newname = sanitize(input(usr, "Enter file name:", "New File") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname)
 			return TRUE
 		var/datum/computer_file/data/F = create_file(newname, "", /datum/computer_file/data/text)
@@ -126,11 +122,7 @@
 
 	if(href_list["PRG_saveasfile"])
 		. = TRUE
-<<<<<<< HEAD
 		var/newname = sanitize(input(usr, "Enter file name:", "Save As"))
-=======
-		var/newname = sanitize(input(usr, "Enter file name:", "Save As") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname)
 			return TRUE
 		var/datum/computer_file/data/F = create_file(newname, loaded_data, /datum/computer_file/data/text)
@@ -143,11 +135,7 @@
 	if(href_list["PRG_savefile"])
 		. = TRUE
 		if(!open_file)
-<<<<<<< HEAD
 			open_file = sanitize(input(usr, "Enter file name:", "Save As"))
-=======
-			open_file = sanitize(input(usr, "Enter file name:", "Save As") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!open_file)
 				return FALSE
 		if(!save_file(open_file))
@@ -158,11 +146,7 @@
 		var/oldtext = html_decode(loaded_data)
 		oldtext = replacetext(oldtext, "\[br\]", "\n")
 
-<<<<<<< HEAD
 		var/newtext = sanitize(replacetext(input(usr, "Editing file '[open_file]'. You may use most tags used in paper formatting:", "Text Editor", oldtext), "\n", "\[br\]"), MAX_TEXTFILE_LENGTH)
-=======
-		var/newtext = sanitize(replacetext(input(usr, "Editing file '[open_file]'. You may use most tags used in paper formatting:", "Text Editor", oldtext) as message|null, "\n", "\[br\]"), MAX_TEXTFILE_LENGTH)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newtext)
 			return
 		loaded_data = newtext
@@ -181,7 +165,7 @@
 /datum/nano_module/program/computer_wordprocessor
 	name = "Word Processor"
 
-/datum/nano_module/program/computer_wordprocessor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_wordprocessor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/datum/computer_file/program/wordprocessor/PRG
 	PRG = program

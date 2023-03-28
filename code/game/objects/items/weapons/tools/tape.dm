@@ -4,20 +4,15 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "taperoll"
 	w_class = ITEM_SIZE_SMALL
-	tool_qualities = list(QUALITY_ADHESIVE = 35, QUALITY_SEALING = 35)
+	tool_qualities = list(QUALITY_ADHESIVE = 30, QUALITY_SEALING = 30)
 	matter = list(MATERIAL_PLASTIC = 3)
 	worksound = WORKSOUND_TAPE
 	use_stock_cost = 0.15
 	max_stock = 100
 	degradation = 0 //its consumable anyway
 	flags = NOBLUDGEON //Its not a weapon
-	preloaded_reagents = list("glue" = 1, "plasticide" = 2)
 	max_upgrades = 0 //These are consumable, so no wasting upgrades on them
-<<<<<<< HEAD
 	rarity_value = 4
-=======
-	price_tag = 15
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tool/tape_roll/web
 	name = "web tape"
@@ -26,26 +21,9 @@
 	use_stock_cost = 0.17
 	max_stock = 30
 	alpha = 150
-<<<<<<< HEAD
 	rarity_value = 2
 	spawn_tags = SPAWN_TAG_JUNKTOOL
 
-=======
-	preloaded_reagents = null
-	price_tag = 3
-
-/obj/item/tool/tape_roll/glue
-	name = "superglue"
-	desc = "A bucket of milky white fluid. Can be used to stick things together, but unlike tape, it cannot be used to seal things."
-	icon = 'icons/obj/tools.dmi'
-	icon_state = "glue"
-	tool_qualities = list(QUALITY_ADHESIVE = 40, QUALITY_CAUTERIZING = 5, QUALITY_BONE_GRAFTING = 15) // Better than duct tape, but can't seal things and is mostly used in crafting - also, it's glue, so it can be used as an extremely shitty way of sealing wounds and repairing bones.
-	matter = list(MATERIAL_PLASTIC = 15)
-	worksound = NO_WORKSOUND
-	preloaded_reagents = list("glue" = 30)
-	price_tag = 12
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/tool/tape_roll/fiber
 	name = "fiber tape"
 	desc = "A roll of flexible adhesive polymer mesh, which sets as strong as welded steel."
@@ -54,7 +32,6 @@
 	matter = list(MATERIAL_PLASTIC = 20)
 	use_stock_cost = 0.10
 	max_stock = 100
-<<<<<<< HEAD
 	spawn_frequency = 8
 	rarity_value = 24
 	spawn_tags = SPAWN_TAG_TOOL_ADVANCED
@@ -70,66 +47,6 @@
 
 /obj/item/tool/tape_roll/attack(mob/living/carbon/human/H, mob/user)
 	if(istype(H))
-=======
-	preloaded_reagents = list("glue" = 15, "plasticide" = 5)
-	price_tag = 30
-
-/obj/item/tool/tape_roll/fiber/medical
-	name = "osseous tape"
-	desc = "A roll of flexible adhesive bioadaptive tape. Used for sealing minor damage to bones."
-	tool_qualities = list(QUALITY_ADHESIVE = 30, QUALITY_SEALING = 30)
-
-/obj/item/tool/tape_roll/repair_goo
-	name = "repair goo"
-	desc = "A wad of sticky gray goo capable of repairing tools and sealing cracks."
-	icon_state = "repair_goo"
-	tool_qualities = list(QUALITY_ADHESIVE = 50, QUALITY_SEALING = 50, QUALITY_CAUTERIZING = 5, QUALITY_BONE_GRAFTING = 65)
-	matter = list(MATERIAL_PLASTIC = 20)
-	use_stock_cost = 0.10
-	max_stock = 100
-	preloaded_reagents = list("glue" = 15, "plasticide" = 5)
-
-/obj/item/tool/tape_roll/flextape
-	name = "flex tape"
-	desc = "To fix a lot of damage! PS: It doesn't repair the Supermatter."
-	icon_state = "flextaperoll"
-	tool_qualities = list(QUALITY_ADHESIVE = 100, QUALITY_SEALING = 100)
-	matter = list(MATERIAL_PLASTIC = 40)
-	use_stock_cost = 0.10
-	preloaded_reagents = list("glue" = 200, "plasticide" = 50) //A bucket
-	max_stock = 100
-	price_tag = 1000 // Mythical
-
-/obj/item/tool/tape_roll/bonegel //Five stacks is too little for how often bones break. Tape-based stock system works just as fine.
-	name = "bone gel"
-	desc = "A gel-like calcium composite used as a surgical substitute for broken or missing bone pieces."
-	icon = 'icons/obj/stack/items.dmi'
-	icon_state = "bonegel"
-	item_state = "bonegel"
-	w_class = ITEM_SIZE_TINY
-	worksound = NO_WORKSOUND
-	matter = list(MATERIAL_PLASTIC = 20)
-	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 3)
-	preloaded_reagents = list("milk" = 5)
-	tool_qualities = list(QUALITY_BONE_GRAFTING = 80)
-	max_stock = 200
-	use_stock_cost = 1
-	price_tag = 20
-
-/obj/item/tool/tape_roll/bonegel/si
-	name = "super bone gel"
-	desc = "An improved gel-like calcium composite formula used as an efficient surgical substitute for broken or missing bone pieces."
-	icon = 'icons/obj/stack/items.dmi'
-	icon_state = "bonegel_SI"
-	matter = list(MATERIAL_PLASTIC = 30, MATERIAL_STEEL = 3)
-	tool_qualities = list(QUALITY_BONE_GRAFTING = 150)
-	max_stock = 500
-	preloaded_reagents = null
-	price_tag = 200
-
-/obj/item/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
-	if(istype(H) && has_quality(QUALITY_ADHESIVE))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(user.targeted_organ == BP_EYES)
 
 			if(!H.organs_by_name[BP_HEAD])
@@ -139,17 +56,10 @@
 				to_chat(user, SPAN_WARNING("\The [H] doesn't have any eyes."))
 				return
 			if(H.glasses)
-<<<<<<< HEAD
 				to_chat(user, SPAN_WARNING("\The [H] is already wearing somethign on their eyes."))
 				return
 			if(H.head && (H.head.body_parts_covered & FACE))
 				to_chat(user, SPAN_WARNING("Remove their [H.head] first."))
-=======
-				to_chat(user, SPAN_WARNING("\The [H] is already wearing something on their eyes."))
-				return
-			if(H.head && (H.head.body_parts_covered & FACE))
-				to_chat(user, SPAN_WARNING("Remove their [H.head] first!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			user.visible_message(SPAN_DANGER("\The [user] begins taping over \the [H]'s eyes!"))
 
@@ -161,7 +71,7 @@
 				return
 
 			user.visible_message(SPAN_DANGER("\The [user] has taped up \the [H]'s eyes!"))
-			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/blindfold/tape(H), slot_glasses)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), slot_glasses)
 
 		else if(user.targeted_organ == BP_MOUTH || user.targeted_organ == BP_HEAD)
 			if(!H.organs_by_name[BP_HEAD])
@@ -198,11 +108,7 @@
 			return ..()
 		return 1
 
-<<<<<<< HEAD
 /obj/item/tool/tape_roll/stick(obj/item/target, mob/user)
-=======
-/obj/item/tool/tape_roll/stick(var/obj/item/target, var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!istype(target) || target.anchored)
 		return
 
@@ -230,11 +136,7 @@
 	spawn_frequency = 0
 	bad_type = /obj/item/ducttape
 
-<<<<<<< HEAD
 	var/obj/item/stuck
-=======
-	var/obj/item/stuck = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/ducttape/New()
 	..()
@@ -248,32 +150,20 @@
 /obj/item/ducttape/examine(mob/user)
 	return stuck.examine(user)
 
-<<<<<<< HEAD
 /obj/item/ducttape/proc/attach(obj/item/W)
-=======
-/obj/item/ducttape/proc/attach(var/obj/item/W)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	stuck = W
 	W.forceMove(src)
 	update_icon()
 	name = W.name + " (taped)"
 
-<<<<<<< HEAD
 /obj/item/ducttape/on_update_icon()
-=======
-/obj/item/ducttape/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!stuck)
 		return
 
 	if (istype(stuck, /obj/item/paper))
 		icon_state = stuck.icon_state
 		cut_overlays()
-<<<<<<< HEAD
 		set_overlays(stuck.overlays + "tape_overlay")
-=======
-		copy_overlays(stuck.overlays + "tape_overlay", TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		var/mutable_appearance/MA = new(stuck)
 		MA.layer = layer-0.1
@@ -293,17 +183,10 @@
 	stuck.forceMove(get_turf(src))
 	user.put_in_hands(stuck)
 	stuck = null
-<<<<<<< HEAD
 	set_overlays(null)
 	qdel(src)
 
 /obj/item/ducttape/afterattack(A, mob/user, flag, params)
-=======
-	cut_overlays()
-	qdel(src)
-
-/obj/item/ducttape/afterattack(var/A, mob/user, flag, params)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return

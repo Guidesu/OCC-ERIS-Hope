@@ -1,8 +1,8 @@
+
 //malfunctioning combat drones
 /mob/living/simple_animal/hostile/retaliate/malf_drone
 	name = "combat drone"
 	desc = "An automated combat drone armed with state of the art weaponry and shielding."
-	icon = 'icons/mob/mobs-monster.dmi'
 	icon_state = "drone3"
 	icon_dead = "drone_dead"
 	ranged = 1
@@ -20,13 +20,9 @@
 	maxHealth = 150
 	speed = 4
 	projectiletype = /obj/item/projectile/beam/drone
-	projectilesound = 'sound/weapons/energy/laser3.ogg'
+	projectilesound = 'sound/weapons/laser3.ogg'
 	destroy_surroundings = 0
-	leather_amount = 0
-	bones_amount = 0
 	var/datum/effect/effect/system/trail/ion/trail
-
-	armor = list(melee = 35, bullet = 10, energy = 20, bomb = 25, bio = 0, rad = 25)
 
 	//the drone randomly switches between these states because it's malfunctioning
 	var/hostile_drone = 0
@@ -58,7 +54,7 @@
 	..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone
-		projectilesound = 'sound/weapons/energy/pulse2.ogg'
+		projectilesound = 'sound/weapons/pulse2.ogg'
 	trail = new /datum/effect/effect/system/trail/ion(src)
 	trail.set_up(src)
 	trail.start()
@@ -94,12 +90,7 @@
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
-		adjustBruteLoss(rand(-20,-30)) //we heal fast
-		adjustFireLoss(rand(-20,-30))
-		if(!rapid)
-			rapid = TRUE
-		if(prob(95) && !ranged)
-			ranged = TRUE
+		health += rand(25,100)
 
 	//spark for no reason
 	if(prob(5))
@@ -138,7 +129,7 @@
 			else
 				src.visible_message("\blue \icon[src] [src] suddenly lies still and quiet.")
 			disabled = rand(150, 600)
-			SSmove_manager.stop_looping(src)
+			walk(src,0)
 
 	if(exploding && prob(20))
 		if(prob(50))
@@ -153,7 +144,7 @@
 		exploding = 1
 		stat = UNCONSCIOUS
 		wander = 1
-		SSmove_manager.stop_looping(src)
+		walk(src,0)
 		spawn(rand(50,150))
 			if(!disabled && exploding)
 				explosion(get_turf(src), 0, 1, 4, 7)
@@ -162,14 +153,10 @@
 
 //ion rifle!
 /mob/living/simple_animal/hostile/retaliate/malf_drone/emp_act(severity)
-	adjustFireLoss(rand(20,30)*severity)
+	health -= rand(3,15) * (severity + 1)
 	disabled = rand(150, 600)
 	hostile_drone = 0
-	SSmove_manager.stop_looping(src)
-	if(rapid)
-		rapid = FALSE
-	if(prob(5) && ranged) //Kinda would suck if they lost their only weapon
-		ranged = FALSE
+	walk(src,0)
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/death()
 	..(null,"suddenly breaks apart.")
@@ -223,11 +210,7 @@
 			step_to(O, get_turf(pick(view(7, src))))
 
 		//also drop dummy circuit boards deconstructable for research (loot)
-<<<<<<< HEAD
 		var/obj/item/electronics/circuitboard/C
-=======
-		var/obj/item/circuitboard/C
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		//spawn 1-4 boards of a random type
 		var/spawnees = 0
@@ -289,12 +272,9 @@
 			C.origin_tech = list(TECH_COVERT = rand(3,6))
 
 	. = ..()
-<<<<<<< HEAD
 
 /obj/item/projectile/beam/drone
 	damage_types = list(BURN = 15)
 
 /obj/item/projectile/beam/pulse/drone
 	damage_types = list(BURN = 10)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -4,15 +4,9 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "sheater0"
 	name = "space heater"
-<<<<<<< HEAD
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the ship on fire."
 	var/obj/item/cell/large/cell
 	var/on = FALSE
-=======
-	desc = "Made by space amish using traditional space techniques, this heater is guaranteed not to set the colony on fire."
-	var/obj/item/cell/large/cell
-	var/on = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/set_temperature = T0C + 50	//K
 	var/heating_power = 40000
 
@@ -31,15 +25,11 @@
 		cell = null
 		update_icon()
 
-<<<<<<< HEAD
 /obj/machinery/space_heater/on_update_icon()
-=======
-/obj/machinery/space_heater/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	icon_state = "sheater[on]"
 	if(panel_open)
-		add_overlay("sheater-open")
+		overlays  += "sheater-open"
 
 /obj/machinery/space_heater/examine(mob/user)
 	..(user)
@@ -65,22 +55,14 @@
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
-<<<<<<< HEAD
 	if(istype(I, /obj/item/cell/large))//Occulus Edit: Fixes replacing cells in space heaters
-=======
-	if(istype(I, /obj/item/cell/large))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(panel_open)
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
 			else
 				// insert cell
-<<<<<<< HEAD
 				var/obj/item/cell/large/C = usr.get_active_hand()//Occulus Edit: fixes replacing cells in space heaters
-=======
-				var/obj/item/cell/large/C = usr.get_active_hand()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(istype(C))
 					user.drop_item()
 					src.cell = C
@@ -163,11 +145,7 @@
 
 			if("cellinstall")
 				if(panel_open && !cell)
-<<<<<<< HEAD
 					var/obj/item/cell/large/C = usr.get_active_hand()//Occulus Edit - Fixing cell replacement
-=======
-					var/obj/item/cell/large/C = usr.get_active_hand()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					if(istype(C))
 						usr.drop_item()
 						src.cell = C

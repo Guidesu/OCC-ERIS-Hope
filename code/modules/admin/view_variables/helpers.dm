@@ -1,4 +1,8 @@
-// IMPORTANT! CLIENT IS A SUBTYPE OF DATUM
+
+// Keep these two together, they *must* be defined on both
+// If /client ever becomes /datum/client or similar, they can be merged
+/client/proc/get_view_variables_header()
+	return "<b>[src]</b>"
 /datum/proc/get_view_variables_header()
 	return "<b>[src]</b>"
 
@@ -27,6 +31,9 @@
 		</font>
 	"}
 
+// Same for these as for get_view_variables_header() above
+/client/proc/get_view_variables_options()
+	return ""
 /datum/proc/get_view_variables_options()
 	return ""
 
@@ -46,8 +53,6 @@
 		<option value='?_src_=vars;drop_everything=\ref[src]'>Drop Everything</option>
 
 		<option value='?_src_=vars;regenerateicons=\ref[src]'>Regenerate Icons</option>
-		<option value='?_src_=vars;perkadd=\ref[src]'>Add Perk</option>
-		<option value='?_src_=vars;perkremove=\ref[src]'>Remove Perk</option>
 		<option value='?_src_=vars;addlanguage=\ref[src]'>Add Language</option>
 		<option value='?_src_=vars;remlanguage=\ref[src]'>Remove Language</option>
 		<option value='?_src_=vars;addorgan=\ref[src]'>Add Organ</option>
@@ -57,8 +62,6 @@
 
 		<option value='?_src_=vars;addverb=\ref[src]'>Add Verb</option>
 		<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>
-		<option value='?_src_=vars;saveTemplate=\ref[src]'>Save as Template</option>
-
 		<option>---</option>
 		<option value='?_src_=vars;gib=\ref[src]'>Gib</option>
 	"}
@@ -84,8 +87,6 @@
 	. = ..()
 	if(reagents)
 		. += "<option value='?_src_=vars;addreagent=\ref[src]'>Add reagent</option>"
-	. += "<option value='?_src_=vars;saveCopy=\ref[src]'>Save as Copy</option>"
-
 
 
 /atom/movable/get_view_variables_options()

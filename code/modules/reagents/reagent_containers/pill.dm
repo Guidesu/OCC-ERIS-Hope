@@ -12,10 +12,7 @@
 	slot_flags = SLOT_EARS
 	volume = 60
 	matter = list(MATERIAL_BIOMATTER = 1)
-<<<<<<< HEAD
 	bad_type = /obj/item/reagent_containers/pill
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/pill/Initialize()
 	. = ..()
@@ -72,11 +69,7 @@
 /obj/item/reagent_containers/pill/tox
 	name = "Toxins pill"
 	desc = "Highly toxic."
-<<<<<<< HEAD
 	icon_state = "pill5"
-=======
-	icon_state = "pill12"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("toxin" = 50)
 
 
@@ -103,29 +96,20 @@
 /obj/item/reagent_containers/pill/kelotane
 	name = "Kelotane pill"
 	desc = "Used to treat burns."
-<<<<<<< HEAD
 	icon_state = "pill11"
-=======
-	icon_state = "pill7"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("kelotane" = 15)
 
 
 /obj/item/reagent_containers/pill/paracetamol
 	name = "Paracetamol pill"
 	desc = "Tylenol! A painkiller for the ages. Chewables!"
-<<<<<<< HEAD
 	icon_state = "pill8"
-=======
-	icon_state = "pill9"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("paracetamol" = 15)
 
 
 /obj/item/reagent_containers/pill/tramadol
 	name = "Tramadol pill"
 	desc = "A simple painkiller."
-<<<<<<< HEAD
 	icon_state = "pill8"
 	preloaded_reagents = list("tramadol" = 15)
 
@@ -134,168 +118,92 @@
 	desc = "The heavy artillery of painkillers."
 	icon_state = "pill8"
 	preloaded_reagents = list("oxycodone" = 10)
-=======
-	icon_state = "pill10"
-	preloaded_reagents = list("tramadol" = 15)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/reagent_containers/pill/methylphenidate
 	name = "Methylphenidate pill"
 	desc = "Improves the ability to concentrate."
-<<<<<<< HEAD
 	icon_state = "pill8"
-=======
-	icon_state = "pill13"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("methylphenidate" = 15)
 
 
 /obj/item/reagent_containers/pill/citalopram
 	name = "Citalopram pill"
 	desc = "Mild anti-depressant."
-<<<<<<< HEAD
 	icon_state = "pill8"
-=======
-	icon_state = "pill3"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("citalopram" = 15)
 
 
 /obj/item/reagent_containers/pill/inaprovaline
 	name = "Inaprovaline pill"
 	desc = "Used to stabilize patients."
-<<<<<<< HEAD
 	icon_state = "pill20"
-=======
-	icon_state = "pill3"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("inaprovaline" = 30)
 
 
 /obj/item/reagent_containers/pill/dexalin
 	name = "Dexalin pill"
 	desc = "Used to treat oxygen deprivation."
-<<<<<<< HEAD
 	icon_state = "pill16"
-=======
-	icon_state = "pill8"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("dexalin" = 15)
 
 
 /obj/item/reagent_containers/pill/dexalin_plus
 	name = "Dexalin Plus pill"
 	desc = "Used to treat extreme oxygen deprivation."
-<<<<<<< HEAD
 	icon_state = "pill8"
-=======
-	icon_state = "pill16"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("dexalinp" = 15)
 
 
 /obj/item/reagent_containers/pill/dermaline
 	name = "Dermaline pill"
 	desc = "Used to treat burn wounds."
-<<<<<<< HEAD
 	icon_state = "pill12"
-=======
-	icon_state = "pill15"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("dermaline" = 15)
 
 
 /obj/item/reagent_containers/pill/dylovene
 	name = "Dylovene pill"
 	desc = "A broad-spectrum anti-toxin."
-<<<<<<< HEAD
 	icon_state = "pill13"
-=======
-	icon_state = "pill11"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("anti_toxin" = 15)
 
-/obj/item/reagent_containers/pill/carthatoline
-	name = "Carthatoline pill"
-	desc = "A powerful anti-toxin and liver restorer."
-	icon_state = "pill17"
-	preloaded_reagents = list("carthatoline" = 15)
 
 /obj/item/reagent_containers/pill/inaprovaline
 	name = "Inaprovaline pill"
 	desc = "Used to stabilize patients."
-<<<<<<< HEAD
 	icon_state = "pill20"
-=======
-	icon_state = "pill3"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("inaprovaline" = 30)
 
 
 /obj/item/reagent_containers/pill/bicaridine
 	name = "Bicaridine pill"
 	desc = "Used to treat physical injuries."
-<<<<<<< HEAD
 	icon_state = "pill18"
-=======
-	icon_state = "pill4"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("bicaridine" = 20)
 
 
 /obj/item/reagent_containers/pill/happy
 	name = "Happy pill"
 	desc = "Happy happy joy joy!"
-<<<<<<< HEAD
 	icon_state = "pill18"
-=======
-	icon_state = "pill8" // Literally Joy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("space_drugs" = 15, "sugar" = 15)
 
 
 /obj/item/reagent_containers/pill/zoom
 	name = "Zoom pill"
 	desc = "Zoooom!"
-<<<<<<< HEAD
 	icon_state = "pill18"
-=======
-	icon_state = "pill20"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("impedrezene" = 10, "synaptizine" = 5, "hyperzine" = 5)
 
 
 /obj/item/reagent_containers/pill/spaceacillin
 	name = "Spaceacillin pill"
 	desc = "Contains antiviral agents."
-	icon_state = "pill18"
-	preloaded_reagents = list("spaceacillin" = 15)
-
-
-/obj/item/reagent_containers/pill/prosurgeon
-	name = "ProSurgeon pill"
-	desc = "Contains a stimulating drug that is used to reduce tremor to minimum."
 	icon_state = "pill19"
-<<<<<<< HEAD
 	preloaded_reagents = list("spaceacillin" = 15)
-=======
-	preloaded_reagents = list("prosurgeon" = 10)
 
-/obj/item/reagent_containers/pill/bloodregen
-	name = "Ferritin-Hemosiderin pill"
-	desc = "A pill of iron supplements meant to help the natural restoration of blood."
-	icon_state = "pill5"
-	preloaded_reagents = list("iron" = 10, "protein" = 10) // Sugar does nothing to restore blood, but Protein does!
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/obj/item/reagent_containers/pill/suppressital
-	name = "Njoy red pill"
-	desc = "Prevents some breakdowns."
-	icon_state = "pill_njoy_red"
-	preloaded_reagents = list("suppressital" = 15)
-
-<<<<<<< HEAD
 /obj/item/reagent_containers/pill/prosurgeon
 	name = "ProSurgeon pill"
 	desc = "Contains a stimulating drug that is used to reduce tremor to minimum."
@@ -307,15 +215,6 @@
 	desc = "Contains a powerful medicine that is used to treat severe physical trauma."
 	icon_state = "pill3"
 	preloaded_reagents = list("meralyne" = 10)
-=======
-/obj/item/reagent_containers/pill/suppressital/blue
-	name = "Njoy blue pill"
-	icon_state = "pill_njoy_blue"
-
-/obj/item/reagent_containers/pill/suppressital/green
-	name = "Njoy green pill"
-	icon_state = "pill_njoy_green"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Pills with random content
 /obj/item/reagent_containers/pill/floorpill
@@ -324,20 +223,6 @@
 	rarity_value = 4
 	spawn_tags = SPAWN_TAG_JUNK
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/pill/floorpill/self_feed_message(var/mob/user)
-	to_chat(user, SPAN_NOTICE("You swallow \the [src]."))
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.learnt_tasks.attempt_add_task_mastery(/datum/task_master/task/dr_floor, "DR_FLOOR", skill_gained = 1, learner = H)
-
-/obj/item/reagent_containers/pill/floorpill/wallet
-	name = "random pill"
-	desc = "Dare you?"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/pill/floorpill/Initialize()
 	. = ..()
 
@@ -349,7 +234,6 @@
 					list("paracetamol" = 15) = 2,\
 					list("dexalin" = 15) = 2,\
 					list("dexalinp" = 15) = 2,\
-					list("biomatter" = 15) = 2,\
 					list("impedrezene" = 10, "synaptizine" = 5, "hyperzine" = 5, "citalopram" = 15) = 1,\
 					list("space_drugs" = 15, "sugar" = 15) = 1,\
 					list("dermaline" = 15, "citalopram" = 15) = 1,\
@@ -360,14 +244,9 @@
 					list("potassium_chlorophoride" = 15) = 1,\
 					list("mindbreaker" = 15, "synaptizine" = 5) = 1,\
 					list("plantbgone" = 15, "cleaner" = 15) = 1,\
-					list("stoxin" = 15, "chloralhydrate" = 15) = 1,\
 					list("coolant" = 50) = 1,\
 					list("fuel" = 50) = 1,\
-					list("plasticide" = 15) = 1,\
-					list("oil" = 15) = 1,\
-					list("amatoxin" = 15) = 1,\
 					list("water" = 15) = 1,\
-					list("sugar" = 30) = 1,\
 					list("sterilizine" = 50) = 1,\
 					list("tramadol" = 15, "sugar" = 15) = 1,\
 					list("thermite" = 15) = 1,\
@@ -379,7 +258,6 @@
 					list("virusfood" = 15) = 1,\
 					list("leporazine" = 15) = 1,\
 					list("anti_toxin" = 15, "zombiepowder" = 10) = 0.5,\
-					list("chemweapon1" = 15, "zombiepowder" = 10) = 0.1,\
 					list("dexalinp" = 35, "cyanide" = 15) = 0.5,\
 					list("toxin" = 40, "cyanide" = 10) = 0.5))
 

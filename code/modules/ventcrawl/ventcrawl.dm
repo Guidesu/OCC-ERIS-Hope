@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 // Entry-points that can be used to vent-crawl should be implemented like these:
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 var/list/ventcrawl_machinery = list(
 	/obj/machinery/atmospherics/unary/vent_scrubber,
 	/obj/machinery/atmospherics/unary/vent_pump
@@ -59,7 +56,10 @@ var/list/ventcrawl_machinery = list(
 	if(is_type_in_list(carried_item, can_enter_vent_with))
 		return !get_inventory_slot(carried_item)
 
-
+/mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
+	if(carried_item in stomach_contents)
+		return 1
+	return ..()
 
 /mob/living/carbon/human/is_allowed_vent_crawl_item(var/obj/item/carried_item)
 	if(carried_item in list(l_hand,r_hand))

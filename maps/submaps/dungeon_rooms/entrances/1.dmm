@@ -9,7 +9,6 @@
 "c" = (
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-<<<<<<< HEAD
 "d" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
@@ -21,11 +20,6 @@
 /obj/machinery/light/floor/built,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
-"e" = (
-/turf/simulated/floor/bluegrid,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "g" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
@@ -75,19 +69,11 @@ a
 (4,1,1) = {"
 a
 c
-<<<<<<< HEAD
 d
 c
 c
 c
 d
-=======
-c
-c
-c
-c
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -149,19 +135,11 @@ a
 (10,1,1) = {"
 a
 c
-<<<<<<< HEAD
 f
 c
 c
 c
 f
-=======
-c
-c
-c
-c
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}

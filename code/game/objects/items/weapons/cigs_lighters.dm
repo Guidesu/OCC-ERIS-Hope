@@ -15,10 +15,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 //For anything that can light stuff on fire
 /obj/item/flame
-<<<<<<< HEAD
-=======
-	var/lit = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	heat = 1670
 	bad_type = /obj/item/flame
 	var/lit = 0
@@ -56,11 +52,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
 	preloaded_reagents = list("sulfur" = 3, "potassium" = 3, "hydrazine" = 3, "carbon" = 5)
-<<<<<<< HEAD
 	var/burnt = 0
 	var/smoketime = 5
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/flame/match/Process()
 	if(isliving(loc))
@@ -90,11 +83,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	lit = 0
 	burnt = 1
 	tool_qualities = list()
-<<<<<<< HEAD
 	damtype = "brute"
-=======
-	damtype = BURN
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "match_burnt"
 	item_state = "cigoff"
 	name = "burnt match"
@@ -115,21 +104,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/type_butt
 	var/chem_volume = 0
 	var/smoketime = 0
-<<<<<<< HEAD
-=======
-	var/last_drag = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/quality_multiplier = 1 // Used for sanity and insight gain
 	var/matchmes = "USER lights NAME with FLAME"
 	var/lightermes = "USER lights NAME with FLAME"
 	var/zippomes = "USER lights NAME with FLAME"
 	var/weldermes = "USER lights NAME with FLAME"
 	var/ignitermes = "USER lights NAME with FLAME"
-<<<<<<< HEAD
 //	preloaded_reagents = list("nicotine" = 5)
-=======
-//	preloaded_reagents = list("nicotineplus" = 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/mask/smokable/Initialize()
 	reagent_flags |= NO_REACT // so it doesn't react until you light it
@@ -141,16 +122,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/turf/location = get_turf(src)
 	smoketime--
 	if(smoketime < 0)
-<<<<<<< HEAD
-=======
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(!H.stat)
-				for(var/obj/item/material/ashtray/A in view(1, loc))
-					if(A.contents.len < A.max_butts)
-						A.attackby(src, loc)
-						return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		die()
 		return
 	if(location)
@@ -169,13 +140,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/proc/light(var/flavor_text = "[usr] lights the [name].")
 	if(!src.lit)
 		src.lit = 1
-<<<<<<< HEAD
 		damtype = "fire"
 		if(reagents.get_reagent_amount("phoron")) // the phoron explodes when exposed to fire
-=======
-		damtype = BURN
-		if(reagents.get_reagent_amount("plasma")) // the plasma explodes when exposed to fire
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/datum/effect/effect/system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("phoron") / 2.5, 1), get_turf(src), 0, 0)
 			e.start()
@@ -207,11 +173,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/M = loc
 			if (!nomessage)
 				to_chat(M, SPAN_NOTICE("Your [name] goes out."))
-<<<<<<< HEAD
 			M.remove_from_mob(src) //un-equip it so the overlays can update
-=======
-			M.remove_from_mob(src) //un-equip it so the over-lays can update
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			M.update_inv_wear_mask(0)
 			M.update_inv_l_hand(0)
 			M.update_inv_r_hand(1)
@@ -261,214 +223,38 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		return ..()
 
-
-
-////////////////
-// CIGARETTES //
-////////////////
 /obj/item/clothing/mask/smokable/cigarette
-	name = "\improper Roach Eyes cigarette"
+	name = "cigarette"
 	desc = "A roll of tobacco and nicotine."
-	icon_state = "roachoff"
+	icon_state = "cigoff"
 	throw_speed = 0.5
 	item_state = "cigoff"
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
-<<<<<<< HEAD
 	icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
 	icon_off = "cigoff"
 	type_butt = /obj/item/trash/cigbutt
 	chem_volume = 15
 	smoketime = 300
 	preloaded_reagents = list("nicotine" = 6)
-=======
-	icon_on = "roachon"  //Note - these are in masks.dmi not in cigarette.dmi
-	icon_off = "roachoff"
-	type_butt = /obj/item/trash/cigbutt
-	chem_volume = 20
-	smoketime = 360
-	preloaded_reagents = list("nicotine" = 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
 	lightermes = "<span class='notice'>USER manages to light their NAME with FLAME.</span>"
 	zippomes = "<span class='rose'>With a flick of their wrist, USER lights their NAME with their FLAME.</span>"
 	weldermes = "<span class='notice'>USER casually lights the NAME with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
 
-<<<<<<< HEAD
 /obj/item/clothing/mask/smokable/cigarette/light(flavor_text)
 	. = ..()
 	tool_qualities = list(QUALITY_CAUTERIZING = 10)
-=======
-/obj/item/clothing/mask/smokable/cigarette/ishimura
-	name = "\improper Ishimura Special cigarette"
-	icon_state = "ishimuraoff"
-	icon_on = "ishimuraon"
-	icon_off = "ishimuraoff"
-	type_butt = /obj/item/trash/cigbutt/ishimura
-	preloaded_reagents = list("nicotine" = 5, "ishispec" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/os
-	name = "\improper GP produced cigarette"
-	desc = "A inhouse made cigarette by GP."
-	icon_state = "cigoff"
-	icon_on = "cigon"
-	icon_off = "cigoff"
-	type_butt = /obj/item/trash/cigbutt/os
-	preloaded_reagents = list("nicotine" = 5)
-
-
-/obj/item/clothing/mask/smokable/cigarette/tannhauser
-	name = "\improper Tannhauser Gate cigarette"
-	icon_state = "tannhauseroff"
-	icon_on = "tannhauseron"
-	icon_off = "tannhauseroff"
-	type_butt = /obj/item/trash/cigbutt/tannhauser
-	preloaded_reagents = list("nicotine" = 5, "sodiumchloride" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/brouzouf
-	name = "\improper Brouzouf Message cigarette"
-	icon_state = "brouzoufoff"
-	icon_on = "brouzoufon"
-	icon_off = "brouzoufoff"
-	type_butt = /obj/item/trash/cigbutt/brouzouf
-	preloaded_reagents = list("nicotine" = 5, "tea" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/frozen
-	name = "\improper Frozen Nova cigarette"
-	icon_state = "frozenoff"
-	icon_on = "frozenon"
-	icon_off = "frozenoff"
-	type_butt = /obj/item/trash/cigbutt/frozen
-	preloaded_reagents = list("nicotine" = 5, "coffee" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/shodan
-	name = "\improper Shodans cigarette"
-	icon_state = "shodanoff"
-	icon_on = "shodanon"
-	icon_off = "shodanoff"
-	type_butt = /obj/item/trash/cigbutt/shodan
-	preloaded_reagents = list("nicotine" = 5, "greentea" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/toha
-	name = "\improper TOHA Heavy Industries cigarette"
-	icon_state = "tohaoff"
-	icon_on = "tohaon"
-	icon_off = "tohaoff"
-	type_butt = /obj/item/trash/cigbutt/toha
-	preloaded_reagents = list("nicotine" = 5, "honey" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/fortress
-	name = "\improper Fortress Classic cigarette"
-	icon_state = "cigoff"
-	icon_on = "cigon"
-	icon_off = "cigoff"
-	type_butt = /obj/item/trash/cigbutt/fortress
-	preloaded_reagents = list("nicotine" = 5, "tonic" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/fortressred
-	name = "\improper Fortress RED light cigarette"
-	icon_state = "cigoff"
-	icon_on = "cigon"
-	icon_off = "cigoff"
-	type_butt = /obj/item/trash/cigbutt/fortressred
-	preloaded_reagents = list("nicotine" = 2, "cherryjelly" = 8)
-
-/obj/item/clothing/mask/smokable/cigarette/fortressblue
-	name = "\improper Fortress BLU menthol cigarette"
-	icon_state = "cigoff"
-	icon_on = "cigon"
-	icon_off = "cigoff"
-	type_butt = /obj/item/trash/cigbutt/fortressblue
-	preloaded_reagents = list("nicotine" = 5,  "mint" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/khi
-	name = "\improper Kitsuhana Singularity cigarette"
-	icon_state = "khioff"
-	icon_on = "khion"
-	icon_off = "khioff"
-	type_butt = /obj/item/trash/cigbutt/khi
-	preloaded_reagents = list("mindbreaker" = 5, "serotrotium" = 5, "impedrezene" = 5, "space_drugs" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/comred
-	name = "\improper ComRed light cigarette"
-	type_butt = /obj/item/trash/cigbutt/comred
-	icon_state = "comredoff"
-	icon_on = "comredon"
-	icon_off = "comredoff"
-	preloaded_reagents = list("nicotineplus" = 5, "vodka" = 10)
-
-/obj/item/clothing/mask/smokable/cigarette/lonestar
-	name = "\improper LoneStar light cigarette"
-	type_butt = /obj/item/trash/cigbutt/lonestar
-	icon_state = "lonestaroff"
-	icon_on = "lonestaron"
-	icon_off = "lonestaroff"
-	preloaded_reagents = list("nicotine" = 5, "cafe_latte" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithoff"
-	icon_on = "faithon"
-	icon_off = "faithoff"
-	type_butt = /obj/item/trash/cigbutt/faith
-	preloaded_reagents = list("nicotine" = 5, "grapejuice" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith/blue
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithblueoff"
-	icon_on = "faithblueon"
-	icon_off = "faithblueoff"
-	type_butt = /obj/item/trash/cigbutt/faith/blue
-	preloaded_reagents = list("nicotine" = 5, "mint" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith/red
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithredoff"
-	icon_on = "faithredon"
-	icon_off = "faithredoff"
-	type_butt = /obj/item/trash/cigbutt/faith/red
-	preloaded_reagents = list("nicotine" = 5, "cherryjelly" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith/green
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithgreenoff"
-	icon_on = "faithgreenon"
-	icon_off = "faithgreenoff"
-	type_butt = /obj/item/trash/cigbutt/faith/green
-	preloaded_reagents = list("nicotine" = 5, "limejuice" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith/yellow
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithyellowoff"
-	icon_on = "faithyellowon"
-	icon_off = "faithyellowoff"
-	type_butt = /obj/item/trash/cigbutt/faith/yellow
-	preloaded_reagents = list("nicotine" = 5, "lemonjuice" = 5)
-
-/obj/item/clothing/mask/smokable/cigarette/faith/orange
-	name = "\improper TempleOS light cigarette"
-	icon_state = "faithorangeoff"
-	icon_on = "faithorangeon"
-	icon_off = "faithorangeoff"
-	type_butt = /obj/item/trash/cigbutt/faith/orange
-	preloaded_reagents = list("nicotine" = 5, "orangejuice" = 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-<<<<<<< HEAD
 	if(istype(W, /obj/item/melee/energy/sword))
 		var/obj/item/melee/energy/sword/S = W
-=======
-	if(istype(W, /obj/item/melee/energy))
-		var/obj/item/melee/energy/S = W
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(S.active)
 			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
-			playsound(loc, 'sound/weapons/blade1.ogg', 50, 1)
 
 	return
 
@@ -486,14 +272,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, SPAN_NOTICE("[src] is full."))
 
-/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/living/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user as mob)
 	if(lit == 1)
 		user.visible_message(SPAN_NOTICE("[user] calmly drops and treads on the lit [src], putting it out instantly."))
-		add_fingerprint(user)//Still adding are prints to touch
 		die(1)
 	return ..()
 
-<<<<<<< HEAD
 
 /obj/item/clothing/mask/smokable/cigarette/dromedaryco
 	desc = "A roll of tobacco and nicotine. They are just cancer sticks."
@@ -507,26 +291,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A roll of tobacco and nicotine. Gives the feeling of fight."
 	preloaded_reagents = list("nicotine" = 6, "adrenaline" = 3)
 
-=======
-/obj/item/clothing/mask/smokable/cigarette/on_slotmove(mob/user)
-	. = ..()
-	if(get_equip_slot() == SLOT_MASK)
-		add_fingerprint(user) //We infuse are prints when we smoke
-
-/obj/item/clothing/mask/smokable/cigarette/attack(mob/living/carbon/human/H, mob/user, def_zone)
-	if(lit && H == user && istype(H))
-		var/obj/item/blocked = H.check_mouth_coverage()
-		if(blocked)
-			to_chat(H, SPAN_WARNING("\The [blocked] is in the way!"))
-			return 1
-		if(last_drag <= world.time - 30) //No chainsmoking.
-			last_drag = world.time
-			H.visible_message("<span class='notice'>[H.name] takes a drag of [H.identifying_gender == "male" ? "his" : H.identifying_gender == "female" ? "her" : "their"] [name].</span>")
-			playsound(H, 'sound/items/cigs_lighters/inhale.ogg', 50, 0, -1)
-			reagents.trans_to_mob(H, (rand(10,20)/10), CHEM_INGEST)
-			return 1
-	return ..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 ////////////
 // CIGARS //
@@ -540,15 +304,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = 0.5
 	item_state = "cigaroff"
-<<<<<<< HEAD
 	smoketime = 700
 	chem_volume = 20
 	preloaded_reagents = list("nicotine" = 14)
-=======
-	smoketime = 800
-	chem_volume = 25
-	preloaded_reagents = list("nicotineplus" = 15)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	quality_multiplier = 2
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
 	lightermes = "<span class='notice'>USER manages to offend their NAME by lighting it with FLAME.</span>"
@@ -562,20 +320,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigaroff"
 	icon_on = "cigaron"
 	icon_off = "cigaroff"
-<<<<<<< HEAD
-=======
-	smoketime = 1000
-	chem_volume = 45
-	preloaded_reagents = list("nicotineplus" = 20, "coffee" = 10)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/havana
-	name = "premium havanian cigar"
+	name = "premium Havanian cigar"
 	desc = "A cigar fit for only the best of the best."
 	icon_state = "cigaroff"
 	icon_on = "cigaron"
 	icon_off = "cigaroff"
-<<<<<<< HEAD
 	smoketime = 1000
 	chem_volume = 30
 	preloaded_reagents = list("nicotine" = 20)
@@ -584,114 +335,23 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/trash/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
-=======
-	smoketime = 1100
-	chem_volume = 35
-	preloaded_reagents = list("nicotineplus" = 20)
-	quality_multiplier = 3
-
-/obj/item/trash/cigbutt
-	name = "\improper Roach Eyes cigarette butt"
-	desc = "A decayed cigarette butt."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/inventory/face/icon.dmi'
-	icon_state = "roachbutt"
+	icon_state = "cigbutt"
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	matter = list(MATERIAL_BIOMATTER = 1)
 	throwforce = 1
 	rarity_value = 3.5
 
-<<<<<<< HEAD
-=======
-/obj/item/trash/cigbutt/os
-	name = "\improper GP cigarette butt"
-	icon_state = "cigbutt"
-
-/obj/item/trash/cigbutt/ishimura
-	name = "\improper Ishimura Special cigarette butt"
-	icon_state = "ishimurabutt"
-
-/obj/item/trash/cigbutt/tannhauser
-	name = "\improper Tannhauser Gate cigarette butt"
-	icon_state = "tannhauserbutt"
-
-/obj/item/trash/cigbutt/brouzouf
-	name = "\improper Brouzouf Message cigarette butt"
-	icon_state = "brouzoufbutt"
-
-/obj/item/trash/cigbutt/shodan
-	name = "\improper Shodans cigarette butt"
-	icon_state = "shodanbutt"
-
-/obj/item/trash/cigbutt/toha
-	name = "\improper TOHA Heavy Industries cigarette butt"
-	icon_state = "tohabutt"
-
-/obj/item/trash/cigbutt/frozen
-	name = "\improper Frozen Nova cigarette butt"
-	icon_state = "frozenbutt"
-
-/obj/item/trash/cigbutt/fortress
-	name = "\improper Fortress Classic cigarette butt"
-	icon_state = "cigbutt"
-
-/obj/item/trash/cigbutt/fortressred
-	name = "\improper Fortress RED menthols cigarette butt"
-	icon_state = "cigbutt"
-
-/obj/item/trash/cigbutt/fortressblue
-	name = "\improper Fortress BLU light cigarette butt"
-	icon_state = "cigbutt"
-
-/obj/item/trash/cigbutt/khi
-	name = "\improper KHI cigarette butt"
-	icon_state = "khibutt"
-
-/obj/item/trash/cigbutt/comred
-	name = "\improper ComRed cigarette butt"
-	icon_state = "comredbutt"
-
-/obj/item/trash/cigbutt/lonestar
-	name = "\improper LoneStar cigarette butt"
-	icon_state = "comredbutt"
-
-/obj/item/trash/cigbutt/faith
-	name = "\improper TempleOS cigarette butt"
-	icon_state = "faithbutt"
-
-/obj/item/trash/cigbutt/faith/blue
-	icon_state = "faithbluebutt"
-
-/obj/item/trash/cigbutt/faith/red
-	icon_state = "faithredbutt"
-
-/obj/item/trash/cigbutt/faith/yellow
-	icon_state = "faithyellowbutt"
-
-/obj/item/trash/cigbutt/faith/orange
-	icon_state = "faithorangebutt"
-
-/obj/item/trash/cigbutt/faith/green
-	icon_state = "faithgreenbutt"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/trash/cigbutt/New()
 	..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
+	transform = turn(transform,rand(0,360))
 
-<<<<<<< HEAD
-=======
-/obj/item/trash/cigbutt/add_initial_transforms()
-	. = ..()
-
-	add_new_transformation(/datum/transform_type/random_rotation)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/trash/cigbutt/cigarbutt
 	name = "cigar butt"
-	desc = "A decayed cigar butt."
+	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"
 
 /////////////////
@@ -699,21 +359,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /////////////////
 /obj/item/clothing/mask/smokable/pipe
 	name = "smoking pipe"
-	desc = "A meerschaum pipe made for fine smoking."
+	desc = "A pipe, for smoking. Probably made of meershaum or something."
 	icon_state = "pipeoff"
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
 	smoketime = 0
 	chem_volume = 50
-<<<<<<< HEAD
 	preloaded_reagents = list("nicotine" = 1)
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
-=======
-	w_class = ITEM_SIZE_SMALL
-	preloaded_reagents = list("nicotine" = 1)
-	matchmes = "<span class='notice'>USER lights their NAME with their FLAME in a very classy move.</span>"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	lightermes = "<span class='notice'>USER manages to light their NAME with FLAME.</span>"
 	zippomes = "<span class='rose'>With much care, USER lights their NAME with their FLAME.</span>"
 	weldermes = "<span class='notice'>USER recklessly lights NAME with FLAME.</span>"
@@ -727,7 +381,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/pipe/light(var/flavor_text = "[usr] lights the [name].")
 	if(!src.lit && src.smoketime)
 		src.lit = 1
-		damtype = BURN
+		damtype = "fire"
 		icon_state = icon_on
 		item_state = icon_on
 		var/turf/T = get_turf(src)
@@ -785,230 +439,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/pipe/cobpipe
 	name = "corn cob pipe"
-	desc = "A backwoodsmen pipe, kept popular in the modern age and beyond by space hipsters."
+	desc = "A nicotine delivery system popularized by folksy backwoodsmen, kept popular in the modern age and beyond by space hipsters."
 	icon_state = "cobpipeoff"
 	item_state = "cobpipeoff"
 	icon_on = "cobpipeon"  //Note - these are in masks.dmi
 	icon_off = "cobpipeoff"
 	chem_volume = 35
 	quality_multiplier = 1 // Not nearly as fancy as the other one
-<<<<<<< HEAD
-=======
-
-/obj/item/clothing/mask/smokable/pipe/glass
-	name = "glass pipe"
-	desc = "A glass pipe, a more technologically advanced version of the standard pipe using similar tech to the vape mask. Expensive, but one of the cleanest ways to get a smoke, just a shame it \
-	looks like a crack pipe. A small device on it lets it always emit smoke, even when empty."
-	icon_state = "glass_pipe"
-	item_state = "glass_pipe"
-	icon_on = "glass_pipe"  //Note - these are in masks.dmi
-	icon_off = "glass_pipe"
-	quality_multiplier = 3 //Advanced tech offering a cleaner smoke.
-
-////////
-//VAPE//
-////////
-/obj/item/clothing/mask/vape
-	name = "\improper Vapour mask"
-	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""
-	icon_state = "vape_mask"
-	item_state = "vape_mask"
-	w_class = ITEM_SIZE_TINY
-	var/chem_volume = 50
-	var/vapetime = 0
-	var/screw = 0
-	var/emagged = 0
-	var/waste = 0.8
-	var/transfer_amount = 0.2
-	var/voltage = 0
-	var/quality_multiplier = 1
-
-	var/charge_per_use = 0.2
-	cell = null
-	suitable_cell = /obj/item/cell/small
-
-/obj/item/clothing/mask/vape/Initialize(mapload)
-	. = ..()
-	create_reagents(chem_volume, NO_REACT)
-	reagents.add_reagent("nicotine", 20)
-	reagents.add_reagent(pick(list("banana","berryjuice","grapejuice","lemonjuice","limejuice","orangejuice","watermelonjuice")), 10)
-	if(!cell && suitable_cell)
-		cell = new suitable_cell(src)
-
-/obj/item/clothing/mask/vape/get_cell()
-	return cell
-
-/obj/item/clothing/mask/vape/handle_atom_del(atom/A)
-	..()
-	if(A == cell)
-		cell = null
-		update_icon()
-
-/obj/item/clothing/mask/vape/MouseDrop(over_object)
-	if(screw)
-		if((loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
-			cell = null
-
-/obj/item/clothing/mask/vape/attackby(obj/item/O, mob/user, params)
-	if(istype(O, suitable_cell) && !cell && insert_item(O, user))
-		if(screw)
-			cell = O
-		else
-			to_chat(user, SPAN_WARNING("You need to close the cap of [src]."))
-	if(QUALITY_SCREW_DRIVING in O.tool_qualities)
-		if(!screw)
-			if(O.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_MEC))
-				screw = TRUE
-				to_chat(user, SPAN_NOTICE("You open the cap on [src]."))
-				reagent_flags |= OPENCONTAINER
-				icon_state = "vape_mask_open"
-				item_state = "vape_mask_open"
-				update_icon()
-		else
-			if(O.use_tool(user, src, WORKTIME_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_MEC))
-				screw = FALSE
-				to_chat(user, SPAN_NOTICE("You close the cap on [src]."))
-				reagent_flags &= ~(OPENCONTAINER)
-				icon_state = "vape_mask"
-				item_state = "vape_mask"
-				update_icon()
-
-	if(istype(O, /obj/item/tool/multitool))
-		if(screw && (!emagged))
-			if(!voltage)
-				transfer_amount = transfer_amount*2
-				voltage = 1
-				to_chat(user, SPAN_NOTICE("You increase the voltage of [src]."))
-			else
-				transfer_amount = transfer_amount/2
-				voltage = 0
-				to_chat(user, SPAN_NOTICE("You decrease the voltage of [src]."))
-
-		if(screw && (emagged))
-			to_chat(user, SPAN_WARNING("[src] can't be modified!"))
-		else
-			..()
-
-/obj/item/clothing/mask/vape/emag_act(var/remaining_charges, mob/user)
-	if(screw)
-		if(!emagged)
-			emagged = 1
-			to_chat(user, SPAN_WARNING("You maximize the voltage of [src]."))
-			var/datum/effect/effect/system/spark_spread/sp = new /datum/effect/effect/system/spark_spread //for effect
-			sp.set_up(5, 1, src)
-			sp.start()
-		else
-			to_chat(user, SPAN_WARNING("[src] is already emagged!"))
-	else
-		to_chat(user, SPAN_WARNING("You need to open the cap to do that!"))
-
-/obj/item/clothing/mask/vape/attack_self(mob/user)
-	if(screw)
-		if(reagents.total_volume > 0)
-			to_chat(user, SPAN_NOTICE("You empty [src] of all reagents."))
-			reagents.clear_reagents()
-
-/obj/item/clothing/mask/vape/equipped(mob/user, slot)
-	. = ..()
-	switch(slot)
-		if(slot_wear_mask)
-			if(!screw)
-				to_chat(user, SPAN_NOTICE("You start puffing on the vape."))
-				reagent_flags &= ~(NO_REACT)
-				update_icon()
-				START_PROCESSING(SSobj, src)
-			else
-				to_chat(user, SPAN_WARNING("You need to close the cap first!"))
-		if(slot_l_hand, slot_r_hand)
-			reagent_flags |= NO_REACT
-			update_icon()
-			STOP_PROCESSING(SSobj, src)
-
-/obj/item/clothing/mask/vape/proc/hand_reagents()
-	var/mob/living/carbon/human/C = loc
-	vapetime = 0
-	if(reagents && reagents.total_volume)
-		if(ishuman(C))
-			if(reagents.get_reagent_amount("plasma"))
-				var/datum/effect/effect/system/reagents_explosion/e = new()
-				playsound(get_turf(src), 'sound/effects/Explosion1.ogg', 50, FALSE)
-				C.apply_damage(20, BURN, BP_HEAD)
-				C.Stun(5)
-				e.set_up(round(reagents.get_reagent_amount("plasma") / 2.5, 1), get_turf(src), 0, 0)
-				e.start()
-				qdel(src)
-			if(reagents.get_reagent_amount("fuel"))
-				var/datum/effect/effect/system/reagents_explosion/e = new()
-				playsound(get_turf(src), 'sound/effects/Explosion1.ogg', 50, FALSE)
-				C.apply_damage(20, BURN, BP_HEAD)
-				C.Stun(5)
-				e.set_up(round(reagents.get_reagent_amount("fuel") / 5, 1), get_turf(src), 0, 0)
-				e.start()
-				qdel(src)
-			else
-				reagents.trans_to_mob(C, REM, CHEM_INGEST, transfer_amount)
-				C.sanity.onSmoke(src)
-		else
-			reagents.remove_any(waste)
-			cell.use(charge_per_use)
-
-/obj/item/clothing/mask/vape/Process()
-	var/mob/living/M = loc
-
-	if(isliving(loc))
-		M.IgniteMob()
-
-	vapetime++
-
-	if(!reagents.total_volume)
-		if(ismob(loc))
-			to_chat(M, SPAN_WARNING("[src] is empty!"))
-			STOP_PROCESSING(SSobj, src)
-			//it's reusable so it won't unequip when empty
-		return
-
-	if(emagged && vapetime > 3)
-		var/datum/effect/effect/system/smoke_spread/chem/s = new /datum/effect/effect/system/smoke_spread/chem
-		s.set_up(reagents, 4, 24, loc)
-		s.start()
-		if(prob(5))//small chance for the vape to break and deal damage if it's emagged
-			playsound(get_turf(src), 'sound/effects/Explosion1.ogg', 50, FALSE)
-			M.apply_damage(20, BURN, BP_HEAD)
-			M.Stun(5)
-			var/datum/effect/effect/system/spark_spread/sp = new /datum/effect/effect/system/spark_spread //for effect
-			sp.set_up(5, 1, src)
-			sp.start()
-			to_chat(M, SPAN_WARNING("[src] suddenly explodes in your mouth!"))
-			qdel(src)
-			return
-
-	if(!cell || !cell.checked_use(charge_per_use))
-		to_chat(M, SPAN_WARNING("[src] battery is dead or missing."))
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	if(cell || cell.checked_use(charge_per_use))
-		if(reagents && reagents.total_volume)
-			if(vapetime > 4)
-				hand_reagents()
-
-/obj/item/clothing/mask/vape/better
-	name = "\improper Vapour mask"
-	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\" It seems different from the others"
-
-/obj/item/clothing/mask/vape/better/New(mapload)
-	. = ..()
-	waste = pick(0.4, 0.7)
-	transfer_amount = pick(0.3, 1)
-	charge_per_use = pick(0.05, 0.2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /////////
 //ZIPPO//
 /////////
 /obj/item/flame/lighter
 	name = "cheap lighter"
-	desc = "A reusable metal lighter with a cheap unbranded design."
+	desc = "A cheap-as-free lighter."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
@@ -1020,7 +464,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/base_state
 
 /obj/item/flame/lighter/zippo
-<<<<<<< HEAD
 	name = "\improper Zippo lighter"
 	desc = "The zippo."
 	icon_state = "zippo"
@@ -1034,57 +477,29 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = icon_state
 	base_state = icon_state
 
-=======
-	name = "\improper zippo lighter"
-	desc = "A reusable metal lighter manufactured by Zippo."
-	icon_state = "zippo"
-	item_state = "zippo"
-
-/obj/item/flame/lighter/random/New()
-	icon_state = "lighter-[pick("r","c","y","g")]"
-	item_state = icon_state
-	base_state = icon_state
-	..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/flame/lighter/attack_self(mob/living/user)
 	if(!base_state)
 		base_state = icon_state
 	if(user.r_hand == src || user.l_hand == src)
 		if(!lit)
 			lit = 1
-<<<<<<< HEAD
 			icon_state = "[base_state]-on"
 			item_state = "[base_state]-on"
 			if(istype(src, /obj/item/flame/lighter/zippo) )
 				playsound(src, 'sound/items/zippo.ogg', 20, 1, 1)
 				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
-=======
-			icon_state = "[base_state]on"
-			item_state = "[base_state]on"
-			if(istype(src, /obj/item/flame/lighter/zippo) )
-				playsound(src, 'sound/items/zippo_open.ogg', 80)
-				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights \the [src] in one smooth movement.</span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
-				playsound(src, 'sound/items/lighter.ogg', 80)
+				playsound(src, 'sound/items/lighter.ogg', 20, 1, 1)
 				if(prob(95))
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light \the [src]."))
+					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src]."))
 				else
 					to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
 					if (user.l_hand == src)
 						user.apply_damage(2, BURN, BP_L_HAND,  used_weapon = src)
 					else
-<<<<<<< HEAD
 						user.apply_damage(2, BURN, BP_R_HAND,  used_weapon = src)
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src], they however burn their finger in the process."))
-=======
-						user.apply_damage(2, BURN, BP_R_ARM)
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light \the [src], they however burn their finger in the process."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			tool_qualities = list(QUALITY_CAUTERIZING = 10)
-			damtype = BURN
-			force++
 			set_light(2)
 			START_PROCESSING(SSobj, src)
 		else
@@ -1092,19 +507,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			icon_state = "[base_state]"
 			item_state = "[base_state]"
 			if(istype(src, /obj/item/flame/lighter/zippo) )
-<<<<<<< HEAD
 				playsound(src, 'sound/items/zippo.ogg', 20, 1, 1)
 				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
-=======
-				playsound(src, 'sound/items/zippo_close.ogg', 20, 1, 1)
-				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off \the [src] without even looking at what they're doing.</span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				playsound(src, 'sound/items/lighter.ogg', 20, 1, 1)
-				user.visible_message(SPAN_NOTICE("[user] quietly shuts off \the [src]."))
+				user.visible_message(SPAN_NOTICE("[user] quietly shuts off the [src]."))
 			tool_qualities = initial(tool_qualities)
-			damtype = initial(damtype)
-			force--
 			set_light(0)
 			STOP_PROCESSING(SSobj, src)
 	else
@@ -1123,13 +531,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/flame/lighter/zippo))
-<<<<<<< HEAD
 				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
-=======
-				cig.light("<span class='rose'>[user] whips \the [name] out and holds it steady for [M], lightning their [cig.name] in a smooth motion.</span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
-				cig.light(SPAN_NOTICE("[user] holds \the [name] out for [M], and lights their \the [cig.name]."))
+				cig.light(SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
 	else
 		..()
 
@@ -1139,7 +543,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		location.hotspot_expose(700, 5)
 	return
 
-<<<<<<< HEAD
 ////////
 //VAPE//
 ////////
@@ -1336,88 +739,3 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	waste = pick(0.4, 0.7)
 	transfer_amount = pick(0.3, 1)
 	charge_per_use = pick(0.2, 0.5)
-=======
-
-/obj/item/flame/lighter/zippo/black
-	name = "\improper black Zippo lighter"
-	desc = "A pitch black Zippo."
-	icon_state = "blackzippo"
-
-/obj/item/flame/lighter/zippo/blue
-	name = "\improper blue Zippo lighter"
-	icon_state = "bluezippo"
-
-/obj/item/flame/lighter/zippo/engraved
-	name = "\improper engraved Zippo lighter"
-	desc = "A Zippo with embossed engravings on its surface. They do not give any tactical advantage whatsoever, but look pretty good."
-	icon_state = "engravedzippo"
-	item_state = "zippo"
-
-/obj/item/flame/lighter/zippo/gold
-	name = "\improper golden Zippo lighter"
-	desc = "A Shippo fer thoshe that love goooold."
-	icon_state = "goldzippo"
-
-/obj/item/flame/lighter/zippo/moff
-	name = "\improper moth Zippo lighter"
-	desc = "Too cute to be a Tymisian."
-	icon_state = "moffzippo"
-
-/obj/item/flame/lighter/zippo/red
-	name = "\improper red Zippo lighter"
-	icon_state = "redzippo"
-
-/obj/item/flame/lighter/zippo/ironic
-	name = "\improper ironic Zippo lighter"
-	desc = "How funny."
-	icon_state = "ironiczippo"
-
-/obj/item/flame/lighter/zippo/capitalist
-	name = "\improper capitalist Zippo lighter"
-	desc = "Made of gold and obsidian, this is truly not worth however much you spent on it."
-	icon_state = "cappiezippo"
-
-/obj/item/flame/lighter/zippo/communist
-	name = "\improper communist Zippo lighter"
-	desc = "The preferred lighter for degenerates, idiots, and losers."
-	icon_state = "commiezippo"
-
-/obj/item/flame/lighter/zippo/royal
-	name = "\improper royal Zippo lighter"
-	desc = "An incredibly fancy lighter, gilded and covered in the color of royalty."
-	icon_state = "royalzippo"
-
-/obj/item/flame/lighter/zippo/gonzo
-	name = "\improper Gonzo Zippo lighter"
-	desc = "A lighter with the iconic Gonzo fist painted on it."
-	icon_state = "gonzozippo"
-
-/obj/item/flame/lighter/zippo/rainbow
-	name = "\improper rainbow Zippo lighter"
-	icon_state = "rainbowzippo"
-
-/obj/item/flame/lighter/zippo/bullet
-	name = "\improper bullet lighter"
-	desc = "A lighter fashioned out of an old bullet casing."
-	icon_state = "bulletlighter"
-
-/obj/item/flame/lighter/zippo/absolutism
-	name = "\improper Absolutism Zippo lighter"
-	desc = "A Zippo with a golden pattern, bearing a red wax seal in the center. Its purified flames burn bright."
-	icon_state = "absolutelighter"
-
-/obj/item/flame/lighter/zippo/soyfed
-	name = "\improper SolFed Zippo lighter"
-	desc = "A Zippo with the old crest of the Sol Federation, either a keepsake from old times or a sign of not knowing to let go." // How to detect soyfed SIMPathizers!
-	icon_state = "solfed"
-
-/obj/item/flame/lighter/zippo/excelsior
-	name = "\improper Liberation Zippo lighter"
-	desc = "A cheap, mass produced Zippo for the working masses, its flame - much like the motto - goes ever upwards."
-	icon_state = "excelsior"
-
-/obj/item/flame/lighter/zippo/brass
-	name = "\improper Brass Zippo lighter"
-	desc = "A shiney brass zippo made to last, for some reason the metal is always cold to the touch and rather then the flint to start the flame makes a ticking sound when used."
-	icon_state = "brass_zippo"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

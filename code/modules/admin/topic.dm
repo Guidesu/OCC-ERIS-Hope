@@ -25,56 +25,32 @@
 	if(href_list["openticket"])
 		var/ticketID = text2num(href_list["openticket"])
 		if(!href_list["is_mhelp"])
-<<<<<<< HEAD
 			if(!check_rights(R_ADMIN))
 				return
 			SStickets.showDetailUI(usr, ticketID)
 		else
 			if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
-=======
-			if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
-				return
-			SStickets.showDetailUI(usr, ticketID)
-		else
-			if(!check_rights(R_MENTOR|R_MOD|R_ADMIN|R_DEBUG))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			SSmentor_tickets.showDetailUI(usr, ticketID)
 
 	if(href_list["take_question"])
 		var/indexNum = text2num(href_list["take_question"])
-<<<<<<< HEAD
 		if(check_rights(R_ADMIN))
-=======
-		if(check_rights(R_ADMIN|R_MOD|R_DEBUG))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			SStickets.takeTicket(indexNum)
 
 	if(href_list["resolve"])
 		var/indexNum = text2num(href_list["resolve"])
-<<<<<<< HEAD
 		if(check_rights(R_ADMIN))
-=======
-		if(check_rights(R_ADMIN|R_MOD|R_DEBUG))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			SStickets.resolveTicket(indexNum)
 
 	if(href_list["convert_ticket"])
 		var/indexNum = text2num(href_list["convert_ticket"])
-<<<<<<< HEAD
 		if(check_rights(R_ADMIN))
-=======
-		if(check_rights(R_ADMIN|R_MOD|R_DEBUG))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			SStickets.convert_to_other_ticket(indexNum)
 
 	if(href_list["autorespond"])
 		var/indexNum = text2num(href_list["autorespond"])
-<<<<<<< HEAD
 		if(check_rights(R_ADMIN))
-=======
-		if(check_rights(R_ADMIN|R_MOD))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			SStickets.autoRespond(indexNum)
 
 	var/static/list/topic_handlers = AdminTopicHandlers()

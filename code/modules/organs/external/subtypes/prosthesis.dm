@@ -1,5 +1,5 @@
 /obj/item/prosthesis
-	name = "prosthesis"
+	name = "posthesis"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon = 'icons/obj/prosthesis.dmi'
 	item_state = "buildpipe"
@@ -15,7 +15,7 @@
 
 /obj/item/prosthesis/l_arm
 	name = "Unbranded left arm"
-	icon_state = "l_arm"
+	icon_state = BP_L_ARM
 	part = list(
 		BP_L_ARM = /obj/item/organ/external/robotic/limb,
 		BP_L_HAND= /obj/item/organ/external/robotic/tiny

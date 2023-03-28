@@ -48,12 +48,7 @@
 	body_part = "chest"
 	matter = list(MATERIAL_STEEL = 25)
 	var/wires = 0.0
-<<<<<<< HEAD
 	var/obj/item/cell/large/cell
-=======
-	cell = null
-	suitable_cell = /obj/item/cell/large
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/robot_parts/chest/is_ready(var/mob/living/user)
 	if(!wires)
@@ -107,19 +102,11 @@
 		parts[P.body_part] = P
 	update_icon()
 
-<<<<<<< HEAD
 /obj/item/robot_parts/robot_suit/on_update_icon()
 	src.cut_overlays()
 	for(var/part in parts)
 		if(parts[part])
 			add_overlays("[part]+o")
-=======
-/obj/item/robot_parts/robot_suit/update_icon()
-	src.cut_overlays()
-	for(var/part in parts)
-		if(parts[part])
-			add_overlay("[part]+o")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/robot_parts/robot_suit/is_ready()
 	var/list/missed = req_parts - parts

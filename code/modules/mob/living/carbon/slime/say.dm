@@ -1,26 +1,15 @@
 /mob/living/carbon/slime/say(var/message)
 
 	message = sanitize(message)
-<<<<<<< HEAD
 	message = trim_left(message)
-=======
-	message = capitalize(trim_left(message))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/verb = say_quote(message)
 
 	if(copytext(message,1,2) == get_prefix_key(/decl/prefix/custom_emote))
 		return emote(copytext(message,2))
 
 	if(stat)
-		var/last_symbol = copytext(message, length(message))
 		if(stat == DEAD)
 			return say_dead(message)
-		else if(last_symbol=="@")
-			if(src.stats.getPerk(PERK_CODESPEAK))
-				return
-			else
-				to_chat(src, "You don't know the codes, pal.")
-				return
 		return
 
 	return ..(message, null, verb)
@@ -42,21 +31,13 @@
 	if (speaker in Friends)
 		speech_buffer = list()
 		speech_buffer.Add(speaker)
-<<<<<<< HEAD
 		speech_buffer.Add(lowertext(message))
-=======
-		speech_buffer.Add(lowertext(html_decode(message)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
-/mob/living/carbon/slime/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
+/mob/living/carbon/slime/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 	if (speaker in Friends)
 		speech_buffer = list()
 		speech_buffer.Add(speaker)
-<<<<<<< HEAD
 		speech_buffer.Add(lowertext(message))
-=======
-		speech_buffer.Add(lowertext(html_decode(message)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 

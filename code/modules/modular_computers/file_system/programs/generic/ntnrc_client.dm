@@ -31,11 +31,7 @@
 		if(!channel)
 			return 1
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/message = sanitize(input(user, "Enter message or leave blank to cancel: "), 512)
-=======
-		var/message = sanitize(input(user, "Enter message or leave blank to cancel: ") as text|null, 512)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!message || !channel)
 			return
 		channel.add_message(message, username)
@@ -57,11 +53,7 @@
 
 		if(C.password)
 			var/mob/living/user = usr
-<<<<<<< HEAD
 			var/password = sanitize(input(user,"Access Denied. Enter password:"))
-=======
-			var/password = sanitize(input(user,"Access Denied. Enter password:") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(C && (password == C.password))
 				C.add_client(src)
 				channel = C
@@ -76,15 +68,10 @@
 	if(href_list["PRG_newchannel"])
 		. = 1
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/channel_title = sanitizeSafe(input(user,"Enter channel name or leave blank to cancel:"), 64)
-=======
-		var/channel_title = sanitizeSafe(input(user,"Enter channel name or leave blank to cancel:") as text|null, 64)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!channel_title)
 			return
-		var/turf/computer_turf = get_turf(computer)
-		var/datum/ntnet_conversation/C = new/datum/ntnet_conversation(computer_turf.z)
+		var/datum/ntnet_conversation/C = new/datum/ntnet_conversation(computer.z)
 		C.add_client(src)
 		C.operator = src
 		channel = C
@@ -111,11 +98,7 @@
 	if(href_list["PRG_changename"])
 		. = 1
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/newname = sanitize(input(user,"Enter new nickname or leave blank to cancel:"), 20)
-=======
-		var/newname = sanitize(input(user,"Enter new nickname or leave blank to cancel:") as text|null, 20)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname)
 			return 1
 		if(channel)
@@ -127,11 +110,7 @@
 		if(!channel)
 			return
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/logname = sanitize(input(user,"Enter desired logfile name (.log) or leave blank to cancel:"))
-=======
-		var/logname = sanitize(input(user,"Enter desired logfile name (.log) or leave blank to cancel:") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!logname || !channel)
 			return 1
 		var/datum/computer_file/data/logfile = new/datum/computer_file/data/logfile()
@@ -146,10 +125,7 @@
 			if(!computer)
 				// This program shouldn't even be runnable without computer.
 				CRASH("Var computer is null!")
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!computer.hard_drive)
 				computer.visible_message("\The [computer] shows an \"I/O Error - Hard drive connection error\" warning.")
 			else if (computer.hard_drive.used_capacity + logfile.size == computer.hard_drive.max_capacity)	// In 99.9% cases this will mean our HDD is full
@@ -161,11 +137,7 @@
 		if(!operator_mode || !channel)
 			return 1
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/newname = sanitize(input(user, "Enter new channel name or leave blank to cancel:"), 64)
-=======
-		var/newname = sanitize(input(user, "Enter new channel name or leave blank to cancel:") as text|null, 64)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname || !channel)
 			return
 		channel.add_status_message("Channel renamed from [channel.title] to [newname] by operator.")
@@ -181,11 +153,7 @@
 			return 1
 
 		var/mob/living/user = usr
-<<<<<<< HEAD
 		var/newpassword = sanitize(input(user, "Enter new password for this channel. Leave blank to cancel, enter 'nopassword' to remove password completely:"))
-=======
-		var/newpassword = sanitize(input(user, "Enter new password for this channel. Leave blank to cancel, enter 'nopassword' to remove password completely:") as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!channel || !newpassword || ((channel.operator != src) && !netadmin_mode))
 			return 1
 
@@ -197,8 +165,8 @@
 /datum/computer_file/program/chatclient/process_tick()
 
 	..()
-	var/turf/computer_turf = get_turf(computer)
-	if(channel && !(channel.source_z in GetConnectedZlevels(computer_turf.z)))
+
+	if(channel && !(channel.source_z in GetConnectedZlevels(computer.z)))
 		channel.remove_client(src)
 		channel = null
 
@@ -225,7 +193,7 @@
 /datum/nano_module/program/computer_chatclient
 	name = "NTNet Relay Chat Client"
 
-/datum/nano_module/program/computer_chatclient/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return
 
@@ -257,8 +225,7 @@
 
 	else // Channel selection screen
 		var/list/all_channels[0]
-		var/turf/computer_turf = get_turf(C.computer)
-		var/list/connected_zs = GetConnectedZlevels(computer_turf.z)
+		var/list/connected_zs = GetConnectedZlevels(C.computer.z)
 		for(var/datum/ntnet_conversation/conv in ntnet_global.chat_channels)
 			if(conv && conv.title && (conv.source_z in connected_zs))
 				all_channels.Add(list(list(

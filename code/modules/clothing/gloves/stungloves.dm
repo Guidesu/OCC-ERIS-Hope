@@ -1,27 +1,17 @@
 /obj/item/clothing/gloves/stungloves
-	name = "HS Power Gloves"
-	desc = "Seinemetall Defense GmbH solution for police operations. Punch criminals right in the face instead of prodding them with some feeble rod."
+	name = "FS Power Glove"
+	desc = "Frozen Star solution for police operations. Punch criminals right in the face instead of prodding them with some feeble rod."
 	icon_state = "powerglove"
-	item_state = "powerglove"
-	armor_list = list(melee = 25, bullet = 10, energy = 20, bomb = 0, bio = 0, rad = 0)
+	item_state = "bgloves"
 	action_button_name = "Toggle Power Glove"
-<<<<<<< HEAD
 	price_tag = 500
 	rarity_value = 99
-=======
-	price_tag = 250
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/stunforce = 0
 	var/agonyforce = 30
 	var/status = FALSE		//whether the thing is on or not
 	var/hitcost = 100
-<<<<<<< HEAD
 	var/obj/item/cell/cell
 	var/suitable_cell = /obj/item/cell/medium
-=======
-	cell = null
-	suitable_cell = /obj/item/cell/medium
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/gloves/stungloves/Initialize()
 	. = ..()
@@ -104,7 +94,6 @@
 		L.visible_message(SPAN_DANGER("[L] has been punched in the [affecting.name] with [src] by [user]!"))
 	else
 		L.visible_message(SPAN_DANGER("[L] has been punched with [src] by [user]!"))
-<<<<<<< HEAD
 	playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 
 	if(deductcharge(hitcost))
@@ -112,16 +101,11 @@
 		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
 		user.attack_log += "\[[time_stamp()]\] <font color='red'>Stunned [key_name(L)] with [src]</font>"
 		L.attack_log += "\[[time_stamp()]\] <font color='orange'>Was stunned by [key_name(L)] with [src]</font>"
-=======
-	if(deductcharge(hitcost))
-		L.stun_effect_act(stun, agony, user.targeted_organ, src)
-		msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src].")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.forcesay(hit_appends)
-		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
+
 
 /obj/item/clothing/gloves/stungloves/emp_act(severity)
 	if(cell)
@@ -137,8 +121,4 @@
 /obj/item/clothing/gloves/stungloves/attackby(obj/item/C, mob/living/user)
 	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
 		src.cell = C
-<<<<<<< HEAD
 		update_icon()
-=======
-		update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

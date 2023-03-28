@@ -18,8 +18,4 @@
 		holder.on_data_written()
 
 /datum/integrated_io/index/display_pin_type()
-<<<<<<< HEAD
   return IC_FORMAT_INDEX
-=======
-	return IC_FORMAT_INDEX
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

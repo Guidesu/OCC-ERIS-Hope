@@ -1,6 +1,5 @@
 /obj/item/organ/external/robotic
 	name = "robotic"
-<<<<<<< HEAD
 	force_icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_alt1.dmi'
 	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_alt1.dmi'
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
@@ -10,15 +9,6 @@
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTIC = 2) // Multiplied by w_class
 	spawn_tags = SPAWN_TAG_PROSTHETIC
 	bad_type = /obj/item/organ/external/robotic
-=======
-	force_icon = 'icons/mob/human_races/cyberlimbs/generic.dmi'
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	nerve_struck = -1 // no nerves here
-	cannot_break = 1
-	nature = MODIFICATION_SILICON
-	armor_list = list(melee = 20, bullet = 20, energy = 20, bomb = 20, bio = 100, rad = 100)
-	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTIC = 2) // Multiplied by w_class
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/min_malfunction_damage = 20 // Any more damage than that and you start getting nasty random malfunctions
 
 /obj/item/organ/external/robotic/get_cache_key()
@@ -31,7 +21,6 @@
 
 /obj/item/organ/external/robotic/on_update_icon()
 	var/gender = "m"
-<<<<<<< HEAD
 	overlays.Cut()	// OCCULUS EDIT - Make sure we're not stacking up redundant overlays
 	if(owner)
 		gender = owner.gender == FEMALE ? "f" : "m"
@@ -50,12 +39,6 @@
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		//icon_cache_key += "[M][markings[M]["color"]]"	//This is implemented in get_cache_keys() instead
 ///// OCCULUS EDIT END /////
-=======
-	if(owner)
-		gender = owner.gender == FEMALE ? "f" : "m"
-	icon_state = "[organ_tag]_[gender]"
-	mob_icon = icon(force_icon, icon_state)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = mob_icon
 	return mob_icon
 
@@ -76,6 +59,10 @@
 	deactivate(emergency=TRUE)
 	..()
 
+/obj/item/organ/external/robotic/update_germs()
+	germ_level = 0
+	return
+
 /obj/item/organ/external/robotic/setBleeding()
 	return FALSE
 
@@ -86,11 +73,7 @@
 	return TRUE
 
 /obj/item/organ/external/robotic/proc/deactivate(emergency = TRUE)
-<<<<<<< HEAD
 	return TRUE
-=======
-	return 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/external/robotic/limb
 	max_damage = 50
@@ -103,12 +86,9 @@
 	w_class = ITEM_SIZE_SMALL
 	bad_type = /obj/item/organ/external/robotic/tiny
 
-<<<<<<< HEAD
 /obj/item/organ/external/robotic/New()
 	. = ..()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ/external/robotic/l_arm
 	default_description = /datum/organ_description/arm/left
@@ -124,7 +104,6 @@
 
 /obj/item/organ/external/robotic/groin
 	default_description = /datum/organ_description/groin
-<<<<<<< HEAD
 
 /obj/item/organ/external/robotic/head
 	default_description = /datum/organ_description/head
@@ -147,6 +126,3 @@
 /obj/item/organ/external/robotic/r_foot
 	default_description = /datum/organ_description/foot/right
 	w_class = ITEM_SIZE_SMALL
-=======
-	max_damage = 200
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

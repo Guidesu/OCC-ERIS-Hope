@@ -12,11 +12,7 @@
 	bad_type = /obj/item/fossil
 	var/animal = 1
 
-<<<<<<< HEAD
 /obj/item/fossil/base/Initialize(mapload)
-=======
-/obj/item/fossil/base/Initialize()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	var/list/l = list("/obj/item/fossil/bone"=9,"/obj/item/fossil/skull"=3,
 	"/obj/item/fossil/skull/horned"=2)
@@ -111,9 +107,5 @@
 
 /obj/item/fossil/plant/New()
 	..()
-<<<<<<< HEAD
 	icon_state = "plant[rand(1,4)]"
 	update_icon()
-=======
-	icon_state = "plant[rand(1,4)]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

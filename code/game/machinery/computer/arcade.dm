@@ -6,7 +6,6 @@
 	icon_screen = "invaders"
 	var/list/prizes = list(
 		/obj/item/storage/box/snappops			= 2,
-<<<<<<< HEAD
 		/obj/item/toy/blink								= 2,
 		/obj/item/clothing/under/syndicate				= 2,
 		/obj/item/toy/sword								= 2,
@@ -30,28 +29,12 @@
 		/obj/spawner/toy/figure								= 1,
 		/obj/spawner/toy/plushie							= 1,
 		/obj/item/toy/cultsword							= 1
-=======
-		/obj/item/gun/projectile/revolver/capgun	= 2,
-		/obj/item/storage/fancy/crayons			= 2,
-		/obj/random/costume/body_generic				= 2,
-		/obj/random/costume/body_animals				= 2,
-		/obj/random/costume/head_generic				= 2,
-		/obj/random/costume/head_animals				= 2,
-		/obj/random/toy/arcadejunk						= 1,
-		/obj/random/toy/action_figure					= 1,
-		/obj/random/toy/mecha							= 1,
-		/obj/random/toy/plushie							= 1,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/machinery/computer/arcade/Initialize()
 	. = ..()
 	if(!circuit)
-<<<<<<< HEAD
 		circuit = pick(subtypesof(/obj/item/electronics/circuitboard/arcade))
-=======
-		circuit = pick(subtypesof(/obj/item/circuitboard/arcade))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/build_path = initial(circuit.build_path)
 		new build_path (loc, circuit)
 		return INITIALIZE_HINT_QDEL
@@ -61,8 +44,8 @@
 		var/prizeselect = pickweight(prizes)
 		new prizeselect(src.loc)
 
-		if(istype(prizeselect, /obj/item/clothing/suit/costume/halloween/syndicate)) //Helmet is part of the suit
-			new	/obj/item/clothing/head/costume/halloween/syndicate(src.loc)
+		if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
+			new	/obj/item/clothing/head/syndicatefake(src.loc)
 
 	else
 		var/atom/movable/prize = pick(contents)
@@ -91,17 +74,11 @@
 
 /obj/machinery/computer/arcade/battle
 	name = "arcade machine"
-	desc = "Try your luck against a vicious and deadly opponent."
+	desc = "Does not support Pinball."
 	icon_state = "arcade"
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/arcade/battle
 	var/enemy_name = "Space Villian"
 	var/temp = "Winners don't use space drugs" //Temporary message, for attack messages, etc
-=======
-	circuit = /obj/item/circuitboard/arcade/battle
-	var/enemy_name = "Space Villain"
-	var/temp = "Winners don't use space drugs!" //Temporary message, for attack messages, etc
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/player_hp = 30 //Player health/attack points
 	var/player_mp = 10
 	var/enemy_hp = 45 //Enemy health/attack points
@@ -116,82 +93,10 @@
 	var/name_part1
 	var/name_part2
 
-	name_action = pick("Ambush ", "Annihilate ", "Assassinate ", "Assault ", "Arrest ", "Attack ", "Assail ",
-					   "Backhand ", "Battle ", "Beat ", "Besiege ", "Betray ", "Bombard ", "Bury ",
-					   "Challenge ", "Chase ", "Combat ", "Confront ", "Conquer ", "Contest ", "Crush ",
-					   "Decimate ", "Defeat ", "Demolish ", "Destroy ", "Detain ", "Dispatch ", "Duel ",
-					   "Engage ", "End ", "Execute ", "Expunge ", "Eradicate ", "Explode ",
-					   "Face ", "Flame ", "Faze ", "Flout ", "Fight ", "Fire ",
-					   "Garrote ", "Grind ", "Gut ", "Gash ", "Greytide ", "Gank ",
-					   "Hinder ", "Harm ", "Humiliate ", "Hunt ", "Hurt ",
-					   "Impeach ", "Impede ", "Injure ", "Impale ", "Immobilize ",
-					   "Jab ", "Jeopardize ", "Jail ", "Jolt ", "Jump ",
-					   "Kick ", "Kill ", "Kidnap ", "Knife ", "Knockout ",
-					   "Lash ", "Lecture ", "Liquidate ", "Lacerate ",
-					   "Mangle ", "Mug ", "Mortify ", "Mystify ", "Murder ",
-					   "Neutralize ", "Nullify ", "Neuter ", "Negate ",
-					   "Obliterate ", "Oppose ", "Outmanoeuvre ", "Overpower ", "Overthrow ",
-					   "Pursue ", "Paralyze ", "Persecute ", "Pertube ", "Pain ",
-					   "Repel ", "Repress ", "Repulse ", "Resist ", "Robust ", "Rout ", "Raid ", "Raze ", "Ravage ",
-					   "Shame ", "Slaughter ", "Slay ", "Smash ", "Spar ", "Stop ", "Strike ", "Subdue ", "Surmount ", "Storm ",
-					   "Terrorize ", "Tarnish ", "Terminate ", "Terrify ", "Torture ",
-					   "Unseat ", "Usurp ", "Upset ", "Uproot ",
-					   "Vanquish ", "Vilify ", "Vaporize ",
-					   "Whack ", "Waste ", "Wrestle ", "Whip ", "Wound ", "Wreck ",
-					   "Zap ")
+	name_action = pick("Defeat ", "Annihilate ", "Save ", "Strike ", "Stop ", "Destroy ", "Robust ", "Romance ", "Pwn ", "Own ", "Ban ")
 
-	name_part1 = pick("Admiral ", "Agent ", "Assassin ", "Anarchist ", "Arms Dealer ", "Arsonist ", "Administrator ", "Abductor ",
-					  "Baron ", "Bandit ", "Bounty Hunter ", "Blood Cultist ", "Boss ", "Brigadier ", "Bomber ", "Blob ",
-					  "Captain ", "Chapter Master ", "Colonel ", "Commander ", "Commodore ", "Count ", "Crazy ", "Changeling ", "Criminal ", "Champion ",
-					  "Doctor ", "Dread King ", "Duke ", "Deserter ", "Destroyer ", "Deviant ", "Dangerous ",
-					  "Enforcer ", "Emperor ", "Empress ", "Executioner ", "Escaped Prisoner ", "Extorter ", "Exterminator ",
-					  "Forger ", "Fraudster ", "Firestarter ", "Fanatic ", "Fugitive ", "Felon ", "Fiery ", "Forefather ",
-					  "Gangster ", "General ", "Gunner ", "Grenadier ", "Galactic ", "Gunrunner ", "Guardian ",
-					  "Head ", "Headhunter ", "Heavyweight ", "Henchman ", "Henchwoman ", "Holoparasite ", "Hoodlum ", "Hustler ",
-					  "Inquisitor ", "Interferer ", "Inciter ", "Igniter ", "Inspector ", "Invincible ", "Iudex ",
-					  "Jester ", "Judge ", "Juggernaut ", "Jawbreaker ", "Jumbo ", "Justice ",
-					  "King ", "Kingpin ", "Killer ", "Kidnapper ", "Knave ", "Karate Master ",
-					  "Leader ", "Legate ", "Lieutenant ", "Lord ", "Lance ", "Legislator ",
-					  "Mad ", "Magnate ", "Marshal ", "Major ", "Mercenary ", "Master ", "Maverick ", "Malfunctioning AI ", "Mobster ",
-					  "NeoTheologist ", "Necromancer ", "Ninja ", "Negotiator ", "Nuclear ",
-					  "Overlord ", "Officer ", "Operative ", "Oppressor ", "Obsessor ", "Obstructor ",
-					  "Prince ", "Princess ", "President ", "Professor ", "Private ", "Prophet ", "Pariah ", "Pirate ",
-					  "Queen ",
-					  "Raider ", "Ravager ", "Renegade ", "Revolutionary ", "Representative ", "Racketeer ",
-					  "Soldier ", "Scavenger ", "Sergeant ", "Serial Killer ", "Serbian ", "Smuggler ", "Swarmer ", "Supreme ", "Sorcerer ",
-					  "contractor ", "Terrorist ", "Thief ", "Trafficker ", "Terroriser ", "Treasure Hunter ", "Terrible ", "Titanic ",
-					  "Vandal ", "Viscount ", "Vampire ", "Void Wolf ", "Veteran ", "Villainous ", "Vice President ",
-					  "Warlord ", "Warmonger ", "Wrangler ", "Waster ", "Wizard ",
-					  "Xenomorph ", "Xenohybrid ",
-					  "Yielder ",
-					  "Zealot ")
-
-	name_part2 = pick("Aara", "Abatha", "Alexander", "Alyx", "Ana", "Annabelle", "Adams", "Arleen", "Aronai", "Arthur", "Arby", "Arvedki", "Ascian", "Asriel", "Ash",
-					  "Bash",  "Brown", "Buchanan", "Bush", "Bowchief", "Boyum", "Brock", "Brooks", "Borowski", "Blue", "Bastion", "Bee", "Blackfur",
-					  "Carly", "Carroll", "Carrot", "Clark", "Cameron", "Campbell", "Cox", "Carter", "Chup", "Citadel", "Costa", "Cade", "Caesar",
-					  "David", "Dane", "Divino", "Dizet", "Duket", "Diaz", "Dray", "Dick", "Donald", "Devon", "Dutch", "Dylan", "Drake", "Dakota",
-					  "Ebonheart", "Earl", "Evans", "Edwards", "Ekios", "Eric", "Elijah", "Elias", "Ezekiel", "Everett", "Eamon", "Elliot", "Edgar",
-					  "Frank", "Flores", "Flynn", "Foster", "Ford", "Fox", "Foxish", "Fillmore", "Fulp", "Felix", "Francisco", "Fabian", "Ferdinand",
-					  "Grant", "Gay", "Garfield", "Greyson", "Greg", "Grid", "Gustavia", "Griffin", "George", "Goon", "Gavin", "Gumshoe", "Gemma",
-					  "Hank", "Harold", "Hannah", "Holden", "Heaven", "Hunt", "Helenora", "Hippolyta", "Harris", "Hoover", "Hippie", "Heyes", "Hestia",
-					  "Ian", "Iain", "Ivy", "Iris", "Isla", "Ivan", "Ianto", "Ishmael", "Isabel", "Ignatius", "Isham", "Isaac", "Isaiah", "Ibrahim",
-					  "Jathok", "Jay", "Jermaine", "Jewel", "Jeff", "Jim", "Jackson", "Johnson", "Jack", "Jax", "Josiah", "Jabez", "Jabber", "Jacob",
-					  "Kat", "Kate", "Kadir", "Katie", "Knapp", "K'vhas", "Kei", "Ketrai", "Kota", "Krystal", "Kade", "Kappa", "Kayden", "Kingston",
-					  "Larmen", "Lee", "Leri", "Leslie", "Lex", "Luna", "Luxitou", "Libelula", "Lifeweb", "Lonta", "Lucas", "Liam", "Lincoln", "Lucifer",
-					  "Mae", "Makino", "Marshall", "Menzula", "Mia", "Mimi", "Milos", "Muu'rn", "Myrin", "Madison", "Monroe", "Moon", "Mcfall", "Morgan",
-					  "N'imira", "Nathan", "Natasha", "Noah", "Nicola", "Nyla", "Nancy", "Nance", "Nana", "Nate", "Natalya", "Ned", "Neil", "Nick",
-					  "Oliver", "Odin", "Owen", "Oscar", "Omar", "Osman", "Oakley", "Otto", "Orion", "Orianna", "Octavius", "O'Shea", "Obadiah",
-					  "Pasotel", "Pauper", "Paul", "Popsy", "Prax", "Praxen", "Pierce", "Phayne", "Phoenix", "Preston", "Patrick", "Piper", "Peter",
-					  "Quentin", "Quinn", "Quincy", "Quillon", "Quinton", "Quintavius", "Quimby", "Quade", "Queenie", "Quinta", "Quinlan",
-					  "Raere", "Raeschen", "Ray", "Resca", "Rex", "Ricardo", "Robbie", "Robinson", "Roosevelt", "Rotten", "Ru", "Rose", "Remington",
-					  "Samantha", "Sanders", "Sarah", "Shyne", "Sari", "Sans", "Seeking", "Stall", "Stellar", "Steam", "Schrödinger", "Steven", "Szandor", "Sydney", "Strelle", //best character
-					  "Tasald", "Trevor", "Tamoka", "Tarmane", "Todd", "Torvo", "Thompson", "Thomas", "Trump", "Tommy", "Thor", "Timothy", "Tony",
-					  "Uriel", "Undine", "Uri", "Universe", "Ulysses", "Uriah", "Usher", "Ursel", "Uziel", "Ursula", "Ursule", "Ulva",
-					  "Victoria", "Vanessa", "Veer", "Verity", "Vixen", "Violet", "Victor", "Valentine", "Valentino", "Vaughn", "Vivek",
-					  "Watson", "Walker", "Wilson", "Willow", "Wolf", "Will", "White", "Whitefur", "Washington", "Wright", "Wynter", "Wheelie",
-					  "Xarillia", "Xander", "Xai", "Xavier", "Xavi", "Xeno", "Xylia", "Xenia", "Xia", "Xu", "Xenophon",
-					  "Yael", "Yadon", "Yaakov", "Yuula", "Yog", "Yawn", "Yusuf", "Yasser", "Yuri", "Yanni", "Yoshiro",
-					  "Zac", "Zafar", "Zahn", "Zared", "Zach", "Zeke", "Zane", "Zyah", "Zigfried", "Zulu", "Zariza")
+	name_part1 = pick("the Automatic ", "Farmer ", "Lord ", "Professor ", "the Cuban ", "the Evil ", "the Dread King ", "the Space ", "Lord ", "the Great ", "Duke ", "General ")
+	name_part2 = pick("Melonoid", "Murdertron", "Sorcerer", "Ruin", "Jeff", "Ectoplasm", "Crushulon", "Uhangoid", "Vhakoid", "Peteoid", "slime", "Griefer", "ERPer", "Lizard Man", "Unicorn", "Bloopers")
 
 	src.enemy_name = replacetext((name_part1 + name_part2), "the ", "")
 	src.name = (name_action + name_part1 + name_part2)
@@ -295,7 +200,7 @@
 			if(emagged)
 
 				new /obj/effect/spawner/newbomb/timer/syndicate(src.loc)
-				new /obj/item/clothing/head/costume/misc/petehat(src.loc)
+				new /obj/item/clothing/head/collectable/petehat(src.loc)
 				message_admins("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				log_game("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				src.New()

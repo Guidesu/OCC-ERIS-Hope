@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 GLOBAL_LIST_EMPTY(active_mindboil_spiders)
 
 /obj/item/implant/carrion_spider/mindboil
 	name = "mindboil spider"
-=======
-/*
-GLOBAL_LIST_EMPTY(active_mindboil_spiders)
-
-/obj/item/implant/carrion_spider/mindboil
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "spiderling_mindboil"
 	spider_price = 30
 	var/active = FALSE
@@ -38,7 +31,6 @@ GLOBAL_LIST_EMPTY(active_mindboil_spiders)
 		else
 			attack_from = src
 		for(var/mob/living/carbon/human/H in view(5, attack_from))
-<<<<<<< HEAD
 			if(!H.mind || (H in victims) || (H == owner_mob)) //Occulus Edit
 				continue
 			H.sanity.onPsyDamage(1) //Half the ammount of mind fryer, can be mass produced
@@ -46,25 +38,12 @@ GLOBAL_LIST_EMPTY(active_mindboil_spiders)
 		// Pick up a new contract if there is none
 		if(owner_mob && !contract)
 			find_contract()
-=======
-			if(H.get_species() != "Human" || (H in victims) || (H == owner_mob))
-				continue
-			H.sanity.onPsyDamage(1) //Half the amount of mind fryer, can be mass produced
-
-		// Pick up a new contract if there is none
-		//if(owner_mob && !contract)
-		//	find_contract()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implant/carrion_spider/mindboil/Destroy()
 	GLOB.active_mindboil_spiders -= src
 	. = ..()
 
-<<<<<<< HEAD
 
-=======
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/carrion_spider/mindboil/proc/find_contract()
 	for(var/datum/antag_contract/derail/C in GLOB.various_antag_contracts)
 		if(C.completed)
@@ -72,20 +51,12 @@ GLOBAL_LIST_EMPTY(active_mindboil_spiders)
 		contract = C
 		victims = list()
 		break
-<<<<<<< HEAD
 
 /obj/item/implant/carrion_spider/mindboil/proc/reg_break(mob/living/carbon/human/victim)
 /*  Occulus Edit Start
 	if(victim.get_species() != "Human")
 		return
 Occulus Edit End */
-=======
-*/
-/obj/item/implant/carrion_spider/mindboil/proc/reg_break(mob/living/carbon/human/victim)
-	if(victim.get_species() != "Human")
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(victim == owner_mob)
 		return
 
@@ -99,7 +70,3 @@ Occulus Edit End */
 				return
 			contract.complete(owner_mob.mind)
 			contract = null
-<<<<<<< HEAD
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

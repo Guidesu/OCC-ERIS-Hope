@@ -16,7 +16,6 @@ meteor_act
 	var/obj/item/organ/external/organ = get_organ(def_zone)
 
 	//Shields
-<<<<<<< HEAD
 	var/shield_check = check_shields(P.get_structure_damage(), P, null, def_zone, "the [P.name]")
 	if(shield_check)
 		if(shield_check < 0)
@@ -38,89 +37,6 @@ meteor_act
 			SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
 			SP.loc = organ
 			organ.embed(SP)
-=======
-	if (!(P.testing))
-		var/shield_check = check_shields(P.get_structure_damage(), P, null, def_zone, "the [P.name]")
-		if(shield_check)
-			if(shield_check < 0)
-				return shield_check
-			else
-				P.on_hit(src, def_zone)
-				return 2
-	else
-		P.on_hit(src, def_zone)
-		return 2
-
-	//Checking absorb for spawning shrapnel
-	if (!(P.testing))
-		.=..(P , def_zone)
-
-		var/check_absorb = .
-		//Shrapnel
-		if(P.can_embed() && (check_absorb < 2) && !src.stats.getPerk(PERK_IRON_FLESH))
-			var/armor = getarmor_organ(organ, ARMOR_BULLET)
-			if(prob((20 + max(P.damage_types[BRUTE] - armor, -10) * P.embed_mult)))
-				if(!P.shrapnel_type)
-					var/obj/item/material/shard/shrapnel/SP = new()
-					SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
-					SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-					SP.loc = organ
-					SP.gun_number = P.serial_type_index_bullet //"" to "" shouldnt be an issue
-					organ.embed(SP)
-				else
-					var/obj/item/newshrap = new P.shrapnel_type(organ)
-					organ.embed(newshrap)
-
-/mob/living/carbon/human/hit_impact(damage, dir)
-	if(incapacitated(INCAPACITATION_DEFAULT|INCAPACITATION_BUCKLED_PARTIALLY))
-		return
-	if(damage < stats.getStat(STAT_TGH))
-		..()
-		return
-
-	if(!dir) // Same turf as the source
-		return
-
-	var/r_dir = reverse_dir[dir]
-	var/hit_dirs = (r_dir in cardinal) ? r_dir : list(r_dir & NORTH|SOUTH, r_dir & EAST|WEST)
-
-	var/stumbled = FALSE
-
-	if(prob(60 - stats.getStat(STAT_TGH)))
-		stumbled = TRUE
-		step(src, pick(cardinal - hit_dirs))
-
-	for(var/atom/movable/A in oview(1))
-		if(!A.Adjacent(src) || prob(50 + stats.getStat(STAT_TGH)))
-			continue
-
-		if(istype(A, /obj/structure/table))
-			var/obj/structure/table/T = A
-			if (!T.can_touch(src) || T.flipped != 0 || !T.flip(get_cardinal_dir(src, T)))
-				continue
-			if(T.climbable)
-				T.structure_shaken()
-			playsound(T,'sound/machines/Table_Fall.ogg',100,1)
-
-		else if(istype(A, /obj/machinery/door))
-			var/obj/machinery/door/D = A
-			D.Bumped(src)
-
-		else if(istype(A, /obj/machinery/button))
-			A.attack_hand(src)
-
-		else if(istype(A, /obj/item) || prob(33))
-			if(A.anchored)
-				continue
-			step(A, pick(cardinal))
-
-		else
-			continue
-		stumbled = TRUE
-
-	if(stumbled)
-		visible_message(SPAN_WARNING("[src] stumbles around."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /mob/living/carbon/human/hit_impact(damage, dir)
@@ -181,31 +97,22 @@ meteor_act
 //	No siemens coefficient calculations now, it's all done with armor "Energy" protection stat
 
 	switch (def_zone)
-<<<<<<< HEAD
 		if(BP_L_HAND, BP_R_HAND)
 			var/c_hand
 			if (def_zone == BP_L_HAND)
 				c_hand = l_hand
 			else
 				c_hand = r_hand
-=======
-		if(BP_L_ARM, BP_R_ARM)
-			var/obj/item/organ/external/hand = get_organ(def_zone)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-			if(hand && hand.mob_can_unequip(src) && (stun_amount || agony_amount > 10))
+			if(c_hand && (stun_amount || agony_amount > 10))
 				msg_admin_attack("[src.name] ([src.ckey]) was disarmed by a stun effect")
 
-<<<<<<< HEAD
 				drop_from_inventory(c_hand)
-=======
-				drop_from_inventory(hand)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if (BP_IS_ROBOTIC(affected))
 					emote("pain", 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					emote("painscream", 1, "[(species && species.flags & NO_PAIN) ? "" : emote_scream ]drops what they were holding in their [affected.name]!")
+					emote("pain", 1, "[(species && species.flags & NO_PAIN) ? "" : emote_scream ]drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 
@@ -253,7 +160,6 @@ meteor_act
 	if(def_zone.armor)
 		if(def_zone.armor.getRating(type) > protection)
 			protection = def_zone.armor.getRating(type)
-<<<<<<< HEAD
 
 	for(var/gear in protective_gear)
 		if(gear && istype(gear ,/obj/item/clothing))
@@ -267,14 +173,6 @@ meteor_act
 	if(shield)
 		protection += shield.armor[type]
 
-=======
-	for(var/gear in protective_gear)
-		if(gear && istype(gear ,/obj/item/clothing))
-			var/obj/item/clothing/C = gear
-			if(istype(C) && C.body_parts_covered & def_zone.body_part && C.armor)
-				if(C.armor.vars[type] > protection)
-					protection = C.armor.vars[type]
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return protection
 
 /mob/living/carbon/human/proc/check_head_coverage()
@@ -354,17 +252,12 @@ meteor_act
 		if(!..(I, user, effective_force, hit_zone))
 			return FALSE
 
-<<<<<<< HEAD
 		attack_joint(affecting, I) //but can dislocate joints
-=======
-		attack_joint(affecting, I) //but can dislocate(strike nerve) joints
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if(!..())
 		return FALSE
 
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(hit_appends)	//forcesay checks stat already
-<<<<<<< HEAD
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(25 + (effective_force * 2)))
 		if(!stat && !(has_shield()))
 			if(headcheck(hit_zone))
@@ -380,21 +273,12 @@ meteor_act
 
 		//Apply blood
 		if(!((I.flags & NOBLOODY)||(I.item_flags & NOBLOODY)))
-=======
-
-		//Apply blood
-		if(!((I.flags & NOBLOODY)||(I.item_flags & NOBLOODY)) && src.species?.reagent_tag != IS_SYNTHETIC)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			I.add_blood(src)
 
-		if(prob(33 + I.sharp * 10) && src.species?.reagent_tag != IS_SYNTHETIC)
+		if(prob(33 + I.sharp * 10))
 			var/turf/location = loc
-			if(istype(location, /turf/simulated) && I.damtype == BRUTE)
+			if(istype(location, /turf/simulated))
 				location.add_blood(src)
-				drip_blood(3)
-			else
-				spawn emote("me", 1, "coughs up blood!")
-				drip_blood(5)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
@@ -420,31 +304,19 @@ meteor_act
 			splatter_dir = get_dir(user, target_loca)
 			target_loca = get_step(target_loca, splatter_dir)
 			var/blood_color = "#C80000"
-<<<<<<< HEAD
 			blood_color = src.blood_color //Occulus Edit - For colored blood
-=======
-			blood_color = src.form.blood_color
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			new /obj/effect/overlay/temp/dir_setting/bloodsplatter(src.loc, splatter_dir, blood_color)
 			target_loca.add_blood(src)
 
 	return TRUE
 
 /mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W)
-<<<<<<< HEAD
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) )
-=======
-	if(!organ || (organ.nerve_struck == 2) || (organ.nerve_struck == -1))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	//There was blocked var, removed now. For the sake of game balance, it was just replaced by 2
 	if(prob(W.force / 2))
 		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
-<<<<<<< HEAD
 		organ.dislocate(1)
-=======
-		organ.nerve_strike_add(1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	return FALSE
 
@@ -462,7 +334,7 @@ meteor_act
 					return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce
+		var/throw_damage = O.throwforce * (speed / THROWFORCE_SPEED_DIVISOR)
 
 		var/zone
 		if (isliving(O.thrower))
@@ -490,9 +362,6 @@ meteor_act
 			return
 
 		O.throwing = 0		//it hit, so stop moving
-
-		/// Get hit with glass shards , your fibers are on them now, or with a rod idk.
-		O.add_fibers(src)
 
 		var/obj/item/organ/external/affecting = get_organ(zone)
 		var/hit_area = affecting.name
@@ -525,7 +394,7 @@ meteor_act
 				var/embed_threshold = sharp? 3*I.w_class : 9*I.w_class
 
 
-				var/embed_chance = (damage*I.embed_mult - embed_threshold)/2
+				var/embed_chance = (damage - embed_threshold)*I.embed_mult
 				if (embed_chance > 0 && prob(embed_chance))
 					affecting.embed(I)
 
@@ -570,7 +439,7 @@ meteor_act
 		add_blood(source)
 		bloody_hands = amount
 		bloody_hands_mob = source
-	update_inv_gloves()		//updates on-mob over-lays for bloody hands and/or bloody gloves
+	update_inv_gloves()		//updates on-mob overlays for bloody hands and/or bloody gloves
 
 /mob/living/carbon/human/proc/bloody_body(var/mob/living/source)
 	if(wear_suit)

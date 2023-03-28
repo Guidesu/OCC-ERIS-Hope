@@ -16,11 +16,7 @@
 	var/failed_task = FALSE
 
 /obj/machinery/botany/attack_hand(mob/user)
-<<<<<<< HEAD
 	ui_interact(user)
-=======
-	nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/botany/proc/start_task()
 	// UI is updated by "return 1" in Topic()
@@ -72,29 +68,17 @@
 		return
 	..()
 
-<<<<<<< HEAD
 /obj/machinery/botany/ui_data()
 	var/list/data = list()
 	data["active"] = (use_power == ACTIVE_POWER_USE)
 
 	data["loaded_gene"] = loaded_gene?.ui_data()
-=======
-/obj/machinery/botany/nano_ui_data()
-	var/list/data = list()
-	data["active"] = (use_power == ACTIVE_POWER_USE)
-
-	data["loaded_gene"] = loaded_gene?.nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(disk)
 		var/list/disk_genes = list()
 		for(var/f in disk.find_files_by_type(/datum/computer_file/binary/plantgene))
 			var/datum/computer_file/gene = f
-<<<<<<< HEAD
 			disk_genes.Add(list(gene.ui_data()))
-=======
-			disk_genes.Add(list(gene.nano_ui_data()))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		data["disk"] = list(
 			"max_capacity" = disk.max_capacity,
@@ -180,7 +164,6 @@
 /obj/machinery/botany/extractor
 	name = "lysis-isolation centrifuge"
 	icon_state = "traitcopier"
-<<<<<<< HEAD
 	var/genes_processed = FALSE
 
 /obj/machinery/botany/extractor/ui_data()
@@ -191,21 +174,6 @@
 		geneMasks.Add(list(list("tag" = gene_tag, "mask" = plant_controller.gene_tag_masks[gene_tag])))
 	data["geneMasks"] = geneMasks
 
-=======
-
-	circuit = /obj/item/circuitboard/extractor
-
-	var/genes_processed = FALSE
-
-/obj/machinery/botany/extractor/nano_ui_data()
-	var/list/data = ..()
-
-	var/list/geneMasks = list()
-	for(var/gene_tag in plant_controller.gene_tag_masks)
-		geneMasks.Add(list(list("tag" = gene_tag, "mask" = plant_controller.gene_tag_masks[gene_tag])))
-	data["geneMasks"] = geneMasks
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(seed && genes_processed)
 		data["hasGenetics"] = TRUE
 		data["sourceName"] = seed.seed.display_name
@@ -216,13 +184,8 @@
 
 	return data
 
-<<<<<<< HEAD
 /obj/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_panel_open = NANOUI_FOCUS)
 	var/list/data = ui_data(user)
-=======
-/obj/machinery/botany/extractor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_panel_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_panel_open)
 	if (!ui)
@@ -280,15 +243,8 @@
 	name = "bioballistic delivery system"
 	icon_state = "traitgun"
 
-<<<<<<< HEAD
 /obj/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_panel_open = NANOUI_FOCUS)
 	var/list/data = ui_data(user)
-=======
-	circuit = /obj/item/circuitboard/editor
-
-/obj/machinery/botany/editor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_panel_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_panel_open)
 	if (!ui)
@@ -323,8 +279,4 @@
 		seed.modified = max(seed.modified, 100)
 
 		start_task()
-<<<<<<< HEAD
 		return 1
-=======
-		return 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

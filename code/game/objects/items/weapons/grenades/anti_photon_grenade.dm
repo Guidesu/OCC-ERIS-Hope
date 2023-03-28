@@ -1,18 +1,13 @@
 /obj/item/grenade/anti_photon
 	name = "photon disruption grenade"
-	desc = "An experimental device that temporarily eliminates light through destructive interference."
+	desc = "An experimental device for temporarily removing light in a limited area."
 	icon_state = "emp"
 	item_state = "emp"
 	det_time = 20
 	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4)
-	price_tag = 500
 
 /obj/item/grenade/anti_photon/prime()
-<<<<<<< HEAD
 	playsound(loc, 'sound/effects/phasein.ogg', 50, 1, 5)
-=======
-	playsound(src.loc, 'sound/effects/phasein.ogg', 50, 1, 5)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set_light(10, -10, "#FFFFFF")
 
 	var/extra_delay = rand(0,90)

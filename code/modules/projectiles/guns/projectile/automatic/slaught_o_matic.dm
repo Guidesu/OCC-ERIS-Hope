@@ -1,31 +1,19 @@
 /obj/item/gun/projectile/automatic/slaught_o_matic
-<<<<<<< HEAD
 	name = "FS HG .35 Auto \"Slaught-o-Matic\""
 	desc = "This disposable plastic handgun is mass-produced by Frozen Star for civilian use. It often is used by street urchin, thugs, or terrorists on a budget. For what it's worth, it's not an awful handgun - but you only get one magazine before the gun locks up and becomes useless."
-=======
-	name = "\"Slaught-o-Matic\""
-	desc = "This disposable plastic handgun is mass-produced by H&S for civilian use. It often is used by street urchins, thugs, or terrorists on a budget. For what it's worth, it's not an awful handgun - but you only get one magazine before the gun locks up and becomes useless."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/guns/projectile/slaught_o_matic.dmi'
 	icon_state = "slaught"
 	item_state = "slaught"
 	w_class = ITEM_SIZE_SMALL
-<<<<<<< HEAD
 	can_dual = 1
 	caliber = CAL_PISTOL
 	max_shells = 0
-=======
-	can_dual = TRUE
-	caliber = CAL_PISTOL
-	max_shells = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = "/obj/item/ammo_casing/pistol"
 	load_method = MAGAZINE
 	mag_well = MAG_WELL_SMG
 	auto_eject = FALSE
-<<<<<<< HEAD
 	magazine_type = /obj/item/ammo_magazine/smg
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_PLASTIC = 9)
 	price_tag = 100
@@ -33,22 +21,12 @@
 	gun_parts = list(/obj/item/stack/material/plastic = 2)
 
 	safety = FALSE
-=======
-	magazine_type = /obj/item/ammo_magazine/smg_35
-	matter = list(MATERIAL_STEEL = 1, MATERIAL_PLASTIC = 9)
-	price_tag = 10
-	serial_type = "H&S"
-
-	gun_tags = list(GUN_PROJECTILE, GUN_CALIBRE_9MM)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	var/list/possible_colors = list("purple", "magenta", "blue", "cyan", "aqua", "green", "yellow", "orange", "red" )
 	var/choosen_color = ""
 
 	damage_multiplier = 0.8
 	penetration_multiplier = 0.2
-<<<<<<< HEAD
 	recoil_buildup = 3
 	one_hand_penalty = 5 //despine it being handgun, it's better to hold in two hands while shooting. SMG level.
 
@@ -57,34 +35,16 @@
 		FULL_AUTO_800
 		)
 
-=======
-	init_recoil = HANDGUN_RECOIL(1.6)
-	gun_parts = list(/obj/item/stack/material/plastic = 4)
-
-	init_firemodes = list(
-		FULL_AUTO_600
-		)
-
-	wield_delay = 0
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/projectile/automatic/slaught_o_matic/Initialize()
 	. = ..()
 	ammo_magazine = new magazine_type(src)
 
-<<<<<<< HEAD
 	restrict_safety = TRUE // We need safty switch but we can not use him
 
 	choosen_color = pick(possible_colors)
 	update_icon()
 
 /obj/item/gun/projectile/automatic/slaught_o_matic/on_update_icon()
-=======
-	choosen_color = pick(possible_colors)
-	update_icon()
-
-/obj/item/gun/projectile/automatic/slaught_o_matic/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 	var/iconstring = initial(icon_state)

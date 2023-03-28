@@ -553,8 +553,4 @@ var/global/use_preloader = FALSE
 
 /turf/template_noop
 	name = "Turf Passthrough"
-<<<<<<< HEAD
 	icon_state = "template_void"
-=======
-	icon_state = "template_void"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

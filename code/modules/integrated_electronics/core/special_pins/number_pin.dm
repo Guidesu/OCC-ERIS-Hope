@@ -14,8 +14,4 @@
 		holder.on_data_written()
 
 /datum/integrated_io/number/display_pin_type()
-<<<<<<< HEAD
   return IC_FORMAT_NUMBER
-=======
-	return IC_FORMAT_NUMBER
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

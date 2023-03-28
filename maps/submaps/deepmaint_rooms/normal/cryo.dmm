@@ -9,7 +9,6 @@
 /turf/simulated/wall,
 /area/deepmaint)
 "d" = (
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/white/techfloor_grid,
 /area/deepmaint)
 "e" = (
@@ -20,16 +19,10 @@
 	},
 /turf/simulated/floor/tiled/white/cargo,
 /area/deepmaint)
-=======
-/obj/structure/salvageable/implant_container,
-/turf/simulated/floor/tiled/white/techfloor_grid,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "f" = (
 /turf/simulated/floor/tiled/white/panels,
 /area/deepmaint)
 "g" = (
-<<<<<<< HEAD
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
@@ -120,26 +113,6 @@
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/rare,
-=======
-/obj/structure/salvageable/computer,
-/turf/simulated/floor/tiled/white/panels,
-/area/deepmaint)
-"k" = (
-/obj/structure/salvageable/personal,
-/turf/simulated/floor/tiled/white/gray_platform,
-/area/deepmaint)
-"l" = (
-/obj/structure/salvageable/implant_container,
-/turf/simulated/floor/tiled/white/cargo,
-/area/deepmaint)
-"s" = (
-/obj/structure/table/standard,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/rare,
-/obj/random/firstaid/low_chance,
-/obj/random/medical_lowcost/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
 "t" = (
@@ -147,7 +120,6 @@
 /area/deepmaint)
 "u" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
@@ -158,28 +130,11 @@
 /obj/machinery/sleeper{
 	dir = 4;
 	icon_state = "sleeper_0"
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/rare,
-/obj/random/firstaid/low_chance,
-/obj/random/medical_lowcost/low_chance,
-/turf/simulated/floor/tiled/white/gray_platform,
-/area/deepmaint)
-"v" = (
-/obj/machinery/sleeper/sarcophagus/random{
-	dir = 4
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
 "w" = (
-<<<<<<< HEAD
 /obj/machinery/sleeper{
-=======
-/obj/machinery/sleeper/sarcophagus/random{
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white/gray_platform,
@@ -188,10 +143,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-<<<<<<< HEAD
-=======
-/obj/structure/salvageable/implant_container,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/techfloor_grid,
 /area/deepmaint)
 "y" = (
@@ -199,10 +150,6 @@
 	dir = 4;
 	pixel_y = 0
 	},
-<<<<<<< HEAD
-=======
-/obj/structure/salvageable/implant_container,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/techfloor_grid,
 /area/deepmaint)
 "z" = (
@@ -211,56 +158,13 @@
 	},
 /turf/simulated/floor/tiled/white/panels,
 /area/deepmaint)
-<<<<<<< HEAD
-=======
-"A" = (
-/obj/structure/table/standard,
-/obj/random/pouch/low_chance,
-/turf/simulated/floor/tiled/white/techfloor_grid,
-/area/deepmaint)
-"B" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/white/cargo,
-/area/deepmaint)
-"N" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/white/brown_perforated,
-/area/deepmaint)
-"O" = (
-/obj/structure/salvageable/deepmaints_cryopod,
-/turf/simulated/floor/tiled/white/cargo,
-/area/deepmaint)
-"P" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/white/panels,
-/area/deepmaint)
-"S" = (
-/obj/structure/table/standard,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/rare,
-/obj/random/firstaid/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/medical/low_chance,
-/turf/simulated/floor/tiled/white/gray_platform,
-/area/deepmaint)
-"T" = (
-/obj/structure/table/standard,
-/obj/random/psi_megafauna,
-/turf/simulated/floor/tiled/white/techfloor_grid,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
 a
 a
-<<<<<<< HEAD
 b
-=======
-B
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 b
 a
@@ -287,13 +191,8 @@ d
 x
 k
 c
-<<<<<<< HEAD
 n
 o
-=======
-O
-P
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 t
 t
 t
@@ -301,7 +200,6 @@ a
 "}
 (4,1,1) = {"
 a
-<<<<<<< HEAD
 e
 g
 l
@@ -311,22 +209,10 @@ p
 t
 t
 t
-=======
-B
-f
-S
-c
-O
-f
-t
-t
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
 b
-<<<<<<< HEAD
 d
 h
 l
@@ -334,22 +220,12 @@ c
 n
 p
 s
-=======
-A
-f
-l
-c
-O
-f
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 w
 w
 b
 "}
 (6,1,1) = {"
 b
-<<<<<<< HEAD
 f
 i
 m
@@ -359,22 +235,10 @@ q
 f
 f
 f
-=======
-g
-P
-f
-f
-P
-f
-f
-f
-P
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (7,1,1) = {"
 b
-<<<<<<< HEAD
 d
 h
 l
@@ -382,22 +246,12 @@ c
 n
 q
 s
-=======
-T
-f
-l
-c
-O
-f
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 v
 v
 b
 "}
 (8,1,1) = {"
 a
-<<<<<<< HEAD
 e
 j
 l
@@ -407,17 +261,6 @@ q
 t
 t
 t
-=======
-B
-f
-S
-c
-O
-f
-t
-t
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (9,1,1) = {"
@@ -426,13 +269,8 @@ d
 y
 k
 c
-<<<<<<< HEAD
 n
 r
-=======
-O
-P
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 t
 t
 t
@@ -456,11 +294,7 @@ a
 a
 a
 a
-<<<<<<< HEAD
 b
-=======
-B
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 b
 a

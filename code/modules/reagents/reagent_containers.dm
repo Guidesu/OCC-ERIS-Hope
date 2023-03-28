@@ -20,15 +20,10 @@
 		amount_per_transfer_from_this = N
 
 /obj/item/reagent_containers/Initialize()
-<<<<<<< HEAD
-=======
-	cut_overlays()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	create_reagents(volume)
 	. = ..() // This creates initial reagents
 	if(!possible_transfer_amounts)
 		src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
-<<<<<<< HEAD
 
 
 /obj/item/reagent_containers/attack_self(mob/user as mob)
@@ -40,20 +35,6 @@
 /obj/item/reagent_containers/on_reagent_change()
 	update_icon()
 
-=======
-	update_icon()
-
-
-/obj/item/reagent_containers/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
-	return
-
-/obj/item/reagent_containers/on_reagent_change()
-	update_icon()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/proc/get_filling_state()
 	var/percent = round((reagents.total_volume / volume) * 100)
 	var/list/increments = cached_number_list_decode(filling_states)
@@ -139,11 +120,7 @@
 	return
 
 /obj/item/reagent_containers/proc/standard_feed_mob(mob/user, mob/target) // This goes into attack
-<<<<<<< HEAD
 	if(!istype(target) || !target?.can_be_fed)
-=======
-	if(!istype(target))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(!is_drainable() && !istype(src, /obj/item/reagent_containers/pill)) // Pills are swallowed whole
@@ -205,10 +182,6 @@
 			return FALSE
 
 	if(!is_drainable())
-		#ifdef CWJ_DEBUG
-		log_debug("reagent_containers/standard_pour_into()- Container not drainable!")
-		#endif
-
 		is_closed_message(user)
 		return FALSE
 
@@ -260,9 +233,3 @@
 				amount_to_transfer = max(0,amount_to_transfer - amount)
 	return TRUE
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/get_item_cost(export)
-	. = ..()
-	. += reagents?.get_price()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

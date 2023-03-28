@@ -7,11 +7,7 @@
 		anchored = FALSE
 		density = TRUE
 		req_access = list(access_engine_equip)
-
 		circuit = /obj/item/electronics/circuitboard/shieldwallgen
-
-		circuit = /obj/item/circuitboard/shieldwallgen
-
 		var/shield_type = /obj/machinery/shieldwall //Overridden by excelsior variant
 		var/active = 0
 		var/power = 0
@@ -30,10 +26,6 @@
 		//There have to be at least two posts, so these are effectively doubled
 		var/power_draw = 30000 //30 kW. How much power is drawn from powernet. Increase this to allow the generator to sustain longer shields, at the cost of more power draw.
 		var/max_stored_power = 50000 //50 kW
-<<<<<<< HEAD
-=======
-		var/passive_power_use = 2500 // The amount of power used as soon as we're connected to a power net.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		use_power = NO_POWER_USE	//Draws directly from power net. Does not use APC power.
 		var/max_field_dist = 8
 		var/stunmode = FALSE
@@ -102,17 +94,13 @@
 
 	cut_overlays()
 	if(panel_open)
-<<<<<<< HEAD
 		add_overlays(image(icon,"Shield_Gen_panel"))
-=======
-		add_overlay(image(icon,"Shield_Gen_panel"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/shieldwallgen/Process()
 	power()
 
 	if(power)
-		storedpower -= passive_power_use //the generator post itself uses some power
+		storedpower -= 2500 //the generator post itself uses some power
 
 	if(storedpower >= max_stored_power)
 		storedpower = max_stored_power
@@ -209,11 +197,13 @@
 
 /obj/machinery/shieldwallgen/attackby(obj/item/I, mob/user)
 
+	if(default_deconstruction(I, user))
+		return
+
 	if(default_part_replacement(I, user))
 		return
 
 
-<<<<<<< HEAD
 	if(QUALITY_BOLT_TURNING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
 			if(active)
@@ -234,8 +224,6 @@
 				src.anchored = FALSE
 				return
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(I, /obj/item/card/id) || istype(I, /obj/item/modular_computer))
 		if (src.allowed(user))
 			src.locked = !src.locked
@@ -243,51 +231,9 @@
 		else
 			to_chat(user, "\red Access denied.")
 
-	var/list/usable_qualities = list(QUALITY_BOLT_TURNING, QUALITY_SCREW_DRIVING)
-
-	if(panel_open && circuit)
-		usable_qualities += QUALITY_PRYING
-
-	if(active)
-		to_chat(user, SPAN_NOTICE("You can't work with [src] while its running!"))
-
-	var/tool_type = I.get_tool_type(user, usable_qualities, src)
-	switch(tool_type)
-
-
-		if(QUALITY_BOLT_TURNING)
-			if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-				if(anchored)
-					to_chat(user, SPAN_NOTICE("You unsecure the [src] from the floor!"))
-					anchored = FALSE
-					state = FALSE
-				else
-					if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
-					to_chat(user, SPAN_NOTICE("You secure the [src] to the floor!"))
-					anchored = TRUE
-					state = TRUE
-
-				return
-
-		if(QUALITY_PRYING)
-			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
-				to_chat(user, SPAN_NOTICE("You remove the components of \the [src] with [I]."))
-				dismantle()
-			return TRUE
-
-		if(QUALITY_SCREW_DRIVING)
-			var/used_sound = panel_open ? 'sound/machines/Custom_screwdriveropen.ogg' :  'sound/machines/Custom_screwdriverclose.ogg'
-			if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC, instant_finish_tier = 30, forced_sound = used_sound))
-				updateUsrDialog()
-				panel_open = !panel_open
-				to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the maintenance hatch of \the [src] with [I]."))
-				update_icon()
-			return TRUE
-
-		else
-			src.add_fingerprint(user)
-			visible_message("\red The [src.name] has been hit with \the [I.name] by [user.name]!")
+	else
+		src.add_fingerprint(user)
+		visible_message("\red The [src.name] has been hit with \the [I.name] by [user.name]!")
 
 
 /obj/machinery/shieldwallgen/emag_act()
@@ -301,8 +247,7 @@
 	. = ..()
 
 /obj/machinery/shieldwallgen/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		storedpower -= 400 * Proj.get_structure_damage()
+	storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
 
@@ -336,7 +281,7 @@
 	update_nearby_tiles()
 	src.gen_primary = A
 	src.gen_secondary = B
-	if(A?.active && B?.active)
+	if(A && B && A.active && B.active)
 		needs_power = 1
 		if(prob(50))
 			A.storedpower -= generate_power_usage
@@ -370,14 +315,13 @@
 
 
 /obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		if(needs_power)
-			var/obj/machinery/shieldwallgen/G
-			if(prob(50))
-				G = gen_primary
-			else
-				G = gen_secondary
-			G.storedpower -= 400 * Proj.get_structure_damage()
+	if(needs_power)
+		var/obj/machinery/shieldwallgen/G
+		if(prob(50))
+			G = gen_primary
+		else
+			G = gen_secondary
+		G.storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
 

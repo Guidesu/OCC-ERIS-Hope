@@ -11,53 +11,14 @@
 /mob/get_mob()
 	return src
 
-/**
- * Returns a list of all mobs within view(), using given arguments to determine the range of the search
- * and the source of the proc.
- *
- * Args:
- * range - How far, in a square, around this mob, will we search.
- * source - The source of the search.
-**/
-/proc/mobs_in_view(range, atom/source)
+/proc/mobs_in_view(var/range, var/source)
 	var/list/mobs = list()
-	for(var/mob/target_mob in view(range, source))
-		mobs += target_mob
+	for(var/atom/movable/AM in view(range, source))
+		var/M = AM.get_mob()
+		if(M)
+			mobs += M
+
 	return mobs
-
-/**
- * Returns a list of all LIVING mobs within view(), using given arguments to determine the range of the search
- * and the source of the proc.
- *
- * Args:
- * range - How far, in a square, around this mob, will we search.
- * source - The source of the search.
-**/
-/proc/living_mobs_in_view(var/range, var/atom/source)
-	var/list/mobs = list()
-	for(var/mob/living/target_mob in view(range, source))
-		mobs += target_mob
-	return mobs
-
-
-/**
- * Returns a list of all mobs within view(), even those within mechs, using given arguments to determine the range of the search
- * and the source of the proc.
- *
- * Args:
- * range - How far, in a square, around this mob, will we search.
- * source - The source of the search.
-**/
-/proc/all_mobs_in_view(var/range, var/atom/source)
-	var/list/mobs = list()
-	for(var/mob/target_mob in view(range, source))
-		mobs += target_mob
-	for(var/obj/mecha/potential_mech in GLOB.mechas_list)
-		if(potential_mech.z == source.z && get_dist(potential_mech, source) < range && can_see(source, potential_mech, range))
-			var/mob/living/occupant = potential_mech.get_mob()
-			if (occupant)
-				mobs += occupant
-    return mobs
 
 /proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Bald"
@@ -250,11 +211,10 @@ Proc for attack log creation, because really why not
 	if (progbar)
 		qdel(progbar)
 
-/proc/do_after(mob/user, delay, atom/target, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, immobile = 1)
+/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT)
 	if(!user)
 		return 0
-
-	var/atom/target_loc
+	var/atom/target_loc = null
 	if(target)
 		target_loc = target.loc
 
@@ -282,10 +242,9 @@ Proc for attack log creation, because really why not
 		if (progress)
 			progbar.update(world.time - starttime)
 
-		if(immobile)
-			if(user.loc != original_loc)
-				. = 0
-				break
+		if(!user || user.incapacitated(incapacitation_flags) || user.loc != original_loc)
+			. = 0
+			break
 
 		if(target_loc && (!target || target_loc != target.loc))
 			. = 0
@@ -328,45 +287,14 @@ Proc for attack log creation, because really why not
 
 /proc/is_neotheology_disciple(mob/living/L)
 	if(istype(L) && L.get_core_implant(/obj/item/implant/core_implant/cruciform))
-<<<<<<< HEAD
 		return TRUE
 
 	return FALSE
 
 /proc/is_carrion(mob/living/carbon/human/H)
 	if(istype(H) && (H.organ_list_by_process(BP_SPCORE)).len)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
-	return FALSE
 
-/proc/is_acolyte(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_COMMON))
-		return TRUE
-	return FALSE
-
-/proc/is_preacher(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_PRIEST) && C.get_module(CRUCIFORM_REDLIGHT))
-		return TRUE
-	return FALSE
-
-/proc/is_inquisidor(mob/living/L)
-	if(!isliving(L))
-		return FALSE
-	var/obj/item/implant/core_implant/cruciform/C = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
-	if(C && C.get_module(CRUCIFORM_INQUISITOR))
-		return TRUE
-	return FALSE
-
-/proc/is_carrion(mob/living/carbon/human/H)
-	if(istype(H) && (H.organ_list_by_process(BP_SPCORE)).len)
-		return TRUE
 	return FALSE
 
 /proc/is_excelsior(var/mob/M)
@@ -394,14 +322,6 @@ Proc for attack log creation, because really why not
 /mob/proc/can_see_reagents()
 	return TRUE
 
-<<<<<<< HEAD
-=======
-/mob/proc/can_see_illegal_reagents()
-	return TRUE
-
-/mob/proc/can_see_common_reagents()
-	return TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Returns true if M was not already in the dead mob list
 /mob/proc/switch_from_living_to_dead_mob_list()
@@ -459,7 +379,7 @@ Proc for attack log creation, because really why not
 			if((M.stat != DEAD) || (!M.client))
 				continue
 			//They need a brain!
-			if(ishuman(M))
+			if(istype(M, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.should_have_process(BP_BRAIN) && !H.has_brain())
 					continue
@@ -477,7 +397,6 @@ Proc for attack log creation, because really why not
 
 	return mind.assigned_job.head_position
 
-<<<<<<< HEAD
 /mob/proc/get_screen_colour()
 
 /mob/proc/update_client_colour(time = 10) //Update the mob's client.color with an animation the specified time in length.
@@ -493,8 +412,6 @@ Proc for attack log creation, because really why not
 	if(eyes) //If they're not, check to see if their eyes got one of them there colour matrices. Will be null if eyes are robotic/the mob isn't colourblind and they have no default colour matrix.
 		return eyes.get_colourmatrix()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //This gets an input while also checking a mob for whether it is incapacitated or not.
 /mob/proc/get_input(message, title, default, choice_type, obj/required_item)
 	if(src.incapacitated() || (required_item && !GLOB.hands_state.can_use_topic(required_item,src)))
@@ -513,20 +430,3 @@ Proc for attack log creation, because really why not
 	if(isnull(choice) || src.incapacitated() || (required_item && !GLOB.hands_state.can_use_topic(required_item,src)))
 		return null
 	return choice
-<<<<<<< HEAD
-=======
-
-/// Gets the client of the mob, allowing for mocking of the client.
-/// You only need to use this if you know you're going to be mocking clients somewhere else.
-#define GET_CLIENT(mob) (##mob.client) //  || ##mob.mock_client
-
-///Makes a call in the context of a different usr. Use sparingly
-/world/proc/push_usr(mob/user_mob, datum/callback/invoked_callback, ...)
-	var/temp = usr
-	usr = user_mob
-	if (length(args) > 2)
-		. = invoked_callback.Invoke(arglist(args.Copy(3)))
-	else
-		. = invoked_callback.Invoke()
-	usr = temp
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

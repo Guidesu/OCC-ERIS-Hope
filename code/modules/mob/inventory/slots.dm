@@ -234,19 +234,9 @@
 		if(!disable_warning)
 			to_chat(owner, SPAN_WARNING("You can't attach anything to that [wear_suit]."))
 		return FALSE
-<<<<<<< HEAD
 	if( !is_type_in_list(I, wear_suit.allowed + list(/obj/item/modular_computer/pda, /obj/item/pen)) )
 		if(!disable_warning)
 			to_chat(owner, SPAN_WARNING("You can't attach [I] to that [wear_suit]."))
-=======
-	if(is_type_in_list(I, wear_suit.blacklisted_allowed))
-		if(!disable_warning)
-			to_chat(owner, SPAN_WARNING("You can't attach [I] to that [wear_suit]."))
-		return FALSE
-	if(!is_type_in_list(I, wear_suit.allowed + list(/obj/item/modular_computer/pda, /obj/item/pen)) )
-		if(!disable_warning)
-			to_chat(owner, SPAN_WARNING("You can't attach [I] to that [wear_suit]."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	return TRUE
 

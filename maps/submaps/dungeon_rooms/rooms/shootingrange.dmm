@@ -7,16 +7,8 @@
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "c" = (
-<<<<<<< HEAD
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled/derelict,
-=======
-/obj/structure/table/onestar,
-/obj/item/storage/hcases/ammo/blackmarket/has_items_spawn,
-/obj/item/storage/hcases/ammo/blackmarket/has_items_spawn,
-/obj/item/storage/hcases/ammo/blackmarket/has_items_spawn,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "d" = (
 /obj/structure/closet/onestar/tier3/special,
@@ -33,7 +25,6 @@
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "h" = (
-<<<<<<< HEAD
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
@@ -48,14 +39,6 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
-/obj/structure/table/onestar,
-/obj/item/storage/hcases/ammo/excel/has_items_spawn,
-/obj/item/storage/hcases/ammo/excel/has_items_spawn,
-/obj/item/storage/hcases/ammo/excel/has_items_spawn,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "k" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -67,19 +50,12 @@
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "m" = (
-<<<<<<< HEAD
 /turf/simulated/floor/bluegrid,
-=======
-/obj/structure/table/onestar,
-/obj/item/clothing/head/helmet/laserproof/iron_lock_security,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "n" = (
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
 "o" = (
-<<<<<<< HEAD
 /obj/structure/table/onestar,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
@@ -101,23 +77,6 @@
 "s" = (
 /obj/structure/railing/grey,
 /obj/machinery/light/floor,
-=======
-/obj/random/mob/roomba,
-/turf/simulated/floor/tiled/derelict/white_big_edges,
-/area/crawler)
-"p" = (
-/obj/structure/target_stake,
-/obj/item/target/syndicate,
-/turf/simulated/floor/tiled/derelict/white_big_edges,
-/area/crawler)
-"r" = (
-/obj/structure/safe/floor{
-	contents = newlist(/obj/random/credits/c1000)
-	},
-/obj/item/tool/crowbar/onestar,
-/obj/item/gun/energy/captain,
-/obj/item/computer_hardware/hard_drive/portable/design/onestar/cog,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "t" = (
@@ -130,15 +89,9 @@
 	},
 /obj/machinery/door/window/northleft,
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/gun/normal,
 /obj/spawner/gun/normal,
 /obj/spawner/gun/cheap,
-=======
-/obj/random/gun_normal,
-/obj/random/gun_normal,
-/obj/random/gun_cheap,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "v" = (
@@ -147,26 +100,15 @@
 	},
 /obj/machinery/door/window/northright,
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/gun/shotgun,
 /obj/spawner/gun/normal,
 /obj/spawner/gun/cheap,
-=======
-/obj/random/gun_shotgun,
-/obj/random/gun_normal,
-/obj/random/gun_cheap,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "w" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
 /obj/spawner/gun/normal,
 /obj/spawner/gun/cheap,
-=======
-/obj/random/gun_normal,
-/obj/random/gun_cheap,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "x" = (
@@ -179,13 +121,8 @@
 /area/crawler)
 "z" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
 /obj/spawner/gun/energy_cheap,
 /obj/spawner/gun/cheap,
-=======
-/obj/random/gun_energy_cheap,
-/obj/random/gun_cheap,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 
@@ -193,46 +130,27 @@
 a
 a
 a
-<<<<<<< HEAD
 m
 m
 q
-=======
-l
-l
-l
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
 "}
 (2,1,1) = {"
 a
-<<<<<<< HEAD
 c
 h
 g
 g
 g
 h
-=======
-d
-g
-y
-g
-g
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 u
 a
 "}
 (3,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-d
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 g
 g
@@ -243,11 +161,7 @@ a
 "}
 (4,1,1) = {"
 a
-<<<<<<< HEAD
 c
-=======
-d
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 g
 g
@@ -269,7 +183,6 @@ b
 "}
 (6,1,1) = {"
 b
-<<<<<<< HEAD
 e
 i
 n
@@ -277,20 +190,10 @@ n
 n
 i
 e
-=======
-n
-n
-n
-n
-n
-n
-n
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (7,1,1) = {"
 b
-<<<<<<< HEAD
 f
 a
 o
@@ -298,20 +201,10 @@ o
 o
 a
 f
-=======
-n
-n
-n
-n
-n
-n
-n
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (8,1,1) = {"
 b
-<<<<<<< HEAD
 g
 j
 e
@@ -319,20 +212,10 @@ e
 e
 s
 g
-=======
-n
-n
-n
-n
-o
-n
-n
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (9,1,1) = {"
 a
-<<<<<<< HEAD
 g
 k
 e
@@ -340,15 +223,6 @@ e
 e
 t
 g
-=======
-f
-a
-c
-m
-h
-a
-f
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (10,1,1) = {"
@@ -364,21 +238,13 @@ a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 g
-=======
-y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 p
 r
 p
 e
-<<<<<<< HEAD
 g
-=======
-y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"

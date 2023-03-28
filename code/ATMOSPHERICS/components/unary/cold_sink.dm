@@ -10,11 +10,7 @@
 	anchored = TRUE
 	use_power = NO_POWER_USE
 	idle_power_usage = 5			// 5 Watts for thermostat related circuitry
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/unary_atmos/cooler
-=======
-	circuit = /obj/item/circuitboard/unary_atmos/cooler
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/heatsink_temperature = T20C	// The constant temperature reservoir into which the freezer pumps heat. Probably the hull of the station or something.
 	var/internal_volume = 600		// L
 
@@ -59,9 +55,9 @@
 	return
 
 /obj/machinery/atmospherics/unary/freezer/attack_hand(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/atmospherics/unary/freezer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/atmospherics/unary/freezer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["on"] = use_power ? 1 : 0

@@ -8,17 +8,10 @@
 	metabolism = REM * 0.2
 	reagent_type = "General"
 
-<<<<<<< HEAD
 /datum/reagent/acetone/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	M.adjustToxLoss(effect_multiplier * 0.3)
 
 /datum/reagent/acetone/touch_obj(obj/O)	//I copied this wholesale from ethanol and could likely be converted into a shared proc. ~Techhead
-=======
-/datum/reagent/acetone/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	M.add_chemical_effect(CE_TOXIN, 1.5 * effect_multiplier)
-
-/datum/reagent/acetone/touch_obj(var/obj/O)	//I copied this wholesale from ethanol and could likely be converted into a shared proc. ~Techhead
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
@@ -35,26 +28,6 @@
 /datum/reagent/metal
 	reagent_type = "Metal"
 
-<<<<<<< HEAD
-=======
-/datum/reagent/metal/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.add_chemical_effect(CE_MECH_REPAIR, 0.05)	// Makes metals useful and stackable for FBPs
-
-/datum/reagent/metal/affect_ingest(var/mob/living/carbon/M, var/alien)
-	if(M.species.reagent_tag == IS_CHTMANT)
-		M.add_chemical_effect(CE_TOXIN, 0.1)
-
-	if(M.stats.getPerk(PERK_NANITE_METAL_EATER))
-		M.add_chemical_effect(CE_BLOODCLOT, 0.2)
-		M.adjustNutrition(0.4) //Metal even with the perk isnt that filling
-
-
-/datum/reagent/metal/affect_blood(var/mob/living/carbon/M, var/alien)
-	if(M.species.reagent_tag == IS_CHTMANT)
-		M.add_chemical_effect(CE_TOXIN, 0.2)
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/reagent/metal/aluminum
 	name = "Aluminum"
 	id = "aluminum"
@@ -63,7 +36,6 @@
 	description = "A silvery white and ductile member of the boron group of chemical elements."
 	reagent_state = SOLID
 	color = "#A8A8A8"
-	common = TRUE //Identifiable on sight
 
 /datum/reagent/toxin/ammonia
 	name = "Ammonia"
@@ -74,20 +46,14 @@
 	reagent_state = LIQUID
 	color = "#404030"
 	metabolism = REM * 0.5
-	common = TRUE //Identifiable by smell
 
-<<<<<<< HEAD
 /datum/reagent/toxin/ammonia/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	M.adjustToxLoss(effect_multiplier * 0.15)
-=======
-/datum/reagent/toxin/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	M.add_chemical_effect(CE_TOXIN, 0.7 * effect_multiplier)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/carbon
 	name = "Carbon"
 	id = "carbon"
-	description = "A chemical element, the building block of life."
+	description = "A chemical element, the builing block of life."
 	taste_description = "sour chalk"
 	taste_mult = 1.5
 	reagent_state = SOLID
@@ -95,11 +61,7 @@
 	ingest_met = REM * 5
 	reagent_type = "Reactive nonmetal"
 
-<<<<<<< HEAD
 /datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/carbon/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
 		var/effect = 1 / (M.ingested.reagent_list.len - 1)
 		for(var/datum/reagent/R in M.ingested.reagent_list)
@@ -123,7 +85,6 @@
 	description = "A highly ductile metal."
 	taste_description = "copper"
 	color = "#6E3B08"
-	common = TRUE //Identifiable on sight
 
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
@@ -136,24 +97,15 @@
 	touch_met = 5
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
-<<<<<<< HEAD
 	var/strength_mod = 1
-=======
-	var/strength_mod = 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/toxicity = 1
 
 	var/druggy = 0
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
-<<<<<<< HEAD
 	sanity_gain_ingest = 0.5 //this defines how good eating/drinking the thing will make you feel
 	taste_tag = list()  // list the tastes the thing got there
-=======
-	sanity_gain_ingest = 0.5
-	common = TRUE //All alchoholic reagents can be ID'd pretty easily
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	glass_icon_state = "glass_clear"
 	glass_name = "ethanol"
@@ -164,66 +116,41 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 15)
 
-<<<<<<< HEAD
 /datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	M.adjustToxLoss(0.2 * toxicity * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
 	M.add_chemical_effect(CE_PAINKILLER, max(55-strength, 1))
 	return//Occulus Edit Yote rightous life
-=======
-/datum/reagent/ethanol/on_mob_add(mob/living/L)
-	..()
-	LEGACY_SEND_SIGNAL(L, COMSIG_CARBON_HAPPY, src, MOB_ADD_DRUG)
-
-/datum/reagent/ethanol/on_mob_delete(mob/living/L)
-	..()
-	LEGACY_SEND_SIGNAL(L, COMSIG_CARBON_HAPPY, src, MOB_DELETE_DRUG)
-
-/datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-	M.add_chemical_effect(CE_TOXIN, toxicity * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
-	M.add_chemical_effect(CE_PAINKILLER, (dose + 1) * 6.25)
-	M.add_chemical_effect(CE_ONCOCIDAL, 0.5)	// STALKER reference
-	LEGACY_SEND_SIGNAL(M, COMSIG_CARBON_HAPPY, src, ON_MOB_DRUG)
-	return
-
-/datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.adjustNutrition(nutriment_factor * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
 	M.adjustNutrition(nutriment_factor * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
 //Tough people can drink a lot
-<<<<<<< HEAD
 	var/tolerance = max(10, strength + (M.stats.getStat(STAT_TGH)/2))//Halved toughness impact on tolerence
 
 	if(M.stats.getPerk(/datum/perk/sommelier))
 		tolerance *= 10
-=======
-	var/tolerance = max(5, strength + (M.stats.getStat(STAT_TGH) * 0.5)) //TGH scaling is 50%
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-
-	if(dose * strength_mod >= tolerance) // Slurring
-		M.slurring = max(M.slurring, 30)
-
-	if(dose * strength_mod >= tolerance * 1.5) // Early warning
+	if(dose * strength_mod >= tolerance) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
 
-	if(dose * strength_mod >= tolerance * 2) // Confusion - walking in random directions
-		M.confused = max(M.confused, 3)
+	if(dose * strength_mod >= tolerance * 2) // Slurring
+		M.slurring = max(M.slurring, 30)
 
-	if(dose * strength_mod >= tolerance * 3) // Blurry vision
-		M.eye_blurry = max(M.eye_blurry, 5)
+	if(dose * strength_mod >= tolerance * 3) // Confusion - walking in random directions
+		M.confused = max(M.confused, 20)
 
-	if(dose * strength_mod >= tolerance * 4) // Drowsyness - periodically falling asleep
-		M.drowsyness = max(M.drowsyness, 5)
+	if(dose * strength_mod >= tolerance * 4) // Blurry vision
+		M.eye_blurry = max(M.eye_blurry, 10)
 
-	if(dose * strength_mod >= tolerance * 5) // Pass out
-		M.paralysis = max(M.paralysis, 10)
-		M.sleeping  = max(M.sleeping, 15)
+	if(dose * strength_mod >= tolerance * 5) // Drowsyness - periodically falling asleep
+		M.drowsyness = max(M.drowsyness, 20)
 
-	if(dose * strength_mod >= tolerance * 6) // Toxic dose
+	if(dose * strength_mod >= tolerance * 7) // Pass out
+		M.paralysis = max(M.paralysis, 20)
+		M.sleeping  = max(M.sleeping, 30)
+
+	if(dose * strength_mod >= tolerance * 9) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
 
 
@@ -239,19 +166,9 @@
 		M.adjust_hallucination(halluci, halluci)
 
 	apply_sanity_effect(M, effect_multiplier)
-<<<<<<< HEAD
 //	SEND_SIGNAL(M, COMSIG_CARBON_HAPPY, src, ON_MOB_DRUG) Occulus Nobody likes Neotheo
 
 /datum/reagent/ethanol/touch_obj(obj/O)
-=======
-	LEGACY_SEND_SIGNAL(M, COMSIG_CARBON_HAPPY, src, ON_MOB_DRUG)
-
-	var/mob/living/carbon/human/H = M
-	if(istype(H))
-		H.sanity.onAlcohol(src, effect_multiplier)
-
-/datum/reagent/ethanol/touch_obj(var/obj/O)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(O, /obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
@@ -275,21 +192,12 @@
 	metabolism = REM * 0.2
 	touch_met = 5
 
-<<<<<<< HEAD
 /datum/reagent/toxin/hydrazine/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	M.adjustToxLoss(0.4 * effect_multiplier)
 
 /datum/reagent/toxin/hydrazine/affect_touch(mob/living/carbon/M, alien, effect_multiplier) // Hydrazine is both toxic and flammable.
 	M.adjust_fire_stacks(0.4 / 12)
 	M.adjustToxLoss(0.2 * effect_multiplier)
-=======
-/datum/reagent/toxin/hydrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	M.add_chemical_effect(CE_TOXIN, 2 * effect_multiplier)
-
-/datum/reagent/toxin/hydrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/effect_multiplier) // Hydrazine is both toxic and flammable.
-	M.adjust_fire_stacks(0.4 / 12)
-	M.add_chemical_effect(CE_TOXIN, effect_multiplier)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/toxin/hydrazine/touch_turf(turf/T)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
@@ -303,15 +211,9 @@
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = "#353535"
-	scannable = TRUE // Helps with blood restoration, should avoid confusion with other stuff
 
 
-<<<<<<< HEAD
 /datum/reagent/metal/iron/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/metal/iron/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	M.add_chemical_effect(CE_BLOODRESTORE, 0.8 * effect_multiplier)
 
 /datum/reagent/metal/lithium
@@ -322,12 +224,7 @@
 	reagent_state = SOLID
 	color = "#808080"
 
-<<<<<<< HEAD
 /datum/reagent/metal/lithium/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/metal/lithium/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
 		step(M, pick(cardinal))
 	if(prob(5))
@@ -340,15 +237,8 @@
 	taste_mult = 0 //mercury apparently is tasteless. IDK
 	reagent_state = LIQUID
 	color = "#484848"
-	common = TRUE //everyone knows what mercury looks like
 
-<<<<<<< HEAD
 /datum/reagent/metal/mercury/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-=======
-
-/datum/reagent/metal/mercury/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
 		step(M, pick(cardinal))
 	if(prob(5))
@@ -372,14 +262,8 @@
 	taste_description = "sweetness" //potassium is bitter in higher doses but sweet in lower ones.
 	reagent_state = SOLID
 	color = "#A0A0A0"
-	scannable = TRUE // Helps with pinpointing kidney failure
 
-<<<<<<< HEAD
 /datum/reagent/metal/potassium/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/metal/potassium/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(volume > 3)
 		M.add_chemical_effect(CE_PULSE, 1)
 	if(volume > 10)
@@ -393,12 +277,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7"
 
-<<<<<<< HEAD
 /datum/reagent/metal/radium/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/metal/radium/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	M.apply_effect(1 * (issmall(M) ? effect_multiplier * 2 : effect_multiplier), IRRADIATE, 0) // Radium may increase your chances to cure a disease
 	if(M.virus2.len)
 		for(var/ID in M.virus2)
@@ -430,9 +309,7 @@
 	reagent_type = "Acid"
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
-	reagent_type = "Acid"
 
-<<<<<<< HEAD
 /datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	M.take_organ_damage(0, (issmall(M) ? effect_multiplier * 2: effect_multiplier * power * 2))
 
@@ -497,81 +374,6 @@
 			M.take_organ_damage(0, volume * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
 /datum/reagent/acid/touch_obj(obj/O)
-=======
-/datum/reagent/acid/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
-	M.add_chemical_effect(CE_MECH_ACID, 0.2 * power)
-
-/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	M.take_organ_damage(0, (issmall(M) ? effect_multiplier * 2: effect_multiplier * power * 2))
-
-/datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, effect_multiplier) // This is the most interesting
-	if(!ishuman(M))
-		M.apply_damage(volume * power * 0.2, BURN)
-		return
-	var/mob/living/carbon/human/our_man = M
-	var/list/bodyparts = list(HEAD,UPPER_TORSO,LOWER_TORSO,ARM_LEFT,ARM_RIGHT,LEG_LEFT,LEG_RIGHT)
-	var/units_per_bodypart = volume / 7
-	var/list/obj/item/clothing/wearing_1 = list(
-		our_man.head,
-		our_man.glasses,
-		our_man.wear_suit,
-		our_man.shoes,
-		our_man.gloves
-	)
-	var/list/obj/item/clothing/wearing_2 = list(
-		our_man.wear_mask,
-		our_man.w_uniform,
-	)
-	remove_self(volume)
-	for(var/bodypart in bodyparts)
-		var/stop_loop = FALSE
-		var/units_for_this_part = units_per_bodypart
-		// handles first layer of clothing.
-		for(var/obj/item/clothing/C in wearing_1)
-			if(!(C.body_parts_covered & bodypart))
-				continue
-			if(C.unacidable || C.armor.bio > 99)
-				stop_loop = TRUE
-				continue
-			var/melting_requirement = (C.max_health / C.health) * (1 - C.armor.bio / 100) * meltdose
-			if(melting_requirement > units_per_bodypart)
-				C.health -= (C.max_health / meltdose) * (1 - C.armor.bio / 100) * units_per_bodypart
-				stop_loop = TRUE
-			else
-				to_chat(our_man, SPAN_DANGER("The [C.name] melts under the action of acid."))
-				units_for_this_part -= melting_requirement
-				our_man.remove_from_mob(C)
-				C.forceMove(NULLSPACE)
-				wearing_1 -= C
-				qdel(C)
-		if(stop_loop)
-			continue
-		// second layer of clothing.
-		for(var/obj/item/clothing/C in wearing_2)
-			if(!(C.body_parts_covered & bodypart))
-				continue
-			if(C.unacidable || C.armor.bio > 99)
-				stop_loop = TRUE
-				continue
-			var/melting_requirement = (C.max_health / C.health) * (1 - C.armor.bio / 100) * meltdose
-			if(melting_requirement > units_per_bodypart)
-				C.health -= (C.max_health / meltdose) * (1 - C.armor.bio / 100) * units_per_bodypart
-				stop_loop = TRUE
-			else
-				to_chat(our_man, SPAN_DANGER("The [C.name] melts under the action of acid."))
-				units_for_this_part -= melting_requirement
-				our_man.remove_from_mob(C)
-				C.forceMove(NULLSPACE)
-				wearing_2 -= C
-				qdel(C)
-		if(stop_loop)
-			continue
-		M.take_organ_damage(0, units_for_this_part * power * 0.1)
-
-/datum/reagent/acid/touch_obj(obj/O)
-	if(istype(O, /obj/effect/plant/hivemind))
-		qdel(O)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(O.unacidable)
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
@@ -619,13 +421,8 @@
 	glass_icon_state = "iceglass"
 	glass_name = "sugar"
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
-	common = TRUE //everyone knows what sugar is
 
-<<<<<<< HEAD
 /datum/reagent/organic/sugar/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-=======
-/datum/reagent/organic/sugar/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	M.adjustNutrition(4 * effect_multiplier)
 
 /datum/reagent/sulfur
@@ -636,15 +433,11 @@
 	reagent_state = SOLID
 	color = "#BF8C00"
 	reagent_type = "Reactive nonmetal"
-<<<<<<< HEAD
-=======
-	common = TRUE //everyone knows this smell
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/metal/tungsten
 	name = "Tungsten"
 	id = "tungsten"
-	description = "A chemical element, and a strong oxidizing agent."
+	description = "A chemical element, and a strong oxidising agent."
 	taste_mult = 0 //no taste
 	reagent_state = SOLID
 	color = "#DCDCDC"

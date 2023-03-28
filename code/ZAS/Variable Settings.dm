@@ -169,11 +169,7 @@ var/global/vs_control/vsc = new
 		vars[ch] = vw
 	if(how == "Toggle")
 		newvar = (newvar?"ON":"OFF")
-<<<<<<< HEAD
 	to_chat(world, SPAN_NOTICE("<b>[key_name(user)] changed the setting [display_description] to [newvar].</b>"))
-=======
-	to_world("<span class='notice'><b>[key_name(user)] changed the setting [display_description] to [newvar].</b></span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(ch in plc.settings)
 		ChangeSettingsDialog(user,plc.settings)
 	else
@@ -326,11 +322,7 @@ var/global/vs_control/vsc = new
 			plc.N2O_HALLUCINATION 			= initial(plc.N2O_HALLUCINATION)
 
 
-<<<<<<< HEAD
 	to_chat(world, "<span class='notice'><b>[key_name(user)] changed the global phoron/ZAS settings to \"[def]\"</b></span>")
-=======
-	to_world("<span class='notice'><b>[key_name(user)] changed the global plasma/ZAS settings to \"[def]\"</b></span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /pl_control/var/list/settings = list()
 

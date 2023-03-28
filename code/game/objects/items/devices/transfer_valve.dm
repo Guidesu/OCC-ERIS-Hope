@@ -3,10 +3,7 @@
 	desc = "Regulates the transfer of air between two tanks"
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "valve_1"
-<<<<<<< HEAD
 	flags = PROXMOVE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/tank/tank_one
 	var/obj/item/tank/tank_two
 	var/obj/item/device/attached_device
@@ -70,9 +67,9 @@
 
 
 /obj/item/device/transfer_valve/attack_self(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/item/device/transfer_valve/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/transfer_valve/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 
 	// this is the data which will be sent to the ui
 	var/data[0]
@@ -124,11 +121,7 @@
 		spawn(50) // To stop a signal being spammed from a proxy sensor constantly going off or whatever
 			toggle = 1
 
-<<<<<<< HEAD
 /obj/item/device/transfer_valve/on_update_icon()
-=======
-/obj/item/device/transfer_valve/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	underlays = null
 
@@ -138,21 +131,13 @@
 	icon_state = "valve"
 
 	if(tank_one)
-<<<<<<< HEAD
 		add_overlays("[tank_one.icon_state]")
-=======
-		add_overlay("[tank_one.icon_state]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tank_two)
 		var/icon/J = new(icon, icon_state = "[tank_two.icon_state]")
 		J.Shift(WEST, 13)
 		underlays += J
 	if(attached_device)
-<<<<<<< HEAD
 		add_overlays("device")
-=======
-		add_overlay("device")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/transfer_valve/proc/remove_tank(obj/item/tank/T)
 	if(tank_one == T)

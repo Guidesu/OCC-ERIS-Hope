@@ -3,15 +3,9 @@
     var/list/roles_list       //list of roles to which tip can be shown
     textColor = "purple"
 
-<<<<<<< HEAD
 /tipsAndTricks/roles/traitor_uplink
     roles_list = list(/datum/antagonist/traitor)
     tipText = "As a traitor you can order all sorts of useful stuff from your PDA/Headset/Implant uplink, like weapons, devices, equipment, services and even money!"
-=======
-/tipsAndTricks/roles/contractor_uplink
-    roles_list = list(/datum/antagonist/contractor)
-    tipText = "As a contractor, you can order all sorts of useful stuff from your PDA/Headset/Implant uplink, like weapons, devices, equipment, services and even money!"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /tipsAndTricks/roles/antag_good_rp
     roles_list = list(/datum/antagonist)
@@ -31,7 +25,6 @@
 
 /tipsAndTricks/roles/bombs
     roles_list = list(/datum/antagonist)
-<<<<<<< HEAD
     tipText = "You can create very potent bombs in Chemistry or Toxins. You also have various activation methods to chose from."
 
 /tipsAndTricks/roles/computerPrograms
@@ -40,24 +33,10 @@
 
 /tipsAndTricks/roles/borgEmag
     roles_list = list(/datum/antagonist/traitor)
-=======
-    tipText = "You can create very potent bombs in Soteria chemistry or toxins. You also have various activation methods to chose from."
-
-/tipsAndTricks/roles/computerPrograms
-    roles_list = list(/datum/antagonist/contractor)
-    tipText = "When you emag a computer it unlocks access to some unique programs. Access Decipherer is one of them. Note that most of the programs depend on computer processing power."
-
-/tipsAndTricks/roles/borgEmag
-    roles_list = list(/datum/antagonist/contractor)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
     tipText = "By emagging a cyborg, you obtain a powerful ally with full access. Don't forget to open its panel first."
 
 /tipsAndTricks/roles/siliconLaws
     roles_list = list(/datum/antagonist)
-<<<<<<< HEAD
     tipText = "The AI of the ship can do your bidding if you update its laws accordingly. It can also affect cyborgs if they are in sync with the AI."
-=======
-    tipText = "The AI of the colony can do your bidding if you update its laws accordingly. It can also affect cyborgs if they are in sync with the AI."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 

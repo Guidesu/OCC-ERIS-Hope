@@ -3,15 +3,12 @@
 	var/category = "Misc"
 	var/icon_state = "device"
 	var/result
+
 	var/list/steps
 	var/flags
 	var/time = 30 //Used when no specific time is set
 	var/related_stats = list(STAT_COG)	// used to decrease crafting time for non tool steps
-<<<<<<< HEAD
 	var/avaliableToEveryone = TRUE
-=======
-	var/datum/perk/requiredPerk = null	// set at the category level to determine whether
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/dir_type = CRAFT_WITH_USER_DIR  // spawn the result in the user's direction by default
 	// set it to CRAFT_TOWARD_USER to spawn the result towards the user
 	// set it to CRAFT_DEFAULT_DIR to spawn the result in its default direction (stored in dir_default)
@@ -142,7 +139,4 @@
 	else
 		user.put_in_hands(CR)
 	return CR
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

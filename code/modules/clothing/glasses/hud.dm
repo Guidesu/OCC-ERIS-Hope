@@ -17,62 +17,47 @@
 	return
 
 /obj/item/clothing/glasses/hud/health
-	name = "health scanner HUD"
+	name = "Health Scanner HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	body_parts_covered = 0
 
-/obj/item/clothing/glasses/hud/health/scouter
-	name = "health scanner HUD"
-	desc = "A low profile heads-up display that scans the humans in view and provides accurate data about their health status."
-	icon_state = "healthscouter"
-	body_parts_covered = 0
 
 /obj/item/clothing/glasses/hud/health/process_hud(mob/M)
 	process_med_hud(M, 1)
 
 /obj/item/clothing/glasses/hud/security
-	name = "security HUD"
+	name = "Security HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	flash_protection = FLASH_PROTECTION_MINOR
 	body_parts_covered = 0
 	var/global/list/jobs[0]
 
 /obj/item/clothing/glasses/hud/security/jensenshades
-	name = "augmented shades"
+	name = "Augmented shades"
 	desc = "Polarized bioneural eyewear, designed to augment your vision."
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
-	flash_protection = FLASH_PROTECTION_MINOR
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 
 /obj/item/clothing/glasses/hud/security/process_hud(mob/M)
 	process_sec_hud(M, 1)
 
-/obj/item/clothing/glasses/sechud
-	name = "HUD sunglasses"
-	desc = "A pair of stylish sunglasses with an integrated Security-HUD. No one said cops couldn't be stylish."
+/obj/item/clothing/glasses/sunglasses/sechud
+	name = "HUDSunglasses"
+	desc = "Sunglasses with a HUD."
 	icon_state = "sunhud"
 	prescription = TRUE
-	flash_protection = FLASH_PROTECTION_MINOR
 
 	New()
 		..()
 		src.hud = new/obj/item/clothing/glasses/hud/security(src)
 		return
 
-<<<<<<< HEAD
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "Cobalt tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
-=======
-/obj/item/clothing/glasses/sechud/tactical
-	name = "security tactical HUD"
-	desc = "Improved Flash-resistant goggles with inbuilt combat and security information."
-	flash_protection = FLASH_PROTECTION_MODERATE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "swatgoggles"
 
 /obj/item/clothing/glasses/hud/broken/process_hud(mob/M)

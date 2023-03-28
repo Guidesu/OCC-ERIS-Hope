@@ -36,11 +36,7 @@ ADMIN_VERB_ADD(/client/proc/discord_msg, R_ADMIN, TRUE)
 
 
 /proc/send2adminchat(var/initiator, var/original_msg)
-<<<<<<< HEAD
 	if(!config.webhook_url)
-=======
-	if (!config.webhook_url || !config.webhook_key)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/list/adm = get_admin_counts()
@@ -56,7 +52,6 @@ ADMIN_VERB_ADD(/client/proc/discord_msg, R_ADMIN, TRUE)
 		query_string += "&admin_number_afk=[afkmins.len]"
 		world.Export("[config.webhook_url]?[query_string]")
 
-<<<<<<< HEAD
 /proc/send_adminalert2adminchat(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
 	if (!config.webhook_url || !config.webhook_key)
 		return
@@ -68,8 +63,6 @@ ADMIN_VERB_ADD(/client/proc/discord_msg, R_ADMIN, TRUE)
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config.webhook_url]?[query_string]")
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/get_admin_counts(requiredflags = R_ADMIN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())

@@ -9,11 +9,7 @@
 {{else}}
 	<div class="itemContent">
 		<div class="bad">
-<<<<<<< HEAD
 			INOPERABLE
-=======
-			NOT OPERATIONAL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		</div>
 	</div>
 {{/if}}
@@ -86,30 +82,18 @@
 	<div class="itemContent"> {{:data.coil_condition}} % </div>
 {{else}}
 	<div class="bad">
-<<<<<<< HEAD
 		<div class="itemContent"> DAMAGED SECTIONS DETECTED </div>
-=======
-		<div class="itemContent"> DAMAGED SECTORS DETECTED </div>
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	</div>
 {{/if}}
 
 <div class="itemLabel"> Powernet: </div>
 {{if data.powernet_detected}}
 	<div class="good">
-<<<<<<< HEAD
 		<div class="itemContent"> CONNECTED </div>
 	</div>
 {{else}}
 	<div class="bad">
 		<div class="itemContent"> NOT CONNECTED </div>
-=======
-		<div class="itemContent"> DETECTED </div>
-	</div>
-{{else}}
-	<div class="bad">
-		<div class="itemContent"> UNDETECTED </div>
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	</div>
 {{/if}}
 	
@@ -124,15 +108,9 @@
 	{{/if}}
 {{else}}
 	<div class="bad">
-<<<<<<< HEAD
 		Reactor chamber requires service.
 	</div>
 {{/if}}
 
 <h2>CONTROLS</h2>
 <td>{{:helper.link('Activate Biogenerator', null, {'activate' : '1'})}}
-=======
-		Air chamber is lack of wires
-	</div>
-{{/if}}
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

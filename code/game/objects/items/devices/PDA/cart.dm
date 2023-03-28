@@ -119,13 +119,8 @@
 	. = ..()
 
 /obj/item/cartridge/quartermaster
-<<<<<<< HEAD
 	name = "\improper Trade Union Parts & Vendors cartridge"
 	desc = "Perfect for the Union Merchant on the go!"
-=======
-	name = "\improper Lonestar Parts & Vendors cartridge"
-	desc = "Perfect for the Guild Merchant on the go!"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "cart-q"
 	access_quartermaster = 1
 
@@ -394,7 +389,7 @@
 
 
 
-	/*	Supply Shuttle Requests Menu (Mode: 47)
+	/*	Supply Shuttle Requests Menu (Mode: 47)		*/
 
 	if(mode==47)
 		var/supplyData[0]
@@ -402,19 +397,13 @@
 		if (shuttle)
 			supplyData["shuttle_moving"] = shuttle.has_arrive_time()
 			supplyData["shuttle_eta"] = shuttle.eta_minutes()
-			supplyData["shuttle_loc"] = shuttle.at_station() ? "Colony" : "Dock"
+			supplyData["shuttle_loc"] = shuttle.at_station() ? "Station" : "Dock"
 		var/supplyOrderCount = 0
 		var/supplyOrderData[0]
 		for(var/S in SSsupply.shoppinglist)
 			var/datum/supply_order/SO = S
 
-<<<<<<< HEAD
 			supplyOrderData[++supplyOrderData.len] = list("Number" = SO.id, "Name" = html_encode(SO.object.name), "ApprovedBy" = SO.orderer, "Comment" = html_encode(SO.reason))
-=======
-
-			supplyOrderData[++supplyOrderData.len] = list("Number" = SO.id, "Name" = html_encode(SO.object.name), "ApprovedBy" = SO.orderer, "Comment" = html_encode(SO.reason))
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!supplyOrderData.len)
 			supplyOrderData[++supplyOrderData.len] = list("Number" = null, "Name" = null, "OrderedBy"=null)
 
@@ -436,7 +425,7 @@
 
 		values["supply"] = supplyData
 
-*/
+
 
 	/* 	Janitor Supplies Locator  (Mode: 49)      */
 	if(mode==49)

@@ -99,13 +99,9 @@
 	return uses
 
 /obj/item/dnainjector/attack(mob/M as mob, mob/user as mob)
-<<<<<<< HEAD
 	if (!ismob(M))
-=======
-	if(!ismob(M))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
-	if(!usr.IsAdvancedToolUser())
+	if (!usr.IsAdvancedToolUser())
 		return
 	if(inuse)
 		return 0
@@ -149,251 +145,179 @@
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = HULKBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/hulkmut/New()
-	..()
-	block = HULKBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antihulk
 	name = "\improper DNA injector (Anti-Hulk)"
 	desc = "Cures green skin."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = HULKBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antihulk/New()
-	..()
-	block = HULKBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/xraymut
 	name = "\improper DNA injector (Xray)"
-	desc = "Finally you can see what the people do in dorms."
+	desc = "Finally you can see what the Captain does."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 8
+	New()
+		block = XRAYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/xraymut/New()
-	..()
-	block = XRAYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antixray
 	name = "\improper DNA injector (Anti-Xray)"
 	desc = "It will make you see harder."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 8
+	New()
+		block = XRAYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antixray/New()
-	..()
-	block = XRAYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/firemut
 	name = "\improper DNA injector (Fire)"
 	desc = "Gives you fire."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 10
+	New()
+		block = FIREBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/firemut/New()
-	..()
-	block = FIREBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antifire
 	name = "\improper DNA injector (Anti-Fire)"
 	desc = "Cures fire."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 10
+	New()
+		block = FIREBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antifire/New()
-	..()
-	block = FIREBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/telemut
 	name = "\improper DNA injector (Tele.)"
 	desc = "Super brain man!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 12
+	New()
+		block = TELEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/telemut/New()
-	..()
-	block = TELEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antitele
 	name = "\improper DNA injector (Anti-Tele.)"
 	desc = "Will make you not able to control your mind."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 12
+	New()
+		block = TELEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antitele/New()
-	..()
-	block = TELEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/nobreath
 	name = "\improper DNA injector (No Breath)"
 	desc = "Hold your breath and count to infinity."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = NOBREATHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/nobreath/New()
-	..()
-	block = NOBREATHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antinobreath
 	name = "\improper DNA injector (Anti-No Breath)"
 	desc = "Hold your breath and count to 100."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = NOBREATHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antinobreath/New()
-	..()
-	block = NOBREATHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/remoteview
 	name = "\improper DNA injector (Remote View)"
 	desc = "Stare into the distance for a reason."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = REMOTEVIEWBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/remoteview/New()
-	..()
-	block = REMOTEVIEWBLOCK
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antiremoteview
 	name = "\improper DNA injector (Anti-Remote View)"
 	desc = "Cures green skin."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = REMOTEVIEWBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiremoteview/New()
-	..()
-	block = REMOTEVIEWBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/regenerate
 	name = "\improper DNA injector (Regeneration)"
 	desc = "Healthy but hungry."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = REGENERATEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/regenerate/New()
-	..()
-	block = REGENERATEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antiregenerate
 	name = "\improper DNA injector (Anti-Regeneration)"
 	desc = "Sickly but sated."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = REGENERATEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiregenerate/New()
-	..()
-	block = REGENERATEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/runfast
 	name = "\improper DNA injector (Increase Run)"
 	desc = "Running Man."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = INCREASERUNBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/runfast/New()
-	..()
-	block = INCREASERUNBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antirunfast
 	name = "\improper DNA injector (Anti-Increase Run)"
 	desc = "Walking Man."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = INCREASERUNBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antirunfast/New()
-	..()
-	block = INCREASERUNBLOCK
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/morph
 	name = "\improper DNA injector (Morph)"
 	desc = "A total makeover."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = MORPHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/morph/New()
-	..()
-	block = MORPHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antimorph
 	name = "\improper DNA injector (Anti-Morph)"
 	desc = "Cures identity crisis."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
-
-/obj/item/dnainjector/antimorph/New()
-	..()
-	block = MORPHBLOCK
-
+	New()
+		block = MORPHBLOCK
+		..()
 
 /* No COLDBLOCK on bay
 /obj/item/dnainjector/cold
@@ -402,24 +326,19 @@
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = COLDBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/cold/New()
-	..()
-	block = COLDBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/anticold
 	name = "\improper DNA injector (Anti-Cold)"
 	desc = "Feels room-temperature."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
-
-/obj/item/dnainjector/anticold/New()
-	..()
-	block = COLDBLOCK
+	New()
+		block = COLDBLOCK
+		..()
 */
 
 /obj/item/dnainjector/noprints
@@ -428,80 +347,59 @@
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = NOPRINTSBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/noprints/New()
-	..()
-	block = NOPRINTSBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antinoprints
 	name = "\improper DNA injector (Anti-No Prints)"
 	desc = "Not quite as good as a pair of budget insulated gloves."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = NOPRINTSBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antinoprints/New()
-	..()
-	block = NOPRINTSBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/insulation
 	name = "\improper DNA injector (Shock Immunity)"
 	desc = "Better than a pair of real insulated gloves."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = SHOCKIMMUNITYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/insulation/New()
-	..()
-	block = SHOCKIMMUNITYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antiinsulation
 	name = "\improper DNA injector (Anti-Shock Immunity)"
 	desc = "Not quite as good as a pair of real insulated gloves."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = SHOCKIMMUNITYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiinsulation/New()
-	..()
-	block = SHOCKIMMUNITYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/midgit
 	name = "\improper DNA injector (Small Size)"
 	desc = "Makes you shrink."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = SMALLSIZEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/midgit/New()
-	..()
-	block = SMALLSIZEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antimidgit
 	name = "\improper DNA injector (Anti-Small Size)"
 	desc = "Makes you grow. But not too much."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
-
-/obj/item/dnainjector/antimidgit/New()
-	..()
-	block = SMALLSIZEBLOCK
+	New()
+		block = SMALLSIZEBLOCK
+		..()
 
 /////////////////////////////////////
 /obj/item/dnainjector/antiglasses
@@ -510,274 +408,196 @@
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 1
+	New()
+		block = GLASSESBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiglasses/New()
-	..()
-	block = GLASSESBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/glassesmut
 	name = "\improper DNA injector (Glasses)"
 	desc = "Will make you need dorkish glasses."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 1
+	New()
+		block = GLASSESBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/glassesmut/New()
-	..()
-	block = GLASSESBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/epimut
 	name = "\improper DNA injector (Epi.)"
 	desc = "Shake shake shake the room!"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 3
+	New()
+		block = HEADACHEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/epimut/New()
-	..()
-	block = HEADACHEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antiepi
 	name = "\improper DNA injector (Anti-Epi.)"
 	desc = "Will fix you up from shaking the room."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 3
+	New()
+		block = HEADACHEBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiepi/New()
-	..()
-	block = HEADACHEBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/anticough
 	name = "\improper DNA injector (Anti-Cough)"
 	desc = "Will stop that awful noise."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 5
+	New()
+		block = COUGHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/anticough/New()
-	..()
-	block = COUGHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/coughmut
 	name = "\improper DNA injector (Cough)"
 	desc = "Will bring forth a sound of horror from your throat."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 5
+	New()
+		block = COUGHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/coughmut/New()
-	..()
-	block = COUGHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/clumsymut
 	name = "\improper DNA injector (Clumsy)"
 	desc = "Makes clumsy minions."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 6
+	New()
+		block = CLUMSYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/clumsymut/New()
-	..()
-	block = CLUMSYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/anticlumsy
 	name = "\improper DNA injector (Anti-Clumy)"
 	desc = "Cleans up confusion."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 6
+	New()
+		block = CLUMSYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/anticlumsy/New()
-	..()
-	block = CLUMSYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antitour
 	name = "\improper DNA injector (Anti-Tour.)"
 	desc = "Will cure tourrets."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 7
+	New()
+		block = TWITCHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antitour/New()
-	..()
-	block = TWITCHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/tourmut
 	name = "\improper DNA injector (Tour.)"
 	desc = "Gives you a nasty case off tourrets."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 7
+	New()
+		block = TWITCHBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/tourmut/New()
-	..()
-	block = TWITCHBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/stuttmut
 	name = "\improper DNA injector (Stutt.)"
 	desc = "Makes you s-s-stuttterrr"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 9
+	New()
+		block = NERVOUSBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/stuttmut/New()
-	..()
-	block = NERVOUSBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antistutt
 	name = "\improper DNA injector (Anti-Stutt.)"
 	desc = "Fixes that speaking impairment."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 9
+	New()
+		block = NERVOUSBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antistutt/New()
-	..()
-	block = NERVOUSBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/blindmut
 	name = "\improper DNA injector (Blind)"
 	desc = "Makes you not see anything."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 11
+	New()
+		block = BLINDBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/blindmut/New()
-	..()
-	block = BLINDBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antiblind
 	name = "\improper DNA injector (Anti-Blind)"
 	desc = "ITS A MIRACLE!!!"
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 11
+	New()
+		block = BLINDBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antiblind/New()
-	..()
-	block = BLINDBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/deafmut
 	name = "\improper DNA injector (Deaf)"
 	desc = "Sorry, what did you say?"
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 13
+	New()
+		block = DEAFBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/deafmut/New()
-	..()
-	block = DEAFBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antideaf
 	name = "\improper DNA injector (Anti-Deaf)"
 	desc = "Will make you hear once more."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 13
+	New()
+		block = DEAFBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antideaf/New()
-	..()
-	block = DEAFBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/hallucination
 	name = "\improper DNA injector (Halluctination)"
 	desc = "What you see isn't always what you get."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
+	New()
+		block = HALLUCINATIONBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/hallucination/New()
-	..()
-	block = HALLUCINATIONBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/antihallucination
 	name = "\improper DNA injector (Anti-Hallucination)"
 	desc = "What you see is what you get."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
+	New()
+		block = HALLUCINATIONBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/antihallucination/New()
-	..()
-	block = HALLUCINATIONBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/h2m
 	name = "\improper DNA injector (Human > Monkey)"
 	desc = "Will make you a flea bag."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 14
+	New()
+		block = MONKEYBLOCK
+		..()
 
-<<<<<<< HEAD
-=======
-/obj/item/dnainjector/h2m/New()
-	..()
-	block = MONKEYBLOCK
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/dnainjector/m2h
 	name = "\improper DNA injector (Monkey > Human)"
 	desc = "Will make you...less hairy."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 14
-
-/obj/item/dnainjector/m2h/New()
-	..()
-	block = MONKEYBLOCK
-
+	New()
+		block = MONKEYBLOCK
+		..()

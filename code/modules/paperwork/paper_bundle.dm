@@ -210,17 +210,10 @@
 	return
 
 
-<<<<<<< HEAD
 /obj/item/paper_bundle/on_update_icon()
 	var/obj/item/paper/P = pages[1]
 	icon_state = P.icon_state
 	set_overlays(P.overlays)
-=======
-/obj/item/paper_bundle/update_icon()
-	var/obj/item/paper/P = pages[1]
-	icon_state = P.icon_state
-	copy_overlays(P.get_overlays(), TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays = 0
 	var/i = 0
 	var/photo
@@ -238,20 +231,12 @@
 			var/obj/item/photo/Ph = O
 			img = Ph.tiny
 			photo = 1
-<<<<<<< HEAD
 			add_overlays(img)
-=======
-			add_overlay(img)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
 		desc = "A single sheet of paper."
 	if(photo)
 		desc += "\nThere is a photo attached to it."
-<<<<<<< HEAD
 	add_overlays(image('icons/obj/bureaucracy.dmi', "clip"))
-=======
-	add_overlay(image('icons/obj/bureaucracy.dmi', "clip"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return

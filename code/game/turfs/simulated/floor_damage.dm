@@ -58,7 +58,7 @@
 
 
 	else
-		//Breaking or burning over-lays.
+		//Breaking or burning overlays.
 		//A tile can have one of each type
 		var/update = FALSE
 		if (!broken && (damage_type == BRUTE || damage_type == BLAST) && health < (flooring.health * 0.75))

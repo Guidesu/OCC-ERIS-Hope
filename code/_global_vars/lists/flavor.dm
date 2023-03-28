@@ -25,18 +25,11 @@ GLOBAL_LIST_INIT(music_tracks, list(
 	"The Runner in Motion" = /music_track/runner,
 	"Neotheology" = /music_track/neotheology,
 	"Downtown 2" = /music_track/downtown,
-<<<<<<< HEAD
 	"Hyperspace" = /music_track/hyperspace, //All these Astrometrics tracks are OCCULUS
 	"Hitchhiking" = /music_track/heardofaplace,
 	"Ram it" = /music_track/snout,
 	"Pirate Hunting" = /music_track/starbase,
 	"You will be Okay" = /music_track/youwillbeokay //Occulus edit
-=======
-	"Wild Encounters" = /music_track/wildencounters,
-	"Around the Village" = /music_track/aroundthev,
-	"Nuclear" = /music_track/nuclear,
-	"Loners in the Night" = /music_track/loners
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ))
 
 /proc/setup_music_tracks(var/list/tracks)

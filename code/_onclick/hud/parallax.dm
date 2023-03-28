@@ -22,27 +22,10 @@ GLOBAL_VAR_INIT(random_parallax, pick("space0", "space1", "space2", "space3", "s
 	owner.parallax = src
 	parallax_screen = new /obj/parallax_screen
 	parallax_screen.plane = plane
-<<<<<<< HEAD
 	add_overlays(parallax_screen)
 	update()
 	..(null)
 
-=======
-	add_overlay(parallax_screen)
-	update()
-	..(null)
-
-/obj/parallax/Destroy()
-
-	if (owner)
-		owner.parallax = null
-		owner = null
-
-	QDEL_NULL(parallax_screen)
-
-	. = ..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/parallax/proc/update() //This proc updates your parallax (duh). If your view has been altered by binoculars, admin fuckery, and so on. We need to make the space bigger by applying a matrix transform to it. This is hardcoded for now.
 	if(!owner || !owner.client)
 		return
@@ -75,11 +58,7 @@ GLOBAL_VAR_INIT(random_parallax, pick("space0", "space1", "space2", "space3", "s
 	else
 		M.Scale(1)
 		src.transform = M
-<<<<<<< HEAD
 	overlays  += parallax_screen
-=======
-	add_overlay(parallax_screen)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/parallax/update_plane()
 	return

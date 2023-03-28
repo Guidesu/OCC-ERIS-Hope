@@ -70,12 +70,9 @@ var/list/holder_mob_icon_cache = list()
 	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER
 
 
-<<<<<<< HEAD
 /obj/item/holder/borer
 	origin_tech = list(TECH_BIO = 8)
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/holder/Process()
 	if (!contained)
 		qdel(src)
@@ -261,11 +258,6 @@ var/list/holder_mob_icon_cache = list()
 			//If the scooping up failed something must have gone wrong
 			H.release_mob()
 
-<<<<<<< HEAD
-=======
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/proc/get_holder_location()
 	set category = "Abilities"
@@ -296,11 +288,7 @@ var/list/holder_mob_icon_cache = list()
 	color = M.color
 	name = M.name
 	desc = M.desc
-<<<<<<< HEAD
 	associate_with_overlays(M.overlays)
-=======
-	add_overlay(M.get_overlays())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	last_holder = loc
 	update_wear_icon()
 
@@ -539,7 +527,6 @@ var/list/holder_mob_icon_cache = list()
 	//contained_sprite = 1 //Part of contained sprite overhaul, not yet ported
 	w_class = ITEM_SIZE_NORMAL
 
-<<<<<<< HEAD
 /obj/item/holder/borer
 	name = "cortical borer"
 	desc = "It's a slimy brain slug. Gross."
@@ -547,8 +534,6 @@ var/list/holder_mob_icon_cache = list()
 	origin_tech = list(TECH_BIO = 6)
 	w_class = ITEM_SIZE_TINY
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/holder/monkey
 	name = "monkey"
 	desc = "It's a monkey. Ook."
@@ -558,25 +543,13 @@ var/list/holder_mob_icon_cache = list()
 	//contained_sprite = 1 //Part of contained sprite overhaul, not yet ported
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/holder/nanobot
-	name = "nanobot"
-	desc = "It's a robot, folded up into an easily carried compact module."
-	w_class = ITEM_SIZE_HUGE // You're not fitting this thing in a backpack
-
-/obj/item/holder/nanobot/attack_self(mob/user)
-	..()
-	contained.attack_hand(user)
 
 //Holders for mice
 /obj/item/holder/mouse
-<<<<<<< HEAD
 	name = "mouse"
-=======
-	name = "rat"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "It's a fuzzy little critter."
 	desc_dead = "It's filthy vermin, throw it in the trash."
-	icon = 'icons/mob/mobs-mouse.dmi'
+	icon = 'icons/mob/mouse.dmi'
 	icon_state = "mouse_brown_sleep"
 	item_state = "mouse_brown"
 	icon_state_dead = "mouse_brown_dead"
@@ -600,20 +573,7 @@ var/list/holder_mob_icon_cache = list()
 	item_state = "mouse_brown"
 	icon_state_dead = "mouse_brown_dead"
 
-/obj/item/holder/mouse/hooded
-	icon_state = "mouse_hooded_sleep"
-	item_state = "mouse_hooded"
-	icon_state_dead = "mouse_hooded_dead"
 
-<<<<<<< HEAD
-=======
-/obj/item/holder/mouse/irish
-	icon_state = "mouse_irish_sleep"
-	item_state = "mouse_irish"
-	icon_state_dead = "mouse_irish_dead"
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/holder/GetIdCard()
 	for(var/mob/M in contents)
 		var/obj/item/I = M.GetIdCard()

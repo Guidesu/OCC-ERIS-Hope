@@ -2,8 +2,8 @@
 	name = "Securitron"
 	desc = "A little security robot.  He looks less than thrilled."
 	icon_state = "secbot0"
-	maxHealth = 100
-	health = 100 //So we dont get 1 shot by a basic gun
+	maxHealth = 50
+	health = 50
 	req_one_access = list(access_security, access_forensics_lockers)
 	botcard_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels)
 
@@ -299,37 +299,16 @@
 			update_icons()
 		visible_message(SPAN_WARNING("[M] was beaten by [src] with a stun baton!"))
 
-	else if(issuperioranimal(M))
-		var/mob/living/carbon/superior_animal/A = M
-		A.AdjustStunned(20) //Stop right their dirtbag
-		A.adjustBruteLoss(30) //You are removed creep!
-		do_attack_animation(M)
-		playsound(loc, "swing_hit", 50, 1, -1)
-		is_attacking = 1
-		update_icons()
-		spawn(2)
-			is_attacking = 0
-			update_icons()
-		visible_message(SPAN_WARNING("[M] was beaten by [src] with a stun baton!"))
-
-
 /mob/living/bot/secbot/explode()
 	visible_message(SPAN_WARNING("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/secbot_assembly/Sa = new /obj/item/secbot_assembly(Tsec)
 	Sa.build_step = 1
-<<<<<<< HEAD
 	Sa.add_overlays(image('icons/obj/aibots.dmi', "hs_hole"))
 	Sa.created_name = name
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 	new /obj/item/tool/baton/stun(Tsec)//Occulus Edit
-=======
-	Sa.add_overlay(image('icons/obj/aibots.dmi', "hs_hole"))
-	Sa.created_name = name
-	new /obj/item/device/assembly/prox_sensor(Tsec)
-	new /obj/item/tool/baton(Tsec)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
@@ -532,11 +511,7 @@
 	if((QUALITY_WELDING in I.tool_qualities) && !build_step)
 		if(QUALITY_WELDING in I.tool_qualities)
 			build_step = 1
-<<<<<<< HEAD
 			add_overlays(image('icons/obj/aibots.dmi', "hs_hole"))
-=======
-			add_overlay(image('icons/obj/aibots.dmi', "hs_hole"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, "You weld a hole in \the [src].")
 
 	else if(is_proximity_sensor(I) && (build_step == 1))
@@ -544,11 +519,7 @@
 		build_step = 2
 		to_chat(user, "You add \the [I] to [src].")
 		playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/aibots.dmi', "hs_eye"))
-=======
-		add_overlay(image('icons/obj/aibots.dmi', "hs_eye"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		name = "helmet/signaler/prox sensor assembly"
 		qdel(I)
 
@@ -558,17 +529,10 @@
 		to_chat(user, "You add \the [I] to [src].")
 		playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)
 		name = "helmet/signaler/prox sensor/robot arm assembly"
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/aibots.dmi', "hs_arm"))
 		qdel(I)
 
 	else if((istype(I, /obj/item/melee/baton)||istype(I,/obj/item/tool/baton/stun)) && build_step == 3)//Occulus Edit
-=======
-		add_overlay(image('icons/obj/aibots.dmi', "hs_arm"))
-		qdel(I)
-
-	else if(istype(I, /obj/item/tool/baton) && build_step == 3)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		user.drop_item()
 		to_chat(user, "You complete the Securitron! Beep boop.")
 		playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)

@@ -57,7 +57,7 @@ nanoui is used to open and update nano browser uis
 	// Relationship between a master interface and its children. Used in update_status
 	var/datum/nanoui/master_ui
 	var/list/datum/nanoui/children = list()
-	var/datum/nano_topic_state/state = null
+	var/datum/topic_state/state = null
 
  /**
   * Create a new nanoui instance.
@@ -73,11 +73,7 @@ nanoui is used to open and update nano browser uis
   *
   * @return /nanoui new nanoui object
   */
-<<<<<<< HEAD
 /datum/nanoui/New(nuser, nsrc_object, nui_key, ntemplate_filename, ntitle = 0, nwidth = 0, nheight = 0, atom/nref, datum/nanoui/master_ui, datum/topic_state/state = GLOB.default_state)
-=======
-/datum/nanoui/New(nuser, nsrc_object, nui_key, ntemplate_filename, ntitle = 0, nwidth = 0, nheight = 0, atom/nref, datum/nanoui/master_ui, datum/nano_topic_state/state = GLOB.default_state)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
@@ -101,7 +97,6 @@ nanoui is used to open and update nano browser uis
 		ref = nref
 
 	add_common_assets()
-<<<<<<< HEAD
 	if(user.client)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/directories/nanoui)
 
@@ -109,14 +104,6 @@ nanoui is used to open and update nano browser uis
 		if(!assets.check_sent(user.client))
 			to_chat(user, "Resources are still loading. Please wait.")
 			close()
-=======
-
-	var/datum/asset/nanoui = get_asset_datum(/datum/asset/simple/directories/nanoui)
-	if (nanoui.send(user.client))
-		to_chat(user, span_warning("Currently sending <b>all</b> nanoui assets, please wait!"))
-		user.client.browse_queue_flush() // stall loading nanoui until assets actualy gets sent
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Do not qdel nanouis. Use close() instead.
 /datum/nanoui/Destroy()
@@ -296,7 +283,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/add_template(key, filename)
-	templates[key] = SSassets.transport.get_asset_url(filename) // we remapped templates
+	templates[key] = filename
 
  /**
   * Set the layout key for use in the frontend Javascript
@@ -389,10 +376,10 @@ nanoui is used to open and update nano browser uis
 	var/head_content = ""
 
 	for (var/filename in scripts)
-		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(filename)]'></script> "
+		head_content += "<script type='text/javascript' src='[filename]'></script> "
 
 	for (var/filename in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(filename)]'> "
+		head_content += "<link rel='stylesheet' type='text/css' href='[filename]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
@@ -594,9 +581,4 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update(var/force_open = 0)
-<<<<<<< HEAD
 	src_object.ui_interact(user, ui_key, src, force_open, master_ui, state)
-=======
-	src_object.nano_ui_interact(user, ui_key, src, force_open, master_ui, state)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

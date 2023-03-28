@@ -1,8 +1,6 @@
 /*
 	Meteors damage the station and the shields
-
-disabled
-
+*/
 /datum/storyevent/meteor
 	id = "meteor"
 	name = "meteor shower"
@@ -13,7 +11,6 @@ disabled
 	EVENT_LEVEL_MAJOR = POOL_THRESHOLD_MAJOR)
 
 	tags = list(TAG_DESTRUCTIVE, TAG_NEGATIVE, TAG_EXTERNAL)
-*/
 //===========================================
 
 /datum/event/meteor_wave
@@ -43,14 +40,10 @@ disabled
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Meteors have been detected on collision course with the colony. ETA 3 minutes until impact. Colonist are advised to seek shelter, be advised, objects coming from orbit may penetrate the ground and hit lower colony levels.", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+			command_announcement.Announce("Meteors have been detected on collision course with the ship. ETA 3 minutes until impact. Crew are advised to raise shields and stay away from the outer hull", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
 
 		else
-<<<<<<< HEAD
 			command_announcement.Announce("Meteors have been detected on collision course with the ship.ETA 3 minutes until impact.", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
-=======
-			command_announcement.Announce("Meteors have been detected on collision course with the colony. ETA 3 minutes until impact. Colonist are advised to seek shelter, be advised, objects coming from orbit may penetrate the ground and hit lower colony levels.", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/event/meteor_wave/tick()
 	if(activeFor >= next_meteor)
@@ -63,9 +56,9 @@ disabled
 /datum/event/meteor_wave/end()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("The meteor storm has ended.", "Meteor Alert")
+			command_announcement.Announce("The ship has cleared the meteor storm.", "Meteor Alert")
 		else
-			command_announcement.Announce("The meteor storm has ended.", "Meteor Alert")
+			command_announcement.Announce("The ship has cleared the meteor shower", "Meteor Alert")
 
 /datum/event/meteor_wave/proc/get_meteors()
 	switch(severity)
@@ -90,7 +83,7 @@ disabled
 	. = ..()
 
 /datum/event/meteor_wave/overmap/announce()
-	command_announcement.Announce("Alert: Meteors are about to hit the colony. Brace for impact", "Asteroid Alert", new_sound = 'sound/AI/meteors.ogg')
+	command_announcement.Announce("Alert: The ship is now passing through an asteroid field. Brace for impact", "Asteroid Alert", new_sound = 'sound/AI/meteors.ogg')
 
 
 /*
@@ -197,7 +190,6 @@ disabled
 	var/Me = pickweight(meteortypes)
 	var/obj/effect/meteor/M = new Me(pickedstart)
 	M.dest = pickedgoal
-<<<<<<< HEAD
 	///// OCCULUS EDIT BEGIN
 	// 3 is the actual number for RUNLEVEL_GAME -- adjusting the Runlevel code
 	// to change it to 4 was met with unforeseen consequences
@@ -207,10 +199,6 @@ disabled
 	else
 		message_admins("A meteor attempted to spawn, but the round has not started.")
 	///// OCCULUS EDIT END
-=======
-	spawn(0)
-		SSmove_manager.home_onto(M, M.dest, 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /proc/spaceDebrisStartLoc(startSide, Z)
@@ -337,11 +325,7 @@ disabled
 	pass_flags = PASSTABLE
 	var/heavy = 0
 	var/z_original
-<<<<<<< HEAD
 	var/meteordrop = /obj/item/ore/iron
-=======
-	var/meteordrop = /obj/item/stack/ore/iron
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/dropamt = 1
 
 	var/move_count = 0
@@ -367,7 +351,7 @@ disabled
 		qdel(src)
 
 /obj/effect/meteor/Destroy()
-	SSmove_manager.stop_looping(src) //this cancels the walk_towards() proc
+	walk(src,0) //this cancels the walk_towards() proc
 	return ..()
 
 /obj/effect/meteor/New()
@@ -450,11 +434,7 @@ disabled
 	hits = 1
 	hitpwr = 3
 	dropamt = 1
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/glass
-=======
-	meteordrop = /obj/item/stack/ore/glass
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Medium-sized
 /obj/effect/meteor/medium
@@ -483,11 +463,7 @@ disabled
 	icon_state = "flaming"
 	hits = 5
 	heavy = 1
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/phoron
-=======
-	meteordrop = /obj/item/stack/ore/plasma
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
@@ -498,11 +474,7 @@ disabled
 	name = "glowing meteor"
 	icon_state = "glowing"
 	heavy = 1
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/uranium
-=======
-	meteordrop = /obj/item/stack/ore/uranium
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/meteor/irradiated/meteor_effect()
 	..()
@@ -514,31 +486,19 @@ disabled
 	name = "golden meteor"
 	icon_state = "glowing"
 	desc = "Shiny! But also deadly."
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/gold
-=======
-	meteordrop = /obj/item/stack/ore/gold
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/meteor/silver
 	name = "silver meteor"
 	icon_state = "glowing_blue"
 	desc = "Shiny! But also deadly."
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/silver
-=======
-	meteordrop = /obj/item/stack/ore/silver
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/meteor/emp
 	name = "conducting meteor"
 	icon_state = "glowing_blue"
 	desc = "Hide your floppies!"
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/osmium
-=======
-	meteordrop = /obj/item/stack/ore/osmium
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dropamt = 2
 
 /obj/effect/meteor/emp/meteor_effect()
@@ -558,11 +518,7 @@ disabled
 	hits = 10
 	hitpwr = 1
 	heavy = 1
-<<<<<<< HEAD
 	meteordrop = /obj/item/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
-=======
-	meteordrop = /obj/item/stack/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/meteor/tunguska/meteor_effect()
 	..()

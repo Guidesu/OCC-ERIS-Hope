@@ -79,40 +79,24 @@
 		I = image('icons/turf/wall_masks.dmi', "[icon_base][wall_connections[i]]", dir = GLOB.cardinal[i])
 
 		I.color = base_color
-<<<<<<< HEAD
 		add_overlays(I)
-=======
-		add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(icon_base_reinf)
 		if(construction_stage != null && construction_stage < 6)
 			I = image('icons/turf/wall_masks.dmi', "reinf_construct-[construction_stage]")
 			I.color = reinf_color
-<<<<<<< HEAD
 			add_overlays(I)
-=======
-			add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			if("[icon_base_reinf]0" in icon_states('icons/turf/wall_masks.dmi'))
 				// Directional icon
 				for(var/i = 1 to 4)
 					I = image('icons/turf/wall_masks.dmi', "[icon_base_reinf][wall_connections[i]]", dir = 1<<(i-1))
 					I.color = reinf_color
-<<<<<<< HEAD
 					add_overlays(I)
 			else
 				I = image('icons/turf/wall_masks.dmi', icon_base_reinf)
 				I.color = reinf_color
 				add_overlays(I)
-=======
-					add_overlay(I)
-			else
-				I = image('icons/turf/wall_masks.dmi', icon_base_reinf)
-				I.color = reinf_color
-				add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(damage != 0)
 		var/integrity = material.integrity
@@ -123,11 +107,7 @@
 		if(overlay > damage_overlays.len)
 			overlay = damage_overlays.len
 
-<<<<<<< HEAD
 		add_overlays(damage_overlays[overlay])
-=======
-		add_overlay(damage_overlays[overlay])
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /turf/simulated/wall/proc/update_connections(propagate = 0)

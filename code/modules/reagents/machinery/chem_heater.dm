@@ -7,11 +7,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	//resistance_flags = FIRE_PROOF | ACID_PROOF
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/chem_heater
-=======
-	circuit = /obj/item/circuitboard/chem_heater
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/reagent_containers/beaker = null
 	var/target_temperature = 300
 	var/heater_coefficient = 0.2
@@ -68,18 +64,10 @@
 		beaker.reagents.handle_reactions()
 		SSnano.update_uis(src)
 
-<<<<<<< HEAD
-=======
-/* - A bit buggy allowing phantom beakers and other exploitable things - Trilby
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/chem_heater/MouseDrop_T(atom/movable/I, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !I.Adjacent(user) || user.stat)
 		return ..()
 	if(istype(I, /obj/item/reagent_containers) && I.is_open_container())
-<<<<<<< HEAD
-=======
-		user.drop_from_inventory(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		I.add_fingerprint(user)
 		replace_beaker(user, I)
 		to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
@@ -87,10 +75,6 @@
 		update_icon()
 		return
 	. = ..()
-<<<<<<< HEAD
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/chem_heater/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction(I, user))
@@ -117,18 +101,14 @@
 	..()
 
 /obj/machinery/chem_heater/attack_hand(mob/user)
-	if(!user.stats?.getPerk(PERK_MEDICAL_EXPERT) && !user.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Are we missing the perk AND to low on bio? Needs bio 25 so cog 50 to bypass
-		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
-		return
-
 	if(..())
 		return TRUE
 
 	user.set_machine(src)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/chem_heater/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = nano_ui_data()
+/obj/machinery/chem_heater/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = ui_data()
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -143,13 +123,13 @@
 
 
 
-/obj/machinery/chem_heater/nano_ui_data()
+/obj/machinery/chem_heater/ui_data()
 	var/data = list()
 	data["target_temperature"] = target_temperature
 	data["on"] = on
 
 	if(beaker)
-		data["beaker"] = beaker.reagents.nano_ui_data()
+		data["beaker"] = beaker.reagents.ui_data()
 	return data
 
 

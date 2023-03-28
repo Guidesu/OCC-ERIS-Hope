@@ -4,21 +4,12 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 	alpha = 120
-<<<<<<< HEAD
 	anchored = TRUE
 	unacidable = 1
 	simulated = FALSE
 	invisibility = 101
 	var/max_x = 8 //if we ever make more than 4x4 dungeon run map, instead of making new procs for generation, we can just edit those vars - edit 16 x 16
 	var/max_y = 8
-=======
-	anchored = 1
-	unacidable = 1
-	simulated = 0
-	invisibility = 101
-	var/max_x = 16 //if we ever make more than 4x4 dungeon run map, instead of making new procs for generation, we can just edit those vars - edit 16 x 16
-	var/max_y = 16
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/generating = 0
 	var/area/crawler/myarea
 	var/rooms = list()
@@ -388,15 +379,9 @@
 				if(c_room.above)
 					if(prob(60))
 						r_template = pick(above_room_templates)
-<<<<<<< HEAD
 			/*	if(c_room.under)
 					if(prob(60))
 						r_template = pick(under_room_templates)**/
-=======
-				//if(c_room.under)
-				//	if(prob(60))
-				//		r_template = pick(under_room_templates)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				else if (!c_room.above)
 					if(prob(40))
 						r_template = pick(horizontal_room_templates)

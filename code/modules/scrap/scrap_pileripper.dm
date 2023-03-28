@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/pile_ripper
 	name = T_BOARD("Pile Ripper")
-=======
-/obj/item/circuitboard/pile_ripper
-	build_name = "Pile Ripper"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/pile_ripper
 	board_type = "machine"
 	origin_tech = list(TECH_ENGINEERING = 3)
@@ -22,7 +17,7 @@
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 300
-	circuit = /obj/item/circuitboard/pile_ripper
+
 	var/safety_mode = FALSE // Temporality stops the machine if it detects a mob
 	var/icon_name = "grinder-b"
 	var/blood = 0
@@ -55,25 +50,15 @@
 	for(var/obj/ripped_item in ripped_turf)
 		if(count >= rating)
 			break
-<<<<<<< HEAD
 		if(istype(ripped_item, /obj/structure/scrap_spawner))
 			var/obj/structure/scrap_spawner/pile = ripped_item
 			while(pile.dig_out_lump(loc, 1))
-=======
-		if(istype(ripped_item, /obj/structure/scrap))
-			var/obj/structure/scrap/pile = ripped_item
-			while(!pile.clear_if_empty())
-				pile.dig_out_lump()
-				pile.shuffle_loot()
-				for(var/obj/item/looted_things in pile.loot)
-					pile.loot.remove_from_storage(looted_things, src.loc)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(prob(20))
 					break
 			count++
 		else if(istype(ripped_item, /obj/item))
 			ripped_item.forceMove(src.loc)
-			if(emagged)
+			if(prob(20))
 				qdel(ripped_item)
 		else if(istype(ripped_item, /obj/structure/scrap_cube))
 			var/obj/structure/scrap_cube/cube = ripped_item
@@ -100,13 +85,6 @@
 
 /obj/machinery/pile_ripper/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/card/emag))
-<<<<<<< HEAD
-=======
-		emag_act(user)
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-
-	if(panel_open && I.use_tool(user, src, WORKTIME_EXTREMELY_LONG, QUALITY_PULSING, FAILCHANCE_IMPOSSIBLE, required_stat = STAT_MEC))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		emag_act(user)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 
@@ -125,7 +103,7 @@
 			safety_mode = FALSE
 			update_icon()
 		playsound(loc, "sparks", 75, 1, -1)
-		to_chat(user, SPAN_NOTICE("You use disable the safeties on the [name]."))
+		to_chat(user, SPAN_NOTICE("You use the cryptographic sequencer on the [name]."))
 
 /obj/machinery/pile_ripper/on_update_icon()
 	..()
@@ -146,7 +124,7 @@
 	if(iscarbon(L))
 		gib = FALSE
 		if(!L.stat)
-			L.emote("painscream", , , 1)
+			L.emote("scream", , , 1)
 		add_blood(L)
 	if(!blood && !issilicon(L))
 		blood = TRUE
@@ -173,6 +151,8 @@
 	if(istype(L, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
 		H.nutrition -= 100
+		if(H.nutrition <= 0)
+			H.gib()
 		if(H.isMonkey())
 			slab_type = /obj/item/reagent_containers/food/snacks/meat/monkey
 		else

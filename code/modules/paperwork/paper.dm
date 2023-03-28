@@ -20,108 +20,34 @@
 	body_parts_covered = HEAD
 	attack_verb = list("bapped")
 	matter = list(MATERIAL_BIOMATTER = 1)
-<<<<<<< HEAD
 	contained_sprite = TRUE
 	spawn_tags = SPAWN_JUNK
 	rarity_value = 3.5
 
-=======
-	preloaded_reagents = list("woodpulp" = 3)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF
 	var/stamps		//The (text for the) stamps on the paper.
 	var/fields		//Amount of user created fields
 	var/free_space = MAX_PAPER_MESSAGE_LEN
-	var/stamped		//Bitfield of stamp possibilities.
+	var/list/stamped
 	var/list/ico[0]      //Icons and
 	var/list/offset_x[0] //offsets stored for later
 	var/list/offset_y[0] //usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 	var/crumpled = FALSE
-<<<<<<< HEAD
-=======
-	var/datum/language/language = LANGUAGE_COMMON // Language the paper was written in. Editable by users up until something's actually written
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
 
-<<<<<<< HEAD
 /obj/item/paper/New(loc, text,title)
 	..(loc)
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	set_content(text ? text : info, title)
 
-=======
-/obj/item/paper/ui_host(mob/user)
-	if(istype(loc, /obj/structure/noticeboard))
-		return loc
-	return ..()
-
-/obj/item/paper/card
-	name = "blank card"
-	desc = "A gift card with space to write on the cover."
-	icon_state = "greetingcard"
-	slot_flags = null //no fun allowed!!!!
-
-/obj/item/paper/card/AltClick() //No fun allowed
-	return
-
-/obj/item/paper/card/update_icon()
-	return
-
-/obj/item/paper/card/smile
-	name = "happy card"
-	desc = "A gift card with a smiley face on the cover."
-	icon_state = "greetingcard_smile"
-
-/obj/item/paper/card/cat
-	name = "cat card"
-	desc = "A gift card with a cat on the cover."
-	icon_state = "greetingcard_cat"
-
-/obj/item/paper/card/flower
-	name = "flower card"
-	desc = "A gift card with a flower on the cover."
-	icon_state = "greetingcard_flower"
-
-/obj/item/paper/card/heart
-	name = "heart card"
-	desc = "A gift card with a heart on the cover."
-	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/New()
-	..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
-/obj/item/paper/New(loc, text,title, datum/language/L = null)
-	..(loc)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	set_content(text ? text : info, title)
-
-	if (L)
-		language = L
-
-	var/old_language = language
-	if (!set_language(language, TRUE))
-		log_debug("[src] ([type]) initialized with invalid or missing language `[old_language]` defined.")
-		set_language(LANGUAGE_COMMON, TRUE)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/paper/proc/set_content(text,title)
 	if(title)
 		name = title
@@ -131,25 +57,8 @@
 	update_space(info)
 	updateinfolinks()
 
-<<<<<<< HEAD
 /obj/item/paper/on_update_icon()
 	if (icon_state == "paper_talisman")
-=======
-/obj/item/paper/proc/set_language(datum/language/new_language, force = FALSE)
-	if (!new_language || (info && !force))
-		return FALSE
-
-	if (!istype(new_language))
-		new_language = global.all_languages[new_language]
-	if (!istype(new_language))
-		return FALSE
-
-	language = new_language
-	return TRUE
-
-/obj/item/paper/update_icon()
-	if (icon_state == "paper_talisman" || icon_state == "Scroll ink") // For Alchemy related stuff
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	else if (info)
 		icon_state = "paper_words"
@@ -169,7 +78,6 @@
 	else
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
-<<<<<<< HEAD
 /obj/item/paper/proc/show_content(mob/user, forceshow)
 	var/can_read = (istype(user, /mob/living/carbon/human) || isghost(user) || istype(user, /mob/living/silicon)) || forceshow
 	if(!forceshow && istype(user,/mob/living/silicon/ai))
@@ -178,98 +86,15 @@
 	user << browse("<HTML><meta charset=\"utf-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
 	onclose(user, "[name]")
 
-=======
-/obj/item/paper/verb/user_set_language()
-	set name = "Set writing language"
-	set category = "Object"
-	set src in usr
-
-	choose_language(usr)
-
-/obj/item/paper/proc/choose_language(mob/user, admin_force = FALSE)
-	if (info)
-		to_chat(user, SPAN_WARNING("\The [src] already has writing on it and cannot have its language changed."))
-		return
-	if (!admin_force && !user.languages.len)
-		to_chat(user, SPAN_WARNING("You don't know any languages to choose from."))
-		return
-
-	var/list/selectable_languages = list()
-	if (admin_force)
-		for (var/key in global.all_languages)
-			var/datum/language/L = global.all_languages[key]
-			if (L.has_written_form)
-				selectable_languages += L
-	else
-		for (var/datum/language/L in user.languages)
-			if (L.has_written_form)
-				selectable_languages += L
-
-	var/new_language = input(user, "What language do you want to write in?", "Change language", language) as null|anything in selectable_languages
-	if (!new_language || new_language == language)
-		to_chat(user, SPAN_NOTICE("You decide to leave the language as [language.name]."))
-		return
-	if (!admin_force && !Adjacent(src, user) && !CanInteract(user, GLOB.deep_inventory_state))
-		to_chat(user, SPAN_WARNING("You must remain next to or continue holding \the [src] to do that."))
-		return
-	set_language(new_language)
-
-/obj/item/paper/proc/show_content(mob/user, forceshow, editable = FALSE)
-	var/can_read = (istype(user, /mob/living/carbon/human) || isghost(user) || istype(user, /mob/living/silicon)) || forceshow
-	if(!forceshow && istype(user,/mob/living/silicon/ai))
-		var/mob/living/silicon/ai/AI = user
-		can_read = get_dist(src, AI.camera) < 2
-	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
-
-	var/html = "<html><head><title>[name]</title></head><body bgcolor='[color]'>"
-	var/body
-	if (can_read && editable)
-		body = info_links
-		if (isobserver(user) || (language in user.languages))
-			if (info)
-				html += "<p><i>This paper is written in [language.name].</i></p>"
-			else
-				html += "<p><i>You are writing in <a href='?src=\ref[src];change_language=1'>[language]</a>.</i></p>"
-		else
-			html += "<p style=\"color: red;\"><i>This paper is written in a language you don't understand.</i></p>"
-			body = language.scramble(info, user.languages)
-	else if (!can_read)
-		html += "<p style=\"color:red;\"><i>The paper is too far away to read.</i></p>"
-	else
-		body = info
-		if (isobserver(user) || (language in user.languages))
-			html += "<p><i>This paper is written in [language.name].</i></p>"
-		else
-			html += "<p style=\"color: red;\"><i>This paper is written in a language you don't understand.</i></p>"
-			body = language.scramble(body, user.languages)
-
-	html += "<hr />"
-	html += body + stamps
-	html += "</body></html>"
-	show_browser(user, html, "window=[name]")
-
-	onclose(user, "[name]")
-
-/obj/item/paper/proc/write_content(mob/user)
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set category = "Object"
 	set src in usr
 	playsound(src,'sound/effects/PEN_Ball_Point_Pen_Circling_01_mono.ogg',40,1)
 
-<<<<<<< HEAD
 	if((CLUMSY in usr.mutations) && prob(50))
 		to_chat(usr, SPAN_WARNING("You cut yourself on the paper."))
 		return
-=======
-	if((CLUMSY in usr.mutations) && prob(15))
-		to_chat(usr, SPAN_WARNING("You cut yourself on the paper."))
-		papercut()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text, MAX_NAME_LEN)
 
 	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/photo/rename()
@@ -277,19 +102,6 @@
 		name = n_name
 		add_fingerprint(usr)
 
-<<<<<<< HEAD
-=======
-/obj/item/paper/proc/papercut(mob/living/user as mob)
-	if(user.hand == user.l_hand) // Are we using the left arm?
-		user.apply_damage(1, BRUTE, def_zone = BP_L_ARM)
-	if(user.hand == user.r_hand) // Are we using the right arm?
-		user.apply_damage(1, BRUTE, def_zone = BP_R_ARM)
-	else //Were not using are hands so we damage are chest. As were always going to have this lim
-		user.apply_damage(1, BRUTE, def_zone = BP_CHEST) //Hope no one does this well missing an arm...
-
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/paper/attack_self(mob/living/user as mob)
 	if (user.a_intent == I_HURT)
 		if (crumpled)
@@ -383,10 +195,7 @@
 	info = null
 	stamps = null
 	free_space = MAX_PAPER_MESSAGE_LEN
-<<<<<<< HEAD
 	stamped = list()
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	updateinfolinks()
 	update_icon()
@@ -396,11 +205,7 @@
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-<<<<<<< HEAD
 /obj/item/paper/proc/parsepencode(t, obj/item/pen/P, mob/user, iscrayon)
-=======
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (length(t) == 0)
 		return ""
 
@@ -470,11 +275,6 @@
 	if(!usr || (usr.stat || usr.restrained()))
 		return
 
-	if (href_list["change_language"])
-		choose_language(usr)
-		show_content(usr, editable = TRUE)
-		return
-
 	if(href_list["write"])
 		if(!config.paper_input)
 			to_chat(usr, SPAN_WARNING("No matter how hard you try to write on \the [src], nothing shows up! (Paper input disabled in config.)"))
@@ -525,11 +325,7 @@
 		playsound(src,'sound/effects/PEN_Ball_Point_Pen_Circling_01_mono.ogg',40,1)
 		update_space(t)
 
-<<<<<<< HEAD
 		usr << browse("<HTML><meta charset=\"utf-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
-=======
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		update_icon()
 
@@ -601,23 +397,15 @@
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
-<<<<<<< HEAD
 			user << browse("<HTML><meta charset=\"utf-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]")
-=======
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	else if(istype(P, /obj/item/stamp))
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
-		var/obj/item/stamp/S = P
-		playsound(src,'sound/bureaucracy/stamp.ogg',40,1)
-		stamp(S.stamp_text ? S.stamp_text : "This paper has been stamped with the [P.name].", "paper_[P.icon_state]", S.xplus, S.xminus, S.yplus, S.yminus)
-		stamped &= S.stamp_flags
-		user << SPAN_NOTICE("You stamp the paper with your [S.name].")
+		playsound(src,'sound/effects/Stamp.ogg',40,1)
+		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
 
-<<<<<<< HEAD
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 		var/x
 		var/y
@@ -644,79 +432,19 @@
 
 		to_chat(user, SPAN_NOTICE("You stamp the paper with your rubber stamp."))
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if(istype(P, /obj/item/flame))
 		burnpaper(P, user)
 
 	add_fingerprint(user)
 	return
 
-<<<<<<< HEAD
-=======
-/obj/item/paper/proc/stamp(var/text, var/icon_state = "paper_stamp-dots", var/xp = 2, var/xm = -2, var/yp = 2, var/ym = -3, var/color)
-	stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>[text]</i>"
-
-	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi', icon_state)
-	stampoverlay.color = color
-	var/x = rand(xm, xp)
-	var/y = rand(ym, yp)
-	offset_x += x
-	offset_y += y
-	stampoverlay.pixel_x = x
-	stampoverlay.pixel_y = y
-
-	if(!ico)
-		ico = new
-	ico += icon_state
-
-	add_overlay(stampoverlay)
-
-/*
- * Premade paper
- */
-/obj/item/paper/euro
-	language = LANGUAGE_EURO
-
-/obj/item/paper/slavic
-	language = LANGUAGE_CYRILLIC
-
-/obj/item/paper/illyrian
-	language = LANGUAGE_ILLYRIAN
-
-/obj/item/paper/jana
-	language = LANGUAGE_JANA
-
-/obj/item/paper/yassari
-	language = LANGUAGE_YASSARI
-
-/obj/item/paper/opifex
-	language = LANGUAGE_OPIFEXEE
-
-/obj/item/paper/latin
-	language = LANGUAGE_LATIN
-
-/obj/item/paper/romana
-	language = LANGUAGE_ROMANA
-
-/obj/item/paper/cult
-	language = LANGUAGE_CULT	//May god save your soul.
-
-/obj/item/paper/Court
-	name = "Judgement"
-	info = "For crimes against the Nadezhda colony, the offender is sentenced to:<BR>\n<BR>\n"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "paper_crumpled"
 	crumpled = TRUE
 
-<<<<<<< HEAD
 /obj/item/paper/crumpled/on_update_icon()
-=======
-/obj/item/paper/crumpled/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (icon_state == "paper_crumpled_bloodied")
 		return
 	else if (info)
@@ -732,11 +460,7 @@
 	name = "sheet of odd paper"
 	icon_state = "paper_neo"
 
-<<<<<<< HEAD
 /obj/item/paper/neopaper/on_update_icon()
-=======
-/obj/item/paper/neopaper/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(info)
 		icon_state = "paper_neo_words"
 	else
@@ -747,11 +471,7 @@
 	name = "odd paper scrap"
 	icon_state = "paper_neo_crumpled"
 
-<<<<<<< HEAD
 /obj/item/paper/crumpled/neo/on_update_icon()
-=======
-/obj/item/paper/crumpled/neo/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (icon_state == "paper_neo_crumpled_bloodied")
 		return
 	else if (info)
@@ -761,11 +481,7 @@
 	return
 
 /obj/item/paper/crumpled/neo/bloody
-<<<<<<< HEAD
 	icon_state = "paper_neo_crumpled_bloodied" //todo fix sprite
 	spawn_blacklisted = TRUE
-=======
-	icon_state = "paper_neo_crumpled_bloodied"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #undef MAX_FIELDS

@@ -34,13 +34,9 @@
 	var/active                          // Basic module status
 	var/disruptable                     // Will deactivate if some other powers are used.
 
-	use_power_cost = 0              // Power used when single-use ability called.
+	var/use_power_cost = 0              // Power used when single-use ability called.
 	var/active_power_cost = 0           // Power used when turned on.
-<<<<<<< HEAD
 	var/passive_power_cost = 0        // Power used when turned off.
-=======
-	passive_power_cost = 0        // Power used when turned off.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/list/charges                    // Associative list of charge types and remaining numbers.
 	var/charge_selected                 // Currently selected option used for charge dispensing.
@@ -58,8 +54,6 @@
 	var/engage_string = "Engage"
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
-
-	var/list/mutually_exclusive_modules
 
 	var/list/stat_rig_module/stat_modules = new()
 
@@ -123,13 +117,8 @@
 		if(!do_after(user,30,src) || !W || !src)
 			return
 
-<<<<<<< HEAD
 		damage = 1
 		to_chat(user, "You mend some of damage to [src] with [W], but you will need more advanced tools to fix it completely.")
-=======
-		damage = 0
-		to_chat(user, "You mend the damage to [src] with [W].")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		cable.use(5)
 		return
 	..()
@@ -164,14 +153,6 @@
 //Called before the module is installed in a suit
 //Return FALSE to deny the installation
 /obj/item/rig_module/proc/can_install(var/obj/item/rig/rig, var/mob/user, var/feedback = FALSE)
-<<<<<<< HEAD
-=======
-	for(var/obj/item/rig_module/RIM in rig.installed_modules)
-		if(RIM in mutually_exclusive_modules)
-			return FALSE
-		if(src in RIM.mutually_exclusive_modules)
-			return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 //Called before the module is removed from a suit

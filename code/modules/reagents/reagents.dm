@@ -29,7 +29,6 @@
 	var/addiction_chance = 0
 	var/withdrawal_threshold = 0
 	var/withdrawal_rate = REM * 2
-<<<<<<< HEAD
 	var/scannable = 0 // Shows up on health analyzers.
 	var/affects_dead = 0
 	var/glass_unique_appearance = FALSE
@@ -43,22 +42,6 @@
 	var/list/taste_tag = list()
 	var/sanity_gain_ingest = 0
 	var/minimum_identification = STAT_LEVEL_NONE	// OCCULUS EDIT: Minimum BIO level to identify the reagent without a scanner
-=======
-	var/scannable = FALSE // If set to TRUE, the reagent shows up on health analyzers.
-	var/affects_dead = FALSE
-	var/glass_icon_state = null
-	var/glass_name = null
-	var/glass_desc = null
-	var/glass_center_of_mass = null
-	var/common = FALSE //Whether or not a layman will be able to understand what a chemical is.
-	var/illegal = FALSE //Whether a substance is contraband or not. Marshal/BS should have training to ID these compounds.
-	var/color = "#000000"
-	var/color_weight = 1
-	var/sanity_gain_ingest = 0
-	var/sanity_gain = 0
-
-	var/glass_unique_appearance = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/chilling_point
 	var/chilling_message = "crackles and freezes!"
@@ -76,85 +59,10 @@
 
 	// Catalog stuff
 	var/appear_in_default_catalog = TRUE
-<<<<<<< HEAD
 	var/reagent_type = "FIX DAT SHIT IMIDIATLY"
-=======
-	var/reagent_type = "404: ERROR FILE NOT FOUND!"
-	var/price_per_unit = 0.125 //por cargo rework
-	var/safty_process = 0 //This is used for when your metabolism is to low
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/proc/remove_self(amount) // Shortcut
-	if(holder) //Apparently it's possible to have holderless reagents.
-		holder.remove_reagent(id, amount)
-
-
-/datum/reagent/proc/consumed_amount(mob/living/carbon/M, alien, location)
-	if(ishuman(M))
-		return consumed_amount_human(M, alien,location) // Since humans should scale off livers , hearts and stomachs
-	var/removed = metabolism
-	if(location == CHEM_INGEST)
-		if(ingest_met)
-			removed = ingest_met
-		else
-			removed = removed/2
-	if(touch_met && (location == CHEM_TOUCH))
-		removed = touch_met
-	// on half of overdose, chemicals will start be metabolized faster,
-	// also blood circulation affects chemical strength (meaining if target has low blood volume or has something that lowers blood circulation chemicals will be consumed less and effect will diminished)
-	if(location == CHEM_BLOOD)
-		if(!constant_metabolism)
-			if(overdose)
-				removed = CLAMP(metabolism * volume/(overdose/2) * M.get_blood_circulation()/100, metabolism * REAGENTS_MIN_EFFECT_MULTIPLIER, metabolism * REAGENTS_MAX_EFFECT_MULTIPLIER)
-			else
-				removed = CLAMP(metabolism * volume/(REAGENTS_OVERDOSE/2) * M.get_blood_circulation()/100, metabolism * REAGENTS_MIN_EFFECT_MULTIPLIER, metabolism * REAGENTS_MAX_EFFECT_MULTIPLIER)
-	removed = max(round(removed, 0.01), 0.01)
-	removed = min(removed, volume)
-
-	return removed
-
-/datum/reagent/proc/consumed_amount_human(mob/living/carbon/human/consumer, alien, location)
-	var/removed = metabolism
-	if(location == CHEM_INGEST)
-		var/calculated_buff = (consumer.get_organ_efficiency(OP_LIVER) + consumer.get_organ_efficiency(OP_HEART) + consumer.get_organ_efficiency(OP_STOMACH)) / 300
-		if(ingest_met)
-			removed = ingest_met * calculated_buff
-		else
-			removed = (metabolism / 2) * calculated_buff
-	if(touch_met && (location == CHEM_TOUCH))
-		removed = touch_met // This doesn't get a buff , there is no organ that can count for this , really.
-	// on half of overdose, chemicals will start be metabolized faster,
-	// also blood circulation affects chemical strength (meaining if target has low blood volume or has something that lowers blood circulation chemicals will be consumed less and effect will diminished)
-	if(location == CHEM_BLOOD)
-		var/calculated_buff = (consumer.get_organ_efficiency(OP_LIVER) + consumer.get_organ_efficiency(OP_HEART)) / 200
-		if(!constant_metabolism)
-			if(overdose)
-				removed = CLAMP(metabolism * volume/(overdose/2) * consumer.get_blood_circulation()/100 * calculated_buff, metabolism * REAGENTS_MIN_EFFECT_MULTIPLIER, metabolism * REAGENTS_MAX_EFFECT_MULTIPLIER)
-			else
-				removed = CLAMP(metabolism * volume/(REAGENTS_OVERDOSE/2) * consumer.get_blood_circulation()/100 * calculated_buff, metabolism * REAGENTS_MIN_EFFECT_MULTIPLIER, metabolism * REAGENTS_MAX_EFFECT_MULTIPLIER)
-	removed = max(round(removed, 0.01), 0.01)
-	removed = min(removed, volume)
-
-	return removed
-
-// "Removed" to multiplier
-// will return multiplier of how much value is more or less than default metabolism amount
-// all chem effects should be multiplied by return of this proc
-/datum/reagent/proc/RTM(var/removed, var/location)
-	if(ingest_met && location == CHEM_INGEST)
-		return removed/ingest_met
-	if(touch_met && location == CHEM_TOUCH)
-		return removed/touch_met
-	return removed/metabolism
-
-// reverse convertion
-/datum/reagent/proc/MTR(var/RTM, var/location)
-	if(ingest_met && location == CHEM_INGEST)
-		return ingest_met * RTM
-	if(touch_met && location == CHEM_TOUCH)
-		return touch_met * RTM
-	return metabolism * RTM
-
+	holder.remove_reagent(id, amount)
 
 /datum/reagent/proc/consumed_amount(mob/living/carbon/M, alien, location)
 	var/removed = metabolism
@@ -223,15 +131,7 @@
 	if(!istype(M))
 		return FALSE
 	if(!affects_dead && M.stat == DEAD)
-<<<<<<< HEAD
 		return FALSE
-=======
-		return
-	if(dose <= 0)
-		safty_process++
-		if(safty_process >= 5)
-			metabolism += 0.1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/removed = consumed_amount(M, alien, location)
 
@@ -250,7 +150,6 @@
 	// At this point, the reagent might have removed itself entirely - safety check
 	if(volume && holder)
 		remove_self(removed)
-<<<<<<< HEAD
 	return TRUE
 
 /datum/reagent/proc/apply_sanity_effect(mob/living/carbon/human/H, effect_multiplier)
@@ -272,53 +171,11 @@
 	return
 
 /datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
-=======
-
-/datum/reagent/proc/apply_sanity_effect(mob/living/carbon/human/H, effect_multiplier)
-	if(!ishuman(H))
-		return
-	else
-		H.sanity.onReagent(src, effect_multiplier)
-
-/datum/reagent/proc/affect_blood(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	return
-
-/datum/reagent/proc/affect_ingest(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	affect_blood(M, alien, effect_multiplier * 0.8)	// some of chemicals lost in digestive process
-
-	apply_sanity_effect(M, effect_multiplier)
-	return
-
-/datum/reagent/proc/affect_touch(var/mob/living/carbon/M, var/alien, var/effect_multiplier)
-	return
-
-/datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien) // Overdose effect. Doesn't happen instantly.
-	M.add_chemical_effect(CE_TOXIN, dose / 4)
-	return
-
-/datum/reagent/proc/create_overdose_wound(obj/item/organ/internal/I, mob/user, datum/component/internal_wound/base_type, wound_descriptor = "poisoning", silent = FALSE)
-	if(!istype(I))
-		return
-	if(I.nature != initial(base_type.wound_nature))
-		return
-
-	var/wound_path = pick(subtypesof(base_type))
-	var/wound_name = "[name] [wound_descriptor]"
-	I.add_wound(wound_path, wound_name)
-	if(!silent && BP_IS_ORGANIC(I))
-		to_chat(user, SPAN_WARNING("You feel a sharp pain in your [I.parent.name]."))
-
-/datum/reagent/proc/initialize_data(var/newdata) // Called when the reagent is created.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!isnull(newdata))
 		data = newdata
 	return
 
-<<<<<<< HEAD
 /datum/reagent/proc/mix_data(newdata, newamount) // You have a reagent with data, and new reagent with its own data get added, how do you deal with that?
-=======
-/datum/reagent/proc/mix_data(var/newdata, var/newamount) // You have a reagent with data, and new reagent with its own data get added, how do you deal with that?
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!data)
 		data = list()
 	return
@@ -331,27 +188,24 @@
 	return null
 
 // Addiction
-/datum/reagent/proc/addiction_act_stage1(mob/living/carbon/human/M)
+/datum/reagent/proc/addiction_act_stage1(mob/living/carbon/M)
 	if(prob(30))
 		to_chat(M, SPAN_NOTICE("You feel like having some [name] right about now."))
 
-/datum/reagent/proc/addiction_act_stage2(mob/living/carbon/human/M)
+/datum/reagent/proc/addiction_act_stage2(mob/living/carbon/M)
 	if(prob(30))
 		to_chat(M, SPAN_NOTICE("You feel like you need [name]. You just can't get enough."))
 
-/datum/reagent/proc/addiction_act_stage3(mob/living/carbon/human/M)
+/datum/reagent/proc/addiction_act_stage3(mob/living/carbon/M)
 	if(prob(30))
 		to_chat(M, SPAN_DANGER("You have an intense craving for [name]."))
-		M.sanity.changeLevel(-5)
 
-/datum/reagent/proc/addiction_act_stage4(mob/living/carbon/human/M)
+/datum/reagent/proc/addiction_act_stage4(mob/living/carbon/M)
 	if(prob(30))
 		to_chat(M, SPAN_DANGER("You're not feeling good at all! You really need some [name]."))
-		M.sanity.changeLevel(-10)
 
-/datum/reagent/proc/addiction_end(mob/living/carbon/human/M)
+/datum/reagent/proc/addiction_end(mob/living/carbon/M)
 	to_chat(M, SPAN_NOTICE("You feel like you've gotten over your need for [name]."))
-	M.sanity.changeLevel(15)
 
 // Withdrawal
 /datum/reagent/proc/withdrawal_start(mob/living/carbon/M)
@@ -381,7 +235,6 @@
 
 /datum/reagent/proc/custom_temperature_effects(temperature)
 	return
-<<<<<<< HEAD
 
 // OCCULUS EDIT
 // Code for reagent identification.
@@ -428,5 +281,3 @@
 			to_chat(user, "<span class='notice'>[desc_amount] of something.</span>")
 
 // OCCULUS EDIT END
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -29,7 +29,6 @@
 		if(MOVING_DELIBERATELY(src))
 			volume -= 45
 			range -= 0.333
-			sanity.changeLevel(0.05) //If we walk around we are less stressed
 		if(!shoes)
 			volume -= 60
 			range -= 0.333
@@ -37,11 +36,7 @@
 			volume -= 20
 			range -= 0.333
 
-<<<<<<< HEAD
 		mob_playsound(T, footsound, volume, 1, range)
 
 /proc/get_footstep(var/footstep_type, var/mob/caller)
 	return //todo
-=======
-		mob_playsound(T, footsound, volume, 1, range)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

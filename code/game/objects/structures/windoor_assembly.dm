@@ -18,11 +18,7 @@ obj/structure/windoor_assembly
 	dir = NORTH
 	w_class = ITEM_SIZE_NORMAL
 
-<<<<<<< HEAD
 	var/obj/item/electronics/airlock/electronics = null
-=======
-	var/obj/item/airlock_electronics/electronics = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//Vars to help with the icon's name
 	var/facing = "l"	//Does the windoor open to the left or right?
@@ -88,11 +84,7 @@ obj/structure/windoor_assembly/Destroy()
 			if(state == 0 && !anchored)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You've secured the windoor assembly!"))
-<<<<<<< HEAD
 					src.anchored = TRUE
-=======
-					src.anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					if(src.secure)
 						src.name = "Secure Anchored Windoor Assembly"
 					else
@@ -101,11 +93,7 @@ obj/structure/windoor_assembly/Destroy()
 			if(state == 0 && anchored)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You've unsecured the windoor assembly!"))
-<<<<<<< HEAD
 					anchored = FALSE
-=======
-					anchored = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					if(src.secure)
 						src.name = "Secure Windoor Assembly"
 					else
@@ -128,11 +116,7 @@ obj/structure/windoor_assembly/Destroy()
 			if(state == 1 && electronics)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					usr << browse(null, "window=windoor_access")
-<<<<<<< HEAD
 					density = TRUE //Shouldn't matter but just incase
-=======
-					density = 1 //Shouldn't matter but just incase
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					to_chat(user, SPAN_NOTICE("You finish the windoor!"))
 
 					if(secure)
@@ -197,11 +181,7 @@ obj/structure/windoor_assembly/Destroy()
 						src.name = "Secure Wired Windoor Assembly"
 					else
 						src.name = "Wired Windoor Assembly"
-<<<<<<< HEAD
 					var/obj/item/electronics/airlock/ae = electronics
-=======
-					var/obj/item/airlock_electronics/ae = electronics
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					electronics = null
 					ae.loc = src.loc
 					return
@@ -248,11 +228,7 @@ obj/structure/windoor_assembly/Destroy()
 		if(1)
 
 			//Adding airlock electronics for access. Step 6 complete.
-<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/airlock) && I:icon_state != "door_electronics_smoked")
-=======
-			if(istype(I, /obj/item/airlock_electronics) && I:icon_state != "door_electronics_smoked")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 

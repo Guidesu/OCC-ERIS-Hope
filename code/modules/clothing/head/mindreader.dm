@@ -5,11 +5,6 @@
 	item_state = "mindreader"
 	flags_inv = HIDEEARS
 	action_button_name = "Extract Memory"
-<<<<<<< HEAD
-=======
-	var/self_cooldown = 2 MINUTES
-	var/last_use = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_NORMAL
 	armor = list(
 		melee = 10,
@@ -19,12 +14,9 @@
 		bio = 0,
 		rad = 0
 	)
-<<<<<<< HEAD
 	spawn_blacklisted = TRUE
 	var/self_cooldown = 2 MINUTES
 	var/last_use = 0
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/head/mindreader/ui_action_click()
 	if(istype(loc, /mob))
@@ -57,8 +49,4 @@
 		output += "[A.print_objectives(FALSE)]"
 
 	new /obj/item/paper(drop_location(), output, "[H.real_name]'s Memory")
-<<<<<<< HEAD
 	H.visible_message(SPAN_NOTICE("[src] printed a paper with writed [H] memory."))
-=======
-	H.visible_message(SPAN_NOTICE("[src] printed a paper with writed [H] memory."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -188,9 +188,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/sign(x)
 	return x!=0?x/abs(x):0
 
-/proc/spow(x,y)
-	return (sign(x) * (abs(x) ** y))
-
 /proc/getline(atom/M, atom/N)//Ultra-Fast Bresenham Line-Drawing Algorithm
 	var/px=M.x		//starting x
 	var/py=M.y
@@ -251,24 +248,14 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 //Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
-<<<<<<< HEAD
 	if(findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-=======
-	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	var/i, ch, len = length(key)
 
-<<<<<<< HEAD
 	for(i = 7, i <= len, ++i) //we know the first 6 chars are Guest-
 		ch = text2ascii(key, i)
 		if(ch < 48 || ch > 57) //0-9
-=======
-	for (i = 7, i <= len, ++i) //we know the first 6 chars are Guest-
-		ch = text2ascii(key, i)
-		if (ch < 48 || ch > 57) //0-9
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 	return TRUE
 
@@ -525,7 +512,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return target
 
-<<<<<<< HEAD
 // Simple proc to recursively get a turf away from a target. More accurate than get edge turf but could be more accurate if using map coordinates or vectors.
 /proc/get_turf_away_from_target_simple(atom/center, atom/target, distance)
 	if(!center || !target)
@@ -538,20 +524,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		opposite_dir = turn(get_dir(current_turf, target) , 180) // Get the new opposite relative to our new location
 		looping_distance--
 	return current_turf
-=======
-// More complex proc that uses basic trigonometry to get a turf away from target . Accurate
-// it gets the difference between the center and target x and y axis. If they are - or + is handled without hardcode
-// The ratios are divided by their total (x + y ) and then multiplied by distance x / (x+y) * distance
-// this value is added ontop of the center coordinates , giving us our "away" turf.
-/proc/get_turf_away_from_target_complex(atom/center, atom/target, distance)
-	var/list/distance_reports = list(center.x - target.x, center.y - target.y)
-	var/distance_total = distance_reports[1] + distance_reports[2]
-	distance_reports[1] = round(distance_reports[1] / distance_total * distance)
-	distance_reports[2] = round(distance_reports[2] / distance_total * distance)
-	distance_reports[1] = center.x + distance_reports[1]
-	distance_reports[2] = center.y + distance_reports[2]
-	return locate(distance_reports[1], distance_reports[2], center.z)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -612,29 +584,24 @@ proc/GaussRandRound(var/sigma, var/roundto)
 
 	return toReturn
 
-///Step-towards method of determining whether one atom can see another. Similar to viewers()
-///note: this is a line of sight algorithm, view() does not do any sort of raycasting and cannot be emulated by it accurately
-/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+//Step-towards method of determining whether one atom can see another. Similar to viewers()
+/proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
-	if(get_dist(source, target) > length)
-		return FALSE
-	var/steps = 1
-	if(current == target_turf)//they are on the same turf, source can see the target
-		return TRUE
-	current = get_step_towards(current, target_turf)
+	var/steps = 0
+
+	if(!current || !target_turf)
+		return 0
+
 	while(current != target_turf)
-		if(steps > length)
-			return FALSE
-		if(current.opacity)
-			return FALSE
-		var/list/contents = current.contents
-		for (var/obj/object in contents) //only /obj because we only have opaque objs right now, !!!UPDATE THIS IF WE FUCKING CHANGE IT!!!
-			if (object.opacity)
-				return FALSE
+		if(steps > length) return 0
+		if(current.opacity) return 0
+		for(var/atom/A in current)
+			if(A.opacity) return 0
 		current = get_step_towards(current, target_turf)
 		steps++
-	return TRUE
+
+	return 1
 
 /proc/is_blocked_turf(var/turf/T)
 	var/cant_pass = 0
@@ -718,7 +685,6 @@ proc/GaussRandRound(var/sigma, var/roundto)
 	var/z_pos
 	var/area_name
 
-<<<<<<< HEAD
 /datum/coords/New(turf/loc)
 	if(loc)
 		x_pos = loc.x
@@ -741,138 +707,6 @@ proc/GaussRandRound(var/sigma, var/roundto)
 
 
 /area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction)
-=======
-
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-	//Takes: Area. Optional: turf type to leave behind.
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
-
-
-
-
-	if(!A || !src) return 0
-
-	var/list/turfs_src = get_area_turfs(src.type)
-	var/list/turfs_trg = get_area_turfs(A.type)
-
-
-
-
-	var/src_min_x = 0
-	var/src_min_y = 0
-	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
-
-	var/trg_min_x = 0
-	var/trg_min_y = 0
-	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
-
-	var/list/refined_src = new/list()
-	for(var/turf/T in turfs_src)
-		refined_src += T
-		refined_src[T] = new/datum/coords
-		var/datum/coords/C = refined_src[T]
-		C.x_pos = (T.x - src_min_x)
-		C.y_pos = (T.y - src_min_y)
-
-	var/list/refined_trg = new/list()
-	for(var/turf/T in turfs_trg)
-		refined_trg += T
-		refined_trg[T] = new/datum/coords
-		var/datum/coords/C = refined_trg[T]
-		C.x_pos = (T.x - trg_min_x)
-		C.y_pos = (T.y - trg_min_y)
-
-
-	moving:
-		for (var/turf/T in refined_src)
-			var/datum/coords/C_src = refined_src[T]
-			for (var/turf/B in refined_trg)
-				var/datum/coords/C_trg = refined_trg[B]
-				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
-
-					//You can stay, though.
-					if(istype(T,/turf/space))
-						refined_src -= T
-						refined_trg -= B
-						continue moving
-
-					var/turf/X //New Destination Turf
-
-					//Are we doing shuttlework? Just to save another type check later.
-					var/shuttlework = 0
-
-					//Shuttle turfs handle their own fancy moving.
-					if(istype(T,/turf/simulated/shuttle))
-						shuttlework = 1
-						var/turf/simulated/shuttle/SS = T
-						if(!SS.landed_holder) SS.landed_holder = new(turf = SS)
-						X = SS.landed_holder.land_on(B)
-
-					//Generic non-shuttle turf move.
-					else
-						var/old_dir1 = T.dir
-						var/old_icon_state1 = T.icon_state
-						var/old_icon1 = T.icon
-						var/old_underlays = T.underlays.Copy()
-						var/old_decals = T.decals ? T.decals.Copy() : null
-
-						X = B.ChangeTurf(T.type)
-						X.set_dir(old_dir1)
-						X.icon_state = old_icon_state1
-						X.icon = old_icon1
-						X.copy_overlays(T, TRUE)
-						X.underlays = old_underlays
-						X.decals = old_decals
-
-					//Move the air from source to dest
-					var/turf/simulated/ST = T
-					if(istype(ST) && ST.zone)
-						var/turf/simulated/SX = X
-						if(!SX.air)
-							SX.make_air()
-						SX.air.copy_from(ST.zone.air)
-						ST.zone.remove(ST)
-
-					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
-					for(var/obj/O in T)
-						O.forceMove(X)
-						O.update_light()
-
-					//Move the mobs unless it's an AI eye or other eye type.
-					for(var/mob/M in T)
-						if(istype(M, /mob/observer/eye))
-							continue // If we need to check for more mobs, I'll add a variable
-
-						M.forceMove(X)
-
-						if(istype(M, /mob/living))
-							var/mob/living/LM = M
-							LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
-
-					if(shuttlework)
-						var/turf/simulated/shuttle/SS = T
-						SS.landed_holder.leave_turf()
-					else if(turftoleave)
-						T.ChangeTurf(turftoleave)
-					else
-						T.ChangeTurf(get_base_turf_by_area(T))
-
-					refined_src -= T
-					refined_trg -= B
-					continue moving
-
-
-
-
-/area/proc/move_contents_to_old(var/area/A, var/turftoleave=null, var/direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
@@ -940,11 +774,7 @@ proc/GaussRandRound(var/sigma, var/roundto)
 					X.set_dir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
-<<<<<<< HEAD
 					X.set_overlays(old_overlays)
-=======
-					X.copy_overlays(old_overlays, TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					X.underlays = old_underlays
 					X.decals = old_decals
 					X.opacity = old_opacity
@@ -993,11 +823,7 @@ proc/GaussRandRound(var/sigma, var/roundto)
 							X.name = "wall"
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
-
-						O.loc = X
-						O.update_light()
-
-
+						O.forceMove(X)
 					for(var/mob/M in T)
 						// If we need to check for more mobs, I'll add a variable
 						if(!ismob(M) || isEye(M))
@@ -1133,11 +959,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 					X.set_dir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
-<<<<<<< HEAD
 					X.set_overlays(old_overlays)
-=======
-					X.copy_overlays(old_overlays, TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					X.underlays = old_underlays
 
 					var/list/objs = new/list()
@@ -1263,10 +1085,6 @@ proc/is_hot(obj/item/W)
 		else
 			return 0
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O)
 	if(!O) return FALSE
@@ -1424,21 +1242,17 @@ var/list/FLOORITEMS = list(
 			colour += temp_col
 	return "#[colour]"
 
-
-GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
-
 //Version of view() which ignores darkness, because BYOND doesn't have it.
 /proc/dview(range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
+	dview_mob.loc = center
+	dview_mob.see_invisible = invis_flags
+	. = view(range, dview_mob)
+	dview_mob.loc = null
 
-	GLOB.dview_mob.see_invisible = invis_flags
-
-	. = view(range, GLOB.dview_mob)
-	GLOB.dview_mob.loc = null
-
+/var/mob/dview/dview_mob = new
 
 /mob/dview
 	invisibility = 101
@@ -1450,9 +1264,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	see_in_dark = 1e6
 
 /mob/dview/Destroy()
-	. = QDEL_HINT_LETMELIVE // Prevents destruction
-	CRASH("Prevented attempt to delete dview mob: [log_info_line(src)]")
-
+	crash_with("Prevented attempt to delete dview mob: [log_info_line(src)]")
+	return QDEL_HINT_LETMELIVE // Prevents destruction
 
 /atom/proc/get_light_and_color(atom/origin)
 	if(origin)
@@ -1461,13 +1274,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /mob/dview/Initialize() // Properly prevents this mob from gaining huds or joining any global lists
 	return INITIALIZE_HINT_NORMAL
-<<<<<<< HEAD
 
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)
 	CRASH(msg)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/CheckFace(atom/Obj1, atom/Obj2)
 	var/CurrentDir = get_dir(Obj1, Obj2)
@@ -1477,46 +1287,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	else
 		return 0
 
-<<<<<<< HEAD
-=======
-//gives us the stack trace from CRASH() without ending the current proc.
-/proc/stack_trace(msg)
-	CRASH(msg)
-
-/datum/proc/stack_trace(msg)
-	CRASH(msg)
-
-/proc/pass(...)
-	return
-
-/**
- * \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
- * If it ever becomes necesary to get a more performant REF(), this lies here in wait
- * #define REF(thing) (thing && isdatum(thing) && (thing:datum_flags & DF_USE_TAG) && thing:tag ? "[thing:tag]" : "\ref[thing]")
-**/
-/proc/REF(input)
-	if(isdatum(input))
-		var/datum/thing = input
-		if(thing.datum_flags & DF_USE_TAG)
-			if(!thing.tag)
-				stack_trace("A ref was requested of an object with DF_USE_TAG set but no tag: [thing]")
-				thing.datum_flags &= ~DF_USE_TAG
-			else
-				return "\[[url_encode(thing.tag)]\]"
-	return "\ref[input]"
-
-// Makes a call in the context of a different usr
-// Use sparingly
-/world/proc/PushUsr(mob/M, datum/callback/CB, ...)
-	var/temp = usr
-	usr = M
-	if (length(args) > 2)
-		. = CB.Invoke(arglist(args.Copy(3)))
-	else
-		. = CB.Invoke()
-	usr = temp
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //datum may be null, but it does need to be a typed var
 #define NAMEOF(datum, X) (#X || ##datum.##X)
 
@@ -1532,18 +1302,4 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	// if(IsAdminAdvancedProcCall())
 	// 	D.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
 	// else
-<<<<<<< HEAD
 	D.vars[var_name] = var_value
-=======
-	D.vars[var_name] = var_value
-
-/proc/generate_single_gun_number()
-	return pick(1,2,3,4,5,6,7,8,9,0)
-
-/proc/generate_gun_serial(digit_numbers)
-	var/generated_code = ""
-	while(digit_numbers)
-		digit_numbers--
-		generated_code += "[generate_single_gun_number()]" // cast to string
-	return generated_code
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

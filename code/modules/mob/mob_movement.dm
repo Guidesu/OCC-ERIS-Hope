@@ -9,7 +9,8 @@
 
 
 /mob
-	var/moving = FALSE
+	var/moving           = FALSE
+
 
 /mob/proc/set_move_cooldown(var/timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
@@ -17,14 +18,13 @@
 		delay.SetDelay(timeout)
 
 /mob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0))
-		return TRUE
+	if(air_group || (height==0)) return 1
 
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
-			return TRUE
-		return (!mover.density || !density || (lying || moving_mob.lying)) // The 2nd lying check is a Soj Edit by niko, i have no fucking idea if this will break anything
+			return 1
+		return (!mover.density || !density || lying)
 	else
 		return (!mover.density || !density || lying)
 
@@ -132,22 +132,11 @@
 		return TRUE
 	if (check_dense_object())
 		return -1
-
-	//If we have catwalks then we can safely move around without error as if its a lattace with magboots
-	for(var/obj/O in loc)
-		if(istype(O, /obj/structure/catwalk))
-			return TRUE
-
 	return FALSE
-
 
 //return 1 if slipped, 0 otherwise
 /mob/proc/handle_spaceslipping()
-<<<<<<< HEAD
 	if(prob(1)) //Todo: Factor in future agility stat here
-=======
-	if(prob(0)) //Todo: Factor in future agility stat here, SoJ edit we remove space slipping, its bad
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(src, SPAN_WARNING("You slipped!"))
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
@@ -254,6 +243,3 @@
 		delay /= speed_factor
 
 	return delay
-
-/mob/proc/add_momentum()
-	return FALSE

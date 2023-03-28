@@ -1,9 +1,9 @@
 /obj/machinery/r_n_d/server
-	name = "R&D server"
+	name = "R&D Server"
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
 	var/datum/research/files
-	health = 100
+	var/health = 100
 	var/list/id_with_upload = list()	//List of R&D consoles with upload to server access.
 	var/list/id_with_download = list()	//List of R&D consoles with download from server access.
 	var/id_with_upload_string = ""		//String versions for easy editing in map editor.
@@ -13,11 +13,7 @@
 	idle_power_usage = 800
 	var/delay = 10
 	req_access = list(access_rd) //Only the R&D can change server settings.
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/rdserver
-=======
-	circuit = /obj/item/circuitboard/rdserver
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
@@ -128,7 +124,7 @@
 		return
 
 /obj/machinery/r_n_d/server/centcom
-	name = "central R&D database"
+	name = "Central R&D Database"
 	server_id = -1
 
 /obj/machinery/r_n_d/server/centcom/Initialize()
@@ -158,15 +154,11 @@
 	return PROCESS_KILL //don't need process()
 
 /obj/machinery/computer/rdservercontrol
-	name = "R&D server controller"
+	name = "R&D Server Controller"
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/rdservercontrol
-=======
-	circuit = /obj/item/circuitboard/rdservercontrol
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/screen = 0
 	var/obj/machinery/r_n_d/server/temp_server
 	var/list/servers = list()
@@ -305,13 +297,13 @@
 		return 1
 
 /obj/machinery/r_n_d/server/robotics
-	name = "robotics R&D server"
+	name = "Robotics R&D Server"
 	id_with_upload_string = "1;2"
 	id_with_download_string = "1;2"
 	server_id = 2
 
 /obj/machinery/r_n_d/server/core
-	name = "core R&D server"
+	name = "Core R&D Server"
 	id_with_upload_string = "1"
 	id_with_download_string = "1"
 	server_id = 1

@@ -30,7 +30,6 @@
 		return TRUE
 	return FALSE
 
-<<<<<<< HEAD
 // OCCULUS EDIT: Required check for nanite reconstitution apparatus; checks if old without youngifying it
 /obj/proc/is_old()
 	SHOULD_CALL_PARENT(TRUE)
@@ -43,13 +42,6 @@
 /obj/proc/make_old()
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(oldified)
-=======
-/atom/proc/make_young()
-	oldified = FALSE
-
-/obj/make_old()
-	if (oldified)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	AddComponent(/datum/component/oldficator)
 	if(prob(80))
@@ -59,7 +51,6 @@
 	desc += "\n "
 	desc += pick("Its warranty has expired.",
 	 "The inscriptions on this thing have been erased by time.",
-<<<<<<< HEAD
 	  "Looks completely ruined.",
 	   "It is difficult to make out what this thing once was.",
 	    "A relic from a bygone age.")
@@ -72,18 +63,6 @@
 		matter[a] *= RAND_DECIMAL(0.5, 1)
 
 	for(var/a in matter_reagents)
-=======
-	 "Looks completely ruined.",
-	 "It is difficult to make out what this thing once was.",
-	 "A relic from a bygone age.")
-	price_tag *= RAND_DECIMAL(0.1, 0.6) //Tank the price of it
-
-	//Deplete matter and matter_reagents
-	for (var/a in matter)
-		matter[a] *= RAND_DECIMAL(0.5, 1)
-
-	for (var/a in matter_reagents)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		matter_reagents[a] *= RAND_DECIMAL(0.5, 1)
 
 	for(var/obj/item/sub_item in contents)
@@ -93,17 +72,6 @@
 		update_icon()
 	return TRUE
 
-<<<<<<< HEAD
-=======
-/obj/make_young()
-	if(!oldified)
-		return
-	name = initial(name)
-	color = initial(color)
-	desc = initial(desc)
-	price_tag = initial(price_tag)
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/make_old()
 	.=..()
@@ -114,69 +82,9 @@
 
 /obj/item/tool/make_old()
 	.=..()
-<<<<<<< HEAD
 	if(.)
 		adjustToolHealth(-(rand(40, 150) * degradation))
 
-=======
-	if (.)
-		adjustToolHealth(-(rand(20, 60) * degradation))
-		precision -= rand(0,10)
-		workspeed = workspeed*(rand(5,10)/10) //50% less speed max
-		degradation += rand(0,4)
-		health = rand(10, max_health)
-
-/obj/item/tool/make_young()
-	if(!oldified)
-		return
-	workspeed = initial(workspeed)
-	precision = initial(precision)
-	degradation = initial(degradation)
-	refresh_upgrades() //So we dont null upgrades
-	..()
-
-/obj/item/gun/make_old()
-	. = ..()
-	if(. && prob(60))
-		var/list/trash_mods = TRASH_GUNMODS
-		while(trash_mods.len)
-			var/trash_mod_path = pick_n_take(trash_mods)
-			var/obj/item/trash_mod = new trash_mod_path
-			if(LEGACY_SEND_SIGNAL(trash_mod, COMSIG_IATTACK, src, null))
-				break
-			QDEL_NULL(trash_mod)
-	else
-		fire_delay += rand(0,3)
-		init_recoil = OLDIFED_RECOIL(pick(1.5, 1.8, 2, 2.3, 2.6, 3.2, 3.3, 4))
-		damage_multiplier = damage_multiplier*(rand(8,10)/10) //20% less damage max
-		penetration_multiplier = penetration_multiplier*(rand(8,10)/10) //20% less damage penetration
-	refresh_upgrades() //So we dont null upgrades.
-
-/obj/item/gun/make_young()
-	if(!oldified)
-		return
-	fire_delay = initial(fire_delay)
-	damage_multiplier = initial(damage_multiplier)
-	penetration_multiplier = initial(penetration_multiplier)
-	refresh_upgrades() //So we dont null upgrades
-	..()
-
-/obj/item/gun/energy/make_old()
-	. = ..()
-	charge_cost+= rand(0,250)
-	overcharge_max-= rand(0,5) //This is infact a number you want to go up
-	overcharge_rate-= rand(0,5)
-
-/obj/item/gun/energy/make_young()
-	if(!oldified)
-		return
-	charge_cost = initial(charge_cost)
-	overcharge_max = initial(overcharge_max)
-	overcharge_rate = initial(overcharge_rate)
-	refresh_upgrades() //So we dont null upgrades. Do it again...
-	..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/storage/make_old()
 	.=..()
 	if(.)
@@ -193,32 +101,20 @@
 
 //Old pill bottles get a name that disguises their contents
 /obj/item/storage/pill_bottle/make_old()
-<<<<<<< HEAD
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(!oldified && prob(85))
 		name = "bottle of [pick("generic ", "unknown ", "")]pills"
 		desc = "Contains pills of some kind. The label has long since worn away"
 		for(var/obj/item/reagent_containers/pill/P in contents)
-=======
-	if (prob(85))
-		name = "bottle of [pick("generic ", "unknown ", "")]pills"
-		desc = "Contains pills of some kind. The label has long since worn away"
-		for (var/obj/item/reagent_containers/pill/P in contents)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			P.make_old()
 	.=..()
 
 //Make sure old pills always hide their contents too
 /obj/item/reagent_containers/pill/make_old()
-<<<<<<< HEAD
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(!oldified)
 		name = "pill"
 		desc = "Some kind of pill. The imprints have worn away."
-=======
-	name = "pill"
-	desc = "Some kind of pill. The imprints have worn away."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	.=..()
 
 /obj/structure/reagent_dispensers/make_old()
@@ -227,7 +123,6 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents.remove_reagent(R.id,rand(0, R.volume),TRUE)
 
-<<<<<<< HEAD
 /obj/item/reagent_containers/make_old()
 	.=..()
 	if(.)
@@ -235,23 +130,9 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents.remove_reagent(R.id,rand(0, R.volume),TRUE)
 		reagents.add_reagent("toxin", rand(0, actual_volume - reagents.total_volume))
-=======
-
-/obj/item/reagent_containers/make_old()
-	.=..()
-	if (.)
-		var/actual_volume = reagents?.total_volume
-		for(var/datum/reagent/R in reagents?.reagent_list)
-			R.volume = rand(0, R.volume)
-		reagents?.add_reagent("toxin", rand(0, actual_volume - reagents?.total_volume))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Sealed survival food, always edible
-<<<<<<< HEAD
 /obj/item/reagent_containers/food/snacks/liquidfood/make_old()
-=======
-/obj/item/reagent_containers/food/snacks/openable/liquidfood/make_old()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/ammo_magazine/make_old()
@@ -264,7 +145,6 @@
 
 /obj/item/cell/make_old()
 	.=..()
-<<<<<<< HEAD
 	if(.)
 		// It's silly to have old self-charging cells spawn partially discharged
 		autorecharging = FALSE
@@ -273,19 +153,6 @@
 		if(prob(10))
 			rigged = TRUE
 
-=======
-	if (.)
-		// It's silly to have old self-charging cells spawn partially discharged
-		if(!autorecharging)
-			charge = min(charge, RAND_DECIMAL(50, maxcharge))
-
-		if(prob(20))
-			rigged = TRUE
-			if(prob(40))
-				charge = maxcharge  //make it BOOM hard
-		update_icon()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/stock_parts/make_old()
 	.=..()
 	if(.)
@@ -299,7 +166,6 @@
 /obj/item/stack/rods/make_old()
 	return
 
-<<<<<<< HEAD
 /obj/item/ore/make_old()
 	return
 
@@ -307,34 +173,12 @@
 	. =..()
 	if(.)
 		det_time = RAND_DECIMAL(0, det_time)
-=======
-/obj/item/stack/ore/make_old()
-	return
-
-/obj/item/computer_hardware/hard_drive/portable/design/make_old()
-	..()
-	if(license >= 1)
-		license = round(license / pick(1, 1, 1, 1.1, 1.1, 1.1, 1.1, 1.2, 1.3)) //This looses a lot when unlucky
-//todo: make old disk have corrupted prints
-/*
-	if(designs)
-		for(var/key in designs)
-			if(prob(50))//1% to make a design into a corrputed one
-				var/replacement = /datum/design/autolathe/corrupted
-				designs[key] = replacement[key]
-*/
-
-/obj/item/grenade/make_old()
-	..()
-	det_time = RAND_DECIMAL(0, det_time)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tank/make_old()
 	.=..()
 	if(.)
 		air_contents.remove(pick(0.2, 0.4 ,0.6, 0.8))
 
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/make_old()
 	.=..()
 	if(. && prob(75))
@@ -352,27 +196,6 @@
 		QDEL_NULL(src)
 	else
 		.=..()
-=======
-
-/obj/item/circuitboard/make_old()
-	.=..()
-	if (.)
-		if(prob(75))
-			name = "unknown board"
-			build_path = pick(/obj/machinery/washing_machine, /obj/machinery/broken, /obj/machinery/shower, /obj/machinery/holoposter, /obj/machinery/holosign)
-
-
-/obj/item/aiModule/make_old()
-	.=..()
-	if (.)
-		if(prob(75) && !istype(src, /obj/item/aiModule/broken))
-			var/obj/item/aiModule/brokenmodule = new /obj/item/aiModule/broken
-			brokenmodule.name = src.name
-			brokenmodule.desc = src.desc
-			brokenmodule.make_old()
-			QDEL_NULL(src)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/suit/space/make_old()
 	.=..()
@@ -384,21 +207,12 @@
 	if(.)
 		if(prob(30))
 			slowdown += pick(0.5, 0.5, 1, 1.5)
-<<<<<<< HEAD
 		if(prob(40))/*
 			if(islist(armor)) //Possible to run before the initialize proc, thus having to modify the armor list
 				var/list/armorList = armor	// Typecasting to a list from datum
 				for(var/i in armorList)
 					armorList[i] = rand(0, armorList[i])*/ //NOPE
 			armor = armor.setRating(melee = rand(0, armor.getRating(ARMOR_MELEE)), bullet =  rand(0, armor.getRating(ARMOR_BULLET)), energy = rand(0, armor.getRating(ARMOR_ENERGY)), bomb = rand(0, armor.getRating(ARMOR_BOMB)), bio = rand(0, armor.getRating(ARMOR_BIO)), rad = rand(0, armor.getRating(ARMOR_RAD)))
-=======
-		if(prob(40))
-			if(!armor) //Possible to run before the initialize proc, thus having to modify the armor list
-				for(var/i in armor_list)
-					armor_list[i] = rand(0, armor_list[i])
-			else
-				armor = armor.setRating(melee = rand(0, armor.getRating(ARMOR_MELEE)), bullet =  rand(0, armor.getRating(ARMOR_BULLET)), energy = rand(0, armor.getRating(ARMOR_ENERGY)), bomb = rand(0, armor.getRating(ARMOR_BOMB)), bio = rand(0, armor.getRating(ARMOR_BIO)), rad = rand(0, armor.getRating(ARMOR_RAD)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(prob(40))
 			heat_protection = rand(0, round(heat_protection * 0.5))
 		if(prob(40))
@@ -409,30 +223,9 @@
 			add_blood()
 		if(prob(60)) // I mean, the thing is ew gross.
 			equip_delay += rand(0, 6 SECONDS)
-<<<<<<< HEAD
 		style += STYLE_NEG_LOW
 
 /obj/item/electronics/ai_module/broken
-=======
-		if(prob(60)) // I mean, the thing is ew gross.
-			stiffness += pick(0, 0, 0.5, 0.5, 0.5, 1, 1.5)
-
-/obj/item/clothing/make_young()
-	if(!oldified)
-		return
-	var/obj/item/clothing/referencecarmor = new type()
-	armor = referencecarmor.armor
-	qdel(referencecarmor)
-	slowdown = initial(slowdown)
-	heat_protection = initial(heat_protection)
-	cold_protection = initial(cold_protection)
-	equip_delay = initial(equip_delay)
-	refresh_upgrades() //So we dont null upgrades.
-	..()
-
-
-/obj/item/aiModule/broken
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "\improper broken core AI module"
 	desc = "broken Core AI Module: 'Reconfigures the AI's core laws.'"
 /* Occulus Edit - LELELELELE ISN'T GIBBING PEOPLE RANDOMLY FUNNY LEL:ELELELE. No. Fuck off.
@@ -445,14 +238,10 @@
 	contents.Cut()
 	return ..()
 
-<<<<<<< HEAD
 /obj/machinery/broken/make_old()
 	return
 End Occulus Edit*/
 /obj/item/electronics/ai_module/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
-=======
-/obj/item/aiModule/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	IonStorm(0)
 	explosion(sender.loc, 1, 1, 1, 3)
@@ -471,7 +260,6 @@ End Occulus Edit*/
 
 
 /obj/item/clothing/glasses/hud/make_old()
-<<<<<<< HEAD
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(!oldified && prob(75) && !istype(src, /obj/item/clothing/glasses/hud/broken))
 		var/obj/item/clothing/glasses/hud/broken/brokenhud = new /obj/item/clothing/glasses/hud/broken(loc)
@@ -484,19 +272,6 @@ End Occulus Edit*/
 		QDEL_NULL(src)
 	else
 		.=..()
-=======
-	.=..()
-	if (.)
-		if(prob(75) && !istype(src, /obj/item/clothing/glasses/hud/broken))
-			var/obj/item/clothing/glasses/hud/broken/brokenhud = new /obj/item/clothing/glasses/hud/broken
-			brokenhud.name = src.name
-			brokenhud.desc = src.desc
-			brokenhud.icon = src.icon
-			brokenhud.icon_state = src.icon_state
-			brokenhud.item_state = src.item_state
-			brokenhud.make_old()
-			QDEL_NULL(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/glasses/make_old()
 	.=..()
@@ -505,14 +280,6 @@ End Occulus Edit*/
 			vision_flags = 0
 		if(prob(75))
 			darkness_view = -1
-
-/obj/item/clothing/glasses/make_young()
-	if(!oldified)
-		return
-	vision_flags = initial(vision_flags)
-	darkness_view = initial(darkness_view)
-	refresh_upgrades() //So we dont null upgrades.
-	..()
 
 /obj/item/device/lighting/glowstick/make_old()
 	.=..()
@@ -554,24 +321,10 @@ End Occulus Edit*/
 		for(var/i in 1 to del_count)
 			product_records.Remove(pick(product_records))
 
-/obj/item/clothing/glasses/sechud/make_old()
+/obj/item/clothing/glasses/sunglasses/sechud/make_old()
 	.=..()
-<<<<<<< HEAD
 	if(. && hud && prob(75))
 		hud = new /obj/item/clothing/glasses/hud/broken
-=======
-	if (.)
-		if(hud && prob(75))
-			hud = new /obj/item/clothing/glasses/hud/broken
-
-/obj/item/clothing/glasses/sechud/make_young()
-	.=..()
-	if (.)
-		if(hud)
-			hud = new /obj/item/clothing/glasses/hud/security
-
-// This code is fucking cursed and responsible for roughly 50% of the round run-times and crashed when booting up the server. No idea what cursed shit eris did, leave this commented out. -Kaz
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
 /obj/effect/decal/mecha_wreckage/make_old()
 	.=..()
@@ -581,7 +334,6 @@ End Occulus Edit*/
 /obj/item/part/gun/make_old()
 	return
 
-<<<<<<< HEAD
 /mob/living/exosuit
 	var/oldified = FALSE//Todo: inprove it.
 
@@ -598,151 +350,3 @@ End Occulus Edit*/
 		comp.make_old()
 	updatehealth()
 	*/
-=======
-/obj/mecha/make_old()
-	. = ..()
-
-	// Mech log is clean. No one knows when was this mech manufactured, or what happened to it before it was found.
-	log = list()
-
-	if (.)
-		//Now we determine the exosuit's condition
-		switch (rand(0,100))
-			if (0 to 3)
-			//Perfect condition, it was well cared for and put into storage in a pristine state
-			//Nothing is done to it.
-			if (4 to 10)
-			//Poorly maintained.
-			//The internal airtank and power cell will be somewhat depleted, otherwise intact
-				var/P = rand(0,50) / 100
-				if (cell)//Set the cell to a random charge below 50%
-					cell.charge =  cell.maxcharge * P
-
-				P = rand(50,100) / 100
-				if(internal_tank)//remove 50-100% of airtank contents
-					internal_tank.air_contents.remove(internal_tank.air_contents.total_moles * P)
-
-
-			if (11 to 20)
-			//Wear and tear
-			//Hull has light to moderate damage, tank and cell are depleted
-			//Any equipment will have a 25% chance to be lost
-				var/P = rand(0,30) / 100
-				if (cell)//Set the cell to a random charge below 50%
-					cell.charge =  cell.maxcharge * P
-
-				P = rand(70,100) / 100
-				if(internal_tank)//remove 50-100% of airtank contents
-					internal_tank.air_contents.remove(internal_tank.air_contents.total_moles * P)
-
-				lose_equipment(25)//Lose modules
-
-				P = rand(10,100) / 100 //Set hull integrity
-				health = initial(health)*P
-
-
-			if (21 to 40)
-			//Severe damage
-			//Power cell has 50% chance to be missing or is otherwise low
-			//Significant chance for internal damage
-			//Hull integrity less than half
-			//Each module has a 50% loss chance
-			//Systems may be misconfigured
-				var/P
-
-				if (prob(50))//Remove cell
-					cell = null
-				else
-					P = rand(0,20) / 100 //or deplete it
-					if (cell)//Set the cell to a random charge below 50%
-						cell.charge = cell.maxcharge * P
-
-				P = rand(80,100) / 100 //Deplete tank
-				if(internal_tank)//remove 50-100% of airtank contents
-					internal_tank.air_contents.remove(internal_tank.air_contents.total_moles * P)
-
-				lose_equipment(50)//Lose modules
-				random_internal_damage(15)//Internal damage
-
-				P = rand(5,50) / 100 //Set hull integrity
-				health = initial(health)*P
-				misconfigure_systems(15)
-
-
-			if (41 to 80)
-			//Decomissioned
-			//The exosuit is a writeoff, it was tossed into storage for later scrapping.
-			//Wasnt considered worth repairing, but you still can
-			//Power cell missing, internal tank completely drained or ruptured/
-			//65% chance for each type of internal damage
-			//90% chance to lose each equipment
-			//System settings will be randomly configured
-				var/P
-				if (prob(1))
-					cell.rigged = 1//Powercell will explode if you use it
-				else if (prob(50))//Remove cell
-					QDEL_NULL(cell)
-
-				if (cell)
-					P = rand(0,20) / 100 //or deplete it
-					cell.charge =  cell.maxcharge * P
-
-				lose_equipment(90)//Lose modules
-				random_internal_damage(50)//Internal damage
-
-				if (!hasInternalDamage(MECHA_INT_TANK_BREACH))//If the tank isn't breaches
-					qdel(internal_tank)//Then delete it
-					internal_tank = null
-
-				P = rand(5,50)/ 100 //Set hull integrity
-				health = initial(health)*P
-				misconfigure_systems(45)
-
-
-			if (81 to 100)
-			//Salvage
-			//The exosuit is wrecked. Spawns a wreckage object instead of a suit
-				//Set the noexplode var so it doesn't explode, then just qdel it
-				//The destroy proc handles wreckage generation
-				noexplode = 1
-				QDEL_NULL(src)
-
-		//Finally, so that the exosuit seems like it's been in storage for a while
-		//We will take any malfunctions to their logical conclusion, and set the error states high
-
-		//If the tank has a breach, then there will be no air left
-		if (hasInternalDamage(MECHA_INT_TANK_BREACH) && internal_tank)
-			internal_tank.air_contents.remove(internal_tank.air_contents.total_moles)
-
-		//If there's an electrical fault, the cell will be complerely drained
-		if (hasInternalDamage(MECHA_INT_SHORT_CIRCUIT) && cell)
-			cell.charge = 0
-
-
-		//Code for interacting with damage+power warnings, an unported aurora feature
-		/*
-		process_warnings()//Trigger them first, if they'll happen
-
-		if (power_alert_status)
-			last_power_warning = -99999999
-			//Make it go into infrequent warning state instantly
-			power_warning_delay = 99999999
-			//and set the delay between warnings to a functionally infinite value
-			//so that it will shut up
-
-		if (damage_alert_status)
-			last_damage_warning = -99999999
-			damage_warning_delay = 99999999
-
-		process_warnings()
-		*/
-*/
-
-
-// OCCULUS EDIT: Required check for nanite reconstitution apparatus; checks if old without youngifying it
-/obj/proc/is_old()
-	if(oldified)
-		return TRUE
-	return FALSE
-// OCCULUS EDIT END
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

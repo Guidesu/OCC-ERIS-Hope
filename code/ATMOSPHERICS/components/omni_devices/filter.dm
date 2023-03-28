@@ -85,17 +85,10 @@
 
 	return 1
 
-<<<<<<< HEAD
 /obj/machinery/atmospherics/omni/filter/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/list/data = ui_data()
-=======
-/obj/machinery/atmospherics/omni/filter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	user.set_machine(src)
-
-	var/list/data = nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 
@@ -105,11 +98,7 @@
 
 		ui.open()
 
-<<<<<<< HEAD
 /obj/machinery/atmospherics/omni/filter/ui_data()
-=======
-/obj/machinery/atmospherics/omni/filter/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = new()
 
 	data["power"] = use_power

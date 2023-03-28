@@ -8,14 +8,6 @@ SUBSYSTEM_DEF(chat)
 	var/list/payload = list()
 
 
-<<<<<<< HEAD
-=======
-/datum/controller/subsystem/chat/Initialize()
-	. = ..()
-//	initialize_text_to_speech()
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/controller/subsystem/chat/fire()
 	for(var/i in payload)
 		var/client/C = i
@@ -52,10 +44,7 @@ SUBSYSTEM_DEF(chat)
 	var/regex/i = new(@/<IMG CLASS=icon SRC=(\[[^]]+])(?: ICONSTATE='([^']+)')?>/, "g")
 	while(i.Find(message))
 		message = copytext(message,1,i.index)+icon2html(locate(i.group[1]), target, icon_state=i.group[2])+copytext(message,i.next)
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	message = \
 		symbols_to_unicode(
 			strip_improper(
@@ -64,7 +53,6 @@ SUBSYSTEM_DEF(chat)
 				)
 			)
 		)
-<<<<<<< HEAD
 
 	//url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
 	//Do the double-encoding here to save nanoseconds
@@ -80,18 +68,6 @@ SUBSYSTEM_DEF(chat)
 			//Send it to the old style output window.
 			SEND_TEXT(C, original_message)
 
-=======
-	//url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
-	//Do the double-encoding here to save nanoseconds
-	var/twiceEncoded = url_encode(url_encode(message))
-	if(islist(target))
-		for(var/I in target)
-			var/client/C = CLIENT_FROM_VAR(I) //Grab us a client if possible
-			if(!C)
-				return
-			//Send it to the old style output window.
-			SEND_TEXT(C, original_message)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!C?.chatOutput || C.chatOutput.broken) //A player who hasn't updated his skin file.
 				continue
 
@@ -117,8 +93,4 @@ SUBSYSTEM_DEF(chat)
 			C.chatOutput.messageQueue += message
 			return
 
-<<<<<<< HEAD
 		payload[C] += twiceEncoded
-=======
-		payload[C] += twiceEncoded
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

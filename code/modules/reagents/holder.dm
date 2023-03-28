@@ -5,14 +5,8 @@
 	var/total_volume = 0
 	var/maximum_volume = 100
 	var/chem_temp = T20C
-<<<<<<< HEAD
 	var/atom/my_atom
 	var/rotating = FALSE
-=======
-	var/atom/my_atom = null
-	var/rotating = FALSE
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/reagents/New(max = 100, atom/A = null)
@@ -31,15 +25,6 @@
 				continue
 			GLOB.chemical_reagents_list[D.id] = D
 
-<<<<<<< HEAD
-=======
-/datum/reagents/proc/get_price()
-	var/price = 0
-	for(var/datum/reagent/R in reagent_list)
-		price += R.volume * R.price_per_unit
-	return price
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/reagents/proc/get_average_reagents_state()
 	var/solid = 0
 	var/liquid = 0
@@ -69,13 +54,11 @@
 		SSchemistry.active_holders -= src
 
 	for(var/datum/reagent/R in reagent_list)
-		R.holder = null
 		qdel(R)
 	reagent_list.Cut()
 	reagent_list = null
 	if(my_atom && my_atom.reagents == src)
 		my_atom.reagents = null
-	my_atom = null
 
 /* Internal procs */
 
@@ -83,7 +66,7 @@
 	return maximum_volume - total_volume
 
 /datum/reagents/proc/get_master_reagent() // Returns reference to the reagent with the biggest volume.
-	var/the_reagent
+	var/the_reagent = null
 	var/the_volume = 0
 
 	for(var/datum/reagent/A in reagent_list)
@@ -94,7 +77,7 @@
 	return the_reagent
 
 /datum/reagents/proc/get_master_reagent_name() // Returns the name of the reagent with the biggest volume.
-	var/the_name
+	var/the_name = null
 	var/the_volume = 0
 	for(var/datum/reagent/A in reagent_list)
 		if(A.volume > the_volume)
@@ -104,7 +87,7 @@
 	return the_name
 
 /datum/reagents/proc/get_master_reagent_id() // Returns the id of the reagent with the biggest volume.
-	var/the_id
+	var/the_id = null
 	var/the_volume = 0
 	for(var/datum/reagent/A in reagent_list)
 		if(A.volume > the_volume)
@@ -121,6 +104,12 @@
 		else
 			total_volume += R.volume
 	return
+
+/datum/reagents/proc/delete()
+	for(var/datum/reagent/R in reagent_list)
+		R.holder = null
+	if(my_atom)
+		my_atom.reagents = null
 
 /datum/reagents/proc/handle_reactions()
 	if(SSchemistry)
@@ -318,13 +307,6 @@
 			return current.volume
 	return 0
 
-/datum/reagents/proc/get_reagent_by_type(var/type)
-	var/amount = 0
-	for(var/datum/reagent/current in reagent_list)
-		if(istype(current, type))
-			amount += current.volume
-	return amount
-
 /datum/reagents/proc/get_data(var/id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
@@ -388,16 +370,11 @@
 //not directly injected into the contents. It first calls touch, then the appropriate trans_to_*() or splash_mob().
 //If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
 //call the appropriate trans_to_*() proc.
-<<<<<<< HEAD
 /datum/reagents/proc/trans_to(datum/target, amount = 1, multiplier = 1, copy = 0, ignore_isinjectable = FALSE)
-=======
-/datum/reagents/proc/trans_to(datum/target, amount = 1, multiplier = 1, copy = 0, ignore_isinjectable = 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(target, /datum/reagents))
 		return trans_to_holder(target, amount, multiplier, copy)
 	else if(istype(target, /atom))
 		var/atom/A = target
-		touch(A)
 		if(ismob(target))
 			return splash_mob(target, amount, multiplier, copy)
 		if(isturf(target))
@@ -520,8 +497,6 @@
 	if(!target || !target.simulated)
 		return
 
-
-
 	var/datum/reagents/R = new /datum/reagents(amount * multiplier)
 	. = trans_to_holder(R, amount, multiplier, copy)
 
@@ -604,7 +579,7 @@
 			return X
 
 // NanoUI / TG UI data
-/datum/reagents/nano_ui_data()
+/datum/reagents/ui_data()
 	var/list/data = list()
 
 	data["total_volume"] = total_volume

@@ -2,19 +2,11 @@
 	name = "chemical implant"
 	desc = "Injects things."
 	icon_state = "implant_chem"
-<<<<<<< HEAD
 	implant_overlay = "implantstorage_chem"
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	allow_reagents = 1
 	origin_tech = list(TECH_MATERIAL=3, TECH_BIO=4)
 	spawn_tags = null
 
-<<<<<<< HEAD
-=======
-	overlay_icon = "chem"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/chem/get_data()
 	var/data = {"
 		<b>Implant Specifications:</b><BR>

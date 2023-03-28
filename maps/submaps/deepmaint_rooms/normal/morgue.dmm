@@ -11,48 +11,25 @@
 /area/deepmaint)
 "d" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/common_oddities/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "e" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
-=======
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/common_oddities/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "f" = (
 /obj/structure/table/rack/shelf,
-<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth/low_chance,
 /obj/spawner/pack/cloth/low_chance,
-=======
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth/low_chance,
-/obj/random/pack/cloth/low_chance,
-/obj/random/lathe_disk/advanced/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "g" = (
@@ -71,13 +48,8 @@
 /area/deepmaint)
 "j" = (
 /obj/structure/morgue{
-<<<<<<< HEAD
 	icon_state = "morgue1";
 	dir = 8
-=======
-	dir = 8;
-	icon_state = "morgue1"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/dark/panels,
 /area/deepmaint)
@@ -100,10 +72,6 @@
 /obj/item/tool/cautery{
 	pixel_y = 4
 	},
-<<<<<<< HEAD
-=======
-/obj/item/storage/firstaid/surgery/traitor,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/panels,
 /area/deepmaint)
 "n" = (
@@ -134,15 +102,9 @@
 /area/deepmaint)
 "s" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/medical,
 /obj/spawner/medical/low_chance,
 /obj/spawner/medical/low_chance,
-=======
-/obj/random/medical,
-/obj/random/medical/low_chance,
-/obj/random/medical/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/deepmaint)
 "t" = (
@@ -151,81 +113,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/deepmaint)
-<<<<<<< HEAD
-=======
-"v" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/dark,
-/area/deepmaint)
-"z" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/dark/panels,
-/area/deepmaint)
-"E" = (
-/obj/structure/table/standard,
-/obj/random/card_carp,
-/obj/random/card_carp,
-/obj/random/card_carp,
-/obj/random/card_carp/pelt,
-/turf/simulated/floor/tiled/dark,
-/area/deepmaint)
-"L" = (
-/obj/machinery/light/small,
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/dark,
-/area/deepmaint)
-"S" = (
-/obj/structure/table/rack,
-/obj/random/medical,
-/obj/random/medical/low_chance,
-/obj/random/medical/low_chance,
-/obj/random/firstaid/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/deepmaint)
-"U" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
-/area/deepmaint)
-"Z" = (
-/obj/structure/table/rack/shelf,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth,
-/obj/random/pack/cloth/low_chance,
-/obj/random/pack/cloth/low_chance,
-/obj/random/lathe_disk/advanced/low_chance,
-/obj/random/lathe_disk/advanced/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
 a
-<<<<<<< HEAD
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
 a
 a
-<<<<<<< HEAD
 a
 a
 a
 "}
 (2,1,1) = {"
 b
-=======
-v
-a
-"}
-(2,1,1) = {"
-L
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 a
@@ -242,11 +145,7 @@ a
 c
 f
 g
-<<<<<<< HEAD
 g
-=======
-U
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 m
 k
@@ -257,20 +156,12 @@ a
 (4,1,1) = {"
 a
 c
-<<<<<<< HEAD
 f
-=======
-Z
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 g
 h
 n
-<<<<<<< HEAD
 k
-=======
-z
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 r
 c
 a
@@ -279,11 +170,7 @@ a
 b
 c
 c
-<<<<<<< HEAD
 a
-=======
-E
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 c
 c
@@ -294,11 +181,7 @@ t
 "}
 (6,1,1) = {"
 a
-<<<<<<< HEAD
 a
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -307,11 +190,7 @@ o
 a
 a
 a
-<<<<<<< HEAD
 a
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (7,1,1) = {"
 a
@@ -323,11 +202,7 @@ h
 c
 p
 c
-<<<<<<< HEAD
 s
-=======
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (8,1,1) = {"
@@ -340,11 +215,7 @@ k
 k
 k
 c
-<<<<<<< HEAD
 s
-=======
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (9,1,1) = {"
@@ -361,11 +232,7 @@ s
 a
 "}
 (10,1,1) = {"
-<<<<<<< HEAD
 a
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 c
 c
@@ -380,20 +247,12 @@ a
 (11,1,1) = {"
 a
 a
-<<<<<<< HEAD
 a
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 l
 a
-<<<<<<< HEAD
 a
-=======
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a

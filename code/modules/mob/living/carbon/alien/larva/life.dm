@@ -11,6 +11,7 @@
 		update_progression()
 		adjustBruteLoss(-1)
 		adjustFireLoss(-1)
+		adjustToxLoss(-1)
 		adjustOxyLoss(-1)
 
 // Maybe not the -best- place but it's semiappropriate and fitting.
@@ -18,7 +19,7 @@
 /mob/living/carbon/alien/larva/handle_chemicals_in_body()
 	if(!loc)
 		return
-	if(!istype(loc, /obj/item/holder))
+	if(!istype(loc, /obj/item/weapon/holder))
 		return
 	var/mob/living/carbon/human/M = loc.loc //ergh, replace with a flag sometime
 	if(!istype(M))

@@ -1,34 +1,23 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/atmoscontrol
 	name = "\improper Central Atmospherics Computer Circuitboard"
 	rarity_value = 40
-=======
-/obj/item/circuitboard/atmoscontrol
-	build_name = "central atmospherics computer"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/computer/atmoscontrol
 
 /obj/machinery/computer/atmoscontrol
-	name = "\improper central atmospherics computer"
+	name = "\improper Central Atmospherics Computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "generic_key"
 	icon_screen = "comm_logs"
 	light_color = COLOR_LIGHTING_BLUE_MACHINERY
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/electronics/circuitboard/atmoscontrol
-=======
-	density = 1
-	anchored = 1.0
-	circuit = /obj/item/circuitboard/atmoscontrol
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	req_access = list(access_ce)
 	var/list/monitored_alarm_ids = null
 	var/datum/nano_module/atmos_control/atmos_control
 
 /obj/machinery/computer/atmoscontrol/laptop
-	name = "atmospherics laptop"
+	name = "Atmospherics Laptop"
 	desc = "A cheap laptop."
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
@@ -39,7 +28,7 @@
 /obj/machinery/computer/atmoscontrol/attack_hand(mob/user)
 	if(..())
 		return 1
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/atmoscontrol/emag_act(var/remaining_carges, var/mob/user)
 	if(!emagged)
@@ -49,7 +38,7 @@
 		atmos_control.emagged = 1
 		return 1
 
-/obj/machinery/computer/atmoscontrol/nano_ui_interact(var/mob/user)
+/obj/machinery/computer/atmoscontrol/ui_interact(var/mob/user)
 	if(!atmos_control)
 		atmos_control = new(src, req_access, req_one_access, monitored_alarm_ids)
-	atmos_control.nano_ui_interact(user)
+	atmos_control.ui_interact(user)

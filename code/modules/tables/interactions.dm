@@ -1,10 +1,5 @@
 /obj/item/var/list/center_of_mass = list("x"=16, "y"=16) //can be null for no exact placement behaviour
 /obj/structure/table/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(isliving(mover))
-		var/mob/living/L = mover
-		L.livmomentum = 0
-		if(L.weakened)
-			return 1
 	if(air_group || (height==0)) return 1
 	if(istype(mover,/obj/item/projectile))
 		return (check_cover(mover,target))
@@ -38,14 +33,10 @@
 				chance += 20				//Lying down lets you catch less bullets
 		if(flipped==1)
 			if(get_dir(loc, from) == dir)	//Flipped tables catch mroe bullets
-				chance += 50
+				chance += 20
 			else
 				return 1					//But only from one side
-<<<<<<< HEAD
 		if(prob(chance))
-=======
-		if((prob(chance)) && (!(P.testing)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			health -= P.get_structure_damage()/2
 			if (health > 0)
 				visible_message(SPAN_WARNING("[P] hits \the [src]!"))
@@ -151,11 +142,6 @@
 		playsound(src.loc, "sparks", 50, 1)
 		user.visible_message(SPAN_DANGER("\The [src] was sliced apart by [user]!"))
 		break_to_parts()
-		return
-
-	if(user.a_intent == I_HELP && istype(W, /obj/item/gun))
-		var/obj/item/gun/G = W
-		G.gun_brace(user, src)
 		return
 
 	if(can_plate && !material)

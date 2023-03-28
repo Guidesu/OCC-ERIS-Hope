@@ -69,7 +69,7 @@
 	var/list/parts = list(  )
 
 /obj/structure/showcase
-	name = "cyborg statue"
+	name = "Showcase"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
@@ -77,74 +77,15 @@
 	anchored = TRUE
 	unacidable = 1//temporary until I decide whether the borg can be removed. -veyveyr
 
-/obj/structure/showcase/cyborg_old
-	name = "cyborg statue"
-	desc = "An old cyborg model. It looks like it's been inactive a long time."
-	icon = 'icons/mob/robots.dmi'
-	icon_state = "robot_old"
-
-/obj/structure/showcase/sign
-	name = "WARNING: WILDERNESS"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "wilderness1"
-	desc = "A large sign warning that the area beyond is dangerous."
-
-/obj/structure/showcase/sign2
-	name = "WARNING: HAZARDOUS"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "wilderness2"
-	desc = "A large sign warning that the area beyond is dangerous."
-
-/obj/structure/showcase/sign3
-	name = "blank sign"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "wilderness3"
-	desc = "A large blank sign. Perhaps someone forgot to paint it."
-
-/obj/structure/showcase/television
-	name = "television"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "wooden_tv_broken"
-	desc = "An entertainment monitor with various channels."
-
-/obj/structure/showcase/skeleton
-	name = "hanging skeleton model"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "hangskele"
-	desc = "It's an anatomical model of a human skeletal system made of plaster."
-	anchored = 0
-	density = 0
-
-/obj/structure/showcase/horrific_experiment_cryo
-	name = "horrific experiment"
-	desc = "A large pod absolutely filled with blood. It looks like something else is inside, too..."
-	icon = 'icons/obj/cryogenics.dmi'
-	icon_state = "pod_g"
-
-/obj/structure/showcase/horrific_experiment_cloning
-	name = "horrific experiment"
-	desc = "A small pod filled with blood and viscera. It's shaking quite violently, as if alive."
-	icon = 'icons/obj/cloning.dmi'
-	icon_state = "pod_g"
-
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
 /obj/item/beach_ball
-<<<<<<< HEAD
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "ball"
 	name = "beach ball"
 	item_state = "beachball"
 	density = FALSE
 	anchored = FALSE
-=======
-	icon = 'icons/obj/toy.dmi'
-	icon_state = "ball"
-	name = "beach ball"
-	item_state = "beachball"
-	density = 0
-	anchored = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_BULKY
 	force = 0.0
 	throwforce = 0.0

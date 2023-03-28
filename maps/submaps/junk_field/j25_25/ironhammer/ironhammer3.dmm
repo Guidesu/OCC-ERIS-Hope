@@ -8,41 +8,25 @@
 /area/template_noop)
 "ac" = (
 /obj/structure/girder,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "ad" = (
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ad" = (
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ae" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "ag" = (
 /obj/machinery/door/airlock/command,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "ah" = (
 /mob/living/simple_animal/hostile/hivebot/range,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ah" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ai" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
-<<<<<<< HEAD
 /turf/template_noop,
 /area/template_noop)
 "aj" = (
@@ -53,72 +37,40 @@
 	dir = 2
 	},
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/random/junk,
-/turf/template_noop,
-/area/template_noop)
-"aj" = (
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"al" = (
-/obj/structure/computerframe{
-	anchored = 1;
-	dir = 8
-	},
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "am" = (
 /obj/machinery/door/airlock/centcom{
 	icon_state = "door_locked";
 	locked = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "an" = (
 /mob/living/simple_animal/hostile/hivebot,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"an" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ao" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ap" = (
 /obj/item/remains/human,
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "aq" = (
 /obj/spawner/pack/machine,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ar" = (
 /obj/structure/computerframe{
 	anchored = 1;
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "as" = (
@@ -128,78 +80,41 @@
 "at" = (
 /obj/item/remains/human,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"as" = (
-/obj/machinery/disposal,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"at" = (
-/obj/item/remains/human,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "au" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "av" = (
 /obj/item/remains/human,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"av" = (
-/obj/item/remains/human,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aw" = (
 /obj/machinery/light_construct{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "ax" = (
 /mob/living/simple_animal/hostile/hivebot,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ax" = (
-/mob/living/simple_animal/hostile/hivebot,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ay" = (
 /obj/item/modular_computer/console{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "az" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"az" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aA" = (
 /obj/machinery/light_construct{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "aB" = (
@@ -213,37 +128,16 @@
 "aE" = (
 /obj/spawner/junk,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aB" = (
-/obj/random/techpart/low_chance,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aD" = (
-/obj/machinery/light_construct,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aE" = (
-/obj/random/junk,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aF" = (
 /obj/structure/lattice,
 /obj/machinery/light_construct{
 	dir = 1
 	},
-<<<<<<< HEAD
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/template_noop,
 /area/template_noop)
 "aG" = (
 /obj/effect/window_lwall_spawn/smartspawn,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "aH" = (
@@ -290,59 +184,12 @@
 "aR" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aH" = (
-/obj/machinery/telecomms/relay,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aI" = (
-/obj/machinery/light_construct,
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aK" = (
-/obj/random/structures,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aL" = (
-/obj/machinery/door/airlock/command,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aM" = (
-/obj/structure/table/rack,
-/obj/random/techpart/low_chance,
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aN" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aO" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aP" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aQ" = (
-/obj/random/structures/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aR" = (
-/obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aS" = (
 /obj/effect/window_lwall_spawn/smartspawn,
 /turf/template_noop,
 /area/template_noop)
 "aT" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
@@ -367,32 +214,6 @@
 /obj/structure/table/rack,
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aU" = (
-/obj/random/junkfood,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aV" = (
-/obj/random/structures,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aW" = (
-/obj/random/structures/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"aX" = (
-/obj/structure/table/rack,
-/obj/random/firstaid,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"aY" = (
-/obj/structure/table/rack,
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aZ" = (
 /obj/structure/noticeboard,
@@ -400,100 +221,55 @@
 /area/template_noop)
 "ba" = (
 /obj/item/paper,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "bb" = (
 /obj/structure/bed/chair/comfy/blue,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bb" = (
-/obj/structure/bed/chair/comfy/blue,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bc" = (
 /obj/structure/table/reinforced,
 /obj/item/pen,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bd" = (
 /obj/structure/table/reinforced,
 /obj/item/paper,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "be" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/paper,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "bf" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bf" = (
-/obj/structure/table/reinforced,
-/obj/structure/inflatable,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bg" = (
 /obj/machinery/light{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bh" = (
 /obj/structure/table/reinforced,
 /obj/item/pen,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "bi" = (
 /obj/item/remains/human,
 /obj/spawner/structures/common/low_chance,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/material/low_chance,
-/obj/random/material/low_chance,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"bi" = (
-/obj/item/remains/human,
-/obj/random/structures/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bj" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1;
 	icon_state = "comfychair_preview"
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "bk" = (
@@ -536,72 +312,22 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bk" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bl" = (
-/obj/random/techpart/low_chance,
-/obj/structure/closet/secure_closet/rare_loot,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bm" = (
-/obj/structure/table/rack,
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bn" = (
-/obj/structure/bed/chair/office/light,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bo" = (
-/obj/item/remains,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bp" = (
-/obj/structure/table/rack,
-/obj/random/ammo,
-/obj/random/ammo,
-/obj/random/ammo,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bq" = (
-/obj/random/junk,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "br" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
 "bs" = (
 /obj/item/gun/projectile/paco,
 /obj/item/ammo_casing/pistol,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
-=======
-/obj/random/scrap/sparse_even,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bs" = (
-/obj/item/gun/projectile/glock,
-/obj/item/ammo_casing/pistol,
-/turf/simulated/floor/tiled/steel/bluecorner,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bt" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas/ihs,
 /obj/item/clothing/mask/gas/ihs,
-<<<<<<< HEAD
 /obj/item/clothing/gloves/security,
 /turf/simulated/floor/tiled/steel/bluecorner/airless,
 /area/template_noop)
@@ -625,170 +351,11 @@
 "Uz" = (
 /obj/spawner/scrap/sparse,
 /turf/simulated/floor/plating/under/airless,
-=======
-/obj/item/clothing/gloves/stungloves,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"bw" = (
-/obj/structure/table/rack,
-/obj/random/ammo/shotgun,
-/obj/random/rig_module/low_chance,
-/obj/random/rig_module/rare/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"dg" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"dn" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ej" = (
-/obj/random/scrap/sparse_even,
-/obj/random/junk,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"ep" = (
-/obj/random/scrap/sparse_even,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"fT" = (
-/obj/random/structures/low_chance,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"jn" = (
-/obj/random/material/low_chance,
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
-/area/template_noop)
-"lF" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
-/area/template_noop)
-"lJ" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"oL" = (
-/obj/machinery/light_construct{
-	dir = 4
-	},
-/obj/random/junk,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"pW" = (
-/obj/structure/bed/chair/comfy/blue{
-	dir = 1;
-	icon_state = "comfychair_preview"
-	},
-/obj/structure/inflatable,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"sl" = (
-/obj/random/junk,
-/turf/template_noop,
-/area/template_noop)
-"uJ" = (
-/obj/machinery/light_construct{
-	dir = 8
-	},
-/obj/random/scrap/sparse_even,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"wz" = (
-/obj/structure/girder,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"wA" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/obj/random/material/low_chance,
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"yy" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"BE" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
-/area/template_noop)
-"Fq" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
-/area/template_noop)
-"Fr" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Ix" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
-/area/template_noop)
-"Pj" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
-/area/template_noop)
-"PU" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Qv" = (
-/obj/random/scrap/dense_weighted,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Ro" = (
-/obj/random/scrap/sparse_even,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"RE" = (
-/obj/structure/lattice,
-/obj/random/junk/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"RW" = (
-/obj/structure/table/reinforced,
-/obj/structure/inflatable,
-/turf/simulated/floor/tiled/steel/bluecorner,
-/area/template_noop)
-"To" = (
-/obj/structure/inflatable,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Uz" = (
-/obj/random/scrap/sparse_even,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"Yr" = (
-/obj/structure/lattice,
-/obj/random/junk,
-/turf/template_noop,
-/area/template_noop)
-"YP" = (
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"ZH" = (
-/obj/random/junk/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 
 (1,1,1) = {"
 aa
 aa
-<<<<<<< HEAD
 aa
 aa
 aa
@@ -810,56 +377,23 @@ aa
 ab
 aa
 aa
-=======
-ZH
-aa
-aa
-Pj
-aa
-ab
-ZH
-aa
-aa
-Ix
-aa
-YP
-YP
-aa
-aa
-ZH
-aa
-aa
-Ix
-YP
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (2,1,1) = {"
-<<<<<<< HEAD
 aa
 aa
-=======
-YP
-Fq
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ae
 ae
 ae
 ae
 aa
 ab
-<<<<<<< HEAD
 aa
-=======
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 ab
 ab
 aa
-<<<<<<< HEAD
 ab
 ab
 aa
@@ -871,24 +405,10 @@ ab
 ab
 ab
 ab
-=======
-RE
-ab
-YP
-aa
-lJ
-lJ
-lJ
-ab
-RE
-lJ
-RE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (3,1,1) = {"
 aa
-<<<<<<< HEAD
 aa
 ae
 aq
@@ -934,70 +454,15 @@ ax
 ad
 ad
 ad
-=======
-YP
-ae
-aV
-aK
-ae
-ab
-Ix
-aa
-ZH
-aa
-lJ
-Uz
-ad
-aE
-ZH
-BE
-RE
-lJ
-ae
-Uz
-aE
-ah
-yy
-RE
-"}
-(4,1,1) = {"
-aa
-ZH
-ae
-aV
-Uz
 ae
 ae
 ae
 ae
-ae
-ae
-lJ
-lF
-ad
-Uz
-ax
-yy
-ad
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-ae
-ae
-ae
-ae
-<<<<<<< HEAD
 ad
 ab
 "}
 (5,1,1) = {"
 aa
-=======
-yy
-ab
-"}
-(5,1,1) = {"
-Fq
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 ae
 ad
@@ -1008,7 +473,6 @@ aM
 bo
 aX
 ae
-<<<<<<< HEAD
 ab
 ab
 aw
@@ -1016,21 +480,11 @@ ad
 ad
 aw
 Uz
-=======
-lJ
-lJ
-oL
-yy
-ad
-aw
-ej
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 ae
 bt
 bp
 ae
-<<<<<<< HEAD
 ad
 aa
 "}
@@ -1040,17 +494,6 @@ ab
 ac
 ad
 ah
-=======
-Fr
-YP
-"}
-(6,1,1) = {"
-aa
-lJ
-ac
-ad
-PU
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 ae
 aN
@@ -1060,13 +503,8 @@ ae
 ae
 ae
 ae
-<<<<<<< HEAD
 ad
 al
-=======
-ag
-ag
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ae
 ae
 ae
@@ -1074,31 +512,18 @@ ae
 aj
 bp
 ae
-<<<<<<< HEAD
 ab
 ab
 "}
 (7,1,1) = {"
 aa
 ab
-=======
-Ix
-lJ
-"}
-(7,1,1) = {"
-aa
-RE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ac
 aB
 ad
 aj
 ae
-<<<<<<< HEAD
 qx
-=======
-aN
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 an
 aY
 ae
@@ -1108,7 +533,6 @@ aQ
 aQ
 aj
 aj
-<<<<<<< HEAD
 aj
 ae
 bk
@@ -1116,30 +540,14 @@ aj
 bw
 ae
 ad
-=======
-an
-ae
-aX
-aj
-bw
-ae
-aE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (8,1,1) = {"
 aa
-<<<<<<< HEAD
 ab
 ac
 Uz
 ad
-=======
-lJ
-ac
-Uz
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 ae
 ae
@@ -1158,21 +566,12 @@ bl
 an
 bm
 ae
-<<<<<<< HEAD
 aa
 aa
 "}
 (9,1,1) = {"
 aa
 aa
-=======
-YP
-ZH
-"}
-(9,1,1) = {"
-aa
-YP
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ac
 ac
 aE
@@ -1183,15 +582,9 @@ bq
 aj
 aj
 aj
-<<<<<<< HEAD
 aj
 aj
 aj
-=======
-bk
-aj
-dg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aj
 aD
@@ -1200,7 +593,6 @@ bm
 aj
 bm
 ae
-<<<<<<< HEAD
 aa
 aa
 "}
@@ -1210,17 +602,6 @@ aa
 ab
 ac
 ad
-=======
-YP
-aa
-"}
-(10,1,1) = {"
-ZH
-aa
-lJ
-ac
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aL
 aj
@@ -1229,46 +610,26 @@ an
 aj
 bb
 bc
-<<<<<<< HEAD
 aj
 ad
 ad
 aT
 aj
-=======
-ep
-To
-To
-aT
-dg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ae
 ae
 am
 ae
 ae
-<<<<<<< HEAD
 ab
-=======
-lJ
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 "}
 (11,1,1) = {"
 aa
-<<<<<<< HEAD
 aa
 ab
 ac
 ad
 ad
-=======
-Fq
-BE
-ac
-yy
-ah
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ae
 as
 aj
@@ -1276,43 +637,25 @@ aj
 aj
 bb
 bd
-<<<<<<< HEAD
 ad
 ab
 ab
 bj
-=======
-To
-wA
-wA
-pW
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aj
 aj
 br
 ae
-<<<<<<< HEAD
 ab
-=======
-Ix
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (12,1,1) = {"
 aa
-<<<<<<< HEAD
 aa
 ab
 ac
 ad
-=======
-sl
-RE
-wz
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aK
 ae
 aO
@@ -1321,21 +664,12 @@ aj
 aj
 bb
 az
-<<<<<<< HEAD
 ad
 ab
 bh
 ad
 aj
 aj
-=======
-To
-wA
-bh
-To
-aj
-an
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aQ
 ae
@@ -1347,11 +681,7 @@ aa
 aa
 aa
 ab
-<<<<<<< HEAD
 ac
-=======
-wz
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aw
 aK
 ae
@@ -1359,7 +689,6 @@ aP
 aU
 aj
 aj
-<<<<<<< HEAD
 ad
 be
 bf
@@ -1368,21 +697,10 @@ az
 bj
 aj
 aj
-=======
-yy
-be
-bf
-RW
-RW
-bj
-bk
-dg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bn
 aQ
 ae
 ab
-<<<<<<< HEAD
 ab
 aa
 "}
@@ -1391,16 +709,6 @@ aa
 ab
 ab
 ab
-=======
-Yr
-Pj
-"}
-(14,1,1) = {"
-aa
-lJ
-ab
-Yr
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ae
 ae
 ae
@@ -1408,13 +716,8 @@ aQ
 aV
 aQ
 aj
-<<<<<<< HEAD
 ad
 aj
-=======
-yy
-an
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bg
 aT
 aT
@@ -1431,15 +734,9 @@ aa
 (15,1,1) = {"
 aa
 aa
-<<<<<<< HEAD
 ab
 ab
 ac
-=======
-lJ
-ab
-wz
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Qv
 ae
 ae
@@ -1457,13 +754,8 @@ ag
 ae
 ae
 ae
-<<<<<<< HEAD
 ab
 aa
-=======
-lJ
-YP
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (16,1,1) = {"
@@ -1472,11 +764,7 @@ aa
 ab
 ad
 ac
-<<<<<<< HEAD
 ad
-=======
-dn
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ad
 aR
 aj
@@ -1487,52 +775,31 @@ aA
 aj
 aQ
 bi
-<<<<<<< HEAD
 aA
-=======
-uJ
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aj
 aT
 as
 ac
 ac
-<<<<<<< HEAD
 ad
 aa
-=======
-Ro
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (17,1,1) = {"
 aa
 aa
-<<<<<<< HEAD
 aa
 ab
 ac
 aj
 aj
-=======
-ZH
-lJ
-ac
-aj
-dg
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aT
 aj
 aT
 aj
 aj
-<<<<<<< HEAD
 aj
-=======
-an
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 aj
 aj
@@ -1547,59 +814,35 @@ aa
 "}
 (18,1,1) = {"
 aa
-<<<<<<< HEAD
 aa
 aa
 ab
 ac
 ad
 ad
-=======
-Fq
-Pj
-Yr
-ac
-yy
-Uz
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 ad
 aj
 at
 aj
-<<<<<<< HEAD
 aj
 ar
 ay
 ar
-=======
-ep
-ar
-ay
-al
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aj
 an
 at
 aj
 aE
-<<<<<<< HEAD
 ab
 ab
 aa
 aa
-=======
-BE
-lJ
-aa
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (19,1,1) = {"
 aa
 aa
 aa
-<<<<<<< HEAD
 ab
 ac
 ad
@@ -1621,29 +864,6 @@ ac
 ab
 ab
 ab
-=======
-lJ
-ac
-yy
-aj
-ad
-yy
-ay
-al
-aj
-ad
-ad
-bk
-ad
-aE
-ay
-ar
-aj
-wz
-ab
-Ix
-lJ
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (20,1,1) = {"
@@ -1652,51 +872,31 @@ aa
 ab
 ad
 ac
-<<<<<<< HEAD
 ad
 aj
 aE
 ad
-=======
-ah
-aj
-aE
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ad
 ad
 ad
 aE
 ad
-<<<<<<< HEAD
 ad
-=======
-yy
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ad
 ad
 aE
 aj
 aE
 ac
-<<<<<<< HEAD
 ab
 aa
-=======
-RE
-sl
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (21,1,1) = {"
 aa
 aa
-<<<<<<< HEAD
 aa
-=======
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aG
 ao
@@ -1704,35 +904,20 @@ aj
 ad
 aW
 ad
-<<<<<<< HEAD
 ad
 aE
 ad
 aW
 aW
 aW
-=======
-Fr
-aE
-ad
-fT
-aW
-fT
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ad
 ad
 aj
 ad
 aE
-<<<<<<< HEAD
 ab
 aa
 aa
-=======
-lJ
-YP
-jn
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (22,1,1) = {"
@@ -1743,48 +928,28 @@ aa
 aG
 ap
 ao
-<<<<<<< HEAD
 ad
-=======
-ah
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aE
 aj
 ad
 ad
-<<<<<<< HEAD
 ad
 ad
 ad
 ad
 ad
-=======
-ax
-ad
-ad
-ad
-ah
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Qv
 au
 av
 ac
 ab
-<<<<<<< HEAD
 aa
-=======
-YP
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 "}
 (23,1,1) = {"
 aa
-<<<<<<< HEAD
 aa
-=======
-Fq
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aG
@@ -1797,7 +962,6 @@ aG
 aG
 ac
 aG
-<<<<<<< HEAD
 ac
 aG
 aG
@@ -1808,25 +972,12 @@ ac
 ab
 aa
 aa
-=======
-wz
-aG
-aG
-wz
-wz
-ac
-wz
-ab
-Fq
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (24,1,1) = {"
 aa
 aa
 aa
-<<<<<<< HEAD
 aa
 aa
 aa
@@ -1846,27 +997,6 @@ ab
 ab
 ab
 ab
-=======
-Fq
-aa
-aa
-ab
-RE
-ab
-ab
-Ix
-aa
-BE
-YP
-ZH
-ab
-YP
-ab
-lF
-Yr
-ab
-RE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ai
 aa
 aa
@@ -1888,7 +1018,6 @@ ab
 aa
 ab
 ab
-<<<<<<< HEAD
 aa
 ab
 aa
@@ -1898,15 +1027,4 @@ aa
 aa
 aa
 aa
-=======
-ZH
-ab
-aa
-aa
-ZH
-aa
-ZH
-aa
-ZH
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

@@ -1,29 +1,18 @@
 /obj/structure/satellite
 	icon = 'icons/obj/machines/excelsior/objects.dmi'
 	icon_state = "sputnik"
-<<<<<<< HEAD
 	desc = "It looks like ancient satellite."
 	rarity_value = 10
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_SATELITE
-=======
-	desc = "It looks like an ancient satellite."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/cooldown = FALSE
 
 /obj/structure/satellite/attack_hand(mob/living/user as mob)
 	if(cooldown == FALSE)
 		cooldown = TRUE
 		emp_in(src.loc, 4, 6, 0)
-<<<<<<< HEAD
 		sleep(360)
 		cooldown = FALSE
-=======
-		addtimer(CALLBACK(src, .proc/cool_dowed), 360)
-
-/obj/structure/satellite/proc/cool_dowed()
-	cooldown = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/satellite/proc/emp_in(turf/epicenter, heavy_range, light_range, log=0)
 	for(var/mob/M in range(heavy_range, epicenter))

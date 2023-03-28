@@ -70,61 +70,40 @@
 // Parameters: None
 // Description: Opens the door. No checks are done inside this proc.
 /obj/machinery/door/blast/proc/force_open()
-<<<<<<< HEAD
 	src.operating = 1
 	FLICK(icon_state_opening, src)
 	playsound(src.loc, 'sound/machines/Custom_blastdooropen.ogg', 65, 0)
 	src.density = FALSE
-=======
-	operating = TRUE
-	flick(icon_state_opening, src)
-	playsound(src.loc, 'sound/machines/Custom_blastdooropen.ogg', 65, 0)
-	density = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_nearby_tiles()
-	update_icon()
-	set_opacity(0)
-	addtimer(CALLBACK(src, .proc/layer_operating), 15)
-
-/obj/machinery/door/blast/proc/layer_operating()
-	layer = open_layer
-	operating = FALSE
-	update_icon()
+	src.update_icon()
+	src.set_opacity(0)
+	sleep(15)
+	src.layer = open_layer
+	src.operating = 0
 
 // Proc: force_close()
 // Parameters: None
 // Description: Closes the door. No checks are done inside this proc.
 /obj/machinery/door/blast/proc/force_close()
-<<<<<<< HEAD
 	src.operating = 1
 	src.layer = closed_layer
 	FLICK(icon_state_closing, src)
 	playsound(src.loc, 'sound/machines/Custom_blastdoorclose.ogg', 65, 0)
 	src.density = TRUE
-=======
-	operating = TRUE
-	layer = closed_layer
-	flick(icon_state_closing, src)
-	playsound(src.loc, 'sound/machines/Custom_blastdoorclose.ogg', 65, 0)
-	density = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_nearby_tiles()
-	update_icon()
-	set_opacity(1)
-	addtimer(CALLBACK(src, .proc/operating), 15)
-
-/obj/machinery/door/blast/proc/operating()
-	operating = FALSE
-	update_icon()
+	src.update_icon()
+	src.set_opacity(1)
+	sleep(15)
+	src.operating = 0
 
 // Proc: force_toggle()
 // Parameters: None
 // Description: Opens or closes the door, depending on current state. No checks are done inside this proc.
 /obj/machinery/door/blast/proc/force_toggle()
-	if(density)
-		force_open()
+	if(src.density)
+		src.force_open()
 	else
-		force_close()
+		src.force_close()
 
 // Proc: attackby()
 // Parameters: 2 (C - Item this object was clicked with, user - Mob which clicked this object)
@@ -140,11 +119,7 @@
 				to_chat(usr, SPAN_NOTICE("[src]'s motors resist your effort."))
 		return
 	if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel")
-<<<<<<< HEAD
 		var/amt = CEILING((maxhealth - health)/150, 1)
-=======
-		var/amt = CEILING((maxHealth - health)/150, 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!amt)
 			to_chat(usr, SPAN_NOTICE("\The [src] is already fully repaired."))
 			return
@@ -190,7 +165,7 @@
 // Parameters: None
 // Description: Fully repairs the blast door.
 /obj/machinery/door/blast/proc/repair()
-	health = maxHealth
+	health = maxhealth
 	if(stat & BROKEN)
 		stat &= ~BROKEN
 
@@ -209,15 +184,13 @@
 	icon_state_closed = "pdoor1"
 	icon_state_closing = "pdoorc1"
 	icon_state = "pdoor1"
-	maxHealth = 400
+	maxhealth = 400
 	block_air_zones = 1
 
 /obj/machinery/door/blast/regular/open
 	icon_state = "pdoor0"
 	density = FALSE
 	opacity = 0
-	block_air_zones = 0
-	layer = BLASTDOOR_LAYER
 
 // SUBTYPE: Shutters
 // Nicer looking, and also weaker, shutters. Found in kitchen and similar areas.
@@ -236,7 +209,7 @@
 		if(ishuman(L)) //For humans
 			var/mob/living/carbon/human/H = L
 			H.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-			H.emote("painscream")
+			H.emote("scream")
 			H.Weaken(5)
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)

@@ -114,7 +114,7 @@
 		data["left"] = paddingLeft
 	if(paddingRight)
 		data["right"] = paddingRight
-
+	
 	_spreadElements()
 	return TRUE
 
@@ -136,7 +136,7 @@
 		data["bottom"] = paddingBottom
 	if(paddingTop)
 		data["top"] = paddingTop
-
+	
 	_spreadElements()
 	return TRUE
 
@@ -159,7 +159,7 @@
 	if(!getElements())
 		setHeight(0)
 		setWidth(0)
-
+	
 	if(_paddingData[element])
 		_paddingData[element] = null
 

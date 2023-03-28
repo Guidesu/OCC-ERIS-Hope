@@ -87,16 +87,6 @@ var/list/ai_status_emotions = list(
 /obj/machinery/ai_status_display/Process()
 	return
 
-/obj/machinery/ai_status_display/New()
-	GLOB.ai_status_display_list += src
-
-	..()
-
-/obj/machinery/ai_status_display/Destroy()
-	GLOB.ai_status_display_list -= src
-
-	..()
-
 /obj/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank
 		cut_overlays()
@@ -115,11 +105,7 @@ var/list/ai_status_emotions = list(
 	picture_state = state
 	if(overlays.len)
 		cut_overlays()
-<<<<<<< HEAD
 	add_overlays(image('icons/obj/status_display.dmi', icon_state=picture_state))
-=======
-	add_overlay(image('icons/obj/status_display.dmi', icon_state=picture_state))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/ai_status_display/power_change()
 	..()

@@ -5,11 +5,7 @@
 	. = FALSE
 	..()
 	if(config.enable_mob_sleep)
-<<<<<<< HEAD
 		if(stat != DEAD)
-=======
-		if(stat != DEAD && !mind)	// Check for mind so player-driven, nonhuman mobs don't sleep
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(life_cycles_before_scan > 0)
 				life_cycles_before_scan--
 			else
@@ -18,24 +14,14 @@
 					life_cycles_before_scan = 29 //So it doesn't fall asleep just to wake up the next tick
 				else
 					life_cycles_before_scan = 240
-<<<<<<< HEAD
 			if(life_cycles_before_sleep)
 				life_cycles_before_sleep--
 
-=======
-
-			if(life_cycles_before_sleep)
-				life_cycles_before_sleep--
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(life_cycles_before_sleep < 1 && !AI_inactive)
 				AI_inactive = TRUE
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if((!stasis && !AI_inactive) || ishuman(src)) //god fucking forbid we do this to humanmobs somehow
 		if(Life_Check())
 			. = TRUE
@@ -79,17 +65,10 @@
 
 	//Chemicals in the body
 	handle_chemicals_in_body()
-<<<<<<< HEAD
 
 	//Check if we're on fire
 	handle_fire()
 
-=======
-
-	//Check if we're on fire
-	handle_fire(environment.gas["oxygen"], loc)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_pulling()
 
 	for(var/obj/item/grab/G in src)
@@ -107,14 +86,7 @@
 
 	handle_regular_hud_updates()
 
-<<<<<<< HEAD
 
-=======
-	var/turf/T = get_turf(src)
-	if(T)
-		if(registered_z != T.z)
-			update_z(T.z)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/proc/Life_Check_Light()
 	if (HasMovementHandler(/datum/movement_handler/mob/transformation/))
@@ -197,8 +169,7 @@
 
 //this handles hud updates. Calls update_vision() and handle_hud_icons()
 /mob/living/proc/handle_regular_hud_updates()
-	if(!client)
-		return FALSE
+	if(!client)	return 0
 
 	handle_hud_icons()
 	handle_vision()
@@ -245,7 +216,6 @@
 		else
 			sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 			see_in_dark = initial(see_in_dark)
-			see_in_dark += additional_darksight //Done like this for sake of easyer to read
 			see_invisible = initial(see_invisible)
 	var/list/vision = get_accumulated_vision_handlers()
 	set_sight(sight | vision[1])
@@ -256,8 +226,6 @@
 	sight |= SEE_MOBS
 	sight |= SEE_OBJS
 	see_in_dark = 8
-	see_in_dark += additional_darksight //Done like this for sake of easyer to read
-
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 /mob/living/proc/handle_hud_icons()

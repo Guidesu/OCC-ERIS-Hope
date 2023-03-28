@@ -58,12 +58,13 @@ Class Procs:
 */
 
 
-/connection_edge
-	var/zone/A
-	var/list/connecting_turfs = list()
-	var/direct = 0
-	var/sleeping = 1
-	var/coefficient = 0
+/connection_edge/var/zone/A
+
+/connection_edge/var/list/connecting_turfs = list()
+/connection_edge/var/direct = 0
+/connection_edge/var/sleeping = 1
+
+/connection_edge/var/coefficient = 0
 
 /connection_edge/New()
 	CRASH("Cannot make connection edge without specifications.")
@@ -71,12 +72,10 @@ Class Procs:
 /connection_edge/proc/add_connection(connection/c)
 	coefficient++
 	if(c.direct()) direct++
-//	log_debug("Connection added: [type] Coefficient: [coefficient]")
-
+	//world << "Connection added: [type] Coefficient: [coefficient]"
 
 /connection_edge/proc/remove_connection(connection/c)
-//	log_debug("Connection removed: [type] Coefficient: [coefficient-1]")
-
+	//world << "Connection removed: [type] Coefficient: [coefficient-1]"
 	coefficient--
 	if(coefficient <= 0)
 		erase()
@@ -86,48 +85,39 @@ Class Procs:
 
 /connection_edge/proc/erase()
 	SSair.remove_edge(src)
-//	log_debug("[type] Erased.")
+	//world << "[type] Erased."
 
 /connection_edge/proc/tick()
 
 /connection_edge/proc/recheck()
 
 /connection_edge/proc/flow(list/movable, differential, repelled)
-	set waitfor = FALSE
-	for(var/thing in movable)
-		var/atom/movable/M = thing
+	for(var/i = 1; i <= movable.len; i++)
+		var/atom/movable/M = movable[i]
 
 		//If they're already being tossed, don't do it again.
-		if(M.last_airflow > world.time - vsc.airflow_delay)
-			continue
-
-		if(M.airflow_speed)
-			continue
+		if(M.last_airflow > world.time - vsc.airflow_delay) continue
+		if(M.airflow_speed) continue
 
 		//Check for knocking people over
 		if(ismob(M) && differential > vsc.airflow_stun_pressure)
-			if(M:status_flags & GODMODE)
-				continue
+			if(M:status_flags & GODMODE) continue
 			M:airflow_stun()
 
 		if(M.check_airflow_movable(differential))
 			//Check for things that are in range of the midpoint turfs.
 			var/list/close_turfs = list()
-			for (var/T in RANGE_TURFS(world.view, M))
-				if (connecting_turfs[T])
-					close_turfs += T
-
-			if(!close_turfs.len)
-				continue
+			for(var/turf/U in connecting_turfs)
+				if(get_dist(M,U) < world.view) close_turfs += U
+			if(!close_turfs.len) continue
 
 			M.airflow_dest = pick(close_turfs) //Pick a random midpoint to fly towards.
 
-			if(repelled)
-				M.RepelAirflowDest(differential/5)
-			else
-				M.GotoAirflowDest(differential/10)
+			if(repelled) spawn if(M) M.RepelAirflowDest(differential/5)
+			else spawn if(M) M.GotoAirflowDest(differential/10)
 
-		CHECK_TICK
+
+
 
 /connection_edge/zone/var/zone/B
 
@@ -135,26 +125,25 @@ Class Procs:
 
 	src.A = A
 	src.B = B
-	LAZYADD(A.edges, src)
-	LAZYADD(B.edges, src)
+	A.edges.Add(src)
+	B.edges.Add(src)
 	//id = edge_id(A,B)
-//	log_debug("New edge between [A] and [B]")
-
+	//world << "New edge between [A] and [B]"
 
 /connection_edge/zone/add_connection(connection/c)
 	. = ..()
-	connecting_turfs[c.A] = TRUE
+	connecting_turfs.Add(c.A)
 
 /connection_edge/zone/remove_connection(connection/c)
-	connecting_turfs -= c.A
+	connecting_turfs.Remove(c.A)
 	. = ..()
 
 /connection_edge/zone/contains_zone(zone/Z)
 	return A == Z || B == Z
 
 /connection_edge/zone/erase()
-	LAZYREMOVE(A.edges, src)
-	LAZYREMOVE(B.edges, src)
+	A.edges.Remove(src)
+	B.edges.Remove(src)
 	. = ..()
 
 /connection_edge/zone/tick()
@@ -169,13 +158,12 @@ Class Procs:
 		var/list/attracted
 		var/list/repelled
 		if(differential > 0)
-			attracted = A.movables(connecting_turfs)
-			repelled = B.movables(connecting_turfs)
+			attracted = A.movables()
+			repelled = B.movables()
 		else
-			attracted = B.movables(connecting_turfs)
-			repelled = A.movables(connecting_turfs)
+			attracted = B.movables()
+			repelled = A.movables()
 
-		// These are async, with waitfor = FALSE
 		flow(attracted, abs(differential), 0)
 		flow(repelled, abs(differential), 1)
 
@@ -192,8 +180,7 @@ Class Procs:
 	SSair.mark_zone_update(B)
 
 /connection_edge/zone/recheck()
-	// Edges with only one side being vacuum need processing no matter how close.
-	if(!A.air.compare(B.air, vacuum_exception = 1))
+	if(!A.air.compare(B.air))
 		SSair.mark_edge_active(src)
 
 //Helper proc to get connections for a zone.
@@ -207,24 +194,23 @@ Class Procs:
 /connection_edge/unsimulated/New(zone/A, turf/B)
 	src.A = A
 	src.B = B
-	LAZYADD(A.edges, src)
+	A.edges.Add(src)
 	air = B.return_air()
 	//id = 52*A.id
-//	log_debug("New edge from [A] to [B].")
-
+	//world << "New edge from [A] to [B]."
 
 /connection_edge/unsimulated/add_connection(connection/c)
 	. = ..()
-	connecting_turfs[c.B] = TRUE
+	connecting_turfs.Add(c.B)
 	air.group_multiplier = coefficient
 
 /connection_edge/unsimulated/remove_connection(connection/c)
-	connecting_turfs -= c.B
+	connecting_turfs.Remove(c.B)
 	air.group_multiplier = coefficient
 	. = ..()
 
 /connection_edge/unsimulated/erase()
-	LAZYREMOVE(A.edges, src)
+	A.edges.Remove(src)
 	. = ..()
 
 /connection_edge/unsimulated/contains_zone(zone/Z)
@@ -239,8 +225,7 @@ Class Procs:
 
 	var/differential = A.air.return_pressure() - air.return_pressure()
 	if(abs(differential) >= vsc.airflow_lightest_pressure)
-		var/list/attracted = A.movables(connecting_turfs)
-		// This call is async, with waitfor = FALSE
+		var/list/attracted = A.movables()
 		flow(attracted, abs(differential), differential < 0)
 
 	if(equiv)
@@ -250,10 +235,7 @@ Class Procs:
 	SSair.mark_zone_update(A)
 
 /connection_edge/unsimulated/recheck()
-	// Edges with only one side being vacuum need processing no matter how close.
-	// Note: This handles the glaring flaw of a room holding pressure while exposed to space, but
-	// does not specially handle the less common case of a simulated room exposed to an unsimulated pressurized turf.
-	if(!A.air.compare(air, vacuum_exception = 1))
+	if(!A.air.compare(air))
 		SSair.mark_edge_active(src)
 
 proc/ShareHeat(datum/gas_mixture/A, datum/gas_mixture/B, connecting_tiles)

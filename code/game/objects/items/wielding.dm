@@ -3,13 +3,8 @@
 /obj/item
 	var/wielded = FALSE //Whether or not it's wielded.
 	var/wieldsound = 'sound/weapons/thudswoosh.ogg' //Generic sound. Replace it with a special one if you have one.
-<<<<<<< HEAD
 	var/unwieldsound //If you want it to make a sound when you unwield, put one here.
 	var/wielded_icon //The item state used when it's weilded. Guns are snowflakey and have their own shit for this. This is for non guns.
-=======
-	var/unwieldsound = null //If you want it to make a sound when you unwield, put one here.
-	var/wielded_icon = null //The item state used when it's weilded. Guns are snowflakey and have their own shit for this. This is for non guns.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/force_unwielded = 0 //If you have a specific force for it being weilded.
 	var/force_wielded = 0 //If you have a specific force for it being unwielded. If for whatever reason you don't want to use the original force of the weapon.
 
@@ -28,15 +23,9 @@
 		force = force_unwielded
 	else
 		force = (force / 1.3)
-<<<<<<< HEAD
 	var/sf = findtext(name,"Wielded ") //Occulus Edit.
 	if(sf)
 		name = copytext(name,9) //Occulus Edit.
-=======
-	var/sf = findtext(name," (Wielded)")
-	if(sf)
-		name = copytext(name,1,sf)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else //something went wrong
 		name = "[initial(name)]"//Returns name from compile-time instead of name with changes that've happened since
 	update_unwield_icon()
@@ -66,22 +55,13 @@
 		force = force_wielded
 	else //This will give items wielded 30% more damage. This is balanced by the fact you cannot use your other hand.
 		force = (force * 1.3) //Items that do 0 damage will still do 0 damage though.
-<<<<<<< HEAD
 	name = "Wielded [name]" //Occulus Edit.
-=======
-	var/original_name = name //Else using [initial(name)] for the name of object returns compile-time name without any changes that've happened to the object's name
-	name = "[name] (Wielded)"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_wield_icon()
 	update_icon()//Legacy
 	if(user)
 		user.update_inv_r_hand()
 		user.update_inv_l_hand()
-<<<<<<< HEAD
 	user.visible_message(SPAN_WARNING("[user] grabs \the [initial(name)] with both hands."))
-=======
-	user.visible_message(SPAN_WARNING("[user] grabs \the [original_name] with both hands."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(wieldsound)
 		playsound(loc, wieldsound, 50, 1)
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
@@ -136,22 +116,15 @@
 	return FALSE
 
 
-<<<<<<< HEAD
 /obj/item/twohanded
 	bad_type = /obj/item/twohanded
 	spawn_tags = null
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/twohanded/offhand
 	name = "offhand"
 	icon_state = "offhand"
 	w_class = ITEM_SIZE_COLOSSAL
 	item_flags = ABSTRACT
-<<<<<<< HEAD
-=======
-	icon = 'icons/obj/weapons.dmi'
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/twohanded/offhand/unwield()
 	wielded = FALSE

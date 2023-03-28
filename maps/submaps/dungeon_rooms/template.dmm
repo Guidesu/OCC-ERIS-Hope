@@ -35,7 +35,6 @@
 /turf/simulated/floor/tiled/white/gray_perforated,
 /area/space)
 "j" = (
-<<<<<<< HEAD
 /obj/spawner/mob/roaches,
 /turf/simulated/floor/tiled/white/gray_perforated,
 /area/space)
@@ -49,21 +48,6 @@
 /area/space)
 "m" = (
 /obj/spawner/mob/spiders/low_chance,
-=======
-/obj/random/mob/roaches,
-/turf/simulated/floor/tiled/white/gray_perforated,
-/area/space)
-"k" = (
-/obj/random/mob/roaches/low_chance,
-/turf/simulated/floor/tiled/white/gray_perforated,
-/area/space)
-"l" = (
-/obj/random/mob/spiders,
-/turf/simulated/floor/tiled/white/gray_perforated,
-/area/space)
-"m" = (
-/obj/random/mob/spiders/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_perforated,
 /area/space)
 

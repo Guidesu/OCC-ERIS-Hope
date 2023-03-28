@@ -8,10 +8,7 @@
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTIC = 1, MATERIAL_GLASS = 1)
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	price_tag = 50
-<<<<<<< HEAD
 	rarity_value = 12.5
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/max_capacity = 128
 	var/used_capacity = 0
 	var/read_only = FALSE
@@ -31,10 +28,7 @@
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTIC = 1, MATERIAL_GLASS = 1, MATERIAL_SILVER = 2)
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	price_tag = 100
-<<<<<<< HEAD
 	rarity_value = 25
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	power_usage = 50 					// Hybrid, medium capacity and medium power storage
 	hardware_size = 2
 
@@ -46,10 +40,7 @@
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_PLASTIC = 1, MATERIAL_GLASS = 1, MATERIAL_GOLD = 2)
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	price_tag = 200
-<<<<<<< HEAD
 	rarity_value = 50
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	power_usage = 100					// High-capacity but uses lots of power, shortening battery life. Best used with APC link.
 	hardware_size = 2
 
@@ -73,10 +64,7 @@
 	power_usage = 10
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	price_tag = 50
-<<<<<<< HEAD
 	rarity_value = 8.33
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	max_capacity = 64
 	hardware_size = 1
 
@@ -87,10 +75,7 @@
 	power_usage = 20
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	price_tag = 100
-<<<<<<< HEAD
 	rarity_value = 16.66
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	max_capacity = 128
 
 /obj/item/computer_hardware/hard_drive/micro
@@ -109,12 +94,6 @@
 	install_default_files()
 
 /obj/item/computer_hardware/hard_drive/Destroy()
-<<<<<<< HEAD
-=======
-
-	for(var/datum/computer_file/program/program in stored_files)
-		program.holder = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	stored_files = null
 	return ..()
 
@@ -122,11 +101,7 @@
 	. = ..()
 	to_chat(user, SPAN_NOTICE("It can store up to [max_capacity] GQ."))
 
-<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/diagnostics(mob/user)
-=======
-/obj/item/computer_hardware/hard_drive/diagnostics(var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	// 999 is a byond limit that is in place. It's unlikely someone will reach that many files anyway, since you would sooner run out of space.
 	to_chat(user, "NT-NFS File Table Status: [stored_files.len]/999")
@@ -137,13 +112,8 @@
 	holder2?.on_disk_disabled(src)
 
 // Use this proc to add file to the drive. Returns 1 on success and 0 on failure. Contains necessary sanity checks.
-<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/proc/store_file(datum/computer_file/F)
 	if(!try_store_file(F))
-=======
-/obj/item/computer_hardware/hard_drive/proc/store_file(datum/computer_file/F, force = FALSE)
-	if(!try_store_file(F, force))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	F.holder = src
 	stored_files.Add(F)
@@ -191,39 +161,28 @@
 	used_capacity = total_size
 
 // Checks whether file can be stored on the hard drive.
-<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/proc/can_store_file(size = 1)
-=======
-/obj/item/computer_hardware/hard_drive/proc/can_store_file(size = 1, force = FALSE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// In the unlikely event someone manages to create that many files.
 	// BYOND is acting weird with numbers above 999 in loops (infinite loop prevention)
 
 	if(!stored_files)
 		return FALSE
 
-	if(read_only && !force)
-		return FALSE
-
-	if(!check_functionality())
+	if(read_only || !check_functionality())
 		return FALSE
 
 	if(stored_files.len >= 999)
 		return FALSE
-	if(used_capacity + size > max_capacity && !force)
+	if(used_capacity + size > max_capacity)
 		return FALSE
 
 	return TRUE
 
 // Checks whether we can store the file. We can only store unique files, so this checks whether we wouldn't get a duplicity by adding a file.
-<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/proc/try_store_file(datum/computer_file/F)
-=======
-/obj/item/computer_hardware/hard_drive/proc/try_store_file(datum/computer_file/F, force = FALSE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!F || !istype(F))
 		return 0
-	if(!can_store_file(F.size, force))
+	if(!can_store_file(F.size))
 		return 0
 
 	var/list/badchars = list("/",":","*","?","<",">","|", ".")
@@ -290,11 +249,7 @@
 
 
 // Disk UI data, used by file browser UI
-<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/ui_data()
-=======
-/obj/item/computer_hardware/hard_drive/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list(
 		"read_only" = read_only,
 		"disk_name" = get_disk_name(),

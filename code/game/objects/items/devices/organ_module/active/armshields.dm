@@ -1,7 +1,6 @@
 /obj/item/shield/riot/arm
 	name = "arm shield"
 	desc = "An embedded shield adept at blocking objects from connecting with the torso of the shield wielder."
-<<<<<<< HEAD
 	icon_state = "armshield"
 	item_state = "eshield1"
 	armor = list(melee = 15, bullet = 15, energy = 15, bomb = 0, bio = 0, rad = 0)
@@ -19,13 +18,6 @@
 		if((is_sharp(P) && damage > 10) || istype(P, /obj/item/projectile/beam))
 			return 0
 	return base_block_chance
-=======
-	icon_state = "marine_shield"
-	item_state = "marine_shield"
-	armor_list = list(melee = 15, bullet = 15, energy = 15, bomb = 0, bio = 0, rad = 0)
-	attack_verb = list("bashed")
-	base_block_chance = 50
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/organ_module/active/simple/armshield
 	name = "embedded shield"
@@ -34,9 +26,4 @@
 	icon_state = "armshield"
 	matter = list(MATERIAL_PLASTEEL = 20, MATERIAL_PLASTIC = 5, MATERIAL_STEEL = 5)
 	allowed_organs = list(BP_R_ARM, BP_L_ARM)
-<<<<<<< HEAD
 	holding_type = /obj/item/shield/riot/arm
-=======
-	holding_type = /obj/item/shield/riot/arm
-	price_tag = 850
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

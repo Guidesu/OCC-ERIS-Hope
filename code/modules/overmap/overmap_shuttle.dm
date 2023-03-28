@@ -119,11 +119,7 @@
 	var/parent_shuttle
 
 /obj/structure/fuel_port/New()
-<<<<<<< HEAD
 	src.contents.Add(new/obj/item/tank/phoron)
-=======
-	src.contents.Add(new/obj/item/tank/plasma)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/fuel_port/attack_hand(mob/user as mob)
 	if(!opened)

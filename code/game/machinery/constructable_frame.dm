@@ -8,27 +8,15 @@
 	use_power = NO_POWER_USE
 	density = TRUE
 	anchored = TRUE
-<<<<<<< HEAD
 	spawn_frequency = 10 //as /obj/structure/computerframe
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_MACHINE_FRAME
 	bad_type = /obj/machinery/constructable_frame
-=======
-	blue_ink_tk_blocker = TRUE //Removes bugs with teleportion and shadow items
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/constructable_frame/machine_frame //Made into a seperate type to make future revisions easier.
 	name = "machine frame"
 	icon_state = "box_0"
 	matter = list(MATERIAL_STEEL = 8)
-<<<<<<< HEAD
-=======
-	var/base_state = "box"			//base icon for creating subtypes of machine frame
-	var/list/components = null
-	var/list/req_components = null
-	var/list/req_component_names = null
-	var/state = STATE_NONE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	frame_type = FRAME_DEFAULT
 	var/base_state = "box"			//base icon for creating subtypes of machine frame
 	var/list/components
@@ -161,13 +149,8 @@
 						icon_state = "[base_state]_1"
 
 		if(STATE_WIRES)
-<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/circuitboard))
 				var/obj/item/electronics/circuitboard/B = I
-=======
-			if(istype(I, /obj/item/circuitboard))
-				var/obj/item/circuitboard/B = I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(B.board_type == "machine" && frame_type == B.frame_type)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, SPAN_NOTICE("You add the circuit board to the frame."))
@@ -232,25 +215,6 @@
 					examine(user)
 	update_icon()
 
-<<<<<<< HEAD
-=======
-/obj/machinery/constructable_frame/machine_frame/MouseDrop_T(obj/A, mob/user, src_location, over_location, src_control, over_control, params)
-	if(istype(A, /obj/item))
-		attackby(A, user)
-		return
-
-	for(var/CM in req_components)
-		if(istype(A, CM) && (req_components[CM] > 0))
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-			A.forceMove(src)
-			components += A
-			req_components[CM]--
-			break
-		else
-			to_chat(user, SPAN_WARNING("You cannot add that component to the machine!"))
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/constructable_frame/machine_frame/proc/component_check()
 	var/ready = TRUE
 	for(var/R in req_components)
@@ -270,19 +234,11 @@
 	..()
 	update_icon()
 
-<<<<<<< HEAD
 /obj/machinery/constructable_frame/machine_frame/vertical/on_update_icon()
-=======
-/obj/machinery/constructable_frame/machine_frame/vertical/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	var/image/I = image(icon, "[icon_state]1")
 	I.layer = WALL_OBJ_LAYER
 	I.pixel_z = 32
-<<<<<<< HEAD
 	add_overlays(I)
-=======
-	add_overlay(I)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 

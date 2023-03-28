@@ -7,16 +7,10 @@
 	throw_speed = 2
 	throw_range = 4
 	flags = CONDUCT | PROXMOVE
-<<<<<<< HEAD
 	spawn_frequency = 0
 	var/welded = FALSE   //0 - not readied //1 - bomb finished with welder
 	var/obj/item/device/assembly_holder/bombassembly   //The first part of the bomb is an assembly holder, holding an igniter+some device
 	var/obj/item/tank/bombtank //the second part of the bomb is a plasma tank
-=======
-	var/welded = FALSE   //0 - not readied //1 - bomb finished with welder
-	var/obj/item/device/assembly_holder/bombassembly = null   //The first part of the bomb is an assembly holder, holding an igniter+some device
-	var/obj/item/tank/bombtank = null //the second part of the bomb is a plasma tank
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/onetankbomb/examine(mob/user)
 	..(user)
@@ -26,15 +20,9 @@
 	if(bombtank)
 		icon_state = bombtank.icon_state
 	if(bombassembly)
-<<<<<<< HEAD
 		add_overlays(bombassembly.icon_state)
 		add_overlays(bombassembly.overlays)
 		add_overlays("bomb_assembly")
-=======
-		add_overlay(bombassembly.icon_state)
-		add_overlay(bombassembly.get_overlays())
-		add_overlay("bomb_assembly")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/onetankbomb/attackby(obj/item/I, mob/user)
 
@@ -125,11 +113,7 @@
 	return
 
 /obj/item/tank/proc/ignite()	//This happens when a bomb is told to explode
-<<<<<<< HEAD
 	var/fuel_moles = air_contents.gas["phoron"] + air_contents.gas["oxygen"] / 6
-=======
-	var/fuel_moles = air_contents.gas["plasma"] + air_contents.gas["oxygen"] / 6
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/strength = 1
 
 	var/turf/ground_zero = get_turf(loc)
@@ -143,7 +127,7 @@
 		else if(strength >=0.5)
 			explosion(ground_zero, 0, 1, 2, 4)
 		else if(strength >=0.2)
-			explosion(ground_zero, 0, 0, 1, 2)
+			explosion(ground_zero, -1, 0, 1, 2)
 		else
 			ground_zero.assume_air(air_contents)
 			ground_zero.hotspot_expose(1000, 125)
@@ -154,7 +138,7 @@
 		if(strength >=1)
 			explosion(ground_zero, 0, round(strength,1), round(strength*2,1), round(strength*3,1))
 		else if (strength >=0.5)
-			explosion(ground_zero, 0, 0, 1, 2)
+			explosion(ground_zero, -1, 0, 1, 2)
 		else
 			ground_zero.assume_air(air_contents)
 			ground_zero.hotspot_expose(1000, 125)
@@ -163,7 +147,7 @@
 		strength = (fuel_moles/25)
 
 		if (strength >=1)
-			explosion(ground_zero, 0, 0, round(strength,1), round(strength*3,1))
+			explosion(ground_zero, -1, 0, round(strength,1), round(strength*3,1))
 		else
 			ground_zero.assume_air(air_contents)
 			ground_zero.hotspot_expose(1000, 125)

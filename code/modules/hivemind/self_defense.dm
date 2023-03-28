@@ -58,7 +58,7 @@
 	if(is_on_cooldown())
 		return
 	if(master.health <= (hp_percent * 60))
-		for(var/mob/living/T in all_mobs_in_view(attack_range, master))
+		for(var/mob/living/T in mobs_in_view(attack_range, master))
 			if(T.stat == CONSCIOUS && T.faction != HIVE_FACTION)
 				execute()
 				break
@@ -68,7 +68,7 @@
 	. = ..()
 	master.visible_message("[master] emmits an energy wave!")
 	playsound(master, 'sound/effects/EMPulse.ogg', 90, 1)
-	var/list/targets = all_mobs_in_view(attack_range, master)
+	var/list/targets = mobs_in_view(attack_range, master)
 	for(var/mob/living/victim in targets)
 		if(victim.stat == CONSCIOUS && victim.faction != HIVE_FACTION)
 			victim.Weaken(5)
@@ -108,29 +108,22 @@
 	var/champion_path
 	var/amount = 1
 
-	var/squad = pick("defiler", "twins", "zeus", "swarm", GLOB.hive_data_bool["allow_tyrant_spawn"] ? "tyrant" : "defiler")
+	var/squad = pick("defiler", "twins", "zeus", "swarm")
 	switch(squad)
 		if("defiler")
 			champion_path = /mob/living/simple_animal/hostile/hivemind/mechiver
 			champ_names += "Defiler"
 		if("twins")
-			champ_names = list("Twin Alpha", "Twin Beta", "Twin Gamma")
-			amount = 3
+			champ_names = list("Twin A", "Twin B")
+			amount = 2
 			champion_path = /mob/living/simple_animal/hostile/hivemind/himan
 		if("zeus")
-			champ_names = list("Zeus", "Thor")
 			champion_path = /mob/living/simple_animal/hostile/hivemind/hiborg
-			amount = 2
+			champ_names += "Zeus"
 		if("swarm")
-			champ_names = list("Swarmer Slicer", "Swarmer Destroyer", "Swarmer Annihilater", "Swarmer Stinger", "Swarmer Cutter", "Swarmer Dicer")
-			amount = 6
+			champ_names = list("Swarmer Slicer", "Swarmer Destroyer", "Swarmer Annihilater", "Swarmer Stinger")
+			amount = 4
 			champion_path = /mob/living/simple_animal/hostile/hivemind/stinger
-		if("tyrant")
-			champion_path = /mob/living/simple_animal/hostile/megafauna/hivemind_tyrant
-		//Death of the tyrant = death of the hive. Players wont have to chase a bunch of nodes all over the ship around.
-		//Although this would be a problem if the players go after a undefended node, said node spawns the tyrant, tyrant dies, entire hive dies.
-		//Would be better if we could apply the death effect of the tyrant to the spawned champions.
-		//So for now, It has a chance of showing up
 	for(var/i = 1 to amount)
 		var/turf/spawn_loc = pick(places_to_spawn)
 		champion = new champion_path(spawn_loc)
@@ -145,7 +138,8 @@
 		if(places_to_spawn.len > 1)
 			places_to_spawn -= spawn_loc
 	playsound(master, 'sound/effects/teleport.ogg', 80, 1)
-	champion.say(pick("You shall be destroyed!", "Fear me!", "Face me!", "You have lived for far too long!", "Die vermin!", "Fight me insect!", "There is no escape!"))
+	champion.say(pick("You will be destroyed!", "Fear me!", "Face me!", "You has lived too long!", "Die vermin!"))
+
 
 
 //EMERGENCY JUMP
@@ -157,7 +151,7 @@
 
 
 /datum/hivemind_sdp/emergency_jump/check_conditions()
-	if(GLOB.hive_data_bool["teleport_core_when_damaged"] && master.health <= (hp_percent * 30))
+	if(master.health <= (hp_percent * 30))
 		execute()
 		turn_off()
 
@@ -180,9 +174,5 @@
 			bluespace_entropy(2, new_place, TRUE)
 			master.visible_message("[master] appeared from an air!")
 			playsound(master, 'sound/effects/cascade.ogg', 50, 1)
-<<<<<<< HEAD
 			message_admins("Hivemind node [master] emergency run at \the [jumplink(new_place)]") */	//SYZYGY EMERGENCY DISABLE
 																									//TODO: REWORK OR REMOVE FULLY
-=======
-			message_admins("Hivemind node [master] emergency run at \the [jumplink(new_place)]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

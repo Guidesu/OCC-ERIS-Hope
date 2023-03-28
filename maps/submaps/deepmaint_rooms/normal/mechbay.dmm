@@ -14,11 +14,7 @@
 /area/deepmaint)
 "e" = (
 /obj/machinery/mech_recharger,
-<<<<<<< HEAD
 /obj/spawner/exosuit/low_chance,
-=======
-/obj/random/mecha/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "f" = (
@@ -28,37 +24,23 @@
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
 "g" = (
-<<<<<<< HEAD
 /obj/spawner/traps/biome_spawner_trap/low_chance,
-=======
-/obj/random/traps/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
 "h" = (
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "i" = (
-<<<<<<< HEAD
 /obj/spawner/pack/machine,
-=======
-/obj/random/pack/machine,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "j" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-<<<<<<< HEAD
 /obj/spawner/powercell,
 /obj/spawner/powercell,
 /obj/spawner/powercell,
-=======
-/obj/random/powercell,
-/obj/random/powercell,
-/obj/random/powercell,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "k" = (
@@ -69,23 +51,12 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-<<<<<<< HEAD
 /obj/spawner/pack/rare/low_chance,
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "m" = (
 /obj/machinery/repair_station,
 /obj/spawner/mob/biome_spawner_mob/low_chance,
-=======
-/obj/random/pack/rare/low_chance,
-/obj/random/psi_megafauna,
-/obj/random/dungeon_gun_energy/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"m" = (
-/obj/random/cluster/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "n" = (
@@ -110,26 +81,15 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "r" = (
 /obj/machinery/mech_recharger,
-<<<<<<< HEAD
 /obj/spawner/exosuit/damaged,
-=======
-/obj/random/mecha/damaged,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "s" = (
@@ -139,11 +99,7 @@
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
 "t" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
-=======
-/obj/random/junk,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
 "u" = (
@@ -154,7 +110,6 @@
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
 "v" = (
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
@@ -172,38 +127,6 @@
 	range = 6
 	},
 /turf/simulated/wall,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/cargo,
-/area/deepmaint)
-"w" = (
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"x" = (
-/obj/random/junk,
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"K" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/cargo,
-/area/deepmaint)
-"M" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"O" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/cargo,
-/area/deepmaint)
-"W" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 
 (1,1,1) = {"
@@ -225,11 +148,7 @@ c
 c
 f
 w
-<<<<<<< HEAD
 h
-=======
-W
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 d
 c
@@ -240,11 +159,7 @@ t
 a
 c
 e
-<<<<<<< HEAD
 d
-=======
-O
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 m
 h
@@ -280,7 +195,6 @@ c
 s
 "}
 (6,1,1) = {"
-<<<<<<< HEAD
 a
 u
 v
@@ -292,19 +206,6 @@ d
 d
 u
 a
-=======
-M
-u
-v
-O
-k
-c
-p
-O
-d
-u
-M
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (7,1,1) = {"
 b
@@ -349,15 +250,9 @@ t
 a
 c
 c
-<<<<<<< HEAD
 f
 h
 h
-=======
-K
-h
-W
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 d
 c

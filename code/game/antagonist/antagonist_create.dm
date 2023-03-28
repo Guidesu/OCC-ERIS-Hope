@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /datum/antagonist/proc/create_antagonist(datum/mind/target, datum/faction/new_faction, doequip = TRUE, announce = TRUE, update = TRUE, check = TRUE)
-=======
-/datum/antagonist/proc/create_antagonist(datum/mind/target, datum/antag_faction/new_faction, doequip = TRUE, announce = TRUE, update = TRUE, check = TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!istype(target) || !target.current)
 		log_debug("ANTAGONIST Wrong target passed to create_antagonist of [id]! Target: [target == null?"NULL":target] \ref[target]")
 		return FALSE
@@ -29,7 +25,7 @@
 			spawn(3)
 				var/mob/living/carbon/human/H = owner.current
 				if(istype(H))
-					H.change_appearance(APPEARANCE_ALL, H.loc, H, TRUE, list(SPECIES_HUMAN), state = GLOB.z_state)
+					H.change_appearance(APPEARANCE_ALL, H.loc, H, TRUE, list("Human"), state = GLOB.z_state)
 
 	GLOB.current_antags.Add(src)
 	special_init()
@@ -45,18 +41,12 @@
 	if(announce)
 		greet()
 
-	log_admin("[key_name(target)] became the [role_text].")
-
 	return TRUE
 
 /datum/antagonist/proc/special_init()
 
 
-<<<<<<< HEAD
 /datum/antagonist/proc/create_from_ghost(mob/observer/ghost, datum/faction/new_faction, doequip = TRUE, announce = TRUE, update = TRUE)
-=======
-/datum/antagonist/proc/create_from_ghost(mob/observer/ghost, datum/antag_faction/new_faction, doequip = TRUE, announce = TRUE, update = TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!istype(ghost))
 		log_debug("ANTAGONIST Wrong target passed to create_from_ghost of [id]! Ghost: [ghost == null?"NULL":ghost] \ref[ghost]")
 		return FALSE

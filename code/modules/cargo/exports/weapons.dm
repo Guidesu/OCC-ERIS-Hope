@@ -6,11 +6,7 @@
 /datum/export/weapon/baton
 	cost = 100
 	unit_name = "stun baton"
-<<<<<<< HEAD
 	export_types = list(/obj/item/melee/baton)
-=======
-	export_types = list(/obj/item/tool/baton)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/export/weapon/knife
 	cost = 300
@@ -61,55 +57,3 @@
 	unit_name = "pair"
 	message = "of handcuffs"
 	export_types = list(/obj/item/handcuffs)
-<<<<<<< HEAD
-=======
-
-//////////////////////////////////////////////////////////////////////////////
-/////////////////////// Material  Katana's ///////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-/datum/export/weapon/katana
-	cost = 500
-	unit_name = "steel katana"
-	export_types = list(/obj/item/material/sword/katana)
-
-/datum/export/weapon/katana/silver
-	cost = 1000
-	unit_name = "silver katana"
-	export_types = list(/obj/item/material/sword/katana/silver)
-
-/datum/export/weapon/katana/gold
-	cost = 1500
-	unit_name = "gold katana"
-	export_types = list(/obj/item/material/sword/katana/gold)
-
-/datum/export/weapon/katana/diamond
-	cost = 2500
-	unit_name = "diamond katana"
-	export_types = list(/obj/item/material/sword/katana/diamond)
-
-/datum/export/weapon/katana/plastic
-	cost = 100
-	unit_name = "plastic katana"
-	export_types = list(/obj/item/material/sword/katana/plastic)
-
-/datum/export/weapon/katana/platinum
-	cost = 3000
-	unit_name = "platinum katana"
-	export_types = list(/obj/item/material/sword/katana/platinum)
-
-/datum/export/weapon/katana/plasteel
-	cost = 750
-	unit_name = "plasteel katana"
-	export_types = list(/obj/item/material/sword/katana/plasteel)
-
-/datum/export/weapon/katana/uranium
-	cost = 2000
-	unit_name = "uranium katana"
-	export_types = list(/obj/item/material/sword/katana/uranium)
-
-/datum/export/weapon/katana/iron
-	cost = 250
-	unit_name = "iron katana"
-	export_types = list(/obj/item/material/sword/iron)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

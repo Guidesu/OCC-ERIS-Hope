@@ -49,7 +49,6 @@
 	var/result = null
 	var/list/required_reagents = list()
 	var/list/catalysts = list()
-	var/list/alchemy_catalysts = list()
 	var/list/inhibitors = list()
 	var/result_amount = 0
 	var/list/byproducts= list()
@@ -68,10 +67,6 @@
 
 	var/rotation_required = FALSE
 
-<<<<<<< HEAD
-=======
-	//var/maximum_pressure = INFINITY - Soj Edit unused added for 1:1ing with eris
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// if true then chemical can be decomposed to initial reagents
 	var/supports_decomposition_by_electrolysis = TRUE
 
@@ -83,7 +78,7 @@
 	var/reaction_sound = 'sound/effects/bubbles.ogg'
 
 	var/list/require_containers = list() // This reaction will only occure in these containers(Or their subtypes).
-	var/list/blacklist_containers = list(/obj/machinery/microwave) // This reaction will not occure in these containers(Or their subtypes).
+	var/list/blacklist_containers = list() // This reaction will not occure in these containers(Or their subtypes).
 
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
@@ -112,21 +107,7 @@
 
 	if(rotation_required && !holder.rotating)
 		return FALSE
-<<<<<<< HEAD
 
-=======
-/* - Soj Edit unused added for 1:1ing with eris
-	if(maximum_pressure)
-		var/turf/location = get_turf(holder.my_atom)
-		var/datum/gas_mixture/GM = location.return_air()
-		if(location)
-			var/datum/gas_mixture/GM = location.return_air()
-			if(GM.return_pressure() > maximum_pressure)
-				return FALSE
-		else
-			return FALSE
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /datum/chemical_reaction/proc/calc_reaction_progress(var/datum/reagents/holder, var/reaction_limit)
@@ -228,11 +209,7 @@
 	return null
 
 // UI data used by chemical catalog
-<<<<<<< HEAD
 /datum/chemical_reaction/ui_data()
-=======
-/datum/chemical_reaction/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/dat = list()
 	if(required_reagents)
 		dat["reagents"] = list()
@@ -242,17 +219,6 @@
 		dat["catalyst"] = list()
 		for(var/id in catalysts)
 			dat["catalyst"] += list(list("type" = get_reagent_type_by_id(id), "reagent" = get_reagent_name_by_id(id), "units" = catalysts[id]))
-<<<<<<< HEAD
-=======
-	if(inhibitors)
-		dat["inhibitors"] = list()
-		for(var/id in inhibitors)
-			dat["inhibitors"] += list(list("type" = get_reagent_type_by_id(id), "reagent" = get_reagent_name_by_id(id), "units" = inhibitors[id]))
-	if(byproducts)
-		dat["byproducts"] = list()
-		for(var/id in byproducts)
-			dat["byproducts"] += list(list("type" = get_reagent_type_by_id(id), "reagent" = get_reagent_name_by_id(id), "units" = byproducts[id]))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	dat["minimum_temperature"] = minimum_temperature
 	if(maximum_temperature != INFINITY)
@@ -260,7 +226,6 @@
 
 	dat["result_amount"] = "[result_amount] part\s"
 	return dat
-<<<<<<< HEAD
 /* Common reactions */
 
 /datum/chemical_reaction/inaprovaline
@@ -2142,5 +2107,3 @@
 	result = "rejuvetaning_agent"
 	required_reagents = list("cleaner" = 2, "pacid" = 1, "sulfur" = 1)
 	result_amount = 2 Occulus Edit: Goodnight sweet prince*/
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -6,15 +6,14 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
-	force = WEAPON_FORCE_WEAK
-	throwforce = WEAPON_FORCE_WEAK
+	force = WEAPON_FORCE_NORMAL
+	throwforce = WEAPON_FORCE_NORMAL
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	flags = CONDUCT
 	matter = list(MATERIAL_STEEL = 3)
 	var/list/carrying = list() // List of things on the tray. - Doohl
-<<<<<<< HEAD
 	var/max_carry = 15	//Occulus Edit: Changed to 15 to allow for a drink as well as food on tray
 
 /obj/item/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
@@ -150,10 +149,6 @@
 			cooldown = world.time
 	else
 		..()
-=======
-	var/max_carry = 10
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*
 ===============~~~~~================================~~~~~====================
@@ -176,11 +171,7 @@
 
 	return val
 
-<<<<<<< HEAD
 /obj/item/tray/pickup(mob/user)	//Occulus Edit: Prepickup just returns True in the code. I don't know how it works, but it certainly /doesn't/ work here. Reverted to using standard pickup.
-=======
-/obj/item/tray/pre_pickup(mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!isturf(loc))
 		return ..()
 
@@ -198,11 +189,7 @@
 
 			I.loc = src
 			carrying.Add(I)
-<<<<<<< HEAD
 			add_overlays(image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer, "pixel_x" = I.pixel_x, "pixel_y" = I.pixel_y))
-=======
-			add_overlay(image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer, "pixel_x" = I.pixel_x, "pixel_y" = I.pixel_y))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return ..()
 

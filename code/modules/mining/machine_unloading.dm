@@ -28,16 +28,12 @@
 		var/turf/input = get_step(src, input_dir)
 		var/obj/structure/ore_box/BOX = locate() in input
 		if(BOX)
-<<<<<<< HEAD
 			var/turf/output = get_step(src, output_dir)
 			var/i = 0
 			for(var/obj/item/ore/O in BOX.contents)
 				O.forceMove(output)
 				if(++i>=10)
 					return
-=======
-			BOX.dump_box_contents(get_step(src, output_dir))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(locate(/obj/item) in input)
 			var/obj/item/O

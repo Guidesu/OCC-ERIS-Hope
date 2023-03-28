@@ -22,30 +22,18 @@
 "g" = (
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-<<<<<<< HEAD
 "h" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "i" = (
 /obj/structure/sign/securearea,
-=======
-"i" = (
-/obj/structure/sign/warning/secure_area,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/wall/untinted/onestar,
 /area/crawler)
 "j" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"Z" = (
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 e
@@ -73,15 +61,9 @@ e
 e
 c
 i
-<<<<<<< HEAD
 h
 g
 h
-=======
-g
-g
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 c
 e
@@ -100,19 +82,11 @@ e
 (5,1,1) = {"
 e
 c
-<<<<<<< HEAD
 c
 e
 j
 e
 c
-=======
-Z
-e
-j
-e
-Z
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -152,19 +126,11 @@ a
 (9,1,1) = {"
 e
 c
-<<<<<<< HEAD
 c
 e
 j
 e
 c
-=======
-Z
-e
-j
-e
-Z
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -183,15 +149,9 @@ e
 e
 c
 d
-<<<<<<< HEAD
 h
 g
 h
-=======
-g
-g
-g
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 c
 e

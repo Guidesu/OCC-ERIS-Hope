@@ -6,12 +6,7 @@
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
 	w_class = ITEM_SIZE_SMALL
 	flags = CONDUCT
-	price_tag = 10
 
-<<<<<<< HEAD
-=======
-	cell = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	suitable_cell = /obj/item/cell/small
 	var/emagged = FALSE
 	var/insults = 0
@@ -28,12 +23,7 @@
 	if(user.silent)
 		return
 
-<<<<<<< HEAD
 	if(!cell_use_check(5, user))
-=======
-	if(!cell || !cell.checked_use(5))
-		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	var/message = sanitize(input(user, "Shout a message?", "Megaphone", null)  as text)
 	if(!message)

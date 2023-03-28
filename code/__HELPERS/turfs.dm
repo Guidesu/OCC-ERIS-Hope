@@ -16,25 +16,9 @@
 //This proc is used in only two places, ive changed it to make more sense
 //The old behaviour returned zero if there were any simulated atoms at all, even pipes and wires
 //Now it just finds if the tile is blocked by anything solid.
-//Edit by SCPR - 2022
-//Made it check for cables and pipes, because having pipes / cables randomly unwired because of it can be very frustrating for guild.
 /proc/turf_clear(turf/T)
 	if (T.density)
 		return FALSE
-<<<<<<< HEAD
-=======
-	for(var/atom/A in T)
-		if(istype(A, /obj/structure/cable) || istype(A, /obj/machinery/atmospherics/pipe))
-			return FALSE
-		if(A.density)
-			return FALSE
-	return TRUE
-
-//Soj proc as the one above makes sweeping actions blocked by cable and pipes
-/proc/turf_clear_for_cleaning(turf/T)
-	if (T.density)
-		return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/atom/A in T)
 		if(A.density)
 			return FALSE
@@ -212,7 +196,7 @@
 
 
 //This is used when you want to check a turf which is a Z transition. For example, an openspace or stairs
-//If this turf connects to another in that manner, it will return the destination. If not, it will return the input
+//If this turf conencts to another in that manner, it will return the destination. If not, it will return the input
 /proc/get_connecting_turf(var/turf/T, var/turf/from = null)
 	if (T.is_hole)
 		var/turf/U = GetBelow(T)
@@ -268,38 +252,3 @@
 	tX = max(1, min(origin.x + 7 - tX, world.maxx))
 	tY = max(1, min(origin.y + 7 - tY, world.maxy))
 	return locate(tX, tY, tZ)
-
-/// Gets a turf with under/overshoot from source to target. mult_arg controls the overshoot multiplier.
-/// Example: source is (x:20, y:2). Target is (x:30, y:3). A mult_arg of 2 will return a turf with the coordinates (x:40, y:4).
-/proc/get_turf_with_overshoot(var/atom/source, var/atom/target, mult_arg = 1)
-
-	var/difference_x = GET_DIFFERENCE(target.x, source.x) // get the difference in coordinates between the two turfs
-	var/difference_y = GET_DIFFERENCE(target.y, source.y)
-	var/mult = (mult_arg - 1) //sets this to something more mathamatically sound. 0 becomes -1, meaning max_x = 0, since its adding a negative version of itself
-	var/max_x = round((target.x + (difference_x * mult))) //now add the modified difference to find the offset turf
-	var/max_y = round((target.y + (difference_y * mult)))
-
-	var/turf/overshot_turf = locate(max_x, max_y, source.z) //here we actually /locate/ it
-
-	return overshot_turf
-
-/// Returns a list of turfs between source and target, calculated using a get_step_towards for loop.
-/// Optionally allows you to set a mult_arg, which will be passed to get_turf_with_overshoot along with target_turf to determine the overshot target turf.
-/proc/get_turfs_in_line_toward_target(var/atom/source, var/atom/target, mult_arg)
-
-	var/turf/target_turf
-	if (!isnull(mult_arg))
-		target_turf = get_turf_with_overshoot(source, target, mult_arg)
-	else
-		target_turf = get_turf(target)
-
-	var/max_distance = get_dist(source, target_turf)
-
-	var/list/turfs_in_line = list()
-	var/turf/current = get_turf(source)
-
-	for (var/steps = max_distance, steps > 0, steps--) //keep calculating steps toward the target until we run out of steps
-		current = get_step_towards(current, target_turf) // calculate another walk
-		turfs_in_line += current // and add this calculation to the list of possible targets
-
-	return turfs_in_line

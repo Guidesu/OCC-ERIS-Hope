@@ -46,35 +46,24 @@
 
 /obj/machinery/holosign/surgery
 	name = "surgery holosign"
-	desc = "Small wall-mounted holographic projector. This one indicates a surgery is in process on the room."
+	desc = "Small wall-mounted holographic projector. This one reads SURGERY."
 	on_icon = "surgery"
-
-/obj/machinery/holosign/service
-	name = "in use holosign"
-	desc = "Small wall-mounted holographic projector. This one indicates the room is currently in use."
-	on_icon = "service"
-
 ////////////////////SWITCH///////////////////////////////////////
 
-/obj/machinery/button/switch/holosign
+/obj/machinery/button/holosign
 	name = "holosign switch"
 	desc = "A remote control switch for holosign."
-<<<<<<< HEAD
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
 
 /obj/machinery/button/holosign/attack_hand(mob/user as mob)
 	if(..())
 		return 1
-=======
-	icon = 'icons/obj/machines/buttons.dmi'
-	icon_state = "light0"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/obj/machinery/button/switch/holosign/attack_hand(mob/user as mob)
 	use_power(5)
+
 	active = !active
-	icon_state = "light1"
+	icon_state = "light[active]"
 
 	for(var/obj/machinery/holosign/M in GLOB.machines)
 		if (M.id == src.id)

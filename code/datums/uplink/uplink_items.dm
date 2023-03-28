@@ -30,11 +30,7 @@ var/datum/uplink/uplink = new()
 	var/desc
 	var/item_cost = 0
 	var/datum/uplink_category/category		// Item category
-<<<<<<< HEAD
 	var/list/antag_roles = ROLES_UPLINK_BASE	// Antag roles this item is displayed to. If empty, display to all.
-=======
-	var/list/antag_roles = list()	// Antag roles this item is displayed to. If empty, display to all.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item
 	var/path = null
@@ -72,10 +68,6 @@ var/datum/uplink/uplink = new()
 	// Making the assumption that if no uplink was supplied, then we don't care about antag roles
 	if(!U || !antag_roles.len)
 		return 1
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!U.uplink_owner)
 		return !!length(U.owner_roles & antag_roles)
 	else

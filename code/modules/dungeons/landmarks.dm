@@ -8,11 +8,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x2"
 	invisibility = 101
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/rogue/asteroid/myasteroid
 
 /obj/asteroid_spawner/New()
@@ -25,19 +21,11 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
 	invisibility = 101
-<<<<<<< HEAD
 	anchored = TRUE
 	var/mob/mymob
 
 /obj/rogue_mobspawner/New()
 	if(loc && istype(loc,/turf/space) && istype(loc.loc,/area/asteroid/rogue))
-=======
-	anchored = 1
-	var/mob/mymob
-
-/obj/rogue_mobspawner/New()
-	if(loc && istype(loc,/turf/simulated/floor/tiled/derelict/red_white_edges) && istype(loc.loc,/area/asteroid/rogue))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/area/asteroid/rogue/A = loc.loc
 		A.mob_spawns += src
 
@@ -46,16 +34,9 @@
 	icon = 'icons/mob/eye.dmi'
 	icon_state = "default-eye"
 	invisibility = 101
-<<<<<<< HEAD
 	anchored = TRUE
 
 /obj/asteroid_spawner/rogue_teleporter/New()
 	if(loc && istype(loc,/turf/space) && istype(loc.loc,/area/asteroid/rogue))
-=======
-	anchored = 1
-
-/obj/asteroid_spawner/rogue_teleporter/New()
-	if(loc && istype(loc,/turf/simulated/floor/tiled/derelict/red_white_edges) && istype(loc.loc,/area/asteroid/rogue))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/area/asteroid/rogue/A = loc.loc
 		A.teleporter_spawns += src

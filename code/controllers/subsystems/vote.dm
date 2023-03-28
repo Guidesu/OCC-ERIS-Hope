@@ -1,13 +1,7 @@
 SUBSYSTEM_DEF(vote)
-<<<<<<< HEAD
 	name = "Vote"
 	wait = 1 SECONDS
 	flags = SS_KEEP_TIMING | SS_NO_INIT
-=======
-	name = "Voting"
-	wait = 1 SECONDS
-	flags = SS_KEEP_TIMING
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	var/list/votes = list()
@@ -15,16 +9,9 @@ SUBSYSTEM_DEF(vote)
 	var/datum/poll/active_vote
 	var/vote_start_time = 0
 
-///datum/controller/subsystem/vote/PreInit()
-//	for(var/T in subtypesof(/datum/poll))
-//		var/datum/poll/P = new T
-//		votes[T] = P
-
-/datum/controller/subsystem/vote/Initialize()
-	. = ..()
+/datum/controller/subsystem/vote/PreInit()
 	for(var/T in subtypesof(/datum/poll))
 		var/datum/poll/P = new T
-		P.only_admin = P.IsAdminOnly()
 		votes[T] = P
 
 /datum/controller/subsystem/vote/proc/update_voters()
@@ -79,11 +66,7 @@ SUBSYSTEM_DEF(vote)
 	var/text = "[poll.name] vote started by [poll.initiator]."
 	log_vote(text)
 	to_chat(world, {"<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes. <br>You have [poll.time] seconds to vote.</font>"})
-<<<<<<< HEAD
 	sound_to(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = GLOB.vote_sound_channel))
-=======
-	sound_to(world, sound('sound/misc/notice4.ogg', repeat = 0, wait = 0, volume = 60, channel = GLOB.vote_sound_channel))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return TRUE
 
@@ -184,12 +167,12 @@ SUBSYSTEM_DEF(vote)
 
 	if(href_list["toggle_admin"])
 		var/datum/poll/poll = locate(href_list["toggle_admin"])
-		if(istype(poll) && check_rights(R_ADMIN|R_FUN))
+		if(istype(poll) && check_rights(R_ADMIN))
 			poll.only_admin = !poll.only_admin
 
 	if(href_list["start_vote"])
 		var/datum/poll/poll = locate(href_list["start_vote"])
-		if(istype(poll) && (check_rights(R_ADMIN|R_FUN) || (!poll.only_admin && poll.can_start())))
+		if(istype(poll) && (check_rights(R_ADMIN) || (!poll.only_admin && poll.can_start())))
 			start_vote(poll.type)
 
 	if(href_list["cancel"])
@@ -212,15 +195,3 @@ SUBSYSTEM_DEF(vote)
 	set name = "Vote"
 
 	SSvote.interface_client(client)
-
-//Edits
-/datum/controller/subsystem/vote/proc/start_restart_vote_loop()
-	addtimer(CALLBACK(src, /datum/controller/subsystem/vote/proc/recall_vote), 240 MINUTES)
-
-/datum/controller/subsystem/vote/proc/recall_vote_loop()
-	addtimer(CALLBACK(src, /datum/controller/subsystem/vote/proc/recall_vote), 60 MINUTES)
-
-/datum/controller/subsystem/vote/proc/recall_vote()
-	if(SSvote.active_vote) //No sneaky attempt to stop the recall vote
-		stop_vote()
-	start_vote(/datum/poll/restart)

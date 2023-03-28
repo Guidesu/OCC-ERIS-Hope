@@ -6,15 +6,9 @@
 /turf/simulated/wall,
 /area/deepmaint)
 "c" = (
-<<<<<<< HEAD
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
-=======
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
@@ -25,24 +19,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "e" = (
-<<<<<<< HEAD
 /obj/machinery/light{
-=======
-/obj/machinery/light/small{
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
 "f" = (
 /obj/machinery/recharge_station,
-<<<<<<< HEAD
 /obj/machinery/light{
 	dir = 1
 	},
-=======
-/obj/machinery/light/small,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "g" = (
@@ -63,19 +49,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "j" = (
-<<<<<<< HEAD
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/spawner/pack/rare/low_chance,
-=======
-/obj/random/pack/rare/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "k" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -83,27 +64,12 @@
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "l" = (
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pouch/low_chance,
-/turf/simulated/floor/tiled/steel/panels,
-/area/deepmaint)
-"l" = (
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small{
-	dir = 8
-	},
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "m" = (
 /obj/structure/toilet{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/machinery/light{
 	dir = 1
 	},
@@ -114,49 +80,24 @@
 /area/deepmaint)
 "n" = (
 /obj/spawner/mob/biome_spawner_mob/low_chance,
-=======
-/obj/random/pack/rare/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel,
-/area/deepmaint)
-"n" = (
-/obj/random/cluster/psi_monster/lower_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "o" = (
 /obj/structure/table/rack,
-<<<<<<< HEAD
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
-=======
-/obj/random/pack/gun_loot,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/pack/gun_loot/low_chance,
-/obj/random/powercell/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "p" = (
 /obj/structure/toilet{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/spawner/oddities/low_chance,
 /obj/spawner/pack/rare/low_chance,
-=======
-/obj/random/common_oddities/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "q" = (
@@ -176,7 +117,6 @@
 	},
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
-<<<<<<< HEAD
 "s" = (
 /obj/spawner/mob/biome_spawner_mob/low_chance,
 /turf/simulated/floor/tiled/steel/brown_perforated,
@@ -193,107 +133,6 @@
 /area/deepmaint)
 "v" = (
 /obj/spawner/mob/biome_spawner_mob/low_chance,
-=======
-"u" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/panels,
-/area/deepmaint)
-"v" = (
-/obj/structure/sink{
-	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
-	},
-/obj/structure/mirror{
-	dir = 8;
-	pixel_x = 28;
-	pixel_y = 0
-	},
-/obj/random/ammo_fancy,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"x" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"C" = (
-/obj/item/storage/hcases/ammo/blackmarket,
-/obj/random/dungeon_gun_mods,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"E" = (
-/obj/random/cluster/psi_monster/lower_chance,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"H" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"I" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/random/common_oddities/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/item/ammo_kit,
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel,
-/area/deepmaint)
-"L" = (
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"N" = (
-/obj/structure/sink{
-	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
-	},
-/obj/structure/mirror{
-	dir = 8;
-	pixel_x = 28;
-	pixel_y = 0
-	},
-/obj/random/dungeon_ammo,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"P" = (
-/obj/random/psi_megafauna,
-/turf/simulated/floor/tiled/steel,
-/area/deepmaint)
-"S" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/steel/brown_perforated,
-/area/deepmaint)
-"T" = (
-/obj/structure/table/rack,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/powercell/low_chance,
-/turf/simulated/floor/tiled/steel/panels,
-/area/deepmaint)
-"W" = (
-/obj/random/mob/psi_monster/low_chance,
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel/gray_platform,
-/area/deepmaint)
-"X" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/deepmaint)
-"Z" = (
-/obj/random/dungeon_ammo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 
@@ -303,17 +142,10 @@ c
 a
 a
 a
-<<<<<<< HEAD
 a
 a
 s
 a
-=======
-S
-a
-a
-E
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
@@ -337,22 +169,14 @@ f
 b
 m
 b
-<<<<<<< HEAD
 p
-=======
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 p
 b
 a
 "}
 (4,1,1) = {"
-<<<<<<< HEAD
 a
-=======
-x
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 h
 b
@@ -362,35 +186,22 @@ h
 b
 h
 b
-<<<<<<< HEAD
 a
-=======
-H
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (5,1,1) = {"
 a
 d
 i
-<<<<<<< HEAD
 i
 i
 i
 i
 i
-=======
-X
-i
-i
-i
-X
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 d
 a
 "}
 (6,1,1) = {"
-<<<<<<< HEAD
 a
 b
 j
@@ -402,19 +213,6 @@ i
 u
 b
 a
-=======
-L
-b
-j
-n
-i
-P
-i
-i
-n
-b
-H
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (7,1,1) = {"
 a
@@ -423,19 +221,11 @@ b
 b
 b
 b
-<<<<<<< HEAD
 q
 v
 q
 b
 a
-=======
-Z
-q
-q
-b
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (8,1,1) = {"
 a
@@ -444,15 +234,9 @@ k
 l
 o
 b
-<<<<<<< HEAD
 q
 q
 q
-=======
-C
-Z
-W
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 a
 "}
@@ -460,21 +244,12 @@ a
 a
 b
 k
-<<<<<<< HEAD
 l
 k
 b
 r
 r
 r
-=======
-u
-T
-b
-v
-r
-N
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 a
 "}
@@ -493,21 +268,12 @@ a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 e
 a
 a
 a
 a
 a
-=======
-a
-e
-a
-e
-a
-S
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 e

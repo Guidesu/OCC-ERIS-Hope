@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure/loot
 	name = "abandoned crate"
-	desc = "What could be inside? A small port near the lock could connect to a multi-tool."
+	desc = "What could be inside?"
 	icon_state = "securecrate"
 	var/list/code = list()
 	var/list/lastattempt = list()
@@ -24,32 +24,18 @@
 		if(1 to 5) // Common things go, 5%
 			new/obj/item/reagent_containers/food/drinks/bottle/rum(src)
 			new/obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
-<<<<<<< HEAD
 			new/obj/item/reagent_containers/food/snacks/grown/ambrosiadeus(src)
-=======
-			new/obj/item/storage/fancy/cigarettes/khi(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			new/obj/item/flame/lighter/zippo(src)
 		if(6 to 10)
 			new/obj/item/tool/pickaxe/drill(src)
 			new/obj/item/device/taperecorder(src)
 			new/obj/item/clothing/suit/space(src)
-<<<<<<< HEAD
 			new/obj/item/clothing/head/space(src)
-=======
-			new/obj/item/clothing/head/helmet/space(src)
-			new /obj/item/gun/projectile/boltgun/flare_gun(src)
-			new /obj/item/ammo_casing/flare/prespawn(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(11 to 15)
 			new/obj/item/reagent_containers/glass/beaker/bluespace(src)
 		if(16 to 20)
 			for(var/i = 0, i < 10, i++)
-<<<<<<< HEAD
 				new/obj/item/ore/diamond(src)
-=======
-				new/obj/item/stack/ore/diamond(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(21 to 25)
 			for(var/i = 0, i < 3, i++)
 				new/obj/machinery/portable_atmospherics/hydroponics(src)
@@ -59,51 +45,35 @@
 		if(31 to 35)
 			spawn_money(rand(300,800), src)
 		if(36 to 40)
-<<<<<<< HEAD
 			new/obj/item/melee/baton(src)
-=======
-			new/obj/item/tool/baton(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(41 to 45)
-			new/obj/item/clothing/under/shorts(src)
-			new/obj/item/clothing/under/shorts/athleticblue(src)
+			new/obj/item/clothing/under/shorts/red(src)
+			new/obj/item/clothing/under/shorts/blue(src)
 		if(46 to 50)
 			new/obj/item/clothing/under/chameleon(src)
 			for(var/i = 0, i < 7, i++)
-				new/obj/item/clothing/accessory/tie/yellow(src)
+				new/obj/item/clothing/accessory/horrible(src)
 		if(51 to 52) // Uncommon, 2% each
 			new/obj/item/melee/classic_baton(src)
 		if(53 to 54)
 			new/obj/item/latexballon(src)
 		if(55 to 56)
-			var/newitem = pick(typesof(/obj/item/toy/figure/mecha/) - /obj/item/toy/figure/mecha/)
+			var/newitem = pick(typesof(/obj/item/toy/prize) - /obj/item/toy/prize)
 			new newitem(src)
 		if(57 to 60)
-<<<<<<< HEAD
 			new/obj/item/rig(src)
-=======
-			new/obj/random/rig(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(61 to 62)
 			for(var/i = 0, i < 12, ++i)
-				new/obj/item/clothing/head/costume/animal/kitty(src)
+				new/obj/item/clothing/head/kitty(src)
 		if(63 to 64)
 			var/t = rand(4,7)
 			for(var/i = 0, i < t, ++i)
-<<<<<<< HEAD
 				var/newcoin = pick(/obj/item/coin/silver, /obj/item/coin/silver, /obj/item/coin/silver, /obj/item/coin/iron, /obj/item/coin/iron, /obj/item/coin/iron, /obj/item/coin/gold, /obj/item/coin/diamond, /obj/item/coin/phoron, /obj/item/coin/uranium, /obj/item/coin/platinum)
-=======
-				var/newcoin = pick(/obj/item/coin/silver, /obj/item/coin/silver, /obj/item/coin/silver, /obj/item/coin/iron, /obj/item/coin/iron, /obj/item/coin/iron, /obj/item/coin/gold, /obj/item/coin/diamond, /obj/item/coin/plasma, /obj/item/coin/uranium, /obj/item/coin/platinum)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				new newcoin(src)
 		if(65 to 68)
 			var/t = rand(4,7)
 			for(var/i = 0, i < t, ++i)
-<<<<<<< HEAD
 				var/newitem = pick(typesof(/obj/item/stock_parts) - /obj/item/stock_parts - /obj/item/stock_parts/subspace)
-=======
-				var/newitem = pick(typesof(/obj/item/stock_parts) - /obj/item/stock_parts - /obj/item/stock_parts/subspace - /obj/item/stock_parts/blackshield/stskit)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				new newitem(src)
 		if(69 to 72)
 			new/obj/item/tool/pickaxe/drill(src)
@@ -112,7 +82,6 @@
 		if(75 to 78)
 			new/obj/item/tool/pickaxe/diamonddrill(src)
 		if(79 to 84)
-<<<<<<< HEAD
 			new/obj/item/toy/katana(src)
 		if(85 to 86)
 			new/obj/item/seeds/random(src)
@@ -120,21 +89,14 @@
 			new/obj/item/weed_extract(src)
 		if(88)
 			new/obj/item/xenos_claw(src)
-=======
-			new/obj/item/toy/weapon/katana(src)
-		if(85 to 89)
-			new/obj/item/gun/projectile/basilisk(src)
-			new/obj/item/ammo_magazine/kurtz_50/hv(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(90)
-			new/obj/item/orion_ship(src)
+			new/obj/item/organ/internal/heart(src)
 		if(91)
 			new/obj/item/tool/sword/katana(src)
 		if(92)
 			new/obj/item/dnainjector/xraymut(src) // Probably the least OP
 		if(93) // Why the hell not
 			new/obj/item/storage/backpack/clown(src)
-<<<<<<< HEAD
 			new/obj/item/clothing/under/rank/clown(src)
 			new/obj/item/clothing/shoes/clown_shoes(src)
 			new/obj/item/clothing/mask/gas/clown_hat(src)
@@ -147,44 +109,20 @@
 			new/obj/item/clothing/shoes/color/black(src)
 			new/obj/item/clothing/gloves/color/white(src)
 			new/obj/item/clothing/mask/gas/mime(src)
-=======
-			new/obj/item/clothing/under/costume/job/clown(src)
-			new/obj/item/clothing/shoes/costume/job/clown(src)
-			new/obj/item/clothing/mask/costume/job/clown(src)
-			new/obj/item/bikehorn(src)
-			//new/obj/item/stamp/clown(src) I'd add it, but only clowns can use it
-			new/obj/item/pen/crayon/rainbow(src)
-			new/obj/item/toy/weapon/waterflower(src)
-		if(94)
-			new/obj/item/clothing/under/costume/job/mime(src)
-			new/obj/item/clothing/shoes/color/black(src)
-			new/obj/item/clothing/gloves/color(src)
-			new/obj/item/clothing/mask/costume/job/mime(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			new/obj/item/clothing/head/beret(src)
 			new/obj/item/pen/crayon/mime(src)
 			new/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing(src)
 		if(95)
 			new/obj/item/vampiric(src)
 		if(96)
-<<<<<<< HEAD
 			new/obj/item/archaeological_find(src)
-=======
-			new/obj/item/vampiric(src)
-			//new/obj/item/archaeological_find(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(97)
 			new/obj/item/melee/energy/sword(src)
 		if(98)
 			new/obj/item/storage/belt/champion(src)
-<<<<<<< HEAD
 			new/obj/item/clothing/mask/luchador(src)
-=======
-			new/obj/item/clothing/mask/costume/job/luchador(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(99 to 100)
 			new/obj/item/clothing/head/bearpelt(src)
-			new/obj/item/gun/projectile/makarov(src)
 
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user as mob)
 	if(!locked)

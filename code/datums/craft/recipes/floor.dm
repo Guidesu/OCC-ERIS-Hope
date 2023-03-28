@@ -1,79 +1,15 @@
 /datum/craft_recipe/floor
-	category = "Floors"
+	category = "Tiles"
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL),
 	)
 	flags = CRAFT_BATCH
 	time = 1 //Crafting individual tiles is fast
 	related_stats = list(STAT_MEC)
-<<<<<<< HEAD
-=======
-
-/datum/craft_recipe/floor/underplating
-	name = "underplating"
-	result = /obj/effect/flooring_type_spawner
-	time = WORKTIME_SLOW
-	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	steps = list(
-		list(CRAFT_MATERIAL, 15, MATERIAL_STEEL)
-	)
-	related_stats = list(STAT_MEC)
-
-/datum/craft_recipe/floor/catwalk
-	name = "catwalk"
-	result = /obj/structure/catwalk
-	time = WORKTIME_FAST
-	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
-	steps = list(
-		list(CRAFT_MATERIAL, 8, MATERIAL_STEEL)
-	)
-	related_stats = list(STAT_MEC)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/craft_recipe/floor/classic
 	name = "wood floor tile"
 	result = /obj/item/stack/tile/wood
-	icon_state = "woodworking"
-	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
-	)
-
-/datum/craft_recipe/floor/ashwood
-	name = "ash wood floor tile"
-	result = /obj/item/stack/tile/wood/ashen
-	icon_state = "woodworking"
-	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
-	)
-
-/datum/craft_recipe/floor/redashen
-	name = "red ash wood floor tile"
-	result = /obj/item/stack/tile/wood/ashen/red
-	icon_state = "woodworking"
-	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
-	)
-
-/datum/craft_recipe/floor/dullashen
-	name = "dull ash wood floor tile"
-	result = /obj/item/stack/tile/wood/ashen/dull
-	icon_state = "woodworking"
-	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
-	)
-
-/datum/craft_recipe/floor/rustic
-	name = "rustic wood floor tile"
-	result = /obj/item/stack/tile/wood/old
-	icon_state = "woodworking"
-	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
-	)
-
-/datum/craft_recipe/floor/veridicalrustic
-	name = "veridical rustic wood floor tile"
-	result = /obj/item/stack/tile/wood/old/veridical
-	icon_state = "woodworking"
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
 	)
@@ -87,52 +23,32 @@
 	)
 	// variation_type = CRAFT_VARIATION
 
-<<<<<<< HEAD
 /datum/craft_recipe/floor/classic/techmaint
 	name = "maint floor tile"
-=======
-/datum/craft_recipe/floor/techmaint
-	name = "maintenance floor tile"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	result = /obj/item/stack/tile/floor/techmaint
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
 	// variation_type = CRAFT_VARIATION
 
-<<<<<<< HEAD
 /datum/craft_recipe/floor/classic/techmaint_perforated
 	name = "perforated maint floor tile"
-=======
-/datum/craft_recipe/floor/techmaint_perforated
-	name = "perforated maintenance floor tile"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	result = /obj/item/stack/tile/floor/techmaint/perforated
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
 	// variation_type = CRAFT_VARIATION
 
-<<<<<<< HEAD
 /datum/craft_recipe/floor/classic/techmaint_panels
 	name = "panels maint floor tile"
-=======
-/datum/craft_recipe/floor/techmaint_panels
-	name = "panels maintenance floor tile"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	result = /obj/item/stack/tile/floor/techmaint/panels
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
 	// variation_type = CRAFT_VARIATION
 
-<<<<<<< HEAD
 /datum/craft_recipe/floor/classic/techmaint_cargo
 	name = "cargo maint floor tile"
-=======
-/datum/craft_recipe/floor/techmaint_cargo
-	name = "cargo maintenance floor tile"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	result = /obj/item/stack/tile/floor/techmaint/cargo
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
@@ -150,12 +66,12 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/steel/techfloor
-	name = "steel tech-floor tile"
+	name = "steel techfloor tile"
 	result = /obj/item/stack/tile/floor/steel/techfloor
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/steel/techfloor_grid
-	name = "steel tech-floor tile with vents"
+	name = "steel techfloor tile with vents"
 	result = /obj/item/stack/tile/floor/steel/techfloor_grid
 	// variation_type = CRAFT_VARIATION
 
@@ -210,12 +126,12 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/steel/violetcorener
-	name = "steel violet corner tile"
+	name = "steel violet corener tile"
 	result = /obj/item/stack/tile/floor/steel/violetcorener
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/steel/monofloor
-	name = "steel mono-floor tile"
+	name = "steel monofloor tile"
 	result = /obj/item/stack/tile/floor/steel/monofloor
 	// variation_type = CRAFT_VARIATION
 
@@ -234,6 +150,8 @@
 	result = /obj/item/stack/tile/floor/steel/bar_light
 	// variation_type = CRAFT_VARIATION
 
+
+
 /datum/craft_recipe/floor/white
 	name = "regular white floor tile"
 	result = /obj/item/stack/tile/floor/white
@@ -248,12 +166,12 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/white/techfloor
-	name = "white tech-floor tile"
+	name = "white techfloor tile"
 	result = /obj/item/stack/tile/floor/white/techfloor
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/white/techfloor_grid
-	name = "white tech-floor tile with vents"
+	name = "white techfloor tile with vents"
 	result = /obj/item/stack/tile/floor/white/techfloor_grid
 	// variation_type = CRAFT_VARIATION
 
@@ -308,14 +226,18 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/white/violetcorener
-	name = "white violet corner tile"
+	name = "white violet corener tile"
 	result = /obj/item/stack/tile/floor/white/violetcorener
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/white/monofloor
-	name = "white mono-floor tile"
+	name = "white monofloor tile"
 	result = /obj/item/stack/tile/floor/white/monofloor
 	// variation_type = CRAFT_VARIATION
+
+
+
+
 
 /datum/craft_recipe/floor/dark
 	name = "regular dark floor tile"
@@ -328,12 +250,12 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/dark/techfloor
-	name = "dark tech-floor tile"
+	name = "dark techfloor tile"
 	result = /obj/item/stack/tile/floor/dark/techfloor
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/dark/techfloor_grid
-	name = "dark tech-floor tile with vents"
+	name = "dark techfloor tile with vents"
 	result = /obj/item/stack/tile/floor/dark/techfloor_grid
 	// variation_type = CRAFT_VARIATION
 
@@ -388,12 +310,12 @@
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/dark/violetcorener
-	name = "dark violet corner tile"
+	name = "dark violet corener tile"
 	result = /obj/item/stack/tile/floor/dark/violetcorener
 	// variation_type = CRAFT_VARIATION
 
 /datum/craft_recipe/floor/dark/monofloor
-	name = "dark mono-floor tile"
+	name = "dark monofloor tile"
 	result = /obj/item/stack/tile/floor/dark/monofloor
 	// variation_type = CRAFT_VARIATION
 
@@ -408,14 +330,12 @@
 		list(QUALITY_PULSING, 30, 80)
 	)
 
-/datum/craft_recipe/floor/lighttile
-	name = "light tile"
-	icon_state = "gun"
-	result = /obj/machinery/floor_light
+/datum/craft_recipe/floor/grille
+	name = "regular grille"
+	result = /obj/structure/grille
+	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	steps = list(
-		list(CRAFT_MATERIAL, 3, MATERIAL_GLASS, "time" = 30),
-		list(CRAFT_MATERIAL, 2, MATERIAL_STEEL, "time" = 10),
-		list(QUALITY_SCREW_DRIVING, 10, 80),
-		list(/obj/item/stack/cable_coil, 5, "time" = 20),
-		list(QUALITY_PULSING, 30, 80)
+		list(/obj/item/stack/rods, 2, "time" = 10)
 	)
+
+

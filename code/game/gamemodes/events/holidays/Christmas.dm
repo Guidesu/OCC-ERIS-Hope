@@ -4,13 +4,8 @@
 		for(var/turf/simulated/floor/T in RANGE_TURFS(1,xmas))
 			for(var/i=1,i<=rand(1,5),i++)
 				new /obj/item/a_gift(T)
-<<<<<<< HEAD
 	//for(var/mob/living/simple_animal/corgi/Ian/Ian in SSmobs.mob_list)
 	//	Ian.place_on_head(new /obj/item/clothing/head/space/santahat(Ian))
-=======
-	//for(var/mob/living/simple_animal/corgi/fluff/Ian/Ian in SSmobs.mob_list)
-	//	Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat(Ian))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/ChristmasEvent()
 	for(var/obj/structure/flora/tree/pine/xmas in world)
@@ -21,31 +16,20 @@
 		evil_tree.icon_gib = evil_tree.icon_state
 		qdel(xmas)
 
-<<<<<<< HEAD
 /obj/item/toy
 	bad_type = /obj/item/toy
 
 /obj/item/toy/xmas_cracker
-=======
-/obj/item/toy/junk/xmas_cracker
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "xmas cracker"
 	icon = 'icons/obj/christmas.dmi'
 	icon_state = "cracker"
 	desc = "Directions for use: Requires two people, one to pull each end."
 	var/cracked = 0
 
-<<<<<<< HEAD
 /obj/item/toy/xmas_cracker/New()
 	..()
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
-=======
-/obj/item/toy/junk/xmas_cracker/New()
-	..()
-
-/obj/item/toy/junk/xmas_cracker/attack(mob/target, mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if( !cracked && ishuman(target) && (target.stat == CONSCIOUS) && !target.get_active_hand() )
 		target.visible_message(SPAN_NOTICE("[user] and [target] pop \an [src]! *pop*"), SPAN_NOTICE("You pull \an [src] with [target]! *pop*"), SPAN_NOTICE("You hear a *pop*."))
 		var/obj/item/paper/Joke = new /obj/item/paper(user.loc)
@@ -60,26 +44,17 @@
 			"What do snowmen wear on their heads?\n\n<i>Ice caps!</i>",
 			"Why is Christmas just like life on ss13?\n\n<i>You do all the work and the fat guy gets all the credit.</i>",
 			"Why doesn't Santa have any children?\n\n<i>Because he only comes down the chimney.</i>")
-<<<<<<< HEAD
 		new /obj/item/clothing/head/festive(target.loc)
 		user.update_icons()
 		cracked = 1
 		icon_state = "cracker1"
 		var/obj/item/toy/xmas_cracker/other_half = new /obj/item/toy/xmas_cracker(target)
-=======
-		new /obj/item/clothing/head/costume/misc/festive(target.loc)
-		user.update_icons()
-		cracked = 1
-		icon_state = "cracker1"
-		var/obj/item/toy/junk/xmas_cracker/other_half = new /obj/item/toy/junk/xmas_cracker(target)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		other_half.cracked = 1
 		other_half.icon_state = "cracker2"
 		target.put_in_active_hand(other_half)
 		playsound(user, 'sound/effects/snap.ogg', 50, 1)
 		return 1
 	return ..()
-<<<<<<< HEAD
 
 /obj/item/clothing/head/festive
 	name = "festive paper hat"
@@ -88,5 +63,3 @@
 	flags_inv = 0
 	body_parts_covered = 0
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

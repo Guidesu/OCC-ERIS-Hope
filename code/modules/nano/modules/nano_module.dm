@@ -29,7 +29,7 @@
 	RETURN_TYPE(/datum)
 	return host ? host.nano_host() : src
 
-/datum/nano_module/proc/can_still_topic(var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/proc/can_still_topic(var/datum/topic_state/state = GLOB.default_state)
 	return CanUseTopic(usr, state) == STATUS_INTERACTIVE
 
 /datum/nano_module/proc/check_eye(var/mob/user)
@@ -50,25 +50,15 @@
 		return 1 //This is faster, and often enough.
 	return has_access(access, list(), get_access(user)) //Also checks the mob's ID.
 
-<<<<<<< HEAD
 /datum/nano_module/ui_data(mob/user)
-=======
-/datum/nano_module/nano_ui_data(mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = host.initial_data()
 	data["catalog_browse_stage"] = catalog_browse_stage
 	data["catalog_search"] = catalog_search ? catalog_search : "Search"
 	switch(catalog_browse_stage)
 		if(CATALOG_BROWSE_STAGE_ENTRY)
-<<<<<<< HEAD
 			data += selected_entry.ui_data(user)
 		if(CATALOG_BROWSE_STAGE_LIST)
 			data += catalog.ui_data(user, search_value = catalog_search)
-=======
-			data += selected_entry.nano_ui_data(user)
-		if(CATALOG_BROWSE_STAGE_LIST)
-			data += catalog.nano_ui_data(user, search_value = catalog_search)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return data
 
 // refreshes catalog browsing
@@ -96,11 +86,7 @@
 	ui.add_template("catalogEntry", selected_entry.associated_template)
 
 	catalog_browse_stage = CATALOG_BROWSE_STAGE_ENTRY
-<<<<<<< HEAD
 	ui.reinitialise(new_initial_data = ui_data(user))
-=======
-	ui.reinitialise(new_initial_data = nano_ui_data(user))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 // browses catalog and refreshes UI
@@ -118,11 +104,7 @@
 	ui.add_template("catalog", catalog.associated_template)
 
 	catalog_browse_stage = CATALOG_BROWSE_STAGE_LIST
-<<<<<<< HEAD
 	ui.reinitialise(new_initial_data = ui_data(user))
-=======
-	ui.reinitialise(new_initial_data = nano_ui_data(user))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /datum/nano_module/Topic(href, href_list)

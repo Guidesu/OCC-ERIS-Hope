@@ -1,23 +1,23 @@
 /datum/antagonist/inquisitor
 	id = ROLE_INQUISITOR
-<<<<<<< HEAD
 	role_text = "Mekhane Inquisitor"
 	role_text_plural = "Mekhane Inquisitors"
-=======
-	role_text = "Crusader"
-	role_text_plural = "Crusaders"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	bantype = ROLE_BANTYPE_INQUISITOR
 	welcome_text = ""
 	antaghud_indicator = "hudcyberchristian"
-
-	var/was_priest = FALSE
+	possible_objectives = list(
+		/datum/objective/assassinate = 30,
+		/datum/objective/brig = 15,
+		/datum/objective/harm = 15,
+		/datum/objective/steal = 30,
+		/datum/objective/baptize = 30,
+	)
 
 	survive_objective = /datum/objective/escape
+	var/was_priest = FALSE
 
 	stat_modifiers = list(
-		STAT_TGH = 30,
-		STAT_ROB = 30,
+		STAT_TGH = 10,
 		STAT_VIG = 10
 	)
 
@@ -46,7 +46,7 @@
 	if(!C)
 		return FALSE
 
-	if (is_preacher(owner.current))
+	if (ispriest(owner.current))
 		was_priest = TRUE
 
 	C.make_inquisitor()
@@ -65,7 +65,6 @@
 	// Basic intro text.
 	to_chat(player, "<span class='danger'><font size=3>You are a [role_text]!</font></span>")
 
-<<<<<<< HEAD
 	to_chat(player, "The Inquisitor is a higher ranking officer in the Church of Mekhane.<br>\
 	You are here to promote the Church's interests and protect disciples, but more importantly, you are also here to \
 	track down criminals, spies and saboteurs within the church's ranks. Interrogate Chidlren of Mekhane followers, and deal with those \
@@ -81,18 +80,6 @@
 		to_chat(player, "You have been working undercover here, until a signal from NT command calls you to action. You may wish to make your presence known to the local preacher, if there is one.")
 
 	to_chat(player, "You will need a ritual book to utilise your abilities. They can be found or purchased in the chapel. The Bounty ritual can be used to request items from central command. You may request a Priest upgrade to promote a new preacher.")
-=======
-	to_chat(player, "Crusader is a special protocol within the Church of Absolute.<br>\
-	You're cruciform has activated its crusader protocol upon detecting the presence of an active hivemind. You are to do \
-	everything in your power to destroy all traces of the hivemind and any infected machines or organics.<br>\
-	<br>\
-	Any local church staff should aid in goals and other crusaders will announce their presence so you may work together. \
-	Remember that your goal is only to destroy the hivemind, once you've completed your task you should return to your regular \
-	duties but remain vigilant. Under special circumstances your crusader protocol may have activated to deal with a different threat. \
-	Do as befitting of the church and aid the colony in whatever way you can.")
-
-	to_chat(player, "You will need a ritual book to utilise your abilities. They can be found or purchased in the chapel. The bounty ritual can be used to request items from central church command.")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	show_objectives()
@@ -100,7 +87,6 @@
 
 	return TRUE
 
-<<<<<<< HEAD
 
 //Returns true if the mob in question is an NT preacher
 /proc/ispriest(var/mob/living/carbon/human/H)
@@ -117,5 +103,3 @@
 		return TRUE
 
 	return FALSE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -128,21 +128,6 @@ Subtypes
 	. += "The following ids are banned:"
 	. += jointext(ntnet_global.banned_nids, ", ") || "No ids banned."
 
-//Checks if the thing is emaged or not.
-/datum/terminal_command/firewall_check
-	name = "firewall_check"
-	man_entry = list("Format: firewall_check nid", "Checks nid for firewall bypassing.")
-	pattern = "^firewall_check$"
-	req_access = list(access_network)
-
-//Todo add back in a way to "un"emag a moular computer.
-/datum/terminal_command/firewall_check/proper_input_entered(text, mob/user, terminal)
-	var/obj/item/modular_computer/comp
-	if(comp.computer_emagged)
-		return "Check: Failed, Firewall deactivated or bypassed."
-	else
-		return "Check: Passed, Firewall active."
-
 /datum/terminal_command/status
 	name = "status"
 	man_entry = list("Format: status", "Reports network status information.")
@@ -174,7 +159,7 @@ Subtypes
 	var/obj/item/modular_computer/comp = ntnet_global.get_computer_by_nid(nid)
 	if(!comp || !comp.enabled || !comp.network_card || !comp.network_card.check_functionality())
 		return
-	return "... Estimating location: [get_area(comp)] at [comp.x], [comp.y], [comp.z]!"
+	return "... Estimating location: [get_area(comp)]"
 
 /datum/terminal_command/ping
 	name = "ping"

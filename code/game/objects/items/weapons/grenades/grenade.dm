@@ -13,16 +13,10 @@
 	var/det_time = 40
 	var/loadable = TRUE
 	var/variance = 0 //How much the fuse time varies up or down. Punishes cooking with makeshift nades, proper ones should have 0
-	price_tag = 300
 
 /obj/item/grenade/proc/clown_check(var/mob/living/user)
-<<<<<<< HEAD
 	if((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, SPAN_WARNING("Huh? How does this thing work?"))
-=======
-	if((CLUMSY in user.mutations) && prob(10))
-		to_chat(user, SPAN_WARNING("Huh? ... HELL, I PRIMED THE GRENADE!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		activate(user)
 		add_fingerprint(user)
@@ -75,18 +69,11 @@
 		return
 
 
-<<<<<<< HEAD
 /obj/item/grenade/proc/prime(mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(T)
 		T.hotspot_expose(700,125)
 		user.hud_used.updatePlaneMasters(user)
-=======
-/obj/item/grenade/proc/prime(mob/user)
-	var/turf/T = get_turf(src)
-	T.hotspot_expose(700,125)
-	user.hud_used.updatePlaneMasters(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/grenade/attackby(obj/item/I, mob/user as mob)
@@ -94,12 +81,9 @@
 		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_COG))
 			switch(det_time)
 				if (1)
-<<<<<<< HEAD
 					det_time = 10
 					to_chat(user, SPAN_NOTICE("You set the [name] for 1 second detonation time."))
 				if (10)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					det_time = 30
 					to_chat(user, SPAN_NOTICE("You set the [name] for 3 second detonation time."))
 				if (30)
@@ -111,11 +95,8 @@
 			add_fingerprint(user)
 	..()
 	return
-<<<<<<< HEAD
 
 /obj/item/grenade/attack_hand()
 	walk(src, null, null)
 	..()
 	return
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

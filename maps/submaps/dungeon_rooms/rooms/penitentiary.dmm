@@ -25,13 +25,10 @@
 "g" = (
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
-<<<<<<< HEAD
 "h" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "i" = (
 /obj/structure/table/onestar,
 /turf/simulated/floor/tiled/dark/brown_perforated,
@@ -44,18 +41,10 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "l" = (
 /obj/machinery/computer/prisoner{
-=======
-/obj/random/structures/os,
-/turf/simulated/floor/plating/under,
-/area/crawler)
-"l" = (
-/obj/structure/salvageable/console_os{
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/brown_perforated,
@@ -72,13 +61,10 @@
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
 "p" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "q" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -112,20 +98,11 @@
 	},
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"x" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/door/window/southright,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "y" = (
 /obj/structure/bed,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "z" = (
-<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -147,30 +124,6 @@
 /obj/effect/window_lwall_spawn/smartspawn/onestar,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
-=======
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"A" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/door/window/southleft,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"C" = (
-/obj/effect/window_lwall_spawn/smartspawn/onestar,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"M" = (
-/obj/structure/table/onestar,
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/dark/brown_perforated,
-/area/crawler)
-"X" = (
-/obj/random/structures/os,
-/turf/simulated/floor/plating/under,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -201,11 +154,7 @@ d
 r
 w
 u
-<<<<<<< HEAD
 A
-=======
-x
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 a
 "}
@@ -215,11 +164,7 @@ e
 a
 s
 u
-<<<<<<< HEAD
 p
-=======
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -242,29 +187,17 @@ g
 C
 u
 t
-<<<<<<< HEAD
 A
-=======
-x
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 b
 "}
 (7,1,1) = {"
 b
-<<<<<<< HEAD
 h
 m
 C
 u
 p
-=======
-g
-m
-C
-u
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 b
@@ -276,21 +209,13 @@ g
 C
 u
 u
-<<<<<<< HEAD
 B
-=======
-A
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 b
 "}
 (9,1,1) = {"
 a
-<<<<<<< HEAD
 i
-=======
-M
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 a
 t
@@ -305,11 +230,7 @@ a
 a
 s
 u
-<<<<<<< HEAD
 p
-=======
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -321,21 +242,13 @@ n
 u
 u
 u
-<<<<<<< HEAD
 B
-=======
-A
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 a
 "}
 (12,1,1) = {"
 a
-<<<<<<< HEAD
 j
-=======
-X
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 n
 u
 u

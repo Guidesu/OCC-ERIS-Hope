@@ -13,7 +13,6 @@
 	active_power_usage = 400
 	var/make_glasswalls_after_creation = FALSE
 
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_platform
 
 
@@ -22,12 +21,6 @@
 	update_icon()
 
 
-=======
-/obj/machinery/multistructure/bioreactor_part/platform/Initialize(mapload)
-	. = ..()
-	update_icon()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/multistructure/bioreactor_part/platform/Process()
 	if(!MS)
 		use_power(1)
@@ -44,16 +37,9 @@
 					victim.forceMove(MS_bioreactor.misc_output)
 					continue
 				//if our target has hazard protection, apply damage based on the protection percentage.
-<<<<<<< HEAD
 				var/hazard_protection = victim.getarmor(null, ARMOR_BIO)
 				var/damage = CLONE_DAMAGE_PER_TICK - (CLONE_DAMAGE_PER_TICK * (hazard_protection/100))
 				victim.apply_damage(damage, CLONE, used_weapon = "Biological")
-=======
-				var/hazard_protection = victim.getarmor(null, "bio")
-				var/damage = BIOREACTOR_DAMAGE_PER_TICK - (BIOREACTOR_DAMAGE_PER_TICK * (hazard_protection/100))
-				victim.apply_damage(damage, BRUTE, used_weapon = "Biological")
-				victim.adjustOxyLoss(BIOREACTOR_DAMAGE_PER_TICK / 2)	// Snowflake shit, but we need the mob to die within a reasonable time frame
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				if(prob(10))
 					playsound(loc, 'sound/effects/bubbles.ogg', 45, 1)
@@ -103,19 +89,11 @@
 		var/obj/item/stack/material/glass = I
 		var/list/glassless_dirs = get_opened_dirs()
 		if(glass.use(glassless_dirs.len))
-<<<<<<< HEAD
 			to_chat(user, SPAN_NOTICE("[user] you careful placing [I] into [src]'s holders, making glass wall."))
 			if(do_after(user, 3*glassless_dirs.len SECONDS, src))
 				make_windows()
 		else
 			to_chat(user, SPAN_WARNING("Not enough amount of [I]."))
-=======
-			to_chat(user, SPAN_NOTICE("[user] you carefully place [I] into [src]'s holders, making a glass wall."))
-			if(do_after(user, 3*glassless_dirs.len SECONDS, src))
-				make_windows()
-		else
-			to_chat(user, SPAN_WARNING("Not enough [I]."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 
@@ -127,25 +105,18 @@
 			//non robotic limbs will be consumed
 			if(istype(item, /obj/item/organ))
 				var/obj/item/organ/organ = item
-<<<<<<< HEAD
 				if(istype(organ, /obj/item/organ/external) && organ.nature == MODIFICATION_ORGANIC)
-=======
-				if(istype(organ, /obj/item/organ/external) && (organ.nature == MODIFICATION_ORGANIC || organ.nature == MODIFICATION_SUPERIOR))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					continue
 				var/obj/machinery/multistructure/bioreactor_part/platform/neighbor_platform = pick(MS_bioreactor.platforms)
 				organ.forceMove(get_turf(neighbor_platform))
 				organ.removed()
 				continue
-<<<<<<< HEAD
 		if(H && H.mind && H.mind.key && H.stat == DEAD)
 			var/mob/M = key2mob(H.mind.key)
 			to_chat(M, SPAN_NOTICE("Your remains have been dissolved and reused. Your crew respawn time is reduced by 10 minutes."))
 			M << 'sound/effects/magic/blind.ogg'  //Play this sound to a player whenever their respawn time gets reduced
 			M.set_respawn_bonus("CORPSE_DISSOLVING", 10 MINUTES)
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	qdel(object)
 	//now let's add some dirt to the glass
 	for(var/obj/structure/window/reinforced/bioreactor/glass in loc)
@@ -155,11 +126,7 @@
 		playsound(loc, 'sound/effects/bubbles.ogg', 50, 1)
 
 
-<<<<<<< HEAD
 /obj/machinery/multistructure/bioreactor_part/platform/on_update_icon()
-=======
-/obj/machinery/multistructure/bioreactor_part/platform/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/corner_dir = 0		//used at sprite determination, direction point to center of whole bioreactor chamber
 	for(var/direction in cardinal)
 		if(locate(type) in get_step(src, direction))
@@ -229,7 +196,6 @@
 	..()
 	switch(contamination_level)
 		if(1)
-<<<<<<< HEAD
 			to_chat(user, SPAN_NOTICE("There are a few stains on it. Otherwise, [src] looks pretty clean."))
 		if(2)
 			to_chat(user, SPAN_NOTICE("You can see some biomatter on [src]. It should probably be cleaned soon."))
@@ -239,26 +205,11 @@
 			to_chat(user, SPAN_WARNING("You see a large amount of biomatter clinging on \the [src]. It's dirty as hell."))
 		if(5)
 			to_chat(user, SPAN_WARNING("There's enough biomass clinging on to block your view of the inside of [src]."))
-=======
-			to_chat(user, SPAN_NOTICE("There are a few stains on it. Except this, [src] looks pretty clean."))
-		if(2)
-			to_chat(user, SPAN_NOTICE("You see signs of biomatter on this [src]. Better to clean it up."))
-		if(3)
-			to_chat(user, SPAN_WARNING("This [src] has clear signs and stains of biomatter."))
-		if(4)
-			to_chat(user, SPAN_WARNING("You see a high amount of biomatter on \the [src]. It's dirty as hell."))
-		if(5)
-			to_chat(user, SPAN_WARNING("Now it's hard to see what's inside. Better to clean this [src]."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			to_chat(user, SPAN_NOTICE("This [src] is so clean, that you can see your reflection. Is that something green in your teeth?"))
 
 
-<<<<<<< HEAD
 /obj/structure/window/reinforced/bioreactor/on_update_icon()
-=======
-/obj/structure/window/reinforced/bioreactor/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	..()
 	if(contamination_level)
@@ -268,28 +219,17 @@
 		biomass.Turn(-40, 40)
 		biomass.Blend(rgb(0, 0, 0, biomass_alpha))
 		default.Blend(biomass, ICON_MULTIPLY)
-<<<<<<< HEAD
 		add_overlays(default)
-=======
-		add_overlay(default)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/window/reinforced/bioreactor/proc/apply_dirt(var/amount)
 	contamination_level += amount
 	if(contamination_level >= max_contamination_lvl)
 		contamination_level = max_contamination_lvl
-<<<<<<< HEAD
 		opacity = TRUE //Occulus Fix: Eris doesn't understand < or >
 	if(contamination_level <= 0)
 		contamination_level = 0
 		opacity = FALSE//Occulus Fix: Eris doesn't understand < or >
-=======
-		opacity = FALSE
-	if(contamination_level <= 0)
-		contamination_level = 0
-		opacity = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_icon()
 
 
@@ -302,11 +242,7 @@
 		if(user.loc != loc)
 			to_chat(user, SPAN_WARNING("You need to be inside to clean it up."))
 			return
-<<<<<<< HEAD
 		to_chat(user, SPAN_NOTICE("You begin cleaning [src] with [I]..."))
-=======
-		to_chat(user, SPAN_NOTICE("You begin cleaning [src] with your [I]..."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(do_after(user, CLEANING_TIME * contamination_level, src))
 			to_chat(user, SPAN_NOTICE("You clean \the [src]."))
 			toxin_attack(user, 5*contamination_level)
@@ -340,8 +276,4 @@
 		to_chat(victim, SPAN_WARNING("\The [user] is trying to push you over \the [src]!"))
 		if(do_after(user, 3 SECONDS, src))
 			victim.visible_message(SPAN_WARNING("\The [user] pushes \the [victim] over \the [src]!"))
-<<<<<<< HEAD
 			victim.forceMove(get_step(src, user.dir))
-=======
-			victim.forceMove(get_step(src, user.dir))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

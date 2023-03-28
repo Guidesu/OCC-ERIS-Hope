@@ -2,18 +2,10 @@
 	name = "death alarm implant"
 	desc = "An alarm which monitors host vital signs and transmits a radio message upon death."
 	icon_state = "implant_deathalarm"
-<<<<<<< HEAD
 	implant_overlay = "implantstorage_deathalarm"
 	var/mobname = "Will Robinson"
 	origin_tech = list(TECH_BLUESPACE=1, TECH_MAGNET=2, TECH_DATA=4, TECH_BIO=3)
 
-=======
-	var/mobname = "Will Robinson"
-	origin_tech = list(TECH_BLUESPACE=1, TECH_MAGNET=2, TECH_DATA=4, TECH_BIO=3)
-
-	overlay_icon = "deathalarm"
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/death_alarm/get_data()
 	var/data = {"
 		<b>Implant Specifications:</b><BR>
@@ -40,58 +32,21 @@
 /obj/item/implant/death_alarm/activate(var/cause)
 	var/mob/M = wearer
 	var/area/t = get_area(M)
-	var/turf/T = get_turf(src)
-	var/medical = FALSE
 	switch (cause)
 		if("death")
-			var/obj/item/device/radio/headset/radio_caller = new /obj/item/device/radio{channels=list("Medical", "Blackshield", "Marshal")}(src)
-			if(T.z > 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Blackshield")
-			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Marshal")
-			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
-					medical = TRUE
-			if(!medical)
-				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm")
-			radio_caller.autosay("[mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(radio_caller)
+			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
+			a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
+			qdel(a)
 			STOP_PROCESSING(SSobj, src)
 		if ("emp")
-<<<<<<< HEAD
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
 			var/name = prob(50) ? t.name : pick(SSmapping.teleportlocs)
 			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
 			qdel(a)
-=======
-			var/obj/item/device/radio/headset/radio_caller = new /obj/item/device/radio{channels=list("Medical", "Blackshield", "Marshal")}(src)
-			var/name = prob(50) ? t.name : pick(SSmapping.teleportlocs)
-			if(T.z > 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died in [name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Blackshield")
-			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died in [name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Marshal")
-			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
-					medical = TRUE
-			if(!medical)
-				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died in [t.name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm")
-			radio_caller.autosay("[mobname] has died in [name] at coordinates [T.x], [T.y], [T.z]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(radio_caller)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
-			var/obj/item/device/radio/headset/radio_caller = new /obj/item/device/radio{channels=list("Medical", "Blackshield", "Marshal")}(src)
-			if(T.z > 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Blackshield")
-			if(T.z <= 5) //WAH HARDCODE! - SOB EVEN
-				radio_caller.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Marshal")
-			for(wearer in GLOB.player_list)
-				if(wearer.mind.assigned_role in list(JOBS_MEDICAL))
-					medical = TRUE
-			if(!medical)
-				radio_caller.autosay("No Medical Detected Broadcasting to Common: [mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "[mobname]'s Death Alarm")
-
-			radio_caller.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Medical")
-			qdel(radio_caller)
+			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
+			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+			qdel(a)
 			STOP_PROCESSING(SSobj, src)
 
 /obj/item/implant/death_alarm/malfunction(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
@@ -123,7 +78,4 @@
 /obj/item/implanter/death_alarm
 	name = "implanter (death alarm)"
 	implant = /obj/item/implant/death_alarm
-<<<<<<< HEAD
 	spawn_tags = null
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

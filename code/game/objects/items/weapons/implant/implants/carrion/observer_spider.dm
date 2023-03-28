@@ -5,11 +5,7 @@
 	spider_price = 10
 	var/owner_loc
 	var/active = FALSE
-<<<<<<< HEAD
 
-=======
-	ignore_activate_all = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/observing = FALSE
 	var/datum/mind/owner_mind
 	var/list/obj/item/implant/carrion_spider/observer/group
@@ -69,13 +65,8 @@
 		to_chat(usr, SPAN_WARNING("Another spider in proximity prevents anchoring."))
 		return
 	observing = TRUE
-<<<<<<< HEAD
 	start()
 
-=======
-	//start()
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/spider_amount = length(get_local_spiders())
 	to_chat(usr, SPAN_NOTICE("Spider is observing. [spider_amount] spider\s active in the area."))
 	if(spider_amount >= 3 && timer)
@@ -87,11 +78,7 @@
 				if(get_area(src) in C.targets)
 					to_chat(usr, SPAN_NOTICE("Recon contract locked in."))
 					return
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/carrion_spider/observer/proc/get_local_spiders()
 	var/list/local_spiders = list()
 	for(var/obj/item/implant/carrion_spider/observer/S in get_area(src))
@@ -99,11 +86,7 @@
 			continue
 		local_spiders += S
 	return local_spiders
-<<<<<<< HEAD
 
-=======
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/carrion_spider/observer/proc/start()
 	var/list/local_spiders = get_local_spiders()
 	if(local_spiders.len >= 3)
@@ -111,11 +94,7 @@
 		for(var/obj/item/implant/carrion_spider/observer/S in local_spiders)
 			S.timer = timer
 			S.group = local_spiders
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/carrion_spider/observer/proc/reset()
 	if(!timer || !group)
 		return
@@ -128,13 +107,8 @@
 	for(var/obj/item/implant/carrion_spider/observer/S in group)
 		S.timer = null
 		S.group = null
-<<<<<<< HEAD
 	start()
 
-=======
-	//start()
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/carrion_spider/observer/proc/finish()
 	for(var/datum/antag_contract/recon/C in GLOB.various_antag_contracts)
 		if(C.completed)
@@ -144,7 +118,3 @@
 
 	for(var/obj/item/implant/carrion_spider/observer/S in group)
 		S.die()
-<<<<<<< HEAD
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

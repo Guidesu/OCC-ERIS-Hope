@@ -3,7 +3,6 @@
 //Illicit drugs~
 /obj/item/storage/pill_bottle/happy
 	name = "bottle of Happy pills"
-	icon_state = "pill_rainbow"
 	desc = "Highly illegal drug. When you want to see the rainbow."
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 	rarity_value = 25
@@ -19,7 +18,6 @@
 
 /obj/item/storage/pill_bottle/zoom
 	name = "bottle of Zoom pills"
-	icon_state = "pill_black"
 	desc = "Highly illegal drug. Trade brain for speed."
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 	rarity_value = 25
@@ -39,10 +37,7 @@
 	var/list/random_reagent_list = list(list("water" = 15) = 1, list("cleaner" = 15) = 1)
 
 /obj/item/reagent_containers/glass/beaker/vial/random/toxin
-<<<<<<< HEAD
 	rarity_value = 30
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	random_reagent_list = list(
 		list("amatoxin" = 10, "potassium_chloride" = 20)	= 3,
 		list("carpotoxin" = 15)							= 2,
@@ -50,11 +45,7 @@
 		list("zombiepowder" = 10)						= 1)
 
 /obj/item/reagent_containers/glass/beaker/vial/random/Initialize()
-<<<<<<< HEAD
 	. = ..()
-=======
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/list/picked_reagents = pickweight(random_reagent_list)
 	for(var/reagent in picked_reagents)

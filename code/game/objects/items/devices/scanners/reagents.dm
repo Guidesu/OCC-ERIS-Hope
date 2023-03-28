@@ -3,11 +3,8 @@
 	desc = "A hand-held reagent scanner which identifies chemical agents."
 	icon_state = "spectrometer"
 	item_state = "analyzer"
-<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_DIVICE_SCIENCE
 	rarity_value = 10
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 
@@ -17,17 +14,6 @@
 	var/recent_fail = 0
 
 /obj/item/device/scanner/reagent/is_valid_scan_target(obj/O)
-<<<<<<< HEAD
-=======
-	if(!usr.stats?.getPerk(PERK_ADVANCED_MEDICAL) && !usr.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30))
-		to_chat(usr, SPAN_WARNING("Your cognitive understanding isn't high enough to use this!"))
-		return
-
-	// We don't scan clothing or boxes.
-	if(istype(O, /obj/item/clothing) && istype(O, /obj/item/storage))
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return istype(O)
 
 /obj/item/device/scanner/reagent/scan(obj/O, mob/user)
@@ -51,9 +37,6 @@
 	icon_state = "adv_spectrometer"
 	details = 1
 	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2)
-<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_DIVICE
 	rarity_value = 50
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 

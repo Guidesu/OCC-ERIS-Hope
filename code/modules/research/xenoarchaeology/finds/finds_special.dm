@@ -3,11 +3,8 @@
 
 //endless reagents!
 /obj/item/reagent_containers/glass/replenishing
-<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_XENOARCH_ITEM
 	spawn_blacklisted = TRUE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/spawning_id
 
 /obj/item/reagent_containers/glass/replenishing/New()

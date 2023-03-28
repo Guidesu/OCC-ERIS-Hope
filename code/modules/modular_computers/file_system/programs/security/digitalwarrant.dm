@@ -19,7 +19,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 	name = "Warrant Assistant"
 	var/datum/computer_file/data/warrant/activewarrant
 
-/datum/nano_module/digitalwarrant/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/digitalwarrant/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	if(activewarrant)
@@ -27,11 +27,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 		data["warrantjob"] = activewarrant.fields["jobwarrant"]
 		data["warrantcharges"] = activewarrant.fields["charges"]
 		data["warrantauth"] = activewarrant.fields["auth"]
-<<<<<<< HEAD
 		//data["warrantidauth"] = activewarrant.fields["idauth"]
-=======
-		// data["warrantidauth"] = activewarrant.fields["idauth"]
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		data["type"] = activewarrant.fields["arrestsearch"]
 	else
 		var/list/arrestwarrants = list()
@@ -112,11 +108,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 			W.fields["namewarrant"] = "Unknown"
 			W.fields["jobwarrant"] = "N/A"
 			W.fields["auth"] = "Unauthorized"
-<<<<<<< HEAD
 			//W.fields["idauth"] = "Unauthorized"
-=======
-			// W.fields["idauth"] = "Unauthorized"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			W.fields["access"] = list()
 			if(href_list["addwarrant"] == "arrest")
 				W.fields["charges"] = "No charges present"
@@ -178,11 +170,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 
 	if(href_list["editwarrantcharges"])
 		. = 1
-<<<<<<< HEAD
 		var/new_charges = sanitize(input("Please input charges", "Charges", activewarrant.fields["charges"]) as null|text)
-=======
-		var/new_charges = sanitize(input("Please input charges", "Charges", activewarrant.fields["charges"]) as text|null)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(CanInteract(user, GLOB.default_state))
 			if (!new_charges || !activewarrant)
 				return
@@ -194,11 +182,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 			return
 		activewarrant.fields["auth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
 
-<<<<<<< HEAD
 	/*if(href_list["editwarrantidauth"])
-=======
-	/* if(href_list["editwarrantidauth"])
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		. = 1
 		if(!activewarrant)
 			return
@@ -209,10 +193,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 			to_chat(user, "Authentication error: Unable to locate ID with appropriate access to allow this operation.")
 			return
 		*/
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		// only works if they are in the crew records with a valid job
 		/*
 		var/datum/computer_file/report/crew_record/warrant_subject
@@ -232,11 +213,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 		// warrants can never grant command access
 		warrant_access.Remove(get_region_accesses(ACCESS_REGION_COMMAND))
 		*/
-<<<<<<< HEAD
 		//activewarrant.fields["idauth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
-=======
-		// activewarrant.fields["idauth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//activewarrant.fields["access"] = warrant_access
 
 	if(href_list["back"])

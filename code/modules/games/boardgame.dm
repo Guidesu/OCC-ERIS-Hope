@@ -9,7 +9,6 @@
 	var/board = list()
 	var/selected = -1
 
-<<<<<<< HEAD
 /obj/item/board/New()
 	..()
 	var i
@@ -17,20 +16,6 @@
 		new /obj/item/checker(src.loc)
 		new /obj/item/checker/red(src.loc)
 
-=======
-/obj/item/storage/pill_bottle/chechker
-	name = "bag for checkers"
-	desc = "It's a small bag with checkers inside."
-	icon = 'icons/obj/dice.dmi'
-	icon_state = "dicebag"
-
-/obj/item/storage/pill_bottle/chechker/populate_contents()
-	for(var/black = 1 to 16)
-		new /obj/item/checker(src)
-	for(var/red = 1 to 16)
-		new /obj/item/checker/red(src)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/board/examine(mob/user, var/distance = -1)
 	if(in_range(user,src))
 		user.set_machine(src)
@@ -182,43 +167,13 @@ obj/item/board/attackby(obj/item/I as obj, mob/user as mob)
 			board_icons -= null
 	src.updateDialog()
 
-<<<<<<< HEAD
 /obj/item/checker/
-=======
-/obj/item/checker
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "black checker"
 	desc = "It is plastic and shiny."
 	icon = 'icons/obj/pieces.dmi'
-	icon_state = "checker"
+	icon_state = "checker_black"
 	w_class = ITEM_SIZE_TINY
-	var/colour_team = "_black"
-	var/king = FALSE
 
 /obj/item/checker/red
 	name = "red checker"
-	colour_team = "_red"
-
-/obj/item/checker/New()
-	..()
-	update_icon()
-
-/obj/item/checker/attack_self(var/mob/user as mob)
-	user.visible_message("[user] flips \the [src]!")
-	if(king)
-		king = FALSE
-	else
-		king = TRUE
-	update_icon()
-
-/obj/item/checker/update_icon()
-	..()
-
-	if(king)
-		king = FALSE
-		icon_state = "checker[colour_team]_king"
-	else
-		king = TRUE
-		icon_state = "checker[colour_team]"
-
-
+	icon_state = "checker_red"

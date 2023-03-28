@@ -1,19 +1,14 @@
 /obj/structure/computerframe
 	name = "computer frame"
-	desc = "A mechanical frame for a terminal. Looks incomplete."
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
 	density = TRUE
 	anchored = FALSE
 	matter = list(MATERIAL_STEEL = 5)
 	var/state = 0
-<<<<<<< HEAD
 	var/obj/item/electronics/circuitboard/circuit
 	spawn_tags = SPAWN_TAG_MACHINE_FRAME
 
-=======
-	var/obj/item/circuitboard/circuit = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //	weight = 1.0E8
 
 /obj/structure/computerframe/verb/rotate()
@@ -40,16 +35,10 @@
 		rotate()
 
 /obj/structure/computerframe/get_matter()
-<<<<<<< HEAD
 	var/list/matter = ..()
 	. = matter.Copy()
 	if(state >= 4)
 		LAZYAPLUS(., MATERIAL_GLASS, 2)
-=======
-	. = ..()
-	if(state >= 4)
-		.[MATERIAL_GLASS] = 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/computerframe/attackby(obj/item/I, mob/user)
 	var/list/usable_qualities = list()
@@ -70,21 +59,13 @@
 			if(state == 0)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You wrench the frame into place."))
-<<<<<<< HEAD
 					anchored = TRUE
-=======
-					anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					state = 1
 					return
 			if(state == 1)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You unfasten the frame."))
-<<<<<<< HEAD
 					anchored = FALSE
-=======
-					anchored = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					state = 0
 					return
 			return
@@ -153,13 +134,8 @@
 
 	switch(state)
 		if(1)
-<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/circuitboard) && !circuit)
 				var/obj/item/electronics/circuitboard/B = I
-=======
-			if(istype(I, /obj/item/circuitboard) && !circuit)
-				var/obj/item/circuitboard/B = I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(B.board_type == "computer")
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
@@ -183,7 +159,7 @@
 						state = 3
 						icon_state = "3"
 		if(3)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MATERIAL_GLASS)
+			if(istype(I, /obj/item/stack/material) && I.get_material_name() == "glass")
 				var/obj/item/stack/G = I
 				if (G.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))

@@ -33,17 +33,10 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 
 	//Set values here for starting points
 	var/list/points = list(
-<<<<<<< HEAD
 	EVENT_LEVEL_MUNDANE = 0, //Mundane
 	EVENT_LEVEL_MODERATE = 0, //Moderate
 	EVENT_LEVEL_MAJOR = 0, //Major
 	EVENT_LEVEL_ROLESET = 0 //Roleset
-=======
-	EVENT_LEVEL_MUNDANE = 10, //Mundane
-	EVENT_LEVEL_MODERATE = 10, //Moderate
-	EVENT_LEVEL_MAJOR = 5, //Major
-	EVENT_LEVEL_ROLESET = -999 //Roleset
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 	//Lists of events. These are built dynamically at runtime
@@ -65,7 +58,7 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 	var/variance = 0.15 //15% How much point gains are allowed to vary up or down per tick. This helps to keep event triggering times unpredictable
 	var/repetition_multiplier = 1.85 //Weights of events are multiplied by this value after they happen, to reduce the chance of multiple instances in short time
 
-	var/event_schedule_delay = 45 MINUTES //Upped form 15 as are rounds are about 3x longer then eris
+	var/event_schedule_delay = 5 MINUTES
 	//Once selected, events are not fired immediately, but are scheduled for some random time in the near future
 	//This mostly helps to prevent them syncing up and announcements overlapping each other
 	//The maximum time between scheduling and firing an event
@@ -101,7 +94,6 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 		tcol = "black"
 
 	if(announce)
-<<<<<<< HEAD
 		if(!readyplayer) //SYZ edit
 			to_chat(world, "<b><font color='[tcol]'>No players are ready to start the round.</font></b>")//SYZ edit
 		else if(!engineer && (!command && !config.sr_bypass_command_requirement))		//Eclipse edit: config-based command requirement
@@ -113,17 +105,6 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 
 	if(GLOB.player_list.len <= config.sr_lowpop_threshold && readyplayer)		//Eclipse edit: Config-based lowpop thresholds. Also SYZ edit to add readyplayer check
 		to_chat(world, "<i>But there's less than [config.sr_lowpop_threshold] players, so this requirement will be ignored.</i>")
-=======
-		if(!engineer && !command)
-			to_chat(world, "<b><font color='[tcol]'>A Council Member and Guild Member are required to start the round.</font></b>")
-		else if(!engineer)
-			to_chat(world, "<b><font color='[tcol]'>A Guild Member is required to start the round.</font></b>")
-		else if(!command)
-			to_chat(world, "<b><font color='[tcol]'>A Council Member is required to start the round.</font></b>")
-
-	if(GLOB.player_list.len <= 15) //15 players is low pop do to lurkers
-		to_chat(world, "<i>But there's less than 16 players, so this requirement will be ignored.</i>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 
 	return FALSE
@@ -206,11 +187,7 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 			for(var/datum/objective/O in A.objectives)
 				O.update_completion()
 
-<<<<<<< HEAD
 	for(var/datum/faction/F in GLOB.current_factions)
-=======
-	for(var/datum/antag_faction/F in GLOB.current_factions)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/datum/objective/O in F.objectives)
 			O.update_completion()
 
@@ -248,28 +225,11 @@ GLOBAL_DATUM(storyteller, /datum/storyteller)
 		for (var/a in points)
 			points[a] += delta
 
-//When getting the storyteller system working for us, we don't want regenerating points to prevent late game spams. Essentially the round starts difficult and gets easier
-//over time to prevent "always PvE" and allow for some relaxation and RP. Commenting out prior code in case we need it for reference later. -Kaz
 /datum/storyteller/proc/handle_points()
-<<<<<<< HEAD
 	points[EVENT_LEVEL_MUNDANE] += 1 * (gain_mult_mundane) * (RAND_DECIMAL(1-variance, 1+variance))
 	points[EVENT_LEVEL_MODERATE] += 1 * (gain_mult_moderate) * (RAND_DECIMAL(1-variance, 1+variance))
 	points[EVENT_LEVEL_MAJOR] += 1 * (gain_mult_major) * (RAND_DECIMAL(1-variance, 1+variance))
 	points[EVENT_LEVEL_ROLESET] += 1 * (gain_mult_roleset) * (RAND_DECIMAL(1-variance, 1+variance))
-=======
-	if(GLOB.chaos_level <= 0)
-		points[EVENT_LEVEL_MUNDANE] += 1 * (gain_mult_mundane) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_MODERATE] += 1 * (gain_mult_moderate) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_MAJOR] += 1 * (gain_mult_major) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_ROLESET] += 0 //1 * (gain_mult_roleset) * (RAND_DECIMAL(1-variance, 1+variance))
-	else
-		points[EVENT_LEVEL_MUNDANE] += GLOB.chaos_level * (gain_mult_mundane) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_MODERATE] += GLOB.chaos_level * (gain_mult_moderate) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_MAJOR] += GLOB.chaos_level * (gain_mult_major) * (RAND_DECIMAL(1-variance, 1+variance))
-		points[EVENT_LEVEL_ROLESET] += GLOB.chaos_level * 0 //(gain_mult_roleset) * (RAND_DECIMAL(1-variance, 1+variance))
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	check_thresholds()
 
 /datum/storyteller/proc/check_thresholds()

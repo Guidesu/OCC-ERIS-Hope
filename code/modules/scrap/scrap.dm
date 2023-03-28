@@ -4,14 +4,13 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 
 /obj/structure/scrap_spawner
 	name = "scrap pile"
-	desc = "A pile of industrial debris."
-	appearance_flags = TILE_BOUND | DEFAULT_APPEARANCE_FLAGS
+	desc = "Pile of industrial debris. It could use a shovel and pair of hands in gloves."
+	appearance_flags = TILE_BOUND
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
 	icon_state = "small"
 	icon = 'icons/obj/structures/scrap/base.dmi'
-<<<<<<< HEAD
 	//Rarity_values
 	rarity_value = 7.5
 	spawn_frequency = 10
@@ -25,18 +24,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	var/list/loot_tags = list(
 		SPAWN_JUNK, SPAWN_CLEANABLE,
 		SPAWN_MATERIAL_JUNK
-=======
-	var/obj/item/storage/internal/updating/loot	//the visible loot
-	var/loot_min = 6
-	var/loot_max = 12
-	var/list/loot_list = list(
-		/obj/random/material,
-		/obj/item/stack/rods/random,
-		/obj/item/material/shard,
-		/obj/random/gun_parts,
-		/obj/random/junk/nondense = 2,
-		/obj/random/pack/rare = 0.4
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	var/list/rare_loot = list(SPAWN_RARE_ITEM)
 	var/list/restricted_tags = list(SPAWN_ORGAN_ORGANIC)
@@ -49,15 +36,9 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	var/obj/big_item
 	var/list/ways = list("pokes around in", "searches", "scours", "digs through", "rummages through", "goes through","picks through")
 	var/beacon = FALSE // If this junk pile is getting pulled by the junk beacon or not.
-<<<<<<< HEAD
 	var/rare_item_chance = 50
 	var/rare_item = FALSE
 	var/prob_make_old = 80
-=======
-	//sanity_damage = 0.1	// no fuck you that's dumb
-	var/rare_item_chance = 33
-	var/rare_item = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/scrap_spawner/proc/make_cube()
 	try_make_loot() //don't have a cube without materials
@@ -120,20 +101,11 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	if(prob(big_item_chance))
 		var/obj/randomcatcher/CATCH = new /obj/randomcatcher(src)
 		if(beacon)
-<<<<<<< HEAD
 			big_item = CATCH.get_item(/obj/spawner/pack/junk_machine/beacon)
 		else
 			big_item = CATCH.get_item(/obj/spawner/pack/junk_machine)
 		big_item.forceMove(src)
 		if(prob(prob_make_old))
-=======
-			big_item = CATCH.get_item(/obj/random/pack/junk_machine/beacon)
-		else
-			big_item = CATCH.get_item(/obj/random/pack/junk_machine)
-		if(big_item) //Sanity check in case big_item is a null, as it may sometimes do.
-			big_item.forceMove(src)
-		if(prob(66))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			big_item.make_old()
 		qdel(CATCH)
 
@@ -189,11 +161,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 			var/obj/item/reagent_containers/food/snacks/S = loot
 			S.junk_food = TRUE
 			if(prob(20))
-<<<<<<< HEAD
 				S.reagents.add_reagent("toxin", rand(2, 15))
-=======
-				S.reagents.add_reagent("toxin", rand(2, 5))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	loot = new(src)
 	loot.max_w_class = ITEM_SIZE_HUGE
@@ -287,15 +255,9 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 			for(var/i in 1 to num)
 				var/image/I = image(parts_icon,pick(icon_states(parts_icon)))
 				I.color = pick("#996633", "#663300", "#666666", "")
-<<<<<<< HEAD
 				base_icon.overlays.Add(randomize_image(I))
 			GLOB.scrap_base_cache["[icontype][icon_state][ID]"] = base_icon
 		add_overlays(GLOB.scrap_base_cache["[icontype][icon_state][ID]"])
-=======
-				base_icon.add_overlay(randomize_image(I))
-			GLOB.scrap_base_cache["[icontype][icon_state][ID]"] = base_icon
-		add_overlay(GLOB.scrap_base_cache["[icontype][icon_state][ID]"])
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(loot_generated)
 		underlays.Cut()
 		for(var/obj/O in loot.contents)
@@ -316,11 +278,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		var/mob/living/carbon/human/victim = user
 		if(victim.species.flags & NO_MINOR_CUT)
 			return FALSE
-<<<<<<< HEAD
 		if(victim.gloves)
-=======
-		if(victim.gloves && prob(95))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 		if(victim.wear_suit && istype(victim.wear_suit, /obj/item/clothing/suit/space)) //Eclipse edit: if getting cut through the spacesuit doesn't somehow depressurize it, then it should not cut you at all
 			return
@@ -347,13 +305,8 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	playsound(src, "rummage", 50, 1)
 	.=..()
 
-<<<<<<< HEAD
 /obj/structure/scrap_spawner/attack_generic(mob/user)
 	if(isliving(user) && loot)
-=======
-/obj/structure/scrap/attack_generic(mob/user)
-	if (isliving(user) && loot)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		loot.open(user)
 	.=..()
 
@@ -361,11 +314,8 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 /obj/structure/scrap_spawner/proc/dig_out_lump(newloc = loc)
 	if(dig_amount > 0)
 		dig_amount--
-<<<<<<< HEAD
 		for (var/a in matter)
 			matter[a] *=RAND_DECIMAL(0.6, 0.8)//remove some amount of matter from the pile
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//new /obj/item/scrap_lump(src) //Todo: uncomment this once purposes and machinery for scrap are implemented
 		return TRUE
 
@@ -394,23 +344,12 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	else if(rare_item && prob(rare_item_chance))
 		var/obj/O = pickweight(RANDOM_RARE_ITEM - /obj/item/stash_spawner)
 		O = new O(get_turf(src))
-<<<<<<< HEAD
 		visible_message(SPAN_NOTICE("\A hidden [O] is uncovered from beneath the [src]!"))
 	qdel(src)
 
 /obj/structure/scrap_spawner/attackby(obj/item/W, mob/living/carbon/human/user)
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	//Occulus Edit Start
-=======
-		visible_message("<span class='notice'><span style='color:orange'>\A rare [O.name] is found beneath the [src]!</span>")
-	else if(rare_item && prob(50))
-		new /obj/item/stack/sheet/refined_scrap/random(src.loc)
-		visible_message("<span class='notice'><span style='color:orange'>A pile of refined scrap is found beneath the [src]!</span>")
-	qdel(src)
-
-/obj/structure/scrap/attackby(obj/item/W, mob/living/carbon/human/user)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/usable_qualities = list(QUALITY_SHOVELING, QUALITY_HAMMERING)
 	var/tool_type = W.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
@@ -429,15 +368,9 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 			if(W.use_tool(user,src, WORKTIME_EXTREMELY_LONG, QUALITY_HAMMERING, FAILCHANCE_HARD, required_stat = STAT_ROB, forced_sound = "rummage"))
 				user.visible_message(SPAN_NOTICE("[user] compacts \the [src] into a solid mass!"))
 				make_cube()
-<<<<<<< HEAD
 	//Occulus Edit End
 /obj/structure/scrap_spawner/large
-=======
-
-/obj/structure/scrap/large
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "large scrap pile"
-	desc = "A large pile of industrial debris."
 	opacity = TRUE
 	density = TRUE
 	icon_state = "big"
@@ -452,32 +385,21 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 /obj/structure/scrap_spawner/medical
 	icontype = "medical"
 	name = "medical refuse pile"
-	desc = "A pile of medical refuse. Watch out for sharp instruments."
+	desc = "Pile of medical refuse. They sure don't cut expenses on these. "
 	parts_icon = 'icons/obj/structures/scrap/medical_trash.dmi'
-<<<<<<< HEAD
 	rarity_value = 25
 	loot_tags = list(
 		SPAWN_MEDICAL,
 		SPAWN_SURGERY_TOOL,
 		SPAWN_JUNK, SPAWN_CLEANABLE,
 		SPAWN_MATERIAL_JUNK
-=======
-	loot_list = list(
-		/obj/random/medical = 4,
-		/obj/random/surgery_tool,
-		/obj/item/stack/rods/random,
-		/obj/item/material/shard,
-		/obj/random/junk/nondense,
-		/obj/random/pack/rare = 0.3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/structure/scrap_spawner/vehicle
 	icontype = "vehicle"
 	name = "industrial debris pile"
-	desc = "A pile of used machinery. Some of it is stained with fuel."
+	desc = "Pile of used machinery. You could use tools from this to build something."
 	parts_icon = 'icons/obj/structures/scrap/vehicle.dmi'
-<<<<<<< HEAD
 	rarity_value = 16.66
 	loot_tags = list(
 		SPAWN_DESIGN,
@@ -495,28 +417,13 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		SPAWN_JUNK = 3, SPAWN_CLEANABLE = 3,
 		SPAWN_ORE,SPAWN_MATERIAL_JUNK = 3,
 		SPAWN_PART_ARMOR = 2
-=======
-	loot_list = list(
-		/obj/random/pack/tech_loot = 3,
-		/obj/random/pouch,
-		/obj/item/stack/material/steel/random,
-		/obj/item/stack/material/plasteel/random = 0.6,
-		/obj/item/stack/rods/random,
-		/obj/item/material/shard,
-		/obj/random/junk/nondense,
-		/obj/random/material_ore,
-		/obj/random/pack/rare = 0.3,
-		/obj/random/tool_upgrade = 1,
-		/obj/random/mecha_equipment = 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/structure/scrap_spawner/food
 	icontype = "food"
 	name = "food trash pile"
-	desc = "A pile of expired food and drink. Some of it smells funny."
+	desc = "Pile of thrown away food. Someone sure have lots of spare food while children on Mars are starving."
 	parts_icon = 'icons/obj/structures/scrap/food_trash.dmi'
-<<<<<<< HEAD
 	rarity_value = 5.77
 	loot_tags = list(
 		SPAWN_JUNKFOOD,
@@ -524,25 +431,15 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		SPAWN_JUNK, SPAWN_CLEANABLE,
 		SPAWN_MATERIAL_JUNK,
 		SPAWN_PART_ARMOR = 0.1
-=======
-	loot_list = list(
-		/obj/random/junkfood = 5,
-		/obj/random/junkfood,
-		/obj/random/booze,
-		/obj/item/material/shard,
-		/obj/random/junk/nondense,
-		/obj/random/pack/rare = 0.3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/structure/scrap_spawner/guns
 	icontype = "guns"
-	name = "armaments refuse pile"
-	desc = "A pile of military supply refuse. Who thought it was a clever idea to throw that out?"
+	name = "gun refuse pile"
+	desc = "Pile of military supply refuse. Who thought it was a clever idea to throw that out?"
 	parts_icon = 'icons/obj/structures/scrap/guns_trash.dmi'
 	loot_min = 7
 	loot_max = 10
-<<<<<<< HEAD
 	rarity_value = 90
 	loot_tags = list(
 		SPAWN_GUN = 0.3,
@@ -556,27 +453,13 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		SPAWN_TOY_WEAPON,
 		SPAWN_JUNK = 2.5, SPAWN_CLEANABLE = 2.5,
 		SPAWN_MATERIAL_JUNK = 2.5
-=======
-	loot_list = list(
-		/obj/random/pack/gun_loot = 8,
-		/obj/random/powercell,
-		/obj/random/mecha_equipment = 2,
-		/obj/item/material/shard,
-		/obj/item/stack/material/steel/random,
-		/obj/item/stack/material/plasteel/random = 0.6,
-		/obj/random/junk/nondense,
-		/obj/random/pack/rare = 0.3,
-		/obj/random/gun_parts/frames = 1,
-		/obj/random/gun_parts = 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /obj/structure/scrap_spawner/science
 	icontype = "science"
 	name = "scientific trash pile"
-	desc = "A pile of technical refuse. Some of it still glows and hums faintly."
+	desc = "Pile of refuse from research department."
 	parts_icon = 'icons/obj/structures/scrap/science.dmi'
-<<<<<<< HEAD
 	rarity_value = 25
 	loot_tags = list(
 		SPAWN_DESIGN,
@@ -605,77 +488,37 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		SPAWN_PART_ARMOR = 1
 		)
 	rare_loot = list(SPAWN_ODDITY, SPAWN_RARE_ITEM)
-=======
-	loot_list = list(
-		/obj/random/pack/tech_loot = 4,
-		/obj/random/powercell,
-		/obj/random/circuitboard,
-		/obj/random/science,
-		/obj/random/material_ore,
-		/obj/random/common_oddities = 0.5,
-		/obj/random/pack/rare,//No weight on this, rare loot is pretty likely to appear in scientific scrap
-		/obj/random/tool_upgrade,
-		/obj/random/mecha_equipment)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/scrap_spawner/cloth
 	icontype = "cloth"
 	name = "cloth pile"
-	desc = "A pile of ruined and discarded clothing."
+	desc = "Pile of second hand clothing for charity."
 	parts_icon = 'icons/obj/structures/scrap/cloth.dmi'
-<<<<<<< HEAD
 	rarity_value = 10
 	loot_tags = list(SPAWN_CLOTHING, SPAWN_PART_ARMOR = 0.3)
 	restricted_tags = list(SPAWN_VOID_SUIT)
 	rare_loot = list(SPAWN_RARE_ITEM,SPAWN_VOID_SUIT)
-=======
-	loot_list = list(/obj/random/pack/cloth,
-		/obj/random/pack/rare = 0.2,
-		/obj/random/gun_parts/frames = 0.2,
-		/obj/random/gun_parts = 0.5,
-		/obj/item/storage/wallet = 0.2,
-		/obj/item/storage/wallet/random = 0.1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/scrap_spawner/poor
 	icontype = "poor"
 	name = "mixed rubbish"
-	desc = "A pile of mixed rubbish. Useless and rotten, mostly."
+	desc = "Pile of mixed rubbish. Useless and rotten, mostly."
 	parts_icon = 'icons/obj/structures/scrap/all_mixed.dmi'
-<<<<<<< HEAD
 	rarity_value = 2.5
 	loot_tags = list(
 		SPAWN_ITEM,
 		SPAWN_JUNK = 2, SPAWN_CLEANABLE,
 		SPAWN_ORE,
 		SPAWN_MATERIAL_JUNK = 2
-=======
-	loot_list = list(
-		/obj/random/lowkeyrandom = 5,
-		/obj/random/junk/nondense = 4,
-		/obj/item/stack/rods/random = 3,
-		/obj/random/common_oddities = 0.5,
-		/obj/random/cigarettes = 0.3,
-		/obj/random/material_ore,
-		/obj/item/material/shard,
-		/obj/random/pack/rare = 0.3
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	restricted_tags = list(SPAWN_MATERIAL_RESOURCES, SPAWN_ORGAN_ORGANIC)
 	rare_loot = list(SPAWN_RARE_ITEM, SPAWN_ODDITY)
 
 /obj/structure/scrap_spawner/poor/large
 	name = "large mixed rubbish"
-<<<<<<< HEAD
 	icon_state = "big"
 	opacity = TRUE
 	density = TRUE
-=======
-	desc = "A large pile of mixed rubbish. Useless and rotten, mostly."
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	loot_min = 11
 	loot_max = 18
 	base_min = 9
@@ -685,7 +528,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	rarity_value = 2.7
 	spawn_tags = SPAWN_TAG_LARGE_SCRAP
 
-<<<<<<< HEAD
 /obj/structure/scrap_spawner/poor/large/beacon
 	beacon = TRUE
 	rarity_value = 2.7
@@ -770,18 +612,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	icon_state = "big"
 	opacity = TRUE
 	density = TRUE
-=======
-/obj/structure/scrap/poor/large/beacon
-	beacon = TRUE
-	big_item_chance = 45
-
-/obj/structure/scrap/vehicle/large
-	name = "large industrial debris pile"
-	desc = "A large pile of used machinery. Some of it is stained with fuel."
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	loot_min = 11
 	loot_max = 18
 	base_min = 9
@@ -791,7 +621,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	rarity_value = 21.42
 	spawn_tags = SPAWN_TAG_LARGE_SCRAP
 
-<<<<<<< HEAD
 /obj/structure/scrap_spawner/science/large/beacon
 	beacon = TRUE
 	rarity_value = 21.42
@@ -802,86 +631,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	icon_state = "big"
 	opacity = TRUE
 	density = TRUE
-=======
-/obj/structure/scrap/vehicle/large/beacon
-	beacon = TRUE
-	big_item_chance = 60
-
-/obj/structure/scrap/food/large
-	name = "large food trash pile"
-	desc = "A large pile of expired food and drink. Some of it smells funny."
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
-	loot_min = 13
-	loot_max = 20
-	base_min = 9
-	base_max = 14
-	base_spread = 16
-	big_item_chance = 50
-
-/obj/structure/scrap/food/large/beacon
-	beacon = TRUE
-	big_item_chance = 20
-
-/obj/structure/scrap/medical/large
-	name = "large medical refuse pile"
-	desc = "A large pile of medical refuse. Watch out for sharp instruments. "
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
-	loot_min = 7
-	loot_max = 18
-	base_min = 9
-	base_max = 14
-	base_spread = 16
-	big_item_chance = 60
-
-/obj/structure/scrap/medical/large/beacon
-	beacon = TRUE
-	big_item_chance = 30
-
-/obj/structure/scrap/guns/large
-	name = "large armaments refuse pile"
-	desc = "A large pile of military supply refuse. Who thought it was a clever idea to throw that out?"
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
-	loot_min = 10
-	loot_max = 18
-	base_min = 9
-	base_max = 14
-	base_spread = 16
-	big_item_chance = 50
-
-/obj/structure/scrap/guns/large/beacon
-	beacon = TRUE
-	big_item_chance = 25
-
-/obj/structure/scrap/science/large
-	name = "large scientific trash pile"
-	desc = "A large pile of technical refuse. Some of it still glows and hums faintly."
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
-	loot_min = 11
-	loot_max = 18
-	base_min = 9
-	base_max = 14
-	base_spread = 16
-	big_item_chance = 80
-
-/obj/structure/scrap/science/large/beacon
-	beacon = TRUE
-	big_item_chance = 60
-
-/obj/structure/scrap/cloth/large
-	name = "large cloth pile"
-	desc = "A large pile of ruined and discarded clothing."
-	opacity = TRUE
-	density = TRUE
-	icon_state = "big"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	loot_min = 7
 	loot_max = 16
 	base_min = 9
@@ -891,20 +640,12 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	rarity_value = 11.53
 	spawn_tags = SPAWN_TAG_LARGE_SCRAP
 
-<<<<<<< HEAD
 /obj/structure/scrap_spawner/cloth/large/beacon
 	beacon = TRUE
 	rarity_value = 11.53
 	spawn_tags = SPAWN_TAG_BEACON_SCRAP
 
 /obj/structure/scrap_spawner/poor/structure
-=======
-/obj/structure/scrap/cloth/large/beacon
-	beacon = TRUE
-	big_item_chance = 35
-
-/obj/structure/scrap/poor/structure
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "large mixed rubbish"
 	icon_state = "med"
 	opacity = TRUE
@@ -914,7 +655,6 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	dig_amount = 3
 	base_min = 3
 	base_max = 6
-<<<<<<< HEAD
 	big_item_chance = 100
 	rarity_value = 3.33
 	spawn_tags = SPAWN_TAG_LARGE_SCRAP
@@ -923,13 +663,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	beacon = TRUE
 	rarity_value = 3.33
 	spawn_tags = SPAWN_TAG_BEACON_SCRAP
-=======
-	big_item_chance = 80
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/obj/structure/scrap/poor/structure/beacon
-	beacon = TRUE
-	big_item_chance = 65
 
 /obj/structure/scrap_spawner/poor/structure/on_update_icon(rebuild_base=FALSE) //make big trash icon for this
 	..()

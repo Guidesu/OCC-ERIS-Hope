@@ -1,11 +1,7 @@
 SUBSYSTEM_DEF(sun)
 	name = "Sun"
 	wait = 1 MINUTES
-<<<<<<< HEAD
 	flags = SS_NO_TICK_CHECK|SS_NO_INIT
-=======
-	flags = SS_BACKGROUND | SS_NO_INIT
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/angle
 	var/dx

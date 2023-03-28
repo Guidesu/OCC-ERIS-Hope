@@ -9,13 +9,8 @@
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
-<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
-=======
-	density = 1
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 
 	var/capacity = 5e6 // maximum charge
@@ -54,14 +49,6 @@
 	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
 	var/obj/machinery/power/terminal/terminal = null
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
-	var/skill_check = STAT_LEVEL_ADEPT
-
-/obj/machinery/power/smes/dummysimple
-	name = "simple power storage unit"
-	desc = "A overly simplified high-capacity superconducting magnetic energy storage (SMES) unit. \
-	It goes as far as to have big red arrows pointing to the switches, \
-	and indentations on the controles to allow even the blind or unable to read to set this SMES.."
-	skill_check = -30 //So legit anyone unless exstream stat reduction
 
 /obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -121,7 +108,6 @@
 		return 1
 	return 0
 
-<<<<<<< HEAD
 /obj/machinery/power/smes/on_update_icon()
 	cut_overlays()
 	if(stat & BROKEN)	return
@@ -145,31 +131,6 @@
 		add_overlays(image('icons/obj/power.dmi', "smes-op1"))
 	else
 		add_overlays(image('icons/obj/power.dmi', "smes-op0"))
-=======
-/obj/machinery/power/smes/update_icon()
-	cut_overlays()
-	if(stat & BROKEN)	return
-
-	add_overlay(image('icons/obj/power.dmi', "smes-op[outputting]"))
-
-	if(inputting == 2)
-		add_overlay(image('icons/obj/power.dmi', "smes-oc2"))
-	else if (inputting == 1)
-		add_overlay(image('icons/obj/power.dmi', "smes-oc1"))
-	else if (input_attempt)
-		add_overlay(image('icons/obj/power.dmi', "smes-oc0"))
-
-	var/clevel = chargedisplay()
-	if(clevel)
-		add_overlay(image('icons/obj/power.dmi', "smes-og[clevel]"))
-
-	if(outputting == 2)
-		add_overlay(image('icons/obj/power.dmi', "smes-op2"))
-	else if (outputting == 1)
-		add_overlay(image('icons/obj/power.dmi', "smes-op1"))
-	else
-		add_overlay(image('icons/obj/power.dmi', "smes-op0"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
@@ -196,14 +157,13 @@
 	if(last_disp != chargedisplay() || last_chrg != inputting || last_onln != outputting)
 		update_icon()
 
-	//store machine state to see if we need to update the icon over-lays
+	//store machine state to see if we need to update the icon overlays
 	last_disp = chargedisplay()
 	last_chrg = inputting
 	last_onln = outputting
 
 	//inputting
 	if(input_attempt && (!input_pulsed && !input_cut))
-		input_available = terminal.surplus()
 		target_load = min((capacity-charge)/SMESRATE, input_level)	// Amount we will request from the powernet.
 		if(terminal && terminal.powernet)
 			terminal.powernet.smes_demand += target_load
@@ -288,100 +248,10 @@
 
 /obj/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(!check_user(user)) //To try and make this more guild only
-		return
-	ui_interact(user) //REROUTED TO TGUI
+	ui_interact(user)
 
-/obj/machinery/power/smes/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "Smes", name)
-		ui.open()
-
-/obj/machinery/power/smes/ui_data()
-	var/list/data = list(
-		"capacity" = capacity,
-		"capacityPercent" = round(100*charge/capacity, 0.1),
-		"charge" = charge,
-		"inputAttempt" = input_attempt,
-		"inputting" = inputting,
-		"inputLevel" = input_level,
-		//"inputLevel_text" = display_power(input_level),
-		"inputLevelMax" = input_level_max,
-		"inputAvailable" = input_available,
-		"outputAttempt" = output_attempt,
-		"outputting" = outputting,
-		"outputLevel" = output_level,
-		//"outputLevel_text" = display_power(output_level),
-		"outputLevelMax" = output_level_max,
-		"outputUsed" = output_used,
-	)
-	return data
-
-/obj/machinery/power/smes/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("tryinput")
-			input_attempt = !input_attempt
-			log_smes(usr)
-			update_icon()
-			. = TRUE
-		if("tryoutput")
-			output_attempt = !output_attempt
-			log_smes(usr)
-			update_icon()
-			. = TRUE
-		if("input")
-			var/target = params["target"]
-			var/adjust = text2num(params["adjust"])
-			if(target == "min")
-				target = 0
-				. = TRUE
-			else if(target == "max")
-				target = input_level_max
-				. = TRUE
-			else if(adjust)
-				target = input_level + adjust
-				. = TRUE
-			else if(text2num(target) != null)
-				target = text2num(target)
-				. = TRUE
-			if(.)
-				input_level = clamp(target, 0, input_level_max)
-				log_smes(usr)
-		if("output")
-			var/target = params["target"]
-			var/adjust = text2num(params["adjust"])
-			if(target == "min")
-				target = 0
-				. = TRUE
-			else if(target == "max")
-				target = output_level_max
-				. = TRUE
-			else if(adjust)
-				target = output_level + adjust
-				. = TRUE
-			else if(text2num(target) != null)
-				target = text2num(target)
-				. = TRUE
-			if(.)
-				output_level = clamp(target, 0, output_level_max)
-				log_smes(usr)
-
-/obj/machinery/power/smes/proc/log_smes(mob/user)
-	investigate_log("Input/Output: [input_level]/[output_level] | Charge: [charge] | Output-mode: [output_attempt?"ON":"OFF"] | Input-mode: [input_attempt?"AUTO":"OFF"] by [user ? key_name(user) : "outside forces"]", "singulo")
-
-/obj/machinery/power/smes/proc/check_user(mob/user)
-	if(user.stats?.getPerk(PERK_HANDYMAN) || user.stat_check(STAT_MEC, skill_check))
-		return TRUE
-	to_chat(user, SPAN_NOTICE("You don't know how to make the [src] work, you lack the training or mechanical skill."))
-	return FALSE
 
 /obj/machinery/power/smes/attackby(var/obj/item/I, var/mob/user)
-	if(!check_user(user)) //To try and make this more guild only
-		return
 	var/list/usable_qualities = list(QUALITY_SCREW_DRIVING,QUALITY_WIRE_CUTTING,QUALITY_PRYING,QUALITY_PULSING)
 
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
@@ -439,8 +309,8 @@
 		return 0
 
 	return tool_type || 1
-/*
-/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+
+/obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 
 	if(stat & BROKEN)
 		return
@@ -473,6 +343,9 @@
 		ui.open()
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
+
+/obj/machinery/power/smes/proc/Percentage()
+	return round(100.0*charge/capacity, 0.1)
 
 /obj/machinery/power/smes/Topic(href, href_list)
 	if(..())
@@ -512,9 +385,6 @@
 	playsound(loc, 'sound/machines/machine_switch.ogg', 100, 1)
 
 	return 1
-*/
-/obj/machinery/power/smes/proc/Percentage()
-	return round(100.0*charge/capacity, 0.1)
 
 /obj/machinery/power/smes/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, duration)
@@ -529,11 +399,7 @@
 			smoke.set_up(3, 0, loc)
 			smoke.attach(src)
 			smoke.start()
-<<<<<<< HEAD
 			explosion(loc, -1, 0, 1, 3, 1, 0)
-=======
-			explosion(src.loc, 0, 0, 1, 3, 1, 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			qdel(src)
 			return
 		else if(prob(15)) //Power drain
@@ -622,7 +488,6 @@
 	capacity = 5000000
 	output_level = 250000
 	should_be_mapped = 1
-	skill_check = 300 //Only mken, or guild can use this I guess
 
 /obj/machinery/power/smes/magical/Process()
 	charge = 5000000

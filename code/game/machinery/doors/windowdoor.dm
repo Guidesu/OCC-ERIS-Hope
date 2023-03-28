@@ -9,17 +9,13 @@
 	var/base_state = "left"
 	resistance = RESISTANCE_FRAGILE
 	hitsound = 'sound/effects/Glasshit.ogg'
-	maxHealth = 100 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	maxhealth = 100 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	health = 100
 	visible = 0.0
 	use_power = NO_POWER_USE
 	flags = ON_BORDER
 	opacity = 0
-<<<<<<< HEAD
 	var/obj/item/electronics/airlock/electronics
-=======
-	var/obj/item/airlock_electronics/electronics = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
 
@@ -35,15 +31,9 @@
 	new /obj/item/material/shard(src.loc)
 	var/obj/item/stack/cable_coil/CC = new /obj/item/stack/cable_coil(src.loc)
 	CC.amount = 2
-<<<<<<< HEAD
 	var/obj/item/electronics/airlock/ae
 	if(!electronics)
 		ae = new/obj/item/electronics/airlock( src.loc )
-=======
-	var/obj/item/airlock_electronics/ae
-	if(!electronics)
-		ae = new/obj/item/airlock_electronics( src.loc )
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!src.req_access)
 			src.check_access()
 		if(src.req_access.len)
@@ -97,17 +87,14 @@
 		close()
 	return
 
-/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0, direction)
+/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
-	if (isnull(direction))
-		direction = get_dir(loc, target)
-	if(direction == dir) //Make sure looking at appropriate border
-		if(air_group)
-			return 0
+	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
+		if(air_group) return 0
 		return !density
 	else
-		return TRUE
+		return 1
 
 /obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
@@ -182,10 +169,7 @@
 			usr.visible_message("[usr.name] knocks on the [src.name].",
 								"You knock on the [src.name].",
 								"You hear a knocking sound.")
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/door/window/emag_act(var/remaining_charges, var/mob/user)
 	if (density && operable())
@@ -202,17 +186,6 @@
 	..()
 
 /obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
-<<<<<<< HEAD
-=======
-	var/list/usable_qualities = list()
-
-
-	if (health < maxHealth)
-		usable_qualities.Add(QUALITY_SEALING)
-
-	if (operating == -1)
-		usable_qualities.Add(QUALITY_PRYING)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -229,30 +202,24 @@
 			visible_message(SPAN_WARNING("The glass door was sliced open by [user]!"))
 		return 1
 
-<<<<<<< HEAD
 	//If it's emagged, crowbar can pry electronics out.
 	if (src.operating == -1 && (QUALITY_PRYING in I.tool_qualities))
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 			to_chat(user, SPAN_NOTICE("You removed the windoor electronics!"))
-=======
-	if (usr.a_intent != I_HURT)
-		var/tool_type = I.get_tool_type(user, usable_qualities, src)
-		switch(tool_type)
-			if(QUALITY_SEALING)
-				user.visible_message("[user] starts sealing up cracks in [src] with the [I]", "You start sealing up cracks in [src] with the [I]")
-				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, STAT_MEC))
-					to_chat(user, SPAN_NOTICE("The [src] looks pretty solid now!"))
-					health = maxHealth
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-			//If it's emagged, crowbar can pry electronics out.
-			if (QUALITY_PRYING)
-				user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
-				if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
-					to_chat(user, SPAN_NOTICE("You removed the windoor electronics!"))
+			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
+			if (istype(src, /obj/machinery/door/window/brigdoor))
+				wa.secure = "secure_"
+				wa.name = "Secure Wired Windoor Assembly"
+			else
+				wa.name = "Wired Windoor Assembly"
+			if (src.base_state == "right" || src.base_state == "rightsecure")
+				wa.facing = "r"
+			wa.set_dir(src.dir)
+			wa.state = "02"
+			wa.update_icon()
 
-<<<<<<< HEAD
 			var/obj/item/electronics/airlock/ae
 			if(!electronics)
 				ae = new/obj/item/electronics/airlock( src.loc )
@@ -268,39 +235,10 @@
 				electronics = null
 				ae.loc = src.loc
 			ae.SetIconState("door_electronics_smoked")
-=======
-					var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
-					if (istype(src, /obj/machinery/door/window/brigdoor))
-						wa.secure = "secure_"
-						wa.name = "Secure Wired Windoor Assembly"
-					else
-						wa.name = "Wired Windoor Assembly"
-					if (src.base_state == "right" || src.base_state == "rightsecure")
-						wa.facing = "r"
-					wa.set_dir(src.dir)
-					wa.state = "02"
-					wa.update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-					var/obj/item/airlock_electronics/ae
-					if(!electronics)
-						ae = new/obj/item/airlock_electronics( src.loc )
-						if(!src.req_access)
-							src.check_access()
-						if(src.req_access.len)
-							ae.conf_access = src.req_access
-						else if (src.req_one_access.len)
-							ae.conf_access = src.req_one_access
-							ae.one_access = 1
-					else
-						ae = electronics
-						electronics = null
-						ae.loc = src.loc
-					ae.icon_state = "door_electronics_smoked"
-
-					operating = 0
-					shatter(src)
-					return
+			operating = 0
+			shatter(src)
+			return
 
 	//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
 	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
@@ -325,17 +263,11 @@
 			close()
 		return TRUE
 
-<<<<<<< HEAD
 
 	if (density)
 		FLICK(text("[]deny", src.base_state), src)
 	return FALSE
 
-=======
-	if (density)
-		flick(text("[]deny", src.base_state), src)
-	return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/door/window/brigdoor
 	name = "secure door"
@@ -343,13 +275,8 @@
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	req_access = list(access_security)
-<<<<<<< HEAD
 	var/id
 	maxhealth = 200
-=======
-	var/id = null
-	maxHealth = 200
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	health = 200 //Stronger doors for prison (regular window door health is 100)
 
 

@@ -274,16 +274,12 @@
 	// Minor cuts have max_bleeding_stage set to the stage that bears the wound type's name.
 	// The major cut types have the max_bleeding_stage set to the clot stage (which is accordingly given the "blood soaked" descriptor).
 	max_bleeding_stage = 3
-	stages = list("ugly ripped cut" = 20, "ripped cut" = 10, "cut" = 5, "healing cut" = 2, "healing scab" = 0) // OCCULUS EDIT: was 'fresh skin' for 0
+	stages = list("ugly ripped cut" = 20, "ripped cut" = 10, "cut" = 5, "healing cut" = 2, "small scab" = 0)
 	damage_type = CUT
 
 /datum/wound/cut/deep
 	max_bleeding_stage = 3
-<<<<<<< HEAD
 	stages = list("ugly deep ripped cut" = 25, "deep ripped cut" = 20, "deep cut" = 15, "clotted cut" = 8, "scab" = 2, "healing scab" = 0) // OCCULUS EDIT: was 'fresh skin' for 0
-=======
-	stages = list("ugly deep ripped cut" = 25, "deep ripped cut" = 20, "deep cut" = 15, "clotted cut" = 8, "large scab" = 2, "healing large scab" = 0) // OCCULUS EDIT: was 'fresh skin' for 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	damage_type = CUT
 
 /datum/wound/cut/flesh
@@ -376,10 +372,6 @@ datum/wound/puncture/massive
 	stages = list("carbonised area" = 50, "healing carbonised area" = 20, "massive burn scar" = 0)
 	damage_type = BURN
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /** EXTERNAL ORGAN LOSS **/
 /datum/wound/lost_limb
 
@@ -391,7 +383,7 @@ datum/wound/puncture/massive
 		damage_amt /= 2
 
 	switch(losstype)
-		if(DISMEMBER_METHOD_EDGE, DISMEMBER_METHOD_BLUNT)
+		if(DROPLIMB_EDGE, DROPLIMB_BLUNT)
 			damage_type = CUT
 			max_bleeding_stage = 3 //clotted stump and above can bleed.
 			stages = list(
@@ -400,7 +392,7 @@ datum/wound/puncture/massive
 				"clotted stump" = damage_amt*0.5,
 				"scarred stump" = 0
 				)
-		if(DISMEMBER_METHOD_BURN)
+		if(DROPLIMB_BURN)
 			damage_type = BURN
 			stages = list(
 				"ripped charred stump" = damage_amt*1.3,

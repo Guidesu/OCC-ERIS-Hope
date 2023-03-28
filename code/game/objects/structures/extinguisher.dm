@@ -3,31 +3,15 @@
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "extinguisher_closed"
-<<<<<<< HEAD
 	anchored = TRUE
 	density = FALSE
-=======
-	anchored = 1
-	density = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/extinguisher/has_extinguisher
 	var/opened = 0
 
 /obj/structure/extinguisher_cabinet/New()
 	..()
-<<<<<<< HEAD
 	has_extinguisher = new/obj/item/extinguisher(src)
 	update_icon()
-=======
-	if(prob(80))
-		has_extinguisher = new/obj/item/extinguisher(src)
-	else if(prob(20))
-		has_extinguisher = new/obj/item/extinguisher/mini(src)
-	else
-		has_extinguisher = null //OSHA would flip out
-	update_icon()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/O, mob/user)
 	if(isrobot(user))
@@ -44,6 +28,7 @@
 	else
 		opened = !opened
 	update_icon()
+
 
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user)
 	if(isrobot(user))
@@ -76,7 +61,6 @@
 		opened = !opened
 	update_icon()
 
-<<<<<<< HEAD
 /obj/structure/extinguisher_cabinet/on_update_icon()
 	if(!opened)
 		if(istype(has_extinguisher, /obj/item/extinguisher/mini))
@@ -85,42 +69,6 @@
 			icon_state = "extinguisher_closed_full"
 		else
 			icon_state = "extinguisher_closed"
-=======
-/obj/structure/extinguisher_cabinet/proc/toggle_open(mob/user)
-	if(isrobot(user))
-		return
-	if(user.incapacitated())
-		to_chat(user, SPAN_WARNING("You can't do that right now!"))
-		return
-	if(!in_range(src, user))
-		return
-	else
-		playsound(src.loc, 'sound/machines/Custom_extin.ogg', 50, 0)
-		opened = !opened
-		update_icon()
-
-/obj/structure/extinguisher_cabinet/AltClick(mob/living/user)
-	src.toggle_open(user)
-
-/obj/structure/extinguisher_cabinet/verb/toggle(mob/living/usr)
-	set name = "Open/Close"
-	set category = "Object"
-	set src in oview(1)
-	src.toggle_open(usr)
-
-/obj/structure/extinguisher_cabinet/update_icon()
-	if(!opened)
-		if(has_extinguisher)
-			if(istype(has_extinguisher, /obj/item/extinguisher/mini))
-				icon_state = "extinguisher_closed_mini"
-				sanity_damage = -0.1
-			else
-				icon_state = "extinguisher_closed_full"
-				sanity_damage = -0.2
-		else
-			icon_state = "extinguisher_closed"
-			sanity_damage = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	if(has_extinguisher)
 		if(istype(has_extinguisher, /obj/item/extinguisher/mini))
@@ -129,4 +77,3 @@
 			icon_state = "extinguisher_full"
 	else
 		icon_state = "extinguisher_empty"
-		sanity_damage = 0.1

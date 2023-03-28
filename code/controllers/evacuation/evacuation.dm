@@ -86,11 +86,7 @@ var/datum/evacuation_controller/evacuation_controller
 
 	if(emergency_evacuation)
 		for(var/area/A in GLOB.map_areas)
-<<<<<<< HEAD
 			if(istype(A, /area/eris/hallway))
-=======
-			if(istype(A, /area/nadezhda/hallway))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				A.readyalert()
 		if(!skip_announce)
 			evacuation_controller.evac_called.Announce(replacetext(GLOB.maps_data.emergency_shuttle_called_message, "%ETA%", "[round(evacuation_controller.get_eta()/60)] minute\s."))
@@ -118,11 +114,7 @@ var/datum/evacuation_controller/evacuation_controller
 	if(emergency_evacuation)
 		evac_recalled.Announce(GLOB.maps_data.emergency_shuttle_recall_message)
 		for(var/area/A in GLOB.map_areas)
-<<<<<<< HEAD
 			if(istype(A, /area/eris/hallway))
-=======
-			if(istype(A, /area/nadezhda/hallway))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				A.readyreset()
 		emergency_evacuation = 0
 	else

@@ -1,4 +1,4 @@
-// System for a terminal emulator.
+// System for a shitty terminal emulator.
 /datum/terminal
 	var/name = "Terminal"
 	var/datum/browser/panel
@@ -72,6 +72,7 @@
 		if(length(history) > history_max_length)
 			history.Cut(1, length(history) - history_max_length + 1)
 		update_content()
+		panel.update()
 		return 1
 
 /datum/terminal/proc/parse(text, mob/user)

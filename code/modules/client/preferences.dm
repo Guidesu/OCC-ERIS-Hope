@@ -15,8 +15,6 @@
 	var/custom_species = null
 
 	var/save_load_cooldown
-			//Playtime recorded per department.
-	var/list/playtime = list()
 
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
@@ -36,18 +34,12 @@
 	var/savefile/loaded_character
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
-	var/categoriesChanged = "All"
 
 /datum/preferences/New(client/C)
 	if(istype(C))
 		client = C
 		client_ckey = C.ckey
-		for(var/departmentplaytime in typesof(/datum/department) - /datum/department)
-			var/datum/department/departmentplaytimevar = new departmentplaytime()
-			if(departmentplaytimevar.id)
-				playtime += departmentplaytimevar.id
-				playtime[departmentplaytimevar.id] = 0
-		SScharacter_setup.preferences_datums[client_ckey] = src
+		SScharacter_setup.preferences_datums += src
 		if(SScharacter_setup.initialized)
 			setup()
 		else
@@ -103,13 +95,8 @@
 		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
 		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
 		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a> - "
-<<<<<<< HEAD
 		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "		//Eclipse edit.
 		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a> "				//Eclipse edit.
-=======
-		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a>"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	else
 		dat += "Please create an account to save your preferences."
@@ -170,19 +157,11 @@
 			return FALSE
 		load_character(SAVE_RESET)
 		sanitize_preferences()
-<<<<<<< HEAD
 	else if(href_list["copy"])			//Eclipse edit.
 		if(!IsGuestKey(usr.key))
 			open_copy_dialog(usr)
 			return 1
 	else if(href_list["overwrite"])		//Eclipse edit.
-=======
-	else if(href_list["copy"])
-		if(!IsGuestKey(usr.key))
-			open_copy_dialog(usr)
-			return 1
-	else if(href_list["overwrite"])
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		overwrite_character(text2num(href_list["overwrite"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
@@ -194,104 +173,15 @@
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, is_preview_copy = FALSE)
 	// Sanitizing rather than saving as someone might still be editing when copy_to occurs.
-
-	if(is_preview_copy && categoriesChanged != "All")
-
-		character.set_species(species) //2
-		character.set_form(species_form) //2
-		character.rebuild_organs(src) //7-8
-
-		switch(categoriesChanged)
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-			if("Basic")
-				categoriesChanged=null
-				if(be_random_name)   //1
-					real_name = random_name(gender,species)
-				if(config.humans_need_surnames)
-					var/firstspace = findtext(real_name, " ")
-					var/name_length = length(real_name)
-					if(!firstspace)	//we need a surname
-						real_name += " [pick(GLOB.last_names)]"
-					else if(firstspace == name_length)
-						real_name += "[pick(GLOB.last_names)]"
-				character.fully_replace_character_name(newname = real_name) //1
-				character.gender = gender //1
-				character.identifying_gender = gender_identity //1
-				character.age = age //1
-				character.b_type = b_type //1
-				character.species_aan = species_aan //1
-				character.species_color_key = species_color //1
-				character.species_name = custom_species //1
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-			if("Body")
-				categoriesChanged=null
-				character.h_style = h_style //2
-				character.f_style = f_style //2
-				character.eyes_color = eyes_color //2
-				character.hair_color = hair_color //2
-				character.facial_color = facial_color //2
-				character.skin_color = skin_color //2
-				character.s_tone = s_tone //2
-				character.grad_color = grad_color //2
-				character.grad_style = grad_style //2
-				character.update_hair(0) //2
-				character.force_update_limbs()//2
-	/////////////////////////////////////////////////////////////////////////////////////////////////
-			if("Equipment")
-				categoriesChanged=null
-				QDEL_LIST(character.worn_underwear) //4
-				character.worn_underwear = list() //4
-				for(var/underwear_category_name in all_underwear) //4
-					var/datum/category_group/underwear/underwear_category = GLOB.underwear.categories_by_name[underwear_category_name]
-					if(underwear_category)
-						var/underwear_item_name = all_underwear[underwear_category_name]
-						var/datum/category_item/underwear/UWD = underwear_category.items_by_name[underwear_item_name]
-						var/metadata = all_underwear_metadata[underwear_category_name]
-						var/obj/item/underwear/UW = UWD.create_underwear(character, metadata, character.form.underwear_icon)
-						if(UW)
-							UW.ForceEquipUnderwear(character, FALSE)
-					else
-						all_underwear -= underwear_category_name
-
-				character.update_underwear(0) //4
-				character.backpack_setup = new(backpack, backpack_metadata["[backpack]"]) //4
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-			if ("Furry",)
-				categoriesChanged=null
-				character.blood_color = blood_color //6
-				character.ears = GLOB.ears_styles_list[ears_style] //6
-				character.ears_colors = ears_colors
-				character.tail = GLOB.tail_styles_list[tail_style] //6
-				character.tail_colors = tail_colors
-				character.wings = GLOB.wings_styles_list[wings_style] //6
-				character.wings_colors = wings_colors
-				character.body_markings = body_markings //6
-			if ("Augmentation",)
-				categoriesChanged=null
-				character.update_implants(0) //7-8
-
-		character.update_body(0)
-		categoriesChanged = null
-		return
-
-
 	player_setup.sanitize_setup()
-	character.set_species(species) //2
-	character.set_form(species_form) //2
-	character.rebuild_organs(src) //7-8
+	character.set_species(species)
 
-<<<<<<< HEAD
 // // // BEGIN ECLIPSE EDITS // // //
 // Refactor full name system into family name system.
 	if(be_random_name)
 		family_name = random_last_name(gender, species)
 		real_name = random_first_name(gender,species) + " " + family_name
 
-=======
-
-	if(be_random_name)   //1
-		real_name = random_name(gender,species)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(config.humans_need_surnames)
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
@@ -299,7 +189,6 @@
 			real_name += " [pick(GLOB.last_names)]"
 		else if(firstspace == name_length)
 			real_name += "[pick(GLOB.last_names)]"
-<<<<<<< HEAD
 	character.fully_replace_character_name(newname = real_name)
 	character.family_name = family_name
 
@@ -308,30 +197,10 @@
 	character.gender = gender
 	character.age = age
 	character.b_type = b_type
-=======
-	character.fully_replace_character_name(newname = real_name) //1
-	character.gender = gender //1
-	character.identifying_gender = gender_identity //1
-	character.age = age //1
-	character.b_type = b_type //1
-	character.species_aan = species_aan //1
-	character.species_color_key = species_color //1
-	character.species_name = custom_species //1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	character.h_style = h_style //2
-	character.f_style = f_style //2
-	character.eyes_color = eyes_color //2
-	character.hair_color = hair_color //2
-	character.facial_color = facial_color //2
-	character.skin_color = skin_color //2
-	character.s_tone = s_tone //2
-	character.grad_color = grad_color //2
-	character.grad_style = grad_style //2
-	character.update_hair(0) //2
-	character.force_update_limbs()//2
+	character.h_style = h_style
+	character.f_style = f_style
 
-<<<<<<< HEAD
 	// Build mob body from prefs
 	character.rebuild_organs(src)
 
@@ -384,27 +253,17 @@
 	character.worn_underwear = list()
 
 	for(var/underwear_category_name in all_underwear)
-=======
-	QDEL_LIST(character.worn_underwear) //4
-	character.worn_underwear = list() //4
-	for(var/underwear_category_name in all_underwear) //4
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/datum/category_group/underwear/underwear_category = GLOB.underwear.categories_by_name[underwear_category_name]
 		if(underwear_category)
 			var/underwear_item_name = all_underwear[underwear_category_name]
 			var/datum/category_item/underwear/UWD = underwear_category.items_by_name[underwear_item_name]
 			var/metadata = all_underwear_metadata[underwear_category_name]
-<<<<<<< HEAD
 			var/obj/item/underwear/UW = UWD.create_underwear(character, metadata, 'icons/inventory/underwear/mob.dmi')
-=======
-			var/obj/item/underwear/UW = UWD.create_underwear(character, metadata, character.form.underwear_icon)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(UW)
 				UW.ForceEquipUnderwear(character, FALSE)
 		else
 			all_underwear -= underwear_category_name
 
-<<<<<<< HEAD
 	for(var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
 		O.markings.Cut()
@@ -424,28 +283,17 @@
 	character.force_update_limbs()
 	character.update_mutations(0)
 	character.update_implants(0)
-=======
-	character.update_underwear(0) //4
-	character.backpack_setup = new(backpack, backpack_metadata["[backpack]"]) //4
 
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-
-	character.blood_color = blood_color //6
-	character.ears = GLOB.ears_styles_list[ears_style] //6
-	character.ears_colors = ears_colors
-	character.tail = GLOB.tail_styles_list[tail_style] //6
-	character.tail_colors = tail_colors
-	character.wings = GLOB.wings_styles_list[wings_style] //6
-	character.wings_colors = wings_colors
-	character.body_markings = body_markings //6
-
-	character.update_implants(0) //7-8
 
 	character.update_body(0)
+	character.update_underwear(0)
 
-	character.update_mutations(0)
+	character.update_hair(0)
 
 	character.update_icons()
+
+	if(is_preview_copy)
+		return
 
 	for(var/lang in alternate_languages)
 		character.add_language(lang)
@@ -458,18 +306,10 @@
 		character.nutrition = rand(250, 450)
 
 	for(var/options_name in setup_options)
-<<<<<<< HEAD
 		get_option(options_name).apply(character)
 
 	character.post_prefinit()
-=======
-		if(!get_option(options_name))
-			continue
-		get_option(options_name).apply(character)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	character.size_multiplier = size_multiplier
-	character.scale_effect = scale_effect
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat  = list()
@@ -500,30 +340,19 @@
 		panel = null
 	user << browse(null, "window=saves")
 
-<<<<<<< HEAD
 	try_refresh_lobby(user)
 
 /datum/preferences/proc/open_copy_dialog(mob/user)		//Eclipse edit.
-=======
-/datum/preferences/proc/open_copy_dialog(mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/dat = "<body>"
 	dat += "<tt><center>"
 
 	var/savefile/S = new /savefile(path)
 	if(S)
 		dat += "<b>Select a character slot to overwrite</b><br>"
-<<<<<<< HEAD
 		dat += "<b>Once selected, you need to SAVE to confirm</b><hr>"
 		var/name
 		for(var/i=1, i<= config.character_slots, i++)
 			S.cd = GLOB.maps_data.character_load_path(S, i)
-=======
-		dat += "<b>You will then need to save to confirm</b><hr>"
-		var/name
-		for(var/i=1, i<= config.character_slots, i++)
-			S.cd = "/character[i]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"
 			if(i==default_slot)
@@ -535,12 +364,9 @@
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
-<<<<<<< HEAD
 
 // Syzygy edit to fix an runtime casually caused by an Eclipse edit
 /datum/preferences/proc/try_refresh_lobby(mob/user = client.mob)
 	if (user && istype(user, /mob/new_player))
 		var/mob/new_player/np = user
 		np.new_player_panel_proc()			//Eclipse edit. Automatic refresh for current character.
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -11,11 +11,7 @@
 				2=Network Access
 	*/
 
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -42,11 +38,7 @@
 
 	if(!allowed(user) && (wires & 1))
 		to_chat(user, SPAN_WARNING("Access Denied"))
-<<<<<<< HEAD
 		FLICK("doorctrl-denied",src)
-=======
-		flick("doorctrl-denied",src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	use_power(5)
@@ -234,11 +226,7 @@
 
 	return
 
-<<<<<<< HEAD
 /obj/machinery/button/remote/driver/on_update_icon()
-=======
-/obj/machinery/button/remote/driver/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(active)
 		icon_state = "launcher1"
 	else if(stat & (NOPOWER))

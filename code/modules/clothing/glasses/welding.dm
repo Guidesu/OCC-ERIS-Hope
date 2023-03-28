@@ -6,9 +6,8 @@
 	action_button_name = "Flip Welding Goggles"
 	rarity_value = 10
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 2)
-	flash_protection = FLASH_PROTECTION_MODERATE
+	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
-	obscuration = HEAVY_OBSCURATION
 
 /obj/item/clothing/glasses/welding/attack_self()
 	adjust()
@@ -27,10 +26,6 @@
 			icon_state = initial(icon_state)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
-<<<<<<< HEAD
-=======
-			obscuration = initial(obscuration)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(usr, "You flip \the [src] down to protect your eyes.")
 		else
 			src.active = !src.active
@@ -39,10 +34,6 @@
 			icon_state = "[initial(icon_state)]up"
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
-<<<<<<< HEAD
-=======
-			obscuration = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(usr, "You push \the [src] up out of your face.")
 		update_wear_icon()
 		usr.update_action_buttons()
@@ -53,10 +44,5 @@
 	icon_state = "rwelding-g"
 	item_state = "rwelding-g"
 	prescription = TRUE
-<<<<<<< HEAD
 	tint = TINT_MODERATE
 	rarity_value = 100
-=======
-	tint = TINT_NONE
-	obscuration = MEDIUM_OBSCURATION
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

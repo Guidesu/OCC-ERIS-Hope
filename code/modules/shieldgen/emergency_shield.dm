@@ -1,6 +1,6 @@
 
 /obj/machinery/shield
-	name = "emergency energy shield"
+	name = "Emergency energy shield"
 	desc = "An energy shield used to contain hull breaches."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-old"
@@ -9,11 +9,9 @@
 	anchored = TRUE
 	unacidable = 1
 	var/const/max_health = 200
-	health = max_health //The shield can only take so much beating (prevents perma-prisons)
+	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
 	var/shield_idle_power = 1500		//how much power we use when just being sustained.
-
-	atmos_canpass = CANPASS_NEVER
 
 /obj/machinery/shield/malfai
 	name = "emergency forcefield"
@@ -59,15 +57,13 @@
 	..()
 
 /obj/machinery/shield/bullet_act(var/obj/item/projectile/Proj)
-	if (!(Proj.testing))
-		health -= Proj.get_structure_damage()
+	health -= Proj.get_structure_damage()
 	..()
-	if (!(Proj.testing))
-		check_failure()
-		set_opacity(TRUE)
-		spawn(20)
-			if(src)
-				set_opacity(FALSE)
+	check_failure()
+	set_opacity(TRUE)
+	spawn(20)
+		if(src)
+			set_opacity(FALSE)
 
 /obj/machinery/shield/ex_act(severity)
 	switch(severity)
@@ -118,7 +114,7 @@
 	..()
 	return
 /obj/machinery/shieldgen
-	name = "emergency shield projector"
+	name = "Emergency shield projector"
 	desc = "Used to seal minor hull breaches."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "shieldoff"
@@ -127,7 +123,7 @@
 	anchored = FALSE
 	req_access = list(access_engine)
 	var/const/max_health = 100
-	health = max_health
+	var/health = max_health
 	var/active = 0
 	var/malfunction = 0 //Malfunction causes parts of the shield to slowly dissapate
 	var/list/deployed_shields = list()

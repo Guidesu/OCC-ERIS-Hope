@@ -4,17 +4,10 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "bspacerelay"
 
-<<<<<<< HEAD
 	anchored = TRUE
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	var/on = TRUE
-=======
-	anchored = 1
-	density = 1
-	use_power = IDLE_POWER_USE
-	var/on = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	idle_power_usage = 15000
 	active_power_usage = 15000

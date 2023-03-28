@@ -23,55 +23,31 @@
 	var/static_light = 0
 	var/static_environ
 
-<<<<<<< HEAD
-=======
-/**
- * Called when an area loads
- */
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/New()
+	icon_state = ""
+	layer = AREA_LAYER
 	uid = ++global_uid
 	all_areas += src
 	if (ship_area)
 		ship_areas[src] = TRUE //Adds ourselves to the list of all ship areas
 
-	// Some atoms would like to use power in Initialize()
 	if(!requires_power)
 		power_light = 0
 		power_equip = 0
 		power_environ = 0
 
 	sanity = new(src)
-<<<<<<< HEAD
 
 	..()
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	return ..()
-
-/*
- * Initalize this area
- *
- * returns INITIALIZE_HINT_LATELOAD
- */
 /area/Initialize()
-	icon_state = ""
-
+	. = ..()
 	if(!requires_power || !apc)
 		power_light = 0
 		power_equip = 0
 		power_environ = 0
+	power_change()		// all machines set to current power level, also updates lighting icon
 
-	. = ..()
-
-	return INITIALIZE_HINT_LATELOAD
-
-/**
- * Sets machine power levels in the area
- */
-/area/LateInitialize()
-	power_change() // all machines set to current power level, also updates icon
 
 /area/proc/get_cameras()
 	var/list/cameras = list()
@@ -171,11 +147,7 @@
 /area/proc/updateicon()
 
 	///////weather
-<<<<<<< HEAD
 
-=======
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/weather_icon
 	for(var/V in SSweather.processing)
 		var/datum/weather/W = V
@@ -184,11 +156,7 @@
 			weather_icon = TRUE
 	if(!weather_icon)
 		icon_state = null
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	////////////weather
 
 	if ((fire || eject || party || atmosalm == 2) && (!requires_power||power_environ) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
@@ -308,11 +276,7 @@ var/list/mob/living/forced_ambiance_list = new
 
 	L.lastarea = newarea
 	play_ambience(L)
-<<<<<<< HEAD
 	do_area_blurb(L) // !!!!OCCULUS EDIT!!!! This handles narration logic.
-=======
-	do_area_blurb(L) // This handles narration logic.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /area/proc/play_ambience(var/mob/living/L)
     // Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
@@ -386,11 +350,7 @@ var/list/mob/living/forced_ambiance_list = new
 		var/mob/living/carbon/human/H = mob
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 			return
-<<<<<<< HEAD
 		if(H.stats.getPerk(PERK_ASS_OF_CONCRETE))
-=======
-		if(H.stats.getPerk(PERK_ASS_OF_CONCRETE) || H.stats.getPerk(PERK_BRAWN))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 		if(MOVING_QUICKLY(H))
 			H.AdjustStunned(2)

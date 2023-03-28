@@ -135,7 +135,7 @@
 	var/icon
 	var/name
 
-	// These values are primarily for station alarms and status displays, and which light colors and over-lays to use
+	// These values are primarily for station alarms and status displays, and which light colors and overlays to use
 	var/light_max_bright = 0.5
 	var/light_inner_range = 0.1
 	var/light_outer_range = 1
@@ -208,11 +208,7 @@
 
 	overlay_status_display = "status_display_green"
 
-<<<<<<< HEAD
 	down_description = "All threats to the ship have passed. Crew are to return to normal duties."
-=======
-	down_description = "All threats to the colony have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/security_level/default/code_blue
 	name = "code blue"
@@ -228,13 +224,8 @@
 
 	overlay_status_display = "status_display_blue"
 
-<<<<<<< HEAD
 	up_description = "The ship has received reliable information about possible danger to it's safety. Crew are to prepare general quarters and see their respective command member for details."
 	down_description = "The immediate threat has passed. Crew are to remain on alert and see their respective command member for details."
-=======
-	up_description = "The colony has received reliable information about possible hostile activity in the colony. Security staff may have weapons visible, random searches are permitted."
-	down_description = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/security_level/default/code_red
 	name = "code red"
@@ -250,13 +241,8 @@
 
 	overlay_status_display = "status_display_red"
 
-<<<<<<< HEAD
 	up_description = "There is an immediate serious threat to the ship. Privacy rights as suspended and crew are to listen to all command orders."
 	down_description = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the ship. Privacy rights are still suspended and crew are to listen to all command orders."
-=======
-	up_description = "There is an immediate serious threat to the colony. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	down_description = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the colony. Security may have weapons unholstered at all times, random searches are allowed and advised."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/security_level/default/code_delta
 	name = "code delta"
@@ -275,9 +261,5 @@
 	var/static/datum/announcement/priority/security/security_announcement_delta = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/siren.ogg'))
 
 /decl/security_level/default/code_delta/switching_up_to()
-<<<<<<< HEAD
 	security_announcement_delta.Announce("The self-destruct mechanism has been engaged. All crew are ordered to obey all instructions given by command. These orders can be enforced by lethal force. This is not a drill.", "Attention! Delta security level reached!")
-=======
-	security_announcement_delta.Announce("The threat of colony destruction has been declared. All colonist are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.", "Attention! Delta security level reached!")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	notify_station()

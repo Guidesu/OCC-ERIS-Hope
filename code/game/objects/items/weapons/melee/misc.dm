@@ -1,11 +1,6 @@
 /obj/item/melee/toolbox_maul
-<<<<<<< HEAD
 	name = "toolmop the maul"
-=======
-	name = "toolbox maul"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Toolbox tied to mop. A weapon of choice."
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hm_hammer"
 	item_state = "hm_hammer"
 	force = WEAPON_FORCE_PAINFUL
@@ -13,12 +8,6 @@
 	w_class = ITEM_SIZE_BULKY
 	origin_tech = list(TECH_COMBAT = 3)
 	attack_verb = list("robusted", "slammed")
-<<<<<<< HEAD
-=======
-	hitsound = 'sound/weapons/smash.ogg'
-	var/reinforced = FALSE
-	var/obj/item/storage/toolbox/toolbox = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	structure_damage_factor = STRUCTURE_DAMAGE_HEAVY
 	var/reinforced = FALSE
 	var/obj/item/storage/toolbox/toolbox
@@ -34,19 +23,11 @@
 			origin_tech = list(TECH_COMBAT = 1)
 
 
-<<<<<<< HEAD
 /obj/item/melee/toolbox_maul/on_update_icon()
 	..()
 	cut_overlays()
 	if(reinforced)
 		add_overlays("[icon_state]-duct_tape")
-=======
-/obj/item/melee/toolbox_maul/update_icon()
-	..()
-	cut_overlays()
-	if(reinforced)
-		add_overlay("hm_hammer-duct_tape")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/melee/toolbox_maul/proc/break_apart(var/mob/living/user)
 	qdel(src)
@@ -62,22 +43,14 @@
 	if(toolbox)
 		if(istype(C, /obj/item/tool/wirecutters))
 			if(reinforced)
-<<<<<<< HEAD
 				to_chat(user, SPAN_NOTICE("You cutted up the tapes from [src]."))
-=======
-				to_chat(user, SPAN_NOTICE("You cut up the tapes from [src]."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				reinforced = FALSE
 			else
 				to_chat(user, SPAN_NOTICE("You carefully cut cables from [src]."))
 				break_apart(user)
 
 		if(istype(C, /obj/item/tool/tape_roll))
-<<<<<<< HEAD
 			to_chat(user, SPAN_NOTICE("You begins to tie [src] with [C]..."))
-=======
-			to_chat(user, SPAN_NOTICE("You begin to tie [src] with [C]..."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(do_after(user, 50))
 				if(!reinforced)
 					to_chat(user, SPAN_NOTICE("You reinforce [src]."))

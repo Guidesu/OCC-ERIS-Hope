@@ -74,13 +74,6 @@ hivebot
 mimic
 drone
 pirate
-<<<<<<< HEAD
-=======
-russian
-ukrainian
-english person
-american
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 creature
 human
 god
@@ -100,16 +93,7 @@ wizard
 witch
 druid
 cyborg
-<<<<<<< HEAD
 soldier
-=======
-german
-serbian
-wolf
-soldier
-dutch person
-french person
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 mummy
 vampire
 elf
@@ -122,10 +106,6 @@ bush
 rock
 stele
 lamp
-<<<<<<< HEAD
 moth
 CEV Northern Light
 ship
-=======
-moth
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

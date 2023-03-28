@@ -28,19 +28,11 @@
 		return
 
 	var/obj/item/card/id/I = W.GetIdCard()
-<<<<<<< HEAD
 	if(istype(I))
-=======
-	if(istype(I) && (I.claimed_locker == FALSE))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!src.registered_name && has_access(access_occupy, list(), I.GetAccess()))
 			src.registered_name = I.registered_name
 			name = "[initial(name)] ([registered_name])"
 			to_chat(user, SPAN_NOTICE("You occupied [src]."))
-<<<<<<< HEAD
-=======
-			I.claimed_locker = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 
 	return ..()
@@ -74,5 +66,5 @@
 					return
 			src.locked = TRUE
 			src.registered_name = null
-			name = "[initial(name)](used)"
+			name = initial(name)
 			update_icon()

@@ -16,7 +16,7 @@
 	icon_state = "film"
 	item_state = "electropack"
 	w_class = ITEM_SIZE_TINY
-	price_tag = 13
+
 
 /********
 * photo *
@@ -35,23 +35,15 @@ var/global/photo_count = 0
 	var/icon/tiny
 	var/photo_size = 3
 
-<<<<<<< HEAD
 /obj/item/photo/on_update_icon()
-=======
-/obj/item/photo/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	.=..()
 	//When the photo updates, update its container too. This will often be an album or paper bundle
 	if (istype(loc, /obj))
 		var/obj/O = loc
 		O.update_icon()
 
-<<<<<<< HEAD
 /obj/item/photo/Initialize(mapload)
 	. = ..()
-=======
-/obj/item/photo/New()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	id = photo_count++
 	..()
 
@@ -116,7 +108,6 @@ var/global/photo_count = 0
 	desc = "A polaroid camera. 10 photos left."
 	icon_state = "camera"
 	item_state = "electropack"
-	price_tag = 6
 	w_class = ITEM_SIZE_SMALL
 	flags = CONDUCT
 	slot_flags = SLOT_BELT

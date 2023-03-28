@@ -12,11 +12,7 @@
 
 	set_typing_indicator(TRUE)
 	hud_typing = TRUE
-<<<<<<< HEAD
 	var/message = input("", "say (text)") as text|null	//SYZYGY EDIT - So you can click cancel right away.
-=======
-	var/message = input("", "say (text)") as text|null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hud_typing = FALSE
 	set_typing_indicator(FALSE)
 	if(message)
@@ -27,11 +23,7 @@
 	set name = "Say"
 	set hidden = TRUE
 	if(say_disabled)	//This is here to try to identify lag problems
-<<<<<<< HEAD
 		to_chat(usr, "\red Speech is currently admin-disabled.")
-=======
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	set_typing_indicator(FALSE)
 	usr.say(message)
@@ -43,27 +35,19 @@
 
 	set_typing_indicator(TRUE)
 	hud_typing = TRUE
-<<<<<<< HEAD
 	var/message = input("", "me (text)") as text|null	//SYZYGY EDIT - So you can click cancel right away.
-=======
-	var/message = input("", "me (text)") as text|null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hud_typing = FALSE
 	set_typing_indicator(FALSE)
 	if(message)
 		me_verb(message)
 
 
-/mob/verb/me_verb(message as message)
+/mob/verb/me_verb(message as text)
 	set name = "Me"
 	set hidden = TRUE
 
 	if(say_disabled)	//This is here to try to identify lag problems
-<<<<<<< HEAD
 		to_chat(usr, "\red Speech is currently admin-disabled.")
-=======
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	message = sanitize(message)
@@ -74,7 +58,6 @@
 	else
 		usr.emote(message)
 
-<<<<<<< HEAD
 /mob/proc/say_dead(message)
 	if(say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
@@ -82,37 +65,6 @@
 	if(src.client && !src.client.holder && !config.dsay_allowed)
 		to_chat(src, SPAN_DANGER("Deadchat is globally muted."))
 		return
-=======
-/*
-/mob/verb/subtle_wrapper()
-	set name = "Subtle verb"
-	set category = "IC"
-
-	var/message = input("", "subtle (text)") as text|null
-	if(message)
-		subtle_verb(message)
-
-/mob/verb/subtle_verb(message as text)
-	set name = "Subtle"
-	set hidden = TRUE
-
-	if(say_disabled)
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled"))
-
-	if(use_subtle)
-		usr.emote("subtle", usr.emote_type, message)
-	else
-		usr.emote(message)
-*/
-/mob/proc/say_dead(message)
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
-
-	if(src.client && !src.client.holder && !config.dsay_allowed)
-		to_chat(src, SPAN_DANGER("Deadchat is globally muted."))
-		return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(get_preference_value(/datum/client_preference/show_dsay) == GLOB.PREF_HIDE)
 		to_chat(usr, SPAN_DANGER("You have deadchat muted."))
@@ -168,8 +120,6 @@
 		verb=pick("exclaims", "shouts", "yells")
 	else if(ending=="?")
 		verb="asks"
-	else if(ending=="@")
-		verb="reports"
 
 	return verb
 
@@ -202,11 +152,7 @@
 		return standard_mode
 
 	if(length(message) >= 2 && copytext(message,1,2) == get_prefix_key(/decl/prefix/radio_channel_selection))
-<<<<<<< HEAD
 		var/channel_prefix = copytext_char(message, 2, 3)//copytext_char due to 2-bytes rusky symbols
-=======
-		var/channel_prefix = lowertext(copytext(message, 2, 3))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return department_radio_keys[channel_prefix]
 	return null
 

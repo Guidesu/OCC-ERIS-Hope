@@ -1,5 +1,6 @@
 /*
 	The economy subsystem will handle everything related to finances, trade, wages, etc.
+
 	In this initial implementation, it only handles wages
 */
 SUBSYSTEM_DEF(economy)
@@ -20,8 +21,30 @@ SUBSYSTEM_DEF(economy)
 		do_payday()
 
 
+/*
+	Payday is handled in three stages.
+
+1. Information gathering.
+	We loop through everyone in the crew, check if they're not suspended or somesuch
+	We make a note of all the people who are valid and active, along with how much they should be paid.
+	This information is applied to departments in the pending payments list
+	In addition each department also records its own fund request
+
+	Note that dead people will still be paid automatically. Its the responsibility of command staff to
+	manually suspend payment to the dead
+
+2. Requesting funds:
+	Each department will ask its appropriate source to send one lump sum, totalling the amount of all of its
+	wage+fund requirements. This payment will either be made in full or rejected, no partial payments
+	Requests from an external source will always succeed
+	Request from another ship account will succeed if nothing prevents it. EG, adequate funds, not suspended, etc.
+
+3. Payroll
+	If the department account now has enough to cover all the wage requests, then they will all be paid.
+	Again, no partial payments. Either everyone gets paid or nobody does
+
+*/
 /proc/do_payday()
-<<<<<<< HEAD
 
 	gather_payroll_info()
 	request_payroll_funds()
@@ -135,49 +158,25 @@ SUBSYSTEM_DEF(economy)
 		var/datum/department/department = GLOB.all_departments[d]
 		if (!department.pending_wage_total)
 			//No need to do anything if nobody's being paid here
-=======
-	var/total_paid = 0
-	var/paid_internal = 0
-	var/paid_external = 0
-
-	// Departments pay to departments first
-	for(var/i in department_accounts)
-		var/datum/money_account/A = department_accounts[i]
-		var/datum/department/D = GLOB.all_departments[A.department_id]
-		var/datum/department/ED = GLOB.all_departments[D.funding_source]
-
-		if(!A.employer)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			continue
 
-		if(D && !A.wage_manual)
-			A.wage = D.get_total_budget()
-
-		var/amount_to_pay = A.debt + A.wage
-		if(amount_to_pay <= 0)
+		//Get our account
+		var/datum/money_account/account = department_accounts[department.id]
+		if (!account)
 			continue
 
-		if(!ED) // If no employer department found - payment is external
-			deposit_to_account(A, A.employer, "Payroll Funding", "Hansa payroll system", amount_to_pay)
-			paid_external += amount_to_pay
-			continue
-		else
-			var/datum/money_account/EA = get_account(ED.account_number)
-			if(amount_to_pay <= EA.money)
-				transfer_funds(EA, A, "Payroll Funding", "CEV Eris payroll system", amount_to_pay)
-				paid_internal += amount_to_pay
-				ED.total_debt -= A.debt
-				A.debt = 0
-			else
-				A.debt += A.wage
-				ED.total_debt += A.wage
-
-	// Departments pay to the crew
-	for(var/datum/money_account/A in personal_accounts)
-		if(!A.employer)
+		//Check again that the department has enough. Because some departments, like guild, didnt request funds
+		if (account.money < department.pending_wage_total)
+			//TODO Here: Email the account owner warning them that wages can't be paid
+			//Ok we can't pay wages, this is bad. Lets tell the account owner
+			var/ownername = account.owner_name
+			if (ownername)
+				//Lets pull up the records for this person
+				var/datum/computer_file/report/crew_record/OR = get_crewmember_record(ownername)
+				if (OR)
+					payroll_failure_mail(OR, account, department.pending_wage_total)
 			continue
 
-<<<<<<< HEAD
 		//Here we go, lets pay them!
 		for (var/datum/computer_file/report/crew_record/R in department.pending_wages)
 			var/paid = FALSE
@@ -195,51 +194,6 @@ SUBSYSTEM_DEF(economy)
 				payroll_mail_account_holder(R, sender, amount)
 		department.pending_wages = list() //All pending wages paid off
 	command_announcement.Announce("Hourly crew wages have been paid, please check your email for details. In total the crew of [station_name()] have earned [total_paid] credits.\n Please contact your Department Heads in case of errors or missing payments.", "Dispensation") //Occulus Edit: Fixed a bad string
-=======
-
-		var/datum/computer_file/report/crew_record/R = get_crewmember_record(A.owner_name)
-
-		//Modify their wage based on nepotism modifier
-		var/nepotism = 1
-		if(R)
-			nepotism = R.get_nepotismMod()
-
-		var/amount_to_pay = A.debt + (A.wage * nepotism)
-
-		if(amount_to_pay <= 0)
-			continue
-
-		var/datum/department/ED = GLOB.all_departments[A.employer]
-		var/datum/money_account/EA = department_accounts[ED.id]
-
-
-
-		if(amount_to_pay <= EA.money)
-			transfer_funds(EA, A, "Payroll Funding", "Nadezhda colony payroll system", amount_to_pay)
-			paid_internal += amount_to_pay
-			ED.total_debt -= A.debt
-			A.debt = 0
-			if(R)
-				payroll_mail_account_holder(R, "[ED.name] account", amount_to_pay)
-		else
-			A.debt += (A.wage * nepotism)
-			ED.total_debt += (A.wage * nepotism)
-			// payroll_mail_where_is_my_money
-
-	// Mail commanding officers and politely ask "Where's the fucking money, shithead?"
-	for(var/i in GLOB.all_departments)
-		var/datum/department/D = GLOB.all_departments[i]
-		var/datum/money_account/A = department_accounts[D.id]
-		if(D.total_debt && A)
-			var/ownername = A.owner_name
-			if(ownername)
-				var/datum/computer_file/report/crew_record/R = get_crewmember_record(ownername)
-				if(R)
-					payroll_failure_mail(R, A, D.total_debt)
-
-	total_paid = paid_internal + paid_external
-	command_announcement.Announce("Hourly colonist wages have been paid, please check your email for details. In total the crew of Nadezhda colony have earned [total_paid] credits, including [paid_external] credits from external sources.\n Please contact your Department Heads in case of errors or missing payments.", "Dispensation", new_sound = 'sound/misc/notice2.ogg')
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //Sent to a head of staff when their department account fails to pay out wages

@@ -13,7 +13,7 @@ log transactions
 #define VIEW_TRANSACTION_LOGS 3
 
 /obj/machinery/atm
-	name = "automatic teller machine"
+	name = "Automatic Teller Machine"
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
@@ -132,7 +132,7 @@ log transactions
 	else
 		..()
 
-/obj/machinery/atm/attack_hand(mob/user)
+/obj/machinery/atm/attack_hand(mob/user as mob)
 	if(issilicon(user))
 		to_chat(user, "\red \icon[src] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per system banking regulation #1005.")
 		return
@@ -358,16 +358,11 @@ log transactions
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 					stampoverlay.icon_state = "paper_stamp-cent"
-<<<<<<< HEAD
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
 					R.add_overlays(stampoverlay)
-=======
-					R.add_overlay(stampoverlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
-					R.stamped &= STAMP_DOCUMENT
 
 				playsound(loc, pick('sound/items/polaroid1.ogg','sound/items/polaroid2.ogg'), 50, 1)
 			if ("print_transaction")
@@ -402,16 +397,11 @@ log transactions
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 					stampoverlay.icon_state = "paper_stamp-cent"
-<<<<<<< HEAD
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
 					R.add_overlays(stampoverlay)
-=======
-					R.add_overlay(stampoverlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
-					R.stamped &= STAMP_DOCUMENT
 
 				playsound(loc, pick('sound/items/polaroid1.ogg','sound/items/polaroid2.ogg'), 50, 1)
 

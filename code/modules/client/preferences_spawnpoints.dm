@@ -195,11 +195,7 @@
 		C.set_occupant(M, FALSE)
 
 		//When spawning in cryo, you start off asleep for a few moments and wake up
-<<<<<<< HEAD
 		M.Paralyse(2)
-=======
-		//M.Paralyse(2) we were asleep, now awake. No need to paralyse! - Also lasted longer then a few moments do to MC
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		//You can get yourself out of the cryopod, or it will auto-eject after one minute
 		spawn(600)
@@ -210,14 +206,7 @@
 
 //Starboard Cryogenics
 /datum/spawnpoint/cryo/starboard
-<<<<<<< HEAD
 
-=======
-/datum/spawnpoint/cryo/elevator
-
-//Outsider Cyrogenics
-/datum/spawnpoint/cryo/outsider
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /**********************
 	DORMITORY SPAWNING
@@ -225,7 +214,6 @@
 /*
 	You wake up from a nice nap, in a dormitory somewhere
 */
-
 /datum/spawnpoint/dormitory
 
 /*/datum/spawnpoint/dormitory/get_spawn_locations() We removed dorm spawning in favor of elevator spawning Occulus Edit Start
@@ -263,11 +251,7 @@
 		M.forceMove(C.loc)
 		C.buckle_mob(M)
 
-<<<<<<< HEAD
 		//When spawning in bed, you start off asleep for a moment
-=======
-		//When spawning in bed, you start off asleep for a while
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		M.Paralyse(2)
 
 		//Once you wake up, you can get yourself out of bed. I've made it real easy, just click basically anything

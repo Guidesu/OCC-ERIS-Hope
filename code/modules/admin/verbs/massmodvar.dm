@@ -5,7 +5,7 @@
 
 	var/method = 0	//0 means strict type detection while 1 means this type and all subtypes (IE: /obj/item with this set to 1 will set it to ALL itms)
 
-	if(!check_rights(R_DEBUG))
+	if(!check_rights(R_ADMIN))
 		return
 
 	if(A && A.type)
@@ -25,7 +25,7 @@
 
 
 /client/proc/massmodify_variables(var/atom/O, var/var_name = "", var/method = 0)
-	if(!check_rights(R_DEBUG))
+	if(!check_rights(R_ADMIN))
 		return
 
 	var/list/locked = list("vars", "key", "ckey", "client")
@@ -49,11 +49,6 @@
 		variable = var_name
 
 	if(!variable)	return
-
-	if (GLOB.gvars_datum_protected_varlist[variable])
-		to_chat(usr, "\red This variable is protected from VV.")
-		return
-
 	var/default
 	var/var_value = O.vars[variable]
 	var/dir
@@ -134,10 +129,6 @@
 		original_name = "\ref[O] ([O])"
 	else
 		original_name = O:name
-
-	if (GLOB.gvars_datum_protected_varlist[variable])
-		to_chat(usr, "\red This variable is protected from VV.")
-		return
 
 	switch(class)
 

@@ -3,13 +3,8 @@
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	var/insert_anim = "bigscanner1"
-<<<<<<< HEAD
 	anchored = TRUE
 	density = TRUE
-=======
-	anchored = 1
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 30
 	active_power_usage = 200
@@ -86,7 +81,7 @@
 		if(stat & (BROKEN|NOPOWER))
 			return
 
-		if(toner >= 1)
+		if(toner >= 5)
 			var/mob/living/silicon/tempAI = usr
 			var/obj/item/device/camera/siliconcam/camera = tempAI.aiCamera
 
@@ -101,7 +96,7 @@
 				p.desc += "Copied by [tempAI.name]"
 			else
 				p.desc += " - Copied by [tempAI.name]"
-			toner -= 1
+			toner -= 5
 			sleep(15)
 		updateUsrDialog()
 
@@ -112,11 +107,7 @@
 			copyitem = I
 			I.loc = src
 			to_chat(user, SPAN_NOTICE("You insert \the [I] into \the [src]."))
-<<<<<<< HEAD
 			FLICK(insert_anim, src)
-=======
-			flick(insert_anim, src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			updateUsrDialog()
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
@@ -161,13 +152,8 @@
 	else			//no toner? shitty copies for you!
 		c.info = "<font color = #808080>"
 	var/copied = html_decode(copy.info)
-<<<<<<< HEAD
 	copied = replacetext(copied, "<font face=\"[c.deffont]\" color=", "<font face=\"[c.deffont]\" nocolor=")	//state of the art techniques in action
 	copied = replacetext(copied, "<font face=\"[c.crayonfont]\" color=", "<font face=\"[c.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
-=======
-	//copied = replacetext(copied, "<font face=\"[c.deffont]\" color=", "<font face=\"[c.deffont]\" nocolor=")	//state of the art techniques in action
-	//copied = replacetext(copied, "<font face=\"[c.crayonfont]\" color=", "<font face=\"[c.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	c.info += copied
 	c.info += "</font>"//</font>
 	c.name = copy.name // -- Doohl
@@ -177,22 +163,18 @@
 	c.ico = copy.ico
 	c.offset_x = copy.offset_x
 	c.offset_y = copy.offset_y
-	var/list/temp_overlays = copy.get_overlays()       //Iterates through stamps
+	var/list/temp_overlays = copy.overlays       //Iterates through stamps
 	var/image/img                                //and puts a matching
 	for (var/j = 1, j <= min(temp_overlays.len, copy.ico.len), j++) //gray overlay onto the copy
-		if (findtext(copy.ico[j], "_stamp-cap") || findtext(copy.ico[j], "_stamp-cent") || findtext(copy.ico[j], "_stamp-circle"))
+		if (findtext(copy.ico[j], "cap") || findtext(copy.ico[j], "cent"))
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-circle")
-		else if (findtext(copy.ico[j], "_stamp-deny") || findtext(copy.ico[j], "_stamp-x"))
+		else if (findtext(copy.ico[j], "deny"))
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-x")
 		else
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-dots")
 		img.pixel_x = copy.offset_x[j]
 		img.pixel_y = copy.offset_y[j]
-<<<<<<< HEAD
 		c.add_overlays(img)
-=======
-		c.add_overlay(img)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	c.updateinfolinks()
 	toner--
 	if(toner == 0)

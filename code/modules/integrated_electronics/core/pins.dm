@@ -14,11 +14,7 @@ D [1]/  ||
 /datum/integrated_io
 	var/name = "input/output"
 	var/obj/item/integrated_circuit/holder
-<<<<<<< HEAD
 	var/weakref/data  // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
-=======
-	var/datum/weakref/data  // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
 	var/pin_type			// IC_INPUT, IC_OUTPUT, IC_ACTIVATOR - used in saving assembly wiring
@@ -47,11 +43,7 @@ D [1]/  ||
 /datum/integrated_io/proc/data_as_type(as_type)
 	if(!isweakref(data))
 		return
-<<<<<<< HEAD
 	var/weakref/w = data
-=======
-	var/datum/weakref/w = data
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/output = w.resolve()
 	return istype(output, as_type) ? output : null
 
@@ -81,11 +73,7 @@ D [1]/  ||
 		return result
 
 	if(isweakref(input))
-<<<<<<< HEAD
 		var/weakref/w = input
-=======
-		var/datum/weakref/w = input
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/atom/A = w.resolve()
 		return A ? "([A.name] \[Ref])" : "(null)" // For refs, we want just the name displayed.
 

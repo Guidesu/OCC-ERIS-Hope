@@ -19,11 +19,7 @@ var/const/GRAV_NEEDS_WRENCH = 3
 /obj/machinery/gravity_generator
 	name = "gravitational generator"
 	desc = "A device which produces a gravaton field when set up."
-<<<<<<< HEAD
 	icon = 'icons/obj/machines/gravity_generator.dmi'
-=======
-	icon = 'icons/obj/machines/new_gravity_generator.dmi'
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	anchored = TRUE
 	density = TRUE
 	use_power = NO_POWER_USE
@@ -338,12 +334,8 @@ var/const/GRAV_NEEDS_WRENCH = 3
 
 
 /obj/machinery/gravity_generator/main/proc/pulse_radiation()
-<<<<<<< HEAD
 	for(var/mob/living/L in view(7, src))
 		L.apply_effect(20, IRRADIATE)
-=======
-	PulseRadiation(src, 20, 7)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Shake everyone to let them know that gravity was enagaged/disenagaged.
 /obj/machinery/gravity_generator/main/proc/shake_everyone()

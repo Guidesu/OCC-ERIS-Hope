@@ -2,13 +2,10 @@
 "a" = (
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
 "b" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "c" = (
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
@@ -18,19 +15,14 @@
 /area/crawler)
 "e" = (
 /obj/structure/curtain/medical,
-<<<<<<< HEAD
 /obj/structure/low_wall,
 /obj/effect/window_lwall_spawn,
-=======
-/obj/effect/window_lwall_spawn/smartspawn/onestar,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "f" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
-<<<<<<< HEAD
 "g" = (
 /obj/machinery/light/floor,
 /obj/effect/floor_decal/industrial/danger{
@@ -40,13 +32,6 @@
 /area/crawler)
 "h" = (
 /obj/structure/table/onestar,
-=======
-"h" = (
-/obj/structure/table/onestar,
-/obj/random/medical,
-/obj/random/medical,
-/obj/random/medical,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "i" = (
@@ -58,11 +43,7 @@
 /area/crawler)
 "k" = (
 /obj/structure/window/reinforced,
-<<<<<<< HEAD
 /obj/machinery/computer/operating{
-=======
-/obj/structure/salvageable/console_os{
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/tiled/cafe,
@@ -72,14 +53,8 @@
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "m" = (
-<<<<<<< HEAD
 /obj/structure/window/reinforced,
 /obj/structure/table/onestar,
-=======
-/obj/structure/table/onestar,
-/obj/random/medical_lowcost,
-/obj/random/medical_lowcost,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "n" = (
@@ -87,18 +62,10 @@
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "o" = (
-<<<<<<< HEAD
 /obj/structure/window/reinforced,
 /obj/machinery/computer/operating{
 	dir = 8
 	},
-=======
-/obj/structure/table/onestar,
-/obj/random/surgery_tool,
-/obj/random/surgery_tool,
-/obj/random/surgery_tool,
-/obj/structure/window/reinforced,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "p" = (
@@ -106,7 +73,6 @@
 /obj/structure/medical_stand,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-<<<<<<< HEAD
 "q" = (
 /obj/machinery/light/floor,
 /obj/effect/floor_decal/industrial/danger{
@@ -121,8 +87,6 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "s" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/derelict,
@@ -135,20 +99,14 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-<<<<<<< HEAD
 /obj/effect/floor_decal/sign,
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "v" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/effect/floor_decal/sign/two,
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "w" = (
@@ -161,7 +119,6 @@
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "y" = (
-<<<<<<< HEAD
 /obj/structure/low_wall,
 /obj/effect/window_lwall_spawn,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
@@ -171,15 +128,6 @@
 	dir = 1
 	},
 /obj/machinery/washing_machine,
-=======
-/obj/effect/window_lwall_spawn/smartspawn/onestar,
-/turf/simulated/floor/tiled/derelict/white_small_edges,
-/area/crawler)
-"z" = (
-/obj/structure/table/onestar,
-/obj/random/medical_lowcost,
-/obj/structure/window/reinforced,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "A" = (
@@ -187,80 +135,16 @@
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "B" = (
-<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/table/onestar,
-=======
-/obj/structure/window/reinforced,
-/obj/structure/salvageable/console_os{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
-"C" = (
-/obj/machinery/washing_machine,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 0
-	},
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
 "D" = (
 /obj/machinery/door/window/northleft,
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"E" = (
-/obj/effect/floor_decal/industrial/outline,
-/obj/structure/table/rack,
-/obj/random/firstaid,
-/obj/random/firstaid,
-/obj/random/firstaid,
-/turf/simulated/floor/tiled/derelict,
-/area/crawler)
-"F" = (
-/obj/structure/table/onestar,
-/obj/random/medical_lowcost,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
-"G" = (
-/obj/structure/table/onestar,
-/obj/random/medical_lowcost,
-/obj/random/medical_lowcost,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
-"H" = (
-/obj/structure/table/onestar,
-/obj/random/surgery_tool,
-/obj/random/surgery_tool,
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
-"I" = (
-/obj/structure/table/onestar,
-/obj/random/surgery_tool,
-/obj/random/surgery_tool,
-/obj/random/medical_lowcost,
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
-"J" = (
-/obj/machinery/washing_machine,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -280,51 +164,30 @@ k
 p
 s
 w
-<<<<<<< HEAD
 z
-=======
-C
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}
 (3,1,1) = {"
 a
-<<<<<<< HEAD
 b
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 l
 j
 j
 j
 A
-<<<<<<< HEAD
 b
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
 a
 h
-<<<<<<< HEAD
 m
 j
 j
 j
 B
 h
-=======
-o
-j
-j
-j
-F
-H
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -342,15 +205,9 @@ i
 i
 j
 j
-<<<<<<< HEAD
 g
 u
 g
-=======
-u
-u
-u
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 j
 j
 i
@@ -370,15 +227,9 @@ i
 i
 j
 j
-<<<<<<< HEAD
 q
 v
 r
-=======
-v
-v
-v
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 j
 j
 i
@@ -396,7 +247,6 @@ i
 "}
 (10,1,1) = {"
 a
-<<<<<<< HEAD
 h
 m
 j
@@ -404,52 +254,27 @@ j
 j
 B
 h
-=======
-m
-z
-j
-j
-j
-G
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 b
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 n
 j
 j
 j
 D
-<<<<<<< HEAD
 b
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
 d
-<<<<<<< HEAD
 o
 p
 s
 w
 z
-=======
-B
-p
-s
-E
-J
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 "}

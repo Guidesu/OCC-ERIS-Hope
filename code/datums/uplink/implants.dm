@@ -11,12 +11,8 @@
 
 /datum/uplink_item/item/implants/imp_compress
 	name = "Compressed Matter Implant"
-<<<<<<< HEAD
 	item_cost = 4
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
-=======
-	item_cost = 8
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/storage/box/syndie_kit/imp_compress
 
 /datum/uplink_item/item/implants/imp_explosive
@@ -28,11 +24,7 @@
 	name = "Spying Implant"
 	item_cost = 1
 	path = /obj/item/storage/box/syndie_kit/imp_spying
-<<<<<<< HEAD
 	antag_roles = ROLES_CONTRACT
-=======
-	antag_roles = ROLES_CONTRACT_COMPLETE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item/implants/imp_spying/buy(obj/item/device/uplink/U)
 	. = ..()
@@ -51,14 +43,7 @@
 	item_cost = round(DEFAULT_TELECRYSTAL_AMOUNT / 2)
 	desc = "Contains [round((DEFAULT_TELECRYSTAL_AMOUNT / 2) * 0.8)] Telecrystal\s"
 
-<<<<<<< HEAD
 /datum/uplink_item/item/implants/energy_blade
 	name = "Internal Energy Armblade Implant"
 	item_cost = 10
 	path = /obj/item/organ_module/active/simple/armblade/energy_blade
-=======
-/datum/uplink_item/item/implants/thermal_shades
-	name = "Embedded Thermal Shades"
-	item_cost = 10
-	path = /obj/item/organ_module/active/hud/thermal
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

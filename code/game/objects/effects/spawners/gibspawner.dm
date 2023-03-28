@@ -25,24 +25,3 @@
 			gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST),list(SOUTH, SOUTHEAST, SOUTHWEST),list(WEST, NORTHWEST, SOUTHWEST),list(EAST, NORTHEAST, SOUTHEAST), alldirs, alldirs)
 			gibamounts[6] = pick(0,1,2)
 			..()
-<<<<<<< HEAD
-=======
-
-	xenomorph
-		gibtypes = list(/obj/effect/decal/cleanable/blood/gibs/xeno/up,/obj/effect/decal/cleanable/blood/gibs/xeno/down,/obj/effect/decal/cleanable/blood/gibs/xeno,/obj/effect/decal/cleanable/blood/gibs/xeno,/obj/effect/decal/cleanable/blood/gibs/xeno,/obj/effect/decal/cleanable/blood/gibs/xeno/limb)
-		gibamounts = list(1,1,1,1,1,1)
-
-		New()
-			gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST),list(SOUTH, SOUTHEAST, SOUTHWEST),list(WEST, NORTHWEST, SOUTHWEST),list(EAST, NORTHEAST, SOUTHEAST), alldirs, alldirs)
-			gibamounts[6] = pick(0,1,2)
-			..()
-
-	clown
-		gibtypes = list(/obj/effect/decal/cleanable/blood/gibs/clown,/obj/effect/decal/cleanable/blood/gibs/clown/down,/obj/effect/decal/cleanable/blood/gibs/clown,/obj/effect/decal/cleanable/blood/gibs/clown,/obj/effect/decal/cleanable/blood/gibs/clown,/obj/effect/decal/cleanable/blood/gibs/clown,/obj/effect/decal/cleanable/blood/gibs/clown/core)
-		gibamounts = list(1,1,1,1,1,1,1)
-
-		New()
-			gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST),list(SOUTH, SOUTHEAST, SOUTHWEST),list(WEST, NORTHWEST, SOUTHWEST),list(EAST, NORTHEAST, SOUTHEAST), alldirs, alldirs, list())
-			gibamounts[6] = pick(0,1,2)
-			..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

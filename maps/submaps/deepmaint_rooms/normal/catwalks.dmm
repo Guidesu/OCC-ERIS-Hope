@@ -32,11 +32,7 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
@@ -84,11 +80,7 @@
 /area/deepmaint)
 "i" = (
 /obj/structure/railing,
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "j" = (
@@ -102,11 +94,7 @@
 /area/deepmaint)
 "k" = (
 /obj/structure/catwalk,
-<<<<<<< HEAD
 /obj/spawner/mob/roaches/cluster/low_chance,
-=======
-/obj/random/cluster/psi_monster/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "l" = (
@@ -137,28 +125,15 @@
 /area/deepmaint)
 "n" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
-=======
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/dungeon_ammo/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "o" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
-=======
-/obj/random/dungeon_gun_mods/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "p" = (
@@ -180,11 +155,7 @@
 	icon_state = "railing0";
 	dir = 8
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "r" = (
@@ -193,24 +164,14 @@
 	icon_state = "railing0";
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "s" = (
 /obj/structure/table/standard,
-<<<<<<< HEAD
 /obj/spawner/pack/rare/low_chance,
 /obj/spawner/pack/rare/low_chance,
-=======
-/obj/random/pack/rare/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/dungeon_armor_mods/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "t" = (
@@ -225,11 +186,7 @@
 	icon_state = "railing0";
 	dir = 8
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -239,11 +196,7 @@
 	icon_state = "railing0";
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "w" = (
@@ -253,11 +206,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing{
 	tag = "icon-railing0 (EAST)";
 	icon_state = "railing0";
@@ -266,11 +215,7 @@
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "x" = (
-<<<<<<< HEAD
 /obj/spawner/pack/machine,
-=======
-/obj/random/pack/machine,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_cargo,
 /area/deepmaint)
 "y" = (
@@ -320,11 +265,7 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "E" = (
@@ -341,11 +282,7 @@
 /area/deepmaint)
 "F" = (
 /obj/structure/railing,
-<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
-=======
-/obj/random/junk/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
@@ -377,35 +314,6 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
-<<<<<<< HEAD
-=======
-"P" = (
-/obj/structure/table/standard,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/pack/tech_loot/low_chance,
-/obj/random/dungeon_gun_ballistic/low_chance,
-/turf/simulated/floor/tiled/techmaint_perforated,
-/area/deepmaint)
-"Q" = (
-/obj/structure/catwalk,
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/plating/under,
-/area/deepmaint)
-"Y" = (
-/obj/random/mob/psi_monster/low_chance,
-/turf/simulated/floor/tiled/techmaint_perforated,
-/area/deepmaint)
-"Z" = (
-/obj/structure/table/standard,
-/obj/random/pack/rare/low_chance,
-/obj/random/pack/rare/low_chance,
-/obj/random/dungeon_gun_energy/low_chance,
-/turf/simulated/floor/tiled/techmaint_perforated,
-/area/deepmaint)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -421,11 +329,7 @@ b
 a
 "}
 (2,1,1) = {"
-<<<<<<< HEAD
 a
-=======
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 g
 a
@@ -448,11 +352,7 @@ x
 a
 C
 F
-<<<<<<< HEAD
 a
-=======
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (4,1,1) = {"
 a
@@ -462,11 +362,7 @@ k
 a
 a
 y
-<<<<<<< HEAD
 a
-=======
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 D
 G
 a
@@ -491,11 +387,7 @@ i
 a
 o
 t
-<<<<<<< HEAD
 z
-=======
-Y
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 C
 F
@@ -506,13 +398,8 @@ a
 e
 h
 a
-<<<<<<< HEAD
 n
 s
-=======
-P
-Z
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 z
 a
 C
@@ -527,11 +414,7 @@ k
 a
 a
 y
-<<<<<<< HEAD
 a
-=======
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 C
 F
 a
@@ -547,17 +430,10 @@ x
 a
 D
 G
-<<<<<<< HEAD
 a
 "}
 (10,1,1) = {"
 a
-=======
-Q
-"}
-(10,1,1) = {"
-Q
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 f
 j
 a

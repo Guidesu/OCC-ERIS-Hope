@@ -5,14 +5,8 @@
 
 	This may require engineering to wall them off, or ironhammer to guard them, to prevent unauthorised access
 	If conveniently placed,they may also offer new, rapid transit routes around the ship
-<<<<<<< HEAD
 */
 /* OCCULUS EDIT - Disabled since this is inherently broken unlike the bluespace rift event which is literally the same thing but better.
-=======
-
-Disabled do to being a bit to unfun to deal with
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/storyevent/wormholes
 	id = "wormholes"
 	name = "wormholes"
@@ -26,7 +20,7 @@ Disabled do to being a bit to unfun to deal with
 /datum/event/wormholes
 	//The duration ranges from fairly long, to basically forever
 	var/min_duration = 5 MINUTES
-	var/max_duration = 30 MINUTES
+	var/max_duration = 3 HOURS
 
 	var/number_of_wormholes
 
@@ -49,11 +43,7 @@ Disabled do to being a bit to unfun to deal with
 		wormhole_tiles.Add(T)
 
 /datum/event/wormholes/announce()
-<<<<<<< HEAD
 	command_announcement.Announce("Space-time anomalies detected on the ship. There is no additional data.", "Anomaly Alert", new_sound = 'sound/AI/spanomalies.ogg')
-=======
-	command_announcement.Announce("Space-time anomalies detected on the colony. There is no additional data.", "Anomaly Alert", new_sound = 'sound/AI/spanomalies.ogg')
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/event/wormholes/start()

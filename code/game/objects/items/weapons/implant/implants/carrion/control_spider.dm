@@ -1,7 +1,6 @@
 /obj/item/implant/carrion_spider/control
 	name = "control spider"
 	icon_state = "spiderling_control"
-<<<<<<< HEAD
 	spider_price = 40
 	var/active = FALSE
 	var/last_use = - 5 MINUTES
@@ -9,16 +8,6 @@
 	var/datum/mind/owner_mind_last
 	var/mob/living/wearer_last
 	var/list/start_damage = list()
-=======
-	spider_price = 25
-	ignore_activate_all = TRUE
-	var/active = FALSE
-	var/last_use = - 2 MINUTES
-	var/cooldown = 2 MINUTES
-	var/mob/living/captive_brain/host_brain
-	var/datum/mind/owner_mind_last
-	var/mob/living/wearer_last
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implant/carrion_spider/control/activate()
 	..()
@@ -33,38 +22,23 @@
 	if(wearer == owner_mob)
 		to_chat(owner_mob, SPAN_DANGER("You feel dumb"))
 		return
-<<<<<<< HEAD
 	if(wearer.has_brain_worms() || is_carrion(wearer))
 		to_chat(owner_mob, SPAN_DANGER("A parasite inside this body prevents spider influence."))
 		return
 	if(last_use + 5 MINUTES > world.time)
 		to_chat(owner_mob, SPAN_WARNING("The mind control spider is spent, and needs 5 minutes to regenerate."))
-=======
-	if(wearer.has_brain_worms() || is_carrion(wearer) || wearer.mind || ishuman(wearer))
-		to_chat(owner_mob, SPAN_DANGER("A strong mind inside this creature prevents activation"))
-		return
-	if(wearer.mob_classification == CLASSIFICATION_SYNTHETIC)
-		to_chat(owner_mob, SPAN_DANGER("This creature is robotic, you can't control it"))
-		return
-	if(last_use + cooldown > world.time)
-		to_chat(owner_mob, SPAN_WARNING("The mind control spider is spent, and needs 2 minutes to regenerate."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/datum/mind/owner_mind = owner_mob.mind
 
 	to_chat(owner_mob, SPAN_NOTICE("You assume control of the host."))
 	to_chat(wearer, SPAN_DANGER("You feel a strange shifting sensation as another consciousness displaces yours."))
-<<<<<<< HEAD
 
 	if(ishuman(wearer)) //Wearer base type is human, so we have to change it back to mob/living
 		start_damage = list(wearer.getBruteLoss(), wearer.getOxyLoss(), wearer.getToxLoss(), wearer.getFireLoss())
 	else
 		var/mob/living/L = wearer
 		start_damage = list(L.bruteloss, L.oxyloss, L.toxloss, L.fireloss)
-=======
-	message_admins("[owner_mob] ([key_name_admin(owner_mob)]) took control of [wearer]([key_name_admin(wearer)]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	owner_mind_last = owner_mind
 	wearer_last = wearer
 	qdel(host_brain)
@@ -92,7 +66,6 @@
 		if(isghost(owner_mind_last.current))
 			to_chat(owner_mind_last.current, SPAN_NOTICE("You are yanked back to your body from beyond the void."))
 		owner_mind_last.transfer_to(owner_mob)
-<<<<<<< HEAD
 	if(wearer_last && !(wearer_last.stat == DEAD))
 		if(host_brain)
 			host_brain.mind?.transfer_to(wearer_last)
@@ -116,8 +89,3 @@
 				var/mob/living/L = owner_core.loc
 				if(istype(L))
 					L.gib()
-=======
-	if(wearer_last && host_brain)
-		host_brain.mind?.transfer_to(wearer_last)
-		qdel(host_brain)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

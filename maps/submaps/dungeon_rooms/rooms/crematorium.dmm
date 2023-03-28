@@ -34,12 +34,8 @@
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "j" = (
-<<<<<<< HEAD
 /obj/structure/low_wall,
 /obj/effect/window_lwall_spawn,
-=======
-/obj/effect/window_lwall_spawn/smartspawn/onestar,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "k" = (
@@ -47,18 +43,12 @@
 /area/crawler)
 "l" = (
 /obj/structure/closet/onestar/tier1,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/golden,
 /area/crawler)
 "m" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/white,
 /area/crawler)
-=======
-/obj/random/medical,
-/turf/simulated/floor/tiled/dark/golden,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "n" = (
 /obj/structure/morgue,
 /obj/structure/window/reinforced{
@@ -85,13 +75,10 @@
 /obj/structure/morgue,
 /turf/simulated/floor/tiled/white,
 /area/crawler)
-<<<<<<< HEAD
 "r" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "s" = (
 /obj/machinery/light/floor,
 /obj/structure/closet/body_bag,
@@ -113,11 +100,6 @@
 /area/crawler)
 "x" = (
 /obj/structure/table/onestar,
-<<<<<<< HEAD
-=======
-/obj/random/medical,
-/obj/random/medical,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white,
 /area/crawler)
 "y" = (
@@ -127,28 +109,12 @@
 "z" = (
 /obj/structure/table/onestar,
 /obj/structure/window/reinforced,
-<<<<<<< HEAD
-=======
-/obj/random/medical,
-/obj/random/medical,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white,
 /area/crawler)
 "B" = (
 /obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/tiled/dark/golden,
 /area/crawler)
-<<<<<<< HEAD
-=======
-"I" = (
-/obj/random/structures/os,
-/turf/simulated/floor/tiled/dark/golden,
-/area/crawler)
-"V" = (
-/obj/random/medical_lowcost,
-/turf/simulated/floor/tiled/derelict,
-/area/crawler)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -188,11 +154,7 @@ a
 e
 c
 k
-<<<<<<< HEAD
 k
-=======
-V
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 k
 c
 c
@@ -202,15 +164,9 @@ a
 a
 j
 a
-<<<<<<< HEAD
 r
 k
 r
-=======
-k
-k
-k
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 j
 b
@@ -239,11 +195,7 @@ b
 "}
 (8,1,1) = {"
 b
-<<<<<<< HEAD
 f
-=======
-I
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 f
 f
 k
@@ -256,15 +208,9 @@ b
 a
 j
 a
-<<<<<<< HEAD
 r
 k
 r
-=======
-k
-k
-k
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 j
 b
@@ -275,32 +221,20 @@ w
 c
 k
 k
-<<<<<<< HEAD
 k
-=======
-V
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 a
 "}
 (11,1,1) = {"
 a
-<<<<<<< HEAD
 m
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 y
 k
 i
 k
 o
-<<<<<<< HEAD
 m
-=======
-c
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"

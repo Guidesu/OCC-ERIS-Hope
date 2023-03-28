@@ -5,7 +5,7 @@
 // Used for advanced grid control (read: Substations)
 
 /obj/machinery/power/breakerbox
-	name = "breaker box"
+	name = "Breaker Box"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "bbox_off"
 	//directwired = 0
@@ -18,11 +18,7 @@
 	var/directions = list(1,2,4,8,5,6,9,10)
 	var/RCon_tag = "NO_TAG"
 	var/update_locked = 0
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/breakerbox
-=======
-	circuit = /obj/item/circuitboard/breakerbox
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/power/breakerbox/Destroy()
 	. = ..()

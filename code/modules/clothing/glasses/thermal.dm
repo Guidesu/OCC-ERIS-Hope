@@ -1,5 +1,5 @@
 /obj/item/clothing/glasses/powered/thermal
-	name = "optical thermal scanner"
+	name = "Optical Thermal Scanner"
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
 	item_state = "glasses"
@@ -8,14 +8,10 @@
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	flash_protection = FLASH_PROTECTION_REDUCED
-<<<<<<< HEAD
 	price_tag = 1000
 	rarity_value = 80
-=======
-	price_tag = 500
-	matter = list(MATERIAL_STEEL = 3, MATERIAL_GLASS = 2, MATERIAL_PLASTIC = 5, MATERIAL_DIAMOND = 2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	tick_cost = 0.5
+
 
 /obj/item/clothing/glasses/powered/thermal/emp_act(severity)
 	if(ishuman(src.loc))
@@ -33,33 +29,24 @@
 
 /obj/item/clothing/glasses/powered/thermal/Initialize()
 	. = ..()
-	screenOverlay = global_hud.thermal
+	overlay = global_hud.thermal
 
-/obj/item/clothing/glasses/powered/thermal/syndi	//These are now a contractor item, concealed as mesons.	-Pete
-	name = "optical meson scanner"
+/obj/item/clothing/glasses/powered/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
+	name = "Optical Meson Scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
-<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 3, TECH_COVERT = 4)
 	rarity_value = 50
 	spawn_blacklisted = TRUE
-=======
-	off_state = "demeson"
-	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
 
 /obj/item/clothing/glasses/powered/thermal/onestar
-	name = "type-73 zhenchayuan goggles"
-	desc = "Previously nothing more than a prototype, these Greyson Positronic thermal goggles are incredibly battery-efficient."
+	name = "OS Type - 73 \"Zhenchayuan\""
+	desc = "Chinese thermals in the shape of goggles."
 	icon_state = "onestar_thermal"
 	off_state = "onestar_thermal"
-<<<<<<< HEAD
 	rarity_value = 100
 	spawn_blacklisted = TRUE
-=======
-	matter = list(MATERIAL_STEEL = 3, MATERIAL_GLASS = 2, MATERIAL_PLASTIC = 5, MATERIAL_PLATINUM = 2) // GP tech all use platinum
-	tick_cost = 0.25 // 400 ticks on a stock cell. Incredibly efficient due to being cutting edge tech, also justifies the research node rather than just taking syndie ones.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/glasses/powered/thermal/plain
 	toggleable = FALSE
@@ -67,8 +54,8 @@
 	action_button_name = null
 
 /obj/item/clothing/glasses/powered/thermal/plain/monocle
-	name = "thermonocle"
-	desc = "A monocle with a thermal lens installed."
+	name = "Thermoncle"
+	desc = "A monocle thermal."
 	icon_state = "thermoncle"
 	flags = null //doesn't protect eyes because it's a monocle, duh
 	rarity_value = 10
@@ -76,38 +63,16 @@
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/powered/thermal/plain/eyepatch
-	name = "optical thermal eyepatch"
-	desc = "An eyepatch with built-in thermal optics."
+	name = "Optical Thermal Eyepatch"
+	desc = "An eyepatch with built-in thermal optics"
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/powered/thermal/plain/jensen
-	name = "optical thermal implants"
-	desc = "A set of implantable lenses designed to augment your vision."
+	name = "Optical Thermal Implants"
+	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"
 
-<<<<<<< HEAD
 
-=======
-/obj/item/clothing/glasses/powered/thermal/thermal_helmet
-	name = "thermal imaging goggles"
-	desc = "A pair of thermal goggles stuck to your helmet, has a slot for a medium battery inside."
-	icon_state = "bulletproof_ironhammer_goggles_thermal"
-	item_state = null
-	off_state = "bulletproof_ironhammer_goggles_thermal"
-	action_button_name = null
-	toggleable = FALSE
-	darkness_view = 7
-	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	flags = ABSTRACT
-	suitable_cell = /obj/item/cell/medium
-	spawn_with_cell = FALSE
-
-	tick_cost = 1
-
-/obj/item/clothing/glasses/powered/thermal/thermal_helmet/Initialize()
-	. = ..()
-	screenOverlay = global_hud.thermal
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

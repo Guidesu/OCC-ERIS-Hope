@@ -1,6 +1,5 @@
 #define CYBORG_POWER_USAGE_MULTIPLIER 1.5 // Multiplier for amount of power cyborgs use.
 
-
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -12,10 +11,6 @@
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ROBOT|MONKEY|SLIME|SIMPLE_ANIMAL
 	mob_push_flags = ~HEAVY //trundle trundle
-	var/robot_traits = null
-	// managed lists that contains all cyborg upgrade modules appliedto them
-	var/robot_upgrades = list()
-	var/has_given_emaged_gifts = FALSE
 
 	var/lights_on = FALSE // Is our integrated light on?
 	var/used_power_this_tick = 0
@@ -37,11 +32,6 @@
 	var/icontype 				//Persistent icontype tracking allows for cleaner icon updates
 	var/list/module_sprites = list() 		//Used to store the associations between sprite names and sprite index.
 	var/icon_selected = 1		//If icon selection has been completed yet
-	var/reset_icon_folder_draw = TRUE
-	var/icon_alt_director = 'icons/mob/robots.dmi'
-	var/has_resting_icon = FALSE //Used for wide-bots and feline type bots were we have fancy resting icons
-	var/has_family_guy_death_pose = FALSE
-	var/resting_icon_mode = FALSE
 
 //Hud stuff
 
@@ -70,16 +60,13 @@
 
 	// Components are basically robot organs.
 	var/list/components = list()
-	var/vtech_added_speed = 0 //How much speed is added by vtech?
+
 	var/obj/item/device/mmi/mmi = null
 
 	var/obj/item/stock_parts/matter_bin/storage = null
 
 	var/opened = FALSE
-<<<<<<< HEAD
 	var/emagged = FALSE
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/wiresexposed = FALSE
 	var/locked = TRUE
 	var/has_power = 1
@@ -111,52 +98,12 @@
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
-/mob/living/silicon/robot/proc/AddTrait(trait_type)
-	if(robot_traits & trait_type)
-		return FALSE
-	robot_traits |= trait_type
-	return TRUE
-
-/mob/living/silicon/robot/proc/HasTrait(trait_type)
-	if(robot_traits & trait_type)
-		return TRUE
-	return FALSE
-
-/mob/living/silicon/robot/proc/RemoveTrait(trait_type)
-	if(robot_traits & trait_type)
-		robot_traits &= ~trait_type
-		return TRUE
-	return FALSE
-
-/mob/living/silicon/robot/proc/AddTraitsFromParts()
-	for(var/datum/robot_component/comp in components)
-		if(comp.robot_trait)
-			AddTrait(comp.robot_trait)
-
-/mob/living/silicon/robot/proc/RemoveTraitsFromParts()
-	for(var/datum/robot_component/comp in components)
-		if(comp.robot_trait)
-			RemoveTrait(comp.robot_trait)
-
-/mob/living/silicon/robot/proc/UpdateTraitsFromParts()
-	RemoveTraitsFromParts()
-	AddTraitsFromParts()
-
 /mob/living/silicon/robot/New(loc,var/unfinished = 0)
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
 	add_language(LANGUAGE_ROBOT, 1)
-	add_language(LANGUAGE_COMMON, 1)
-	add_language(LANGUAGE_ILLYRIAN, 1)
-	add_language(LANGUAGE_JIVE, 0)
-	add_language(LANGUAGE_EURO, 1)
-	add_language(LANGUAGE_JANA, 1)
-	add_language(LANGUAGE_CYRILLIC, 1)
-	add_language(LANGUAGE_LATIN, 1)
-	add_language(LANGUAGE_ROMANA, 1)
-	add_language(LANGUAGE_YASSARI, 1)
 
 	wires = new(src)
 
@@ -204,13 +151,13 @@
 
 	add_robot_verbs()
 
-	hud_list[HEALTH_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[STATUS_HUD] = image('icons/mob/hud.dmi', src, "hudhealth100")
-	hud_list[LIFE_HUD] = image('icons/mob/hud.dmi', src, "hudhealth100")
-	hud_list[ID_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[WANTED_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[IMPCHEM_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[IMPTRACK_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
+	hud_list[HEALTH_HUD]      = image('icons/mob/hud.dmi', src, "hudblank")
+	hud_list[STATUS_HUD]      = image('icons/mob/hud.dmi', src, "hudhealth100")
+	hud_list[LIFE_HUD]        = image('icons/mob/hud.dmi', src, "hudhealth100")
+	hud_list[ID_HUD]          = image('icons/mob/hud.dmi', src, "hudblank")
+	hud_list[WANTED_HUD]      = image('icons/mob/hud.dmi', src, "hudblank")
+	hud_list[IMPCHEM_HUD]     = image('icons/mob/hud.dmi', src, "hudblank")
+	hud_list[IMPTRACK_HUD]    = image('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[SPECIALROLE_HUD] = image('icons/mob/hud.dmi', src, "hudblank")
 
 	create_HUD()
@@ -251,11 +198,7 @@
 	if(drain_check)
 		return TRUE
 
-<<<<<<< HEAD
 	if(!cell || cell.is_empty())
-=======
-	if(!cell || cell.charge <= 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	// Actual amount to drain from cell, using CELLRATE
@@ -284,8 +227,8 @@
 		mmi = null
 	if(connected_ai)
 		connected_ai.connected_robots -= src
-	QDEL_NULL(wires)
-	QDEL_NULL(cell)
+	qdel(wires)
+	wires = null
 	return ..()
 
 /mob/living/silicon/robot/proc/set_module_sprites(var/list/new_sprites)
@@ -301,11 +244,7 @@
 				icontype = "Custom"
 			else
 				icontype = module_sprites[1]
-				if(reset_icon_folder_draw)
-					icon = 'icons/mob/robots.dmi'
-					reset_icon_folder_draw = 'icons/mob/robots.dmi'
-				else
-					icon = icon_alt_director
+				icon = 'icons/mob/robots.dmi'
 				to_chat(src, SPAN_WARNING("Custom Sprite Sheet does not contain a valid icon_state for [ckey]-[modtype]"))
 		else
 			icontype = module_sprites[1]
@@ -406,14 +345,13 @@
 		return FALSE
 
 	spawn(0)
-		var/name_input
-		name_input = sanitizeName(input(src,"You are a robot. Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN, 1)
-		if(name_input)
-			custom_name = name_input
-			updatename()
-			updateicon()
-		else
-			to_chat(src, SPAN_WARNING("Invalid first name. It may only contain the characters A-Z, a-z, 0-9, -, ' and ."))
+		var/newname
+		newname = sanitizeSafe(input(src,"You are a robot. Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
+		if (newname)
+			custom_name = newname
+
+		updatename()
+		updateicon()
 
 // this verb lets cyborgs see the stations manifest
 /mob/living/silicon/robot/verb/open_manifest()
@@ -450,9 +388,6 @@
 /mob/living/silicon/robot/verb/toggle_lights()
 	set category = "Silicon Commands"
 	set name = "Toggle Lights"
-
-	if(stat == DEAD)
-		return
 
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
@@ -508,7 +443,6 @@
 			set_light(integrated_light_power)
 	else
 		set_light(0)
-	updateicon()
 
 // this function displays jetpack pressure in the stat panel
 /mob/living/silicon/robot/proc/show_jetpack_pressure()
@@ -543,31 +477,8 @@
 	return FALSE
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
-	if(HasTrait(CYBORG_TRAIT_DEFLECTIVE_BALLISTIC_ARMOR) && istype(Proj, /obj/item/projectile/bullet))
-		var/chance = 90
-		if(ishuman(Proj.firer))
-			var/mob/living/carbon/human/firer = Proj.firer
-			chance -= firer.stats.getStat(STAT_VIG, FALSE) / 5
-		var/obj/item/projectile/bullet/B = Proj
-		chance = max((chance - B.armor_penetration), 0)
-		if (!(Proj.testing))
-			if(B.starting && prob(chance)) // disregard this for test because its luck based
-				visible_message(SPAN_DANGER("\The [Proj.name] ricochets off [src]\'s armour!"))
-				var/multiplier = round(10 / get_dist(B.starting, src))
-				var/turf/sourceloc = get_turf_away_from_target_complex(src, B.starting, multiplier)
-				var/distance = get_dist(sourceloc, src)
-				var/new_x =  sourceloc.x + ( rand(0, distance) * prob(50) ? -1 : 1 )
-				var/new_y =  sourceloc.y + ( rand(0, distance) * prob(50) ? -1 : 1 )
-				B.redirect(new_x, new_y, get_turf(src), src)
-				return PROJECTILE_CONTINUE // complete projectile permutation
 	..(Proj)
-<<<<<<< HEAD
 	if(prob(75) && Proj.get_structure_damage() > 0) spark_system.start()
-=======
-	if(prob(75) && Proj.get_structure_damage() > 0)
-		if (!(Proj.testing))
-			spark_system.start()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/I, mob/user)
@@ -624,103 +535,89 @@
 	switch(tool_type)
 
 		if(QUALITY_WELDING)
-			if (user.a_intent == I_HELP)
-				if (src == user)
-					to_chat(user, SPAN_WARNING("You lack the reach to be able to repair yourself."))
-					return
-
-				if (!getBruteLoss())
-					to_chat(user, SPAN_NOTICE("Nothing to fix here!"))
-					return
-
-				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-					user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-					adjustBruteLoss(-30)
-					updatehealth()
-					add_fingerprint(user)
-					for(var/mob/O in viewers(user, null))
-						O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), 1)
-					return
+			if (src == user)
+				to_chat(user, SPAN_WARNING("You lack the reach to be able to repair yourself."))
 				return
+
+			if (!getBruteLoss())
+				to_chat(user, SPAN_NOTICE("Nothing to fix here!"))
+				return
+
+			if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				adjustBruteLoss(-30)
+				updatehealth()
+				add_fingerprint(user)
+				for(var/mob/O in viewers(user, null))
+					O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), 1)
+				return
+			return
 
 		if(QUALITY_PRYING)
-			if (user.a_intent == I_HELP)
-				if(opened)
-					if(cell)
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-							to_chat(user, SPAN_NOTICE("You close the cover."))
-							opened = 0
-							updateicon()
-							return
-					else if(wiresexposed && wires.IsAllCut())
+			if(opened)
+				if(cell)
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						to_chat(user, SPAN_NOTICE("You close the cover."))
+						opened = 0
+						updateicon()
+						return
+				else if(wiresexposed && wires.IsAllCut())
 					//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
-						if(!mmi)
-							to_chat(user, SPAN_NOTICE("\The [src] has no brain to remove."))
-							return
+					if(!mmi)
+						to_chat(user, SPAN_NOTICE("\The [src] has no brain to remove."))
+						return
 
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-							to_chat(user, SPAN_NOTICE("You jam the crowbar into the robot and begin levering [mmi]."))
-							to_chat(user, SPAN_NOTICE("You damage some parts of the chassis, but eventually manage to rip out [mmi]!"))
-							new /obj/item/robot_parts/robot_suit/with_limbs (loc)
-							new/obj/item/robot_parts/chest(loc)
-							qdel(src)
-							return
-					else
-					// Okay we're not removing the cell or an MMI, but maybe something else?
-						var/list/removable_components = list()
-						for(var/V in components)
-							if(V == "power cell") continue
-							var/datum/robot_component/C = components[V]
-							if(C.installed == 1 || C.installed == -1)
-								removable_components += V
-						if(robot_upgrades)
-							for(var/item in robot_upgrades)
-								removable_components += item
-
-						var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
-						if(!remove)
-							return
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-							if(istype(remove, /obj/item/borg/upgrade))
-								var/obj/item/borg/upgrade/comp = remove
-								robot_upgrades -= comp
-								comp.unaction(src)
-								comp.forceMove(get_turf(src))
-								to_chat(user, SPAN_NOTICE("You remove \the [comp]."))
-								return
-							var/datum/robot_component/C = components[remove]
-							var/obj/item/robot_parts/robot_component/RC = C.wrapped
-							to_chat(user, SPAN_NOTICE("You remove \the [RC]."))
-							if(istype(RC))
-								RC.brute = C.brute_damage
-								RC.burn = C.electronics_damage
-
-							RC.forceMove(get_turf(src))
-
-							if(C.installed == 1)
-								C.uninstall()
-							C.installed = 0
-							return
-
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						to_chat(user, SPAN_NOTICE("You jam the crowbar into the robot and begin levering [mmi]."))
+						to_chat(user, SPAN_NOTICE("You damage some parts of the chassis, but eventually manage to rip out [mmi]!"))
+						new /obj/item/robot_parts/robot_suit/with_limbs (loc)
+						new/obj/item/robot_parts/chest(loc)
+						qdel(src)
+						return
 				else
-					if(locked)
-						to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
-					else
-						if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-							to_chat(user, SPAN_NOTICE("You open the cover."))
-							opened = 1
-							updateicon()
-							return
-				return
+					// Okay we're not removing the cell or an MMI, but maybe something else?
+					var/list/removable_components = list()
+					for(var/V in components)
+						if(V == "power cell") continue
+						var/datum/robot_component/C = components[V]
+						if(C.installed == 1 || C.installed == -1)
+							removable_components += V
+
+					var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
+					if(!remove)
+						return
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						var/datum/robot_component/C = components[remove]
+						var/obj/item/robot_parts/robot_component/RC = C.wrapped
+						to_chat(user, SPAN_NOTICE("You remove \the [RC]."))
+						if(istype(RC))
+							RC.brute = C.brute_damage
+							RC.burn = C.electronics_damage
+
+						RC.forceMove(get_turf(src))
+
+						if(C.installed == 1)
+							C.uninstall()
+						C.installed = 0
+						return
+
+			else
+				if(locked)
+					to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
+				else
+					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						to_chat(user, SPAN_NOTICE("You open the cover."))
+						opened = 1
+						updateicon()
+						return
+			return
 
 		if(QUALITY_WIRE_CUTTING)
-			if (user.a_intent == I_HELP)
-				if (wiresexposed)
-					wires.Interact(user)
-				return
+			if (wiresexposed)
+				wires.Interact(user)
+			return
 
 		if(QUALITY_SCREW_DRIVING)
-<<<<<<< HEAD
 			if (opened && !cell)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					wiresexposed = !wiresexposed
@@ -746,34 +643,6 @@
 							radio.attackby(I,user)//Push it to the radio to let it handle everything
 							updateicon()
 			return
-=======
-			if (user.a_intent == I_HELP)
-				if (opened && !cell)
-					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-						wiresexposed = !wiresexposed
-						to_chat(user, SPAN_NOTICE("The wires have been [wiresexposed ? "exposed" : "unexposed"]"))
-						updateicon()
-				else
-					switch(alert(user,"What are you trying to interact with?",,"Tools","Radio"))
-						if("Tools")
-							var/list/robotools = list()
-							for(var/obj/item/tool/robotool in module.modules)
-								robotools.Add(robotool)
-							if(robotools.len)
-								var/obj/item/tool/chosen_tool = input(user,"Which tool are you trying to modify?","Tool Modification","Cancel") in robotools + "Cancel"
-								if(chosen_tool == "Cancel")
-									return
-								chosen_tool.attackby(I,user)
-							else
-								to_chat(user, SPAN_WARNING("[src] has no modifiable tools."))
-						if("Radio")
-							if(!radio)
-								to_chat(user, SPAN_WARNING("Unable to locate a radio."))
-							if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
-								radio.attackby(I,user)//Push it to the radio to let it handle everything
-								updateicon()
-				return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(ABORT_CHECK)
 			return
@@ -829,13 +698,8 @@
 		else
 			to_chat(user, SPAN_WARNING("Unable to locate a radio."))
 
-<<<<<<< HEAD
 	else if(I.GetIdCard() || length(I.GetAccess()))			// trying to unlock the interface with an ID card
 		if(emagged)//still allow them to open the cover
-=======
-	else if(I.GetIdCard() || length(I.GetAccess()) || istype(I, /obj/item/card/robot))			// trying to unlock the interface with an ID card
-		if(HasTrait(CYBORG_TRAIT_EMAGGED))//still allow them to open the cover
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_WARNING("The interface seems slightly damaged."))
 		if(opened)
 			to_chat(user, SPAN_WARNING("You must close the cover to swipe an ID card."))
@@ -860,8 +724,6 @@
 				to_chat(usr, "You apply the upgrade to [src]!")
 				usr.drop_item()
 				U.loc = src
-				if(U.permanent)
-					robot_upgrades += U
 			else
 				to_chat(usr, "Upgrade error!")
 
@@ -918,32 +780,9 @@
 	return FALSE
 
 /mob/living/silicon/robot/updateicon()
-<<<<<<< HEAD
 	cut_overlays()
 	if(stat == CONSCIOUS)
 		add_overlays("eyes-[module_sprites[icontype]]")
-=======
-	icon = icon_alt_director
-	if(reset_icon_folder_draw)
-		icon = 'icons/mob/robots.dmi'
-		icon_alt_director = 'icons/mob/robots.dmi'
-		reset_icon_folder_draw = FALSE //We reset this so we dont consantly reset are icon as a default type
-	overlays.Cut()
-	if(stat == CONSCIOUS && !resting_icon_mode)
-		overlays += "eyes-[module_sprites[icontype]]"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-
-	if(stat == DEAD && has_family_guy_death_pose)
-		icon_state = "[module_sprites[icontype]]-wreck"
-
-	if(lights_on && !resting_icon_mode)
-		overlays += "[module_sprites[icontype]]_l"
-
-	if(has_resting_icon && stat == CONSCIOUS)
-		if(resting_icon_mode && !opened)
-			icon_state = "[module_sprites[icontype]]-rest"
-		else
-			icon_state = "[module_sprites[icontype]]"
 
 	if(opened)
 		var/panelprefix = custom_sprite ? ckey : "ov"
@@ -990,7 +829,7 @@
 			dat += text("[obj]: <B>Activated</B><BR>")
 		else
 			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
-	if (HasTrait(CYBORG_TRAIT_EMAGGED))
+	if (emagged)
 		if(activated(module.emag))
 			dat += text("[module.emag]: <B>Activated</B><BR>")
 		else
@@ -1083,17 +922,13 @@
 	. = ..()
 
 	if(module)
-<<<<<<< HEAD
 		if(istype(module, /obj/item/robot_module/custodial))
-=======
-		if(HasTrait(CYBORG_TRAIT_CLEANING_WALK))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/turf/tile = loc
 			if(isturf(tile))
 				tile.clean_blood()
 				for(var/A in tile)
 					if(istype(A, /obj/effect))
-						if(istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) && !istype(A,/obj/effect/overlay/water))
+						if(istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 							qdel(A)
 					else if(istype(A, /obj/item))
 						var/obj/item/cleaned_item = A
@@ -1189,60 +1024,12 @@
 	icon_state = module_sprites[icontype]
 	updateicon()
 
-	if(alert(client,"Do you like this icon?",null, "No","Yes") == "No") // We lose the USR reference because this is called from a spawned proc, so we have to use client.
+	if(alert("Do you like this icon?",null, "No","Yes") == "No")
 		return choose_icon()
 
-<<<<<<< HEAD
 	icon_selected = 1
-=======
-	icon_selected = 1 //MEW
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	verbs -= /mob/living/silicon/robot/proc/choose_icon
-
-	//This is a big section of if checks for the different types, sadly I have no idea how to do this in any other way... - Trilby
-	if(icon_state == "mekapeace")
-		icon_alt_director = 'icons/mob/robot_tall/science.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(icon_state == "mekamine")
-		icon_alt_director = 'icons/mob/robot_tall/mining.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(icon_state == "mekaserve" || icon_state == "mekaserve_alt")
-		icon_alt_director = 'icons/mob/robot_tall/server.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(icon_state == "mekajani")
-		icon_alt_director = 'icons/mob/robot_tall/janitor.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(icon_state == "mekacargo")
-		icon_alt_director = 'icons/mob/robot_tall/cargo.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(icon_state == "mekamed")
-		icon_alt_director = 'icons/mob/robot_tall/medical.dmi'
-		reset_icon_folder_draw = FALSE
-		has_resting_icon = TRUE
-		has_family_guy_death_pose = TRUE
-
-	if(has_resting_icon)
-		verbs += /mob/living/silicon/robot/verb/resting_icon_mode
-
 	to_chat(src, "Your icon has been set. You now require a module reset to change it.")
-
-	updateicon()
 
 /mob/living/silicon/robot/proc/sensor_mode() //Medical/Security HUD controller for borgs
 	set name = "Set Sensor Augmentation"
@@ -1264,11 +1051,7 @@
 		return FALSE
 
 	// Power cell is empty.
-<<<<<<< HEAD
 	if(cell.is_empty())
-=======
-	if(cell.charge <= 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	var/power_use = (amount * CYBORG_POWER_USAGE_MULTIPLIER) / power_efficiency
@@ -1329,18 +1112,14 @@
 		return
 
 	if(opened)//Cover is open
-		if(HasTrait(CYBORG_TRAIT_EMAGGED))	return//Prevents the X has hit Y with Z message also you cant emag them twice
+		if(emagged)	return//Prevents the X has hit Y with Z message also you cant emag them twice
 		if(wiresexposed)
 			to_chat(user, "You must close the panel first")
 			return
 		else
 			sleep(6)
 			if(prob(50))
-<<<<<<< HEAD
 				emagged = TRUE
-=======
-				AddTrait(CYBORG_TRAIT_EMAGGED)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				lawupdate = FALSE
 				disconnect_from_ai()
 				to_chat(user, "You emag [src]'s interface.")
@@ -1387,33 +1166,9 @@
 /mob/living/silicon/robot/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
 	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (lockcharge || !is_component_functioning("actuator")))
 		return TRUE
-<<<<<<< HEAD
 	if ((incapacitation_flags & INCAPACITATION_UNCONSCIOUS) && !is_component_functioning("actuator"))
-=======
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !is_component_functioning("actuator"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	return ..()
 
 /mob/living/silicon/robot/get_cell()
 	return cell
-<<<<<<< HEAD
-=======
-
-
-//Soj edit
-
-/mob/living/silicon/robot/verb/resting_icon_mode()
-	set name = "Resting Icon Mode"
-	set category = "Silicon Commands"
-
-	if(opened)
-		to_chat(src, "You can not go into a resting icon mode well your pannel is open!.")
-		return
-
-	if(resting_icon_mode)
-		resting_icon_mode = FALSE
-	else
-		resting_icon_mode = TRUE
-	updateicon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

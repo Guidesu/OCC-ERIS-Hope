@@ -18,7 +18,7 @@
 	var/volume_rate = 50	//flow rate limit
 
 	var/frequency = 0
-	var/id
+	var/id = null
 	var/datum/radio_frequency/radio_connection
 
 	level = BELOW_PLATING_LEVEL

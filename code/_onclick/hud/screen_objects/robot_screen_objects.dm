@@ -198,20 +198,12 @@
 	update_icon()
 	return
 
-<<<<<<< HEAD
 /obj/screen/silicon/glasses_overlay/on_update_icon()
-=======
-/obj/screen/silicon/glasses_overlay/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	var/mob/living/silicon/robot/R = parentmob
 	for (var/obj/item/borg/sight/S in list(R.module_state_1, R.module_state_2, R.module_state_3))
 		if(S.overlay)
-<<<<<<< HEAD
 			associate_with_overlays(S.overlay)
-=======
-			add_overlay(S.overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/screen/silicon/pull

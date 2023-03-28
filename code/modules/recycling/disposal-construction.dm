@@ -2,6 +2,7 @@
 // This is the pipe that you drag around, not the attached ones.
 
 /obj/structure/disposalconstruct
+
 	name = "disposal pipe segment"
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -261,30 +262,18 @@
 					anchored = FALSE
 					if(is_pipe)
 						level = ABOVE_PLATING_LEVEL
-<<<<<<< HEAD
 						density = FALSE
 					else
 						density = TRUE
-=======
-						density = 0
-					else
-						density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					to_chat(user, "You detach the [nice_type] from the underfloor.")
 					return
 				else
 					anchored = TRUE
 					if(is_pipe)
 						level = BELOW_PLATING_LEVEL // We don't want disposal bins to disappear under the floors
-<<<<<<< HEAD
 						density = FALSE
 					else
 						density = TRUE // We don't want disposal bins or outlets to go density 0
-=======
-						density = 0
-					else
-						density = 1 // We don't want disposal bins or outlets to go density 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					to_chat(user, "You attach the [nice_type] to the underfloor.")
 					return
 			return

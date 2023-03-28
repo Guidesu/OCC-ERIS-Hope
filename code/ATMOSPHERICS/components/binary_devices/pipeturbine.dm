@@ -75,7 +75,6 @@
 	update_icon()
 		cut_overlays()
 		if (dP > 10)
-<<<<<<< HEAD
 			add_overlays(image('icons/obj/pipeturbine.dmi', "moto-turb"))
 		if (kin_energy > 100000)
 			add_overlays(image('icons/obj/pipeturbine.dmi', "low-turb"))
@@ -83,15 +82,6 @@
 			add_overlays(image('icons/obj/pipeturbine.dmi', "med-turb"))
 		if (kin_energy > 1000000)
 			add_overlays(image('icons/obj/pipeturbine.dmi', "hi-turb"))
-=======
-			add_overlay(image('icons/obj/pipeturbine.dmi', "moto-turb"))
-		if (kin_energy > 100000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "low-turb"))
-		if (kin_energy > 500000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "med-turb"))
-		if (kin_energy > 1000000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "hi-turb"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	attackby(obj/item/tool/W as obj, mob/user as mob)
 		if(!W.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_BOLT_TURNING, FAILCHANCE_ZERO, required_stat = STAT_MEC))

@@ -21,17 +21,17 @@
 	if(!material)
 		qdel(src)
 		return
-	maxHealth = max(100, material.integrity*10)
-	health = maxHealth
+	maxhealth = max(100, material.integrity*10)
+	health = maxhealth
 	if(!icon_base)
 		icon_base = material.door_icon_base
 	hitsound = material.hitsound
 	name = "[material.display_name] door"
 	color = material.icon_colour
 	if(material.opacity < 0.5)
-		glass = 1
 		set_opacity(0)
 	else
+		glass = 1
 		set_opacity(1)
 	update_icon()
 
@@ -46,10 +46,9 @@
 
 /obj/machinery/door/unpowered/simple/bullet_act(var/obj/item/projectile/Proj)
 	var/damage = Proj.get_structure_damage()
-	if (!(Proj.testing))
-		if(damage)
-			//cap projectile damage so that there's still a minimum number of hits required to break the door
-			take_damage(min(damage, 100))
+	if(damage)
+		//cap projectile damage so that there's still a minimum number of hits required to break the door
+		take_damage(min(damage, 100))
 
 /obj/machinery/door/unpowered/simple/on_update_icon()
 	. = ""
@@ -119,11 +118,7 @@
 		if(stat & BROKEN)
 			to_chat(user, SPAN_NOTICE("It looks like \the [src] is pretty busted. It's going to need more than just patching up now."))
 			return
-<<<<<<< HEAD
 		if(health >= maxhealth)
-=======
-		if(health >= maxHealth)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_NOTICE("Nothing to fix!"))
 			return
 		if(!density)
@@ -132,16 +127,12 @@
 
 		//figure out how much metal we need
 		var/obj/item/stack/stack = I
-<<<<<<< HEAD
 		var/amount_needed = CEILING((maxhealth - health)/DOOR_REPAIR_AMOUNT, 1)
-=======
-		var/amount_needed = CEILING((maxHealth - health)/DOOR_REPAIR_AMOUNT, 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/used = min(amount_needed,stack.amount)
 		if (used)
 			to_chat(user, SPAN_NOTICE("You fit [used] [stack.singular_name]\s to damaged and broken parts on \the [src]."))
 			stack.use(used)
-			health = between(health, health + used*DOOR_REPAIR_AMOUNT, maxHealth)
+			health = between(health, health + used*DOOR_REPAIR_AMOUNT, maxhealth)
 		return
 
 
@@ -181,18 +172,14 @@
 	..(newloc, MATERIAL_WOOD)
 
 /obj/machinery/door/unpowered/simple/wood/saloon
+	icon_base = "saloon"
 	autoclose = 1
 	normalspeed = 0
 
 /obj/machinery/door/unpowered/simple/wood/saloon/New(var/newloc,var/material_name)
 	..(newloc, MATERIAL_WOOD)
-<<<<<<< HEAD
 	glass = 1
 	set_opacity(0)
 
 /obj/machinery/door/unpowered/simple/resin/New(var/newloc,var/material_name)
 	..(newloc, MATERIAL_RESIN)
-=======
-	//glass = 1
-	//set_opacity(0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

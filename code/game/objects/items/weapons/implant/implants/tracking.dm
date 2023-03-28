@@ -1,24 +1,14 @@
 /obj/item/implant/tracking
 	name = "tracking implant"
-<<<<<<< HEAD
 	desc = "Track people with this."
 	icon_state = "implant_tracking"
 	implant_overlay = "implantstorage_tracking"
-=======
-	desc = "Track with this."
-	icon_state = "implant_tracking"
-	var/id = 1.0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=2, TECH_DATA=2, TECH_BIO=2)
 	var/datum/gps_data/gps
 
-<<<<<<< HEAD
 /obj/item/implant/tracking/Initialize()
 	. = ..()
 	gps = new /datum/gps_data/implant(src)
-=======
-	overlay_icon = "tracking"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implant/tracking/get_data()
 	var/data = {"<b>Implant Specifications:</b><BR>
@@ -39,13 +29,10 @@
 
 	return data
 
-<<<<<<< HEAD
 /obj/item/implant/tracking/Destroy()
 	QDEL_NULL(gps)
 	return ..()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/tracking/emp_act(severity)
 	if (malfunction)	//no, dawg, you can't malfunction while you are malfunctioning
 		return
@@ -69,7 +56,6 @@
 /datum/gps_data/implant
 	prefix = "IMP"
 
-<<<<<<< HEAD
 /datum/gps_data/implant/is_functioning()
 	var/obj/item/implant/I = holder
 	if(!I.wearer)
@@ -93,16 +79,7 @@
 
 	return ..()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implantcase/tracking
 	name = "glass case - 'tracking'"
 	desc = "A case containing a tracking implant."
 	implant = /obj/item/implant/tracking
-<<<<<<< HEAD
-=======
-
-/obj/item/implanter/tracking
-	name = "implanter (tracking)"
-	implant = /obj/item/implant/tracking
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,5 +1,3 @@
- //TODO: Make this link to the in game news casts
- //TODO: Make them once linked to the news casters, be able to tell you were they are.
 /datum/computer_file/program/newsbrowser
 	filename = "news_browser"
 	filedesc = "News Browser"
@@ -10,10 +8,6 @@
 	size = 4
 	requires_ntnet = TRUE
 	available_on_ntnet = TRUE
-<<<<<<< HEAD
-=======
-	usage_flags = PROGRAM_ALL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	nanomodule_path = /datum/nano_module/program/computer_newsbrowser/
 	var/datum/computer_file/data/news_article/loaded_article
@@ -86,7 +80,7 @@
 /datum/nano_module/program/computer_newsbrowser
 	name = "News Browser"
 
-/datum/nano_module/program/computer_newsbrowser/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_newsbrowser/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 
 	var/datum/computer_file/program/newsbrowser/PRG
 	var/list/data = list()

@@ -23,15 +23,14 @@ calculate text size per text.
 				continue
 			if(R.id == "nutriment")
 				var/list/t = R.get_data()
-				if(t) //TODO: Review why sometimes reagents lack taste.
-					for(var/i in 1 to t.len)
-						var/A = t[i]
-						if(!(A in tastes))
-							tastes.Add(A)
-							tastes[A] = 0
-						tastes[A] += t[A]
-						total_taste += t[A]
-					continue
+				for(var/i in 1 to t.len)
+					var/A = t[i]
+					if(!(A in tastes))
+						tastes.Add(A)
+						tastes[A] = 0
+					tastes[A] += t[A]
+					total_taste += t[A]
+				continue
 			else
 				desc = R.taste_description
 			if(!(desc in tastes))
@@ -52,9 +51,5 @@ calculate text size per text.
 				else if(percent <= minimum_percent)
 					continue
 				out.Add("[size][tastes[i]]")
-<<<<<<< HEAD
 	to_chat(src, "<span class='notice'>You can taste [english_list(out,"something indescribable")]</span>" ) //no taste means there are too many tastes and not enough flavor.
-=======
-	to_chat(src, "<span class='notice'>You can taste [english_list(out,"nothing worthy of note.")]</span>" ) // Either your species lack taste, or whatever you were consuming is so watered down you can't taste it.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	from.trans_to_holder(target,amount,multiplier,copy) //complete transfer

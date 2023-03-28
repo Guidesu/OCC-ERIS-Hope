@@ -1,4 +1,4 @@
-#define DRYING_TIME 5 * 36*10                        //for 1 unit of depth in puddle (amount var) should be 3 mins to dry
+#define DRYING_TIME 5 * 60*10                        //for 1 unit of depth in puddle (amount var)
 
 var/global/list/image/splatter_cache=list()
 
@@ -20,27 +20,7 @@ var/global/list/image/splatter_cache=list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/amount = 5
 	var/drytime
-<<<<<<< HEAD
 	sanity_damage = 1
-=======
-	sanity_damage = 0.5
-	// List of are shoe prints we got
-	var/list/shoe_types = list()
-
-/obj/effect/decal/cleanable/blood/bearfoot
-	name = "bearfoot"
-
-/obj/effect/decal/cleanable/blood/examine(mob/user)
-	. = ..()
-	if(iscarbon(user) || issilicon(user))
-		if(shoe_types.len && (user.stats?.getPerk(PERK_EAR_OF_QUICKSILVER) || user.stats.getStat(STAT_VIG) >= STAT_LEVEL_EXPERT)) //Basiclly rangers are meant to do this so they have a bypass
-			to_chat(user, "<span class='info'>There is traces of shoe prints that are likely from:</span>")
-			for(var/shoe in shoe_types)
-				var/obj/item/clothing/shoes/S = shoe
-				to_chat(user, "<span class='info'>some <B>[initial(S.name)]</B> </B></span>") //as cool as  [icon2html(initial(S.icon) is it dosnt work well
-		else
-			to_chat(user, "<span class='info'>These footprints have no shoe prints that you can recognize.</span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/blood/reveal_blood()
 	if(!fluorescent)
@@ -53,14 +33,11 @@ var/global/list/image/splatter_cache=list()
 	if(invisibility != 100)
 		invisibility = 100
 		amount = 0
-<<<<<<< HEAD
 		STOP_PROCESSING(SSobj, src)
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..(ignore=TRUE)
 
 /obj/effect/decal/cleanable/blood/Destroy()
-	QDEL_NULL(weak_reference)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/effect/decal/cleanable/blood/New()
@@ -68,19 +45,22 @@ var/global/list/image/splatter_cache=list()
 	fall_to_floor()
 	update_icon()
 
+
 	if(istype(src, /obj/effect/decal/cleanable/blood/gibs))
 		return
-	if(type == /obj/effect/decal/cleanable/blood)
-		if(loc && isturf(loc))
-			for(var/obj/effect/decal/cleanable/blood/B in loc)
+	if(src.type == /obj/effect/decal/cleanable/blood)
+		if(src.loc && isturf(src.loc))
+			for(var/obj/effect/decal/cleanable/blood/B in src.loc)
 				if(B != src)
-					if(B.blood_DNA)
+					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
-					if(B.shoe_types)
-						shoe_types |= B.shoe_types.Copy()
 					qdel(B)
 	drytime = world.time + DRYING_TIME * (amount+1)
-	addtimer(CALLBACK(src, .proc/dry), drytime)
+	START_PROCESSING(SSobj, src)
+
+/obj/effect/decal/cleanable/blood/Process()
+	if(world.time > drytime)
+		dry()
 
 /obj/effect/decal/cleanable/blood/on_update_icon()
 	if(basecolor == "rainbow") basecolor = get_random_colour(1)
@@ -109,41 +89,27 @@ var/global/list/image/splatter_cache=list()
 		hasfeet = 0
 	if(perp.shoes && !perp.buckled)//Adding blood to shoes
 		var/obj/item/clothing/shoes/S = perp.shoes
-		if(S.flags & NOBLOODY)
-			return
 		if(istype(S))
 			S.blood_color = basecolor
 			S.track_blood = max(amount,S.track_blood)
-			shoe_types |= S.type
 			if(!S.blood_overlay)
 				S.generate_blood_overlay()
 			if(!S.blood_DNA)
 				S.blood_DNA = list()
-<<<<<<< HEAD
 				S.blood_overlay.color = color ? color : basecolor //Occulus edit - For custom blood color
 				S.add_overlays(S.blood_overlay)
 			if(S.blood_overlay && S.blood_overlay.color != basecolor)
 				S.blood_overlay.color = color ? color : basecolor //Occulus edit - For custom blood color
 				S.cut_overlays()
 				S.add_overlays(S.blood_overlay)
-=======
-				S.blood_overlay.color = basecolor
-				S.add_overlay(S.blood_overlay)
-			if(S.blood_overlay && S.blood_overlay.color != basecolor)
-				S.blood_overlay.color = basecolor
-				S.cut_overlays()
-				S.add_overlay(S.blood_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			S.blood_DNA |= blood_DNA.Copy()
 
 	else if (hasfeet)//Or feet
 		perp.feet_blood_color = color ? color : basecolor //Occulus edit - For custom blood color
 		perp.track_blood = max(amount,perp.track_blood)
-		shoe_types |= /obj/effect/decal/cleanable/blood/bearfoot
 		if(!perp.feet_blood_DNA)
 			perp.feet_blood_DNA = list()
 		perp.feet_blood_DNA |= blood_DNA.Copy()
-
 	else if (perp.buckled && istype(perp.buckled, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/W = perp.buckled
 		W.bloodiness = 4
@@ -157,6 +123,7 @@ var/global/list/image/splatter_cache=list()
 	desc = drydesc
 	color = adjust_brightness(color, -50)
 	amount = 0
+	STOP_PROCESSING(SSobj, src)
 
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/carbon/human/user)
 	..()
@@ -176,17 +143,8 @@ var/global/list/image/splatter_cache=list()
 		user.verbs += /mob/living/carbon/human/proc/bloody_doodle
 
 /obj/effect/decal/cleanable/blood/splatter
-<<<<<<< HEAD
     random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
     amount = 2
-=======
-	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
-	amount = 2
-
-/obj/effect/decal/cleanable/blood/splatter/green
-	amount = 1
-	basecolor="#666600"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
@@ -221,11 +179,7 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/decal/cleanable/blood/writing/examine(mob/user)
 	..(user)
-<<<<<<< HEAD
 	to_chat(user, "It reads: <font color='[color]'>\"[message]\"</font>") //Occulus Edit - For custom blood color.
-=======
-	to_chat(user, "It reads: <font color='[basecolor]'>\"[message]\"</font>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
@@ -235,8 +189,8 @@ var/global/list/image/splatter_cache=list()
 	anchored = TRUE
 	layer = LOW_OBJ_LAYER
 	icon = 'icons/effects/blood.dmi'
-	icon_state = "mgibbl5"
-	random_icon_states = list("gib1", "gib2", "gib3", "gib5", "gib6")
+	icon_state = "gibbl5"
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	var/fleshcolor = "#FFFFFF"
 
 /obj/effect/decal/cleanable/blood/gibs/on_update_icon()
@@ -252,17 +206,13 @@ var/global/list/image/splatter_cache=list()
 
 	icon = blood
 	cut_overlays()
-<<<<<<< HEAD
 	add_overlays(giblets)
-=======
-	add_overlay(giblets)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/decal/cleanable/blood/gibs/up
-	random_icon_states = list("gib1", "gib2", "gib3", "gib5", "gib6","gibup1","gibup1","gibup1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibup1","gibup1","gibup1")
 
 /obj/effect/decal/cleanable/blood/gibs/down
-	random_icon_states = list("gib1", "gib2", "gib3", "gib5", "gib6","gibdown1","gibdown1","gibdown1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibdown1","gibdown1","gibdown1")
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")
@@ -281,7 +231,7 @@ var/global/list/image/splatter_cache=list()
 			sleep(3)
 			if (i > 0)
 				var/obj/effect/decal/cleanable/blood/splatter/b = new(loc)
-				b.basecolor = basecolor
+				b.basecolor = src.basecolor
 				b.update_icon()
 
 			if (step_to(src, get_step(src, direction), 0))
@@ -299,21 +249,17 @@ var/global/list/image/splatter_cache=list()
 	//random_icon_states = list("mucus") Occulus Edit
 
 	var/list/datum/disease2/disease/virus2 = list()
-	var/dry = FALSE // Keeps the lag down
+	var/dry=0 // Keeps the lag down
 
 /obj/effect/decal/cleanable/mucus/New()
 	spawn(DRYING_TIME * 2)
-<<<<<<< HEAD
 		dry=1
 	..()//Occulus Edit
-=======
-		dry = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //This proc prevents blood on openspace tiles, by causing them to fall down until they hit the ground
 /obj/effect/decal/cleanable/blood/proc/fall_to_floor()
 	if (istype(loc, /turf/simulated/open))
-		anchored = FALSE //Anchored things can't fall
+		anchored = 0 //Anchored things can't fall
 		while (istype(loc, /turf/simulated/open))
 			var/turf/simulated/open/T = loc
 			T.fallThrough(src)

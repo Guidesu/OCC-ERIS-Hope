@@ -52,19 +52,11 @@
 		time = 10
 
 
-<<<<<<< HEAD
 /obj/item/device/assembly/timer/on_update_icon()
 	cut_overlays()
 	attached_overlays = list()
 	if(timing)
 		add_overlays("timer_timing")
-=======
-/obj/item/device/assembly/timer/update_icon()
-	cut_overlays()
-	attached_overlays = list()
-	if(timing)
-		add_overlay("timer_timing")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		attached_overlays += "timer_timing"
 	if(holder)
 		holder.update_icon()

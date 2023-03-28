@@ -11,8 +11,7 @@
 	var/max_damage = 30  // HP of this component.
 	var/mob/living/silicon/robot/owner
 	var/installed_by_default = TRUE
-	var/robot_trait = null // a cyborg trait to add when this is installed
-	var/powered_trait = FALSE // does this module need to be powered for its trait to be active ?
+
 
 // The actual device object that has to be installed for this.
 /datum/robot_component/var/external_type = null
@@ -24,13 +23,7 @@
 	src.owner = R
 
 /datum/robot_component/proc/install()
-	if(!powered_trait)
-		owner.AddTrait(robot_trait)
-	else
-		update_power_state()
-
 /datum/robot_component/proc/uninstall()
-	owner.RemoveTrait(robot_trait)
 
 /datum/robot_component/proc/destroy()
 	// The thing itself isn't there anymore, but some fried remains are.
@@ -54,16 +47,15 @@
 	uninstall()
 
 /datum/robot_component/proc/take_damage(brute, electronics, sharp, edge)
-	if(installed != TRUE) return
+	if(installed != 1) return
 
 	brute_damage += brute
 	electronics_damage += electronics
 
-	if(brute_damage + electronics_damage >= max_damage)
-		destroy()
+	if(brute_damage + electronics_damage >= max_damage) destroy()
 
 /datum/robot_component/proc/heal_damage(brute, electronics)
-	if(installed != TRUE)
+	if(installed != 1)
 		// If it's not installed, can't repair it.
 		return 0
 
@@ -71,23 +63,17 @@
 	electronics_damage = max(0, electronics_damage - electronics)
 
 /datum/robot_component/proc/is_powered()
-	return (installed == TRUE) && (brute_damage + electronics_damage < max_damage) && (!idle_usage || powered)
+	return (installed == 1) && (brute_damage + electronics_damage < max_damage) && (!idle_usage || powered)
 
 /datum/robot_component/proc/update_power_state()
-	if(toggled == FALSE)
-		powered = FALSE
-		if(powered_trait && robot_trait)
-			owner.RemoveTrait(robot_trait)
+	if(toggled == 0)
+		powered = 0
 		return
 	if(owner.cell && owner.cell.charge >= idle_usage)
 		owner.cell_use_power(idle_usage)
-		powered = TRUE
-		if(powered_trait && robot_trait)
-			owner.AddTrait(robot_trait)
+		powered = 1
 	else
-		powered = FALSE
-		if(powered_trait && robot_trait)
-			owner.RemoveTrait(robot_trait)
+		powered = 0
 
 
 // ARMOUR
@@ -96,19 +82,9 @@
 /datum/robot_component/armour
 	name = "armour plating"
 	external_type = /obj/item/robot_parts/robot_component/armour
-	max_damage = 80
+	max_damage = 60
 
-/datum/robot_component/armour/level_2
-	name = "advanced armour plating"
-	external_type = /obj/item/robot_parts/robot_component/armour/mkii
-	max_damage = 120
-	installed_by_default = FALSE
 
-/datum/robot_component/armour/level_3
-	name = "combat armour plating"
-	external_type = /obj/item/robot_parts/robot_component/armour/mkv
-	max_damage = 160
-	installed_by_default = FALSE
 
 // JETPACK
 // Allows the cyborg to move in space
@@ -278,17 +254,10 @@
 // Spawned when a robot component breaks
 // Has default name/icon/materials, replaced by the component itself when it breaks
 /obj/item/trash/broken_robot_part
-<<<<<<< HEAD
 	name = "broken actuator"
 	desc = "A robot part, broken beyond repair. Can be recycled in an autolathe."
 	icon = 'icons/obj/robot_component.dmi'
 	icon_state = "motor_broken"
-=======
-	name = "broken component"
-	desc = "A robot part, broken beyond repair. Can be recycled in an autolathe."
-	icon = 'icons/obj/robot_component.dmi'
-	icon_state = "broken"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_STEEL = 5)
 
 /obj/item/robot_parts/robot_component
@@ -320,50 +289,31 @@
 
 /obj/item/robot_parts/robot_component/binary_communication_device
 	name = "binary communication device"
-	desc = "A robot part, this one allows a robotic unit to talk in a subspace binary channel with other cyborgs or drones."
 	icon_state = "binradio"
 	icon_state_broken = "binradio_broken"
 
 /obj/item/robot_parts/robot_component/actuator
 	name = "actuator"
-	desc = "A robot part, this one allows for the robotic unit to be able to move around."
 	icon_state = "motor"
 	icon_state_broken = "motor_broken"
 
 /obj/item/robot_parts/robot_component/armour
 	name = "armour plating"
-	desc = "A robot part, metal plates to be able to take dents and burns so more sensitive component inside dont."
 	icon_state = "armor"
 	icon_state_broken = "armor_broken"
 
-/obj/item/robot_parts/robot_component/armour/mkii
-	name = "Mark II armour plating"
-	icon_state = "armormk2"
-	icon_state_broken = "armormk2_broken"
-	matter = list(MATERIAL_STEEL = 25)
-
-/obj/item/robot_parts/robot_component/armour/mkv
-	name = "Mark V armour plating"
-	icon_state = "armormk5"
-	icon_state_broken = "armormk5_broken"
-	matter = list(MATERIAL_STEEL = 20, MATERIAL_PLASTEEL = 10)
-
 /obj/item/robot_parts/robot_component/camera
 	name = "camera"
-	desc = "A robot part, this allows a robot to see as well as be a moble camera, well also being able to take photos."
 	icon_state = "camera"
 	icon_state_broken = "camera_broken"
 
 /obj/item/robot_parts/robot_component/diagnosis_unit
 	name = "diagnosis unit"
-	desc = "A robot part, a complicated set of wires and checks to have a robotic unit be able to understand damage, \
-	tell whats turned on or off, and even power drains."
 	icon_state = "analyser"
 	icon_state_broken = "analyser_broken"
 
 /obj/item/robot_parts/robot_component/radio
 	name = "radio"
-	desc = "A robot part, the simple radio does nothing more then let a robot hear and use the telecoms in its local area."
 	icon_state = "radio"
 	icon_state_broken = "radio_broken"
 
@@ -373,19 +323,6 @@
 	icon = 'icons/obj/tank.dmi'
 	icon_state = "jetpack-black"
 	icon_state_broken = "jetpack-black"
-<<<<<<< HEAD
 	matter = list(MATERIAL_STEEL = 10, MATERIAL_PHORON = 10, MATERIAL_SILVER = 20)
 	spawn_tags = SPAWN_TAG_JETPACK
 	rarity_value = 66.66
-=======
-	matter = list(MATERIAL_STEEL = 10, MATERIAL_PLASMA = 10, MATERIAL_SILVER = 20)
-
-/obj/item/robot_parts/robot_component/ion_jaunt
-	name = "ion jaunt"
-	desc = "A special device designed to reduce the impact of EMPs on electrical systems." // TODO : Bother
-	icon_state = "ion_jaunt_stock"
-	icon_state_broken = "ion_jaunt_stock"
-	w_class = ITEM_SIZE_HUGE // Very big
-	matter_reagents = list(MATERIAL_PLASMA = 20, MATERIAL_URANIUM = 20, MATERIAL_IRON = 20) // To force people to use a stasis beaker
-	matter = list(MATERIAL_STEEL = 5, MATERIAL_PLASTEEL = 5, MATERIAL_PLASMAGLASS = 1, MATERIAL_DIAMOND = 1, MATERIAL_TRITIUM = 1, MATERIAL_OSMIUM = 1, MATERIAL_MHYDROGEN = 1)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

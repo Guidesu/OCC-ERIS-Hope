@@ -6,8 +6,5 @@
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_PLASTIC = 1, MATERIAL_GOLD = 1)
 	origin_tech = list(TECH_DATA = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	price_tag = 200
-<<<<<<< HEAD
 	rarity_value = 5.55
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/passive_charging_rate = 250			// W

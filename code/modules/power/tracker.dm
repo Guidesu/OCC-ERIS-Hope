@@ -8,13 +8,8 @@
 	desc = "A solar directional tracker."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "tracker"
-<<<<<<< HEAD
 	anchored = TRUE
 	density = TRUE
-=======
-	anchored = 1
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 
 	var/id = 0
@@ -77,11 +72,7 @@
 
 // Tracker Electronic
 
-<<<<<<< HEAD
 /obj/item/electronics/tracker
-=======
-/obj/item/tracker_electronics
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	name = "tracker electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'

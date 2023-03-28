@@ -29,36 +29,19 @@
 	var/autorecharge_rate = 0.03
 	var/recharge_time = 4 //How often nuclear cells will recharge
 	var/charge_tick = 0
-	var/charge_delay = 10
 	var/last_charge_status = -1 //used in update_icon optimization
-	//Used for depleted cells, basiclly makes it so map/newly spawned cells can start not at full for mapping or code
-	var/starts_max_charge = TRUE
-	var/created_max_charge = FALSE // Used for cells that are printed fully charged.
 
 /obj/item/cell/Initialize()
 	. = ..()
-	if(starts_max_charge)
-		charge = maxcharge
+	charge = maxcharge
 	update_icon()
 	if(autorecharging)
 		START_PROCESSING(SSobj, src)
 
-<<<<<<< HEAD
 /obj/item/cell/Process()
 	charge_tick++
 	if(charge_tick < recharge_time) return FALSE
 	charge_tick = 0
-=======
-
-/obj/item/cell/proc/kick_autorecharging()
-	if(autorecharging)
-		START_PROCESSING(SSobj, src)
-
-/obj/item/cell/Process()
-	charge_tick--
-	if(charge_tick > 0) return 0
-	charge_tick = recharge_time
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	give(maxcharge * autorecharge_rate)
 
 	// If installed in a gun, update gun icon to reflect new charge level.
@@ -70,20 +53,10 @@
 
 //Newly manufactured cells start off empty. You can't create energy
 /obj/item/cell/Created()
-<<<<<<< HEAD
 	charge = 0
 	update_icon()
 
 /obj/item/cell/drain_power(drain_check, surge, power = 0)
-=======
-	if(created_max_charge)
-		charge = maxcharge
-	else
-		charge = 0
-	update_icon()
-
-/obj/item/cell/drain_power(var/drain_check, var/surge, var/power = 0)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(drain_check)
 		return TRUE
@@ -95,11 +68,7 @@
 
 	return use(cell_amt) / CELLRATE
 
-<<<<<<< HEAD
 /obj/item/cell/on_update_icon()
-=======
-/obj/item/cell/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/charge_status
 	var/c = charge/maxcharge
 	if (c >=0.95)
@@ -118,64 +87,27 @@
 
 	cut_overlays()
 	if (charge_status != null)
-<<<<<<< HEAD
 		add_overlays(image('icons/obj/power_cells.dmi', "[icon_state]_[charge_status]"))
 
 	last_charge_status = charge_status
 
 /obj/item/cell/proc/is_empty()
-=======
-		add_overlay(image('icons/obj/power_cells.dmi', "[icon_state]_[charge_status]"))
-
-	last_charge_status = charge_status
-
-/obj/item/cell/proc/empty()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(charge <= 0)
 		return TRUE
 	return FALSE
 
 /obj/item/cell/proc/percent()		// return % charge of cell
-<<<<<<< HEAD
 	return 100*charge/maxcharge
-=======
-	return 100.0*charge/maxcharge
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/cell/proc/fully_charged()
 	return (charge == maxcharge)
 
 // checks if the power cell is able to provide the specified amount of charge
-<<<<<<< HEAD
 /obj/item/cell/proc/check_charge(amount)
-=======
-/obj/item/cell/proc/check_charge(var/amount)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return (charge >= amount)
 
-//Convenience procs for objects which may use or give.
-//Returns the amount successfully given or taken.
-/obj/item/cell/proc/transfer(var/amount)
-	if(amount > 0)
-		return give(amount)
-	else if(amount < 0)
-		return -use(-amount)
-	return 0
-
-/obj/item/cell/proc/checked_transfer(var/amount)
-	if(amount > 0)
-		return give(amount)
-	else if(amount < 0)
-		return checked_use(-amount) ? amount : 0
-	return 0
-
 // use power from a cell, returns the amount actually used
-<<<<<<< HEAD
 /obj/item/cell/proc/use(amount)
-=======
-/obj/item/cell/proc/use(var/amount)
-	charge_tick = max(charge_delay, charge_tick) //The cooldown could be shorter than the refresh time.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
@@ -186,7 +118,6 @@
 
 // Checks if the specified amount can be provided. If it can, it removes the amount
 // from the cell and returns 1. Otherwise does nothing and returns 0.
-<<<<<<< HEAD
 /obj/item/cell/proc/checked_use(amount)
 	if(!check_charge(amount))
 		return FALSE
@@ -195,16 +126,6 @@
 
 // recharge the cell
 /obj/item/cell/proc/give(amount)
-=======
-/obj/item/cell/proc/checked_use(var/amount)
-	if(!check_charge(amount))
-		return 0
-	use(amount) //This'll be nonzero if successful anyway.
-	return 1
-
-// recharge the cell
-/obj/item/cell/proc/give(var/amount)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
@@ -226,10 +147,7 @@
 	if(rigged && user.stats?.getStat(STAT_MEC) >= STAT_LEVEL_ADEPT)
 		to_chat(user, SPAN_WARNING("This cell is ready to short circuit!"))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/cell/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/reagent_containers/syringe))
@@ -248,20 +166,16 @@
 
 
 /obj/item/cell/proc/explode()
-<<<<<<< HEAD
 	if(QDELETED(src))
 		rigged = FALSE // Prevent error spam
 		throw EXCEPTION("A rigged cell has attempted to explode in nullspace. Usually this means that handle_atom_del handling is missing somewhere.")
 
 	var/turf/T = get_turf(loc)
-=======
-	var/turf/T = get_turf(src.loc)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
- * 1000-cell	explosion(T, 0, 0, 1, 1)
- * 2500-cell	explosion(T, 0, 0, 1, 1)
- * 10000-cell	explosion(T, 0, 1, 3, 3)
- * 15000-cell	explosion(T, 0, 2, 4, 4)
+ * 1000-cell	explosion(T, -1, 0, 1, 1)
+ * 2500-cell	explosion(T, -1, 0, 1, 1)
+ * 10000-cell	explosion(T, -1, 1, 3, 3)
+ * 15000-cell	explosion(T, -1, 2, 4, 4)
  * */
 	if(is_empty())
 		return
@@ -275,34 +189,18 @@
 		return
 	//explosion(T, 0, 1, 2, 2)
 
-<<<<<<< HEAD
 	log_admin("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 	message_admins("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
-=======
-	log_admin("LOG: Rigged power cell explosion, last touched by [fingerprintslast] at [T.x], [T.y], [T.z]")
-	message_admins("LOG: Rigged <a href='?_src_=vars;Vars=\ref[src]'>[src]</a> explosion, last touched by [fingerprintslast] at [T.x], [T.y], [T.z]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	qdel(src)
 
 	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 
 /obj/item/cell/proc/corrupt()
-<<<<<<< HEAD
 	charge /= 2
 	maxcharge /= 2
 	if (prob(10))
 		rigged = TRUE //broken batterys are dangerous
-=======
-	if(charge<2)
-		charge = 0
-		return
-	else
-		charge = charge/2
-		maxcharge = maxcharge/2
-	if (prob(5))
-		rigged = 1 //broken batterys are dangerous
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/cell/emp_act(severity)
 	//remove this once emp changes on dev are merged in

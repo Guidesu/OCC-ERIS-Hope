@@ -3,11 +3,7 @@
 
 /obj/item/device/electronic_assembly
 	name = "electronic assembly"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with."
-=======
-	desc = "A case for building small electronics."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/obj/assemblies/electronic_setups.dmi'
 	icon_state = "setup_small"
@@ -35,11 +31,7 @@
 	var/creator // circuit creator if any
 	var/static/next_assembly_id = 0
 	var/sealed = FALSE
-<<<<<<< HEAD
 	var/weakref/idlock = null
-=======
-	var/datum/weakref/idlock = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/use_ui_window = TRUE
 	var/force_sealed = FALSE // it's like sealed, but from component and can't be unsealed.
 
@@ -133,19 +125,11 @@
 
 /obj/item/device/electronic_assembly/interact(mob/user, circuit)
 	if(opened)
-<<<<<<< HEAD
 		ui_interact(user, circuit)
 	if(use_ui_window)
 		closed_ui_interact(user)
 
 /obj/item/device/electronic_assembly/proc/closed_ui_interact(mob/user)
-=======
-		nano_ui_interact(user, circuit)
-	if(use_ui_window)
-		closed_nano_ui_interact(user)
-
-/obj/item/device/electronic_assembly/proc/closed_nano_ui_interact(mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!check_interactivity(user))
 		return
 	var/datum/browser/popup = new(user, "scannerpanel", name, 600, 330) // Set up the popup browser window
@@ -175,11 +159,7 @@
 	else
 		qdel(popup)
 
-<<<<<<< HEAD
 /obj/item/device/electronic_assembly/ui_interact(mob/user, obj/item/integrated_circuit/circuit_pins)
-=======
-/obj/item/device/electronic_assembly/nano_ui_interact(mob/user, obj/item/integrated_circuit/circuit_pins)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	if(!check_interactivity(user))
 		return
@@ -190,11 +170,7 @@
 	popup.add_stylesheet("assembly_ui", 'html/browser/assembly_ui.css')
 	popup.add_stylesheet("codicon", 'html/codicon/codicon.css')
 
-<<<<<<< HEAD
 	//Getting the newest viewed circuit to compare with new circuit list
-=======
-	//Getting the newest viewed circuit to compare new circuit list
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!circuit_pins || !istype(circuit_pins,/obj/item/integrated_circuit) || !(circuit_pins in assembly_components))
 		if(assembly_components.len > 0)
 			circuit_pins = assembly_components[1]
@@ -428,11 +404,7 @@
 	if(href_list["ghostscan"])
 		if((isobserver(usr) && ckeys_allowed_to_scan[usr.ckey]) || is_admin(usr))
 			if(assembly_components.len)
-<<<<<<< HEAD
 				var/saved = "On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[SScircuit.save_electronic_assembly(src)]</code>"
-=======
-				var/saved = "On circuit printers cloning enabled, you may use the code below to clone the circuit:<br><br><code>[SScircuit.save_electronic_assembly(src)]</code>"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				show_browser(usr, saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
 			else
 				to_chat(usr, SPAN_WARNING("The circuit is empty!"))
@@ -620,11 +592,7 @@
 /obj/item/device/electronic_assembly/proc/try_remove_component(obj/item/integrated_circuit/IC, mob/user, silent)
 	if(!opened)
 		if(!silent)
-<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("[src]'s hatch is closed, so you can't fiddle with the internal components."))
-=======
-			to_chat(user, SPAN_WARNING("[src]'s hatch is closed, so you can't fiddle the internal components."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(!IC.removable)
@@ -744,11 +712,7 @@
 					to_chat(user,SPAN_NOTICE("You unlock \the [src]."))
 
 				else
-<<<<<<< HEAD
 					to_chat(user,SPAN_NOTICE("The scanned ID doesn't match with \the [src]'s lock."))
-=======
-					to_chat(user,SPAN_NOTICE("The scanned ID doesn't match \the [src]'s lock."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			debugger.idlock = null
 			return
@@ -774,11 +738,7 @@
 			interact(user)
 			return TRUE
 		else
-<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("[src]'s hatch is closed, so you can't fiddle with the internal components."))
-=======
-			to_chat(user, SPAN_WARNING("[src]'s hatch is closed, so you can't fiddle the internal components."))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			for(var/obj/item/integrated_circuit/input/S in assembly_components)
 				S.attackby_react(I,user,user.a_intent)
 			return ..()
@@ -813,11 +773,7 @@
 		for(var/obj/item/integrated_circuit/input in assembly_components)
 			if((input.demands_object_input && opened) || (input.demands_object_input && input.can_input_object_when_closed))
 				var/i = 0
-<<<<<<< HEAD
 				//Check if there is another component with the same name and append a number for identification
-=======
-				//Check if there is another component the same name and append a number for identification
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				for(var/s in input_selection)
 					var/obj/item/integrated_circuit/s_circuit = input_selection[s] //The for-loop iterates the keys of the associative list.
 					if(s_circuit.name == input.name && s_circuit.displayed_name == input.displayed_name && s_circuit != input)
@@ -858,11 +814,7 @@
 			if(input.can_be_asked_input && input.radial_menu_icon)
 				var/image/img = image(icon = 'icons/obj/assemblies/electronic_buttons.dmi', icon_state = input.radial_menu_icon)
 				var/i = 0
-<<<<<<< HEAD
 				//Check if there is another component with the same name and append a number for identification
-=======
-				//Check if there is another component the same name and append a number for identification
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				for(var/s in input_selection)
 					var/obj/item/integrated_circuit/s_circuit = input_selection[s] //The for-loop iterates the keys of an associative list.
 					if(s_circuit.name == input.name && s_circuit.displayed_name == input.displayed_name && s_circuit != input)
@@ -881,11 +833,7 @@
 			else
 				if(!check_interactivity(user))
 					return
-<<<<<<< HEAD
 				var/selected = show_radial_menu(user, src, input_selection, radius = 24, require_near = TRUE, in_screen = TRUE, use_hudfix_method = FALSE)
-=======
-				var/selected = show_radial_menu(user, src, input_selection, radius = 24, require_near = TRUE) //, in_screen = TRUE, use_hudfix_method = FALSE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(selected && inputs_list[selected])
 					choice = inputs_list[selected]
 
@@ -944,56 +892,32 @@
 /obj/item/device/electronic_assembly/calc
 	name = "type-b electronic assembly"
 	icon_state = "setup_small_calc"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. This one resembles a pocket calculator."
-=======
-	desc = "A case for building small electronics. This one resembles a pocket calculator."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/clam
 	name = "type-c electronic assembly"
 	icon_state = "setup_small_clam"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. This one has a clamshell design."
-=======
-	desc = "A case for building small electronics. This one has a clamshell design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/simple
 	name = "type-d electronic assembly"
 	icon_state = "setup_small_simple"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. This one has a simple design."
-=======
-	desc = "A case for building small electronics. This one has a simple design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/hook
 	name = "type-e electronic assembly"
 	icon_state = "setup_small_hook"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. This one looks like it has a belt clip, but it's purely decorative."
-=======
-	desc = "A case for building small electronics. This one looks like it has a belt clip, but it's purely decorative."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/pda
 	name = "type-f electronic assembly"
 	icon_state = "setup_small_pda"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. This one resembles a PDA."
-=======
-	desc = "A case for building small electronics. This one resembles a PDA."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/small
 	name = "electronic device"
 	icon_state = "setup_device"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny-sized electronics with."
-=======
-	desc = "A case for building tiny-sized electronics."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_TINY
 	max_components = IC_MAX_SIZE_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
@@ -1004,47 +928,27 @@
 /obj/item/device/electronic_assembly/small/cylinder
 	name = "type-b electronic device"
 	icon_state = "setup_device_cylinder"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny-sized electronics with. This one has a cylindrical design."
-=======
-	desc = "A case for building tiny-sized electronics. This one has a cylindrical design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/small/scanner
 	name = "type-c electronic device"
 	icon_state = "setup_device_scanner"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny-sized electronics with. This one has a scanner-like design."
-=======
-	desc = "A case for building tiny-sized electronics. This one has a scanner-like design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/small/hook
 	name = "type-d electronic device"
 	icon_state = "setup_device_hook"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny-sized electronics with. This one looks like it has a belt clip, but it's purely decorative."
-=======
-	desc = "A case for building tiny-sized electronics. This one looks like it has a belt clip, but it's purely decorative."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/small/box
 	name = "type-e electronic device"
 	icon_state = "setup_device_box"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny-sized electronics with. This one has a boxy design."
-=======
-	desc = "A case for building tiny-sized electronics. This one has a boxy design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/medium
 	name = "electronic mechanism"
 	icon_state = "setup_medium"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with."
-=======
-	desc = "A case for building medium-sized electronics."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_NORMAL
 	max_components = IC_MAX_SIZE_BASE * 2
 	max_complexity = IC_COMPLEXITY_BASE * 2
@@ -1055,40 +959,24 @@
 /obj/item/device/electronic_assembly/medium/box
 	name = "type-b electronic mechanism"
 	icon_state = "setup_medium_box"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with. This one has a boxy design."
-=======
-	desc = "A case for building medium-sized electronics. This one has a boxy design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/medium/clam
 	name = "type-c electronic mechanism"
 	icon_state = "setup_medium_clam"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with. This one has a clamshell design."
-=======
-	desc = "A case for building medium-sized electronics. This one has a clamshell design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/medium/medical
 	name = "type-d electronic mechanism"
 	icon_state = "setup_medium_med"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with. This one resembles some type of medical apparatus."
-=======
-	desc = "A case for building medium-sized electronics. This one resembles some type of medical apparatus."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // need sprites for this.
 // /obj/item/device/electronic_assembly/medium/gun
 // 	name = "type-e electronic mechanism"
 // 	icon_state = "setup_medium_gun"
 // 	item_state = "circuitgun"
-<<<<<<< HEAD
 // 	desc = "It's a case, for building medium-sized electronics with. This one resembles a gun, or some type of tool, if you're feeling optimistic. It can fire guns and throw items while the user is holding it."
-=======
-// 	desc = "A case for building medium-sized electronics. This one resembles a gun, or some type of tool, if you're feeling optimistic. It can fire guns and throw items while the user is holding it."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 // 	item_icons = list(
 // 		icon_l_hand = 'icons/mob/onmob/items/lefthand_guns.dmi',
@@ -1099,20 +987,12 @@
 /obj/item/device/electronic_assembly/medium/radio
 	name = "type-f electronic mechanism"
 	icon_state = "setup_medium_radio"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with. This one resembles an old radio."
-=======
-	desc = "A case for building medium-sized electronics. This one resembles an old radio."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/large
 	name = "electronic machine"
 	icon_state = "setup_large"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with."
-=======
-	desc = "A case for building large electronics."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_BULKY
 	max_components = IC_MAX_SIZE_BASE * 4
 	max_complexity = IC_COMPLEXITY_BASE * 4
@@ -1123,56 +1003,32 @@
 /obj/item/device/electronic_assembly/large/scope
 	name = "type-b electronic machine"
 	icon_state = "setup_large_scope"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. This one resembles an oscilloscope."
-=======
-	desc = "A case for building large electronics. This one resembles an oscilloscope."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/large/terminal
 	name = "type-c electronic machine"
 	icon_state = "setup_large_terminal"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. This one resembles a computer terminal."
-=======
-	desc = "A case for building large electronics. This one resembles a computer terminal."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/large/arm
 	name = "type-d electronic machine"
 	icon_state = "setup_large_arm"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. This one resembles a robotic arm."
-=======
-	desc = "A case for building large electronics. This one resembles a robotic arm."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/large/tall
 	name = "type-e electronic machine"
 	icon_state = "setup_large_tall"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. This one has a tall design."
-=======
-	desc = "A case for building large electronics. This one has a tall design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/large/industrial
 	name = "type-f electronic machine"
 	icon_state = "setup_large_industrial"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. This one resembles some kind of industrial machinery."
-=======
-	desc = "A case for building large electronics. This one resembles some kind of industrial machinery."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/drone
 	name = "electronic drone"
 	icon_state = "setup_drone"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with."
-=======
-	desc = "A case for building mobile electronics."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_BULKY
 	max_components = IC_MAX_SIZE_BASE * 3
 	max_complexity = IC_COMPLEXITY_BASE * 3
@@ -1188,56 +1044,32 @@
 /obj/item/device/electronic_assembly/drone/arms
 	name = "type-b electronic drone"
 	icon_state = "setup_drone_arms"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with. This one is armed and dangerous."
-=======
-	desc = "A case for building mobile electronics. This one is armed and dangerous."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/drone/secbot
 	name = "type-c electronic drone"
 	icon_state = "setup_drone_secbot"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with. This one resembles a Securitron."
-=======
-	desc = "A case for building mobile electronics. This one resembles a Securitron."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/drone/medbot
 	name = "type-d electronic drone"
 	icon_state = "setup_drone_medbot"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with. This one resembles a Medibot."
-=======
-	desc = "A case for building mobile electronics. This one resembles a Medibot."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/drone/genbot
 	name = "type-e electronic drone"
 	icon_state = "setup_drone_genbot"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with. This one has a generic bot design."
-=======
-	desc = "A case for building mobile electronics. This one has a generic bot design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/drone/android
 	name = "type-f electronic drone"
 	icon_state = "setup_drone_android"
-<<<<<<< HEAD
 	desc = "It's a case, for building mobile electronics with. This one has a hominoid design."
-=======
-	desc = "A case for building mobile electronics. This one has a hominoid design."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/wallmount
 	name = "wall-mounted electronic assembly"
 	icon_state = "setup_wallmount_medium"
-<<<<<<< HEAD
 	desc = "It's a case, for building medium-sized electronics with. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
-=======
-	desc = "A case for building medium-sized electronics. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_NORMAL
 	max_components = IC_MAX_SIZE_BASE * 2
 	max_complexity = IC_COMPLEXITY_BASE * 2
@@ -1245,11 +1077,7 @@
 /obj/item/device/electronic_assembly/wallmount/heavy
 	name = "heavy wall-mounted electronic assembly"
 	icon_state = "setup_wallmount_large"
-<<<<<<< HEAD
 	desc = "It's a case, for building large electronics with. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
-=======
-	desc = "A case for building large electronics. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_BULKY
 	max_components = IC_MAX_SIZE_BASE * 4
 	max_complexity = IC_COMPLEXITY_BASE * 4
@@ -1257,11 +1085,7 @@
 /obj/item/device/electronic_assembly/wallmount/light
 	name = "light wall-mounted electronic assembly"
 	icon_state = "setup_wallmount_small"
-<<<<<<< HEAD
 	desc = "It's a case, for building small electronics with. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
-=======
-	desc = "A case for building small electronics. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_SMALL
 	max_components = IC_MAX_SIZE_BASE
 	max_complexity = IC_COMPLEXITY_BASE
@@ -1269,11 +1093,7 @@
 /obj/item/device/electronic_assembly/wallmount/tiny
 	name = "tiny wall-mounted electronic assembly"
 	icon_state = "setup_wallmount_tiny"
-<<<<<<< HEAD
 	desc = "It's a case, for building tiny electronics with. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
-=======
-	desc = "A case for building tiny electronics. It has a magnetized backing to allow it to stick to walls, but you'll still need to wrench the anchoring bolts in place to keep it on."
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_TINY
 	max_components = IC_MAX_SIZE_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
@@ -1284,11 +1104,7 @@
 		mount_assembly(T,user)
 
 /obj/item/device/electronic_assembly/pickup()
-<<<<<<< HEAD
 	transform = matrix() //Reset the matrix.
-=======
-	remove_all_transforms() //Reset the matrix.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 /obj/item/device/electronic_assembly/wallmount/proc/mount_assembly(turf/on_wall, mob/user) //Yeah, this is admittedly just an abridged and kitbashed version of the wallframe attach procs.
@@ -1309,41 +1125,24 @@
 		SPAN_NOTICE("You attach [src] to the wall."),
 		SPAN_NOTICE("You hear clicking."))
 	if(user.unEquip(src,T))
-<<<<<<< HEAD
 		var/matrix/M = matrix()
-=======
-		var/to_turn = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		switch(ndir)
 			if(NORTH)
 				pixel_y = -32
 				pixel_x = 0
-<<<<<<< HEAD
 				M.Turn(180)
-=======
-				to_turn = 180
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(SOUTH)
 				pixel_y = 21
 				pixel_x = 0
 			if(EAST)
 				pixel_x = -27
 				pixel_y = 0
-<<<<<<< HEAD
 				M.Turn(270)
 			if(WEST)
 				pixel_x = 27
 				pixel_y = 0
 				M.Turn(90)
 		transform = M
-=======
-				to_turn = 270
-			if(WEST)
-				pixel_x = 27
-				pixel_y = 0
-				to_turn = 90
-		add_new_transformation(/datum/transform_type/modular, list(rotation = to_turn, flag = WALLMOUNT_PLACED_ROTATION_TRANSFORMATION, priority = WALLMOUNT_PLACED_ROTATION_TRANSFORMATION_PRIORITY))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/electronic_assembly/implant
 	name = "electronic implant"
@@ -1352,15 +1151,10 @@
 	max_components = IC_MAX_SIZE_BASE / 1.5
 	max_complexity = IC_COMPLEXITY_BASE / 1.5
 	var/obj/item/implant/integrated_circuit/implant
-<<<<<<< HEAD
 	bad_type = /obj/item/device/electronic_assembly/implant
 	spawn_frequency = 0
 
 /*/obj/item/device/electronic_assembly/implant/on_update_icon()
-=======
-
-/obj/item/device/electronic_assembly/implant/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	implant.icon_state = icon_state
 	implant.overlays = overlays
@@ -1372,7 +1166,4 @@
 
 /obj/item/device/electronic_assembly/implant/nano_host()
 	return implant || src // if implant doesn't exist it's bug, but an user will not see difference until he use it to implant :)
-<<<<<<< HEAD
 */
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

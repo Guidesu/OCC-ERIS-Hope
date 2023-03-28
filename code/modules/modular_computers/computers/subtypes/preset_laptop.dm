@@ -112,10 +112,6 @@
 	hard_drive.store_file(new/datum/computer_file/program/reports())
 	hard_drive.store_file(new/datum/computer_file/program/bounty_board_app())
 	hard_drive.store_file(new/datum/computer_file/program/chem_catalog())
-<<<<<<< HEAD
-=======
-	hard_drive.store_file(new/datum/computer_file/program/cook_catalog())
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/cheap/elbrus4kk
 	name = "elbrus4kk laptop"
@@ -130,8 +126,4 @@
 /obj/item/modular_computer/laptop/preset/custom_loadout/advanced/golden
 	name = "golden laptop"
 	desc = "A portable clamshell computer with \"Kitaro Scientific\" label on the back."
-<<<<<<< HEAD
 	icon_state = "golden"
-=======
-	icon_state = "golden"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

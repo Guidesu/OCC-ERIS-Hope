@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /obj/item/electronics/circuitboard/artist_bench
 	name = T_BOARD("artist's bench")
-=======
-/obj/item/circuitboard/artist_bench
-	build_name = "artist bench"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/autolathe/artist_bench
 	board_type = "machine"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
@@ -12,8 +7,4 @@
 		/obj/item/stock_parts/matter_bin = 3,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/console_screen = 1
-<<<<<<< HEAD
 	)
-=======
-	)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

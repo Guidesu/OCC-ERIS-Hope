@@ -23,22 +23,13 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/New()
 	..()
-<<<<<<< HEAD
 	cell = new/obj/item/cell/medium/high(src)
-=======
-	cell = new/obj/item/cell/large/high(src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/list/air_mix = StandardAirMix()
 	src.air_contents.adjust_multi("oxygen", air_mix["oxygen"], "nitrogen", air_mix["nitrogen"])
 
-<<<<<<< HEAD
 /obj/machinery/portable_atmospherics/powered/pump/on_update_icon()
 	src.set_overlays(0)
-=======
-/obj/machinery/portable_atmospherics/powered/pump/update_icon()
-	src.cut_overlays()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(on && cell && cell.charge)
 		icon_state = "psiphon:1"
@@ -46,17 +37,10 @@
 		icon_state = "psiphon:0"
 
 	if(holding)
-<<<<<<< HEAD
 		add_overlays("siphon-open")
 
 	if(connected_port)
 		add_overlays("siphon-connector")
-=======
-		add_overlay("siphon-open")
-
-	if(connected_port)
-		add_overlay("siphon-connector")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return
 
@@ -135,9 +119,9 @@
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/attack_hand(var/mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/portable_atmospherics/powered/pump/nano_ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=NANOUI_FOCUS)
+/obj/machinery/portable_atmospherics/powered/pump/ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=NANOUI_FOCUS)
 	var/list/data[0]
 	data["portConnected"] = connected_port ? 1 : 0
 	data["tankPressure"] = round(air_contents.return_pressure() > 0 ? air_contents.return_pressure() : 0)

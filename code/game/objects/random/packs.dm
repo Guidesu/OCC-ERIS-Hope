@@ -16,28 +16,7 @@ They generally give more random result and can provide more divercity in spawn.
 	tags_to_spawn = list(SPAWN_CLOTHING)
 	restricted_tags = list(SPAWN_VOID_SUIT)
 
-<<<<<<< HEAD
 /obj/spawner/pack/cloth/low_chance
-=======
-/obj/random/pack/cloth/item_to_spawn()
-	return pickweight(list(
-					/obj/random/cloth/masks = 5,
-					/obj/random/cloth/armor = 3,
-					/obj/random/cloth/suit = 3,
-					/obj/random/cloth/hazmatsuit = 4,
-					/obj/random/cloth/under = 7,
-					/obj/random/cloth/helmet = 4,
-					/obj/random/cloth/head = 5,
-					/obj/random/cloth/gloves = 5,
-					/obj/random/cloth/glasses = 4,
-					/obj/random/cloth/shoes = 6,
-					/obj/random/cloth/backpack = 4,
-					/obj/random/cloth/belt = 4,
-					/obj/random/cloth/holster = 4
-				))
-
-/obj/random/pack/cloth/low_chance
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "low chance random cloth"
 	icon_state = "armor-red-low"
 	spawn_nothing_percentage = 70
@@ -76,28 +55,12 @@ They generally give more random result and can provide more divercity in spawn.
 	spawn_nothing_percentage = 70
 
 
-<<<<<<< HEAD
 /obj/spawner/pack/tech_loot/onestar
 	name = "Random technical One Star loot"
 	icon_state = "tool-red"
 	desc = "This is a random technical loot."
 	allow_blacklist = TRUE
 	tags_to_spawn = list(SPAWN_ITEM_TECH_OS)
-=======
-/obj/random/pack/tech_loot/onestar
-	name = "Random technical greyson positronic loot"
-	icon_state = "tool-red"
-	desc = "This is a random technical loot."
-
-/obj/random/pack/tech_loot/onestar/item_to_spawn()
-	return pickweight(list(/obj/item/stock_parts/capacitor/one_star = 2,
-	/obj/item/stock_parts/scanning_module/one_star = 2,
-	/obj/item/stock_parts/manipulator/one_star = 2,
-	/obj/item/stock_parts/micro_laser/one_star = 2,
-	/obj/item/stock_parts/matter_bin/one_star = 2,
-	/obj/random/prothesis/one_star = 1))
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //This will be spawned in rare closets
 /obj/spawner/pack/gun_loot
@@ -107,7 +70,6 @@ They generally give more random result and can provide more divercity in spawn.
 
 /obj/spawner/pack/gun_loot/item_to_spawn()
 	return pickweight(list(
-<<<<<<< HEAD
 					/obj/spawner/gun/cheap = 8,
 					/obj/spawner/gun/normal = 3,
 					/obj/spawner/gun/energy_cheap = 6,
@@ -120,21 +82,6 @@ They generally give more random result and can provide more divercity in spawn.
 					/obj/spawner/gun_upgrade = 10,
 					/obj/spawner/cloth/holster = 8,
 					/obj/spawner/gun_parts = 20
-=======
-					/obj/random/gun_cheap = 4,
-					/obj/random/gun_normal = 1,
-					/obj/random/gun_energy_cheap = 3,
-					/obj/random/gun_combat = 0.3,
-					/obj/random/gun_fancy = 0.1,
-					/obj/random/gun_shotgun = 3,
-					/obj/random/knife = 3,
-					/obj/random/melee = 3,
-					/obj/random/ammo = 8,
-					/obj/random/ammo/shotgun = 8,
-					/obj/random/ammo_lowcost = 10,
-					/obj/random/cloth/holster = 4,
-					/obj/random/gun_parts = 20
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				))
 
 /obj/spawner/pack/gun_loot/low_chance
@@ -169,33 +116,8 @@ They generally give more random result and can provide more divercity in spawn.
 	rarity_value = 100
 	spawn_tags = SPAWN_TAG_RARE_ITEM
 
-<<<<<<< HEAD
 /obj/spawner/pack/rare/item_to_spawn()
 	return pickweight(RANDOM_RARE_ITEM) // made into a define so that rare objects can be spawned for mobs too
-=======
-/obj/random/pack/rare/item_to_spawn()
-	return pickweight(list(
-					/obj/random/common_oddities = 8,
-					/obj/random/material_rare = 3,
-					/obj/random/tool/advanced = 5,
-					/obj/random/gun_normal = 2,
-					/obj/random/lathe_disk/advanced = 3,
-					/obj/item/cell/small/moebius/nuclear = 1,
-					/obj/item/cell/medium/moebius/hyper = 1,
-					/obj/random/rig = 1.5,
-					/obj/random/rig/damaged = 1.5,
-					/obj/random/voidsuit = 4,
-					/obj/random/pouch = 2,
-					/obj/random/gun_combat = 0.5,
-					/obj/random/gun_fancy = 0.3,
-					/obj/random/tool_upgrade/rare = 4,
-					/obj/random/rig_module/rare = 4,
-					/obj/random/credits/c500 = 3,
-					/obj/random/mecha_equipment = 3,
-					/obj/random/cloth/holster = 4,
-					/obj/item/stash_spawner = 4 //Creates a stash of goodies for a scavenger hunt
-	))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/spawner/pack/rare/low_chance
 	name = "low chance rare loot"
@@ -250,7 +172,6 @@ They generally give more random result and can provide more divercity in spawn.
 	icon_state = "machine-grey-low"
 	spawn_nothing_percentage = 70
 
-<<<<<<< HEAD
 /obj/spawner/pack/junk_machine/beacon/item_to_spawn()
 	return pickweight(list(
 					/obj/spawner/structures/common = 7, //That one have MUCH MORE important objects for maints inside, that's why the number is hight
@@ -260,52 +181,3 @@ They generally give more random result and can provide more divercity in spawn.
 					/obj/spawner/closet/wardrobe = 2,
 					/obj/spawner/exosuit/damaged = 1, //Some dangerous shit can be found there
 				))
-=======
-/obj/random/pack/junk_machine/beacon/item_to_spawn()
-	return pickweight(list(
-					/obj/random/structures = 7, //That one have MUCH MORE important objects for maints inside, that's why the number is hight
-					/obj/random/closet_maintloot/beacon = 28, //That one is also important part of the maints
-					/obj/random/closet_tech = 3,
-					/obj/random/closet = 2,
-					/obj/random/closet_wardrobe = 2,
-					/obj/random/mecha/damaged = 1, //Some dangerous shit can be found there
-				))
-
-// MAchine pack, but with deep maint specific spawns
-/obj/random/pack/deep_machine
-	name = "random deepmaint machine"
-	icon_state = "machine-orange"
-
-
-/obj/random/pack/deep_machine/item_to_spawn()
-	return pickweight(list(
-					/obj/random/structures = 28, //That one have MUCH MORE important objects for maints inside, that's why the number is hight
-					/obj/random/closet_maintloot = 18, //That one is also important part of the maints
-					/obj/random/closet_tech = 6,
-					/obj/random/closet = 4,
-					/obj/random/closet_wardrobe = 2,
-					/obj/random/scrap/moderate_weighted = 12, //Our scrap pile. This is basically just a huge spawner.
-					/obj/random/mecha/damaged = 1, //Some dangerous shit can be found there
-					/obj/random/aberrant_machine = 6
-				))
-
-/obj/random/pack/deep_machine/low_chance
-	name = "low chance deepmaint machine"
-	icon_state = "machine-orange-low"
-	spawn_nothing_percentage = 70
-
-/obj/random/prothesis
-	name = "random prosthesis"
-	icon_state = "meds-green"
-
-/obj/random/prothesis/one_star
-	name = "random one star prosthesis"
-
-/obj/random/prothesis/one_star/item_to_spawn()
-	return pick(list(
-	/obj/item/organ/external/robotic/one_star/l_arm,\
-	/obj/item/organ/external/robotic/one_star/r_arm,\
-	/obj/item/organ/external/robotic/one_star/l_leg,\
-	/obj/item/organ/external/robotic/one_star/r_leg
-	))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

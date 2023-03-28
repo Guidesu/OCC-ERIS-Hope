@@ -13,35 +13,24 @@
 	icon_state = "turretCover"
 	anchored = TRUE
 
-<<<<<<< HEAD
-=======
-	/// How far we will fire at mobs from. 7 by default.
-	var/firing_range = 7
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	density = FALSE
 	use_power = IDLE_POWER_USE				//this turret uses and requires power
 	idle_power_usage = 50		//when inactive, this turret takes up constant 50 Equipment power
 	active_power_usage = 300	//when active, this turret takes up constant 300 Equipment power
 	power_channel = STATIC_EQUIP	//drains power from the EQUIPMENT channel
 
-	var/raised = FALSE			//if the turret cover is "open" and the turret is raised
-	var/raising= FALSE			//if the turret is currently opening or closing its cover
-	health = 80			//the turret's health
-	maxHealth = 80		//turrets maximal health.
+	var/raised = 0			//if the turret cover is "open" and the turret is raised
+	var/raising= 0			//if the turret is currently opening or closing its cover
+	var/health = 80			//the turret's health
+	var/maxhealth = 80		//turrets maximal health.
 	var/resistance = RESISTANCE_FRAGILE 		//reduction on incoming damage
-	var/auto_repair = FALSE		//if 1 the turret slowly repairs itself.
-	var/locked = TRUE			//if the turret's behaviour control access is locked
-	var/controllock = FALSE		//if the turret responds to control panels
+	var/auto_repair = 0		//if 1 the turret slowly repairs itself.
+	var/locked = 1			//if the turret's behaviour control access is locked
+	var/controllock = 0		//if the turret responds to control panels
 
 	var/obj/item/gun/energy/installation = /obj/item/gun/energy/gun	//the weapon that's installed. Store as path to initialize a new gun on creation.
-<<<<<<< HEAD
 	var/projectile	//holder for bullettype
 	var/eprojectile	//holder for the shot when emagged
-=======
-	var/projectile = null	//holder for bullettype
-	var/eprojectile = null	//holder for the shot when emagged
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/reqpower = 500		//holder for power needed
 	var/iconholder	//holder for the icon_state. 1 for orange sprite, null for blue.
 	var/egun			//holder to handle certain guns switching bullettypes
@@ -49,22 +38,19 @@
 	var/last_fired = 0		//1: if the turret is cooling down from a shot, 0: turret is ready to fire
 	var/shot_delay = 15		//1.5 seconds between each shot
 
-// Used to not target allied mobs
-	var/colony_allied_turret = FALSE //Are we allied with the colony?
+	var/check_arrest = 1	//checks if the perp is set to arrest
+	var/check_records = 1	//checks if a security record exists at all
+	var/check_weapons = 0	//checks if it can shoot people that have a weapon they aren't authorized to have
+	var/check_access = 1	//if this is active, the turret shoots everything that does not meet the access requirements
+	var/check_anomalies = 1	//checks if it can shoot at unidentified lifeforms (ie xenos)
+	var/check_synth	 = 0 	//if active, will shoot at anything not an AI or cyborg
+	var/ailock = 0 			// AI cannot use this
 
-	var/check_arrest = TRUE	//checks if the perp is set to arrest
-	var/check_records = TRUE	//checks if a security record exists at all
-	var/check_weapons = FALSE	//checks if it can shoot people that have a weapon they aren't authorized to have
-	var/check_access = TRUE	//if this is active, the turret shoots everything that does not meet the access requirements
-	var/check_anomalies = TRUE	//checks if it can shoot at unidentified lifeforms (ie xenos)
-	var/check_synth	 = FALSE 	//if active, will shoot at anything not an AI or cyborg
-	var/ailock = FALSE 			// AI cannot use this
+	var/attacked = 0		//if set to 1, the turret gets pissed off and shoots at people nearby (unless they have sec access!)
 
-	var/attacked = FALSE		//if set to 1, the turret gets pissed off and shoots at people nearby (unless they have sec access!)
-
-	var/enabled = TRUE				//determines if the turret is on
-	var/lethal = FALSE			//whether in lethal or stun mode
-	var/disabled = FALSE
+	var/enabled = 1				//determines if the turret is on
+	var/lethal = 0			//whether in lethal or stun mode
+	var/disabled = 0
 
 	var/shot_sound 			//what sound should play when the turret fires
 	var/eshot_sound			//what sound should play when the emagged turret fires
@@ -74,7 +60,6 @@
 	var/wrenching = 0
 	var/last_target					//last target fired at, prevents turrets from erratically firing at all valid targets in range
 
-<<<<<<< HEAD
 	var/hackfail = 0				//if the turret has gotten pissed at someone who tried to hack it, but failed, it will immediately reactivate and target them.
 	var/debugopen = 0				//if the turret's debug functions are accessible through the control panel
 	var/list/registered_names = list() 		//holder for registered IDs for the turret to ignore
@@ -83,50 +68,22 @@
 
 /obj/machinery/porta_turret/One_star
 	name = "one star turret"
-=======
-	var/hackfail = FALSE				//if the turret has gotten pissed at someone who tried to hack it, but failed, it will immediately reactivate and target them.
-	var/debugopen = FALSE				//if the turret's debug functions are accessible through the control panel
-	var/list/registered_names = list() 		//holder for registered IDs for the turret to ignore
-	var/list/access_occupy = list()
-	var/overridden = FALSE				//if the security override is 0, security protocols are on. if 1, protocols are broken.
-
-/obj/machinery/porta_turret/One_star
-	name = "greyson positronic turret"
-	installation = /obj/item/gun/energy/cog
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/porta_turret/crescent
-	enabled = FALSE
-	ailock = TRUE
-	check_synth	 = FALSE
-	check_access = TRUE
-	check_arrest = TRUE
-	check_records = TRUE
-	check_weapons = TRUE
-	check_anomalies = TRUE
-
-/obj/machinery/porta_turret/gate
-	name = "colony defense turret"
-	desc = "Decent firepower, slow rate of fire, only has a lethal mode. The kind of defense the colony can afford."
-	check_synth	 = FALSE
-	check_access = FALSE
-	check_arrest = TRUE
-	check_records = FALSE
-	check_weapons = FALSE
-	check_anomalies = TRUE
-	colony_allied_turret = TRUE
-	installation = /obj/item/gun/energy/cog
+	enabled = 0
+	ailock = 1
+	check_synth	 = 0
+	check_access = 1
+	check_arrest = 1
+	check_records = 1
+	check_weapons = 1
+	check_anomalies = 1
 
 
 
 /obj/machinery/porta_turret/stationary
-<<<<<<< HEAD
 	ailock = 1
 	lethal = 1
-=======
-	ailock = TRUE
-	lethal = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	installation = /obj/item/gun/energy/laser
 
 /obj/machinery/porta_turret/New()
@@ -138,8 +95,7 @@
 	spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	var/area/A = get_area(src)
-	LEGACY_SEND_SIGNAL(A, COMSIG_TURRENT, src)
+
 	setup()
 
 /obj/machinery/porta_turret/crescent/New()
@@ -151,10 +107,6 @@
 	qdel(spark_system)
 	spark_system = null
 	QDEL_NULL(installation)
-<<<<<<< HEAD
-=======
-	density = FALSE //Were broken and can be stepped over
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 
 /obj/machinery/porta_turret/proc/setup()
@@ -177,17 +129,10 @@
 //				iconholder = 1
 //				eprojectile = /obj/item/projectile/beam
 
-<<<<<<< HEAD
 		if(/obj/item/gun/energy/retro)
 			iconholder = 1
 
 //			if(/obj/item/gun/energy/retro/sc_retro)
-=======
-		if(/obj/item/gun/energy/cog)
-			iconholder = 1
-
-//			if(/obj/item/gun/energy/cog/sc_retro)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //				iconholder = 1
 
 		if(/obj/item/gun/energy/captain)
@@ -198,20 +143,20 @@
 
 		if(/obj/item/gun/energy/taser)
 			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/energy/Laser.ogg'
+			eshot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/stunrevolver)
 			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/energy/Laser.ogg'
+			eshot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/gun)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/energy/Laser.ogg'
+			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
 		if(/obj/item/gun/energy/gun/nuclear)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/energy/Laser.ogg'
+			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
 var/list/turret_icons
@@ -254,9 +199,9 @@ var/list/turret_icons
 	if(isLocked(user))
 		return
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/porta_turret/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/porta_turret/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["access"] = !isLocked(user)
 	data["locked"] = locked
@@ -272,7 +217,6 @@ var/list/turret_icons
 		settings[++settings.len] = list("category" = "Check Arrest Status", "setting" = "check_arrest", "value" = check_arrest)
 		settings[++settings.len] = list("category" = "Check Access Authorization", "setting" = "check_access", "value" = check_access)
 		settings[++settings.len] = list("category" = "Check misc. Lifeforms", "setting" = "check_anomalies", "value" = check_anomalies)
-		settings[++settings.len] = list("category" = "Check misc. Alliement To Local SI Systems", "setting" = "colony_allied_turret", "value" = colony_allied_turret)
 		data["settings"] = settings
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -324,8 +268,6 @@ var/list/turret_icons
 			check_access = value
 		else if(href_list["command"] == "check_anomalies")
 			check_anomalies = value
-		else if(href_list["command"] == "colony_allied_turret")
-			colony_allied_turret = value
 
 		return 1
 
@@ -343,11 +285,7 @@ var/list/turret_icons
 
 	var/obj/item/card/id/ID = I.GetIdCard()
 
-<<<<<<< HEAD
 	if (user.a_intent != I_HURT)
-=======
-	if (user.a_intent == I_HELP)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(stat & BROKEN)
 			if(QUALITY_PRYING in I.tool_qualities)
 				//If the turret is destroyed, you can remove it with a crowbar to
@@ -366,12 +304,10 @@ var/list/turret_icons
 					else
 						to_chat(user, SPAN_NOTICE("You remove the turret but did not manage to salvage anything."))
 					qdel(src) // qdel
-				return TRUE //No whacking the turret with tools on help intent
 
 		else if(QUALITY_BOLT_TURNING in I.tool_qualities)
 			if(enabled)
 				to_chat(user, SPAN_WARNING("You cannot unsecure an active turret!"))
-<<<<<<< HEAD
 				return
 			if(wrenching)
 				to_chat(user, "<span class='warning'>Someone is already [anchored ? "un" : ""]securing the turret!</span>")
@@ -382,18 +318,6 @@ var/list/turret_icons
 			if(!anchored && isinspace())
 				to_chat(user, SPAN_WARNING("Cannot secure turrets in space!"))
 				return
-=======
-				return TRUE //No whacking the turret with tools on help intent
-			if(wrenching)
-				to_chat(user, "<span class='warning'>Someone is already [anchored ? "un" : ""]securing the turret!</span>")
-				return TRUE //No whacking the turret with tools on help intent
-			if(debugopen)
-				to_chat(user, SPAN_WARNING("You can't secure the turret while the circuitry is exposed!"))
-				return TRUE //No whacking the turret with tools on help intent
-			if(!anchored && isinspace())
-				to_chat(user, SPAN_WARNING("Cannot secure turrets in space!"))
-				return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			user.visible_message( \
 					"<span class='warning'>[user] begins [anchored ? "un" : ""]securing the turret.</span>", \
@@ -421,11 +345,7 @@ var/list/turret_icons
 					to_chat(user, SPAN_NOTICE("You unsecure the exterior bolts on the turret."))
 					update_icon()
 			wrenching = 0
-<<<<<<< HEAD
 
-=======
-			return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else if(istype(I, /obj/item/card/id)||istype(I, /obj/item/modular_computer))
 			if(allowed(user))
 				locked = !locked
@@ -443,10 +363,6 @@ var/list/turret_icons
 					registered_names.Cut()
 					registered_names = list()
 					to_chat(user, SPAN_NOTICE("You access the debug board and reset the turret's access list."))
-<<<<<<< HEAD
-=======
-					return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			else
 				if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD,  required_stat = STAT_COG))
@@ -465,17 +381,10 @@ var/list/turret_icons
 							SPAN_DANGER("[user] tripped the security protocol on the [src]! Run!"),
 							SPAN_DANGER("You trip the security protocol! Run!")
 						)
-<<<<<<< HEAD
 						sleep(300)
 						hackfail = 0
 					else
 						to_chat(user, SPAN_WARNING("You fail to hack the ID reader, but avoid tripping the security protocol."))
-=======
-						addtimer(CALLBACK(src, /obj/machinery/porta_turret/proc/reset_hackfail), 30 SECOND)
-					else
-						to_chat(user, SPAN_WARNING("You fail to hack the ID reader, but avoid tripping the security protocol."))
-					return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		else if(QUALITY_SCREW_DRIVING in I.tool_qualities)
 			if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_HARD,  required_stat = STAT_MEC))
@@ -486,10 +395,6 @@ var/list/turret_icons
 					debugopen = 1
 					to_chat(user, SPAN_NOTICE("You gently unscrew the seconday maintenance hatch, gaining access to the turret's internal circuitry and debug functions."))
 					desc = "A hatch on the bottom of the access panel is opened, exposing the circuitry inside."
-<<<<<<< HEAD
-=======
-				return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		else if((QUALITY_WIRE_CUTTING in I.tool_qualities) && (debugopen))
 			if(overridden)
@@ -508,13 +413,8 @@ var/list/turret_icons
 						)
 						enabled = 1
 						hackfail = 1
-<<<<<<< HEAD
 						sleep(300)
 						hackfail = 0
-=======
-						addtimer(CALLBACK(src, /obj/machinery/porta_turret/proc/reset_hackfail), 30 SECOND)
-			return TRUE //No whacking the turret with tools on help intent
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if (!(I.flags & NOBLUDGEON) && I.force && !(stat & BROKEN))
 		//if the turret was attacked with the intention of harming it:
@@ -534,10 +434,6 @@ var/list/turret_icons
 		return TRUE
 	..()
 
-
-/obj/machinery/porta_turret/proc/reset_hackfail()
-	hackfail = 0
-
 /obj/machinery/porta_turret/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		//Emagging the turret makes it go bonkers and stun everyone. It also makes
@@ -548,7 +444,7 @@ var/list/turret_icons
 		iconholder = 1
 		controllock = 1
 		enabled = 0 //turns off the turret temporarily
-		sleep(60) //6 seconds for the contractor to gtfo of the area before the turret decides to ruin his shit
+		sleep(60) //6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
 		enabled = 1 //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
 		return 1
 
@@ -572,22 +468,18 @@ var/list/turret_icons
 	var/damage = Proj.get_structure_damage()
 
 	if(!damage)
-		if(istype(Proj, /obj/item/projectile/ion))
-			Proj.on_hit(loc)
 		return
 
 	if(enabled)
-		if (!(Proj.testing))
-			if(!attacked && !emagged)
-				attacked = 1
-				spawn()
-					sleep(60)
-					attacked = 0
+		if(!attacked && !emagged)
+			attacked = 1
+			spawn()
+				sleep(60)
+				attacked = 0
 
 	..()
 
-	if (!(Proj.testing))
-		take_damage(damage*Proj.structure_damage_factor)
+	take_damage(damage*Proj.structure_damage_factor)
 
 /obj/machinery/porta_turret/emp_act(severity)
 	if(enabled)
@@ -639,23 +531,17 @@ var/list/turret_icons
 	var/list/targets = list()			//list of primary targets
 	var/list/secondarytargets = list()	//targets that are least important
 
-	for(var/mob/living/M in view(firing_range, src)) //WE USED WORLD.VIEW BEFORE THATS FUCKING PSYCHOPATHIC
-		assess_and_assign(M, targets, secondarytargets) //might want to not use a proc due to proc overhead cost
-
-	for(var/obj/mecha/mech in GLOB.mechas_list)
-		if (mech.z == z && (get_dist(mech, src) < firing_range) && can_see(src, mech, firing_range))
-			var/mob/living/occupant = mech.get_mob()
-			if (occupant)
-				assess_and_assign(occupant, targets, secondarytargets)
+	for(var/mob/M in mobs_in_view(world.view, src))
+		assess_and_assign(M, targets, secondarytargets)
 
 	if(!tryToShootAt(targets))
 		if(!tryToShootAt(secondarytargets)) // if no valid targets, go for secondary targets
 			spawn()
 				popDown() // no valid targets, close the cover
 
-	if(auto_repair && (health < maxHealth))
+	if(auto_repair && (health < maxhealth))
 		use_power(20000)
-		health = min(health+1, maxHealth) // 1HP for 20kJ
+		health = min(health+1, maxhealth) // 1HP for 20kJ
 
 /obj/machinery/porta_turret/proc/assess_and_assign(var/mob/living/L, var/list/targets, var/list/secondarytargets)
 	switch(assess_living(L))
@@ -664,11 +550,7 @@ var/list/turret_icons
 		if(TURRET_SECONDARY_TARGET)
 			secondarytargets += L
 
-<<<<<<< HEAD
 /obj/machinery/porta_turret/proc/assess_living(var/mob/living/L)
-=======
-/obj/machinery/porta_turret/proc/assess_living(var/mob/living/L) //TODO: optimize
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/card/id/id_card = L.GetIdCard()
 
 	if(id_card && (id_card.registered_name in registered_names))
@@ -680,32 +562,16 @@ var/list/turret_icons
 	if(L.invisibility >= INVISIBILITY_LEVEL_ONE) // Cannot see him. see_invisible is a mob-var
 		return TURRET_NOT_TARGET
 
-	if(L.stat && !emagged)		//if the perp is dead/dying, no need to bother really
-		return TURRET_NOT_TARGET	//move onto next potential victim!
-
 	if(!L)
 		return TURRET_NOT_TARGET
 
-<<<<<<< HEAD
 	if(!emagged && (issilicon(L) && !isblitzshell(L)))	// Don't target silica
-=======
-	if(!emagged && colony_allied_turret && L.colony_friend) //Dont target colony pets if were allied with them
 		return TURRET_NOT_TARGET
 
-	if(!emagged && !colony_allied_turret && !L.colony_friend) //If were not allied to the colony we dont attack anything thats against the colony
-		return TURRET_NOT_TARGET
+	if(L.stat && !emagged)		//if the perp is dead/dying, no need to bother really
+		return TURRET_NOT_TARGET	//move onto next potential victim!
 
-	if(!emagged && !colony_allied_turret && L.colony_friend) //If were not allied with the colony we attack them and their pets
-		return TURRET_SECONDARY_TARGET
-
-	if(!emagged && colony_allied_turret && !L.colony_friend) //If were allied with the colony and we attack things that are not are pets
-		return TURRET_SECONDARY_TARGET
-
-	if(!emagged && issilicon(L))	// Don't target silica
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
-		return TURRET_NOT_TARGET
-
-	if(get_dist(src, L) > firing_range)	//if it's too far away, why bother?
+	if(get_dist(src, L) > 7)	//if it's too far away, why bother?
 		return TURRET_NOT_TARGET
 
 	if(!check_trajectory(L, src))	//check if we have true line of sight
@@ -729,22 +595,11 @@ var/list/turret_icons
 		return TURRET_NOT_TARGET
 
 	if(isanimal(L) || issmall(L)) // Animals are not so dangerous
-<<<<<<< HEAD
 		return check_anomalies ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 /*
 	if(isxenomorph(L) || isalien(L) || isblitzshell(L)) // Xenos are dangerous
 		return check_anomalies ? TURRET_PRIORITY_TARGET	: TURRET_NOT_TARGET
 */
-=======
-		if(colony_allied_turret && L.colony_friend)
-			return TURRET_NOT_TARGET
-		else
-			return check_anomalies ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
-
-	//if(isxenomorph(L) || isalien(L)) // Xenos are dangerous
-	//	return check_anomalies ? TURRET_PRIORITY_TARGET	: TURRET_NOT_TARGET
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(ishuman(L))	//if the target is a human, analyze threat level
 		if(assess_perp(L) < 4)
 			return TURRET_NOT_TARGET	//if threat level < 4, keep going
@@ -759,14 +614,6 @@ var/list/turret_icons
 		return TURRET_NOT_TARGET
 	return 	..()
 
-<<<<<<< HEAD
-=======
-/obj/machinery/porta_turret/stationary/assess_living(var/mob/living/L)
-	if(L.faction == "onestar")
-		return TURRET_NOT_TARGET
-	return 	..()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/porta_turret/proc/assess_perp(var/mob/living/carbon/human/H)
 	if(!H || !istype(H))
 		return 0
@@ -778,13 +625,13 @@ var/list/turret_icons
 
 /obj/machinery/porta_turret/proc/tryToShootAt(var/list/mob/living/targets)
 	if(targets.len && last_target && (last_target in targets) && target(last_target))
-		return TRUE
+		return 1
 
 	while(targets.len > 0)
 		var/mob/living/M = pick(targets)
 		targets -= M
 		if(target(M))
-			return TRUE
+			return 1
 
 
 /obj/machinery/porta_turret/proc/popUp()	//pops the turret up
@@ -947,21 +794,13 @@ var/list/turret_icons
 			if(build_step == 0 && !anchored)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You secure the external bolts."))
-<<<<<<< HEAD
 					anchored = TRUE
-=======
-					anchored = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					build_step = 1
 					return
 			if(build_step == 1)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You unfasten the external bolts."))
-<<<<<<< HEAD
 					anchored = FALSE
-=======
-					anchored = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					build_step = 0
 					return
 			if(build_step == 2)
@@ -1007,13 +846,8 @@ var/list/turret_icons
 					var/obj/machinery/porta_turret/Turret = new /obj/machinery/porta_turret(loc)
 					Turret.name = finish_name
 					Turret.installation = installation
-<<<<<<< HEAD
 					Turret.installation = installation
 					installation.forceMove(Turret)
-=======
-					installation.forceMove(Turret)
-					installation = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					Turret.enabled = 0
 					Turret.setup()
 
@@ -1061,10 +895,6 @@ var/list/turret_icons
 				installation = I //We store the gun for the turret to use
 				installation.forceMove(src) //We physically store it inside of us until the construction is complete.
 				to_chat(user, SPAN_NOTICE("You add [I] to the turret."))
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				build_step = 4
 				return
 
@@ -1104,6 +934,7 @@ var/list/turret_icons
 
 	..()
 
+
 /obj/machinery/porta_turret_construct/attack_hand(mob/user)
 	switch(build_step)
 		if(4)
@@ -1113,10 +944,6 @@ var/list/turret_icons
 			installation.forceMove(loc)
 			installation = null
 			to_chat(user, SPAN_NOTICE("You remove [installation] from the turret frame."))
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(5)
 			to_chat(user, SPAN_NOTICE("You remove the prox sensor from the turret frame."))
 			new /obj/item/device/assembly/prox_sensor(loc)

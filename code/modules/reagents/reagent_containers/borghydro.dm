@@ -7,11 +7,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 30
 	possible_transfer_amounts = null
-<<<<<<< HEAD
 	spawn_frequency = 0
-=======
-	var/accepts_reagent_upgrades = FALSE //If upgrades can increase number of reagents dispensed.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mode = 1
 	var/charge_cost = 50
 	var/charge_tick = 0
@@ -23,34 +19,10 @@
 
 /obj/item/reagent_containers/borghypo/medical
 	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "inaprovaline", "tramadol", "spaceacillin", "stoxin")
-	accepts_reagent_upgrades = TRUE
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/borghypo/medical_adv
-	reagent_ids = list("dermaline", "meralyne", "tricordrazine", "dexalinp")
-	accepts_reagent_upgrades = TRUE
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/borghypo/rescue
 	reagent_ids = list("tricordrazine", "inaprovaline", "tramadol")
-	accepts_reagent_upgrades = TRUE
 
-<<<<<<< HEAD
-=======
-/obj/item/reagent_containers/borghypo/rescue_adv
-	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin") //Basic
-	accepts_reagent_upgrades = TRUE
-
-/obj/item/reagent_containers/borghypo/proc/Reindex()
-//We want to start from scratch
-	reagent_names = list()
-	for(var/T in reagent_ids)
-		reagent_volumes[T] = volume
-		var/datum/reagent/R = GLOB.chemical_reagents_list[T]
-		reagent_names += R.name
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/borghypo/New()
 	..()
 
@@ -139,11 +111,7 @@
 	recharge_time = 3
 	volume = 60
 	possible_transfer_amounts = list(5, 10, 20, 30)
-	reagent_ids = list("beer", "kahlua", "whiskey", "wine", "vodka", "gin", "rum", "tequilla", "vermouth", \
-			   "cognac", "ale", "mead", "water", "sugar", "ice", "tea", "greentea", "icetea", \
-			   "icegreentea", "cola", "spacemountainwind", "dr_gibb", "space_up", "tonic", "sodawater", \
-			   "lemon_lime", "orangejuice", "limejuice", "watermelonjuice", "lemonjuice", "honey", "milk", "fernet", \
-			   "coffee","hot_coco","espresso", "cream", "pineapplejuice", "sodiumchloride") //Salt for rims
+	reagent_ids = list("beer", "kahlua", "whiskey", "wine", "vodka", "gin", "rum", "tequilla", "vermouth", "cognac", "ale", "mead", "water", "sugar", "ice", "tea", "greentea", "icetea", "icegreentea", "cola", "spacemountainwind", "dr_gibb", "space_up", "tonic", "sodawater", "lemon_lime", "orangejuice", "limejuice", "watermelonjuice")
 
 /obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
 	return

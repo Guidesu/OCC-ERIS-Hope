@@ -14,11 +14,7 @@ var/global/excelsior_last_draft = 0
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	active_power_usage = 15000
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/excelsior_teleporter
-=======
-	circuit = /obj/item/circuitboard/excelsior_teleporter
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/max_energy = 100
 	var/energy_gain = 1
@@ -45,7 +41,6 @@ var/global/excelsior_last_draft = 0
 
 	var/list/parts_list = list(
 		/obj/item/stock_parts/console_screen = 50,
-<<<<<<< HEAD
 		/obj/item/stock_parts/capacitor = 100,
 		/obj/item/stock_parts/scanning_module = 100,
 		/obj/item/stock_parts/manipulator = 100,
@@ -64,50 +59,12 @@ var/global/excelsior_last_draft = 0
 		/obj/item/electronics/circuitboard/excelsiorshieldwallgen = 150,
 		/obj/item/electronics/circuitboard/excelsior_boombox = 150,
 		/obj/item/electronics/circuitboard/diesel = 150
-=======
-		/obj/item/stock_parts/capacitor/excelsior = 50,
-		/obj/item/stock_parts/scanning_module/excelsior = 50,
-		/obj/item/stock_parts/manipulator/excelsior = 50,
-		/obj/item/stock_parts/micro_laser/excelsior = 50,
-		/obj/item/stock_parts/matter_bin/excelsior = 50,
-		/obj/item/clothing/under/excelsior = 10,
-		/obj/item/soap/syndie = 25,
-		/obj/item/circuitboard/excelsior_teleporter = 500,
-		/obj/item/circuitboard/excelsiorautolathe = 150,
-		/obj/item/circuitboard/excelsiorreconstructor = 150,
-		/obj/item/circuitboard/excelsior_turret = 150,
-		/obj/item/circuitboard/excelsiorshieldwallgen = 150,
-		/obj/item/circuitboard/excelsior_boombox = 150,
-		/obj/item/circuitboard/excelsior_autodoc = 50,
-		/obj/item/circuitboard/ex_bluespace_repairer = 70,
-		/obj/item/circuitboard/diesel = 150,
-		/obj/item/reagent_containers/glass/bottle/petrel = 30, //its just welder fuel to go in diesel gens/mins/traps
-		/obj/item/tool/baton/excelbaton = 200,
-		/obj/item/device/defib_kit/compact = 500,
-		/obj/item/storage/firstaid/combat = 500,
-		/obj/item/storage/firstaid/toxin = 100,
-		/obj/item/storage/firstaid/adv = 300,
-		/obj/item/storage/firstaid/surgery/traitor = 500,
-		/obj/item/storage/box/syndie_kit/exl_revolver = 800,
-		/obj/item/computer_hardware/hard_drive/portable/design/excelsior = 1000,
-		/obj/item/computer_hardware/hard_drive/portable/design/excelsior_weapons = 500,
-		/obj/item/computer_hardware/hard_drive/portable/design/ex_parts = 450,
-		/obj/item/computer_hardware/hard_drive/portable/design/ex_cells = 200,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_drozd = 100,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_makarov = 50,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_vintorez = 200,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_boltgun = 50,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_ak = 200,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_ppsh = 300,
-		/obj/item/computer_hardware/hard_drive/portable/design/guns/ex_reclaimer = 300
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 	var/entropy_value = 8
 
 /obj/machinery/complant_teleporter/Initialize()
 	excelsior_teleporters |= src
 	.=..()
-	log_and_message_admins(" - Exc Teleporter made at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z]") //So we can go to it
 
 /obj/machinery/complant_teleporter/Destroy()
 	excelsior_teleporters -= src
@@ -142,13 +99,8 @@ var/global/excelsior_last_draft = 0
 			energy_gain *= 2
 
 
-<<<<<<< HEAD
 /obj/machinery/complant_teleporter/on_update_icon()
 	cut_overlays()
-=======
-/obj/machinery/complant_teleporter/update_icon()
-	overlays.Cut()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(panel_open)
 		add_overlays(image("panel"))
@@ -160,7 +112,6 @@ var/global/excelsior_last_draft = 0
 
 
 /obj/machinery/complant_teleporter/attackby(obj/item/I, mob/user)
-	log_and_message_admins(" - Exc Teleporter being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
 	if(default_deconstruction(I, user))
 		return
 	..()
@@ -184,37 +135,30 @@ var/global/excelsior_last_draft = 0
 
 /obj/machinery/complant_teleporter/ex_act(severity)
 	switch(severity)
-		if(1)
+		if(1.0)
 			qdel(src)
 			return
-		if(2)
+		if(2.0)
 			if (prob(50))
 				qdel(src)
 				return
 
+
  /**
-  * The nano_ui_interact proc is used to open and update Nano UIs
-  * If nano_ui_interact is not used then the UI will not update correctly
-  * nano_ui_interact is currently defined for /atom/movable
+  * The ui_interact proc is used to open and update Nano UIs
+  * If ui_interact is not used then the UI will not update correctly
+  * ui_interact is currently defined for /atom/movable
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
   *
   * @return nothing
   */
-<<<<<<< HEAD
 /obj/machinery/complant_teleporter/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(user.stat || user.restrained()) return
 
 	var/list/data = ui_data()
-=======
-/obj/machinery/complant_teleporter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	if(stat & (BROKEN|NOPOWER)) return
-	if(user.stat || user.restrained()) return
-
-	var/list/data = nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	time_until_scan = time2text((1800 - ((world.time - round_start_time) % 1800)), "mm:ss")
 
@@ -224,22 +168,13 @@ var/global/excelsior_last_draft = 0
 		ui.set_initial_data(data)
 		ui.open()
 
-<<<<<<< HEAD
 /obj/machinery/complant_teleporter/ui_data()
-=======
-/obj/machinery/complant_teleporter/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 	data["energy"] = round(excelsior_energy)
 	data["maxEnergy"] = round(excelsior_max_energy)
 	data["menu"] = nanoui_menu
 	data["excel_user"] = is_excelsior(current_user)
 	data["time_until_scan"] = time_until_scan
-<<<<<<< HEAD
-=======
-	data["conscripts"] = excelsior_conscripts
-	data["reinforcements_ready"] = reinforcements_check()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data += nanoui_data
 
 	var/list/order_list_m = list()
@@ -270,10 +205,7 @@ var/global/excelsior_last_draft = 0
 
 	return data
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/complant_teleporter/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
 		return 0 // don't update UIs attached to this object
@@ -300,12 +232,6 @@ var/global/excelsior_last_draft = 0
 
 	if(href_list["close_menu"])
 		nanoui_menu = 0
-<<<<<<< HEAD
-=======
-
-	if(href_list["request_reinforcements"])
-		request_reinforcements(usr)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	add_fingerprint(usr)
 	update_nano_data()
@@ -338,11 +264,7 @@ var/global/excelsior_last_draft = 0
 
 	processing_order = TRUE
 	excelsior_energy = max(excelsior_energy - order_cost, 0)
-<<<<<<< HEAD
 	FLICK("teleporting", src)
-=======
-	flick("teleporting", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	spawn(17)
 		complete_order(order_path, amount)
 
@@ -353,32 +275,20 @@ var/global/excelsior_last_draft = 0
 	processing_order = FALSE
 
 /obj/machinery/complant_teleporter/attackby(obj/item/I, mob/user)
-<<<<<<< HEAD
-=======
-	log_and_message_admins(" - Exc Teleporter being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/datum/antag_contract/excel/appropriate/M in GLOB.excel_antag_contracts)
 		if(M.completed)
 			continue
 		if(M.target_type == I.type)
 			I.Destroy()
 			M.complete(user)
-<<<<<<< HEAD
 			FLICK("teleporting", src)
-=======
-			flick("teleporting", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 /obj/machinery/complant_teleporter/attack_hand(mob/user)
 	if(stat & BROKEN)
 		return
 	current_user = user
-<<<<<<< HEAD
 	ui_interact(user)
-=======
-	nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/complant_teleporter/affect_grab(var/mob/user, var/mob/target)
 	try_put_inside(target, user)
@@ -405,16 +315,12 @@ var/global/excelsior_last_draft = 0
 	if (affecting.stat == DEAD)
 		to_chat(user, SPAN_WARNING("[affecting] is dead, and can't be teleported"))
 		return
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/datum/antag_contract/excel/targeted/M in GLOB.excel_antag_contracts) // All targeted objectives can be completed by stuffing the target in the teleporter
 		if(M.completed)
 			continue
 		if(affecting == M.target_mind.current)
 			M.complete(user)
-<<<<<<< HEAD
 			flick("teleporting", src)
 			to_chat(affecting, SPAN_NOTICE("You have been teleported to haven, your crew respawn time is reduced by 15 minutes."))
 			visible_message("\the [src] teleporter closes and [affecting] disapears.")
@@ -427,30 +333,11 @@ var/global/excelsior_last_draft = 0
 	playsound(src.loc, 'sound/machines/ping.ogg', 50, 1, -3)
 /obj/machinery/complant_teleporter/proc/teleport_out(var/mob/living/affecting, var/mob/living/user)
 	FLICK("teleporting", src)
-=======
-			teleport_out(affecting, user)
-			excelsior_conscripts += 1
-			return
-	if (is_excelsior(affecting))
-		teleport_out(affecting, user)
-		excelsior_conscripts += 1
-		return
-
-	visible_message("\the [src] blinks, refusing [affecting].")
-	playsound(src.loc, 'sound/machines/ping.ogg', 50, 1 -3)
-
-/obj/machinery/complant_teleporter/proc/teleport_out(var/mob/living/affecting, var/mob/living/user)
-	flick("teleporting", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(affecting, SPAN_NOTICE("You have been teleported to haven, your crew respawn time is reduced by 15 minutes."))
 	visible_message("\the [src] teleporter closes and [affecting] disapears.")
 	affecting.set_respawn_bonus("TELEPORTED_TO_EXCEL", 15 MINUTES)
 	affecting << 'sound/effects/magic/blind.ogg'  //Play this sound to a player whenever their respawn time gets reduced
 	qdel(affecting)
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/complant_teleporter/proc/request_reinforcements(var/mob/living/user)
 
 	if(excelsior_energy < reinforcements_cost)
@@ -464,11 +351,7 @@ var/global/excelsior_last_draft = 0
 		return
 	processing_order = TRUE
 	use_power(active_power_usage * 10)
-<<<<<<< HEAD
 	FLICK("teleporting", src)
-=======
-	flick("teleporting", src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mob/observer/ghost/candidate = draft_ghost("Excelsior Conscript", ROLE_BANTYPE_EXCELSIOR, ROLE_EXCELSIOR_REV)
 	if(!candidate)
 		processing_order = FALSE

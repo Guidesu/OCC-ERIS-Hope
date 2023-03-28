@@ -6,13 +6,8 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
-<<<<<<< HEAD
 	canmove = 0
 	blinded = 0
-=======
-	canmove = FALSE
-	blinded = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	anchored = TRUE	//  don't get pushed around
 	layer = GHOST_LAYER
 	movement_handlers = list(/datum/movement_handler/mob/incorporeal)
@@ -48,19 +43,11 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 		if (ishuman(body))
 			var/mob/living/carbon/human/H = body
 			icon = H.stand_icon
-<<<<<<< HEAD
 			set_overlays(H.overlays_standing)
 		else
 			icon = body.icon
 			icon_state = body.icon_state
 			set_overlays(body.overlays)
-=======
-			copy_overlays(H.overlays_standing, TRUE)
-		else
-			icon = body.icon
-			icon_state = body.icon_state
-			copy_overlays(body.get_overlays(), TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		alpha = 127
 
@@ -89,7 +76,6 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	real_name = name
 
 	ghost_multitool = new(src)
-	SSmobs.ghost_list += src
 	..()
 
 	AddComponent(/datum/component/fabric)
@@ -98,7 +84,6 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	stop_following()
 	qdel(ghost_multitool)
 	ghost_multitool = null
-	SSmobs.ghost_list -= src
 	return ..()
 
 /mob/observer/ghost/Topic(href, href_list)
@@ -153,11 +138,7 @@ Works together with spawning an observer, noted above.
 	return 1
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
-<<<<<<< HEAD
 	if(key && client)
-=======
-	if(key)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/mob/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
@@ -186,11 +167,7 @@ Works together with spawning an observer, noted above.
 		if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/observer/ghost/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 
-<<<<<<< HEAD
 		ghost.client.create_UI(ghost.type)
-=======
-		ghost.client?.create_UI(ghost.type)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		return ghost
 
@@ -333,24 +310,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/ghost/verb/follow(input in getmobs())
 	set category = "Ghost"
-	set name = ".Follow" // "Haunt"
+	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
 	var/target = getmobs()[input]
 	if(!target) return
 	ManualFollow(target)
-
-/mob/observer/ghost/verb/follow_player()
-	set category = "Ghost"
-	set name = "Follow player"
-
-	var/list/player_controlled_mobs = list()
-
-	for(var/mob/M in sortNames(SSmobs.mob_list))
-		if(M.ckey && !isnewplayer(M))
-			player_controlled_mobs.Add(M)
-
-	ManualFollow(input("Follow and haunt a player", "Follow player") as anything in player_controlled_mobs)
 
 // This is the ghost's follow verb with an argument
 /mob/observer/ghost/proc/ManualFollow(var/atom/movable/target)
@@ -471,11 +436,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!MayRespawn(1, ANIMAL))
 		return
 
-	if(!BC_IsKeyAllowedToConnect(usr.ckey) && !usr.client.holder)
-		usr  << SPAN_DANGER("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-			    but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!")
-		return
-
 	var/turf/T = get_turf(src)
 	if(!T || !(T.z in GLOB.maps_data.station_levels))
 		to_chat(src, "<span class='warning'>You may not spawn as a mouse on this Z-level.</span>")
@@ -496,11 +456,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (spawnpoint)
 		host = new /mob/living/simple_animal/mouse(spawnpoint.loc)
 	else
-<<<<<<< HEAD
 		to_chat(src, "<span class='warning'>Unable to find any safe, unwelded vents to spawn mice at. The ship must be quite a mess!  Trying again might work, if you think there's still a safe place. </span>")
-=======
-		to_chat(src, "<span class='warning'>Unable to find any safe, unwelded vents to spawn mice at. The colony must be quite a mess!  Trying again might work, if you think there's still a safe place. </span>")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(host)
 		if(config.uneducated_mice)
@@ -612,13 +568,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/ghost/proc/try_possession(var/mob/living/M)
 	if(!config.ghosts_can_possess_animals)
 		to_chat(usr, "<span class='warning'>Ghosts are not permitted to possess animals.</span>")
-<<<<<<< HEAD
-=======
-		return 0
-	if(!BC_IsKeyAllowedToConnect(usr.ckey) && !usr.client.holder)
-		to_chat(usr, SPAN_DANGER("Border Control is enabled, and you haven't been whitelisted!  You're welcome to observe, \
-				but in order to play, you'll need to be whitelisted!  Please visit our discord to submit an access request!"))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return 0
 	if(!M.can_be_possessed_by(src))
 		return 0
@@ -854,8 +803,4 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	M.key = key
 	if(M.client)
 		M.client.create_UI(M.type)
-<<<<<<< HEAD
 	return
-=======
-	return
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,14 +1,10 @@
 
-<<<<<<< HEAD
 /var/list/datum/gender/gender_datums = list()
-=======
-GLOBAL_LIST_EMPTY(gender_datums)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /hook/startup/proc/populate_gender_datum_list()
 	for(var/type in typesof(/datum/gender))
 		var/datum/gender/G = new type
-		GLOB.gender_datums[G.key] = G
+		gender_datums[G.key] = G
 	return 1
 
 /datum/gender
@@ -22,22 +18,6 @@ GLOBAL_LIST_EMPTY(gender_datums)
 	var/has  = "have"
 	var/is   = "are"
 	var/does = "do"
-
-/datum/gender/proc/word(var/position)
-	switch(position)
-		if("He","She","It","They")		return He
-		if("he","she","it","they")		return he
-		if("His","Her","Its","Their")	return His
-		if("his","her","its","their")	return his
-		if("him","her","it","them")		return him
-
-		if("has","have")				return has
-		if("is","are")					return is
-		if("does","do")					return does
-		if("gender")					return key
-		if("Gender")					return gender2text(key)
-		else
-			CRASH("Genderword proc called with invalid position. ([position])")
 
 /datum/gender/male
 	key  = "male"

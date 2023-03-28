@@ -4,20 +4,12 @@
 	phrase = null
 	power = 0
 	category = "Group"
-<<<<<<< HEAD
-=======
-	var/list/phrases = list()
-	var/effect_type = null
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	cooldown = TRUE
 	cooldown_time = 1 SECONDS
 	cooldown_category = "group"
-<<<<<<< HEAD
 	var/list/phrases = list()
 	var/effect_type
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/ritual/group/pre_check(mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets)
 	if(is_on_cooldown(H))
@@ -33,11 +25,7 @@
 
 	var/datum/core_module/group_ritual/GR = new
 	GR.ritual = src
-<<<<<<< HEAD
 	GR.implant_type = C.implant_type
-=======
-	GR.implant_type = implant_type //Defined further in document as main core implant
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	GR.phrases = phrases
 	GR.effect = new effect_type
 	GR.effect.succ_message = success_message
@@ -143,11 +131,7 @@
 //	SEND_SIGNAL(starter, COMSIG_GROUP_RITUAL) Occulus Yote
 
 	for(var/mob/affected in participants)
-<<<<<<< HEAD
 		to_chat(affected, fail_message)
-=======
-		to_chat(affected, succ_message)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		success(affected, participants.len)
 //		SEND_SIGNAL(affected, COMSIG_GROUP_RITUAL) Occulus Yeet
 //	GLOB.grup_ritual_performed++ Occulus Yeet

@@ -3,7 +3,6 @@
 	desc = "A monstrous, dog-sized cockroach. This one smells like hell and secretes strange vapors."
 	icon_state = "seuche"
 	turns_per_move = 6
-<<<<<<< HEAD
 	maxHealth = 20
 	health = 20
 	melee_damage_upper = 3
@@ -11,30 +10,10 @@
 	meat_amount = 3
 	rarity_value = 11.25
 	var/datum/reagents/gas_sac //Stores gas. Can't use the default reagents since that is now bloodstream
-=======
-	maxHealth = 15
-	health = 15
-	var/datum/reagents/gas_sac //Stores gas. Can't use the default reagents since that is now bloodstream
-	melee_damage_upper = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat/seuche
-	meat_amount = 3
-
-	knockdown_odds = 3
-
-	blattedin_revives_left = 1
-	inherent_mutations = list(MUTATION_ROACH_BLOOD, MUTATION_PSN_BREATH, MUTATION_COUGHING, MUTATION_DEAF, MUTATION_TOURETTES, MUTATION_EPILEPSY)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/superior_animal/roach/support/New()
 	.=..()
 	gas_sac = new /datum/reagents(100, src)
-
-/mob/living/carbon/superior_animal/roach/support/Destroy()
-	gas_sac.my_atom = null
-	QDEL_NULL(gas_sac)
-
-	. = ..()
-
 
 /mob/living/carbon/superior_animal/roach/support/proc/gas_attack()
 	if (!gas_sac.has_reagent("blattedin", 20) || stat != CONSCIOUS)
@@ -55,12 +34,6 @@
 
 /mob/living/carbon/superior_animal/roach/support/Life()
 	. = ..()
-<<<<<<< HEAD
-=======
-
-	var/atom/targetted_mob = (target_mob?.resolve())
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(stat != CONSCIOUS)
 		return
 
@@ -69,17 +42,13 @@
 
 	gas_sac.add_reagent("blattedin", 1)
 
-<<<<<<< HEAD
 	if(!target_mob)
-=======
-	if(!targetted_mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(prob(7))
 		gas_attack()
 
-/mob/living/carbon/superior_animal/roach/support/doTargetMessage()
+/mob/living/carbon/superior_animal/roach/support/findTarget()
 	. = ..()
-	if (gas_attack())
+	if(. && gas_attack())
 		visible_emote("charges at [.] in clouds of poison!")

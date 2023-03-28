@@ -43,23 +43,17 @@
 	build_path = /obj/item/implanter
 
 /datum/design/autolathe/device/hand_labeler
-<<<<<<< HEAD
 	name = "hand labeler"
 	build_path = /obj/item/hand_labeler
 
 /datum/design/autolathe/device/propaganda_chip
 	name = "propaganda chip"
 	build_path = /obj/item/device/propaganda_chip
-=======
-	name = "hand labeller"
-	build_path = /obj/item/hand_labeler
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/design/autolathe/device/flamethrower
 	name = "flamethrower"
 	build_path = /obj/item/flamethrower
 
-<<<<<<< HEAD
 /datum/design/autolathe/device/excelbaton
 	name = "Expropriator"
 	build_path = /obj/item/melee/baton/excelbaton
@@ -67,25 +61,6 @@
 /datum/design/autolathe/device/headset_church
 	name = "NeoTheology Radio Encryption Key"
 	build_path = /obj/item/device/encryptionkey/headset_church
-=======
-/datum/design/autolathe/device/proxsensor
-	name = "proximity sensor"
-	build_path = /obj/item/device/assembly/prox_sensor
-
-/datum/design/autolathe/device/excelbaton
-	name = "Expropriator"
-	build_path = /obj/item/tool/baton/excelbaton
-
-/datum/design/autolathe/device/camera
-	name = "hand camera"
-	build_path = /obj/item/device/camera
-	materials = list(MATERIAL_PLASTIC = 5, MATERIAL_GLASS = 2, MATERIAL_STEEL = 0.2)
-
-/datum/design/autolathe/device/camerafilm
-	name = "camera film"
-	build_path = /obj/item/device/camera_film
-	materials = list(MATERIAL_PLASTIC = 1, MATERIAL_STEEL = 0.2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/design/autolathe/device/landmine
 	name = "landmine"
@@ -95,7 +70,6 @@
 	name = "excelsior mine"
 	build_path = /obj/item/mine/excelsior
 
-<<<<<<< HEAD
 /datum/design/autolathe/device/grenade/nt_cleaner
 	name = "NT \"Cleanse Capsule\""
 	build_path = /obj/item/grenade/chem_grenade/cleaner/nt_cleaner
@@ -111,28 +85,3 @@
 /datum/design/autolathe/device/mechpainter
 	name = "mech painter"
 	build_path = /obj/item/device/floor_painter/mech_painter
-=======
-/datum/design/autolathe/device/propaganda_chip
-	name = "propaganda chip"
-	build_path = /obj/item/device/propaganda_chip
-
-/datum/design/autolathe/device/grenade/nt_cleaner
-	name = "\"Cleanse Capsule\""
-	build_path = /obj/item/grenade/chem_grenade/cleaner/nt_cleaner
-
-/datum/design/autolathe/device/grenade/nt_weedkiller
-	name = "\"Kudzu Killer\""
-	build_path = /obj/item/grenade/chem_grenade/antiweed/nt_antiweed
-
-/datum/design/autolathe/device/smartlink
-	name = "smartlink imprinter"
-	build_path = /obj/item/device/hardware_imprinter/smartlink
-
-/datum/design/autolathe/device/cogenhance
-	name = "cognitive enhancer imprinter"
-	build_path = /obj/item/device/hardware_imprinter/cogenhance
-
-/datum/design/autolathe/device/chemneutral
-	name = "chemical neutralizer imprinter"
-	build_path = /obj/item/device/hardware_imprinter/chemneutral
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

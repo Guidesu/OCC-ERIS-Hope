@@ -1,22 +1,9 @@
 /mob
-<<<<<<< HEAD
 	density = TRUE
-=======
-	datum_flags = DF_USE_TAG
-	density = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	layer = 4.0
 	animate_movement = 2
 	flags = PROXMOVE
-	blood_color = "#A10808"
 	var/datum/mind/mind
-	var/cant_gib = FALSE //This is used for mobs that dquel on death
-	var/static/next_mob_id = 0
-
-	//This is here for admins to modife for any player, mob for events or other things. Also antags could
-	//likely use this - I.E Bots with deeper scans could see through into a carrion or a Exl agent
-	var/colony_friend = FALSE //Are we friendly to the colony? Turrets/Mechs vs Mob
-	var/friendly_to_colony = FALSE //Do we attack colony stuff - Mechs / Turrets regardless of who they are
 
 	movement_handlers = list(
 	/datum/movement_handler/mob/relayed_movement,
@@ -36,8 +23,7 @@
 	var/lastKnownIP
 	var/computer_id
 
-	/// I'd really rather use signals for this, but, whatever. Assigned in roomba_dispenser.dm when spawned from one.
-	var/obj/entity_spawner/spawned_from
+	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
@@ -48,14 +34,13 @@
 
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
-	var/use_subtle = 1 //Similarly, the subtle verb.
 	var/damageoverlaytemp = 0
 	var/obj/machinery/machine
 	var/poll_answer = 0
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
 
-	var/current_vertical_travel_method // Link currently used VTM if we moving between Z-levels
+
 	var/last_move_attempt = 0 //Last time the mob attempted to move, successful or not
 	var/atom/movable/pulling
 	var/other_mobs
@@ -64,9 +49,7 @@
 	var/hand
 	var/real_name
 
-	/// Cameras currently tracking this mob. Needed for garbage collection.
-	var/list/tracking_cameras = list()
-
+	var/bhunger = 0			//Carbon
 	var/ajourn = 0
 	var/seer = 0 //for cult//Carbon, probably Human
 
@@ -77,11 +60,6 @@
 	var/lying = 0
 	var/lying_prev = 0
 	var/canmove = 1
-	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-
-/* Is mannquin to be used when we want to make sure character start up beings do not also get the boon of what ever we are adding
-   this is current used in magic cups to prevent them form being apart of the faith's list.*/
-	var/is_mannequin = FALSE
 
 
 	/*
@@ -109,7 +87,6 @@ While it would be entirely possible to check the mob's move handlers list for th
 
 	var/default_pixel_x = 0
 	var/default_pixel_y = 0
-	var/default_pixel_z = 0
 	var/old_x = 0
 	var/old_y = 0
 	var/nutrition = 400  //carbon
@@ -122,21 +99,12 @@ While it would be entirely possible to check the mob's move handlers list for th
 	var/decl/move_intent/move_intent = /decl/move_intent/run
 	var/move_intents = list(/decl/move_intent/run, /decl/move_intent/walk)
 
-<<<<<<< HEAD
 	var/obj/buckled //Living
 	var/obj/item/l_hand //Living
 	var/obj/item/r_hand //Living
 	var/obj/item/back //Human/Monkey
 	var/obj/item/storage/s_active //Carbon
 	var/obj/item/clothing/mask/wear_mask //Carbon
-=======
-	var/obj/buckled = null//Living
-	var/obj/item/l_hand = null//Living
-	var/obj/item/r_hand = null//Living
-	var/obj/item/back = null//Human/Monkey
-	var/obj/item/storage/s_active = null//Carbon
-	var/obj/item/clothing/mask/wear_mask = null//Carbon
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	var/datum/hud/hud_used
@@ -170,13 +138,8 @@ While it would be entirely possible to check the mob's move handlers list for th
 	var/blinded
 	var/ear_deaf		//Carbon
 
-<<<<<<< HEAD
 //The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant
-=======
-/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
-	var/datum/weakref/LAssailant_weakref
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Wizard mode, but can be used in other modes thanks to the brand new "Give Spell" badmin button
 	var/spell/list/spell_list = list()
@@ -213,7 +176,6 @@ While it would be entirely possible to check the mob's move handlers list for th
 
 	var/memory = ""
 	var/flavor_text = ""
-	var/ooc_text = ""
 
 
 	var/list/HUDneed = list() // What HUD object need see
@@ -226,8 +188,6 @@ While it would be entirely possible to check the mob's move handlers list for th
 
 	var/list/progressbars
 
-	///The z level this mob is currently registered in
-	var/registered_z
 
 	var/speed_factor = 1.0
 
@@ -235,7 +195,6 @@ While it would be entirely possible to check the mob's move handlers list for th
 
 	var/mob_classification = 0 //Bitfield. Uses TYPE_XXXX defines in defines/mobs.dm.
 
-<<<<<<< HEAD
 	var/can_be_fed = 1 //Can be feeded by reagent_container or other things
 
 	///The z level this mob is currently registered in
@@ -244,12 +203,3 @@ While it would be entirely possible to check the mob's move handlers list for th
 	bad_type = /mob
 
 	var/list/additional_vision_handlers = list() //Basically a list of atoms from which additional vision data is retrieved
-=======
-	var/forbid_seeing_deadchat = FALSE // Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
-
-	var/list/planes_visible = null	// List of atom planes that are logically visible/interactable (list of actual plane numbers).
-
-	var/obj/effect/gibspawner/gibspawner = /obj/effect/gibspawner/generic // for xeno gibs, originally
-
-	var/click_delay_addition = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

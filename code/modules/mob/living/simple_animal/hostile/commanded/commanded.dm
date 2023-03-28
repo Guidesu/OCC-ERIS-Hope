@@ -19,7 +19,7 @@
 		command_buffer.Add(lowertext(html_decode(message)))
 	return 0
 
-/mob/living/simple_animal/hostile/commanded/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0)
+/mob/living/simple_animal/hostile/commanded/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
 	if((speaker in friends) || speaker == master)
 		command_buffer.Add(speaker)
 		command_buffer.Add(lowertext(html_decode(message)))
@@ -71,14 +71,12 @@
 
 
 /mob/living/simple_animal/hostile/commanded/proc/follow_target()
-	var/mob/living/targetted_mob = (target_mob?.resolve())
-
 	stop_automated_movement = 1
-	if(!targetted_mob)
+	if(!target_mob)
 		return
-	if(targetted_mob in ListTargets(10))
+	if(target_mob in ListTargets(10))
 		set_glide_size(DELAY2GLIDESIZE(move_to_delay))
-		SSmove_manager.move_to(src,targetted_mob,1,move_to_delay)
+		walk_to(src,target_mob,1,move_to_delay)
 
 /mob/living/simple_animal/hostile/commanded/proc/commanded_stop() //basically a proc that runs whenever we are asked to stay put. Probably going to remain unused.
 	return
@@ -128,7 +126,7 @@
 
 /mob/living/simple_animal/hostile/commanded/proc/attack_command(var/mob/speaker,var/text)
 	target_mob = null //want me to attack something? Well I better forget my old target.
-	SSmove_manager.move_to(src,0)
+	walk_to(src,0)
 	stance = HOSTILE_STANCE_IDLE
 	if(text == "attack" || findtext(text,"everyone") || findtext(text,"anybody") || findtext(text, "somebody") || findtext(text, "someone")) //if its just 'attack' then just attack anybody, same for if they say 'everyone', somebody, anybody. Assuming non-pickiness.
 		allowed_targets = list("everyone")//everyone? EVERYONE
@@ -141,12 +139,12 @@
 /mob/living/simple_animal/hostile/commanded/proc/stay_command(var/mob/speaker,var/text)
 	target_mob = null
 	stance = COMMANDED_STOP
-	SSmove_manager.move_to(src,0)
+	walk_to(src,0)
 	return 1
 
 /mob/living/simple_animal/hostile/commanded/proc/stop_command(var/mob/speaker,var/text)
 	allowed_targets = list()
-	SSmove_manager.move_to(src,0)
+	walk_to(src,0)
 	target_mob = null //gotta stop SOMETHIN
 	stance = HOSTILE_STANCE_IDLE
 	stop_automated_movement = 0
@@ -154,17 +152,16 @@
 
 /mob/living/simple_animal/hostile/commanded/proc/follow_command(var/mob/speaker,var/text)
 	//we can assume 'stop following' is handled by stop_command
-
 	if(findtext(text,"me"))
 		stance = COMMANDED_FOLLOW
-		target_mob = WEAKREF(speaker) //this wont bite me in the ass later.
+		target_mob = speaker //this wont bite me in the ass later.
 		return 1
 	var/list/targets = get_targets_by_name(text)
 	if(targets.len > 1 || !targets.len) //CONFUSED. WHO DO I FOLLOW?
 		return 0
 
 	stance = COMMANDED_FOLLOW //GOT SOMEBODY. BETTER FOLLOW EM.
-	target_mob = WEAKREF(targets[1]) //YEAH GOOD IDEA //niko--i feel like this will cause harddels. dumbass.
+	target_mob = targets[1] //YEAH GOOD IDEA
 
 	return 1
 
@@ -173,13 +170,11 @@
 
 
 /mob/living/simple_animal/hostile/commanded/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-
 	//if they attack us, we want to kill them. None of that "you weren't given a command so free kill" bullshit.
 	. = ..()
-
 	if(!.)
 		stance = HOSTILE_STANCE_ATTACK
-		target_mob = WEAKREF(user)
+		target_mob = user
 		allowed_targets += user //fuck this guy in particular.
 		if(user in friends) //We were buds :'(
 			friends -= user
@@ -187,9 +182,8 @@
 
 /mob/living/simple_animal/hostile/commanded/attack_hand(mob/living/carbon/human/M as mob)
 	..()
-
 	if(M.a_intent == I_HURT) //assume he wants to hurt us.
-		target_mob = WEAKREF(M)
+		target_mob = M
 		allowed_targets += M
 		stance = HOSTILE_STANCE_ATTACK
 		if(M in friends)

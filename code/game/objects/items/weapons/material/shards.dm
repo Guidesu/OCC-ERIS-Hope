@@ -1,20 +1,11 @@
 // Glass shards
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/material/shard
 	name = "shard"
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
-<<<<<<< HEAD
 	sharp = TRUE
 	edge = TRUE
-=======
-	sharp = 1
-	edge = 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_TINY
 	force_divisor = 0.2 // 6 with hardness 30 (glass)
 	thrown_force_divisor = 0.4 // 4 with weight 15 (glass)
@@ -27,13 +18,8 @@
 	rarity_value = 6
 	var/amount = 0
 
-<<<<<<< HEAD
 /obj/item/material/shard/New(newloc, material_key, _amount)
 	if(_amount)
-=======
-/obj/item/material/shard/New(var/newloc, var/material_key, var/_amount)
-	if (_amount)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		amount = max(round(_amount, 0.01), 0.01) //We won't ever need to physically represent less than 1% of a material unit
 	.=..()
 	//Material will be set during the parent callstack
@@ -48,7 +34,6 @@
 
 	//Overwrite whatever was populated before. A shard contains <1 unit of a single material
 	matter = list(material.name = amount)
-	add_new_transformation(/datum/transform_type/shard/variable_size)
 	update_icon()
 
 /obj/item/material/shard/set_material(var/new_material, var/update)
@@ -72,11 +57,7 @@
 	else
 		qdel(src)
 
-<<<<<<< HEAD
 /obj/item/material/shard/on_update_icon()
-=======
-/obj/item/material/shard/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(material)
 		color = material.icon_colour
 		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
@@ -93,15 +74,17 @@
 	else
 		icon_state = "[material.shard_icon]["small"]"
 	//variable rotation based on randomness
-	add_new_transformation(/datum/transform_type/random_rotation)
+	var/rot = rand(0, 360)
+	var/matrix/M = matrix()
+	M.Turn(rot)
 
-	. = ..()
+	//Variable icon size based on material quantity
+	//Shards will scale from 0.6 to 1.25 scale, in the range of 0..1 amount
+	if (amount < 1)
+		M.Scale(((1.25 - 0.8)*amount)+0.8)
 
-<<<<<<< HEAD
 	transform = M
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/material/shard/attackby(obj/item/I, mob/user)
 	if(QUALITY_WELDING in I.tool_qualities)
 		merge_shards(I, user)
@@ -182,7 +165,7 @@
 				if(affecting)
 					if(BP_IS_ROBOTIC(affecting))
 						return
-					if(affecting.take_damage(5, BRUTE))
+					if(affecting.take_damage(5, 0))
 						H.UpdateDamageIcon()
 					H.updatehealth()
 					if(!(H.species.flags & NO_PAIN))
@@ -194,22 +177,8 @@
 // Preset types - left here for the code that uses them
 /obj/item/material/shard/shrapnel
 	name = "shrapnel" //Needed for crafting
-<<<<<<< HEAD
 	rarity_value = 2.5
 
-=======
-	var/gun_number = ""
-
-/obj/item/material/shard/shrapnel/attackby(obj/item/I, mob/user)
-	..()
-	if(istype(I, /obj/item/device/bullet_scanner))
-		if(gun_number)
-			to_chat(user, "<span class='info'>Bullet Hole Caliberation: [gun_number].</span>")
-			return
-		else
-			to_chat(user, "<span class='info'>Bullet Hole Caliberation: ERROR.</span>")
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/material/shard/shrapnel/New(loc)
 
 	..(loc, MATERIAL_STEEL)
@@ -219,16 +188,5 @@
 	amount = 1
 	rarity_value = 5
 
-<<<<<<< HEAD
 /obj/item/material/shard/phoron/New(loc)
 	..(loc, MATERIAL_PHORONGLASS)
-=======
-/obj/item/material/shard/plasma/New(loc)
-	..(loc, MATERIAL_PLASMAGLASS)
-
-/obj/item/material/shard/ameridian
-	name = "ameridian"
-
-/obj/item/material/shard/ameridian/New(loc)
-	..(loc, MATERIAL_AMERIDIAN)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -25,7 +25,7 @@ Now, just in case this rocket juice blacks me out again, its here, you dumbass. 
 
 /datum/stash/booze/distillers
 	story_type = STORY_CRIME
-	lore = "Heya sugar. The security shut down my bar, but no worries boys, Jane's got you covered.<br>\
+	lore = "Heya sugar. The captain's shut down my bar, but no worries boys, Jane's got you covered.<br>\
 <br>\
  I've been preparing for this ta happen for a while, and have a nice little stash saved up. I'll be running a little private bar at %D.<br>\
  <br>\
@@ -36,11 +36,7 @@ Now, just in case this rocket juice blacks me out again, its here, you dumbass. 
 
 /datum/stash/booze/teenage_girls
 	story_type = STORY_CRIME
-<<<<<<< HEAD
 	contents_list_extra = list(/obj/item/haircomb = 1, /obj/item/lipstick/random = 2)
-=======
-	contents_list_extra = list(/obj/item/haircomb = 1) ///obj/item/lipstick/jade = 2)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	contents_list_random = list(/obj/item/reagent_containers/syringe/drugs = 50,
 	/obj/item/reagent_containers/syringe/drugs = 50,
 	/obj/item/reagent_containers/syringe/drugs_recreational = 50,

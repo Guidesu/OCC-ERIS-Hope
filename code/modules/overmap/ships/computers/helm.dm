@@ -6,11 +6,7 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "eris_control"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/helm
-=======
-	circuit = /obj/item/circuitboard/helm
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/effect/overmap/ship/linked			//connected overmap object
 	var/autopilot = 0
 	var/manual_control = 0
@@ -23,16 +19,12 @@
 	. = ..()
 	linked = map_sectors["[z]"]
 	get_known_sectors()
-<<<<<<< HEAD
 	new /obj/effect/overmap_event/movable/comet()
 
 	if (isnull(linked))
 		error("There are no map_sectors on [src]'s z.")
 		return
 	linked.check_link()
-=======
-	//new /obj/effect/overmap_event/movable/comet()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/helm/proc/get_known_sectors()
 	var/area/overmap/map = locate() in world
@@ -42,11 +34,7 @@
 			R.fields["name"] = S.name_stages[1]
 			R.fields["x"] = S.x
 			R.fields["y"] = S.y
-<<<<<<< HEAD
 			known_sectors[S.name_stages[1]] = R
-=======
-			known_sectors[S.name] = R
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/helm/Process()
 	..()
@@ -82,11 +70,7 @@
 		return -1
 	return 0
 
-<<<<<<< HEAD
 /obj/machinery/computer/helm/attack_hand(mob/user)
-=======
-/obj/machinery/computer/helm/attack_hand(var/mob/user as mob)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(..())
 		user.unset_machine()
@@ -106,9 +90,9 @@
 		to_chat(user, "NOTE: overmap generation is disabled in server configuration.")
 		to_chat(user, "To use overmap, make sure that \"config.txt\" file is present in the server config folder and \"USE_OVERMAP\" is uncommented.")
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/helm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/helm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		return
 
@@ -243,31 +227,24 @@
 			if (isAI(usr))
 				usr.reset_view(usr.eyeobj)
 
-<<<<<<< HEAD
 	if (href_list["pulse"])
 		linked.pulse()
 
 	if (href_list["scanpoi"])
 		linked.scan_poi()
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	updateUsrDialog()
 
 
 /obj/machinery/computer/navigation
 	name = "navigation console"
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/nav
-=======
-	circuit = /obj/item/circuitboard/nav
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/viewing = 0
 	var/obj/effect/overmap/ship/linked
 	icon_keyboard = "generic_key"
 	icon_screen = "helm"
 
-/obj/machinery/computer/navigation/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/navigation/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		return
 
@@ -323,7 +300,7 @@
 		user.reset_view(linked)
 		user.client.view = "[2*NAVIGATION_VIEW_RANGE+1]x[2*NAVIGATION_VIEW_RANGE+1]"
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/navigation/Topic(href, href_list)
 	if(..())

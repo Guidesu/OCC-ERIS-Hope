@@ -14,7 +14,6 @@
 	var/throw_range = 7
 	var/icon_rotation = 0 // Used to rotate icons in update_transform()
 	var/moved_recently = 0
-<<<<<<< HEAD
 	var/mob/pulledby
 	var/item_state // Used to specify the item state for the on-mob overlays.
 	var/inertia_dir = 0
@@ -29,41 +28,19 @@
 	var/prob_aditional_object = 100
 	var/spawn_blacklisted = FALSE
 	var/bad_type //path
-=======
-	var/mob/pulledby = null
-	var/item_state = null // Used to specify the item state for the on-mob over-lays.
-	var/inertia_dir = 0
-	///Holds information about any movement loops currently running/waiting to run on the movable. Lazy, will be null if nothing's going on
-	var/datum/movement_packet/move_packet
-	var/can_anchor = TRUE
-	var/cant_be_pulled = FALSE //Used for things that cant be anchored, but also shouldnt be pullable
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	/// Used in SSmove_manager.move_to. Set to world.time whenever a walk is called that uses temporary_walk = TRUE. Prevents walks that dont respect the override from conflicting with eachother.
-	var/walk_to_initial_time = 0
-
-	/// Used in SSmove_manager.move_to. If something with an override is called, it will set it to world.time + the value of override in the proc, and any walks that respect the override after will return until world.time is more than the var.
-	var/walk_override_timer = 0
-
-	//spawn_values
-	var/price_tag = 0 // The item price in credits. atom/movable so we can also assign a price to animals and other thing.
-	var/surplus_tag = FALSE //If true, attempting to export this will net you a greatly reduced amount of credits, but we don't want to affect the actual price tag for selling to others.
-	var/spawn_tags
+/atom/movable/Del()
+	if(isnull(gc_destroyed) && loc)
+		testing("GC: -- [type] was deleted via del() rather than qdel() --")
+		crash_with("GC: -- [type] was deleted via del() rather than qdel() --") // stick a stack trace in the runtime logs
+//	else if(isnull(gcDestroyed))
+//		testing("GC: [type] was deleted via GC without qdel()") //Not really a huge issue but from now on, please qdel()
+//	else
+//		testing("GC: [type] was deleted via GC with qdel()")
+	..()
 
 /atom/movable/Destroy()
-
-	var/turf/T = loc
-	if(opacity && istype(T))
-		T.reconsider_lights()
-
-	if(move_packet)
-		SSmove_manager.stop_looping(src) // not 1:1 with tg movess, niko todo: replace
-		if(!QDELETED(move_packet))
-			qdel(move_packet)
-		move_packet = null
-
 	. = ..()
-
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 
@@ -75,10 +52,6 @@
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
 		pulledby = null
-
-	for (var/datum/movement_handler/handler in movement_handlers)
-		handler.host = null
-		movement_handlers -= handler //likely unneeded but just in case
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)
@@ -130,11 +103,7 @@
 			if(is_new_area && is_destination_turf)
 				destination.loc.Entered(src, origin)
 
-<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, origin, loc)
-=======
-	LEGACY_SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, origin, loc)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// Only update plane if we're located on map
 	if(isturf(loc))
@@ -283,7 +252,7 @@
 	src.throw_source = null
 
 
-//over-lays
+//Overlays
 /atom/movable/overlay
 	var/atom/master
 	anchored = TRUE
@@ -356,13 +325,8 @@
 
 /*	for (var/atom/movable/AM in contents)
 		AM.set_glide_size(glide_size, min, max)
-<<<<<<< HEAD
 
 */
-=======
-*/
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
 // Spoiler alert: it is, in moved.dm
 /atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
@@ -372,11 +336,7 @@
 	// To prevent issues, diagonal movements are broken up into two cardinal movements.
 
 	// Is this a diagonal movement?
-<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PREMOVE, src)
-=======
-	LEGACY_SEND_SIGNAL(src, COMSIG_MOVABLE_PREMOVE, src)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (Dir & (Dir - 1))
 		if (Dir & NORTH)
 			if (Dir & EAST)
@@ -430,17 +390,10 @@
 		if(isturf(loc))
 			// if we wasn't on map OR our Z coord was changed
 			if( !isturf(oldloc) || (get_z(loc) != get_z(oldloc)) )
-<<<<<<< HEAD
 				update_plane()
 				onTransitZ(get_z(oldloc, get_z(loc)))
 
 		SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, loc)
-=======
-				onTransitZ(get_z(oldloc, get_z(loc)))
-				update_plane()
-
-		LEGACY_SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, loc)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Wrapper of step() that also sets glide size to a specific value.
 /proc/step_glide(atom/movable/AM, newdir, glide_size_override)
@@ -449,11 +402,7 @@
 
 //We're changing zlevel
 /atom/movable/proc/onTransitZ(old_z, new_z)//uncomment when something is receiving this signal
-<<<<<<< HEAD
 	/*SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
-=======
-	/*LEGACY_SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/atom/movable/AM in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		AM.onTransitZ(old_z,new_z)*/
 
@@ -464,7 +413,6 @@
 		if (new_z)
 			SSmobs.mob_living_by_zlevel[new_z] += src
 		registered_z = new_z
-<<<<<<< HEAD
 
 // if this returns true, interaction to turf will be redirected to src instead
 /atom/movable/proc/preventsTurfInteractions()
@@ -501,9 +449,3 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
-=======
-// if this returns true, interaction to turf will be redirected to src instead
-
-/atom/movable/proc/preventsTurfInteractions()
-	return FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

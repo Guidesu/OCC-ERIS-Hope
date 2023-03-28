@@ -10,7 +10,6 @@
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= chem_effects[CE_SPEEDBOOST]
-<<<<<<< HEAD
 	if(isturf(loc))
 		var/turf/T = loc
 		if(T.get_lumcount() < 0.6)
@@ -20,23 +19,6 @@
 				tally += 0.5
 	if(stats.getPerk(PERK_FAST_WALKER))
 		tally -= 0.5
-=======
-	if(CE_SLOWDOWN in chem_effects)
-		tally += chem_effects[CE_SLOWDOWN]
-	if(isturf(loc))
-		var/turf/T = loc
-		if(T.get_lumcount() < 0.6)
-			if(see_invisible != SEE_INVISIBLE_NOLIGHTING)
-				tally += 0.5
-	if(stats.getPerk(PERK_FAST_WALKER))
-		tally -= 0.4
-	if(stats.getPerk(PERK_NANITE_MUSCLE))
-		tally -= 0.3
-	if(stats.getPerk(PERK_SCUTTLEBUG))
-		tally -= 0.3
-	if(stats.getPerk(PERK_REZ_SICKNESS))
-		tally += 1
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
 	if(C && C.active)
@@ -47,15 +29,8 @@
 
 	var/health_deficiency = (maxHealth - health)
 	var/hunger_deficiency = (MOB_BASE_MAX_HUNGER - nutrition)
-<<<<<<< HEAD
 	if(hunger_deficiency >= 200) tally += (hunger_deficiency / 100) //If youre starving, movement slowdown can be anything up to 4.
 	if(health_deficiency >= 40) tally += (health_deficiency / 25)
-=======
-	if((hunger_deficiency >= 200) && species.reagent_tag != IS_SYNTHETIC)
-		tally += (hunger_deficiency / 100) //If youre starving, movement slowdown can be anything up to 4.
-	if(health_deficiency >= 40)
-		tally += (health_deficiency / 25)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -65,36 +40,20 @@
 			else
 				tally += E.get_tally()
 	else
-		if(wear_suit && !src.stats.getPerk(PERK_SECOND_SKIN))
+		if(wear_suit)
 			tally += wear_suit.slowdown
 		if(shoes)
 			tally += shoes.slowdown
 
 	//tally += min((shock_stage / 100) * 3, 3) //Scales from 0 to 3 over 0 to 100 shock stage
-<<<<<<< HEAD
 	tally += max(min((get_dynamic_pain() - get_painkiller()) / 40, 3),0) // Occulus Edit: Eris still doesn't test their shit. Added a minimum bound for analgisc speeboosts.
-=======
-	//Soj edit - Are painkillers dont just magically make us faster
-	var/pain_effecting = (get_dynamic_pain() - get_painkiller())
-	if(pain_effecting >= 1)
-		tally += min(pain_effecting / 40, 3) // Scales from 0 to 3,
-
-	//if(stats.getPerk(PERK_TIMEISMONEY)?.is_active())
-		//tally -= 2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if (bodytemperature < 283.222)
 		tally += (283.222 - bodytemperature) / 10 * 1.75
 	tally += stance_damage // missing/damaged legs or augs affect speed
 
-<<<<<<< HEAD
 	if(slowdown)
 		tally += 1
-=======
-	tally += slowdown
-
-	tally += added_movedelay
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	tally += (r_hand?.slowdown_hold + l_hand?.slowdown_hold)
 
@@ -139,34 +98,3 @@
 	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
 	return 0
-<<<<<<< HEAD
-=======
-
-
-/mob/living/carbon/human/add_momentum(direction)
-	if(momentum_dir == direction)
-		momentum_speed++
-	else if(momentum_dir == reverse_dir[direction])
-		momentum_speed = 0
-		momentum_dir = direction
-	else
-		momentum_speed--
-		momentum_dir = direction
-	momentum_speed = CLAMP(momentum_speed, 0, 10)
-	update_momentum()
-
-/mob/living/carbon/human/proc/update_momentum()
-	if(momentum_speed)
-		momentum_reduction_timer = addtimer(CALLBACK(src, .proc/calc_momentum), 1 SECONDS, TIMER_STOPPABLE)
-	else
-		momentum_speed = 0
-		deltimer(momentum_reduction_timer)
-
-/mob/living/carbon/human/proc/calc_momentum()
-	momentum_speed--
-	update_momentum()
-
-
-/mob/living/carbon/human/proc/clear_movement_delay(movement_clearing = 0)
-	added_movedelay -= movement_clearing
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

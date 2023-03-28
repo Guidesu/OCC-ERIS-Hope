@@ -5,7 +5,7 @@
 	icon_state = "cat2"
 	item_state = "cat2"
 	speak_emote = list("purrs", "meows")
-	emote_see = list("shakes their head", "shivers", "flicks their tail sideways")
+	emote_see = list("shakes their head", "shivers")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -20,22 +20,18 @@
 	holder_type = /obj/item/holder/cat
 	mob_size = MOB_SMALL
 	possession_candidate = 1
-	colony_friend = TRUE
-	inherent_mutations = list(MUTATION_CAT_EYES, MUTATION_RAND_UNSTABLE, MUTATION_NERVOUSNESS)
 
 	scan_range = 3//less aggressive about stealing food
 	metabolic_factor = 0.75
-	sanity_damage = -1
 	var/mob/living/simple_animal/mouse/mousetarget = null
 	seek_speed = 5
 	pass_flags = PASSTABLE
 
 /mob/living/simple_animal/cat/Life()
 	..()
-	if (stat == DEAD)
-		return
+
 	if (turns_since_move > 5 || (flee_target || mousetarget))
-		SSmove_manager.move_to(src,0)
+		walk_to(src,0)
 		turns_since_move = 0
 
 		if (flee_target) //fleeing takes precendence
@@ -44,7 +40,7 @@
 			handle_movement_target()
 
 	if (!movement_target)
-		SSmove_manager.move_to(src,0)
+		walk_to(src,0)
 
 	spawn(2)
 		attack_mice()
@@ -60,8 +56,6 @@
 			if(visible.len)
 				var/atom/A = pick(visible)
 				visible_emote("suddenly stops and stares at something unseen[istype(A) ? " near [A]":""].")
-				visible_emote("hisses as their fur stands on edge!") // GHOST DETECTED. CATTO NO LIKE.
-				playsound(loc, 'sound/effects/creatures/cat_hiss.ogg', 50, 1, -1)
 
 /mob/living/simple_animal/cat/proc/handle_movement_target()
 	//if our target is neither inside a turf or inside a human(???), stop
@@ -75,7 +69,7 @@
 
 	if(movement_target)
 		stop_automated_movement = 1
-		SSmove_manager.move_to(src,movement_target,0,seek_move_delay)
+		walk_to(src,movement_target,0,seek_move_delay)
 
 /mob/living/simple_animal/cat/proc/attack_mice()
 	if((loc) && isturf(loc))
@@ -90,7 +84,7 @@
 						break//usually only kill one mouse per proc
 
 /mob/living/simple_animal/cat/beg(var/atom/thing, var/atom/holder)
-	visible_emote("licks [get_gender() == MALE ? "his" : get_gender() == FEMALE ? "her" : "their"] lips and hungrily glares at [holder]'s [thing.name]")
+	visible_emote("licks its lips and hungrily glares at [holder]'s [thing.name]")
 
 /mob/living/simple_animal/cat/Released()
 	//A thrown cat will immediately attack mice near where it lands
@@ -101,21 +95,17 @@
 
 /mob/living/simple_animal/cat/proc/handle_flee_target()
 	//see if we should stop fleeing
-	if (stat == DEAD)
-		flee_target = null
-
 	if (flee_target && !(flee_target.loc in view(src)))
 		flee_target = null
 		stop_automated_movement = 0
 
-	if (flee_target && stat != DEAD)
+	if (flee_target)
 		if(prob(25)) say("HSSSSS")
-		playsound(loc, 'sound/effects/creatures/cat_hiss.ogg', 50, 1, -1)
 		stop_automated_movement = 1
-		SSmove_manager.move_away(src, flee_target, 7, 2)
+		walk_away(src, flee_target, 7, 2)
 
 /mob/living/simple_animal/cat/proc/set_flee_target(atom/A)
-	if(A && stat != DEAD)
+	if(A)
 		flee_target = A
 		turns_since_move = 5
 
@@ -135,8 +125,7 @@
 
 /mob/living/simple_animal/cat/bullet_act(var/obj/item/projectile/proj)
 	. = ..()
-	if (!(proj.testing))
-		set_flee_target(proj.firer? proj.firer : src.loc)
+	set_flee_target(proj.firer? proj.firer : src.loc)
 
 /mob/living/simple_animal/cat/hitby(atom/movable/AM)
 	. = ..()
@@ -175,22 +164,21 @@
 		if (movement_target != friend)
 			if (current_dist > follow_dist && !ismouse(movement_target) && (friend in oview(src)))
 				//stop existing movement
-				SSmove_manager.move_to(src,0)
+				walk_to(src,0)
 				turns_since_scan = 0
 
 				//walk to friend
 				stop_automated_movement = 1
 				movement_target = friend
-				SSmove_manager.move_to(src, movement_target, near_dist, seek_move_delay)
+				walk_to(src, movement_target, near_dist, seek_move_delay)
 
 		//already following and close enough, stop
 		else if (current_dist <= near_dist)
-			SSmove_manager.move_to(src,0)
+			walk_to(src,0)
 			movement_target = null
 			stop_automated_movement = 0
 			if (prob(10))
 				say("Meow!")
-				playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 	if (!friend || movement_target != friend)
 		..()
@@ -204,21 +192,18 @@
 			if (prob((friend.stat < DEAD)? 50 : 15))
 				var/verb = pick("meows", "mews", "mrowls")
 				visible_emote(pick("[verb] in distress.", "[verb] anxiously."))
-				playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		else
 			if (prob(5))
-				var/msg5 = (pick("nuzzles [friend]",
-								   "brushes against [friend]",
-								   "rubs against [friend]",
-								   "purrs"))
+				var/msg5 = (pick("nuzzles [friend].",
+								   "brushes against [friend].",
+								   "rubs against [friend].",
+								   "purrs."))
 				src.visible_message("<span class='name'>[src]</span> [msg5].")
-				playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
 	else if (friend.health <= 50)
 		if (prob(10))
 			var/verb = pick("meows", "mews", "mrowls")
 			visible_emote("[verb] anxiously.")
-			playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 /mob/living/simple_animal/cat/fluff/verb/friend()
 	set name = "Become Friends"
@@ -228,7 +213,6 @@
 	if(friend && usr == friend)
 		set_dir(get_dir(src, friend))
 		say("Meow!")
-		playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 		return
 
 	if (ishuman(usr))
@@ -237,7 +221,6 @@
 			friend = usr
 			set_dir(get_dir(src, friend))
 			say("Meow!")
-			playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 			return
 
 	to_chat(usr, SPAN_NOTICE("[src] ignores you."))
@@ -251,13 +234,7 @@
 	gender = FEMALE
 	icon_state = "cat"
 	item_state =  "cat"
-<<<<<<< HEAD
 	befriend_job = "Chief Medical Officer"
-=======
-	befriend_job = "Chief Biolab Overseer"
-	colony_friend = TRUE
-	friendly_to_colony = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/simple_animal/cat/kitten
 	name = "kitten"
@@ -281,17 +258,12 @@
 	icon_state = "cat3"
 	item_state = "cat3"
 	holder_type = /obj/item/holder/cat/fluff/bones
-<<<<<<< HEAD
-=======
-	sanity_damage = -2
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/friend_name = "Erstatz Vryroxes"
 
 /mob/living/simple_animal/cat/kitten/New()
 	gender = pick(MALE, FEMALE)
 	..()
 
-<<<<<<< HEAD
 // Runtime cat
 
 var/cat_cooldown = 20 SECONDS
@@ -307,17 +279,6 @@ var/cat_number = 0
 	density = 0
 	anchored = TRUE  // So that people cannot pull Dusty
 	mob_size = MOB_HUGE // So that people cannot put Dusty in lockers to move it
-=======
-//Trilby
-
-/mob/living/simple_animal/cat/runtime
-	name = "Trilby"
-	real_name = "Trilby"
-	desc = "A bluespace denizen that purrs its way into our dimension when the very fabric of reality is teared apart."
-	icon_state = "runtimecat"
-	item_state = "runtimecat"
-	density = 0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	status_flags = GODMODE // Bluespace cat
 	min_oxy = 0
@@ -325,7 +286,6 @@ var/cat_number = 0
 	maxbodytemp = INFINITY
 	autoseek_food = 0
 	metabolic_factor = 0.0
-<<<<<<< HEAD
 
 	harm_intent_damage = 10
 	melee_damage_lower = 10
@@ -334,21 +294,10 @@ var/cat_number = 0
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	var/cat_life_duration = 1 MINUTES
-=======
-	harm_intent_damage = 0
-	melee_damage_lower = 0
-	melee_damage_upper = 0
-	attacktext = "slashed"
-	attack_sound = 'sound/weapons/bladeslice.ogg'
-	colony_friend = TRUE
-	friendly_to_colony = TRUE
-	sanity_damage = 5
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/simple_animal/cat/runtime/New(loc)
 	..(loc)
 	stats.addPerk(PERK_TERRIBLE_FATE)
-<<<<<<< HEAD
 	cat_number += 1
 	playsound(loc, 'sound/effects/teleport.ogg', 50, 1)
 	spawn(cat_life_duration)
@@ -363,17 +312,6 @@ var/cat_number = 0
 /mob/living/simple_animal/cat/runtime/attackby(var/obj/item/O, var/mob/user)
 	visible_message(SPAN_DANGER("[user]'s [O.name] harmlessly passes through \the [src]."))
 	strike_back(user)
-=======
-	playsound(loc, 'sound/effects/teleport.ogg', 50, 1)
-
-/mob/living/simple_animal/cat/runtime/attackby(var/obj/item/O, var/mob/user)
-	visible_message(SPAN_DANGER("[user]'s [O.name] harmlessly passes through \the [src]."))
-
-/*	// Commenting out so we can put the catto in the box
-/mob/living/simple_animal/cat/runtime/MouseDrop(atom/over_object)
-	return
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/simple_animal/cat/runtime/attack_hand(mob/living/carbon/human/M as mob)
 
@@ -391,15 +329,11 @@ var/cat_number = 0
 				return
 			if (!(status_flags & CANPUSH))
 				return
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			M.visible_message(SPAN_NOTICE("[M]'s hand passes through \the [src]."))
 			M.do_attack_animation(src)
 
 		if(I_HURT)
-<<<<<<< HEAD
 			var/datum/gender/G = gender_datums[M.gender]
 			M.visible_message(SPAN_WARNING("[M] tries to kick \the [src] but [G.his] foot passes through."))
 			M.do_attack_animation(src)
@@ -424,15 +358,6 @@ var/cat_number = 0
 		B.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 		return B
 
-=======
-			M.visible_message(SPAN_WARNING("[M] tries to kick \the [src] but passes through."))
-			M.do_attack_animation(src)
-			visible_message(SPAN_WARNING("\The [src] hisses."))
-			playsound(loc, 'sound/effects/creatures/cat_hiss.ogg', 50, 1, -1) // NO HURT CATTO!
-
-	return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/simple_animal/cat/runtime/set_flee_target(atom/A)
 	return
 
@@ -445,13 +370,5 @@ var/cat_number = 0
 /mob/living/simple_animal/cat/runtime/singularity_act()
 	return
 
-<<<<<<< HEAD
 /mob/living/simple_animal/cat/runtime/MouseDrop(atom/over_object)
 	return
-=======
-/*	This is commented out for the sake of the cardboard box, and also parading the catto around
-/mob/living/simple_animal/cat/runtime/start_pulling(var/atom/movable/AM)
-	to_chat(src, SPAN_WARNING("Your hand passes through \the [src]."))
-	return
-*/
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

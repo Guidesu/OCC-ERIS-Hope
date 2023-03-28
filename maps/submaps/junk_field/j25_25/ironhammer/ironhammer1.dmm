@@ -1,5 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-<<<<<<< HEAD
 "aq" = (
 /obj/structure/table/standard,
 /obj/item/folder/blue,
@@ -12,61 +11,16 @@
 "aw" = (
 /obj/spawner/junk,
 /turf/simulated/floor/wood/airless,
-=======
-"aa" = (
-/obj/structure/table/rack,
-/obj/random/gun_energy_cheap,
-/obj/random/gun_energy_cheap,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods,
-/obj/random/dungeon_gun_mods,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"ab" = (
-/obj/structure/table/rack,
-/obj/item/clothing/suit/armor/heavy/riot/ironhammer,
-/obj/item/clothing/suit/armor/heavy/riot/ironhammer,
-/obj/item/clothing/suit/armor/heavy/riot/ironhammer,
-/obj/item/clothing/head/helmet/faceshield/riot,
-/obj/item/clothing/head/helmet/faceshield/riot,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"ac" = (
-/obj/structure/closet/onestar/tier2/normal,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"aq" = (
-/obj/structure/table/standard,
-/obj/item/folder/blue,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"as" = (
-/obj/structure/filingcabinet/filingcabinet,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"aw" = (
-/obj/random/junk,
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ay" = (
 /obj/machinery/door/firedoor,
 /obj/effect/window_lwall_spawn/smartspawn,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
-=======
-/turf/simulated/floor/plating,
-/area/template_noop)
-"az" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aH" = (
 /obj/item/modular_computer/console{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "aJ" = (
@@ -84,44 +38,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"aJ" = (
-/obj/structure/closet/bombcloset/security,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"aN" = (
-/obj/structure/closet/l3closet/security,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"aX" = (
-/obj/structure/table/rack,
-/obj/random/medical,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aY" = (
 /obj/structure/table/rack,
 /obj/item/device/flash,
 /obj/item/device/flash,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/obj/item/device/flash,
-/obj/item/device/flash,
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bi" = (
 /turf/template_noop,
 /area/template_noop)
 "bl" = (
 /mob/living/simple_animal/hostile/hivebot,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "by" = (
@@ -135,23 +63,12 @@
 "bB" = (
 /obj/spawner/scrap/sparse,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"bB" = (
-/obj/random/scrap/sparse_weighted,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "cW" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "dI" = (
 /obj/machinery/door/firedoor,
@@ -159,41 +76,21 @@
 	name = "Airlock";
 	req_access = list(1)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
 /area/template_noop)
 "dN" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"dN" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "eo" = (
 /obj/structure/sign/faction/ironhammer{
 	pixel_x = -32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
 /area/template_noop)
 "fb" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"fb" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"ff" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "fH" = (
 /obj/structure/sign/department/armory{
@@ -202,89 +99,44 @@
 /obj/machinery/light{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"fS" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"fT" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "gJ" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/donut,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ia" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ip" = (
 /obj/structure/table/standard,
 /obj/item/folder/blue,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "iw" = (
 /obj/machinery/holoposter{
 	pixel_x = -32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
-=======
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ji" = (
 /obj/structure/table/standard,
 /obj/item/device/lighting/toggleable/lamp,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "js" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/flashbangs,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
 /area/template_noop)
 "jv" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"jv" = (
-/obj/machinery/photocopier,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"jE" = (
-/obj/random/material/low_chance,
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "jP" = (
 /obj/machinery/door/firedoor,
@@ -292,71 +144,40 @@
 	name = "Airlock";
 	req_access = list(1)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"ke" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "kf" = (
 /obj/machinery/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "lO" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "lU" = (
 /obj/structure/table/woodentable,
 /obj/item/folder/blue,
-<<<<<<< HEAD
 /obj/item/stamp/hos,
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "mZ" = (
 /obj/machinery/light{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "nu" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "oA" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "oL" = (
@@ -376,44 +197,18 @@
 /obj/item/cell/medium/high,
 /obj/item/cell/medium/high,
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"oL" = (
-/obj/structure/table/standard,
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"oO" = (
-/obj/structure/bed/chair/comfy/black,
-/obj/random/junk,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"pI" = (
-/obj/structure/table/rack,
-/obj/random/powercell/medium_safe,
-/obj/random/powercell/medium_safe,
-/obj/random/powercell/medium_safe,
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "qA" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
-<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
-=======
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "qL" = (
 /obj/machinery/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
 /area/template_noop)
 "rd" = (
@@ -428,20 +223,6 @@
 "rp" = (
 /mob/living/simple_animal/hostile/hivebot,
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/template_noop)
-"rd" = (
-/obj/structure/table/rack,
-/obj/random/powercell/small_safe,
-/obj/random/powercell/small_safe,
-/obj/random/powercell/small_safe,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"rp" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ru" = (
 /obj/machinery/door/firedoor,
@@ -449,43 +230,25 @@
 	name = "Secuity Access";
 	req_access = list(1)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "sg" = (
 /obj/item/soap/deluxe,
 /obj/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ss" = (
 /obj/structure/table/woodentable,
 /obj/item/device/radio/off,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"sC" = (
-/obj/machinery/door/firedoor,
-/obj/effect/window_lwall_spawn/smartspawn,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "sF" = (
 /obj/structure/table/woodentable,
 /obj/item/handcuffs,
 /obj/item/handcuffs,
 /obj/item/device/flash,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "to" = (
@@ -508,46 +271,18 @@
 "vA" = (
 /mob/living/simple_animal/hostile/hivebot,
 /turf/simulated/floor/tiled/dark/techfloor_grid/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"to" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"tv" = (
-/obj/structure/table/woodentable,
-/obj/random/knife,
-/turf/simulated/floor/wood,
-/area/template_noop)
-"um" = (
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"uK" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"vA" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/dark/techfloor_grid,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "wD" = (
 /obj/item/modular_computer/console{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "wR" = (
 /obj/machinery/door/airlock/centcom{
 	icon_state = "door_locked";
 	locked = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
 /area/template_noop)
 "wX" = (
@@ -557,17 +292,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"wX" = (
-/obj/item/stool,
-/obj/random/techpart/low_chance,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "xb" = (
 /obj/structure/table/standard,
@@ -577,62 +301,31 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
 /area/template_noop)
 "xA" = (
 /obj/structure/table/rack,
 /obj/spawner/gun/cheap,
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"yn" = (
-/obj/structure/girder,
-/obj/random/material/low_chance,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "yJ" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/donut,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "zg" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	req_access = list(1)
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/cargo/airless,
 /area/template_noop)
 "zE" = (
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"zh" = (
-/obj/random/material/low_chance,
-/obj/random/junk/low_chance,
-/turf/simulated/floor/plating/under,
-/area/template_noop)
-"zm" = (
-/obj/random/junk/low_chance,
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
-/area/template_noop)
-"zE" = (
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "zJ" = (
 /obj/structure/table/standard,
 /obj/item/deck/cards,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
 /area/template_noop)
 "zM" = (
@@ -652,33 +345,11 @@
 "Bv" = (
 /obj/item/modular_computer/console,
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"zM" = (
-/obj/item/stool,
-/obj/random/junkfood/rotten/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"Al" = (
-/obj/item/modular_computer/console,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"As" = (
-/obj/structure/table/rack,
-/obj/random/medical,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"Bv" = (
-/obj/item/modular_computer/console,
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "BI" = (
 /obj/machinery/light{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "CY" = (
@@ -688,26 +359,10 @@
 "Di" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"CY" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"Df" = (
-/obj/random/material/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"Di" = (
-/obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/dark/cargo,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "DP" = (
 /obj/structure/table/woodentable,
 /obj/item/device/megaphone,
-<<<<<<< HEAD
 /obj/item/device/eftpos{
 	eftpos_name = "Ironhammer EFTPOS scanner"
 	},
@@ -716,115 +371,51 @@
 "DS" = (
 /obj/machinery/light_construct,
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"DS" = (
-/obj/machinery/light_construct,
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Eg" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/folder/red,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Eo" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "EL" = (
 /obj/spawner/soda/low_chance,
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"EL" = (
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"Fi" = (
-/obj/structure/lattice,
-/obj/random/junk/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Fj" = (
 /obj/item/modular_computer/console/preset/security/camera{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "FS" = (
 /obj/structure/table/standard,
 /obj/item/book/manual/wiki/security_ironparagraphs,
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"Fw" = (
-/obj/structure/lattice,
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
-/area/template_noop)
-"FL" = (
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"FS" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"Gs" = (
-/obj/random/junk/low_chance,
-/turf/template_noop,
-/area/template_noop)
-"Hl" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Hn" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-<<<<<<< HEAD
 "IK" = (
 /mob/living/simple_animal/hostile/hivebot/range,
 /turf/simulated/floor/wood/airless,
-=======
-"Hw" = (
-/obj/structure/closet/secure_closet/rare_loot,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"IK" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Jl" = (
 /obj/structure/table/woodentable,
 /obj/item/tool/tape_roll,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Jp" = (
 /obj/machinery/light_construct{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
 /area/template_noop)
 "Km" = (
@@ -840,29 +431,11 @@
 /area/template_noop)
 "Lj" = (
 /turf/simulated/floor/wood/airless,
-=======
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"Km" = (
-/obj/random/junkfood/rotten,
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"Kz" = (
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"La" = (
-/obj/random/scrap/dense_weighted,
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"Lj" = (
-/turf/simulated/floor/wood,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "LB" = (
 /obj/structure/sign/faction/ironhammer{
 	pixel_y = 32
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
 /area/template_noop)
 "Mb" = (
@@ -880,22 +453,10 @@
 "Nt" = (
 /obj/spawner/lowkeyrandom,
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
-=======
-/obj/random/junk/low_chance,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"Mb" = (
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"Nt" = (
-/obj/random/lowkeyrandom,
-/turf/simulated/floor/tiled/dark/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ou" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
 /area/template_noop)
 "OP" = (
@@ -915,61 +476,20 @@
 /obj/item/storage/belt/tactical/ironhammer,
 /obj/item/storage/belt/tactical/ironhammer,
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/template_noop)
-"OP" = (
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"OW" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"Pa" = (
-/obj/item/stool,
-/obj/random/techpart/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"PN" = (
-/obj/structure/table/rack,
-/obj/item/clothing/mask/gas/tactical,
-/obj/item/clothing/mask/gas/tactical,
-/obj/item/clothing/mask/gas/tactical,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"Qv" = (
-/obj/random/techpart/low_chance,
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/dark,
-/area/template_noop)
-"Qw" = (
-/obj/structure/lattice,
-/obj/random/material/low_chance,
-/turf/template_noop,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "RC" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
 /area/template_noop)
 "So" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/dark/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"So" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Sy" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_perforated/airless,
 /area/template_noop)
 "SR" = (
@@ -980,13 +500,6 @@
 /obj/structure/table/rack,
 /obj/spawner/gun/normal/low_chance,
 /turf/simulated/floor/tiled/dark/cargo/airless,
-=======
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/template_noop)
-"SR" = (
-/mob/living/simple_animal/hostile/hivebot/range,
-/turf/simulated/floor/tiled/dark,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Vq" = (
 /obj/structure/sign/department/interrogation{
@@ -995,27 +508,18 @@
 /obj/machinery/light{
 	dir = 4
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Vt" = (
 /obj/structure/bed/chair,
 /obj/machinery/light{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/gray_perforated/airless,
-=======
-/turf/simulated/floor/tiled/steel/gray_perforated,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "VJ" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/flask/barflask,
-<<<<<<< HEAD
 /turf/simulated/floor/wood/airless,
 /area/template_noop)
 "WH" = (
@@ -1051,43 +555,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/gray_platform/airless,
-=======
-/turf/simulated/floor/wood,
-/area/template_noop)
-"WH" = (
-/obj/structure/toilet,
-/obj/random/junk,
-/obj/machinery/light_construct{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark/gray_platform,
-/area/template_noop)
-"WY" = (
-/mob/living/simple_animal/hostile/hivebot,
-/turf/simulated/floor/tiled/steel,
-/area/template_noop)
-"Yj" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/tiled/steel/gray_perforated,
-/area/template_noop)
-"Yp" = (
-/obj/structure/table/rack,
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/random/gun_energy_cheap,
-/obj/random/gun_energy_cheap,
-/obj/random/gun_energy_cheap/low_chance,
-/turf/simulated/floor/tiled/dark/cargo,
-/area/template_noop)
-"Ys" = (
-/obj/structure/toilet,
-/obj/random/junk,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark/gray_platform,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "YW" = (
 /obj/structure/sign/department/commander{
@@ -1096,22 +563,14 @@
 /obj/machinery/light{
 	dir = 1
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/airless,
-=======
-/turf/simulated/floor/tiled/steel,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "YZ" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "Zt" = (
 /obj/structure/girder,
-<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
-=======
-/turf/simulated/floor/plating/under,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 
 (1,1,1) = {"
@@ -1125,28 +584,17 @@ bi
 bi
 bi
 bi
-<<<<<<< HEAD
-=======
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 bi
 bi
 bi
 bi
-<<<<<<< HEAD
 bi
 bi
 bi
 bi
 bi
-=======
-ff
-bi
-bi
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 Hn
 Hn
@@ -1157,7 +605,6 @@ bi
 bi
 YZ
 Hn
-<<<<<<< HEAD
 Hn
 Hn
 Hn
@@ -1167,17 +614,6 @@ YZ
 bi
 bi
 bi
-=======
-ke
-Hn
-Fi
-Fi
-Hn
-YZ
-Hl
-bi
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zt
 YZ
 YZ
@@ -1186,20 +622,13 @@ YZ
 YZ
 YZ
 YZ
-<<<<<<< HEAD
 Zt
 Zt
 Hn
-=======
-yn
-Zt
-Qw
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (3,1,1) = {"
 bi
-<<<<<<< HEAD
 bi
 Hn
 bi
@@ -1212,20 +641,6 @@ Hn
 Hn
 bi
 bi
-=======
-Gs
-Hn
-Gs
-bi
-Gs
-bi
-bi
-Df
-Hn
-Qw
-bi
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 Ou
 Ou
@@ -1237,43 +652,24 @@ YZ
 WH
 ru
 zE
-<<<<<<< HEAD
 bi
-=======
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (4,1,1) = {"
 bi
 bi
-<<<<<<< HEAD
 Hn
 bi
 bi
 bi
 bi
-=======
-Fi
-bi
-bi
-bi
-Hl
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 Zt
 zE
-<<<<<<< HEAD
 Hn
 Hn
 zE
 zE
-=======
-ke
-Qw
-zE
-zh
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 rp
 dN
 YZ
@@ -1282,17 +678,12 @@ qL
 YZ
 YZ
 YZ
-<<<<<<< HEAD
 zE
-=======
-fT
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (5,1,1) = {"
 bi
 bi
-<<<<<<< HEAD
 Hn
 bi
 bi
@@ -1302,17 +693,6 @@ bi
 Hn
 YZ
 zE
-=======
-Fw
-bi
-bi
-Gs
-bi
-bi
-Qw
-YZ
-zh
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 Zt
 bB
@@ -1325,13 +705,8 @@ qL
 YZ
 Ys
 ru
-<<<<<<< HEAD
 zE
 bi
-=======
-fS
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (6,1,1) = {"
 bi
@@ -1365,11 +740,7 @@ bi
 bi
 YZ
 aJ
-<<<<<<< HEAD
 Nd
-=======
-ab
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Yp
 PN
 As
@@ -1381,30 +752,18 @@ OP
 mZ
 OP
 OP
-<<<<<<< HEAD
 OP
-=======
-OW
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 OP
 OP
 mZ
 eo
 OP
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 "}
 (8,1,1) = {"
-<<<<<<< HEAD
 bi
-=======
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 YZ
 Mb
@@ -1414,7 +773,6 @@ Mb
 rp
 Mb
 YZ
-<<<<<<< HEAD
 OP
 OP
 OP
@@ -1430,39 +788,15 @@ zE
 Hn
 bi
 bi
-=======
-FL
-OP
-FL
-OP
-OP
-FL
-OP
-FL
-OP
-OP
-jE
-fS
-Hn
-bi
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (9,1,1) = {"
 bi
 bi
 YZ
-<<<<<<< HEAD
 by
 Ul
 to
 Ul
-=======
-aa
-ac
-to
-Hw
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 js
 Mb
 wR
@@ -1502,17 +836,10 @@ uK
 gJ
 um
 Al
-<<<<<<< HEAD
 zE
 bi
 bi
 bi
-=======
-fS
-bi
-bi
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Hn
 bi
 "}
@@ -1534,7 +861,6 @@ Yj
 aH
 um
 FS
-<<<<<<< HEAD
 zE
 zE
 bi
@@ -1543,16 +869,6 @@ Hn
 zE
 Hn
 bi
-=======
-fS
-zE
-bi
-Df
-Hn
-zE
-Hn
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (12,1,1) = {"
 bi
@@ -1569,7 +885,6 @@ LB
 OP
 ay
 uK
-<<<<<<< HEAD
 um
 um
 gJ
@@ -1579,26 +894,11 @@ bi
 ay
 bB
 zE
-=======
-az
-um
-gJ
-fS
-Hn
-Df
-ay
-bB
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Hn
 bi
 "}
 (13,1,1) = {"
-<<<<<<< HEAD
 bi
-=======
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 ay
 jv
@@ -1609,31 +909,19 @@ Lj
 as
 YZ
 OP
-<<<<<<< HEAD
 OP
-=======
-FL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 YZ
 Vt
 aq
 um
 um
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 DS
 YZ
 Jp
 zE
-<<<<<<< HEAD
 bi
-=======
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (14,1,1) = {"
@@ -1688,19 +976,11 @@ ay
 OP
 Hn
 bi
-<<<<<<< HEAD
 bi
 "}
 (16,1,1) = {"
 bi
 bi
-=======
-Gs
-"}
-(16,1,1) = {"
-bi
-Hl
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ay
 Bv
 Lj
@@ -1721,11 +1001,7 @@ um
 um
 dI
 OP
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 "}
@@ -1741,11 +1017,7 @@ Eo
 Lj
 YZ
 YW
-<<<<<<< HEAD
 OP
-=======
-FL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 YZ
 YZ
 ay
@@ -1769,7 +1041,6 @@ Lj
 BI
 Lj
 Lj
-<<<<<<< HEAD
 Lj
 Zt
 zE
@@ -1777,15 +1048,6 @@ zE
 zE
 OP
 OP
-=======
-IK
-sC
-fS
-zE
-zE
-OP
-FL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 OP
 OP
 OP
@@ -1795,11 +1057,7 @@ OP
 OW
 OP
 Hn
-<<<<<<< HEAD
 bi
-=======
-Df
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (19,1,1) = {"
 bi
@@ -1814,54 +1072,32 @@ YZ
 Zt
 Hn
 Hn
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 OP
 OP
 Vq
-<<<<<<< HEAD
-=======
-FL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 OP
 OP
 OP
 OP
 OP
-<<<<<<< HEAD
 OP
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (20,1,1) = {"
 bi
 bi
-<<<<<<< HEAD
 Hn
 bi
 bi
-=======
-Fi
-bi
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 YZ
 Pa
 wX
 iw
 zE
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 Zt
 YZ
@@ -1873,11 +1109,7 @@ zg
 YZ
 YZ
 OP
-<<<<<<< HEAD
 zE
-=======
-fS
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 zE
 bi
 "}
@@ -1912,11 +1144,7 @@ bi
 bi
 bi
 Hn
-<<<<<<< HEAD
 bi
-=======
-zm
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 ay
 yJ
@@ -1931,7 +1159,6 @@ Km
 Mb
 YZ
 Mb
-<<<<<<< HEAD
 EL
 Km
 YZ
@@ -1943,19 +1170,6 @@ bi
 (23,1,1) = {"
 bi
 bi
-=======
-Qv
-Km
-YZ
-fS
-Hn
-Df
-Gs
-"}
-(23,1,1) = {"
-bi
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Hn
 bi
 bi
@@ -1976,11 +1190,7 @@ ip
 cW
 YZ
 Hn
-<<<<<<< HEAD
 Hn
-=======
-Qw
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 "}
@@ -1989,11 +1199,7 @@ bi
 bi
 YZ
 Hn
-<<<<<<< HEAD
 Hn
-=======
-Fi
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 YZ
 ay
 ay
@@ -2010,15 +1216,9 @@ YZ
 ay
 YZ
 YZ
-<<<<<<< HEAD
 bi
 bi
 bi
-=======
-Gs
-bi
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (25,1,1) = {"
@@ -2031,26 +1231,16 @@ bi
 bi
 bi
 bi
-<<<<<<< HEAD
 bi
-=======
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 Hn
 bi
 bi
 bi
-<<<<<<< HEAD
 bi
 bi
 bi
-=======
-ff
-bi
-Gs
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 bi
 bi

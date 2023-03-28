@@ -18,11 +18,7 @@
 	var/obj/item/computer_hardware/hard_drive/portable/mydrive
 	var/datum/computer_file/data/audio/audio_file
 	var/starting_drive_type = /obj/item/computer_hardware/hard_drive/portable
-<<<<<<< HEAD
 	var/datum/wires/taperecorder/wires // Wires datum
-=======
-	var/datum/wires/taperecorder/wires = null // Wires datum
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/open_panel = 0
 
 /obj/item/device/taperecorder/New()
@@ -76,12 +72,8 @@
 
 /obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null, speech_volume)
 	if(speech_volume)
-<<<<<<< HEAD
 		//Occulus Edit: Record text size correctly.
 		msg = "<span style='font-size:[speech_volume]em'>[msg]</span>"
-=======
-		msg = "<FONT size='[speech_volume]'>[msg]</FONT>"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(audio_file && recording)
 		audio_file.timestamp += audio_file.used_capacity
 
@@ -126,7 +118,7 @@
 		to_chat(M, SPAN_DANGER("\The [src] explodes!"))
 	if(T)
 		T.hotspot_expose(700,125)
-		explosion(T, 0, 0, 0, 4)
+		explosion(T, -1, -1, 0, 4)
 	qdel(src)
 	return
 
@@ -246,11 +238,7 @@
 
 /obj/item/device/taperecorder/proc/clear_memory(var/show_message = 1)
 
-<<<<<<< HEAD
 	if(usr.is_dead())
-=======
-	if(is_dead(usr))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	else if(emagged)
 		if(show_message)

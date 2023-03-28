@@ -52,11 +52,7 @@
 	idle_power_usage = 10
 	active_power_usage = 200
 
-<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/sorter
-=======
-	circuit = /obj/item/circuitboard/sorter
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// based on levels of manipulators
 	var/speed = 25
 	// based on levels of scanners
@@ -77,10 +73,6 @@
 	var/show_iconfig = FALSE
 	var/show_oconfig = FALSE
 	var/show_rconfig = FALSE
-<<<<<<< HEAD
-=======
-	var/force_take_corps = FALSE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/sorter/Initialize()
@@ -95,11 +87,7 @@
 	return ..()
 
 
-<<<<<<< HEAD
 /obj/machinery/sorter/on_update_icon()
-=======
-/obj/machinery/sorter/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if(progress)
 		icon_state = "sorter-process"
@@ -134,11 +122,7 @@
 		return
 	var/sorted = FALSE
 	for(var/datum/sort_rule/rule in sort_settings)
-<<<<<<< HEAD
 		if(rule.check_match(item_to_sort))
-=======
-		if(rule.check_match(item_to_sort) || (force_take_corps && ismob(item_to_sort)))
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			sorted = rule.accept
 			if(!sorted)
 				break
@@ -212,20 +196,12 @@
 	..()
 
 /obj/machinery/sorter/attack_hand(mob/user as mob)
-<<<<<<< HEAD
 	return ui_interact(user)
-=======
-	return nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //UI
 
-<<<<<<< HEAD
 /obj/machinery/sorter/ui_data()
-=======
-/obj/machinery/sorter/nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 	data["currentItem"] = null
 	if(current_item)
@@ -259,13 +235,8 @@
 	return data
 
 
-<<<<<<< HEAD
 /obj/machinery/sorter/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	var/list/data = ui_data()
-=======
-/obj/machinery/sorter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nano_topic_state/state = GLOB.default_state)
-	var/list/data = nano_ui_data()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -348,7 +319,6 @@
 	playsound(loc, 'sound/machines/machine_switch.ogg', 100, 1)
 	return FALSE
 
-<<<<<<< HEAD
 
 
 
@@ -358,14 +328,6 @@
 
 /obj/machinery/sorter/biomatter
 	name = "biomatter sorter"
-=======
-/obj/machinery/sorter/biomatter
-	name = "biomatter sorter"
-	desc = "A sorter for biomatter related objects, unlike normal sorters these always accept dead bodies from roaches to humans..."
-	accept_output_side = EAST
-	refuse_output_side = SOUTH
-	force_take_corps = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/sorter/biomatter/Initialize()
 	. = ..()

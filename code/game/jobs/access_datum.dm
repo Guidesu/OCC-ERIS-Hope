@@ -37,11 +37,7 @@
 /var/const/access_moebius = 5
 /datum/access/moebius
 	id = access_moebius
-<<<<<<< HEAD
 	desc = "NanoTrasen General"
-=======
-	desc = "Soteria General"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_morgue = 6
@@ -131,7 +127,7 @@
 /var/const/access_captain = 20
 /datum/access/captain
 	id = access_captain
-	desc = "Premier"
+	desc = "Captain"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_all_personal_lockers = 21
@@ -191,11 +187,7 @@
 /var/const/access_rd = 30
 /datum/access/rd
 	id = access_rd
-<<<<<<< HEAD
 	desc = "Chief Science Officer"
-=======
-	desc = "Soteria Research Overseer"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_cargo = 31
@@ -234,7 +226,6 @@
 	desc = "Manufacturing"
 	access_type = ACCESS_TYPE_NONE
 
-<<<<<<< HEAD
 /var/const/access_cmo = 37
 /datum/access/cmo
 	id = access_cmo
@@ -242,27 +233,11 @@
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_virology = 38
-=======
-/var/const/access_medical = 37
-/datum/access/access_medical
-    id = access_medical
-    desc = "Medical Access"
-    region = ACCESS_REGION_MEDBAY
-
-/var/const/access_medical_suits = 38
-/datum/access/access_medical_suits
-    id = access_medical_suits
-    desc = "Suit Sensors Access"
-    region = ACCESS_REGION_MEDBAY
-
-/var/const/access_virology = 39
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/access/virology
 	id = access_virology
 	desc = "Virology"
 	region = ACCESS_REGION_MEDBAY
 
-<<<<<<< HEAD
 /var/const/access_change_medbay = 39
 /datum/access/change_medbay
 	id = access_change_medbay
@@ -274,18 +249,11 @@
 	id = access_change_engineering
 	desc = "Engineering Change IDs"
 	region = ACCESS_REGION_ENGINEERING
-=======
-/var/const/access_cmo = 40
-/datum/access/cmo
-	id = access_cmo
-	desc = "Soteria Biolab Overseer"
-	region = ACCESS_REGION_COMMAND
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /var/const/access_merchant = 41
 /datum/access/merchant
 	id = access_merchant
-	desc = "Chief Executive Officer"
+	desc = "Guild Merchant"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_network = 42
@@ -312,19 +280,11 @@
 	desc = "Surgery"
 	region = ACCESS_REGION_MEDBAY
 
-<<<<<<< HEAD
 /var/const/access_change_cargo = 46
 /datum/access/change_cargo
 	id = access_change_cargo
 	desc = "Cargo Change IDs"
 	region = ACCESS_REGION_SUPPLY
-=======
-/var/const/access_orderly = 46
-/datum/access/orderly
-	id = access_orderly
-	desc = "Orderly"
-	region = ACCESS_REGION_MEDBAY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /var/const/access_change_nt = 47
 /datum/access/change_nt
@@ -379,31 +339,19 @@
 /var/const/access_ce = 56
 /datum/access/ce
 	id = access_ce
-<<<<<<< HEAD
 	desc = "Chief Engineer"
-=======
-	desc = "Guild Master"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_hop = 57
 /datum/access/hop
 	id = access_hop
-<<<<<<< HEAD
 	desc = "Head of Personnel"
-=======
-	desc = "Steward"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_hos = 58
 /datum/access/hos
 	id = access_hos
-<<<<<<< HEAD
 	desc = "Aegis Commander"
-=======
-	desc = "Security Command"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_RC_announce = 59 //Request console announcements
@@ -466,19 +414,11 @@
 	desc = "Paramedic's Office"
 	region = ACCESS_REGION_MEDBAY
 
-<<<<<<< HEAD
 /var/const/access_change_club = 69
 /datum/access/change_club
 	id = access_change_club
 	desc = "Club Change IDs"
 	region = ACCESS_REGION_GENERAL
-=======
-/var/const/access_sec_shop = 69 // Security doors to ther shop, only for WO/Spec officer
-/datum/access/access_sec_shop
-	id = access_sec_shop
-	desc = "Security Shop"
-	region = ACCESS_REGION_SECURITY
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /**************
 * NeoTheology *
@@ -486,98 +426,39 @@
 /var/const/access_nt_disciple = 70
 /datum/access/nt_disciple
 	id = access_nt_disciple
-<<<<<<< HEAD
 	desc = "Mekhane Disciple"
-=======
-	desc = "Absolutism Vector"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_CHURCH
 
 /var/const/access_nt_acolyte = 71
 /datum/access/nt_acolyte
 	id = access_nt_acolyte
-<<<<<<< HEAD
 	desc = "Mekhane Acolyte"
-=======
-	desc = "Absolutism Vector"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_CHURCH
 
 /var/const/access_nt_custodian = 72
 /datum/access/nt_custodian
 	id = access_nt_custodian
-<<<<<<< HEAD
 	desc = "Custodian"
 	region = ACCESS_REGION_CHURCH
-=======
-	desc = "Janitorial"
-	region = ACCESS_REGION_GENERAL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /var/const/access_nt_agrolyte = 73
 /datum/access/nt_agrolyte
 	id = access_nt_agrolyte
-<<<<<<< HEAD
 	desc = "Botanist"
 	region = ACCESS_REGION_CHURCH
-=======
-	desc = "Botany"
-	region = ACCESS_REGION_GENERAL
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /var/const/access_nt_preacher = 74
 /datum/access/nt_preacher
 	id = access_nt_preacher
-<<<<<<< HEAD
 	desc = "Mekhane Preacher"
-=======
-	desc = "Absolutism Prime"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_CHURCH
 
 /var/const/access_nt_inquisitor = 75
 /datum/access/nt_inquisitor
 	id = access_nt_inquisitor
-<<<<<<< HEAD
 	desc = "Mekhane  Inquisitor"
-=======
-	desc = "Absolutism Crusader"
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	region = ACCESS_REGION_CHURCH
 
-// /var/const/free_access_id = 76
-// /var/const/free_access_id = 77
-
-
-/**************
-* Prospectors *
-***************/
-/var/const/access_prospector = 78
-/datum/access/prospector
-	id = access_prospector
-	desc = "Prospector"
-	region = ACCESS_REGION_PROSPECTOR
-
-/var/const/access_foreman = 79 // Foreman's quarters
-/datum/access/foreman
-	id = access_foreman
-	desc = "Foreman's Quarters"
-	region = ACCESS_REGION_PROSPECTOR
-
-/**************
-* Hunt Lodge *
-***************/
-/var/const/access_huntmaster = 80
-/datum/access/huntmaster
-	id = access_huntmaster
-	desc = "Hunt Master"
-	region = ACCESS_REGION_NONE
-
-/var/const/access_hunter = 81
-/datum/access/hunter
-	id = access_hunter
-	desc = "Hunter"
-	region = ACCESS_REGION_NONE
 
 
 
@@ -637,20 +518,11 @@
 	id = access_cent_captain
 	desc = "Code Gold"
 	access_type = ACCESS_TYPE_CENTCOM
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /var/const/access_research_equipment = 110 //RnD Console Access
 /datum/access/research_equipment
 	id = access_research_equipment
 	desc = "Research Console"
 	region = ACCESS_REGION_RESEARCH
-<<<<<<< HEAD
-=======
-
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /***************
 * Antag access *
 ***************/

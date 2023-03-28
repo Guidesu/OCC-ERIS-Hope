@@ -105,24 +105,16 @@ var/list/tape_roll_applications = list()
 	req_one_access = list(access_moebius)
 	color = COLOR_GREEN
 
-<<<<<<< HEAD
 /obj/item/taperoll/on_update_icon()
-=======
-/obj/item/taperoll/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	var/image/overlay = image(icon = src.icon)
-	overlay.appearance_flags = RESET_COLOR | DEFAULT_APPEARANCE_FLAGS
+	overlay.appearance_flags = RESET_COLOR
 	if(ismob(loc))
 		if(!start)
 			overlay.icon_state = "start"
 		else
 			overlay.icon_state = "stop"
-<<<<<<< HEAD
 		add_overlays(overlay)
-=======
-		add_overlay(overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/taperoll/dropped(mob/user)
 	update_icon()
@@ -269,21 +261,13 @@ var/list/tape_roll_applications = list()
 		if(tape_roll_applications[F] == null)
 			tape_roll_applications[F] = 0
 
-		if(tape_roll_applications[F] & direction) // hazard_overlay in F.over-lays wouldn't work.
+		if(tape_roll_applications[F] & direction) // hazard_overlay in F.overlays wouldn't work.
 			user.visible_message("\The [user] uses the adhesive of \the [src] to remove area markings from \the [F].", "You use the adhesive of \the [src] to remove area markings from \the [F].")
-<<<<<<< HEAD
 			F.remove_overlays(hazard_overlay)
 			tape_roll_applications[F] &= ~direction
 		else
 			user.visible_message("\The [user] applied \the [src] on \the [F] to create area markings.", "You apply \the [src] on \the [F] to create area markings.")
 			F.associate_with_overlays(hazard_overlay)
-=======
-			F.cut_overlay(hazard_overlay)
-			tape_roll_applications[F] &= ~direction
-		else
-			user.visible_message("\The [user] applied \the [src] on \the [F] to create area markings.", "You apply \the [src] on \the [F] to create area markings.")
-			F.add_overlay(hazard_overlay)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			tape_roll_applications[F] |= direction
 		return
 

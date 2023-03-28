@@ -1,59 +1,33 @@
 var/list/clients = list()							//list of all clients
 var/list/admins = list()							//list of all clients whom are admins
-<<<<<<< HEAD
 var/list/deadmins = list() 							//SYZ ADDITION: list of all clients who have used the de-admin verb
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 var/list/directory = list()							//list of all ckeys with associated client
 
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-<<<<<<< HEAD
 GLOBAL_LIST_EMPTY(ships) // List of ships in the game.
 
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 GLOBAL_LIST_EMPTY(mob_list)					//EVERY single mob, dead or alive
 GLOBAL_LIST_EMPTY(player_list)				//List of all mobs **with clients attached**. Excludes /mob/new_player
 GLOBAL_LIST_EMPTY(human_mob_list)				//List of all human mobs and sub-types, including clientless
 GLOBAL_LIST_EMPTY(silicon_mob_list)			//List of all silicon mobs, including clientless
 GLOBAL_LIST_EMPTY(living_mob_list)			//List of all alive mobs, including clientless. Excludes /mob/new_player
 GLOBAL_LIST_EMPTY(dead_mob_list)				//List of all dead mobs, including clientless. Excludes /mob/new_player
-<<<<<<< HEAD
 GLOBAL_LIST_EMPTY(current_antags)
 GLOBAL_LIST_EMPTY(current_factions)
 GLOBAL_LIST_EMPTY(superior_animal_list)		//A list of all superior animals; for targeting each other
-=======
-GLOBAL_LIST_EMPTY(hearing_objects)	//List of all dead mobs, including clientless. Excludes /mob/new_player
-GLOBAL_LIST_EMPTY(superior_animal_list)		//A list of all superior animals; for targeting each other
-GLOBAL_LIST_EMPTY(current_antags)
-GLOBAL_LIST_EMPTY(current_factions)
-
-GLOBAL_LIST_EMPTY(factions_list)			//List of active factions.
-GLOBAL_LIST_EMPTY(faxable_factions_list)	//Factions with faxes.
-GLOBAL_LIST_EMPTY(player_factions_list)		//Factions with players in them. Admin factions can have players added.
-GLOBAL_LIST_EMPTY(admin_factions_list)		//Factions with administrative response. All faxes to an admin faction pass through admins first, even with a primary fax.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 GLOBAL_LIST_EMPTY(cable_list)					//Index for all cables, so that powernets don't have to look through the entire world all the time
 GLOBAL_LIST_EMPTY(chemical_reactions_list)				//list of all /datum/chemical_reaction datums. Used during chemical reactions
 GLOBAL_LIST_EMPTY(chemical_reactions_list_by_result)					//list of all /datum/chemical_reaction datums. But this one indexed by chemical result instead of reagents
 GLOBAL_LIST_EMPTY(chemical_reagents_list)				//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-<<<<<<< HEAD
-=======
-GLOBAL_LIST_EMPTY(mutation_recipe_list) //List of all mutation recipes with the new genetics rework.
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 GLOBAL_LIST_EMPTY(landmarks_list)				//list of all landmarks created
 GLOBAL_LIST_EMPTY(shuttle_landmarks_list)		//list of all /obj/effect/shuttle_landmark.
 GLOBAL_LIST_EMPTY(old_surgery_steps)			//list of all old-style (not bound to organs) surgery steps
 GLOBAL_LIST_EMPTY(surgery_steps)					//list of all new organ-based surgery steps
 GLOBAL_LIST_EMPTY(mechas_list)				//list of all mechs. Used by hostile mobs target tracking. Not sure this is used anymore
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 GLOBAL_LIST_EMPTY(all_burrows)				//list of all burrows
 GLOBAL_LIST_EMPTY(all_maintshrooms)			//list of all maintshrooms
 
@@ -66,25 +40,15 @@ GLOBAL_LIST_EMPTY(machines) //List of classless machinery. Removed from SSmachin
 GLOBAL_LIST_EMPTY(firealarm_list) //List of fire alarms
 GLOBAL_LIST_EMPTY(computer_list) //List of all computers
 GLOBAL_LIST_EMPTY(all_doors) //List of all airlocks
-<<<<<<< HEAD
 GLOBAL_LIST_EMPTY(atmos_machinery) //All things atmos
 
 GLOBAL_LIST_EMPTY(hearing_objects)			//list of all objects, that can hear mob say
 
-=======
-GLOBAL_LIST_EMPTY(nt_doors) //List of all Absolute doors
-GLOBAL_LIST_EMPTY(atmos_machinery) //All things atmos
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //Jobs and economy
 GLOBAL_LIST_EMPTY(joblist)					//list of all jobstypes, minus borg and AI
 GLOBAL_LIST_EMPTY(all_departments)			//List of all department datums
 var/global/list/department_IDs = list(DEPARTMENT_COMMAND, DEPARTMENT_MEDICAL, DEPARTMENT_ENGINEERING,
-<<<<<<< HEAD
  DEPARTMENT_SCIENCE, DEPARTMENT_SECURITY, DEPARTMENT_GUILD, DEPARTMENT_CHURCH, DEPARTMENT_CIVILIAN)
-=======
- DEPARTMENT_SCIENCE, DEPARTMENT_SECURITY, DEPARTMENT_LSS, DEPARTMENT_CHURCH, DEPARTMENT_CIVILIAN, DEPARTMENT_PROSPECTOR)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 GLOBAL_LIST_EMPTY(global_corporations)
 
 
@@ -122,45 +86,20 @@ GLOBAL_LIST_EMPTY(all_stash_datums)
 //PERKS
 GLOBAL_LIST_EMPTY(all_perks)
 
-<<<<<<< HEAD
-=======
-//individual_objectives
-GLOBAL_LIST_EMPTY(all_faction_items)
-
-//faction_items
-GLOBAL_LIST_EMPTY(individual_objectives)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //NeoTheology
 GLOBAL_LIST_EMPTY(all_rituals)//List of all rituals
 GLOBAL_LIST_EMPTY(global_ritual_cooldowns) // internal lists. Use ritual's cooldown_category
 
 //Preferences stuff
-<<<<<<< HEAD
 	//Hairstyles
 GLOBAL_LIST_EMPTY(hair_styles_list)        //stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_LIST_EMPTY(facial_hair_styles_list) //stores /datum/sprite_accessory/facial_hair indexed by name
-=======
-	//Body Sprites
-GLOBAL_LIST_EMPTY(all_species_form_list)
-GLOBAL_LIST_EMPTY(playable_species_form_list)
-GLOBAL_LIST_EMPTY(selectable_species_form_list)
-	//Hairstyles
-GLOBAL_LIST_EMPTY(hair_styles_list)        //stores /datum/sprite_accessory/hair indexed by name
-GLOBAL_LIST_EMPTY(facial_hair_styles_list) //stores /datum/sprite_accessory/facial_hair indexed by name
-	//Body Adornments
-GLOBAL_LIST_EMPTY(ears_styles_list)
-GLOBAL_LIST_EMPTY(tail_styles_list)
-GLOBAL_LIST_EMPTY(wings_styles_list)
-GLOBAL_LIST_EMPTY(body_marking_list)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 GLOBAL_DATUM_INIT(underwear, /datum/category_collection/underwear, new())
 
 var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
 var/global/list/organ_structure = list(
-<<<<<<< HEAD
 	torso = list(name= "Torso", children=list(BP_GROIN, BP_HEAD, BP_R_ARM, BP_L_ARM, OP_HEART, OP_LUNGS, OP_STOMACH)),
 	groin = list(name= "Groin",     parent=BP_CHEST, children=list(BP_L_LEG, BP_R_LEG, OP_KIDNEYS, OP_LIVER)),
 	head  = list(name= "Head",      parent=BP_CHEST, children=list(BP_BRAIN, BP_EYES)),
@@ -179,26 +118,11 @@ var/global/list/organ_tag_to_name = list(
 	chest = "body", r_leg = "right leg",
 	l_foot = "left foot", r_foot = "right foot",
 	r_hand = "right hand", l_hand = "left hand",
-=======
-	BP_CHEST = list(name= "Chest", children=list(BP_GROIN, BP_HEAD, BP_L_ARM, BP_R_ARM, OP_HEART, OP_LUNGS, OP_STOMACH)),
-	BP_GROIN = list(name= "Groin",     parent=BP_CHEST, children=list(BP_R_LEG, BP_L_LEG, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT, OP_LIVER)),
-	BP_HEAD  = list(name= "Head",      parent=BP_CHEST, children=list(BP_BRAIN, BP_EYES)),
-	BP_R_ARM = list(name= "Right arm", parent=BP_CHEST, children=list()),
-	BP_L_ARM = list(name= "Left arm",  parent=BP_CHEST, children=list()),
-	BP_R_LEG = list(name= "Right leg", parent=BP_GROIN, children=list()),
-	BP_L_LEG = list(name= "Left leg",  parent=BP_GROIN, children=list()),
-	)
-
-var/global/list/organ_tag_to_name = list(
-	head  = "head", r_arm = "right arm",
-	chest = "body", r_leg = "right leg",
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	eyes  = "eyes", l_arm = "left arm",
 	groin = "groin",l_leg = "left leg",
 	chest2= "back", heart = "heart",
 	lungs  = "lungs", liver = "liver",
 	"left kidney" = "left kidney", "right kidney" = "right kidney",
-<<<<<<< HEAD
 	stomach = "stomach", brain = "brain"
 	)
 */
@@ -212,22 +136,12 @@ var/global/list/organ_tag_to_name = list(
 	kidneys = "kidneys"
 	)
 
-=======
-	stomach = "stomach", brain = "brain",
-	back  = "back"
-	)
-
-// Boss spawners
-var/list/psi_mega_fauna = list(/mob/living/carbon/superior_animal/psi_monster/dreaming_king, /mob/living/carbon/superior_animal/psi_monster/dreaming_king/hound_crown, /obj/item/paper/psi_log_1, /obj/item/paper/psi_log_2, /obj/item/paper/psi_log_3, /obj/item/paper/psi_log_4, /obj/item/paper/psi_log_5)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Visual nets
 var/list/datum/visualnet/visual_nets = list()
 var/datum/visualnet/camera/cameranet = new()
 
 var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, access_external_airlocks)
 
-<<<<<<< HEAD
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(
 	"head" = HEAD,
@@ -261,29 +175,6 @@ var/global/list/string_slot_flags = list(
 //A list of slots where an item doesn't count as "worn" if it's in one of them
 var/global/list/unworn_slots = list(slot_l_hand,slot_r_hand, slot_l_store, slot_r_store,slot_robot_equip_1,slot_robot_equip_2,slot_robot_equip_3)
 
-=======
-//A list of slots where an item doesn't count as "worn" if it's in one of them
-var/global/list/unworn_slots = list(slot_l_hand,slot_r_hand, slot_l_store, slot_r_store,slot_robot_equip_1,slot_robot_equip_2,slot_robot_equip_3)
-
-//Names that shouldn't trigger notifications about low health
-GLOBAL_LIST_EMPTY(ignore_health_alerts_from)
-
-var/global/list/hair_gradients_list = list(
-	"None" = "none",
-	"Fade (Up)" = "fadeup",
-	"Fade (Down)" = "fadedown",
-	"Fade Low (Up)" = "fadeup_low",
-	"Bottom Flat" = "bottomflat",
-	"Fade Low (Down)" = "fadedown_low",
-	"Vertical Split" = "vsplit",
-	"Reflected" = "reflected",
-	"Reflected (Inverted)" = "reflected_inverse",
-	"Reflected High" = "reflected_high",
-	"Reflected High (Inverted)" = "reflected_inverse_high",
-	"Wavy" = "wavy"
-	)
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //////////////////////////
 /////Initial Building/////
 //////////////////////////
@@ -304,38 +195,12 @@ var/global/list/hair_gradients_list = list(
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		GLOB.facial_hair_styles_list[H.name] = H
 
-<<<<<<< HEAD
 
 	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
 	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
 	for(var/path in paths)
 		var/datum/sprite_accessory/marking/M = new path()
 		body_marking_styles_list[M.name] = M
-=======
-	// Ears
-	paths = typesof(/datum/sprite_accessory/ears) - /datum/sprite_accessory/ears
-	for(var/path in paths)
-		var/datum/sprite_accessory/ears/E = new path()
-		GLOB.ears_styles_list[E.name] = E
-
-	// Tails
-	paths = typesof(/datum/sprite_accessory/tail) - /datum/sprite_accessory/tail
-	for(var/path in paths)
-		var/datum/sprite_accessory/tail/T = new path()
-		GLOB.tail_styles_list[T.name] = T
-
-	// Wings
-	paths = typesof(/datum/sprite_accessory/wings) - /datum/sprite_accessory/wings
-	for(var/path in paths)
-		var/datum/sprite_accessory/wings/W = new path()
-		GLOB.wings_styles_list[W.name] = W
-
-	//Markings
-	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
-	for(var/path in paths)
-		var/datum/sprite_accessory/marking/M = new path()
-		GLOB.body_marking_list[M.name] = M
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	//Surgery Steps - Initialize all /datum/surgery_step into a list
@@ -344,30 +209,18 @@ var/global/list/hair_gradients_list = list(
 		var/datum/surgery_step/S = new path
 		GLOB.surgery_steps[path] = S
 
-<<<<<<< HEAD
 	//perks - Initialise all /datum/perks into a list
 	paths = subtypesof(/datum/perk)
 	for(var/path in paths)
 		var/datum/perk/P = new path
 		GLOB.all_perks[path] = P
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	paths = subtypesof(/datum/old_surgery_step)
 	for(var/T in paths)
 		var/datum/old_surgery_step/S = new T
 		GLOB.old_surgery_steps += S
 	sort_surgeries()
 
-<<<<<<< HEAD
-=======
-	//perkS - Initialise all /datum/perks into a list
-	paths = subtypesof(/datum/perk)
-	for(var/path in paths)
-		var/datum/perk/P = new path
-		GLOB.all_perks[path] = P
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//List of job department datums
 	paths = subtypesof(/datum/department)
 	for(var/T in paths)
@@ -381,25 +234,6 @@ var/global/list/hair_gradients_list = list(
 		var/datum/job/J = new T
 		GLOB.joblist[J.title] = J
 
-<<<<<<< HEAD
-=======
-	//List of factions
-	paths = typesof(/datum/faction)-/datum/faction
-	for(var/T in paths)
-		var/datum/faction/F = new T()
-		GLOB.factions_list[F.name] = F
-		if(F.faxable)
-			GLOB.faxable_factions_list[F.name] = F
-		if(F.admin)
-			GLOB.admin_factions_list[F.name] = F
-		//Player factions don't get loaded here since they have to be done at roundstart.
-
-	paths = subtypesof(/datum/individual_objective)
-	for(var/T in paths)
-		var/datum/individual_objective/IO = new T
-		GLOB.individual_objectives[T] = IO
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Stashes
 	paths = subtypesof(/datum/stash)
 	for(var/T in paths)
@@ -429,21 +263,12 @@ var/global/list/hair_gradients_list = list(
 		if(!(L.flags & NONGLOBAL))
 			language_keys[lowertext(L.key)] = L
 
-<<<<<<< HEAD
 	var/rkey = 0
 	paths = subtypesof(/datum/species)
 	for(var/T in paths)
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
-=======
-	//var/rkey = 0
-	paths = typesof(/datum/species)-/datum/species
-	for(var/T in paths)
-		//rkey++
-		var/datum/species/S = new T
-		//S.race_key = rkey //Used in mob icon caching. Not anymore!
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		all_species[S.name] = S
 
 		if(!(S.spawn_flags & IS_RESTRICTED))
@@ -451,33 +276,6 @@ var/global/list/hair_gradients_list = list(
 		if(S.spawn_flags & IS_WHITELISTED)
 			whitelisted_species += S.name
 
-<<<<<<< HEAD
-=======
-	//Forms
-	var/fkey = 0
-	paths = typesof(/datum/species_form)-/datum/species_form
-	for(var/path in paths)
-		fkey++
-		var/datum/species_form/F = new path
-		F.form_key = fkey //Used in mob icon caching. The one a segment above is obsoleted by this.
-		GLOB.all_species_form_list[F.name] = F
-		if(F.playable)
-			GLOB.playable_species_form_list[F.name] = F
-			if(!F.variantof || F.variantof == F.name)
-				GLOB.selectable_species_form_list[F.name] = F
-
-	//Form Variants System
-	for(var/formname in GLOB.playable_species_form_list)
-		var/datum/species_form/F = GLOB.all_species_form_list[formname]
-		if(F.variantof && (F.variantof != F.name))
-			var/datum/species_form/P = GLOB.all_species_form_list[F.variantof]
-			if(P)
-				LAZYINITLIST(P.variants)
-				if(!P.variants.len)
-					P.variants[P.name] = P
-				P.variants[F.name] = F
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Posters
 	paths = subtypesof(/datum/poster) - /datum/poster/wanted
 	for(var/T in paths)
@@ -506,10 +304,6 @@ var/global/list/hair_gradients_list = list(
 
 	return 1
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 var/global/list/admin_permissions = list(
 	"fun" = 0x1,
 	"server" = 0x2,
@@ -562,7 +356,6 @@ var/global/list/paramslist_cache = list()
 	return L
 
 
-<<<<<<< HEAD
 /*
 	CUSTOMIZATION
 	  BULLSHIT
@@ -642,8 +435,3 @@ var/global/list/player_sizes_list = list(
 
 //Markings
 var/global/list/body_marking_styles_list = list()
-=======
-
-// bee foods
-var/list/bee_food_list = list("harebell", "sunflowers", "thaadra", "telriis", "surik", "vale", "potato", "poppies")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

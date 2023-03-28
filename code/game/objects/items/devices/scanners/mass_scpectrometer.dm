@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/scanner/mass_spectrometer
 	name = "mass spectrometer"
 	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
@@ -14,22 +11,12 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 
 	charge_per_use = 7
-<<<<<<< HEAD
 	rarity_value = 50
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/details = 0
 	var/recent_fail = 0
 
 /obj/item/device/scanner/mass_spectrometer/is_valid_scan_target(atom/O)
-<<<<<<< HEAD
-=======
-	if(!usr.stats?.getPerk(PERK_ADVANCED_MEDICAL) && !usr.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 20)) //Takes 15 bio so 20 cog
-		to_chat(usr, SPAN_WARNING("Your cognitive understanding isn't high enough to use this!"))
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!O.reagents || !O.reagents.total_volume)
 		return FALSE
 	return (O.is_open_container()) || istype(O, /obj/item/reagent_containers/syringe)
@@ -71,10 +58,7 @@
 			if(R.id != "blood")
 				reagents.clear_reagents()
 				return SPAN_WARNING("The sample was contaminated! Please insert another sample")
-<<<<<<< HEAD
 
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				blood_traces = params2list(R.data["trace_chem"])
 				break
@@ -94,7 +78,4 @@
 	icon_state = "adv_spectrometer"
 	details = 1
 	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2)
-<<<<<<< HEAD
 	rarity_value = 100
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

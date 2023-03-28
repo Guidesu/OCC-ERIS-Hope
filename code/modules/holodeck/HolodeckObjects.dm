@@ -5,9 +5,6 @@
 
 /turf/simulated/floor/holofloor
 	thermal_conductivity = 0
-	plane = -2
-	original_plane = -2
-	layer = SPACE_LAYER
 
 /turf/simulated/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
@@ -64,14 +61,10 @@
 
 /turf/simulated/floor/holofloor/space/New()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	update_icon()
-	Initialize()
-	plane = -2
-	original_plane = -2
 
 /turf/simulated/floor/holofloor/beach
 	desc = "Uncomfortably gritty for a hologram."
-	icon = 'icons/turf/flooring/beach.dmi'
+	icon = 'icons/misc/beach.dmi'
 	initial_flooring = null
 
 /turf/simulated/floor/holofloor/beach/sand
@@ -80,7 +73,7 @@
 
 /turf/simulated/floor/holofloor/beach/coastline
 	name = "coastline"
-	icon = 'icons/turf/flooring/beach2.dmi'
+	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
 
 /turf/simulated/floor/holofloor/beach/water
@@ -97,22 +90,18 @@
 /turf/simulated/floor/holofloor/desert/New()
 	..()
 	if(prob(10))
-<<<<<<< HEAD
 		add_overlays("asteroid[rand(0,9)]")
-=======
-		add_overlay("asteroid[rand(0,9)]")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/holostool
 	name = "stool"
-	desc = "A padded stool for some rear comfort."
+	desc = "Apply butt."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "stool_padded_preview"
 	anchored = TRUE
 
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch other colonists."
+	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_state = "boxing"
 
@@ -231,12 +220,8 @@
 		return 1
 	return 0
 
-<<<<<<< HEAD
 /obj/item/holo/esword/Initialize(mapload)
 	. = ..()
-=======
-/obj/item/holo/esword/New()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!item_color)
 		item_color = pick("red","blue","green","purple")
 
@@ -271,7 +256,7 @@
 
 /obj/structure/holohoop
 	name = "basketball hoop"
-	desc = "A hoop for ball games. Go for a slam dunk."
+	desc = "Boom, Shakalaka!"
 	icon = 'icons/obj/basketball.dmi'
 	icon_state = "hoop"
 	anchored = TRUE
@@ -309,7 +294,7 @@
 
 
 /obj/machinery/readybutton
-	name = "ready declaration device"
+	name = "Ready Declaration Device"
 	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
@@ -317,22 +302,14 @@
 	var/area/currentarea = null
 	var/eventstarted = 0
 
-<<<<<<< HEAD
 	anchored = TRUE
-=======
-	anchored = 1.0
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = STATIC_ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
-<<<<<<< HEAD
 	to_chat(user, "The ship AI is not to interact with these devices!")
-=======
-	to_chat(user, "The colony's AI is not to interact with these devices!")
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/machinery/readybutton/New()

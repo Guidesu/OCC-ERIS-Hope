@@ -56,14 +56,8 @@
 
 	//After checking that there's a valid destination, we'll first attempt phase movement as a shortcut.
 	//Since it can pass through obstacles, we'll do this before checking whether anything is blocking us
-	if(src.current_vertical_travel_method)
-		to_chat(src, SPAN_NOTICE("You can't do this yet!"))
-		return
-
 	var/datum/vertical_travel_method/VTM = new Z_MOVE_PHASE(src)
-	if(VTM.can_perform(direction))
-		src.current_vertical_travel_method = VTM
-		VTM.attempt(direction)
+	if (VTM.attempt(direction))
 		return
 
 
@@ -89,19 +83,11 @@
 
 	for (var/a in possible_methods)
 		VTM = new a(src)
-		if(VTM.can_perform(direction))
-			src.current_vertical_travel_method = VTM
-			VTM.attempt(direction)
+		if (VTM.attempt(direction))
 			return TRUE
 
 	to_chat(src, SPAN_NOTICE("You lack a means of z-travel in that direction."))
 	return FALSE
-
-/mob/proc/zMoveUp()
-	return zMove(UP)
-
-/mob/proc/zMoveDown()
-	return zMove(DOWN)
 
 /mob/living/zMove(direction)
 	if (is_ventcrawling)
@@ -140,7 +126,7 @@
 				return TRUE
 
 /mob/living/silicon/robot/can_ztravel(var/direction)
-	if(incapacitated() || is_dead(src))
+	if(incapacitated() || is_dead())
 		return FALSE
 
 	if(allow_spacemove()) //Checks for active jetpack
@@ -234,15 +220,6 @@
 
 
 /mob/living/carbon/human/can_fall(turf/below, turf/simulated/open/dest = src.loc)
-	// can't fall on walls anymore
-	var/turf/true_below = GetBelow(src)
-	for(var/obj/structure/possible_blocker in true_below.contents)
-		if(possible_blocker.density)
-			if(possible_blocker.climbable)
-				continue
-			else
-				return FALSE
-
 	// Special condition for jetpack mounted folk!
 	if (!restrained())
 		if (CanAvoidGravity())

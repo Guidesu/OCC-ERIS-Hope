@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /datum/faction
-=======
-/datum/antag_faction
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/id
 	var/name = "faction"	//name displayed in different places
 	var/antag = "antag"		//name for the faction members
@@ -24,16 +20,12 @@
 	var/list/verbs = list()	//List of verbs, used by this faction members
 	var/list/leader_verbs = list()
 
-/datum/antag_faction/New()
+/datum/faction/New()
 	if(!leader_hud_indicator)
 		leader_hud_indicator = hud_indicator
 	GLOB.current_factions.Add(src)
 
-<<<<<<< HEAD
 /datum/faction/proc/add_member(var/datum/antagonist/member, var/announce = TRUE)
-=======
-/datum/antag_faction/proc/add_member(var/datum/antagonist/member, var/announce = TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!member || !member.owner || !member.owner.current || (member in members) || !member.owner.current.client)
 		return
 	if(possible_antags.len && !(member.id in possible_antags))
@@ -52,11 +44,7 @@
 	update_members()
 	return TRUE
 
-<<<<<<< HEAD
 /datum/faction/proc/add_leader(var/datum/antagonist/member, var/announce = TRUE)
-=======
-/datum/antag_faction/proc/add_leader(var/datum/antagonist/member, var/announce = TRUE)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!member || (member in leaders) || !member.owner.current)
 		return
 
@@ -73,7 +61,7 @@
 
 
 //Randomly selects leaders from the faction members
-/datum/antag_faction/proc/pick_leaders(var/num)
+/datum/faction/proc/pick_leaders(var/num)
 	var/list/candidates = members.Copy()
 
 	//Specifically check equality to zero, rather than <=
@@ -85,7 +73,7 @@
 		num--
 
 
-/datum/antag_faction/proc/remove_leader(var/datum/antagonist/member, var/announce = TRUE)
+/datum/faction/proc/remove_leader(var/datum/antagonist/member, var/announce = TRUE)
 	if(!member || !(member in leaders) || !member.owner.current)
 		return
 
@@ -99,7 +87,7 @@
 	update_members()
 	return TRUE
 
-/datum/antag_faction/proc/remove_member(var/datum/antagonist/member, var/announce = TRUE)
+/datum/faction/proc/remove_member(var/datum/antagonist/member, var/announce = TRUE)
 	if(!(member in members))
 		return
 
@@ -119,7 +107,7 @@
 	update_members()
 	return TRUE
 
-/datum/antag_faction/proc/clear_faction()
+/datum/faction/proc/clear_faction()
 	for(var/datum/antagonist/A in members)
 		remove_member(A)
 
@@ -127,32 +115,28 @@
 	return TRUE
 
 
-/datum/antag_faction/proc/remove_faction()
+/datum/faction/proc/remove_faction()
 	clear_faction()
 	qdel(src)
 	return TRUE
 
 
-/datum/antag_faction/proc/create_objectives()
+/datum/faction/proc/create_objectives()
 	set_objectives(objectives)
 
-/datum/antag_faction/proc/set_objectives(var/list/new_objs)
+/datum/faction/proc/set_objectives(var/list/new_objs)
 	objectives = new_objs
 
 	for(var/datum/antagonist/A in members)
 		A.set_objectives(new_objs)
 
-/datum/antag_faction/proc/update_members()
+/datum/faction/proc/update_members()
 	if(!members.len)
 		remove_faction()
 
-/datum/antag_faction/proc/customize(var/mob/leader)
+/datum/faction/proc/customize(var/mob/leader)
 
-<<<<<<< HEAD
 /datum/faction/proc/communicate(var/mob/user)
-=======
-/datum/antag_faction/proc/communicate(var/mob/user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!is_member(user) || user.stat != CONSCIOUS)
 		return
 
@@ -175,13 +159,13 @@
 
 	log_say("[user.name]/[user.key] (REV [name]) : [message]")
 
-/datum/antag_faction/proc/is_member(var/mob/user)
+/datum/faction/proc/is_member(var/mob/user)
 	for(var/datum/antagonist/A in members)
 		if(A.owner.current == user)
 			return TRUE
 	return FALSE
 
-/datum/antag_faction/proc/print_success()
+/datum/faction/proc/print_success()
 	if(!members.len)
 		return
 
@@ -221,32 +205,26 @@
 	text += print_success_extra()
 	// Display the results.
 	return text
-<<<<<<< HEAD
 /datum/faction/proc/print_success_extra() //Placeholder for extra data for print_succes proc
 	return ""
 /datum/faction/proc/get_indicator(var/datum/antagonist/A)
-=======
-/datum/antag_faction/proc/print_success_extra() //Placeholder for extra data for print_succes proc
-	return ""
-/datum/antag_faction/proc/get_indicator(var/datum/antagonist/A)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(A in leaders)
 		return get_leader_indicator()
 
 	if(A in members)
 		return get_member_indicator()
 
-/datum/antag_faction/proc/get_member_indicator()
+/datum/faction/proc/get_member_indicator()
 	var/image/I = image('icons/mob/mob.dmi', icon_state = hud_indicator, layer = ABOVE_LIGHTING_LAYER)
 	I.plane = ABOVE_LIGHTING_PLANE
 	return I
 
-/datum/antag_faction/proc/get_leader_indicator()
+/datum/faction/proc/get_leader_indicator()
 	var/image/I = image('icons/mob/mob.dmi', icon_state = leader_hud_indicator, layer = ABOVE_LIGHTING_LAYER)
 	I.plane = ABOVE_LIGHTING_PLANE
 	return I
 
-/datum/antag_faction/proc/add_icons(var/datum/antagonist/antag)
+/datum/faction/proc/add_icons(var/datum/antagonist/antag)
 	if(faction_invisible || !hud_indicator || !leader_hud_indicator || !antag.owner || !antag.owner.current || !antag.owner.current.client)
 		return
 
@@ -266,7 +244,7 @@
 		antag.owner.current.client.images |= faction_icons[member]
 		member.owner.current.client.images |= I
 
-/datum/antag_faction/proc/remove_icons(var/datum/antagonist/antag)
+/datum/faction/proc/remove_icons(var/datum/antagonist/antag)
 	if(!faction_invisible || !antag.owner || !antag.owner.current || !antag.owner.current.client)
 		qdel(faction_icons[antag])
 		faction_icons.Remove(antag)
@@ -282,7 +260,7 @@
 	qdel(faction_icons[antag])
 	faction_icons[antag] = null
 
-/datum/antag_faction/proc/clear_icons()
+/datum/faction/proc/clear_icons()
 	for(var/datum/antagonist/antag in members)
 		remove_icons(antag)
 
@@ -291,16 +269,16 @@
 
 	faction_icons = list()
 
-/datum/antag_faction/proc/reset_icons()
+/datum/faction/proc/reset_icons()
 	clear_icons()
 	for(var/datum/antagonist/antag in members)
 		add_icons(antag)
 
-/datum/antag_faction/proc/update_icons(var/datum/antagonist/A)
+/datum/faction/proc/update_icons(var/datum/antagonist/A)
 	remove_icons(A)
 	add_icons(A)
 
-/datum/antag_faction/proc/faction_panel()
+/datum/faction/proc/faction_panel()
 	var/data = "<center><font size='3'><b>FACTION PANEL</b></font></center>"
 	data += "<br>[name] - faction of [antag] ([id])"
 	data += "<br>Welcome: [welcome_text]"
@@ -332,7 +310,7 @@
 
 	usr << browse(data,"window=[id]faction")
 
-/datum/antag_faction/Topic(href, href_list)
+/datum/faction/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))
 		return
 
@@ -355,7 +333,7 @@
 
 
 //This returns a list of all items owned, held, worn, etc by faction members
-/datum/antag_faction/proc/get_inventory()
+/datum/faction/proc/get_inventory()
 	var/list/contents = list()
 	for (var/datum/antagonist/A in members)
 		if (A.owner && A.owner.current)
@@ -364,14 +342,14 @@
 	return contents
 
 
-/datum/antag_faction/proc/greet()
+/datum/faction/proc/greet()
 	for (var/datum/antagonist/A in members)
 		A.greet()
 
 
 //Returns a list of all minds and atoms which have been targeted by our objectives
 //This is used to disqualify them from being picked by farther objectives
-/datum/antag_faction/proc/get_targets()
+/datum/faction/proc/get_targets()
 	var/list/targets = list()
 	for (var/datum/objective/O in objectives)
 		targets.Add(O.get_target())

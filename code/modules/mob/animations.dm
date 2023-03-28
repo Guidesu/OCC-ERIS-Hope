@@ -24,18 +24,6 @@ below 100 is not dizzy
 	var/dizziness = 0
 	var/is_dizzy = 0
 
-/mob/living/carbon/proc/Dizziness(amount)
-	dizziness = max(max(dizziness,amount),0)
-	return
-
-/mob/living/carbon/proc/SetDizziness(amount)
-	dizziness = max(amount,0)
-	return
-
-/mob/living/carbon/proc/AdjustDizziness(amount)
-	dizziness = max(dizziness + amount,0)
-	return
-
 /*
 dizzy process - wiggles the client's pixel offset over time
 spawned from make_dizzy(), will terminate automatically when dizziness gets <100
@@ -63,18 +51,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/living/carbon
 	var/is_jittery = 0
 	var/jitteriness = 0
-
-/mob/living/carbon/proc/Jitteriness(amount)
-	jitteriness = max(max(jitteriness,amount),0)
-	return
-
-/mob/living/carbon/proc/SetJitteriness(amount)
-	jitteriness = max(amount,0)
-	return
-
-/mob/living/carbon/proc/AdjustJitteriness(amount)
-	jitteriness = max(jitteriness + amount,0)
-	return
 
 /mob/living/carbon/human/make_jittery(var/amount)
 	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
@@ -223,49 +199,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	// And animate the attack!
 	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 
-/* // TODO - Wizard
-/obj/mecha/do_attack_animation(atom/A, var/use_item = TRUE)
-	..()
 
-	if (!use_item)
-		//The use item flag governs whether or not we'll add a little weapon image to the animation
-		return
 
-	// What icon do we use for the attack?
-	var/image/I
-	var/obj/item/T = selected
-	if (T && T.icon)
-		I = image(T.icon, A, T.icon_state, A.layer + 1)
-	else // Attacked with a fist?
-		return
-
-	// Who can see the attack?
-	var/list/viewing = list()
-	for (var/mob/M in viewers(A))
-		if (M.client)
-			viewing |= M.client
-	flick_overlay(I, viewing, 5) // 5 ticks/half a second
-
-	// Scale the icon.
-	I.transform *= 0.75
-	// Set the direction of the icon animation.
-	var/direction = get_dir(src, A)
-	if(direction & NORTH)
-		I.pixel_y = -16
-	else if(direction & SOUTH)
-		I.pixel_y = 16
-
-	if(direction & EAST)
-		I.pixel_x = -16
-	else if(direction & WEST)
-		I.pixel_x = 16
-
-	if(!direction) // Attacked self?!
-		I.pixel_z = 16
-
-	// And animate the attack!
-	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
-*/
 
 /atom/proc/SpinAnimation(speed = 10, loops = -1)
 	var/matrix/m120 = matrix(transform)
@@ -355,7 +290,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/image/I = image(icon = src, loc = old_turf)
 	I.plane = plane
 	I.layer = ABOVE_MOB_LAYER
-	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | DEFAULT_APPEARANCE_FLAGS
+	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	if (istype(target,/mob))
 		I.dir = target.dir
 
@@ -396,7 +331,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		I.plane = get_relative_plane(GAME_PLANE)
 		I.layer = ABOVE_MOB_LAYER
 		I.transform = matrix() * 0
-		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | DEFAULT_APPEARANCE_FLAGS
+		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		I.pixel_x = 0
 		I.pixel_y = 0
 		if (istype(target,/mob))
@@ -427,7 +362,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/image/I = image(icon = src, loc = src.loc, layer = layer + 0.1)
 	I.plane = get_relative_plane(GAME_PLANE)
 	I.layer = ABOVE_MOB_LAYER
-	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | DEFAULT_APPEARANCE_FLAGS
+	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 
 	flick_overlay(I, clients, 4)
 

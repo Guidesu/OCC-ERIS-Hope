@@ -43,12 +43,8 @@ var/global/universe_has_ended = 0
 	world << sound('sound/effects/cascade.ogg')
 
 	for(var/mob/living/M in GLOB.player_list)
-<<<<<<< HEAD
 		if (M.HUDtech.Find("flash"))
 			FLICK("e_flash", M.HUDtech["flash"])
-=======
-		M.flash()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(evacuation_controller.cancel_evacuation())
 		priority_announcement.Announce("The evacuation has been aborted due to bluespace distortion.")
@@ -73,16 +69,12 @@ AUTOMATED ALERT: Link to [command_name()] lost.
 The access requirements on the Asteroid Shuttles' consoles have now been revoked.
 "}
 		priority_announcement.Announce(txt,"SUPERMATTER CASCADE DETECTED")
-<<<<<<< HEAD
 
-=======
-/*
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/obj/machinery/computer/shuttle_control/C in GLOB.computer_list)
 			if(istype(C, /obj/machinery/computer/shuttle_control/research) || istype(C, /obj/machinery/computer/shuttle_control/mining))
 				C.req_access = list()
 				C.req_one_access = list()
-*/
+
 		spawn(5 MINUTES)
 			SSticker.station_explosion_cinematic(0,null) // TODO: Custom cinematic
 			universe_has_ended = 1
@@ -124,13 +116,10 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 	for(var/datum/antagonist/A in GLOB.current_antags)
 		if(!isliving(A.owner.current))
 			continue
-<<<<<<< HEAD
 		if(A.owner.current.stat!=2)
 			A.owner.current.Weaken(10)
 //			FLICK("e_flash", M.current.flash)
 			if (A.owner.current.HUDtech.Find("flash"))
 				FLICK("e_flash", A.owner.current.HUDtech["flash"])
-=======
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		A.remove_antagonist()

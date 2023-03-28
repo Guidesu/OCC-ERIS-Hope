@@ -18,7 +18,7 @@
 
 /obj/item/device/mmi
 	name = "man-machine interface"
-	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity. Under no circumstances should this be placed in anything except a cyborg chassis. Reminder, synthetic designs made by Soteria and the Artificer Guild are not cyborgs."
+	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
 	w_class = ITEM_SIZE_NORMAL
@@ -34,7 +34,6 @@
 
 /obj/item/device/mmi/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
-<<<<<<< HEAD
 
 		var/obj/item/organ/internal/brain/B = O
 		if(B.health <= 0)
@@ -77,41 +76,6 @@
 
 		return
 
-=======
-
-		var/obj/item/organ/internal/brain/B = O
-		if(B.health <= 0)
-			to_chat(user, "\red That brain is well and truly dead.")
-			return
-		else if(!B.brainmob)
-			to_chat(user, "\red You aren't sure where this brain came from, but you're pretty sure it's a useless brain.")
-			return
-
-		for(var/mob/V in viewers(src, null))
-			V.show_message(text("\blue [user] sticks \a [O] into \the [src]."))
-
-		brainmob = O:brainmob
-		O:brainmob = null
-		brainmob.loc = src
-		brainmob.container = src
-		brainmob.stat = 0
-		GLOB.dead_mob_list -= brainmob//Update dem lists
-		GLOB.living_mob_list += brainmob
-
-		user.drop_item()
-		brainobj = O
-		brainobj.loc = src
-
-		name = "Man-Machine Interface: [brainmob.real_name]"
-		icon_state = "mmi_full"
-
-		locked = 1
-
-
-
-		return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if((istype(O,/obj/item/card/id)||istype(O,/obj/item/modular_computer/pda)) && brainmob)
 		if(allowed(user))
 			locked = !locked
@@ -184,11 +148,7 @@
 	var/obj/item/device/radio/radio = null//Let's give it a radio.
 
 /obj/item/device/mmi/radio_enabled/New()
-<<<<<<< HEAD
 	. = ..()
-=======
-	..()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	radio = new(src)//Spawns a radio inside the MMI.
 	radio.broadcasting = 1//So it's broadcasting from the start.
 
@@ -220,8 +180,7 @@
 	to_chat(brainmob, "\blue Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast.")
 
 /obj/item/device/mmi/emp_act(severity)
-	return //Turns out this happends well in a borg...
-/*	if(!brainmob)
+	if(!brainmob)
 		return
 	else
 		switch(severity)
@@ -231,4 +190,4 @@
 				brainmob.emp_damage += rand(10,20)
 			if(3)
 				brainmob.emp_damage += rand(0,10)
-	..()*/
+	..()

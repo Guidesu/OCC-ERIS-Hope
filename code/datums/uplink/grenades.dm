@@ -11,11 +11,7 @@
 
 /datum/uplink_item/item/grenades/teargas
 	name = "6xTear gas Grenades"
-<<<<<<< HEAD
 	item_cost = 4
-=======
-	item_cost = 6
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/storage/box/teargas
 
 /datum/uplink_item/item/grenades/smoke
@@ -41,9 +37,4 @@
 /datum/uplink_item/item/grenades/viscerator
 	name = "viscerator grenade"
 	item_cost = 4
-<<<<<<< HEAD
 	path = /obj/item/grenade/spawnergrenade/manhacks
-=======
-	path = /obj/item/grenade/spawnergrenade/manhacks
-	antag_roles = ROLES_UPLINK_BASE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

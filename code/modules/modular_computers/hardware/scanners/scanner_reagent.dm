@@ -17,12 +17,6 @@
 	var/dat = reagent_scan_results(target)
 	if(driver && driver.using_scanner)
 		driver.data_buffer = dat
-<<<<<<< HEAD
 		if(driver.NM && !SSnano.update_uis(driver.NM))
 			holder2.run_program(driver.filename)
 			driver.NM?.ui_interact(user)
-=======
-		if(!SSnano.update_uis(driver.NM))
-			holder2.run_program(driver.filename)
-			driver.NM.nano_ui_interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

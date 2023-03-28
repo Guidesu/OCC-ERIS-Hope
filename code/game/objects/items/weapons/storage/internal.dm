@@ -69,11 +69,7 @@
 	else if (isturf(master_item.loc) && Adjacent(user))
 		return TRUE
 
-<<<<<<< HEAD
 /obj/item/storage/internal/updating/on_update_icon()
-=======
-/obj/item/storage/internal/updating/update_icon()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(master_item)
 		master_item.update_icon()
 

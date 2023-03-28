@@ -6,7 +6,7 @@
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 10
-	layer = BELOW_MOB_LAYER
+	layer = WALL_OBJ_LAYER
 
 	var/list/network = list(NETWORK_CEV_ERIS)
 	var/c_tag = null
@@ -66,7 +66,6 @@
 	deactivate(null, 0) //kick anyone viewing out
 	taped = 0
 	if(assembly)
-<<<<<<< HEAD
 		qdel(assembly)
 		assembly = null
 	qdel(wires)
@@ -74,16 +73,6 @@
 	if(alarm_on)
 		alarm_on = 0
 		camera_alarm.clearAlarm(loc, src)
-=======
-		QDEL_NULL(assembly)
-	QDEL_NULL(wires)
-
-	for (var/mob/tracked_mob in motionTargets) //get rid of any references for anything we're tracking
-		tracked_mob.tracking_cameras -= src
-		motionTargets -= tracked_mob
-	motionTargets.Cut()
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /obj/machinery/camera/Process()
@@ -110,8 +99,7 @@
 			START_PROCESSING(SSmachines, src)
 
 /obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
-	if (!(P.testing))
-		take_damage(P.get_structure_damage())
+	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/ex_act(severity)
 	if(src.invuln)
@@ -157,13 +145,9 @@
 	update_coverage()
 	// DECONSTRUCTION
 
-	var/list/usable_qualities = list(QUALITY_SCREW_DRIVING,QUALITY_SEALING)
+	var/list/usable_qualities = list(QUALITY_SCREW_DRIVING)
 	if((wires.CanDeconstruct() || (stat & BROKEN)))
 		usable_qualities.Add(QUALITY_WELDING)
-
-	if(panel_open)
-		usable_qualities.Add(QUALITY_CUTTING)
-		usable_qualities.Add(QUALITY_PULSING)
 
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
@@ -185,10 +169,6 @@
 						else
 							assembly.state = 1
 							to_chat(user, SPAN_NOTICE("You cut \the [src] free from the wall."))
-<<<<<<< HEAD
-=======
-							assembly.update_plane()
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 							new /obj/item/stack/cable_coil(src.loc, length=2)
 						assembly = null //so qdel doesn't eat it.
 					qdel(src)
@@ -204,57 +184,20 @@
 				return
 			return
 
-<<<<<<< HEAD
-=======
-		if(QUALITY_CUTTING)
-			if(panel_open)
-				interact(user)
-				return
-
-		if(QUALITY_PULSING)
-			if(panel_open)
-				interact(user)
-				return
-
-		if(QUALITY_SEALING)
-			if(taped)
-				return
-			var/obj/item/tool/our_tape = I
-			if(our_tape.check_tool_effects(user, 70))
-				our_tape.consume_resources(70, user) //70 = 10.5 units of tape , normally
-				set_status(0)
-				taped = TRUE
-				icon_state = "camera_taped"
-				to_chat(user, "You taped the camera.")
-				desc = "It's used to monitor rooms. Its lens is covered with sticky tape."
-				return
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(ABORT_CHECK)
 			return
 
 
-<<<<<<< HEAD
 	if(istype(I, /obj/item/tool) && panel_open)
 		interact(user)
-=======
-	//if(istool(I) && panel_open)
-	//	interact(user)
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// OTHER
-	if (can_use() && isliving(user) && user.a_intent != I_HURT)
+	else if (can_use() && isliving(user) && user.a_intent != I_HURT)
 		var/mob/living/U = user
 		var/list/mob/viewers = list()
-<<<<<<< HEAD
 		if(istype(I, /obj/item/ducttape )|| istype(I, /obj/item/tool/tape_roll))
 			set_status(0)
 			taped = 1
-=======
-		if(istype(I, /obj/item/ducttape))
-			set_status(0)
-			taped = TRUE
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			icon_state = "camera_taped"
 			to_chat(U, "You taped the camera")
 			desc = "It's used to monitor rooms. It's covered with something sticky."
@@ -440,10 +383,6 @@
 	for(var/obj/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-<<<<<<< HEAD
-=======
-
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return null
 
 /obj/machinery/camera/interact(mob/living/user as mob)

@@ -10,19 +10,11 @@
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "d" = (
-<<<<<<< HEAD
 /obj/spawner/mob/roaches/low_chance,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "e" = (
 /obj/spawner/junkfood/rotten,
-=======
-/obj/random/mob/roaches/low_chance,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/crawler)
-"e" = (
-/obj/random/junkfood/rotten,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "f" = (
@@ -30,19 +22,11 @@
 /turf/simulated/wall,
 /area/crawler)
 "g" = (
-<<<<<<< HEAD
 /obj/spawner/knife,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "h" = (
 /obj/spawner/material/resources/low_chance,
-=======
-/obj/random/knife,
-/turf/simulated/floor/tiled/dark/gray_perforated,
-/area/crawler)
-"h" = (
-/obj/random/material_resources/low_chance,
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "i" = (

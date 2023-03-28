@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //Space santa outfit suit
 /obj/item/clothing/head/space/santahat
 	name = "Santa's hat"
@@ -17,21 +16,6 @@
 	slowdown = 0
 	item_flags = STOPPRESSUREDAMAGE
 	allowed = list(/obj/item) //for stuffing exta special presents
-=======
-//Deathsquad suit
-/obj/item/clothing/head/helmet/space/deathsquad
-	name = "deathsquad helmet"
-	desc = "That's not red paint. That's real blood."
-	icon_state = "deathsquad"
-	item_state_slots = list(
-		slot_l_hand_str = "syndicate-helm-black-red",
-		slot_r_hand_str = "syndicate-helm-black-red",
-		)
-	armor_list = list(melee = 65, bullet = 55, energy = 45, bomb = 30, bio = 100, rad = 60)
-	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
-	flags_inv = BLOCKHAIR
-	siemens_coefficient = 0.6
->>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Orange emergency space suit
 /obj/item/clothing/head/space/emergency
