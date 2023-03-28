@@ -39,8 +39,21 @@
 	siemens_coefficient = 0.1
 	permeability_coefficient = 0.1
 	unacidable = 1
+<<<<<<< HEAD
 	slowdown = 1
 
+=======
+	slowdown = 0
+	stiffness = LIGHT_STIFFNESS
+	obscuration = LIGHT_OBSCURATION
+	tool_qualities = list(QUALITY_ARMOR = 100)
+	max_upgrades = 1
+	blacklist_upgrades = list(
+							/obj/item/tool_upgrade/augment = TRUE,
+							/obj/item/tool_upgrade/refinement = TRUE,
+							/obj/item/gun_upgrade = TRUE, // No tacticool rigs
+							/obj/item/tool_upgrade/artwork_tool_mod = TRUE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/interface_path = "hardsuit.tmpl"
 	var/ai_interface_path = "hardsuit.tmpl"
 	var/interface_title = "Hardsuit Controller"
@@ -61,6 +74,7 @@
 	var/air_type =   /obj/item/tank/oxygen
 
 	//Component/device holders.
+<<<<<<< HEAD
 	var/obj/item/tank/air_supply                       // Air tank, if any.
 	var/obj/item/clothing/shoes/boots                  // Deployable boots, if any.
 	var/obj/item/clothing/suit/space/rig/chest                // Deployable chestpiece, if any.
@@ -73,6 +87,24 @@
 	var/obj/item/rig_module/storage/storage					  // var for installed storage module, if any
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the rig.
 	var/list/installed_modules = list()                       // Power consumption/use bookkeeping.
+=======
+	var/obj/item/tank/air_supply								// Air tank, if any.
+	var/obj/item/clothing/shoes/boots = null					// Deployable boots, if any.
+	var/obj/item/clothing/suit/space/rig/chest					// Deployable chestpiece, if any.
+	var/obj/item/clothing/head/helmet/space/rig/helmet = null	// Deployable helmet, if any.
+	var/obj/item/clothing/gloves/rig/gloves = null				// Deployable gauntlets, if any.
+	cell = null								// Power supply, if any.
+	var/removable_cell = TRUE // Can you remove the cell?
+	var/obj/item/rig_module/selected_module = null				// Primary system (used with middle-click)
+	var/obj/item/rig_module/vision/visor						// Kinda shitty to have a var for a module, but saves time.
+	var/obj/item/rig_module/voice/speech						// As above.
+	var/obj/item/rig_module/storage/storage						// var for installed storage module, if any
+	var/mob/living/carbon/human/wearer							// The person currently wearing the rig.
+	var/image/mob_icon											// Holder for on-mob icon.
+	var/list/installed_modules = list()							// Power consumption/use bookkeeping.
+
+	suitable_cell = /obj/item/cell/large
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// Rig status vars.
 	var/active = FALSE
@@ -97,7 +129,7 @@
 	var/airtight = 1 //If set, will adjust AIRTIGHT and STOPPRESSUREDAMAGE flags on components. Otherwise it should leave them untouched.
 
 	var/emp_protection = 0
-
+	// 2022- Just so everyone knows , this doesn't get checked at all down the line. It only checks if its on the back , regardles of its value.
 	var/rig_wear_slot = slot_back //Changing this allows for rigs that are worn as a belt or a tie or something
 
 	// Wiring! How exciting.
@@ -106,9 +138,15 @@
 
 
 	//Stuff rigs can store
-
+	//allowed = list(/obj/item/storage/backpack) // nope
 	var/list/extra_allowed = list()
 
+/obj/item/rig/New()
+	..()
+	item_icons = list(
+		slot_back_str = 'icons/inventory/back/mob.dmi')
+	item_state_slots = list(
+		slot_back_str = "[initial(icon_state)]")
 
 /obj/item/rig/proc/getCurrentGlasses()
 	if(wearer && visor && visor && visor.vision && visor.vision.glasses && (!helmet || (wearer.head && helmet == wearer.head)))
@@ -122,7 +160,11 @@
 				continue
 			to_chat(usr, "\icon[piece] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
 
+<<<<<<< HEAD
 	if(loc == usr)
+=======
+	if(src.loc == usr)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(usr, "The maintenance panel is [open ? "open" : "closed"].")
 		to_chat(usr, "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
 
@@ -158,6 +200,10 @@
 	if(helm_type)
 		helmet = new helm_type(src)
 		verbs |= /obj/item/rig/proc/toggle_helmet
+<<<<<<< HEAD
+=======
+		helmet.obscuration = obscuration
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(boot_type)
 		boots = new boot_type(src)
 		verbs |= /obj/item/rig/proc/toggle_boots
@@ -167,6 +213,10 @@
 		if(allowed)
 			chest.allowed |= allowed
 		chest.slowdown = offline_slowdown
+<<<<<<< HEAD
+=======
+		chest.stiffness = stiffness
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		verbs |= /obj/item/rig/proc/toggle_chest
 
 	if(initial_modules && initial_modules.len)
@@ -191,6 +241,16 @@
 
 	update_icon(1)
 
+<<<<<<< HEAD
+=======
+/obj/item/rig/proc/updateArmor()
+	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
+		if(!istype(piece))
+			continue
+		if(armor_list)
+			piece.armor = armor
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/rig/Destroy()
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		QDEL_NULL(piece)
@@ -201,6 +261,7 @@
 	QDEL_NULL(spark_system)
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/rig/handle_atom_del(atom/A)
 	if(A == cell) // Clear a cell that has, most likely, exploded
 		cell = null
@@ -208,6 +269,10 @@
 
 /obj/item/rig/proc/suit_is_deployed()
 	if(!istype(wearer) || loc != wearer || wearer.back != src)
+=======
+/obj/item/rig/proc/suit_is_deployed()
+	if(!istype(wearer) || src.loc != wearer || wearer.back != src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return 0
 	if(helm_type && !(helmet && wearer.head == helmet))
 		return 0
@@ -366,11 +431,19 @@
 				M.drop_from_inventory(piece)
 			piece.forceMove(src)
 
+<<<<<<< HEAD
 	if(active == TRUE) // dains power from the cell whenever the suit is sealed
 		cell.use(drain*0.1)
 
 	if(!istype(wearer) || loc != wearer || wearer.back != src || canremove || !cell || cell.is_empty())
 		if(!cell || cell.is_empty())
+=======
+	if(active && cell) // drains power from the cell whenever the suit is sealed
+		cell.use(drain*0.1)
+
+	if(!istype(wearer) || loc != wearer || wearer.back != src || canremove || !cell || cell.charge <= 0)
+		if(!cell || cell.charge <= 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(electrified > 0)
 				electrified = 0
 			if(!offline)
@@ -448,7 +521,11 @@
 	cell.use(cost*10)
 	return 1
 
+<<<<<<< HEAD
 /obj/item/rig/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/nano_state =GLOB.inventory_state)
+=======
+/obj/item/rig/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/nano_state =GLOB.inventory_state)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!user)
 		return
 
@@ -523,15 +600,40 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+<<<<<<< HEAD
 /obj/item/rig/proc/get_species_icon()
 	return 'icons/mob/rig_back.dmi'
+=======
+/obj/item/rig/update_icon(var/update_mob_icon)
+
+	cut_overlays()
+	if(!mob_icon || update_mob_icon)
+		var/species_icon = 'icons/mob/rig_back.dmi'
+		// Since setting mob_icon will override the species checks in
+		// update_inv_wear_suit(), handle species checks here.
+		mob_icon = image("icon" = species_icon, "icon_state" = icon_state)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/rig/on_update_icon(var/update_mob_icon)
 	if(installed_modules.len)
 		for(var/obj/item/rig_module/module in installed_modules)
+<<<<<<< HEAD
 			if(module.suit_overlay && !module.suit_overlay_mob_only)
 				chest.add_overlays(image("icon" = 'icons/mob/rig_modules.dmi', "icon_state" = module.suit_overlay, "dir" = SOUTH))
 
+=======
+			if(module.suit_overlay)
+				chest.add_overlay(image("icon" = 'icons/mob/rig_modules.dmi', "icon_state" = module.suit_overlay, "dir" = SOUTH))
+
+	if(wearer)
+		wearer.update_inv_shoes()
+		wearer.update_inv_gloves()
+		wearer.update_inv_head()
+		wearer.update_inv_wear_suit()
+		wearer.update_inv_back()
+	return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/rig/proc/check_suit_access(var/mob/living/carbon/human/user)
 
 	if(!security_check_enabled)
@@ -587,6 +689,9 @@
 		if (locked != -1)
 			locked = !locked
 
+	// Makes it so the UI instantly updates, instead of using the MC tick, way faster at high stress.
+	nano_ui_interact(usr)
+
 	usr.set_machine(src)
 	add_fingerprint(usr)
 	return 0
@@ -635,7 +740,11 @@
 		update_icon()
 
 
+<<<<<<< HEAD
 /obj/item/rig/proc/toggle_piece(var/piece, var/mob/initiator, var/deploy_mode)
+=======
+/obj/item/rig/proc/toggle_piece(piece, mob/initiator, deploy_mode)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(sealing || !cell || cell.is_empty())
 		return
@@ -643,7 +752,7 @@
 	if(!istype(wearer) || !wearer.back == src)
 		return
 
-	if(initiator == wearer && (usr.stat||usr.paralysis||usr.stunned)) // If the initiator isn't wearing the suit it's probably an AI.
+	if(initiator == wearer && (usr && (usr.stat||usr.paralysis||usr.stunned))) // If the initiator isn't wearing the suit it's probably an AI.
 		return
 
 	var/obj/item/check_slot
@@ -840,9 +949,12 @@
 		return 1
 	return 0
 
+<<<<<<< HEAD
 /obj/item/rig/get_cell()
 	return cell
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/rig/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
 
 	if(check_for_ai)
@@ -942,7 +1054,7 @@
 
 	if (prob(50))
 		cell.charge = rand(0, cell.charge*0.5)
-	else if (prob(15))
+	else if (prob(1))
 		cell.rigged = 1
 	else
 		cell = null

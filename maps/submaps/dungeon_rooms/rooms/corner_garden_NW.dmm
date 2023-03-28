@@ -7,6 +7,7 @@
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "c" = (
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
 /area/crawler)
 "d" = (
@@ -16,12 +17,20 @@
 "e" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/grass,
+=======
+/turf/simulated/floor/asteroid/grass,
+/area/crawler)
+"e" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/asteroid/grass,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "f" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "g" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
@@ -37,6 +46,23 @@
 /area/crawler)
 "i" = (
 /obj/effect/floor_decal/grass_edge{
+=======
+/obj/effect/floor_decal/spline/grass_edge{
+	dir = 1
+	},
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"h" = (
+/obj/effect/floor_decal/spline/grass_edge{
+	dir = 8
+	},
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"i" = (
+/obj/effect/floor_decal/spline/grass_edge{
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/tiled/derelict,
@@ -48,10 +74,17 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
 /area/crawler)
 "l" = (
 /obj/machinery/light/floor,
+=======
+/turf/simulated/floor/asteroid/grass,
+/area/crawler)
+"l" = (
+/obj/random/mob/roomba/any,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "m" = (
@@ -62,13 +95,21 @@
 /turf/simulated/floor/bluegrid,
 /area/crawler)
 "o" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/grass_edge{
+=======
+/obj/effect/floor_decal/spline/grass_edge{
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 8
 	},
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "q" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/grass_edge,
+=======
+/obj/effect/floor_decal/spline/grass_edge,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "s" = (
@@ -77,24 +118,39 @@
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
+=======
+/turf/simulated/floor/asteroid/grass,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "t" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
+=======
+/turf/simulated/floor/asteroid/grass,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "u" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/brflowers,
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
 /area/crawler)
 "v" = (
 /obj/effect/floor_decal/grass_edge{
+=======
+/turf/simulated/floor/asteroid/grass,
+/area/crawler)
+"v" = (
+/obj/effect/floor_decal/spline/grass_edge{
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/tiled/derelict,
@@ -104,17 +160,29 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/brflowers,
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
+=======
+/turf/simulated/floor/asteroid/grass,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "x" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/sparsegrass,
+<<<<<<< HEAD
 /turf/simulated/floor/grass,
 /area/crawler)
 "y" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/grass,
+=======
+/turf/simulated/floor/asteroid/grass,
+/area/crawler)
+"y" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/asteroid/grass,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "z" = (
 /obj/crawler/crawler_wallbreaker,
@@ -169,7 +237,11 @@ a
 a
 c
 c
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 k
 k
 k
@@ -179,7 +251,11 @@ b
 (6,1,1) = {"
 b
 c
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 h
 o

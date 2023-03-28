@@ -3,6 +3,7 @@
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
+<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
@@ -10,6 +11,15 @@
 	circuit = /obj/item/electronics/circuitboard/recharge_station
 	var/mob/occupant = null
 	var/obj/item/cell/large/cell
+=======
+	density = 1
+	anchored = 1
+	use_power = IDLE_POWER_USE
+	idle_power_usage = 50
+	circuit = /obj/item/circuitboard/recharge_station
+	var/mob/occupant = null
+	var/obj/item/cell/large/cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/icon_update_tick = 0	// Used to rebuild the overlay only once every 10 ticks
 	var/charging = 0
 	var/efficiency = 0.9
@@ -26,6 +36,35 @@
 
 /obj/machinery/recharge_station/Initialize()
 	. = ..()
+	RefreshParts()
+	update_icon()
+
+/obj/machinery/recharge_station/robotics
+
+/obj/machinery/recharge_station/robotics/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
+	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/cell/large/moebius/super(null) //has better cell do to being for robotics
+	component_parts += new /obj/item/stack/cable_coil{amount = 5}(null)
+	RefreshParts()
+	update_icon()
+
+/obj/machinery/recharge_station/upgraded_t_three
+
+/obj/machinery/recharge_station/upgraded_t_three/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
+	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/cell/large/moebius(null)
+	component_parts += new /obj/item/stack/cable_coil{amount = 5}(null)
+	RefreshParts()
 	update_icon()
 
 /obj/machinery/recharge_station/proc/has_cell_power()
@@ -162,6 +201,7 @@
 	cut_overlays()
 	switch(round(chargepercentage()))
 		if(1 to 20)
+<<<<<<< HEAD
 			add_overlays(image('icons/obj/objects.dmi', "statn_c0"))
 		if(21 to 40)
 			add_overlays(image('icons/obj/objects.dmi', "statn_c20"))
@@ -173,6 +213,19 @@
 			add_overlays(image('icons/obj/objects.dmi', "statn_c80"))
 		if(99 to 110)
 			add_overlays(image('icons/obj/objects.dmi', "statn_c100"))
+=======
+			add_overlay(image('icons/obj/objects.dmi', "statn_c0"))
+		if(21 to 40)
+			add_overlay(image('icons/obj/objects.dmi', "statn_c20"))
+		if(41 to 60)
+			add_overlay(image('icons/obj/objects.dmi', "statn_c40"))
+		if(61 to 80)
+			add_overlay(image('icons/obj/objects.dmi', "statn_c60"))
+		if(81 to 98)
+			add_overlay(image('icons/obj/objects.dmi', "statn_c80"))
+		if(99 to 110)
+			add_overlay(image('icons/obj/objects.dmi', "statn_c100"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/recharge_station/on_update_icon()
 	..()
@@ -257,3 +310,145 @@
 							"<span class='notice'>You started hauling \the [target] into \the [src].</span>")
 	if(user.stat != DEAD && do_after(user,rand(150,200),src))
 		go_in(target, user)
+
+
+#define REPAIR_HULL 1
+#define REPAIR_COMPONENTS 2
+
+/obj/machinery/repair_station
+	name = "cyborg auto-repair platform"
+	desc = "An automated repair system, designed to repair drones and cyborgs that stand on it."
+	icon = 'icons/mecha/mech_bay.dmi'
+	icon_state = "recharge_floor_robotic"
+	anchored = TRUE
+	density = FALSE
+	layer = TURF_LAYER + 0.1
+
+	circuit = /obj/item/circuitboard/repair_station
+
+	use_power = IDLE_POWER_USE
+	idle_power_usage = 4
+	active_power_usage = 4000
+
+	var/mob/living/silicon/robot/repairing
+
+	var/repair_amount = 0 //How much we can heal something for.
+	var/repair_rate = 5 //How much HP we restore per second
+	var/repair_complexity = REPAIR_HULL //How complex we get regarding repairing things
+
+/obj/machinery/repair_station/Initialize()
+	..()
+	repair_amount = 500
+
+/obj/machinery/repair_station/examine(mob/user)
+	..()
+	to_chat(user, "It has [SPAN_NOTICE("[repair_amount]")] repair points remaining.")
+
+/obj/machinery/repair_station/Crossed(var/mob/living/silicon/robot/R)
+	. = ..()
+	if(istype(R) && repairing != R)
+		start_repairing(R)
+
+/obj/machinery/repair_station/Uncrossed(var/mob/living/silicon/R)
+	. = ..()
+	if(R == repairing)
+		stop_repairing()
+
+/obj/machinery/repair_station/RefreshParts()
+	..()
+	idle_power_usage = initial(idle_power_usage)
+	active_power_usage = initial(active_power_usage)
+	var/manip_level = 1
+	var/scan_level = 1
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/scanning_module))
+			scan_level += P.rating-1
+		if(istype(P, /obj/item/stock_parts/manipulator))
+			manip_level += P.rating-1
+
+	repair_rate = initial(repair_rate)+(manip_level*max(1, scan_level/2))
+	if(scan_level >= 3)
+		repair_complexity |= REPAIR_COMPONENTS
+	idle_power_usage *= manip_level*scan_level
+	active_power_usage *= manip_level*scan_level
+
+/obj/machinery/repair_station/Process()
+	..()
+	if(!repairing)
+		return
+
+	if(repairing.loc != loc)
+		stop_repairing()
+		return
+
+	if(!repair_amount)
+		visible_message("\The [src] buzzes \"Insufficient material remaining to continue repairs.\".")
+		stop_repairing()
+		return
+
+	for(var/V in repairing.components)
+		var/datum/robot_component/C = repairing.components[V]
+		if(C.brute_damage + C.electronics_damage >= C.max_damage)
+			visible_message("\The [src] buzzes \"[C.name] too damaged to repair, aborting.\".")
+			stop_repairing()
+			return
+
+	var/repair_count = 0
+	if(repair_complexity & REPAIR_HULL && (repairing.getBruteLoss() || repairing.getFireLoss()))
+		var/amount_to_heal = min(repair_amount, repair_rate)
+		repairing.adjustBruteLoss(-amount_to_heal)
+		repairing.adjustFireLoss(-amount_to_heal)
+		repairing.updatehealth()
+		repair_amount = max(0, repair_amount-amount_to_heal)
+		repair_count += amount_to_heal
+
+	if(!repair_amount)
+		return
+
+	if(repair_complexity & REPAIR_COMPONENTS)
+		for(var/V in repairing.components)
+			var/datum/robot_component/C = repairing.components[V]
+			if(C.brute_damage || C.electronics_damage)
+				var/amount_to_heal = min(repair_amount, repair_rate)
+				C.heal_damage(amount_to_heal/2,amount_to_heal/2)
+				repair_amount = max(0, repair_amount-amount_to_heal)
+				repair_count += amount_to_heal
+				break
+
+	if(!repair_count)
+		to_chat(repairing, SPAN_NOTICE("Repairs complete. Shutting down."))
+		stop_repairing()
+
+/obj/machinery/repair_station/proc/start_repairing(var/mob/living/silicon/robot/R)
+	if(stat & (NOPOWER | BROKEN))
+		to_chat(R, SPAN_WARNING("Repair system not responding. Terminating."))
+		return
+
+	to_chat(R, SPAN_NOTICE("Commencing repairs. Please stand by."))
+	repairing = R
+	update_use_power(ACTIVE_POWER_USE)
+
+/obj/machinery/repair_station/proc/stop_repairing()
+	if(!repairing)
+		return
+
+	repairing = null
+	update_use_power(IDLE_POWER_USE)
+
+/obj/machinery/repair_station/attackby(var/obj/item/O, var/mob/user)
+
+	if(default_deconstruction(O, user))
+		return
+
+	if(default_part_replacement(O, user))
+		return
+
+	if(istype(O,/obj/item/stack/material) && O.get_material_name() == MATERIAL_STEEL)
+		var/obj/item/stack/material/S = O
+		if(S.use(1))
+			to_chat(user, SPAN_NOTICE("You insert a sheet of \the [S]. \The [src] now has [repair_amount] repair points remaining."))
+			repair_amount += 25
+	..()
+
+#undef REPAIR_HULL
+#undef REPAIR_COMPONENTS

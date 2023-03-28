@@ -70,6 +70,10 @@
 /area/crawler)
 "r" = (
 /obj/effect/floor_decal/industrial/danger,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "s" = (
@@ -100,12 +104,27 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "y" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/techmaint_cargo,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"G" = (
+/obj/random/structures/os,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crawler)
+"K" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 h
@@ -126,7 +145,11 @@ b
 l
 l
 l
+<<<<<<< HEAD
 l
+=======
+K
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 h
 "}
 (3,1,1) = {"
@@ -145,8 +168,13 @@ h
 c
 r
 b
+<<<<<<< HEAD
 l
 j
+=======
+K
+G
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 w
 f
 h
@@ -211,7 +239,11 @@ h
 f
 u
 j
+<<<<<<< HEAD
 l
+=======
+K
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 x
 c
@@ -233,7 +265,11 @@ h
 q
 l
 l
+<<<<<<< HEAD
 l
+=======
+K
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 x
 c

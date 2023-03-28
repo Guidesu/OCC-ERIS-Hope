@@ -1,10 +1,14 @@
 /obj/machinery/ai_slipper
-	name = "\improper AI Liquid Dispenser"
+	name = "\improper AI liquid dispenser"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "motion0"
 	plane = FLOOR_PLANE
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	var/uses = 20

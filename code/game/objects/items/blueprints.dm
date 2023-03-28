@@ -1,6 +1,11 @@
 /obj/item/blueprints
+<<<<<<< HEAD
 	name = "ship blueprints"
 	desc = "Blueprints of the ship. There is a \"Classified\" stamp and several coffee stains on it."
+=======
+	name = "colony blueprints"
+	desc = "Blueprints of the colony. There is a \"Classified\" stamp and several coffee stains on it."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
 	attack_verb = list("attacked", "bapped", "hit")
@@ -49,17 +54,17 @@
 	var/area/A = get_area(usr)
 	var/text = {"<HTML><head><title>[src]</title></head><BODY>
 <h2>[station_name()] blueprints</h2>
-<small>Property of [company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
+<small>Property of Nadezhda Colony. For council members only. Store in high-secure storage.</small><hr>
 "}
 	switch (get_area_type())
 		if (AREA_SPACE)
 			text += {"
-<p>According the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>
-<p><a href='?src=\ref[src];action=create_area'>Mark this place as new area.</a></p>
+<p>According to the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>
+<p><a href='?src=\ref[src];action=create_area'>Mark this place as a new area.</a></p>
 "}
 		if (AREA_STATION)
 			text += {"
-<p>According the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
+<p>According to the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
 <p>You may <a href='?src=\ref[src];action=edit_area'>
 move an amendment</a> to the drawing.</p>
 "}
@@ -99,7 +104,11 @@ move an amendment</a> to the drawing.</p>
 				to_chat(usr, SPAN_WARNING("The new area must be completely airtight!"))
 				return
 			if(ROOM_ERR_TOOLARGE)
+<<<<<<< HEAD
 				to_chat(usr, SPAN_WARNING("The new area too large!"))
+=======
+				to_chat(usr, SPAN_WARNING("The new area is too large!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			else
 				to_chat(usr, SPAN_WARNING("Error! Please notify administration!"))

@@ -10,7 +10,11 @@
 	plane = GAME_PLANE
 	interact_offline = 1
 
+<<<<<<< HEAD
 	var/on = FALSE
+=======
+	var/on = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -20,6 +24,7 @@
 	var/obj/item/reagent_containers/glass/beaker = null
 
 	var/current_heat_capacity = 50
+	var/autoeject = FALSE
 
 /obj/machinery/atmospherics/unary/cryo_cell/New()
 	..()
@@ -50,7 +55,11 @@
 		return
 
 	if(occupant)
+<<<<<<< HEAD
 		//if(occupant.stat != DEAD)Occulus Edit
+=======
+		//if(occupant.stat != DEAD)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		process_occupant()
 
 	if(air_contents)
@@ -69,12 +78,15 @@
 		go_out()
 
 /obj/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
-	ui_interact(user)
+	if(!user.stats?.getPerk(PERK_MEDICAL_EXPERT) && !user.stat_check(STAT_BIO, STAT_LEVEL_BASIC) && !usr.stat_check(STAT_COG, 30)) //Are we missing the perk AND to low on bio? Cog needs 30 as bio is 15
+		to_chat(usr, SPAN_WARNING("Your biological understanding isn't enough to use this."))
+		return
+	ui_interact(user) //routed to TGUI
 
  /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
+  * The nano_ui_interact proc is used to open and update Nano UIs
+  * If nano_ui_interact is not used then the UI will not update correctly
+  * nano_ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
@@ -82,7 +94,8 @@
   *
   * @return nothing
   */
-/obj/machinery/atmospherics/unary/cryo_cell/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+  /*
+/obj/machinery/atmospherics/unary/cryo_cell/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 
 	if(user == occupant || user.stat)
 		return
@@ -172,7 +185,7 @@
 	add_fingerprint(usr)
 	playsound(loc, 'sound/machines/machine_switch.ogg', 100, 1)
 	return 1 // update UIs attached to this object
-
+*/
 /obj/machinery/atmospherics/unary/cryo_cell/affect_grab(var/mob/user, var/mob/target)
 	for(var/mob/living/carbon/slime/M in range(1,target))
 		if(M.Victim == target)
@@ -193,7 +206,11 @@
 			)
 	return
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/cryo_cell/on_update_icon()
+=======
+/obj/machinery/atmospherics/unary/cryo_cell/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	icon_state = "pod[on]"
 	var/image/I
@@ -201,28 +218,45 @@
 	I = image(icon, "pod[on]_top")
 	I.layer = WALL_OBJ_LAYER
 	I.pixel_z = 32
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(occupant)
 		var/image/pickle = image(occupant.icon, occupant.icon_state)
-		pickle.overlays = occupant.overlays
+		pickle.copy_overlays(occupant.overlays, TRUE)
 		pickle.pixel_z = 18
 		pickle.layer = WALL_OBJ_LAYER
+<<<<<<< HEAD
 		add_overlays(pickle)
 
 	I = image(icon, "lid[on]")
 	I.layer = WALL_OBJ_LAYER
 	add_overlays(I)
+=======
+		add_overlay(pickle)
+
+	I = image(icon, "lid[on]")
+	I.layer = WALL_OBJ_LAYER
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	I = image(icon, "lid[on]_top")
 	I.layer = WALL_OBJ_LAYER
 	I.pixel_z = 32
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/process_occupant()
 	if(air_contents.total_moles < 10)
 		return
 	if(occupant)
+<<<<<<< HEAD
 		if(occupant.stat == DEAD)//Occulus Edit start
 			occupant.timeofdeath += 1
 		else
@@ -232,6 +266,13 @@
 		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
 		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
 
+=======
+		//if(occupant.stat == DEAD)
+			//return
+		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
+		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
+		//occupant.stat = UNCONSCIOUS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(occupant.bodytemperature < T0C)
 			occupant.sleeping = max(5, (1/occupant.bodytemperature)*2000)
 			occupant.Paralyse(max(5, (1/occupant.bodytemperature)*3000))
@@ -241,16 +282,20 @@
 				occupant.adjustOxyLoss(-1)
 			//severe damage should heal waaay slower without proper chemicals
 			if(occupant.bodytemperature < 225)
-				if (occupant.getToxLoss())
-					occupant.adjustToxLoss(max(-1, -20/occupant.getToxLoss()))
-				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
-				var/heal_fire = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
+				var/heal_brute = occupant.getBruteLoss() ? min(20, 20/occupant.getBruteLoss()) : 0
+				var/heal_fire = occupant.getFireLoss() ? min(20, 20/occupant.getFireLoss()) : 0
+				occupant.adjustOxyLoss(-10) //Were always healing o2
 				occupant.heal_organ_damage(heal_brute,heal_fire)
+				occupant.adjustCloneLoss(-5) //Were always healing a bit of cloneloss, not much tho
 		var/has_cryo = occupant.reagents.get_reagent_amount("cryoxadone") >= 1
-		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
+		var/has_clonexa = occupant.reagents.get_reagent_amount("cronexidone") >= 1
 		var/has_cryo_medicine = has_cryo || has_clonexa
 		if(beaker && !has_cryo_medicine)
-			beaker.reagents.trans_to_mob(occupant, 1, CHEM_BLOOD, 10)
+			beaker.reagents.trans_to_mob(occupant, 1, CHEM_BLOOD)
+		if ((occupant.health == occupant.maxHealth) && autoeject == TRUE )
+			go_out()
+			on=!on
+			update_icon()
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/heat_gas_contents()
 	if(air_contents.total_moles < 1)
@@ -389,3 +434,78 @@
 
 /datum/data/function/proc/display()
 	return
+
+//tgui stuff
+/obj/machinery/atmospherics/unary/cryo_cell/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Cryo", name)
+		ui.open()
+
+/obj/machinery/atmospherics/unary/cryo_cell/ui_data()
+	var/list/data = list()
+	data["isOperating"] = on
+	data["hasOccupant"] = occupant ? TRUE : FALSE
+	//data["isOpen"] = state_open
+	data["autoEject"] = autoeject
+
+	data["occupant"] = list()
+	if(occupant)
+		var/mob/living/mob_occupant = occupant
+		data["occupant"]["name"] = mob_occupant.name
+		if(mob_occupant.stat == DEAD)
+			data["occupant"]["stat"] = "Dead"
+			data["occupant"]["statstate"] = "bad"
+		else if (mob_occupant.stat == UNCONSCIOUS)
+			data["occupant"]["stat"] = "Unconscious"
+			data["occupant"]["statstate"] = "good"
+		else
+			data["occupant"]["stat"] = "Conscious"
+			data["occupant"]["statstate"] = "bad"
+
+		data["occupant"]["bodyTemperature"] = round(mob_occupant.bodytemperature, 1)
+		if(mob_occupant.bodytemperature < T0C) // Green if the mob can actually be healed by cryoxadone.
+			data["occupant"]["temperaturestatus"] = "good"
+		else
+			data["occupant"]["temperaturestatus"] = "bad"
+
+		data["occupant"]["health"] = round(mob_occupant.health, 1)
+		data["occupant"]["maxHealth"] = mob_occupant.maxHealth
+		data["occupant"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+		data["occupant"]["bruteLoss"] = round(mob_occupant.getBruteLoss(), 1)
+		data["occupant"]["oxyLoss"] = round(mob_occupant.getOxyLoss(), 1)
+		data["occupant"]["toxLoss"] = round(mob_occupant.getToxLoss(), 1)
+		data["occupant"]["fireLoss"] = round(mob_occupant.getFireLoss(), 1)
+
+	var/datum/gas_mixture/air1 = air_contents
+	data["cellTemperature"] = round(air1.temperature, 1)
+
+	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
+	var/beakerContents = list()
+	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+			beakerContents += list(list("name" = R.name, "volume" = R.volume))
+	data["beakerContents"] = beakerContents
+	return data
+
+/obj/machinery/atmospherics/unary/cryo_cell/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("power")
+			on=!on
+			update_icon()
+			. = TRUE
+		if("door")
+			go_out()
+		if("autoeject")
+			autoeject = !autoeject
+			. = TRUE
+		if("ejectbeaker")
+			if(beaker)
+				beaker.forceMove(drop_location())
+				if(Adjacent(usr) && !issilicon(usr))
+					usr.put_in_hands(beaker)
+				beaker = null
+				. = TRUE

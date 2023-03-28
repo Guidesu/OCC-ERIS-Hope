@@ -4,15 +4,38 @@
 	GLOB.living_mob_list -= src
 	GLOB.mob_list -= src
 	unset_machine()
-	qdel(hud_used)
+	QDEL_NULL(hud_used)
+	languages = null
+	move_intent = null
+	QDEL_NULL(weak_reference)
+	QDEL_NULL(parallax)
+	transform = null
+	QDEL_NULL(transform)
+	QDEL_NULL(shadow)
 	if(client)
 		for(var/atom/movable/AM in client.screen)
 			qdel(AM)
 		client.screen = list()
 
+	for (var/obj/machinery/camera/camera in tracking_cameras)
+		camera.lostTarget(src)
+	tracking_cameras.Cut()
+
 	ghostize()
-	..()
-	return QDEL_HINT_HARDDEL
+
+	LAssailant_weakref = null
+
+	for (var/datum/movement_handler/mob/handler in movement_handlers)
+		handler.host = null
+		handler.mob = null
+
+	movement_handlers.Cut()
+
+	if (spawned_from)
+		spawned_from.currently_spawned[type] -= src
+		spawned_from = null
+
+	return ..()
 
 /mob/proc/despawn()
 	return
@@ -35,6 +58,14 @@
 	GLOB.mob_list += src
 	move_intent = decls_repository.get_decl(move_intent)
 	. = ..()
+
+/**
+ * Generate the tag for this mob
+ *
+ * This is simply "mob_"+ a global incrementing counter that goes up for every mob
+ */
+/mob/GenerateTag()
+	tag = "mob_[next_mob_id++]"
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
@@ -67,8 +98,9 @@
 // message is the message output to anyone who can see e.g. "[src] does something!"
 // self_message (optional) is what the src mob sees  e.g. "You do something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// target (optional) is the target that will ALWAYS be given the message
 
-/mob/visible_message(var/message, var/self_message, var/blind_message, var/range = world.view)
+/mob/visible_message(var/message, var/self_message, var/blind_message, var/range = world.view, var/mob/target, var/message_target = TRUE)
 	var/list/messageturfs = list()//List of turfs we broadcast to.
 	var/list/messagemobs = list()//List of living mobs nearby who can hear it, and distant ghosts who've chosen to hear it
 	for (var/turf in view(range, get_turf(src)))
@@ -82,7 +114,7 @@
 			continue
 		if (!M.client || istype(M, /mob/new_player))
 			continue
-		if(get_turf(M) in messageturfs)
+		if((get_turf(M) in messageturfs) || ((target && M == target) && (message_target)))
 			messagemobs += M
 
 	for(var/A in messagemobs)
@@ -102,6 +134,13 @@
 // Not sure where to define this, so it can sit here for the rest of time.
 /atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
 	return -1
+
+
+/mob/proc/findname(msg)
+	for(var/mob/M in SSmobs.mob_list)
+		if (M.real_name == text("[]", msg))
+			return M
+	return 0
 
 // Show a message to all mobs and objects in earshot of this one
 // This would be for audible actions by the src mob
@@ -134,14 +173,6 @@
 		var/obj/O = o
 		O.show_message(message,2,deaf_message,1)
 
-
-
-/mob/proc/findname(msg)
-	for(var/mob/M in SSmobs.mob_list)
-		if (M.real_name == text("[]", msg))
-			return M
-	return 0
-
 /mob/proc/movement_delay()
 	. = 0
 
@@ -153,7 +184,11 @@
 
 
 /mob/proc/Life()
+<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_MOB_LIFE)
+=======
+	LEGACY_SEND_SIGNAL(src, COMSIG_MOB_LIFE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //	if(organStructure)
 //		organStructure.ProcessOrgans()
 	//handle_typing_indicator() //You said the typing indicator would be fine. The test determined that was a lie.
@@ -179,7 +214,7 @@
 	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting || pinned.len))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_UNCONSCIOUS) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())
@@ -224,42 +259,106 @@
 /mob/proc/show_inv(mob/user as mob)
 	return
 
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+/**
+ * Examine a mob
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/examine()
+ */
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
 	set name = "Examine"
 	set category = "IC"
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/run_examinate, examinify))
+
+/mob/proc/run_examinate(atom/examinify)
+
 	if((is_blind(src) || usr.stat) && !isobserver(src))
 		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
+<<<<<<< HEAD
 		return 1
+=======
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	face_atom(A)
+	if(!istype(examinify, /obj/screen))
+		face_atom(examinify)
 	var/obj/item/device/lighting/toggleable/flashlight/FL = locate() in src
-	if (FL && FL.on && src.stat != DEAD && !incapacitated())
-		FL.afterattack(A,src)
-	A.examine(src)
+	if (FL?.on && stat != DEAD && !incapacitated())
+		FL.afterattack(examinify, src)
+	examinify.examine(src)
 
+/**
+ * Point at an atom
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/pointed()
+ *
+ * note: ghosts can point, this is intended
+ *
+ * visible_message will handle invisibility properly
+ *
+ * overridden here and in /mob/dead/observer for different point span classes and sanity checks
+ */
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
 
-	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
-		return 0
 	if(istype(A, /obj/effect/decal/point))
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/_pointed, A))
+
+/// possibly delayed verb that finishes the pointing process starting in [/mob/verb/pointed()].
+/// either called immediately or in the tick after pointed() was called, as per the [DEFAULT_QUEUE_OR_CALL_VERB()] macro
+/mob/proc/_pointed(atom/pointing_at)
+	if(client && !(pointing_at in view(client.view, src)))
+		return FALSE
+
+	if(!isturf(loc))
+		return FALSE
+
+	var/turf/tile = get_turf(pointing_at)
 	if (!tile)
+		return FALSE
+
+	var/turf/our_tile = get_turf(src)
+
+	var/obj/visual = new /obj/effect/decal/point(our_tile)
+	visual.invisibility = invisibility
+
+	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + pointing_at.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + pointing_at.pixel_y, time = 1.7, easing = EASE_OUT)
+	QDEL_IN(visual, 2 SECONDS)
+	return TRUE
+/mob/verb/haul_all_objects(turf/T as turf in oview(1))
+	set name = "Haul"
+	set category = "Object"
+
+
+	if(!src || !isturf(src.loc) || !(T in oview(1, src.loc)))
 		return 0
 
-	var/obj/P = new /obj/effect/decal/point(tile)
-	P.invisibility = invisibility
-	P.pixel_x = A.pixel_x
-	P.pixel_y = A.pixel_y
-	QDEL_IN(P, 2 SECONDS)
+	if(ismouse(usr))
+		return
+	if(!usr || !isturf(usr.loc))
+		return
+	if(usr.stat || usr.restrained())
+		return
 
-	face_atom(A)
-	return 1
+	T.UnloadSlide(get_dir(T, src), src, 1)
+
+/mob/proc/haul_all_objs_proc(turf/T)
+	if(!src || !isturf(src.loc) || !(T in oview(1, src.loc)))
+		return 0
+	if(ismouse(src))
+		return
+	if(!src || !isturf(src.loc))
+		return
+	if(src.stat || src.restrained())
+		return
+	T.UnloadSlide(get_dir(T, src), src, 1)
 
 
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
@@ -296,10 +395,22 @@
 				return L.container
 	return
 
+/**
+ * Verb to activate the object in your held hand
+ *
+ * Calls attack self on the item and updates the inventory hud for hands
+ */
 /mob/verb/mode()
 	set name = "Activate Held Object"
 	set category = "Object"
 	set src = usr
+
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/execute_mode))
+
+///proc version to finish /mob/verb/mode() execution. used in case the proc needs to be queued for the tick after its first called
+/mob/proc/execute_mode()
+	if(incapacitated())
+		return
 
 	var/obj/item/W = get_active_hand()
 	if (W)
@@ -363,13 +474,24 @@
 	dna.flavor_text = flavor_text
 
 /mob/proc/print_flavor_text()
+	. = ""
 	if (flavor_text && flavor_text != "")
 		var/msg = trim(replacetext(flavor_text, "\n", " "))
+<<<<<<< HEAD
 		if(!msg) return ""
 		if(length(msg) <= 40)
 			return "<font color='blue'>[msg]</font>"
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a></font>"
+=======
+		if(!msg) . += ""
+		else if(length(msg) <= 40)
+			. += "<font color='blue'>[msg]</font>"
+		else
+			. += "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a></font>"
+	if (ooc_text && ooc_text != "")
+		. += "<br><a href='byond://?src=\ref[src];ooc_text=1'>\[OOC Notes\]</a>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*
 /mob/verb/help()
@@ -377,37 +499,6 @@
 	src << browse('html/help.html', "window=help")
 	return
 */
-
-
-
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
-		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
 
 /mob/verb/observe()
 	set name = "Observe"
@@ -505,6 +596,7 @@
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
+<<<<<<< HEAD
 		if(src in view(usr))
 			var/dat = {"
 				<html><meta charset=\"utf-8\"><head><title>[name]</title></head>
@@ -513,8 +605,26 @@
 			"}
 			usr << browse(dat, "window=[name];size=500x200")
 			onclose(usr, "[name]")
+=======
+		//if(src in view(usr)) //Flavor at any range
+		var/dat = {"
+			<html><head><title>[name]</title></head>
+			<body><tt>[replacetext(flavor_text, "\n", "<br>")]</tt></body>
+			</html>
+		"}
+		usr << browse(dat, "window=[name]_flavor;size=500x200")
+		onclose(usr, "[name]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(href_list["flavor_change"])
 		update_flavor_text()
+	if(href_list["ooc_text"])
+		var/dat = {"
+				<html><head><title>[name]</title></head>
+				<body><tt>[replacetext(ooc_text, "\n", "<br>")]</tt></body>
+				</html>
+			"}
+		usr << browse(dat, "window=[name]_ooc;size=500x200")
+		onclose(usr, "[name]")
 //	..()
 	return
 
@@ -580,9 +690,9 @@
 		// them, so don't bother checking that explicitly.
 
 		if(!iscarbon(src))
-			M.LAssailant = null
+			M.LAssailant_weakref = null
 		else
-			M.LAssailant = usr
+			M.LAssailant_weakref = WEAKREF(usr)
 
 	else if(isobj(AM))
 		var/obj/I = AM
@@ -619,9 +729,6 @@
 /mob/proc/is_active()
 	return (0 >= usr.stat)
 
-/mob/proc/is_dead()
-	return stat == DEAD
-
 /mob/proc/is_mechanical()
 	if(mind && (mind.assigned_role == "Robot" || mind.assigned_role == "AI"))
 		return 1
@@ -629,9 +736,6 @@
 
 /mob/proc/is_ready()
 	return client && !!mind
-
-/mob/proc/get_gender()
-	return gender
 
 /mob/proc/see(message)
 	if(!is_active())
@@ -650,8 +754,10 @@
 	if(.)
 		if(statpanel("Status") && SSticker.current_state != GAME_STATE_PREGAME)
 			stat("Storyteller", "[master_storyteller]")
-			stat("Station Time", stationtime2text())
+			stat("Colony Time", stationtime2text())
+			stat("Colony Date", stationdate2text())
 			stat("Round Duration", roundduration2text())
+			stat("Round End Timer", rounddurationcountdown2text())
 
 		if(client.holder)
 			if(statpanel("Status"))
@@ -719,7 +825,7 @@ All Canmove setting in this proc is temporary. This var should not be set from h
 /mob/proc/update_lying_buckled_and_verb_status()
 
 	if(!resting && cannot_stand() && can_stand_overridden())
-		lying = 0
+		lying = FALSE
 		canmove = TRUE //TODO: Remove this
 	else if(buckled)
 		anchored = TRUE
@@ -736,9 +842,12 @@ All Canmove setting in this proc is temporary. This var should not be set from h
 		canmove = FALSE //TODO: Remove this
 
 	if(lying)
-		set_density(0)
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if(l_hand)
+			unEquip(l_hand)
+		if(r_hand)
+			unEquip(r_hand)
+		if (!is_dead(src)) //to prevent dead mobs from always being set to dense. not sure if this is going to have consequences, but it hopefully shouldnt?
+			set_density(TRUE)
 	else
 		canmove = TRUE
 		set_density(initial(density))
@@ -746,13 +855,13 @@ All Canmove setting in this proc is temporary. This var should not be set from h
 
 	for(var/obj/item/grab/G in grabbed_by)
 		if(G.force_stand())
-			lying = 0
+			lying = TRUE
 
 	//Temporarily moved here from the various life() procs
 	//I'm fixing stuff incrementally so this will likely find a better home.
 	//It just makes sense for now. ~Carn
 	if( update_icon )	//forces a full overlay update
-		update_icon = 0
+		update_icon = FALSE
 		regenerate_icons()
 	else if( lying != lying_prev )
 		update_icons()
@@ -893,6 +1002,18 @@ All Canmove setting in this proc is temporary. This var should not be set from h
 	resting = max(resting + amount,0)
 	return
 
+/mob/proc/Drowsyness(amount)
+	drowsyness = max(max(drowsyness,amount),0)
+	return
+
+/mob/proc/SetDrowsyness(amount)
+	drowsyness = max(amount,0)
+	return
+
+/mob/proc/AdjustDrowsyness(amount)
+	drowsyness = max(drowsyness + amount,0)
+	return
+
 /mob/proc/get_species()
 	return ""
 
@@ -980,7 +1101,12 @@ mob/proc/yank_out_object()
 		affected.implants -= selection
 		affected.embedded -= selection
 		selection.on_embed_removal(src)
+<<<<<<< HEAD
 		H.shock_stage+=20
+=======
+		if(!(H.species && (H.species.flags & NO_PAIN)))
+			H.shock_stage+=20
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 
 		if (ishuman(U))
@@ -1081,13 +1207,33 @@ mob/proc/yank_out_object()
 	else
 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
+<<<<<<< HEAD
+=======
+/*mob/verb/check_playtime()
+	set name = "Check Playtime"
+	set category = "IC"
+	set src = usr
+	for(var/department in GLOB.all_departments)
+		todofixmeplease
+		if(src.client.prefs.playtime[departmentplaytime])
+			to_chat(src, "You have spent [src.client.prefs.playtime[departmentplaytime]] minutes playing in [departmentplaytime].")
+*/
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/verb/browse_mine_stats()
 	set name		= "Show stats and perks"
 	set desc		= "Browse your character stats and perks."
 	set category	= "IC"
 	set src			= usr
 
+<<<<<<< HEAD
 	browse_src_stats(src)
+=======
+	if(iscarbon(usr) || issilicon(usr))
+		browse_src_stats(src)
+	else
+		to_chat(usr, "You do not have the capability to have stats or perks!")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/proc/browse_src_stats(mob/user)
 	var/additionalcss = {"
@@ -1123,6 +1269,7 @@ mob/proc/yank_out_object()
 	if (stats) // Check if mob has stats. Otherwise we cannot read null.perks
 		for(var/perk in stats.perks)
 			var/datum/perk/P = perk
+<<<<<<< HEAD
 			var/filename = sanitizeFileName("[P.type].png")
 			var/asset = asset_cache.cache[filename] // this is definitely a hack, but getAtomCacheFilename accepts only atoms for no fucking reason whatsoever.
 			if(asset)
@@ -1135,6 +1282,17 @@ mob/proc/yank_out_object()
 	"}
 
 	var/datum/browser/B = new(src, "StatsBrowser","[user == src ? "Your stats:" : "[name]'s stats"]", 1000, 345)
+=======
+			Plist += "<td valign='middle'><img src=[SSassets.transport.get_asset_url(P.type)]></td><td><span style='text-align:center'>[P.name]<br>[P.desc]</span></td>"
+	data += {"
+		<table width=80%>
+			<th colspan=2>Perks</th>
+			<tr>[Plist.Join()]</tr>
+		</table>
+	"}
+
+	var/datum/browser/B = new(src, "StatsBrowser","[user == src ? "Your stats:" : "[name]'s stats"]", 1000, 400)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	B.set_content(data)
 	B.set_window_options("can_minimize=0")
 	B.open()
@@ -1188,8 +1346,12 @@ mob/proc/yank_out_object()
 	set src = usr
 
 	if(HUDneed["move intent"])
+<<<<<<< HEAD
 		var/obj/screen/mov_intent/mov_intent = HUDneed["move intent"]
 		mov_intent.Click()  // Yep , this is all.
+=======
+		HUDneed["move intent"]:Click()  // Yep , this is all.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/proc/adjustEarDamage()
 	return
@@ -1300,5 +1462,40 @@ mob/proc/yank_out_object()
 	. = stat != new_stat
 	stat = new_stat
 
+<<<<<<< HEAD
 /mob/proc/ssd_check()
 	return !client && !teleop
+=======
+/client/verb/showplaytime()
+	set name = "Show All Playtime"
+	set category = "IC"
+	var/timeinjob = 0
+	log_debug("[src.ckey] just looked at his playtime.")
+	for(var/job in GLOB.joblist)
+		var/datum/job/J = GLOB.joblist[job]
+		timeinjob = SSjob.JobTimeCheck(usr.ckey, "[J.type]")
+		if(timeinjob > 0)
+			to_chat(src, "You have spent [timeinjob] minutes playing as [J.title].")
+
+/mob/proc/updateDialog()
+	// Check that people are actually using the machine. If not, don't update anymore.
+	if(in_use)
+		var/list/nearby = viewers(1, src)
+		var/is_in_use = 0
+		for(var/mob/M in nearby)
+			if ((M.client && M.machine == src))
+				is_in_use = 1
+				src.interact(M)
+		var/ai_in_use = AutoUpdateAI(src)
+
+		if(!ai_in_use && !is_in_use)
+			in_use = 0
+
+
+//SoJ
+
+/mob/proc/give_health_via_stats()
+	if(stats)
+		health += src.stats.getStat(STAT_ANA)
+		maxHealth += src.stats.getStat(STAT_ANA)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

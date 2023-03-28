@@ -66,6 +66,7 @@
 
 
 /obj/structure/closet/firecloset/populate_contents()
+<<<<<<< HEAD
 	new /obj/item/clothing/gloves/thick(src)
 	new /obj/item/clothing/suit/fire(src)
 	new /obj/item/clothing/head/hardhat/red(src)
@@ -74,6 +75,15 @@
 	new /obj/item/extinguisher(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/device/lighting/toggleable/flashlight(src)
+=======
+	new /obj/item/clothing/suit/fire(src)
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/tank/oxygen/red(src)
+	new /obj/item/extinguisher(src)
+	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/inflatable/door(src)
+	new /obj/item/stack/medical/ointment(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*
  * Tool Closet
@@ -119,6 +129,13 @@
 		new /obj/item/clothing/gloves/insulated(src)
 	if(prob(5))
 		new /obj/item/storage/pouch/engineering_tools(src)
+<<<<<<< HEAD
+=======
+	if(prob(5))
+		new /obj/item/storage/hcases/parts(src)
+	if(prob(5))
+		new /obj/item/storage/hcases/engi(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(prob(1))
 		new /obj/item/storage/pouch/engineering_supply(src)
 	if(prob(40))
@@ -157,6 +174,7 @@
 	new /obj/item/clothing/suit/space/bomb(src)
 	new /obj/item/clothing/under/color/black(src)
 	new /obj/item/clothing/shoes/color/black(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/head/space/bomb(src)
 
 /obj/structure/closet/bombcloset/security
@@ -183,3 +201,12 @@
 	new /obj/item/paper/self_pacification(src)
 	new /obj/item/paper(src)
 	new /obj/item/pen(src)
+=======
+	new /obj/item/clothing/head/helmet/space/bomb(src)
+
+/obj/structure/closet/bombcloset/security/populate_contents()
+	new /obj/item/clothing/suit/space/bomb(src)
+	new /obj/item/clothing/under/rank/security(src)
+	new /obj/item/clothing/shoes/color/brown(src)
+	new /obj/item/clothing/head/helmet/space/bomb(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

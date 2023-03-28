@@ -14,7 +14,11 @@
 /obj/item/disk/data
 	name = "Cloning Data Disk"
 	icon_state = "data-purple"
+<<<<<<< HEAD
 	var/datum/dna2/record/buf
+=======
+	var/datum/dna2/record/buf = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/read_only = FALSE //Well,it's still a floppy disk
 
 /obj/item/disk/data/New()
@@ -39,7 +43,11 @@
 // Subtypes
 
 /obj/item/disk/data/demo
+<<<<<<< HEAD
 	name = "data disk - 'God Emperor of Mankind'"
+=======
+	name = "data disk - 'Demolition Man'"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	read_only = TRUE
 
 /obj/item/disk/data/demo/New()
@@ -48,7 +56,7 @@
 	buf.types=DNA2_BUF_UE|DNA2_BUF_UI
 	//data = "066000033000000000AF00330660FF4DB002690"
 	//data = "0C80C80C80C80C80C8000000000000161FBDDEF" - Farmer Jeff
-	buf.dna.real_name="God Emperor of Mankind"
+	buf.dna.real_name="Demolition Man"
 	buf.dna.unique_enzymes = md5(buf.dna.real_name)
 	buf.dna.UI=list(0x066,0x000,0x033,0x000,0x000,0x000,0xAF0,0x033,0x066,0x0FF,0x4DB,0x002,0x690)
 	//buf.dna.UI=list(0x0C8,0x0C8,0x0C8,0x0C8,0x0C8,0x0C8,0x000,0x000,0x000,0x000,0x161,0xFBD,0xDEF) // Farmer Jeff
@@ -74,6 +82,7 @@
 
 /obj/item/storage/box/disks
 	name = "Diskette Box"
+<<<<<<< HEAD
 	icon_state = "disk_kit"
 	initial_amount = 7
 	spawn_type = /obj/item/disk/data
@@ -81,3 +90,12 @@
 /obj/item/storage/box/disks/populate_contents()
 	for(var/i in 1 to initial_amount)
 		new spawn_type(src)
+=======
+	icon_state = "box"
+	illustration = "disk"
+
+/obj/item/storage/box/disks/New()
+	..()
+	for(var/i in 1 to 7)
+		new /obj/item/disk/data(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

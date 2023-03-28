@@ -5,7 +5,7 @@
 	item_state = "flight"
 	matter = list(MATERIAL_PLASTIC = 2)
 	var/label = null
-	var/labels_left = 30
+	var/labels_left = 60
 	var/mode = 0	//off or on.
 
 /obj/item/hand_labeler/attack()
@@ -25,7 +25,11 @@
 	if(!label || !length(label))
 		to_chat(user, SPAN_NOTICE("No text set."))
 		return
+<<<<<<< HEAD
 	if(length(A.name) + length(label) > 64)
+=======
+	if(length(A.name) + length(label) > 128)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
 	if(ishuman(A))
@@ -52,6 +56,7 @@
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as [label]."), \
 						 SPAN_NOTICE("You label [A] as [label]."))
 	A.name = "[A.name] ([label])"
+	labels_left-=1
 
 /obj/item/hand_labeler/attack_self(mob/user as mob)
 	mode = !mode

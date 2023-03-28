@@ -147,7 +147,7 @@ see external_procs.dm for usable procs and documentation on how to use them
 		elements.Remove(E)
 
 	E._unsetParent()
-	
+
 	return src
 
 /HUD_element/proc/_setParent(var/HUD_element/E)
@@ -168,7 +168,11 @@ see external_procs.dm for usable procs and documentation on how to use them
 	if(additionType == HUD_ICON_UNDERLAY)
 		underlays += _iconsBuffer["[additionType]_[additionName]"]
 	else if(additionType == HUD_ICON_OVERLAY)
+<<<<<<< HEAD
 		add_overlays(_iconsBuffer["[additionType]_[additionName]"])
+=======
+		add_overlay(_iconsBuffer["[additionType]_[additionName]"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /HUD_element/proc/_assembleAndBufferIcon(var/additionType, var/additionName, var/list/data)
 	if(!data)

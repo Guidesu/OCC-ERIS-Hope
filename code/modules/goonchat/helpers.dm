@@ -3,6 +3,7 @@ GLOBAL_VAR_INIT(TAB, "&nbsp;&nbsp;&nbsp;&nbsp;")
 GLOBAL_DATUM_INIT(is_http_protocol, /regex, regex("^https?://"))
 
 GLOBAL_LIST_INIT(symbols_unicode_keys, list(
+<<<<<<< HEAD
 	"‚" = "&#x201A;",
 	"„" = "&#x201E;",
 	"…" = "&#x2026;",
@@ -18,6 +19,23 @@ GLOBAL_LIST_INIT(symbols_unicode_keys, list(
 	"–" = "&#x2013;",
 	"—" = "&#x2014;",
 	"™" = "&#x2122;"
+=======
+	"ï¿½" = "&#x201A;",
+	"ï¿½" = "&#x201E;",
+	"ï¿½" = "&#x2026;",
+	"ï¿½" = "&#x2020;",
+	"ï¿½" = "&#x2021;",
+	"ï¿½" = "&#x2030;",
+	"ï¿½" = "&#x2039;",
+	"ï¿½" = "&#x2018;",
+	"ï¿½" = "&#x2019;",
+	"ï¿½" = "&#x201C;",
+	"ï¿½" = "&#x201D;",
+	"ï¿½" = "&#x2022;",
+	"ï¿½" = "&#x2013;",
+	"ï¿½" = "&#x2014;",
+	"ï¿½" = "&#x2122;"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ))
 /proc/symbols_to_unicode(text)
 	for(var/key in GLOB.symbols_unicode_keys)
@@ -30,6 +48,7 @@ GLOBAL_LIST_INIT(symbols_unicode_keys, list(
 	text = replacetext(text,"\green","<span class='green'>")
 	return text
 
+<<<<<<< HEAD
 
 //Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
 // exporting it as text, and then parsing the base64 from that.
@@ -140,3 +159,5 @@ GLOBAL_LIST_INIT(symbols_unicode_keys, list(
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

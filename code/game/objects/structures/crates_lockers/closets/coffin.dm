@@ -3,11 +3,14 @@
 	desc = "It's a burial receptacle for the dearly departed."
 	icon_state = "coffin"
 	matter = list(MATERIAL_WOOD = 10)
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
 	rarity_value = 10
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_CLOSET_COFFIN
 	bad_type = /obj/structure/closet/coffin
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mob/living/occupant = null
 
 /obj/structure/closet/coffin/close(mob/living/user)
@@ -22,7 +25,7 @@
 //The coffin processes when there's a mob inside
 /obj/structure/closet/coffin/lost_in_space()
 	//The coffin has left the ship. Burial at space
-	if (occupant && occupant.is_dead())
+	if (occupant && is_dead(occupant))
 		var/mob/M = key2mob(occupant.mind.key)
 		//We send a message to the occupant's current mob - probably a ghost, but who knows.
 		to_chat(M, SPAN_NOTICE("Your remains have been committed to the void. Your crew respawn time has been reduced by 15 minutes."))
@@ -45,6 +48,7 @@
 	desc = "It's a burial receptacle for the dearly departed."
 	icon_state = "coffin"
 	welded = 1
+<<<<<<< HEAD
 
 /obj/structure/closet/coffin/spawnercorpse/New()
 	..()
@@ -52,3 +56,5 @@
 	/obj/landmark/corpse/scientist, /obj/landmark/corpse/miner, /obj/landmark/corpse/miner/rig, /obj/landmark/corpse/bridgeofficer, /obj/landmark/corpse/commander, \
 	/obj/landmark/corpse/russian)
 	new A
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

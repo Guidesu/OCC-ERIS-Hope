@@ -28,15 +28,19 @@
 
 
 /obj/machinery/computer/arcade/orion_trail
-	name = "orion trail"
-	desc = "Imported straight from Outpost-T71!"
+	name = "Chromin Trail"
+	desc = "Made by a now-defunct company, Chromin Trail is definitely not an illegal clone of Orion Trail."
 	icon_state = "arcade"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/arcade/orion_trail
+=======
+	circuit = /obj/item/circuitboard/arcade/orion_trail
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/supplies = list("1" = 0, "2" = 0, "3" = 0, "4" = 0, "5" = 0, "6" = 0) //engine,hull,electronics,food,fuel
 	var/list/supply_cost = list("1" = 1000, "2" = 950, "3" = 1100, "4" = 75, "5" = 100)
 	var/list/supply_name = list("1" = "engine parts", "2" = "hull parts", "3" = "electronic parts", "4" = "food", "5" = "fuel", "6" = "credits")
 	var/list/settlers = list()
-	var/num_traitors = 0
+	var/num_contractors = 0
 	var/list/events = list(
 		ORION_TRAIL_RAIDERS		= 3,
 		ORION_TRAIL_FLUX			= 1,
@@ -47,17 +51,17 @@
 		ORION_TRAIL_COLLISION	= 1,
 		ORION_TRAIL_CARP			= 3
 	)
-	var/list/stops = list("Pluto","Asteroid Belt","Proxima Centauri","Dead Space","Rigel Prime","Tau Ceti Beta","Black Hole","Space Outpost Beta-9","Orion Prime")
+	var/list/stops = list("Pluto","Asteroid Belt","Proxima Centauri","Dead Space","Rigel Prime","Tau Ceti Beta","Black Hole","Space Outpost Beta-9","Chromin 8")
 	var/list/stopblurbs = list(
 		"Pluto, long since occupied with long-range sensors and scanners, stands ready to, and indeed continues to probe the far reaches of the galaxy.",
 		"At the edge of the Sol system lies a treacherous asteroid belt. Many have been crushed by stray asteroids and misguided judgement.",
 		"The nearest star system to Sol, in ages past it stood as a reminder of the boundaries of sub-light travel, now a low-population sanctuary for adventurers and traders.",
 		"This region of space is particularly devoid of matter. Such low-density pockets are known to exist, but the vastness of it is astounding.",
 		"Rigel Prime, the center of the Rigel system, burns hot, basking its planetary bodies in warmth and radiation.",
-		"Tau Ceti Beta has recently become a waypoint for colonists headed towards Orion. There are many ships and makeshift stations in the vicinity.",
+		"Tau Ceti Beta has recently become a waypoint for colonists headed towards Chromin 8. There are many ships and makeshift stations in the vicinity.",
 		"Sensors indicate that a black hole's gravitational field is affecting the region of space we were headed through. We could stay of course, but risk of being overcome by its gravity, or we could change course to go around, which will take longer.",
-		"You have come into range of the first man-made structure in this region of space. It has been constructed not by travellers from Sol, but by colonists from Orion. It stands as a monument to the colonists' success.",
-		"You have made it to Orion! Congratulations! Your crew is one of the few to start a new foothold for mankind!"
+		"You have come into range of the first man-made structure in this region of space. It has been constructed not by travellers from Sol, but by colonists from Chromin 8. It stands as a monument to the colonists' success.",
+		"You have made it to Chromin 8! Congratulations! Your crew is one of the few to start a new foothold for mankind!"
 		)
 	var/list/stop_distance = list(10000,7000,25000,9000,5000,30000,25000,10000,0)
 	var/event
@@ -70,7 +74,7 @@
 	var/view = 0
 
 /obj/machinery/computer/arcade/orion_trail/proc/newgame(var/emag = 0)
-	name = "orion trail[emag ? ": Realism Edition" : ""]"
+	name = "Chromin Trail[emag ? ": Realism Edition" : ""]"
 	supplies = list("1" = 1, "2" = 1, "3" = 1, "4" = 60, "5" = 20, "6" = 5000)
 	emagged = emag
 	distance = 0
@@ -80,7 +84,7 @@
 			settlers += pick(GLOB.first_names_male)
 		else
 			settlers += pick(GLOB.first_names_female)
-	num_traitors = 0
+	num_contractors = 0
 	event = ORION_TRAIL_START
 	port = 0
 	view = ORION_VIEW_MAIN
@@ -95,7 +99,7 @@
 	switch(view)
 		if(ORION_VIEW_MAIN)
 			if(event == ORION_TRAIL_START) //new game? New game.
-				dat = "<center><h1>Orion Trail[emagged ? ": Realism Edition" : ""]</h1><br>Learn how our ancestors got to Orion, and have fun in the process!</center><br><P ALIGN=Right><a href='?src=\ref[src];continue=1'>Start New Game</a></P>"
+				dat = "<center><h1>Chromin Trail[emagged ? ": Realism Edition" : ""]</h1><br>Learn how our ancestors got to Chromin 8, and have fun in the process!</center><br><P ALIGN=Right><a href='?src=\ref[src];continue=1'>Start New Game</a></P>"
 				user << browse(dat, "window=arcade")
 				return
 			else
@@ -189,7 +193,7 @@
 				src.updateUsrDialog()
 				return
 			if(!settlers.len)
-				event_desc = "You and your crew were killed on the way to Orion, your ship left abandoned for scavengers to find."
+				event_desc = "You and your crew were killed on the way to Chromin 8, your ship left abandoned for scavengers to find."
 				next_event = ORION_TRAIL_GAMEOVER
 			if(port == 9)
 				win()
@@ -221,7 +225,7 @@
 
 			if(supplies["4"] <= 0)
 				next_event = ORION_TRAIL_GAMEOVER
-				event_desc = "You and your crew starved to death, never to reach Orion."
+				event_desc = "You and your crew starved to death, never to reach Chromin 8."
 				supplies["4"] = 0
 
 			if(distance == 0 && next_event == null) //POOORT!
@@ -295,12 +299,12 @@
 
 	event_info += "The crewmember, [settlers[specific]] [desc == null ? "has died!":"[desc]"]<BR>"
 	settlers -= settlers[specific]
-	if(num_traitors > 0 && prob(100/max(1,settlers.len-1)))
-		num_traitors--
+	if(num_contractors > 0 && prob(100/max(1,settlers.len-1)))
+		num_contractors--
 
 /obj/machinery/computer/arcade/orion_trail/proc/generate_event(var/specific = null)
 	if(!specific)
-		if(prob(20*num_traitors))
+		if(prob(20*num_contractors))
 			specific = ORION_TRAIL_MUTINY_ATTACK
 		else
 			specific = pickweight(events)
@@ -354,34 +358,34 @@
 
 		if(ORION_TRAIL_MUTINY)
 			event_info = ""
-			if(num_traitors < settlers.len - 1 && prob(55)) //gotta have at LEAST one non-traitor.
-				num_traitors++
+			if(num_contractors < settlers.len - 1 && prob(55)) //gotta have at LEAST one non-contractor.
+				num_contractors++
 		if(ORION_TRAIL_MUTINY_ATTACK)
 			//check to see if they just jump ship
-			if(prob(30+(settlers.len-num_traitors)*20))
-				event_info = "The traitors decided to jump ship along with some of your supplies!<BR>"
-				change_resource(4,-1 - (0.2 * num_traitors))
-				change_resource(5,-1 - (0.1 * num_traitors))
-				for(var/i=0;i<num_traitors;i++)
+			if(prob(30+(settlers.len-num_contractors)*20))
+				event_info = "The contractors decided to jump ship along with some of your supplies!<BR>"
+				change_resource(4,-1 - (0.2 * num_contractors))
+				change_resource(5,-1 - (0.1 * num_contractors))
+				for(var/i=0;i<num_contractors;i++)
 					remove_settler(rand(2,settlers.len),"decided to up and leave!")
-				num_traitors = 0
+				num_contractors = 0
 			else //alright. They wanna fight for the ship.
-				event_info = "The traitors are charging you! Prepare your weapons!<BR>"
-				var/list/traitors = list()
-				for(var/i=0;i<num_traitors;i++)
-					traitors += pick((settlers-traitors)-settlers[1])
-				var/list/nontraitors = settlers-traitors
-				while(nontraitors.len && traitors.len)
+				event_info = "The contractors are charging you! Prepare your weapons!<BR>"
+				var/list/contractors = list()
+				for(var/i=0;i<num_contractors;i++)
+					contractors += pick((settlers-contractors)-settlers[1])
+				var/list/noncontractors = settlers-contractors
+				while(noncontractors.len && contractors.len)
 					if(prob(50))
-						var/t = rand(1,traitors.len)
-						remove_settler(t,"was slain like the traitorous scum they were!")
-						traitors -= traitors[t]
+						var/t = rand(1,contractors.len)
+						remove_settler(t,"was slain like the contractorous scum they were!")
+						contractors -= contractors[t]
 					else
-						var/n = rand(1,nontraitors.len)
+						var/n = rand(1,noncontractors.len)
 						remove_settler(n,"was slain in defense of the ship!")
-						nontraitors -= nontraitors[n]
-				settlers = nontraitors
-				num_traitors = 0
+						noncontractors -= noncontractors[n]
+				settlers = noncontractors
+				num_contractors = 0
 		if(ORION_TRAIL_DISASTER)
 			event_desc = "The [event] proved too difficult for you and your crew!"
 			change_resource(4,-1)
@@ -442,7 +446,11 @@
 			else
 				src.visible_message("Something slams into the floor around \the [src] - luckily, it didn't get through!", "You hear something crack.")
 		if(ORION_TRAIL_GAMEOVER)
+<<<<<<< HEAD
 			to_chat(usr, SPAN_DANGER("<font size=3>You're never going to make it to Orion...</font>"))
+=======
+			to_chat(usr, SPAN_DANGER("<font size=3>You're never going to make it to Chromin 8...</font>"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/mob/living/M = usr
 			M.visible_message("\The [M] starts rapidly deteriorating.")
 			M << browse (null,"window=arcade")
@@ -461,11 +469,16 @@
 		src.updateUsrDialog()
 
 /obj/machinery/computer/arcade/orion_trail/proc/win()
-	src.visible_message("\The [src] plays a triumpant tune, stating 'CONGRATULATIONS, YOU HAVE MADE IT TO ORION.'")
+	src.visible_message("\The [src] plays a triumphant tune, stating 'CONGRATULATIONS, YOU HAVE MADE IT TO CHROMIN 8.'")
 	if(emagged)
 		new /obj/item/orion_ship(src.loc)
+<<<<<<< HEAD
 		message_admins("[key_name_admin(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
 		log_game("[key_name(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
+=======
+		message_admins("[key_name_admin(usr)] made it to Chromin 8 on an emagged machine and got an explosive toy ship.")
+		log_game("[key_name(usr)] made it to Chromin 8 on an emagged machine and got an explosive toy ship.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		prizevend()
 	event = null
@@ -473,12 +486,15 @@
 
 /obj/item/orion_ship
 	name = "model settler ship"
-	desc = "A model spaceship, it looks like those used back in the day when travelling to Orion! It even has a miniature FX-293 reactor, which was renowned for its instability and tendency to explode..."
+	desc = "A model spaceship, it looks like those used back in the day when travelling to Chromin 8! It even has a miniature FX-293 reactor, which was renowned for its instability and tendency to explode..."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "ship"
 	w_class = ITEM_SIZE_SMALL
 	var/active = 0 //if the ship is on
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/orion_ship/examine(mob/user)
 	..()
 	if(!(in_range(user, src)))
@@ -491,18 +507,23 @@
 /obj/item/orion_ship/attack_self(mob/user)
 	if(active)
 		return
+<<<<<<< HEAD
 	message_admins("[key_name_admin(usr)] primed an explosive Orion ship for detonation.")
 	log_game("[key_name(usr)] primed an explosive Orion ship for detonation.")
+=======
+	message_admins("[key_name_admin(usr)] primed an explosive Chromin 8 ship for detonation.")
+	log_game("[key_name(usr)] primed an explosive Chromin 8 ship for detonation.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(user, SPAN_WARNING("You flip the switch on the underside of [src]."))
 	active = 1
 	src.visible_message(SPAN_NOTICE("[src] softly beeps and whirs to life!"))
-	src.audible_message("<b>\The [src]</b> says, 'This is ship ID #[rand(1,1000)] to Orion Port Authority. We're coming in for landing, over.'")
-	sleep(20)
-	src.visible_message(SPAN_WARNING("[src] begins to vibrate..."))
+	src.audible_message("<b>\The [src]</b> says, 'This is ship ID #[rand(1,1000)] to Chromin 8 Port Authority. We're coming in for landing, over.'")
+	sleep(40)
+	src.visible_message(SPAN_WARNING("[src] begins to vibrate dangerously! You better throw it!"))
 	src.audible_message("<b>\The [src]</b> says, 'Uh, Port? Having some issues with our reactor, could you check it out? Over.'")
-	sleep(30)
+	sleep(60)
 	src.audible_message("<b>\The [src]</b> says, 'Oh, God! Code Eight! CODE EIGHT! IT'S GONNA BL-'")
-	sleep(3.6)
+	sleep(20)
 	src.visible_message(SPAN_DANGER("[src] explodes!"))
 	explosion(src.loc, 1,2,4)
 	qdel(src)

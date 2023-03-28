@@ -32,23 +32,24 @@
 
 	if(user.a_intent != I_HELP)
 		if(user.targeted_organ in list(BP_HEAD, BP_EYES))
-			if((CLUMSY in user.mutations) && prob(50))
+			if((CLUMSY in user.mutations) && prob(15))
 				M = user
 			return eyestab(M,user)
 		else
 			return ..()
 
 	if (reagents.total_volume > 0)
-		reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		if(M == user)
 			if(!M.can_eat(loaded))
 				return
 			M.visible_message(SPAN_NOTICE("\The [user] eats some [loaded] from \the [src]."))
+			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		else
 			user.visible_message(SPAN_WARNING("\The [user] begins to feed \the [M]!"))
 			if(!(M.can_force_feed(user, loaded) && do_mob(user, M, 5 SECONDS)))
 				return
 			M.visible_message(SPAN_NOTICE("\The [user] feeds some [loaded] to \the [M] with \the [src]."))
+			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		playsound(M.loc,'sound/items/eatfood.ogg', rand(10,40), 1)
 		cut_overlays()
 		return
@@ -96,10 +97,15 @@
 	thrown_force_divisor = 1 // as above
 
 /obj/item/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
+<<<<<<< HEAD
 	if ((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, SPAN_WARNING("\The [src] slips out of your hand and hits your head."))
+=======
+	if ((CLUMSY in user.mutations) && prob(15))
+		to_chat(user, SPAN_WARNING("\The [src] accidentally slips out of your hand."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		user.drop_from_inventory(src)
-		user.take_organ_damage(10)
-		user.Paralyse(2)
+		user.take_organ_damage(2)
+		user.Weaken(1)
 		return
 	return ..()

@@ -36,12 +36,20 @@
 	if(B.host_brain.ckey)
 		text = input("What would you like to say?", "Speak to captive host", null, null)
 		text = capitalize(sanitize(text))
+<<<<<<< HEAD
 		if(!text) 
 			return
 		log_say("Borer said to its host [text]")
 
 		to_chat(src, "You say to your host: [text]")
 		to_chat(B.host_brain, "YOU say to yourself: [text]")
+=======
+		if(!text)
+			return
+
+		to_chat(src, "You say to your host: [text]")
+		to_chat(B.host_brain, "You say to yourself: [text]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/proc/spawn_larvae()
 	set category = "Abilities"

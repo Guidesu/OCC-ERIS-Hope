@@ -1,6 +1,7 @@
 /obj/item/storage/box/bloodpacks
 	name = "blood packs bags"
 	desc = "This box contains blood packs."
+<<<<<<< HEAD
 	icon_state = "sterile"
 	rarity_value = 10
 	initial_amount = 7
@@ -9,6 +10,19 @@
 /obj/item/storage/box/bloodpacks/populate_contents()
 	for(var/i in 1 to initial_amount)
 		new spawn_type(src)
+=======
+	icon_state = "box"
+	illustration = "sterile"
+
+/obj/item/storage/box/bloodpacks/populate_contents()
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+	new /obj/item/reagent_containers/blood(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/blood
 	name = "blood pack"
@@ -16,10 +30,17 @@
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 200
+	amount_per_transfer_from_this = REM // To avoid overdosing and emptying blood packs a bit too much. It's enough to keep someone alive over time. - Seb
+	possible_transfer_amounts = list(REM,0.5,1,2) // In case the blood packs are to be filled with other chems somehow, or to change from slow drip to faster.
 	reagent_flags = OPENCONTAINER
+<<<<<<< HEAD
 	filling_states = "-10;10;25;50;75;80;100"
 	bad_type = /obj/item/reagent_containers/blood
 	var/blood_type
+=======
+	filling_states = "25;50;75;100"
+	var/blood_type = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/blood/Initialize()
 	. = ..()
@@ -32,7 +53,11 @@
 	update_name()
 
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/blood/on_update_icon()
+=======
+/obj/item/reagent_containers/blood/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if(!reagents || !reagents.total_volume)
@@ -70,5 +95,8 @@
 	bloodtypeandpackname("O-")
 
 /obj/item/reagent_containers/blood/empty
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 20
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -9,11 +9,10 @@
 	var/sharp = FALSE		// whether this object cuts
 	var/edge = FALSE		// whether this object is more likely to dismember
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	var/damtype = "brute"
+	var/damtype = BRUTE
 	var/armor_penetration = 0
 	var/corporation
 	var/heat = 0
-
 
 /obj/proc/is_hot()
 	return heat
@@ -23,6 +22,7 @@
 
 /obj/examine(mob/user, distance=-1, infix, suffix)
 	..(user, distance, infix, suffix)
+<<<<<<< HEAD
 	if(get_dist(user, src) <= 2)
 		if (corporation)
 			if (corporation in global.GLOB.global_corporations)
@@ -32,6 +32,8 @@
 				[C.name]. [C.about]</font>")
 			else
 				to_chat(user, "You think this [src.name] create a [corporation].")
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return distance == -1 || (get_dist(src, user) <= distance)
 
 
@@ -39,7 +41,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/Topic(href, href_list, var/datum/topic_state/state = GLOB.default_state)
+/obj/Topic(href, href_list, var/datum/nano_topic_state/state = GLOB.default_state)
 	if(..())
 		return 1
 
@@ -52,10 +54,17 @@
 	CouldNotUseTopic(usr)
 	return 1
 
+<<<<<<< HEAD
 /obj/proc/OnTopic(mob/user, href_list, datum/topic_state/state)
 	return TOPIC_NOACTION
 
 /obj/CanUseTopic(mob/user, datum/topic_state/state)
+=======
+/obj/proc/OnTopic(mob/user, href_list, datum/nano_topic_state/state)
+	return TOPIC_NOACTION
+
+/obj/CanUseTopic(mob/user, datum/nano_topic_state/state)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(user.CanUseObjTopic(src))
 		return ..()
 	return STATUS_CLOSE
@@ -148,9 +157,10 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	..()
 
+<<<<<<< HEAD
 /obj/proc/interact(mob/user)
 	return
 
@@ -158,11 +168,17 @@
 	src.machine = null
 
 /mob/proc/set_machine(obj/O)
+=======
+/mob/proc/unset_machine()
+	src.machine = null
+
+/mob/proc/set_machine(var/O)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(src.machine)
 		unset_machine()
 	src.machine = O
-	if(istype(O))
-		O.in_use = 1
+	if(istype(O, /obj) || istype(O, /mob))
+		O:in_use = 1 // At this point, O is either a mob or an object, both of which have the in_use var, so it should be safe to do this. -R4d6
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc
@@ -210,8 +226,26 @@
 	)
 	return TRUE
 
+<<<<<<< HEAD
 /obj/proc/insert_item(obj/item/I, mob/living/user)
 	if(!I || !user.unEquip(I))
+=======
+/obj/proc/replace_item(obj/item/I_old, obj/item/I_new, mob/living/user)
+	if(!I_old || !I_new || !istype(user) || user.stat || !user.Adjacent(I_new) || !user.Adjacent(I_old) || !user.unEquip(I_new))
+		return FALSE
+	I_new.forceMove(src)
+	user.put_in_hands(I_old)
+	playsound(src.loc, 'sound/weapons/guns/interact/pistol_magout.ogg', 75, 1)
+	spawn(2)
+		playsound(src.loc, 'sound/weapons/guns/interact/pistol_magin.ogg', 75, 1)
+	user.visible_message(
+		"[user] replaces [I_old] with [I_new] in [src].",
+		SPAN_NOTICE("You replace [I_old] with [I_new] in [src]."))
+	return TRUE
+
+/obj/proc/insert_item(var/obj/item/I, var/mob/living/M)
+	if(!I || !M.unEquip(I))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	I.forceMove(src)
 	playsound(src.loc, 'sound/weapons/guns/interact/pistol_magout.ogg', 75, 1)
@@ -226,7 +260,12 @@
 
 //Drops the materials in matter list on into target location
 //Use for deconstrction
+<<<<<<< HEAD
 /obj/proc/drop_materials(target_loc)
+=======
+// Dropper is whoever is handling these materials if any , causes them to leave fingerprints on the sheets.
+/obj/proc/drop_materials(target_loc, mob/living/dropper)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/materials = get_matter()
 
 	for(var/mat_name in materials)
@@ -234,7 +273,11 @@
 		if(!material)
 			continue
 
+<<<<<<< HEAD
 		material.place_material(target_loc, materials[mat_name])
+=======
+		material.place_material(target_loc, materials[mat_name], dropper)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //To be called from things that spill objects on the floor.
 //Makes an object move around randomly for a couple of tiles
@@ -261,3 +304,10 @@
 /obj/proc/multiply_projectile_step_delay(newmult)
 
 /obj/proc/multiply_projectile_agony(newmult)
+<<<<<<< HEAD
+=======
+
+/obj/proc/multiply_pve_damage(newmult)
+
+/obj/proc/add_fire_stacks(newmult)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

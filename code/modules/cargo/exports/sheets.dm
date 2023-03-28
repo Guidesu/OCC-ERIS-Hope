@@ -131,13 +131,21 @@
 	export_types = list(/obj/item/stack/material/diamond)
 	message = "of diamonds"
 
+<<<<<<< HEAD
 // Phoron. The oil of 26 century.
 /datum/export/stack/phoron
 	cost = 25
 	export_types = list(/obj/item/stack/material/phoron)
 	message = "of phoron"
+=======
+// Plasma. The oil of 26 century.
+/datum/export/stack/plasma
+	cost = 25
+	export_types = list(/obj/item/stack/material/plasma)
+	message = "of plasma"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/datum/export/stack/phoron/get_cost(obj/O, contr = 0, emag = 0)
+/datum/export/stack/plasma/get_cost(obj/O, contr = 0, emag = 0)
 	. = ..(O)
 	if(emag) // Syndicate pays you more for the phoron.
 		. = round(. * 1.5)
@@ -145,7 +153,7 @@
 // Uranium. Still useful for both power generation and nuclear annihilation.
 /datum/export/stack/uranium
 	cost = 20
-	export_types = list(/obj/item/stack/material/diamond)
+	export_types = list(/obj/item/stack/material/uranium)
 	message = "of uranium"
 
 // Gold. Used in electronics and corrosion-resistant plating.
@@ -176,3 +184,8 @@
 	cost = 80
 	message = "of nanopaste"
 	export_types = list(/obj/item/stack/nanopaste)
+
+/datum/export/stack/wax
+	cost = 95
+	message = "of wax"
+	export_types = list(/obj/item/stack/wax)

@@ -6,7 +6,11 @@
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/recharger
+=======
+	circuit = /obj/item/circuitboard/recharger
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/max_power_usage = 40000	//40 kW. This is the highest power the charger can draw and use,
 	//though it may draw less when charging weak cells due to their charging rate limits
 	active_power_usage = 40000//The actual power the charger uses right now. This is recalculated based on the cell when it's inserted
@@ -15,9 +19,16 @@
 	var/list/allowed_devices = list(
 		/obj/item/cell,
 		/obj/item/tool, /obj/item/device/scanner,
+<<<<<<< HEAD
 		/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer,
 	)
 	var/portable = TRUE
+=======
+		/obj/item/gun/energy, /obj/item/tool/baton, /obj/item/modular_computer,
+	)
+	var/portable = TRUE
+	blue_ink_tk_blocker = TRUE //Removes bugs with teleportion and shadow items
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/recharger/examine(user)
 	..()
@@ -69,16 +80,30 @@
 		if (istype(I, /obj/item/gun/energy))
 			var/obj/item/gun/energy/W = I
 			if (W.disposable)
+<<<<<<< HEAD
 				to_chat(user, SPAN_NOTICE("Your gun is disposable, it cannot be charged."))
 				return
+=======
+				to_chat(user, SPAN_NOTICE("Your gun is disposable it cannot be charged."))
+				return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(istype(I, /obj/item/gun/energy/gun/nuclear) || istype(I, /obj/item/gun/energy/crossbow))
 			to_chat(user, SPAN_NOTICE("Your gun's recharge port was removed to make room for a miniaturized reactor."))
 			return
 		var/obj/item/cell/cell = I.get_cell()
 
+<<<<<<< HEAD
 		if(!cell && istype(I, /obj/item/tool))
 			var/obj/item/tool/T = I
 
+=======
+		var/obj/item/cell/cell = I.get_cell()
+
+		if(!cell && istype(I, /obj/item/tool))
+			var/obj/item/tool/T = I
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!T.suitable_cell)
 				return
 
@@ -96,9 +121,12 @@
 		charging = I
 		update_icon()
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/recharger/attack_hand(mob/user)
 	if(issilicon(user))
 		return
@@ -142,7 +170,11 @@
 		charging = null
 		update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/recharger/on_update_icon()
+=======
+/obj/machinery/recharger/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = initial(icon_state)
 
 	if(panel_open)
@@ -168,14 +200,31 @@
 		rating += C.rating - 1
 
 	max_power_usage = initial(max_power_usage) * rating
+<<<<<<< HEAD
 	efficiency = min(initial(efficiency) + (0.05 * (rating - 1)), 0.99)
 
 
+=======
+	efficiency = min(initial(efficiency) + (0.5 * (rating - 1)), 0.99)
+
+/obj/machinery/recharger/industrial
+	name = "industrial recharger"
+	desc = "A charging dock for power cells, power tools, computer devices and energy based weaponry. This is the bigger industrial version that likely will blackout your APC."
+	max_power_usage = 120000	//120 kW. This is the highest power the charger can draw and use,
+	//though it may draw less when charging weak cells due to their charging rate limits
+	active_power_usage = 120000//The actual power the charger uses right now. This is recalculated based on the cell when it's inserted
+	circuit = /obj/item/circuitboard/recharger/industrial
+	efficiency = 0.50
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
 	desc = "A wall-mounted weapon charging dock."
 	icon_state = "wrecharger"
+<<<<<<< HEAD
 	allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton)
+=======
+	allowed_devices = list(/obj/item/gun/energy, /obj/item/tool/baton)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	portable = FALSE
 	circuit = null

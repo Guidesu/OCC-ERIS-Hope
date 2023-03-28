@@ -8,21 +8,34 @@
 /area/crawler)
 "c" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
+=======
+/obj/random/material_rare,
+/obj/random/material_resources,
+/obj/random/material,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/crawler)
 "d" = (
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/crawler)
+<<<<<<< HEAD
 "e" = (
 /obj/machinery/light/built{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "f" = (
 /turf/simulated/floor/tiled/dark/cargo,
 /area/crawler)
 "g" = (
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
 "h" = (
@@ -43,6 +56,12 @@
 /area/crawler)
 "m" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
+=======
+/obj/random/material_resources,
+/obj/random/material_resources,
+/obj/random/material_resources,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/danger,
 /area/crawler)
 "n" = (
@@ -55,6 +74,10 @@
 /area/crawler)
 "p" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/crawler)
 "q" = (
@@ -62,12 +85,22 @@
 /area/crawler)
 "r" = (
 /obj/structure/table/reinforced,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/crawler)
 "s" = (
 /obj/item/modular_computer/console{
 	dir = 1
 	},
+=======
+/obj/random/material,
+/obj/random/material,
+/obj/random/material,
+/turf/simulated/floor/tiled/dark/gray_platform,
+/area/crawler)
+"s" = (
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/crawler)
 "t" = (
@@ -79,11 +112,19 @@
 /area/crawler)
 "v" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
+=======
+/obj/random/booze,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)
 "w" = (
 /obj/item/bedsheet/brown,
 /obj/structure/bed,
+<<<<<<< HEAD
+=======
+/obj/random/credits,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)
 "x" = (
@@ -101,6 +142,7 @@
 /obj/effect/window_lwall_spawn/smartspawn/onestar,
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
+<<<<<<< HEAD
 "B" = (
 /obj/machinery/light/built{
 	dir = 1
@@ -115,6 +157,8 @@
 /obj/machinery/light/built,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "E" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/dark/cargo,
@@ -129,8 +173,31 @@
 /area/crawler)
 "H" = (
 /obj/structure/closet/onestar/tier3,
+<<<<<<< HEAD
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)
+=======
+/obj/random/booze/low_chance,
+/obj/random/booze/low_chance,
+/obj/random/booze/low_chance,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crawler)
+"U" = (
+/obj/random/lathe_disk/advanced/onestar,
+/turf/simulated/floor/tiled/dark/danger,
+/area/crawler)
+"V" = (
+/obj/structure/table/rack,
+/obj/random/material_rare,
+/obj/random/material_rare,
+/obj/random/material_rare,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/crawler)
+"Y" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -156,13 +223,22 @@ a
 "}
 (3,1,1) = {"
 a
+<<<<<<< HEAD
 e
 i
+=======
+d
+U
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 q
 k
 u
+<<<<<<< HEAD
 C
+=======
+u
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
@@ -178,7 +254,11 @@ a
 "}
 (5,1,1) = {"
 a
+<<<<<<< HEAD
 d
+=======
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 x
 j
 r
@@ -203,7 +283,11 @@ b
 F
 j
 j
+<<<<<<< HEAD
 c
+=======
+V
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 A
 f
 f
@@ -244,13 +328,21 @@ a
 "}
 (11,1,1) = {"
 a
+<<<<<<< HEAD
 B
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 f
 f
 E
 f
 f
+<<<<<<< HEAD
 D
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"

@@ -15,9 +15,16 @@
 	unacidable = TRUE //plastic
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	matter = list(MATERIAL_PLASTIC = 2)
+<<<<<<< HEAD
 	volume = 250
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
+=======
+	var/spray_size = 3
+	var/list/spray_sizes = list(1,3)
+	volume = 250
+	filling_states = "10;20;50;75;80;100"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/spray/Initialize()
 	. = ..()
@@ -94,6 +101,14 @@
 		to_chat(usr, SPAN_NOTICE("You empty \the [src] onto the floor."))
 		reagents.splash(usr.loc, reagents.total_volume)
 
+/obj/item/reagent_containers/spray/update_icon()
+	cut_overlays()
+
+	if(reagents.total_volume)
+		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[icon_state]-[get_filling_state()]")
+		filling.color = reagents.get_color()
+		add_overlay(filling)
+
 //space cleaner
 /obj/item/reagent_containers/spray/cleaner
 	name = "space cleaner"
@@ -109,17 +124,41 @@
 	desc = "Great for hiding incriminating bloodstains and sterilizing scalpels."
 	preloaded_reagents = list("sterilizine" = 250)
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/spray/acid
+	name = "Polyacid spray"
+	desc = "A spray bottle that has polyacid inside it, good for clearing dead bodies of roaches or spiders..."
+	preloaded_reagents = list("pacid" = 250)
+
+/obj/item/reagent_containers/spray/lube
+	name = "Lube Spray"
+	desc = "Used for pranks or removing blockages."
+	preloaded_reagents = list("lube" = 250)
+
+/obj/item/reagent_containers/spray/krag_b_gone
+	name = "window krag-b-gone"
+	desc = "A robust liquid for repairing and reinforcing windows."
+	preloaded_reagents = list("silicate" = 250)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/spray/pepper
 	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	desc = "Manufactured by Seinemetall Defense GmbH, used to blind and down an opponent quickly."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
+<<<<<<< HEAD
 	price_tag = 300
 	volume = 40
 	var/safety = 1
 	preloaded_reagents = list("condensedcapsaicin" = 40)
+=======
+	volume = 50
+	var/safety = 1
+	preloaded_reagents = list("condensedcapsaicin" = 50)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/spray/pepper/examine(mob/user)
 	if(..(user, 1))
@@ -157,6 +196,7 @@
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
+	var/range = 7
 
 /obj/item/reagent_containers/spray/chemsprayer/Spray_at(atom/A as mob|obj)
 	var/direction = get_dir(src, A)
@@ -175,9 +215,22 @@
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
 			D.set_color()
-			D.set_up(my_target, rand(6, 8), 2)
+			D.set_up(my_target, range, 2)
 	return
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/spray/chemsprayer/industrial
+	name = "industrial chemical sprayer"
+	desc = "A utility used to spray large amounts of reagent in a given area. This is a heavy-duty industrial version, adapted to spraying chemicals such as cleaning compounds and fertilizers."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "chemsprayerI"
+	item_state = "chemsprayerI"
+	matter = list(MATERIAL_STEEL = 15, MATERIAL_GLASS = 4, MATERIAL_PLASTIC = 8)
+	volume = 150
+	range = 5
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/spray/plantbgone
 	name = "Plant-B-Gone"
 	desc = "Kills those pesky weeds!"
@@ -194,3 +247,14 @@
 		return
 
 	..()
+<<<<<<< HEAD
+=======
+
+/obj/item/reagent_containers/spray/vvd40
+	name = "VVD-40"
+	desc = "A relic of ancient times, rumoured to fix anything duct tape can't. While it can restore most things visual appearence, rarely will it fix broken or damaged parts."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "rejuvenating_agent_spray"
+	volume = 100
+	preloaded_reagents = list("rejuvenating_agent" = 50)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

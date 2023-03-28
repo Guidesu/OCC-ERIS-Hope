@@ -47,7 +47,7 @@
 
 /obj/machinery/power/proc/surplus()
 	if(powernet)
-		return powernet.avail-powernet.load
+		return ((powernet.avail) - (powernet.load))
 	else
 		return 0
 
@@ -289,8 +289,13 @@
 //No animations will be performed by this proc.
 /proc/electrocute_mob(mob/living/carbon/M, power_source, obj/source, siemens_coeff = 1.0, hands = TRUE)
 	if (!M || !istype(M) || siemens_coeff == 0)
+<<<<<<< HEAD
 		return	FALSE
 	if(istype(M.loc, /mob/living/exosuit))	return FALSE	//feckin mechs are dumb
+=======
+		return
+	if(istype(M.loc,/obj/mecha))	return 0	//feckin mechs are dumb
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/area/source_area
 	if(istype(power_source,/area))
 		source_area = power_source
@@ -323,7 +328,11 @@
 
 	var/body_part = null
 	if(hands)
+<<<<<<< HEAD
 		body_part = M.hand ? BP_L_HAND : BP_R_HAND
+=======
+		body_part = M.hand ? BP_L_ARM : BP_R_ARM
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		body_part = pick(BP_L_LEG, BP_R_LEG)
 
@@ -355,5 +364,9 @@
 		var/drained_power = drained_energy/CELLRATE
 		drained_power = PN.draw_power(drained_power)
 	else if (istype(power_source, /obj/item/cell))
+<<<<<<< HEAD
 		drained_energy = cell.use(drained_energy)
+=======
+		cell.use(drained_energy)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return drained_energy

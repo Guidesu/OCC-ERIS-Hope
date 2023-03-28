@@ -192,23 +192,17 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
+<<<<<<< HEAD
 
 		to_chat(H, SPAN_WARNING("Your nose begins to bleed..."))
 		H.drip_blood(1)
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-/mob/living/carbon/human/proc/regurgitate()
-	set name = "Regurgitate"
-	set desc = "Empties the contents of your stomach"
-	set category = "Abilities"
+		to_chat(H, SPAN_WARNING("Your nose begins to bleed..."))
+		H.drip_blood(1)
 
-	if(stomach_contents.len)
-		for(var/mob/M in src)
-			if(M in stomach_contents)
-				stomach_contents.Remove(M)
-				M.loc = loc
-		src.visible_message("\red <B>[src] hurls out the contents of their stomach!</B>")
-	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
 	set name = "Psychic Whisper"

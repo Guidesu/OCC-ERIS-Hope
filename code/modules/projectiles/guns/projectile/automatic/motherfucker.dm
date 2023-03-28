@@ -1,10 +1,19 @@
 /obj/item/gun/projectile/automatic/motherfucker
+<<<<<<< HEAD
 	name = "HM Motherfucker .35 \"Punch Hole\""
 	desc = "A 6 barrel, pump action carbine, shakes like the devil. but will turn anything in a 90º from you in swiss cheese."
 	icon = 'icons/obj/guns/projectile/motherfucker.dmi'
 	icon_state = "motherfucker"//evan, temp icon
 	item_state = "motherfucker"
 	w_class = ITEM_SIZE_HUGE
+=======
+	name = "\"Punch Hole\" motherfucker"
+	desc = "A six barrel, pump action carbine, shakes like the devil but will turn anything you aim at into swiss cheese."
+	icon = 'icons/obj/guns/projectile/motherfucker.dmi'
+	icon_state = "motherfucker"
+	item_state = "motherfucker"
+	w_class = ITEM_SIZE_BULKY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	force = WEAPON_FORCE_ROBUST
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -15,18 +24,47 @@
 	penetration_multiplier = 1.3 // and good AP
 	proj_step_multiplier = 0.8 // faster than non-shotgun bullets, slower than non-shotgun bullets with an accelerator
 	matter = list(MATERIAL_STEEL = 20, MATERIAL_WOOD = 15)
+<<<<<<< HEAD
 	price_tag = 300
 	recoil_buildup = 30
 	one_hand_penalty = 60 //double the LMG.
+=======
+	gun_tags = list(GUN_PROJECTILE, GUN_CALIBRE_9MM)
+	price_tag = 300
+	init_recoil = LMG_RECOIL(2)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	burst_delay = 0
 	burst = 6
 	init_offset = 7 //awful accuracy
 	init_firemodes = list(
+<<<<<<< HEAD
 		list(mode_name="6-round bursts", burst=6, fire_delay=null, move_delay=7, icon="burst"),
 		)
 	spawn_blacklisted = TRUE
 	var/recentpumpmsg = 0
 	var/pumped = FALSE
+=======
+		list(mode_name="6-round bursts", mode_desc="Shoot every barrel at once", burst=6, fire_delay=null, move_delay=7, icon="burst"),
+		)
+	var/recentpumpmsg = 0
+	var/pumped = FALSE
+	serial_type = "INDEX"
+	serial_shown = FALSE
+
+	wield_delay = 1 SECOND
+	wield_delay_factor = 0.4 // 40 vig to insta wield
+	gun_parts = list(/obj/item/part/gun/frame/motherfucker = 1, /obj/item/part/gun/grip/wood = 1, /obj/item/part/gun/mechanism/shotgun = 1, /obj/item/part/gun/barrel/pistol = 1)
+
+/obj/item/part/gun/frame/motherfucker
+	name = "Motherfucker frame"
+	desc = "The Motherfucker. You just know someone is about to have a bad day."
+	icon_state = "frame_motherfucker"
+	matter = list(MATERIAL_STEEL = 20, MATERIAL_PLASTEEL = 10, MATERIAL_WOOD = 10, MATERIAL_PLASTIC = 10)
+	resultvars = list(/obj/item/gun/projectile/automatic/motherfucker)
+	gripvars = list(/obj/item/part/gun/grip/wood)
+	mechanismvar = /obj/item/part/gun/mechanism/shotgun // its effectively a shotgun // 5 plasteel into the mechanism
+	barrelvars = list(/obj/item/part/gun/barrel/pistol/steel) // Handmade gun, 2 steel barrel on a 20 steel crafting recipe
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/projectile/automatic/motherfucker/attack_self(mob/living/user)
 	if(world.time >= recentpumpmsg + 10)

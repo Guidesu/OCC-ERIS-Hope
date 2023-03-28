@@ -47,8 +47,13 @@ var/global/list/plant_seed_sprites = list()
 		seed_overlay.color = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 		plant_seed_sprites[seed_overlay_key] = seed_overlay
 
+<<<<<<< HEAD
 	associate_with_overlays(seed_mask)
 	associate_with_overlays(seed_overlay)
+=======
+	add_overlay(seed_mask)
+	add_overlay(seed_overlay)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(is_seeds)
 		src.name = "packet of [seed.seed_name] [seed.seed_noun]"
@@ -56,6 +61,7 @@ var/global/list/plant_seed_sprites = list()
 	else
 		src.name = "sample of [seed.seed_name] [seed.seed_noun]"
 		src.desc = "It's labelled as coming from [seed.display_name]."
+	if (seed.origin_tech) origin_tech = seed.origin_tech.Copy()
 
 /obj/item/seeds/examine(mob/user)
 	..(user)
@@ -103,6 +109,9 @@ var/global/list/plant_seed_sprites = list()
 /obj/item/seeds/mtearseed
 	seed_type = "mtear"
 
+/obj/item/seeds/brootseed
+	seed_type = "broot"
+
 /obj/item/seeds/berryseed
 	seed_type = "berries"
 
@@ -111,6 +120,9 @@ var/global/list/plant_seed_sprites = list()
 
 /obj/item/seeds/bananaseed
 	seed_type = "banana"
+
+/obj/item/seeds/clownanaseed
+	seed_type = "clownana"
 
 /obj/item/seeds/eggplantseed
 	seed_type = "eggplant"
@@ -129,6 +141,11 @@ var/global/list/plant_seed_sprites = list()
 
 /obj/item/seeds/bluespacetomatoseed
 	seed_type = "bluespacetomato"
+	price_tag = 180
+
+/obj/item/seeds/bluespacetomatoseed/New()
+	..()
+	item_flags |= BLUESPACE
 
 /obj/item/seeds/cornseed
 	seed_type = "corn"
@@ -217,6 +234,9 @@ var/global/list/plant_seed_sprites = list()
 /obj/item/seeds/ambrosiadeusseed
 	seed_type = "ambrosiadeus"
 
+/obj/item/seeds/ambrosiarobusto
+	seed_type = "ambrosiarobusto"
+
 /obj/item/seeds/whitebeetseed
 	seed_type = "whitebeet"
 
@@ -253,9 +273,6 @@ var/global/list/plant_seed_sprites = list()
 /obj/item/seeds/cherryseed
 	seed_type = "cherry"
 
-/obj/item/seeds/tobaccoseed
-	seed_type = "tobacco"
-
 /obj/item/seeds/kudzuseed
 	seed_type = "kudzu"
 
@@ -279,3 +296,18 @@ var/global/list/plant_seed_sprites = list()
 
 /obj/item/seeds/thaadra
 	seed_type = "thaadra"
+
+/obj/item/seeds/blueberryseed
+	seed_type = "blueberries"
+
+/obj/item/seeds/strawberryseed
+	seed_type = "strawberries"
+
+/obj/item/seeds/pineappleseed
+	seed_type = "pineapple"
+
+/obj/item/seeds/cinnamonseed
+	seed_type = "cinnamon"
+
+/obj/item/seeds/mintseed
+	seed_type = "mint"

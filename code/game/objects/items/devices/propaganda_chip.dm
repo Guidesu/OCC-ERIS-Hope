@@ -2,7 +2,11 @@
 	name = "propaganda chip"
 	icon_state = "implant_evil" //placeholder
 	desc = "A delicate chip with an integrated speaker, you shouldn't disturb it"
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNETS = 3)
+=======
+	origin_tech = list(TECH_DATA  = 3)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_PLASTIC = 10, MATERIAL_STEEL = 5) //Needs to be a bit expensive so people cant spam messages
 	var/active = FALSE
 	var/last_talk_time = 0
@@ -71,14 +75,19 @@ obj/item/device/propaganda_chip/Destroy()
 		if (crew_target_mind)
 			break
 	var/datum/mind/crew_name
+<<<<<<< HEAD
 
 	if (!crew_target_mind || !(crew_target_mind?.current))
 
+=======
+	if (!crew_target_mind)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		crew_name = "Unknown"
 	else
 		crew_name = crew_target_mind.current.real_name
 
 	var/list/messages = list( // Idealy should be extremely long with lots of lines
+<<<<<<< HEAD
 		"Aegis just searched me and took all my stuff.",
 		"Bet this Command staff would beat your ass dead for breaking a window.",
 		"With my paycheck I can't even afford 3 bread tubes...",
@@ -95,6 +104,23 @@ obj/item/device/propaganda_chip/Destroy()
 		"They aren't going to stop fucking us over until someone stands up to them.",
 		"I tried to argue that we should get paid more and command called over some Aegis brute with a rifle. Classy.",
 		"I'm dirty and sick and tired and hungry. We need to do something before the guys in charge kill us."
+=======
+		"Marshal searches just to take shit",
+		"Blackshield just kills one a other with friendly fire",
+		"With a paycheck no one can even afford 3 bread tubes...",
+		"You know what to do... unionize",
+		"Marshal always use excessive force and brake bones",
+		"An acter could beat blackshield in a shooting competition",
+		"Command cares more about roaches and spiders than you",
+		"Ian has more liberty than any of us",
+		"Command gets more money than anyone and all they do is sit around or yell at people",
+		"People can barely live paycheck to paycheck",
+		"If marshals and blackshield are here to keep us safe, why do they kill themself and steal from us",
+		"Why can marshals steal, well being in maints finding stuff is illegal",
+		"Buget cuts always seem to make the workers life harder well the command never get affected by it",
+		"If we buy a disk for printing ammo, why do we need to buy more disk to print more ammo",
+		"We are tring to survive, the excelsior gear is better why not use it",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	var/message_text = pick(messages)
 	var/message = " <b>[crew_name]</b> says,<FONT SIZE =-2>  \"[message_text]\"</FONT>"
@@ -102,5 +128,8 @@ obj/item/device/propaganda_chip/Destroy()
 	for (var/mob/living/M in viewers(src))
 		to_chat(M, "[message]")
 	last_talk_time = world.time
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

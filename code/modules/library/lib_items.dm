@@ -13,20 +13,51 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
+	desc = "A wooden shelving unit used for storing all sorts of literature."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "book-0"
 	matter = list(MATERIAL_WOOD = 10)
 	anchored = TRUE
 	density = TRUE
 	opacity = TRUE
+<<<<<<< HEAD
+=======
+	var/list/allowed_book_items = list(
+	/obj/item/book,
+	/obj/item/oddity/common/blueprint,
+	/obj/item/oddity/common/book_eyes,
+	/obj/item/oddity/common/book_omega,
+	/obj/item/oddity/common/book_bible,
+	/obj/item/oddity/common/book_log,
+	/obj/item/oddity/common/book_unholy,
+	/obj/item/oddity/chem_book,
+	/obj/item/oddity/code_book,
+	/obj/item/oddity/ls/manual,
+	/obj/item/folder,
+	/obj/item/paper,
+	/obj/item/paper_bundle,
+	/obj/item/photo,
+	/obj/item/paper/alchemy_recipes,
+	/obj/item/scroll
+	)
+	var/hex_code_for_ui_backround = "#C4A484"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bookcase/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
+<<<<<<< HEAD
 		if(istype(I, /obj/item/book))
+=======
+		if(LAZYLEN(allowed_book_items))
+			if(!is_type_in_list(I,allowed_book_items))
+				return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			I.loc = src
+
 	update_icon()
 
+<<<<<<< HEAD
 /obj/structure/bookcase/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
 		user.drop_item()
@@ -34,10 +65,70 @@
 		update_icon()
 	else if(istype(O, /obj/item/pen))
 		var/newname = sanitizeSafe(input("What would you like to title this bookshelf?"), MAX_NAME_LEN)
+=======
+/obj/structure/bookcase/attack_hand(mob/living/carbon/user, list/modifiers)
+	. = ..()
+	ui_interact(user)
+
+/obj/structure/bookcase/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BookCase")
+		ui.open()
+
+/obj/structure/bookcase/ui_data(mob/user)
+	var/list/data = list()
+
+	data["bookcase_name"] = "[name]"
+	data["contents"] = list()
+	data["contents_ref"] = list()
+	data["hex_code_for_backround"] = hex_code_for_ui_backround
+	for(var/obj/item/content in src)
+		data["contents"] += "[content]"
+		data["contents_ref"] += "[REF(content)]"
+
+	return data
+
+/obj/structure/bookcase/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		// Take the object out
+		if("remove_object")
+			var/obj/item/content = locate(params["ref"]) in src
+			if(istype(content) && in_range(src, usr))
+				usr.put_in_hands(content)
+				updateUsrDialog()
+				update_icon()
+
+/obj/structure/bookcase/Topic(href, href_list)
+	if(href_list["retrieve"])
+		usr << browse("", "window=bookcase") // Close the menu
+
+		var/obj/item/P = locate(href_list["retrieve"]) in src //contents[retrieveindex]
+		if(istype(P) && in_range(src, usr))
+			usr.put_in_hands(P)
+			updateUsrDialog()
+			update_icon()
+
+
+
+/obj/structure/bookcase/attackby(obj/item/O, mob/user)
+	if(LAZYLEN(allowed_book_items))
+		if(is_type_in_list(O,allowed_book_items))
+			user.drop_item()
+			O.loc = src
+			update_icon()
+	if(istype(O, /obj/item/pen))
+		var/newname = sanitizeSafe(input("What would you like to title?"), MAX_NAME_LEN)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newname)
 			return
 		else
 			name = ("bookcase ([newname])")
+<<<<<<< HEAD
 	else if(istype(O,/obj/item/tool/wrench))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 		to_chat(user, (anchored ? SPAN_NOTICE("You unfasten \the [src] from the floor.") : SPAN_NOTICE("You secure \the [src] to the floor.")))
@@ -51,12 +142,37 @@
 			for(var/obj/item/book/b in contents)
 				b.loc = (get_turf(src))
 			qdel(src)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	else
-		..()
+	var/tool_type = O.get_tool_type(user, list(QUALITY_SCREW_DRIVING, QUALITY_BOLT_TURNING), src)
+	switch(tool_type)
+		if(QUALITY_SCREW_DRIVING)
+			to_chat(user, SPAN_NOTICE("You begin dismantling \the [src]."))
+			if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+				to_chat(user, SPAN_NOTICE("You dismantle \the [src]."))
+				drop_materials(drop_location())
+				for(var/obj/item/book/b in contents)
+					b.loc = (get_turf(src))
+				qdel(src)
+		if(QUALITY_BOLT_TURNING)
+			to_chat(user, SPAN_NOTICE("You begin unwrenching \the [src]."))
+			if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
+				to_chat(user, (anchored ? SPAN_NOTICE("You unfasten \the [src] from the floor.") : SPAN_NOTICE("You secure \the [src] to the floor.")))
+				anchored = !anchored
+	add_fingerprint(user)
 
-/obj/structure/bookcase/attack_hand(var/mob/user as mob)
+	..()
+
+/obj/structure/bookcase/attack_tk(mob/user)
+	if(anchored)
+		return attack_self_tk(user)
+	return ..()
+
+/obj/structure/bookcase/attack_self_tk(mob/user)
 	if(contents.len)
+<<<<<<< HEAD
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
 			if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
@@ -66,10 +182,22 @@
 					user.put_in_hands(choice)
 			else
 				choice.loc = get_turf(src)
+=======
+		if(prob(40 + contents.len * 5))
+			var/obj/item/I = pick(contents)
+			I.loc = loc
+			I.reset_plane_and_layer()
+			if(prob(25))
+				step_rand(I)
+			to_chat(user, SPAN_NOTICE("You pull \a [I] out of [src] at random."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			update_icon()
+			return
+	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
 
 /obj/structure/bookcase/ex_act(severity)
 	switch(severity)
+<<<<<<< HEAD
 		if(1.0)
 			for(var/obj/item/book/b in contents)
 				qdel(b)
@@ -77,13 +205,26 @@
 			return
 		if(2.0)
 			for(var/obj/item/book/b in contents)
+=======
+		if(1)
+			for(var/obj/item/b in contents)
+				qdel(b)
+			qdel(src)
+			return
+		if(2)
+			for(var/obj/item/b in contents)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if (prob(50)) b.loc = (get_turf(src))
 				else qdel(b)
 			qdel(src)
 			return
-		if(3.0)
+		if(3)
 			if (prob(50))
+<<<<<<< HEAD
 				for(var/obj/item/book/b in contents)
+=======
+				for(var/obj/item/b in contents)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					b.loc = (get_turf(src))
 				qdel(src)
 			return
@@ -96,22 +237,44 @@
 	else
 		icon_state = "book-5"
 
+/*Metal Bookcase - same functionality, just a reskin.*/
 
+/obj/structure/bookcase/metal
+	desc = "A metal shelving unit used for storing all sorts of literature."
+	icon_state = "metalshelf-0"
+	hex_code_for_ui_backround = "#897E75"
+
+/obj/structure/bookcase/metal/update_icon()
+	if(contents.len < 5)
+		icon_state = "metalshelf-[contents.len]"
+	else
+		icon_state = "metalshelf-5"
 
 /obj/structure/bookcase/manuals/medical
 	name = "Medical Manuals bookcase"
 
+<<<<<<< HEAD
 /obj/structure/bookcase/manuals/medical/New()
 	..()
 	new /obj/item/book/manual/wiki/medical_guide(src)
 	new /obj/item/book/manual/wiki/medical_guide(src)
 	new /obj/item/book/manual/wiki/medical_guide(src)
 	update_icon()
+=======
+	New()
+		..()
+		new /obj/item/book/manual/medical_cloning(src)
+		new /obj/item/book/manual/wiki/medical_guide(src)
+		new /obj/item/book/manual/wiki/medical_guide(src)
+		new /obj/item/book/manual/wiki/medical_guide(src)
+		update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/bookcase/manuals/engineering
 	name = "Engineering Manuals bookcase"
 
+<<<<<<< HEAD
 /obj/structure/bookcase/manuals/engineering/New()
 	..()
 	new /obj/item/book/manual/wiki/engineering_construction(src)
@@ -120,16 +283,62 @@
 	new /obj/item/book/manual/wiki/engineering_atmos(src)
 	new /obj/item/book/manual/wiki/engineering_singularity(src)
 	update_icon()
+=======
+	New()
+		..()
+		new /obj/item/book/manual/wiki/engineering_construction(src)
+		new /obj/item/book/manual/wiki/engineering_hacking(src)
+		new /obj/item/book/manual/wiki/engineering_atmos(src)
+		new /obj/item/book/manual/evaguide(src)
+		update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bookcase/manuals/research_and_development
 	name = "R&D Manuals bookcase"
 
+<<<<<<< HEAD
 /obj/structure/bookcase/manuals/research_and_development/New()
 	..()
 	new /obj/item/book/manual/wiki/science_research(src)
 	new /obj/item/book/manual/wiki/science_research(src)
 	new /obj/item/book/manual/wiki/science_robotics(src)
 	update_icon()
+=======
+	New()
+		..()
+		new /obj/item/book/manual/research_and_development(src)
+		update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
+
+/obj/structure/bookcase/guncase
+	name = "gunparts locker"
+	desc = "A metal locker unit that can store, gun parts, ammo and tools related to gunsmithing. As well as gun storage such as pouches or cases."
+	icon_state = "gunpart_locker"
+	hex_code_for_ui_backround = "#897E75"
+	allowed_book_items = list(
+	/obj/item/part/gun,
+	/obj/item/tool_upgrade,
+	/obj/item/gun_upgrade,
+	/obj/item/tool/screwdriver,
+	/obj/item/tool/wirecutters,
+	/obj/item/tool/crowbar,
+	/obj/item/tool/hammer,
+	/obj/item/tool/saw,
+	/obj/item/ammo_magazine,
+	/obj/item/ammo_casing,
+	/obj/item/reagent_containers/spray/vvd40,
+	/obj/item/reagent_containers/glass/beaker,
+	/obj/item/storage/backpack/guncase,
+	/obj/item/clothing/accessory/holster,
+	/obj/item/storage/pouch/baton_holster,
+	/obj/item/storage/pouch/ammo,
+	/obj/item/ammo_kit
+	)
+
+
+/obj/structure/bookcase/guncase/update_icon()
+	return
 
 
 /*
@@ -152,7 +361,11 @@
 	var/obj/item/store	//What's in the book?
 	var/window_size = null // Specific window size for the book, i.e: "1920x1080", Size x Width
 
+<<<<<<< HEAD
 /obj/item/book/attack_self(var/mob/user as mob)
+=======
+/obj/item/book/attack_self(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	playsound(src.loc, pick('sound/items/BOOK_Turn_Page_1.ogg',\
 		'sound/items/BOOK_Turn_Page_2.ogg',\
 		'sound/items/BOOK_Turn_Page_3.ogg',\
@@ -280,7 +493,7 @@
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
-	attack_self(mob/user as mob)
+	attack_self(mob/user)
 		mode += 1
 		if(mode > 3)
 			mode = 0

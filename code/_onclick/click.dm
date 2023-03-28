@@ -80,7 +80,7 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
-		CtrlShiftClickOn(A)
+		CtrlShiftClickOn(A, params)
 		return 1
 	if(modifiers["ctrl"] && modifiers["alt"])
 		CtrlAltClickOn(A)
@@ -92,13 +92,16 @@
 			MiddleClickOn(A)
 		return 1
 	if(modifiers["shift"])
+		SEND_SIGNAL(src, COMSIG_SHIFTCLICK, A)
 		ShiftClickOn(A)
 		return 0
 	if(modifiers["alt"]) // alt and alt-gr (rightalt)
+		SEND_SIGNAL(src, COMSIG_ALTCLICK, A)
 		AltClickOn(A)
 		return 1
 	if(modifiers["ctrl"])
-		CtrlClickOn(A)
+		SEND_SIGNAL(src, COMSIG_CTRLCLICK, A)
+		CtrlClickOn(A, params)
 		return 1
 
 	if(stat || paralysis || stunned || weakened)
@@ -137,13 +140,17 @@
 	if((!isturf(A) && A == loc) || (sdepth != -1 && sdepth <= 1))
 		// faster access to objects already on you
 		if(W)
+<<<<<<< HEAD
 			var/resolved = (SEND_SIGNAL(W, COMSIG_IATTACK, A, src, params)) || (SEND_SIGNAL(A, COMSIG_ATTACKBY, W, src, params)) || W.resolve_attackby(A, src, params)
+=======
+			var/resolved = (LEGACY_SEND_SIGNAL(W, COMSIG_IATTACK, A, src, params)) || (LEGACY_SEND_SIGNAL(A, COMSIG_ATTACKBY, W, src, params)) || W.resolve_attackby(A, src, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!resolved && A && W)
 				W.afterattack(A, src, 1, params) // 1 indicates adjacency
 		else
 			if(ismob(A)) // No instant mob attacking
 				setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-			UnarmedAttack(A, 1)
+			UnarmedAttack(A, 1, params)
 		return 1
 
 	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
@@ -156,13 +163,17 @@
 		if(A.Adjacent(src)) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
+<<<<<<< HEAD
 				var/resolved = (SEND_SIGNAL(W, COMSIG_IATTACK, A, src, params)) || (SEND_SIGNAL(A, COMSIG_ATTACKBY, W, src, params)) || W.resolve_attackby(A, src, params)
+=======
+				var/resolved = (LEGACY_SEND_SIGNAL(W, COMSIG_IATTACK, A, src, params)) || (LEGACY_SEND_SIGNAL(A, COMSIG_ATTACKBY, W, src, params)) || W.resolve_attackby(A, src, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(!resolved && A && W)
 					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 			else
 				if(ismob(A)) // No instant mob attacking
 					setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-				UnarmedAttack(A, 1)
+				UnarmedAttack(A, 1, params)
 			return
 		else // non-adjacent click
 			if(W)
@@ -173,7 +184,16 @@
 	return 1
 
 /mob/proc/setClickCooldown(var/timeout)
-	next_click = max(world.time + timeout, next_click)
+	next_click = max(world.time + (timeout + gather_click_delay(src)), next_click)
+
+/mob/proc/gather_click_delay(mob/living/M as mob)
+	var/gathered = 0
+	if(ishuman(M))
+		var/mob/living/carbon/human/back_pack_checker = M
+		if(!back_pack_checker.back)
+			gathered -= 1
+	gathered += click_delay_addition
+	return gathered
 
 /mob/proc/can_click()
 	if(next_click <= world.time)
@@ -194,10 +214,10 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag, params)
 	return
 
-/mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/living/UnarmedAttack(var/atom/A, var/proximity_flag, params)
 	if(stat)
 		return 0
 
@@ -238,7 +258,11 @@
 	swap_hand()
 	return
 
+<<<<<<< HEAD
 /mob/proc/ShiftMiddleClickOn(atom/A)
+=======
+/mob/proc/ShiftMiddleClickOn(var/atom/A)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	pointed(A)
 
 // In case of use break glass
@@ -275,6 +299,7 @@
 	Ctrl click
 	For most objects, pull
 */
+<<<<<<< HEAD
 /mob/proc/CtrlClickOn(var/atom/A)
 	A.CtrlClick(src)
 	return
@@ -283,6 +308,17 @@
 	return
 
 /atom/movable/CtrlClick(var/mob/user)
+=======
+/mob/proc/CtrlClickOn(var/atom/A, params)
+	A.CtrlClick(src, params)
+	return
+
+/atom/proc/CtrlClick(var/mob/user, params)
+	LEGACY_SEND_SIGNAL(src, COMSIG_CLICK_CTRL, user)
+	return
+
+/atom/movable/CtrlClick(var/mob/user, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(Adjacent(user) && loc != user) //cant pull things on yourself
 		user.start_pulling(src)
 	..()
@@ -295,6 +331,7 @@
 	return
 
 /atom/proc/AltClick(var/mob/user)
+	LEGACY_SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	var/turf/T = get_turf(src)
 	if(T && user.TurfAdjacent(T))
 		if(user.listed_turf == T)
@@ -311,11 +348,11 @@
 	Control+Shift click
 	Unused except for AI
 */
-/mob/proc/CtrlShiftClickOn(var/atom/A)
-	A.CtrlShiftClick(src)
+/mob/proc/CtrlShiftClickOn(var/atom/A, params)
+	A.CtrlShiftClick(src, params)
 	return
 
-/atom/proc/CtrlShiftClick(var/mob/user)
+/atom/proc/CtrlShiftClick(var/mob/user, params)
 	return
 
 /*
@@ -334,7 +371,11 @@
 	var/obj/item/projectile/beam/LE = new (T)
 	LE.icon = 'icons/effects/genetics.dmi'
 	LE.icon_state = "eyelasers"
+<<<<<<< HEAD
 	mob_playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
+=======
+	mob_playsound(usr.loc, 'sound/weapons/energy/taser2.ogg', 75, 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	LE.launch(A)
 
 /mob/living/carbon/human/LaserEyes()
@@ -368,9 +409,33 @@
 	return 1
 
 
+/*
+/mob/living/carbon/human/proc/absolute_grab(mob/living/carbon/human/T)
+	if(!ishuman(T))
+		return
+	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+		to_chat(src, "You cannot leap in your current state.")
+		return
+	if(l_hand && r_hand)
+		to_chat(src, SPAN_DANGER("You need to have one hand free to grab someone."))
+		return
 
-GLOBAL_LIST_INIT(click_catchers, create_click_catcher())
+	if(!T || !src || src.stat)
+		return
+	if(get_dist(get_turf(T), get_turf(src)) != 2)
+		return
+	if(last_special > world.time)
+		return
+	last_special = world.time + 75
+	status_flags |= LEAPING
+	src.visible_message(SPAN_DANGER("\The [src] leaps at [T]!"))
+	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	mob_playsound(src.loc, 'sound/voice/shriek1.ogg', 50, 1)
+	sleep(5)
+	if(status_flags & LEAPING)
+		status_flags &= ~LEAPING
 
+<<<<<<< HEAD
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "click_catcher"
@@ -432,8 +497,14 @@ GLOBAL_LIST_INIT(click_catchers, create_click_catcher())
 	if(status_flags & LEAPING)
 		status_flags &= ~LEAPING
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!src.Adjacent(T))
 			to_chat(src, SPAN_WARNING("You miss!"))
 			Weaken(3)
 			return
 		T.attack_hand(src)
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

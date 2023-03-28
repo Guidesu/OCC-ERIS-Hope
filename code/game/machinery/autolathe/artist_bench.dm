@@ -5,6 +5,7 @@
 #define ERR_NOLICENSE "no license"
 #define ERR_PAUSED "paused"
 #define ERR_NOINSIGHT "no insight"
+<<<<<<< HEAD
 #define MAX_STAT_VALUE 12
 
 /obj/machinery/autolathe/artist_bench
@@ -14,11 +15,23 @@
 	icon = 'icons/obj/machines/autolathe.dmi'
 	icon_state = "bench"
 	circuit = /obj/item/electronics/circuitboard/artist_bench
+=======
+
+/obj/machinery/autolathe/artist_bench
+	name = "artist's bench"
+	desc = "Insert wood, steel, glass, plasteel, plastic and a bit of your soul to create a beautiful work of art."
+	icon = 'icons/obj/machines/autolathe.dmi'
+	icon_state = "bench"
+	circuit = /obj/item/circuitboard/artist_bench
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	have_disk = FALSE
 	have_reagents = FALSE
 	have_recycling = FALSE
 	have_design_selector = FALSE
+<<<<<<< HEAD
 	categories = list("Artwork")
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	suitable_materials = list(MATERIAL_WOOD, MATERIAL_STEEL, MATERIAL_GLASS, MATERIAL_PLASTEEL, MATERIAL_PLASTIC)
 	var/min_mat = 20
@@ -26,7 +39,11 @@
 	var/datum/component/inspiration/inspiration
 	var/obj/item/oddity
 
+<<<<<<< HEAD
 /obj/machinery/autolathe/artist_bench/ui_data()
+=======
+/obj/machinery/autolathe/artist_bench/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 
 	data["have_disk"] = have_disk
@@ -46,8 +63,13 @@
 	return data
 
 
+<<<<<<< HEAD
 /obj/machinery/autolathe/artist_bench/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
 	var/list/data = ui_data(user, ui_key)
+=======
+/obj/machinery/autolathe/artist_bench/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data(user, ui_key)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -106,7 +128,12 @@
 		return
 
 	GET_COMPONENT_FROM(C, /datum/component/inspiration, inserted_oddity)
+<<<<<<< HEAD
 	if(!C || !C.perk)
+=======
+	if(!C || !C.perk) //Balance I guess it needs a perk
+		to_chat(user, SPAN_NOTICE("\the [inserted_oddity] has no strange aura for inspiration!."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	if(istype(user) && (inserted_oddity in user))
@@ -175,11 +202,19 @@
 	if(inspiration && user.stats.getPerk(PERK_ARTIST))
 		LStats = inspiration.calculate_statistics()
 
+<<<<<<< HEAD
 //	var/weight_mechanical = 0 + LStats[STAT_MEC]
 //	var/weight_cognition = 0 + LStats[STAT_COG]
 	var/weight_biology = 0 + LStats[STAT_BIO]
 	var/weight_robustness = 0 + LStats[STAT_ROB]
 //	var/weight_toughness = 0 + LStats[STAT_TGH]
+=======
+	var/weight_mechanical = 0 + LStats[STAT_MEC]
+	var/weight_cognition = 0 + LStats[STAT_COG]
+	var/weight_biology = 0 + LStats[STAT_BIO]
+	var/weight_robustness = 0 + LStats[STAT_ROB]
+	var/weight_toughness = 0 + LStats[STAT_TGH]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/weight_vigilance = 0 + LStats[STAT_VIG]
 
 	//var/list/LWeights = list(weight_mechanical, weight_cognition, weight_biology, weight_robustness, weight_toughness, weight_vigilance)
@@ -188,11 +223,21 @@
 		var/obj/item/gun/projectile/revolver/artwork_revolver/R = new(src)
 
 		var/gun_pattern = pickweight(list(
+<<<<<<< HEAD
 			"pistol" = 16 + weight_robustness,
 			"magnum" = 8 + weight_vigilance,
 			"shotgun" = 8 + weight_robustness,
 			"rifle" = 8 + weight_vigilance,
 			"cap" = 16 + weight_biology,
+=======
+			"pistol" = 16 + weight_robustness + weight_biology,
+			"magnum" = 8 + weight_vigilance,
+			"shotgun" = 8 + weight_robustness,
+			"rifle" = 8 + weight_vigilance,
+			"sniper" = 8 + max(weight_vigilance + weight_cognition),
+			"gyro" = 1 + weight_robustness + weight_mechanical,
+			"grenade" = 8 + weight_toughness
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		))
 
 		switch(gun_pattern)
@@ -201,31 +246,45 @@
 				R.caliber = pick(CAL_PISTOL)
 				R.damage_multiplier = 1.2 + rand(-5,5)/10
 				R.penetration_multiplier = 1.2 + rand(-5,5)/10
+<<<<<<< HEAD
 				R.recoil_buildup = 18 + rand(-3,3)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			if("magnum") //From consul.dm, Arbitrary values
 				R.caliber = CAL_MAGNUM
 				R.damage_multiplier = 1.2 + rand(-5,5)/10
 				R.penetration_multiplier = 1.2 + rand(-5,5)/10
+<<<<<<< HEAD
 				R.recoil_buildup = 35 + rand(-5,5)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			if("shotgun") //From bull.dm, Arbitrary values
 				R.caliber = CAL_SHOTGUN
 				R.damage_multiplier = 0.8 + rand(-2,2)/10
 				R.penetration_multiplier = 0.75 + rand(-3,3)/10
+<<<<<<< HEAD
 				R.recoil_buildup = 1.2 + rand(-2,2)/10//from sawnoff.dm
 				R.one_hand_penalty = 12 + rand(-2,3)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				R.bulletinsert_sound = 'sound/weapons/guns/interact/shotgun_insert.ogg'
 				R.fire_sound = 'sound/weapons/guns/fire/shotgunp_fire.ogg'
 
 			if("rifle")
+<<<<<<< HEAD
 				R.caliber = pick(CAL_CLRIFLE, CAL_SRIFLE, CAL_LRIFLE)
+=======
+				R.caliber = pick(CAL_HRIFLE, CAL_LRIFLE, CAL_RIFLE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				R.fire_sound = 'sound/weapons/guns/fire/smg_fire.ogg'
 
 			//No gun currently uses CAL_357 far as I know
 			//	if("revolver")
 			//		caliber = pick(CAL_357)
 
+<<<<<<< HEAD
 			if("cap")
 				R.caliber = CAL_CAP
 
@@ -233,6 +292,27 @@
 			R.init_firemodes = list(
 				list(mode_name="fire one barrel at a time", burst=1, icon="semi"),
 				list(mode_name="fire three barrels at once", burst=3, icon="auto"),
+=======
+			if("sniper")//From sniper.dm, Arbitrary values
+				R.caliber = CAL_ANTIM
+				R.bulletinsert_sound = 'sound/weapons/guns/interact/rifle_load.ogg'
+				R.fire_sound = 'sound/weapons/guns/fire/AMR.ogg'
+
+			if("gyro")//From gyropistol.dm, Arbitrary values
+				R.caliber = CAL_70
+
+			if("grenade")
+				R.caliber = CAL_GRENADE
+				R.fire_sound = 'sound/weapons/guns/fire/GLfire.ogg'
+				R.bulletinsert_sound = 'sound/weapons/guns/interact/batrifle_magin.ogg'
+
+		R.recoil = R.recoil.modifyAllRatings(1+rand(-2,2)/10)
+
+		if(R.max_shells == 3 && (gun_pattern == "shotgun"||"rocket"))//From Timesplitters triple-firing RPG far as I know
+			R.init_firemodes = list(
+				list(mode_name="Single shot", mode_desc="fire one barrel at a time", burst=1, icon="semi"),
+				list(mode_name="Triple barrel",mode_desc="fire three barrels at once", burst=3, icon="auto"),
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				)
 		return R
 
@@ -243,6 +323,7 @@
 	else if(full_artwork == "artwork_oddity")
 		var/obj/item/oddity/artwork/O = new(src)
 		var/list/oddity_stats = list(STAT_MEC = rand(0,1), STAT_COG = rand(0,1), STAT_BIO = rand(0,1), STAT_ROB = rand(0,1), STAT_TGH = rand(0,1), STAT_VIG = rand(0,1))//May not be nessecary
+<<<<<<< HEAD
 		var/stats_amt = 1//Occulus Edit - Stat nerf
 		if(ins_used >= 85)//Arbitrary values
 			stats_amt += 1//Occulus Edit - Stat Nerf
@@ -253,6 +334,18 @@
 		for(var/i in 1 to stats_amt)
 			var/stat = pick(ALL_STATS)
 			oddity_stats[stat] = min(MAX_STAT_VALUE, oddity_stats[stat]+ 1) //Occulus Edit - Nerfing Artist oddity stats a bit!
+=======
+		var/stats_amt = 2
+		if(ins_used >= 85)//Arbitrary values
+			stats_amt += 2
+		if(ins_used >= 70)
+			stats_amt += 2
+		if(ins_used >= 55)
+			stats_amt += 2//max = 2*4*2+6 = 24 points, min 2*4+6 = 14
+		for(var/i in 1 to stats_amt)
+			var/stat = pick(ALL_STATS_FOR_LEVEL_UP)
+			oddity_stats[stat] = min(oddity_stats[stat]+rand(1,2))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		O.oddity_stats = oddity_stats
 		O.AddComponent(/datum/component/inspiration, O.oddity_stats, O.perk)
@@ -270,7 +363,11 @@
 	if(ins_used < min_insight)
 		to_chat(user, SPAN_WARNING("At least 40 insight is needed to use this bench."))
 		return
+<<<<<<< HEAD
 	FLICK("[initial(icon_state)]_work", src)
+=======
+	flick("[initial(icon_state)]_work", src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	working = TRUE
 	if(!do_after(user, 15 * user.stats.getMult(STAT_MEC, STAT_LEVEL_GODLIKE), src))
 		error = "Lost artist."
@@ -319,8 +416,11 @@
 		to_chat(user, SPAN_WARNING("To create this work of art you have sacrificed a part of yourself."))
 	else if(user.sanity.resting)
 		user.sanity.finish_rest()
+<<<<<<< HEAD
 	if(user.stats.getPerk(PERK_ARTIST))//Occulus Edit: Custom names for art
 		name_piece(artwork, user)//Occulus Edit: Custom names for art
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/autolathe/artist_bench/can_print(datum/design/design)
 	if(working)
@@ -347,16 +447,26 @@
 
 	return ERR_OK
 
+<<<<<<< HEAD
 
 /obj/machinery/autolathe/artist_bench/proc/randomize_materialas(obj/O)
 	var/material_num = pick(0, suitable_materials.len)
 	var/list/new_materials = list()
 	LAZYAPLUS(new_materials, pick(suitable_materials), rand(5,15))//Occulus Edit - Art is more expensive.
+=======
+/obj/machinery/autolathe/artist_bench/proc/randomize_materialas(obj/O)
+	var/material_num = pick(0, suitable_materials.len)
+	var/list/new_materials = list()
+	LAZYAPLUS(new_materials, pick(suitable_materials), rand(3,5))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/i in 1 to material_num)
 		LAZYAPLUS(new_materials, pick(suitable_materials), rand(0,2))
 	O.matter = new_materials
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #undef ERR_OK
 #undef ERR_NOTFOUND
 #undef ERR_NOMATERIAL
@@ -364,6 +474,7 @@
 #undef ERR_NOLICENSE
 #undef ERR_PAUSED
 #undef ERR_NOINSIGHT
+<<<<<<< HEAD
 #undef MAX_STAT_VALUE
 
 // OCCULUS STUFF
@@ -376,3 +487,6 @@
 		MATERIAL_PLASTEEL = 20,
 		MATERIAL_WOOD = 20
 		)
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

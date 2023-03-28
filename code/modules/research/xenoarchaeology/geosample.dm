@@ -20,17 +20,29 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "sliver1"	//0-4
 	w_class = ITEM_SIZE_TINY
+<<<<<<< HEAD
 	sharp = TRUE
+=======
+	sharp = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	preloaded_reagents = list("ground_rock" = 50)
 	//item_state = "electronic"
 	var/source_rock = "/turf/simulated/mineral/"
 	var/datum/geosample/geological_data
 
+<<<<<<< HEAD
 /obj/item/rocksliver/Initialize(mapload)
 	. = ..()
 	icon_state = "sliver[rand(1,3)]"
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
+=======
+/obj/item/rocksliver/New()
+	icon_state = "sliver[rand(1,3)]"
+	pixel_x = rand(0,16)-8
+	pixel_y = rand(0,8)-8
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Geosample datum

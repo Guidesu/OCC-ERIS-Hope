@@ -35,4 +35,8 @@ Additionally, not harvested nest will periodically teleport items and people to 
 	log_and_message_admins("Bluespace nest spawned: [jumplink(space_to_spawn)]")
 	var/obj/structure/bs_crystal_structure/BSCS = new (space_to_spawn)
 	BSCS.entropy_value += 2//8 + 2 = 10
+<<<<<<< HEAD
 	GLOB.bluespace_entropy += rand(BSCS.entropy_value, BSCS.entropy_value * 3)
+=======
+	GLOB.bluespace_entropy += rand(BSCS.entropy_value, BSCS.entropy_value * 3)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

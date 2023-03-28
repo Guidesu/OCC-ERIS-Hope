@@ -5,7 +5,11 @@
 	icon_state = "meterX"
 	layer = GAS_PUMP_LAYER
 	var/obj/machinery/atmospherics/pipe/target = null
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	power_channel = STATIC_ENVIRON
 	var/frequency = 0
 	var/id
@@ -21,6 +25,13 @@
 	. = ..()
 	if (!target)
 		src.target = locate(/obj/machinery/atmospherics/pipe) in loc
+
+/obj/machinery/meter/Destroy()
+
+	if(target)
+		target = null
+
+	. = ..()
 
 /obj/machinery/meter/Process()
 	if(!target)

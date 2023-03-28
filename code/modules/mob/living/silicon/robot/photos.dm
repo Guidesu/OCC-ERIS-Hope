@@ -7,7 +7,11 @@
 	// Sync borg images to the master AI.
 	// We don't care about syncing the other way around
 	for(var/obj/item/photo/borg_photo in aiCamera.aipictures)
+<<<<<<< HEAD
 		var/copied = FALSE
+=======
+		var/copied = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/obj/item/photo/ai_photo in master_cam.aipictures)
 			if(borg_photo.id == ai_photo.id)
 				copied = TRUE

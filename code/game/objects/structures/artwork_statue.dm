@@ -4,7 +4,11 @@
 	icon = 'icons/obj/structures/artwork_statue.dmi'
 	icon_state = "artwork_statue_1"
 	density = TRUE
+<<<<<<< HEAD
 	spawn_frequency = 0
+=======
+	anchored = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	price_tag = 500
 
 /obj/structure/artwork_statue/Initialize()
@@ -16,6 +20,7 @@
 	AddComponent(/datum/component/atom_sanity, sanity_value, "")
 	price_tag += rand(0,5000)
 
+<<<<<<< HEAD
 /obj/structure/artwork_statue/attackby(obj/item/I, mob/living/user)
 	if(I.has_quality(QUALITY_BOLT_TURNING))
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY, STAT_MEC))
@@ -28,3 +33,9 @@
 	. = ..()
 	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
 	. += comp_sanity.affect * 100
+=======
+/obj/structure/artwork_statue/get_item_cost(export)
+	. = ..()
+	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
+	. += comp_sanity.affect * 100
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

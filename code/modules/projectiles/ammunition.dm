@@ -17,7 +17,14 @@
 	var/amount = 1
 	var/maxamount = 15
 	var/reload_delay = 0
+	var/shell_color = ""
 
+	var/transform_scale = 1
+
+/obj/item/ammo_casing/Initialize()
+	. = ..()
+
+<<<<<<< HEAD
 	var/sprite_update_spawn = FALSE		//defaults to normal sized sprites
 	var/sprite_max_rotate = 16
 	var/sprite_scale = 1
@@ -34,31 +41,62 @@
 			src.transform = rotation_matrix * sprite_scale
 		else
 			src.transform = rotation_matrix
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(ispath(projectile_type))
 		BB = new projectile_type(src)
+
+	if(spent_icon && !BB)
+		icon_state = spent_icon
+
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
 	if(amount > 1)
 		update_icon()
+<<<<<<< HEAD
+=======
+
+/obj/item/ammo_casing/Destroy()
+	make_young()
+	qdel(BB)
+	BB = null
+
+	. = ..()
+
+/obj/item/ammo_casing/add_initial_transforms()
+	. = ..()
+
+	add_new_transformation(/datum/transform_type/modular, list(transform_scale, transform_scale, flag = CASING_INITIAL_SCALE_TRANSFORM, priority = CASING_INITIAL_SCALE_TRANSFORM_PRIORITY))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //removes the projectile from the ammo casing
 /obj/item/ammo_casing/proc/expend()
 	. = BB
 	BB = null
+	if(is_caseless)
+		qdel(src)
 	set_dir(pick(cardinal)) //spin spent casings
 	update_icon()
+
 
 /obj/item/ammo_casing/attack_hand(mob/user)
 	if((src.amount > 1) && (src == user.get_inactive_hand()))
 		src.amount -= 1
-		var/obj/item/ammo_casing/new_casing = new /obj/item/ammo_casing(get_turf(user))
+		var/type = src.type
+		var/obj/item/ammo_casing/new_casing = new type(get_turf(user))
 		new_casing.desc = src.desc
 		new_casing.caliber = src.caliber
 		new_casing.projectile_type = src.projectile_type
 		new_casing.icon_state = src.icon_state
 		new_casing.spent_icon = src.spent_icon
-		new_casing.maxamount = src.maxamount
 		new_casing.is_caseless = src.is_caseless
+		new_casing.shell_color = src.shell_color
+		new_casing.maxamount = src.maxamount
+<<<<<<< HEAD
+		new_casing.is_caseless = src.is_caseless
+=======
+		new_casing.amount = 1 //Were only taking 1 shell, prevents ammo douping
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(ispath(new_casing.projectile_type) && src.BB)
 			new_casing.BB = new new_casing.projectile_type(new_casing)
 		else
@@ -171,7 +209,11 @@
 		var/matrix/temp_image_matrix = matrix()
 		temp_image_matrix.Turn(round(45 * rand(0, sprite_max_rotate) / 2))
 		temp_image.transform = temp_image_matrix
+<<<<<<< HEAD
 		src.add_overlays(temp_image)
+=======
+		src.add_overlay(temp_image)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/ammo_casing/examine(mob/user)
 	..()
@@ -194,10 +236,13 @@
 	throw_speed = 4
 	throw_range = 10
 
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_AMMO
 	rarity_value = 10
 	bad_type = /obj/item/ammo_magazine
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/ammo_color = ""		//For use in modular sprites
 
 	var/list/stored_ammo = list()
@@ -229,6 +274,13 @@
 			stored_ammo += new ammo_type(src)
 	update_icon()
 
+/obj/item/ammo_magazine/Destroy()
+	make_young()
+	QDEL_LIST(contents)
+	QDEL_LIST(stored_ammo)
+
+	. = ..()
+
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
@@ -257,6 +309,7 @@
 			to_chat(user, SPAN_NOTICE("You finish loading \the [other]. It now contains [other.stored_ammo.len] rounds, and \the [src] now contains [stored_ammo.len] rounds."))
 		else
 			to_chat(user, SPAN_WARNING("You fail to load anything into \the [other]"))
+<<<<<<< HEAD
 	if(istype(W, /obj/item/gun/projectile))
 		var/obj/item/gun/projectile/gun_to_load = W
 		if(istype(W, /obj/item/gun/projectile/revolver))
@@ -273,6 +326,8 @@
 				gun_to_load.load_ammo(src, user)
 			to_chat(user, SPAN_NOTICE("It takes a bit of time for you to reload your [W] with [src] using only one hand!"))
 			visible_message("[user] tactically reloads [W] using only one hand!")
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src && stored_ammo.len)
@@ -292,7 +347,8 @@
 		return
 	..()
 
-/obj/item/ammo_magazine/AltClick(var/mob/living/user)
+/obj/item/ammo_magazine/CtrlClick(mob/living/user)
+	. = ..()
 	var/obj/item/W = user.get_active_hand()
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W
@@ -313,6 +369,29 @@
 			if(AC)
 				user.put_in_active_hand(AC)
 
+/obj/item/ammo_magazine/AltClick(mob/living/user)
+	..()
+	if(!stored_ammo.len)
+		return
+	if(get_dist(get_turf(src), get_turf(user)) > 1)
+		return
+	if(user.get_active_hand()) //if they're holdign somethingwe cant do it
+		return
+	var/obj/item/ammo_casing/stack = removeCasing()
+	if(stack)
+		if(stored_ammo.len)
+			// We end on -1 since we already removed one
+			for(var/i = 1, i <= stack.maxamount - 1, i++)
+				if(!stored_ammo.len)
+					break
+				var/obj/item/ammo_casing/AC = removeCasing()
+				if(!stack.mergeCasing(AC, null, user, noIconUpdate = TRUE))
+					insertCasing(AC)
+					break
+		stack.update_icon()
+		user.put_in_active_hand(stack)
+	return
+
 /obj/item/ammo_magazine/proc/insertCasing(var/obj/item/ammo_casing/C)
 	if(!istype(C))
 		return FALSE
@@ -322,13 +401,17 @@
 		return FALSE
 	if(C.amount > 1)
 		C.amount -= 1
-		var/obj/item/ammo_casing/inserted_casing = new /obj/item/ammo_casing(src)
+		var/type = C.type
+		var/obj/item/ammo_casing/inserted_casing = new type
 		inserted_casing.desc = C.desc
 		inserted_casing.caliber = C.caliber
 		inserted_casing.projectile_type = C.projectile_type
 		inserted_casing.icon_state = C.icon_state
 		inserted_casing.spent_icon = C.spent_icon
+		inserted_casing.is_caseless = C.is_caseless
+		inserted_casing.shell_color = C.shell_color
 		inserted_casing.maxamount = C.maxamount
+<<<<<<< HEAD
 		inserted_casing.is_caseless = C.is_caseless
 		if(ispath(inserted_casing.projectile_type) && C.BB)
 			inserted_casing.BB = new inserted_casing.projectile_type(inserted_casing)
@@ -349,6 +432,13 @@
 		inserted_casing.is_caseless = C.is_caseless
 		inserted_casing.shell_color = C.shell_color
 
+=======
+		inserted_casing.amount = 1 //Were only taking 1 shell, prevents ammo douping
+		if(ispath(inserted_casing.projectile_type) && C.BB)
+			inserted_casing.BB = new inserted_casing.projectile_type(inserted_casing)
+		else
+			inserted_casing.BB = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		C.update_icon()
 		inserted_casing.update_icon()
 		stored_ammo.Insert(1, inserted_casing)
@@ -388,7 +478,15 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T))
 		return
+<<<<<<< HEAD
 	dump_it(T, usr)
+=======
+	dump_it(T)
+
+/obj/item/ammo_magazine/proc/dump_it(var/turf/target)
+	if(!istype(target))
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/ammo_magazine/proc/dump_it(var/turf/target) //bogpilled
 	if(!istype(target))

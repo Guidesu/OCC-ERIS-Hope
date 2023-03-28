@@ -23,12 +23,18 @@ var/req_console_information = list()
 var/list/obj/machinery/requests_console/allConsoles = list()
 
 /obj/machinery/requests_console
+<<<<<<< HEAD
 	name = "Requests Console"
 	desc = "A console intended to send requests to different departments on the station."
 	anchored = TRUE
+=======
+	name = "requests console"
+	desc = "A console intended to send requests to different departments throughout the colony."
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
-	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
+	var/department = "Unknown" //The list of all departments on the colony (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
 	var/list/message_log = list() //List of all messages
 	var/departmentType = 0 		//Bitflag. Zero is reply-only. Map currently uses raw numbers instead of defines.
 	var/newmessagepriority = 0
@@ -101,9 +107,9 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console/attack_hand(user as mob)
 	if(..(user))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/requests_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/requests_console/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["department"] = department

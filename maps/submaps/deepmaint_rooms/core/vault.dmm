@@ -16,7 +16,11 @@
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "af" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "ag" = (
@@ -42,7 +46,11 @@
 /turf/simulated/wall,
 /area/deepmaint)
 "al" = (
+<<<<<<< HEAD
 /obj/spawner/pack/machine,
+=======
+/obj/random/pack/machine,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
 "am" = (
@@ -57,6 +65,7 @@
 /turf/simulated/floor/tiled/dark/cargo,
 /area/deepmaint)
 "ao" = (
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
@@ -68,6 +77,20 @@
 /obj/structure/railing{
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
+=======
+/obj/random/traps/low_chance,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"ap" = (
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"aq" = (
+/obj/structure/railing{
+	tag = "icon-railing0 (WEST)";
+	icon_state = "railing0";
+	dir = 8
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -78,6 +101,10 @@
 /area/deepmaint)
 "as" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -104,8 +131,14 @@
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/deepmaint)
 "ay" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
@@ -122,6 +155,10 @@
 /area/deepmaint)
 "aB" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
@@ -133,6 +170,10 @@
 	req_access = null
 	},
 /obj/machinery/door/window{
+<<<<<<< HEAD
+=======
+	dir = 4;
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "Security Checkpoint";
 	req_access = list(1)
 	},
@@ -153,8 +194,14 @@
 /area/deepmaint)
 "aG" = (
 /obj/structure/railing{
+<<<<<<< HEAD
 	dir = 4;
 	tag = "icon-railing0 (EAST)"
+=======
+	tag = "icon-railing0 (EAST)";
+	icon_state = "railing0";
+	dir = 4
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -164,14 +211,25 @@
 "aI" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aJ" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/junk,
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
@@ -182,13 +240,23 @@
 /area/deepmaint)
 "aL" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/wall,
 /area/deepmaint)
 "aM" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/plating/under,
@@ -203,15 +271,26 @@
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aP" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/junk,
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aQ" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/plating/under,
@@ -219,6 +298,10 @@
 "aR" = (
 /obj/structure/railing,
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/plating/under,
@@ -226,17 +309,31 @@
 "aS" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
+=======
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 1
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aT" = (
 /obj/structure/railing{
+<<<<<<< HEAD
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+=======
+	tag = "icon-railing0 (WEST)";
+	icon_state = "railing0";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -246,38 +343,68 @@
 /area/deepmaint)
 "aV" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
 	dir = 8
+=======
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aW" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
+=======
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aX" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth/low_chance,
 /obj/spawner/pack/cloth/low_chance,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth/low_chance,
+/obj/random/pack/cloth/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aY" = (
 /obj/machinery/door/firedoor,
 /obj/effect/window_lwall_spawn/reinforced,
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
 	dir = 8
+=======
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "aZ" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/traps/low_chance,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
@@ -291,7 +418,12 @@
 /area/deepmaint)
 "bb" = (
 /obj/machinery/light{
+<<<<<<< HEAD
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "tube1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
@@ -302,23 +434,39 @@
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
 "bd" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+=======
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "be" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
 /obj/spawner/science,
 /obj/spawner/science,
 /obj/spawner/science,
 /obj/spawner/science/low_chance,
 /obj/spawner/science/low_chance,
+=======
+/obj/random/science,
+/obj/random/science,
+/obj/random/science,
+/obj/random/science/low_chance,
+/obj/random/science/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "bf" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
 /obj/item/pinpointer/nukeop,
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
@@ -326,25 +474,56 @@
 /obj/machinery/nuclearbomb{
 	r_code = "LOLNO"
 	},
+=======
+/obj/random/psi_megafauna,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/deepmaint)
+"bg" = (
+/obj/structure/safe,
+/obj/item/plastique,
+/obj/item/plastique,
+/obj/item/gun/projectile/shotgun/pump/china,
+/obj/item/storage/box/baton_rounds,
+/obj/item/storage/box/flash_grenade_shells,
+/obj/item/storage/box/frag_grenade_shells,
+/obj/item/storage/box/syndicate,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "bh" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare/low_chance,
 /obj/spawner/pack/rare/low_chance,
+=======
+/obj/random/pack/rare,
+/obj/random/pack/rare,
+/obj/random/pack/rare,
+/obj/random/pack/rare/low_chance,
+/obj/random/pack/rare/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "bi" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare/low_chance,
 /obj/spawner/material/resources/rare/low_chance,
+=======
+/obj/random/material_rare,
+/obj/random/material_rare,
+/obj/random/material_rare,
+/obj/random/material_rare,
+/obj/random/material_rare/low_chance,
+/obj/random/material_rare/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
 "bj" = (
@@ -359,7 +538,12 @@
 /area/deepmaint)
 "bl" = (
 /obj/machinery/light{
+<<<<<<< HEAD
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "tube1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/deepmaint)
@@ -368,13 +552,18 @@
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "bn" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
+<<<<<<< HEAD
 "bp" = (
 /obj/item/remains/human,
 /obj/spawner/pack/cloth,
@@ -384,6 +573,21 @@
 /area/deepmaint)
 "bq" = (
 /obj/spawner/junk,
+=======
+"bo" = (
+/obj/random/cluster/psi_monster,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/deepmaint)
+"bp" = (
+/obj/item/remains/human,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/gun_loot,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/deepmaint)
+"bq" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -391,6 +595,7 @@
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "br" = (
+<<<<<<< HEAD
 /obj/spawner/mob/biome_spawner_mob/low_chance,
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
@@ -400,11 +605,26 @@
 /area/deepmaint)
 "bt" = (
 /obj/spawner/junk,
+=======
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"bs" = (
+/obj/random/traps/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"bt" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/brown_platform,
 /area/deepmaint)
 "bu" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -414,9 +634,15 @@
 "bv" = (
 /obj/structure/catwalk,
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
+=======
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "bw" = (
@@ -437,15 +663,25 @@
 /area/deepmaint)
 "bz" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
+=======
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-s";
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	dir = 4
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "bA" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/junction{
 	dir = 8;
 	icon_state = "pipe-j2"
@@ -471,7 +707,11 @@
 /area/deepmaint)
 "bE" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "bF" = (
@@ -491,13 +731,23 @@
 /area/deepmaint)
 "bH" = (
 /obj/structure/table/reinforced,
+<<<<<<< HEAD
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
+=======
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/deepmaint)
 "bI" = (
 /obj/item/device/radio/intercom{
+<<<<<<< HEAD
+=======
+	dir = 2;
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -507,6 +757,10 @@
 /area/deepmaint)
 "bK" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
+=======
+/obj/random/dungeon_gun_energy,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/cafe,
 /area/deepmaint)
 "bL" = (
@@ -520,9 +774,15 @@
 	dir = 4
 	},
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/gun_loot,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/gun_loot,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/deepmaint)
 "bN" = (
@@ -530,12 +790,21 @@
 	dir = 8
 	},
 /obj/machinery/light{
+<<<<<<< HEAD
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "tube1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
 "bO" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor_grid,
 /area/deepmaint)
 "bP" = (
@@ -556,6 +825,7 @@
 /area/deepmaint)
 "bR" = (
 /obj/structure/table/reinforced,
+<<<<<<< HEAD
 /obj/spawner/pack/rare/low_chance,
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/deepmaint)
@@ -571,6 +841,24 @@
 /obj/spawner/rations/low_chance,
 /obj/spawner/rations/low_chance,
 /obj/spawner/rations/low_chance,
+=======
+/obj/random/pack/rare/low_chance,
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"bS" = (
+/obj/structure/catwalk,
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"bT" = (
+/obj/structure/table/rack,
+/obj/random/rations,
+/obj/random/rations,
+/obj/random/rations,
+/obj/random/rations/low_chance,
+/obj/random/rations/low_chance,
+/obj/random/rations/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/light,
 /turf/simulated/floor/tiled/cafe,
 /area/deepmaint)
@@ -586,11 +874,19 @@
 /turf/simulated/floor/tiled/cafe,
 /area/deepmaint)
 "bV" = (
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/deepmaint)
 "bW" = (
 /obj/spawner/junk,
+=======
+/obj/random/traps/low_chance,
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"bW" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "bX" = (
@@ -616,7 +912,11 @@
 /area/deepmaint)
 "ca" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -624,28 +924,49 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/disposalpipe/junction{
+<<<<<<< HEAD
 	dir = 4;
 	icon_state = "pipe-y";
 	tag = "icon-pipe-y (EAST)"
+=======
+	tag = "icon-pipe-y (EAST)";
+	icon_state = "pipe-y";
+	dir = 4
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "cc" = (
 /obj/structure/closet/secure_closet/personal,
+<<<<<<< HEAD
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare,
+=======
+/obj/random/pack/rare,
+/obj/random/pack/rare,
+/obj/random/lonestar_oddities,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet/turcarpet,
 /area/deepmaint)
 "cd" = (
 /obj/structure/railing{
+<<<<<<< HEAD
 	dir = 4;
 	tag = "icon-railing0 (EAST)"
 	},
 /obj/spawner/junk,
+=======
+	tag = "icon-railing0 (EAST)";
+	icon_state = "railing0";
+	dir = 4
+	},
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "ce" = (
 /obj/structure/railing{
+<<<<<<< HEAD
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
@@ -655,6 +976,17 @@
 "cf" = (
 /obj/structure/catwalk,
 /obj/spawner/mob/biome_spawner_mob/low_chance,
+=======
+	tag = "icon-railing0 (WEST)";
+	icon_state = "railing0";
+	dir = 8
+	},
+/obj/random/junk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"cf" = (
+/obj/random/cluster/psi_monster/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "cg" = (
@@ -667,8 +999,13 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/deepmaint)
 "ci" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "cj" = (
@@ -703,40 +1040,70 @@
 /area/deepmaint)
 "cp" = (
 /obj/structure/disposalpipe/segment{
+<<<<<<< HEAD
 	dir = 8
+=======
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/wall/r_wall,
 /area/deepmaint)
 "cq" = (
 /obj/structure/railing{
 	dir = 1;
+<<<<<<< HEAD
 	tag = "icon-railing0 (NORTH)"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+=======
+	icon_state = "railing0";
+	tag = "icon-railing0 (NORTH)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "cr" = (
 /obj/structure/railing{
+<<<<<<< HEAD
 	dir = 4;
 	tag = "icon-railing0 (EAST)"
 	},
 /obj/spawner/junk,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+=======
+	tag = "icon-railing0 (EAST)";
+	icon_state = "railing0";
+	dir = 4
+	},
+/obj/random/junk,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "cs" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
+<<<<<<< HEAD
 "ct" = (
 /obj/structure/disposalpipe/segment,
 /obj/landmark/loot_biomes/mob/roach{
@@ -747,6 +1114,33 @@
 "cu" = (
 /obj/spawner/mob/biome_spawner_mob/low_chance,
 /turf/simulated/floor/plating/under,
+=======
+"rQ" = (
+/obj/structure/table/rack,
+/obj/random/dungeon_gun_energy,
+/obj/random/dungeon_gun_energy,
+/obj/random/dungeon_gun_energy,
+/obj/random/dungeon_gun_energy,
+/obj/random/dungeon_gun_energy,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/deepmaint)
+"HV" = (
+/obj/structure/table/rack,
+/obj/random/dungeon_armor_mods,
+/obj/random/dungeon_armor_mods,
+/obj/random/dungeon_armor_mods,
+/obj/random/dungeon_gun_mods,
+/obj/random/dungeon_gun_mods,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/deepmaint)
+"Lr" = (
+/obj/structure/table/rack,
+/obj/random/dungeon_gun_ballistic,
+/obj/random/dungeon_gun_ballistic,
+/obj/random/dungeon_gun_ballistic,
+/obj/random/dungeon_gun_ballistic,
+/turf/simulated/floor/tiled/dark/techfloor,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/deepmaint)
 
 (1,1,1) = {"
@@ -781,7 +1175,11 @@ ac
 ac
 ac
 ac
+<<<<<<< HEAD
 bS
+=======
+br
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bw
 ab
 ab
@@ -941,7 +1339,11 @@ aB
 ab
 be
 bk
+<<<<<<< HEAD
 ah
+=======
+HV
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aV
 ab
@@ -964,7 +1366,11 @@ aB
 ab
 bf
 ah
+<<<<<<< HEAD
 ap
+=======
+bo
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aY
 ab
@@ -980,7 +1386,11 @@ ab
 aa
 "}
 (11,1,1) = {"
+<<<<<<< HEAD
 br
+=======
+ap
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aZ
 ab
 aJ
@@ -991,7 +1401,11 @@ bp
 an
 bY
 bZ
+<<<<<<< HEAD
 ct
+=======
+bC
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bC
 bC
 bB
@@ -1010,12 +1424,20 @@ aJ
 ab
 bh
 ah
+<<<<<<< HEAD
 ah
+=======
+Lr
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aY
 ab
 bI
+<<<<<<< HEAD
 br
+=======
+ap
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 ab
 aq
@@ -1033,7 +1455,11 @@ aB
 ab
 bi
 bl
+<<<<<<< HEAD
 ah
+=======
+rQ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ab
 aV
 ab
@@ -1043,7 +1469,11 @@ aA
 ab
 bW
 bd
+<<<<<<< HEAD
 cu
+=======
+cf
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ci
 ab
 aa
@@ -1115,7 +1545,11 @@ aV
 bW
 ab
 cm
+<<<<<<< HEAD
 br
+=======
+aa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (17,1,1) = {"
 aa
@@ -1177,7 +1611,11 @@ bv
 bE
 am
 am
+<<<<<<< HEAD
 cf
+=======
+bS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bE
 am
 bE
@@ -1187,7 +1625,11 @@ ak
 aa
 "}
 (20,1,1) = {"
+<<<<<<< HEAD
 br
+=======
+aa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aI
 ac
 ac

@@ -1,4 +1,10 @@
 /mob/living/carbon/human/proc/get_unarmed_attack(var/mob/living/carbon/human/target, var/hit_zone)
+	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
+		if(pulling_punches)
+			var/datum/unarmed_attack/soft_type = src.default_attack.get_sparring_variant()
+			if(soft_type)
+				return soft_type
+		return src.default_attack
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		if(u_attack.is_usable(src, target, hit_zone))
 			if(pulling_punches)
@@ -55,6 +61,7 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
+<<<<<<< HEAD
 			if(can_operate(src, M) == CAN_OPERATE_ALL && do_surgery(src, M, null, TRUE))
 				return 1
 			else if(istype(H) && health < HEALTH_THRESHOLD_CRIT && health > HEALTH_THRESHOLD_DEAD)
@@ -63,6 +70,11 @@
 					to_chat(H, SPAN_NOTICE("You cannot perform CPR on yourself."))
 					return
 				// OCCULUS EDIT END
+=======
+			if(can_operate(src, M) && do_surgery(src, M, null))
+				return 1
+			if(istype(H) && health < HEALTH_THRESHOLD_CRIT && health > HEALTH_THRESHOLD_DEAD)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(!H.check_has_mouth())
 					to_chat(H, SPAN_DANGER("You don't have a mouth, you cannot perform CPR!"))
 					return
@@ -94,6 +106,10 @@
 				H.visible_message(SPAN_DANGER("\The [H] performs CPR on \the [src]!"))
 				to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels good."))
 				to_chat(H, SPAN_WARNING("Repeat at least every 7 seconds."))
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				help_shake_act(M)
 			return 1
@@ -108,6 +124,41 @@
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
 
+<<<<<<< HEAD
+=======
+
+			for(var/obj/item/grab/g in get_both_hands(src)) //countering a grab
+
+				if(g.counter_timer>0 && g.affecting == M) //were we grabbed by src in a span of 3 seconds?
+					if(prob(max(30 + H.stats.getStat(STAT_ROB) - stats.getStat(STAT_ROB) ** 0.7, 1))) // Harder between low rob, easier between high rob wrestlers
+						var/obj/item/grab/G = new /obj/item/grab(M, src)
+						if(!G)	//the grab will delete itself in New if affecting is anchored
+							return
+						G.state = GRAB_AGGRESSIVE
+						G.counter_timer = 0
+						M.put_in_active_hand(G)
+						G.synch()
+						LAssailant_weakref = M
+						//H.regen_slickness() //sick skills!
+
+						break_all_grabs(H)
+
+						H.do_attack_animation(src)
+						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+						visible_message(SPAN_DANGER("With a quick grapple, [M] reversed [src]'s grab!"))
+						src.attack_log += "\[[time_stamp()]\] <font color='orange'>Counter-grabbed by [M.name] ([M.ckey])</font>"
+						M.attack_log += "\[[time_stamp()]\] <font color='red'>Counter-grabbed [src.name] ([src.ckey])</font>"
+						msg_admin_attack("[M] countered [src]'s grab.")
+						return 1
+
+					else //uh oh! our resist is now also on cooldown(we are dead)
+						setClickCooldown(40)
+						visible_message(SPAN_WARNING("[M] tried to counter [src]'s grab, but failed!"))
+
+				return
+			//usual grabs
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/obj/item/grab/G = new /obj/item/grab(M, src)
 			if(buckled)
 				to_chat(M, SPAN_NOTICE("You cannot grab [src], \he is buckled in!"))
@@ -115,7 +166,7 @@
 				return
 			M.put_in_active_hand(G)
 			G.synch()
-			LAssailant = M
+			LAssailant_weakref = WEAKREF(M)
 
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -140,13 +191,28 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
+<<<<<<< HEAD
 			var/stat_damage = 3 + max(0, (H.stats.getStat(STAT_ROB) / 10))
+=======
+			//adds a soft cap of 80 robustness. Deminishing returns by taking robustness/10 + 72
+			var/stat_damage = 3 // declared with a value of 3 before normal calculations for safty.
+			if (H.stats.getStat(STAT_ROB) >= 80)
+				var softcap = H.stats.getStat(STAT_ROB) / 10
+				var newrob = (72 + softcap) / 10
+				stat_damage = 3 + max(0, newrob)
+			else
+				stat_damage = 3 + max(0, (H.stats.getStat(STAT_ROB) / 10))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/limb_efficiency_multiplier = 1
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.targeted_organ
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
+<<<<<<< HEAD
 			var/obj/item/organ/external/current_hand = organs_by_name[hand ? BP_L_ARM : BP_R_ARM]
+=======
+			var/obj/item/organ/external/current_hand = H.organs_by_name[H.hand ? BP_L_ARM : BP_R_ARM]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			if(current_hand)
 				limb_efficiency_multiplier = 1 * (current_hand.limb_efficiency / 100)
@@ -232,6 +298,7 @@
 			var/real_damage = stat_damage
 			real_damage += attack.get_unarmed_damage(H)
 			real_damage *= damage_multiplier
+			real_damage += H.punch_damage_increase
 			stat_damage *= damage_multiplier
 			if(HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
@@ -254,7 +321,6 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.targeted_organ))
 
 			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
 
@@ -267,8 +333,9 @@
 					if(turfs.len)
 						var/turf/target = pick(turfs)
 						visible_message(SPAN_DANGER("[src]'s [W] goes off during the struggle!"))
-						return W.afterattack(target,src)
+						W.afterattack(target,src)
 
+<<<<<<< HEAD
 			var/randn = rand(1, 100)
 			randn = max(1, randn - H.stats.getStat(STAT_ROB) + src.stats.getStat(STAT_TGH))//Occulus Edit: TGH makes you harder to shove
 			if(!(species.flags & NO_SLIP) && randn <= 20)
@@ -286,12 +353,34 @@
 				//Actually disarm them
 				for(var/obj/item/I in holding)
 					if(I && src.unEquip(I))
+=======
+			//Actually disarm them
+			var/rob_attacker = (50 / (1 + 150 / max(1, H.stats.getStat(STAT_ROB))) + 40) //soft capped amount of recoil that attacker deals
+			var/rob_target = max(0, min(400,stats.getStat(STAT_ROB))) //hard capped amount of recoil the target negates upon disarming
+			var/recoil_damage = (rob_attacker * (1 - (rob_target / 400))) //recoil itself
+			for(var/obj/item/I in holding)
+				external_recoil(recoil_damage)
+				if(recoil >= 60) //disarming
+					if(istype(I, /obj/item/grab)) //did M grab someone?
+						break_all_grabs(M) //See about breaking grips or pulls
+						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+						return
+					if(I.wielded) //is the held item wielded?
+						if(!recoil >= 80) //if yes, we need more recoil to disarm
+							playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+							visible_message(SPAN_WARNING("[M] attempted to disarm [src]"))
+							return
+					if(istype(I, /obj/item/twohanded/offhand)) //did someone dare to switch to offhand to not get disarmed?
+						unEquip(src.get_inactive_hand())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						visible_message(SPAN_DANGER("[M] has disarmed [src]!"))
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						return
+					else
+						unEquip(I)
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			visible_message("\red <B>[M] attempted to disarm [src]!</B>")
+			visible_message(SPAN_WARNING("[M] attempted to disarm [src]"))
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
@@ -302,6 +391,11 @@
 	if(!damage || !istype(user))
 		return
 
+	var/penetration = 0
+	if(istype(user, /mob/living))
+		var/mob/living/L = user
+		penetration = L.armor_penetration
+
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 	src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [user.name] ([user.ckey])</font>")
 	src.visible_message(SPAN_DANGER("[user] has [attack_message] [src]!"))
@@ -311,6 +405,7 @@
 	// OCCULUS EDIT: invoke check_shields to catch superior_animal & other attacks
 
 	var/dam_zone = pick(organs_by_name)
+<<<<<<< HEAD
 
 	if (!check_shields(damage, 0, user, dam_zone, "the [user.name]")) // if it fails to block, continue
 		var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
@@ -322,33 +417,60 @@
 
 	// OCCULUS EDIT END
 
+=======
+	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
+	var/dam = damage_through_armor(damage, BRUTE, affecting, ARMOR_MELEE, penetration)
+	if(dam > 0)
+		affecting.add_autopsy_data("[attack_message] by \a [user]", dam)
+	updatehealth()
+	hit_impact(damage, get_step(user, src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
-//Used to attack a joint through grabbing
-/mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
+//Used to attack a joint's nerve through grabbing, 10 seconds of crippling(depression)
+/mob/living/carbon/human/proc/grab_joint(mob/living/user, def_zone)
 	var/has_grab = 0
+<<<<<<< HEAD
 	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
 		if(G.affecting == src && G.state == GRAB_NECK)
 			has_grab = 1
+=======
+	var/obj/item/grab/G
+	for(G in list(user.l_hand, user.r_hand))//we do not check for grab level
+		if(G.affecting == src)
+			has_grab = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			break
 
 	if(!has_grab)
-		return 0
+		return FALSE
 
 	if(!def_zone) def_zone = user.targeted_organ
 	var/target_zone = check_zone(def_zone)
 	if(!target_zone)
-		return 0
+		return FALSE
 	var/obj/item/organ/external/organ = get_organ(check_zone(target_zone))
-	if(!organ || organ.is_dislocated() || organ.dislocated == -1)
-		return 0
+	if(!organ || organ.is_nerve_struck() || organ.nerve_struck == -1)
+		return FALSE
 
-	user.visible_message(SPAN_WARNING("[user] begins to dislocate [src]'s [organ.joint]!"))
-	if(do_after(user, 100, progress = 0))
-		organ.dislocate(1)
-		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
-		return 1
-	return 0
+	user.visible_message(SPAN_WARNING("[user] hits [src]'s [organ.joint] right in the nerve!")) //everyone knows where it is, obviously
+
+	organ.nerve_strike_add(1)
+	visible_message(SPAN_DANGER("[src]'s [organ.joint] [pick("jitters","convulses","stirs","shakes")] and dangles about!"), (SPAN_DANGER("As [user]'s hit connects with your [organ.joint], you feel it painfully tingle before going numb!")))
+	playsound(user, 'sound/weapons/throwtap.ogg', 50, 1)
+	damage_through_armor(rand(35,40), HALLOSS, target_zone, ARMOR_MELEE)
+
+	//kill the grab
+	user.drop_from_inventory(G)
+	G.loc = null
+	qdel(G)
+
+	//admin messaging
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Nervestruck [name] ([ckey])</font>")
+	attack_log += text("\[[time_stamp()]\] <font color='orange'>Nervestruck by [user.name] ([user.ckey])</font>")
+	msg_admin_attack("[key_name(user)] nervestruck [key_name(src)] in [organ.joint]")
+
+	return TRUE
 
 //Breaks all grips and pulls that the mob currently has.
 /mob/living/carbon/human/proc/break_all_grabs(mob/living/carbon/user)
@@ -373,3 +495,65 @@
 		spawn(1)
 			qdel(rgrab)
 	return success
+
+/mob/living/carbon/human
+	var/datum/unarmed_attack/default_attack
+
+/mob/living/carbon/human/verb/check_attacks()
+	set name = "Check Attacks"
+	set category = "IC"
+	set src = usr
+
+	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
+
+	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+		dat += "<b>Primarily [u_attack.attack_name] </b><br/><br/><br/>"
+
+	src << browse(dat, "window=checkattack")
+	return
+
+/mob/living/carbon/human/check_attacks()
+	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
+
+	if(default_attack)
+		dat += "Current default attack: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/>"
+
+	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+		if(u_attack == default_attack)
+			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/><br/>"
+		else
+			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>set default</a><br/><br/><br/>"
+
+	src << browse(dat, "window=checkattack")
+
+/mob/living/carbon/human/Topic(href, href_list)
+	if(href_list["default_attk"])
+		if(href_list["default_attk"] == "reset_attk")
+			set_default_attack(null)
+		else
+			var/datum/unarmed_attack/u_attack = locate(href_list["default_attk"])
+			if(u_attack && (u_attack in species.unarmed_attacks))
+				set_default_attack(u_attack)
+		check_attacks()
+		return 1
+	else
+		return ..()
+
+/mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
+	default_attack = u_attack
+
+/datum/unarmed_attack
+	var/attack_name = "fist"
+
+/datum/unarmed_attack
+	bite/attack_name = "bite"
+	bite/sharp/attack_name = "sharp bite"
+	bite/strong/attack_name = "strong bite"
+	punch/attack_name = "punch"
+	kick/attack_name = "kick"
+	stomp/attack_name = "stomp"
+	stomp/weak/attack_name = "weak stomp"
+	claws/attack_name = "claws"
+	claws/strong/attack_name = "strong claws"
+	horns/attack_name = "horns"
+	tail/attack_name = "tail strike"

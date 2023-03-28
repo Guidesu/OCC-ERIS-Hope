@@ -46,6 +46,7 @@
 
 	if((W.has_quality(QUALITY_CUTTING) || W.has_quality(QUALITY_WIRE_CUTTING) || W.has_quality(QUALITY_LASER_CUTTING)) && user.a_intent != I_HURT)
 
+<<<<<<< HEAD
 
 		var/list/options = list()
 		options += "Sample plant"
@@ -83,6 +84,16 @@
 			to_chat(user, SPAN_WARNING("\The [src] is not mature enough to yield a sample yet."))
 			return
 		else if(!seed)
+=======
+	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/scalpel))
+		if(sampled)
+			to_chat(user, SPAN_WARNING("\The [src] has already been sampled recently."))
+			return
+		if(!is_mature())
+			to_chat(user, SPAN_WARNING("\The [src] is not mature enough to yield a sample yet."))
+			return
+		if(!seed)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_WARNING("There is nothing to take a sample from."))
 			return
 		else if(prob(70))

@@ -1,6 +1,10 @@
 /mob/observer/eye/angel
 	name = "\improper ANGEL"
+<<<<<<< HEAD
 	desc = "A soul of someone dead, now lurking in the wi-fi networks of Hell."
+=======
+	desc = "What is that?"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "angel"		// Placeholders!

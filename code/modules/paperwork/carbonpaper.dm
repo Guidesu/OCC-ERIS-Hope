@@ -7,7 +7,11 @@
 	var/iscopy = 0
 
 
+<<<<<<< HEAD
 /obj/item/paper/carbon/on_update_icon()
+=======
+/obj/item/paper/carbon/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(iscopy)
 		if(info)
 			icon_state = "cpaper_words"
@@ -41,6 +45,10 @@
 		var/obj/item/paper/carbon/c = src
 		var/copycontents = html_decode(c.info)
 		var/obj/item/paper/carbon/copy = new /obj/item/paper/carbon (usr.loc)
+<<<<<<< HEAD
+=======
+		copy.language = language
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		// <font>
 		if(info)
 			copycontents = replacetext(copycontents, "<font face=\"[c.deffont]\" color=", "<font face=\"[c.deffont]\" nocolor=")	//state of the art techniques in action

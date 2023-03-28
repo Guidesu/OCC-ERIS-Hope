@@ -24,5 +24,11 @@
 		/obj/item/clothing/glasses,
 		/obj/item/tool,
 		/obj/item/anobattery,
+<<<<<<< HEAD
 		/obj/item/device/ano_scanner
+=======
+		/obj/item/device/ano_scanner,
+		/obj/item/ammo_casing/flare,
+		/obj/item/gun/projectile/boltgun/flare_gun
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)

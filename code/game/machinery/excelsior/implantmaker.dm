@@ -3,7 +3,11 @@
 	desc = "This machine repurposes implants, robot components and bionics, reworking their circuitry into the Excelsior implant pattern which allows recruitment."
 	icon = 'icons/obj/machines/excelsior/reconstructor.dmi'
 	icon_state = "idle"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/excelsiorreconstructor
+=======
+	circuit = /obj/item/circuitboard/excelsiorreconstructor
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	anchored = TRUE
 	density = TRUE
 
@@ -19,6 +23,8 @@
 	build_time = max(10, 70-total)
 
 /obj/machinery/complant_maker/attackby(var/obj/item/I, var/mob/user)
+	log_and_message_admins(" - Exc IMPLANT MAKER being used at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]!!!") //So we can go to it
+
 	if(working)
 		to_chat(user, SPAN_WARNING("[src] is active. Wait for it to finish."))
 		return
@@ -35,6 +41,10 @@
 	var/accepted = FALSE
 
 	if(istype(I, /obj/item/implant) || istype(I, /obj/item/robot_parts))
+<<<<<<< HEAD
+=======
+	//|| istype(I,/obj/item/stack/material)) //This used to be here and has been orphaned by a merge. Somehow. If you know what the intended behaviour here is, just fix it.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		user.remove_from_mob(I)
 		qdel(I)
 		accepted = TRUE
@@ -80,7 +90,11 @@
 
 	if(working && world.time >= start_time + build_time)
 		new /obj/item/implantcase/excelsior(drop_location())
+<<<<<<< HEAD
 		FLICK(image(icon, "opening"), src)
+=======
+		flick(image(icon, "opening"), src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		working = FALSE
 		update_icon()
 
@@ -97,4 +111,8 @@
 	cut_overlays()
 
 	if(panel_open)
+<<<<<<< HEAD
 		add_overlays(image(icon, "panel"))
+=======
+		add_overlay(image(icon, "panel"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

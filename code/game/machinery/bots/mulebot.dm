@@ -14,7 +14,7 @@
 	anchored = TRUE
 	animate_movement=1
 	health = 150 //yeah, it's tougher than ed209 because it is a big metal box with wheels --rastaf0
-	maxhealth = 150
+	maxHealth = 150
 	fire_dam_coeff = 0.7
 	brute_dam_coeff = 0.5
 	var/atom/movable/load = null		// the loaded crate (usually)
@@ -118,8 +118,13 @@
 
 		updateDialog()
 	else if (istype(I, /obj/item/tool/wrench))
+<<<<<<< HEAD
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
+=======
+		if (src.health < maxHealth)
+			src.health = min(maxHealth, src.health+25)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			user.visible_message(
 				SPAN_NOTICE("\The [user] repairs \the [src]!"),
@@ -141,7 +146,11 @@
 /obj/machinery/bot/mulebot/emag_act(var/remaining_charges, var/user)
 	locked = !locked
 	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
+<<<<<<< HEAD
 	FLICK("mulebot-emagged", src)
+=======
+	flick("mulebot-emagged", src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 0)
 	return 1
 
@@ -157,16 +166,17 @@
 	..()
 	return
 
-/obj/machinery/bot/mulebot/bullet_act()
-	if(prob(50) && !isnull(load))
-		unload(0)
-	if(prob(25))
-		src.visible_message(SPAN_WARNING("Something shorts out inside [src]!"))
-		var/index = 1<< (rand(0,9))
-		if(wires & index)
-			wires &= ~index
-		else
-			wires |= index
+/obj/machinery/bot/mulebot/bullet_act(var/obj/item/projectile/P)
+	if (!(P.testing))
+		if(prob(50) && !isnull(load))
+			unload(0)
+		if(prob(25))
+			src.visible_message(SPAN_WARNING("Something shorts out inside [src]!"))
+			var/index = 1<< (rand(0,9))
+			if(wires & index)
+				wires &= ~index
+			else
+				wires |= index
 	..()
 
 
@@ -239,7 +249,7 @@
 			else
 				dat += "<A href='byond://?src=\ref[src];op=cellinsert'>Removed</A><BR>"
 
-			dat += wires.GetInteractWindow()
+			dat += wires.GetInteractWindow(user)
 		else
 			dat += "The bot is in maintenance mode and cannot be controlled.<BR>"
 
@@ -429,7 +439,11 @@
 	C.pixel_y += 9
 	if(C.layer < layer)
 		C.layer = layer + 0.1
+<<<<<<< HEAD
 	add_overlays(C)
+=======
+	add_overlay(C)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(ismob(C))
 		var/mob/M = C

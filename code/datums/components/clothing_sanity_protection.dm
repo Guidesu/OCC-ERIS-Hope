@@ -23,7 +23,11 @@
 	current_user = null
 
 // Remove any references to avoid hard dels
+<<<<<<< HEAD
 /datum/component/clothing_sanity_protection/Destroy()
+=======
+/datum/component/clothing_sanity_protection/RemoveComponent()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(current_user)
 		current_user.sanity.environment_cap_coeff /= environment_cap_buff
 		UnregisterSignal(current_user, COMSIG_CLOTH_DROPPED)
@@ -34,4 +38,7 @@
 	..()
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

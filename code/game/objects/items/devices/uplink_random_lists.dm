@@ -38,7 +38,11 @@ var/datum/uplink_random_selection/default_uplink_selection = new/datum/uplink_ra
 /datum/uplink_random_selection/default/New()
 	..()
 
+<<<<<<< HEAD
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/visible_weapons/pistol)
+=======
+	items += new/datum/uplink_random_item(/datum/uplink_item/item/visible_weapons/rafale)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/ammo/pistol)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/visible_weapons/revolver)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/ammo/magnum)
@@ -49,6 +53,11 @@ var/datum/uplink_random_selection/default_uplink_selection = new/datum/uplink_ra
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/visible_weapons/energy_sword, 75)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/cleanup, 5, 100)
 
+<<<<<<< HEAD
+=======
+	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealthy_weapons/soap, 5, 100)
+	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealthy_weapons/concealed_cane, 50, 10)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealthy_weapons/parapen)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealthy_weapons/cigarette_kit)
 

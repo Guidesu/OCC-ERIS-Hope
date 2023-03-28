@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* /obj/machinery/biogenerator OCCULUS EDIT. Comments out the non-Mekhane Biogenerator for lore reasons
 	name = "Biogenerator"
 	desc = ""
@@ -5,8 +6,18 @@
 	icon_state = "biogen-stand"
 	density = TRUE
 	anchored = TRUE
+=======
+/obj/machinery/biogenerator
+	name = "biogenerator"
+	desc = "A machine for processing biomass."
+	icon = 'icons/obj/biogenerator.dmi'
+	icon_state = "biogen-stand"
+	density = 1
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
+	circuit = /obj/item/circuitboard/biogenerator
 	var/processing = 0
 	var/obj/item/reagent_containers/glass/beaker = null
 	var/points = 0
@@ -18,12 +29,31 @@
 	var/list/recipes = list(
 		"Food",
 			list(name="Milk, 30u", cost=60, reagent="milk"),
+<<<<<<< HEAD
+=======
+			list(name="Soy Milk, 30u", cost=60, reagent="soymilk"),
+			list(name="Black Pepper, 30u", cost=30, reagent="blackpepper"), //Cost reduced to be in line with Sugar
+			list(name="Flour, 30u", cost=600, reagent="flour"), //Got to be really lazy
+			list(name="Rice, 30u", cost=600, reagent="rice"), //Got to be really lazy
+			list(name="Salt, 30u", cost=30, reagent="sodiumchloride"), //Cost reduced to be in line with Sugar
+			list(name="Sugar, 30u", cost=30, reagent="sugar"),
+			list(name="Box of eggs", cost=3200, path=/obj/item/storage/fancy/egg_box), //lets not completely replace hens, but at a more reasonable price.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			list(name="Slab of meat", cost=50, path=/obj/item/reagent_containers/food/snacks/meat),
 		"Nutrient",
 			list(name="EZ-Nutrient, 30u", cost=30, reagent="eznutrient"),
 			list(name="Left4Zed, 30u", cost=60, reagent="left4zed"),
 			list(name="Robust Harvest, 30u", cost=75, reagent="robustharvest"),
+			list(name="Mineral Water", cost=80, path=/obj/item/plantspray/water),
+			list(name="Diethylamine, 30u", cost=150, reagent="diethylamine"), //Obtainable with a silver coin, but this is more for Hunters than Gardeners anyway.
+		"Weedkillers",
+			list(name="Weed Killer", cost=30, path=/obj/item/plantspray/weeds),
+			list(name="Pest Killer", cost=60, path=/obj/item/plantspray/pests),
+			list(name="Carbaryl", cost=75, path=/obj/item/plantspray/pests/old/carbaryl),
+			list(name="Lindane", cost=75, path=/obj/item/plantspray/pests/old/lindane),
+			list(name="Phosmet", cost=75, path=/obj/item/plantspray/pests/old/phosmet),
 		"Leather",
+<<<<<<< HEAD
 			list(name="Wallet", cost=100, path=/obj/item/storage/wallet),
 			list(name="Botanical gloves", cost=250, path=/obj/item/clothing/gloves/botanic_leather),
 			list(name="Utility belt", cost=300, path=/obj/item/storage/belt/utility),
@@ -32,14 +62,51 @@
 			list(name="Cash Bag", cost=400, path=/obj/item/storage/bag/money),
 			list(name="Medical belt", cost=300, path=/obj/item/storage/belt/medical),
 			list(name="Tactical belt", cost=300, path=/obj/item/storage/belt/tactical),
+=======
+			list(name="Cloth Sheet", cost=50, path=/obj/item/stack/material/cloth),
+			list(name="Cloth Sheet x5", cost=310, path=/obj/item/storage/box/clothbulk),
+			list(name="Leather Sheet", cost=800, path=/obj/item/stack/material/leather),//exspensive to make sure that hunters always have a better deal
+			list(name="Leather Sheet x5", cost=4060, path=/obj/item/storage/box/leatherbulk),//5 times the cost +60 for the 'cardboard' used for the box.
+			list(name="Wallet", cost=100, path=/obj/item/storage/wallet),
+			list(name="Botanical gloves", cost=250, path=/obj/item/clothing/gloves/botanic_leather),
+			list(name="Utility belt", cost=300, path=/obj/item/storage/belt/utility),
+			list(name="Leather Satchel", cost=400, path=/obj/item/storage/backpack/satchel/leather),
+			list(name="Leather Jacket", cost=400, path=/obj/item/clothing/suit/storage/toggle/leather),
+			list(name="Cash Bag", cost=400, path=/obj/item/storage/bag/money),
+			list(name="Medical belt", cost=300, path=/obj/item/storage/belt/medical),
+			list(name="Security belt", cost=300, path=/obj/item/storage/belt/security),
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			list(name="EMT belt", cost=300, path=/obj/item/storage/belt/medical/emt),
 			list(name="Champion belt", cost=500, path=/obj/item/storage/belt/champion),
 		"Medicine",
 			list(name="Medical splints", cost=100, path=/obj/item/stack/medical/splint),
 			list(name="Roll of gauze", cost=100, path=/obj/item/stack/medical/bruise_pack),
+			list(name="Roll of gauze * 5", cost=560, path=/obj/item/storage/box/gauzebulk),
 			list(name="Ointment", cost=100, path=/obj/item/stack/medical/ointment),
-			list(name="Advanced trauma kit", cost=200, path=/obj/item/stack/medical/advanced/bruise_pack),
-			list(name="Advanced burn kit", cost=200, path=/obj/item/stack/medical/advanced/ointment),
+			list(name="Ointment * 5", cost=560, path=/obj/item/storage/box/ointmentbulk),
+			list(name="Advanced trauma kit", cost=200, path=/obj/item/stack/medical/bruise_pack/advanced),
+			list(name="Advanced trauma kit x5", cost=1060, path=/obj/item/storage/box/advancedtraumakit),
+			list(name="Advanced burn kit", cost=200, path=/obj/item/stack/medical/ointment/advanced),
+			list(name="Advanced burn kit x5", cost=1060, path=/obj/item/storage/box/advancedburnkit),
+		"Carpet",
+			list(name="Red Carpet", cost=12, path=/obj/item/stack/tile/carpet),
+			list(name="Red Carpet x15", cost=240, path=/obj/item/storage/box/carpetbulk),
+			list(name="Black Carpet", cost=12, path=/obj/item/stack/tile/carpet/bcarpet),
+			list(name="Black Carpet x15", cost=240, path=/obj/item/storage/box/bcarpetbulk),
+			list(name="Blue Carpet", cost=12, path=/obj/item/stack/tile/carpet/blucarpet),
+			list(name="Blue Carpet x15", cost=240, path=/obj/item/storage/box/bluecarpetbulk),
+			list(name="Turquoise Carpet", cost=12, path=/obj/item/stack/tile/carpet/turcarpet),
+			list(name="Turquoise Carpet x15", cost=240, path=/obj/item/storage/box/turcarpetbulk),
+			list(name="Silver Carpet", cost=12, path=/obj/item/stack/tile/carpet/sblucarpet),
+			list(name="Silver Carpet x15", cost=240, path=/obj/item/storage/box/sbluecarpetbulk),
+			list(name="Purple Carpet", cost=12, path=/obj/item/stack/tile/carpet/purcarpet),
+			list(name="Purple Carpet x15", cost=240, path=/obj/item/storage/box/purcarpetbulk),
+			list(name="Orange Carpet", cost=12, path=/obj/item/stack/tile/carpet/oracarpet),
+			list(name="Orange Carpet x15", cost=240, path=/obj/item/storage/box/oracarpetbulk),
+		"Misc",
+			list(name="Cardboard", cost=60, path=/obj/item/stack/material/cardboard),
+			list(name="Cardboard x5", cost=360, path=/obj/item/storage/box/cardboardbulk),
+			list(name="Crayon Box", cost=120, path=/obj/item/storage/fancy/crayons),
 	)
 
 
@@ -110,7 +177,7 @@
 	update_icon()
 	return
 
-/obj/machinery/biogenerator/ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state =GLOB.outside_state)
+/obj/machinery/biogenerator/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state =GLOB.outside_state)
 	user.set_machine(src)
 	var/list/data = list()
 	data["points"] = points
@@ -156,7 +223,7 @@
 		return TRUE
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/biogenerator/proc/activate()
 	if (usr.stat)
@@ -218,7 +285,8 @@
 	var/creating = recipe["path"]
 	var/reagent = recipe["reagent"]
 	if(reagent) //For reagents like milk
-		beaker.reagents.add_reagent(reagent, 30)
+		if(beaker)
+			beaker.reagents.add_reagent(reagent, 30)
 	else
 		for(var/i in 1 to amount)
 			new creating(loc)

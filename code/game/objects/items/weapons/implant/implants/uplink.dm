@@ -2,12 +2,20 @@
 	name = "uplink"
 	desc = "Summon things."
 	icon_state = "implant_uplink"
+<<<<<<< HEAD
 	implant_overlay = "implantstorage_uplink"
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2, TECH_COVERT = 3)
 	spawn_blacklisted = TRUE
 	scanner_hidden = TRUE
 	var/activation_emote
 
+=======
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2, TECH_ILLEGAL = 3)
+	var/activation_emote
+
+	overlay_icon = "uplink"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/uplink/New(var/loc, var/amount)
 	amount = amount || IMPLANT_TELECRYSTAL_AMOUNT(DEFAULT_TELECRYSTAL_AMOUNT)
 	hidden_uplink = new(src, telecrystals = amount)
@@ -29,4 +37,7 @@
 /obj/item/implanter/uplink
 	name = "implanter (Uplink)"
 	implant = /obj/item/implant/uplink
+<<<<<<< HEAD
 	spawn_tags = null
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

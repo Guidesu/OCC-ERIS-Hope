@@ -7,13 +7,32 @@
 	w_class = ITEM_SIZE_TINY
 	light_color = COLOR_LIGHTING_ORANGE_DARK
 	var/wax = 2000
+<<<<<<< HEAD
+=======
+	var/endless_burn = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/lit_sanity_damage = -0.5
 
 /obj/item/flame/candle/New()
 	wax = rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
 	..()
 
+<<<<<<< HEAD
 /obj/item/flame/candle/on_update_icon()
+=======
+
+/obj/item/flame/candle/pre_lit
+
+
+/obj/item/flame/candle/pre_lit/endless
+	endless_burn = TRUE
+
+/obj/item/flame/candle/pre_lit/New()
+	..()
+	light(flavor_text = SPAN_NOTICE("\The [name] lights up."))
+
+/obj/item/flame/candle/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/i
 	if(wax > 1500)
 		i = 1
@@ -41,22 +60,35 @@
 			light()
 
 
+<<<<<<< HEAD
 /obj/item/flame/candle/proc/light(var/flavor_text = SPAN_NOTICE("\The [usr] lights the [name]."))
 	if(!src.lit)
 		change_lit(TRUE)
 		//src.damtype = "fire"
 		for(var/mob/O in viewers(usr, null))
 			O.show_message(flavor_text, 1)
+=======
+/obj/item/flame/candle/proc/light(flavor_text = SPAN_NOTICE("\The [usr] lights the [name]."))
+	if(!lit)
+		lit = 1
+		//src.damtype = "fire"
+		for(var/mob/O in viewers(usr, null))
+			O.show_message(flavor_text, 1)
+		set_light(CANDLE_LUM)
+		START_PROCESSING(SSobj, src)
+		sanity_damage = lit_sanity_damage
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/flame/candle/Process()
 	if(!lit)
 		return
-	wax--
+	if(!endless_burn)
+		wax--
 	if(!wax)
 		new/obj/item/trash/candle(src.loc)
 		if(ismob(loc))
-			src.dropped()
+			src.dropped(usr)
 		qdel(src)
 	update_icon()
 	if(istype(loc, /turf)) //start a fire if possible
@@ -72,9 +104,29 @@
 	if(!lit)
 		set_light(0)
 		sanity_damage = 0
+<<<<<<< HEAD
 		STOP_PROCESSING(SSobj, src)
 	else
 		START_PROCESSING(SSobj, src)
 		sanity_damage = lit_sanity_damage
 		set_light(CANDLE_LUM)
 	update_icon()
+=======
+
+/obj/item/flame/candle/eternal
+	name = "eternal candle"
+	desc = "A ceremonial candle produced by the Church's Numericals division as a reflection of the eternal nature of the soul and the infinite mercy of the divine. No matter how much it burns, it never goes out, though it's only supposed to be lit for ceremonies."
+	icon_state = "candle_eternal"
+	light_color = COLOR_LIGHTING_CYAN_BRIGHT
+	endless_burn = TRUE
+	lit_sanity_damage = -1
+
+/obj/item/flame/candle/eternal/update_icon()
+	var/i
+	if(wax > 1500)
+		i = 1
+	else if(wax > 800)
+		i = 2
+	else i = 3
+	icon_state = "candle_eternal[i][lit ? "_lit" : ""]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -37,6 +37,23 @@
 	lethal = 1
 	icon_state = "control_kill"
 
+/obj/machinery/porta_turret/prepper
+	name = "advanced turret"
+	desc = "A highly modified turret with a stronger laser and self repair system."
+	installation = /obj/item/gun/energy/lasercannon
+
+	check_arrest = TRUE //Sure
+	check_records = TRUE //Sure
+	check_weapons = TRUE //So we shoot propis with their guns
+	check_access = TRUE //Respects access
+	check_anomalies = FALSE //We dont attack simples
+	check_synth = FALSE //so dont shoot are own
+
+	ailock = TRUE
+	use_power = NO_POWER_USE
+	shot_delay = 10
+	auto_repair = TRUE
+
 /obj/machinery/turretid/Destroy()
 	if(control_area)
 		var/area/A = control_area
@@ -108,15 +125,15 @@
 	if(isLocked(user))
 		return
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/turretid/attack_hand(mob/user as mob)
 	if(isLocked(user))
 		return
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/turretid/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/turretid/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["access"] = !isLocked(user)
 	data["locked"] = locked

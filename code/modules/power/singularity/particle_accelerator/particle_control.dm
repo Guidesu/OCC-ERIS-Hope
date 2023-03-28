@@ -1,13 +1,18 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 
 /obj/machinery/particle_accelerator/control_box
-	name = "Particle Accelerator Control Computer"
+	name = "particle accelerator control computer"
 	desc = "This controls the density of the particles."
 	icon = 'icons/obj/machines/particle_accelerator2.dmi'
 	icon_state = "control_box"
 	reference = "control_box"
+<<<<<<< HEAD
 	anchored = FALSE
 	density = TRUE
+=======
+	anchored = 0
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 	idle_power_usage = 500
 	active_power_usage = 70000 //70 kW per unit of strength

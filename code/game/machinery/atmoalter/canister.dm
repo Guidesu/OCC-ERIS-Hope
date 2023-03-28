@@ -1,9 +1,15 @@
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
+	desc = "A secure container for all manner of gas."
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
+<<<<<<< HEAD
 	density = TRUE
 	var/health = 100.0
+=======
+	density = 1
+	health = 100.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	flags = CONDUCT
 	w_class = ITEM_SIZE_HUGE
 
@@ -26,43 +32,73 @@
 	return -1
 
 /obj/machinery/portable_atmospherics/canister/sleeping_agent
+<<<<<<< HEAD
 	name = "Canister: \[N2O]"
+=======
+	name = "canister: \[N2O]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "redws"
 	canister_color = "redws"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/nitrogen
+<<<<<<< HEAD
 	name = "Canister: \[N2]"
+=======
+	name = "canister: \[N2]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "red"
 	canister_color = "red"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/nitrogen/prechilled
+<<<<<<< HEAD
 	name = "Canister: \[N2 (Cooling)]"
 
 /obj/machinery/portable_atmospherics/canister/oxygen
 	name = "Canister: \[O2]"
+=======
+	name = "canister: \[N2 (Cooling)]"
+
+/obj/machinery/portable_atmospherics/canister/oxygen
+	name = "canister: \[O2]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "blue"
 	canister_color = "blue"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled
+<<<<<<< HEAD
 	name = "Canister: \[O2 (Cryo)]"
 
 /obj/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
+=======
+	name = "canister: \[O2 (Cryo)]"
+
+/obj/machinery/portable_atmospherics/canister/plasma
+	name = "canister \[Plasma]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "orange"
 	canister_color = "orange"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide
+<<<<<<< HEAD
 	name = "Canister \[CO2]"
+=======
+	name = "canister \[CO2]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "black"
 	canister_color = "black"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/air
+<<<<<<< HEAD
 	name = "Canister \[Air]"
+=======
+	name = "canister \[Air]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "grey"
 	canister_color = "grey"
 	can_label = 0
@@ -75,6 +111,7 @@
 	can_label = 1
 
 /obj/machinery/portable_atmospherics/canister/empty/oxygen
+<<<<<<< HEAD
 	name = "Canister: \[O2]"
 	icon_state = "blue"
 	canister_color = "blue"
@@ -92,6 +129,25 @@
 	canister_color = "black"
 /obj/machinery/portable_atmospherics/canister/empty/sleeping_agent
 	name = "Canister \[N2O]"
+=======
+	name = "canister: \[O2]"
+	icon_state = "blue"
+	canister_color = "blue"
+/obj/machinery/portable_atmospherics/canister/empty/plasma
+	name = "canister \[Plasma]"
+	icon_state = "orange"
+	canister_color = "orange"
+/obj/machinery/portable_atmospherics/canister/empty/nitrogen
+	name = "canister \[N2]"
+	icon_state = "red"
+	canister_color = "red"
+/obj/machinery/portable_atmospherics/canister/empty/carbon_dioxide
+	name = "canister \[CO2]"
+	icon_state = "black"
+	canister_color = "black"
+/obj/machinery/portable_atmospherics/canister/empty/sleeping_agent
+	name = "canister \[N2O]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "redws"
 	canister_color = "redws"
 
@@ -133,7 +189,11 @@ update_flag
 */
 
 	if (src.destroyed)
+<<<<<<< HEAD
 		src.set_overlays(0)
+=======
+		src.cut_overlays()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		src.icon_state = text("[]-1", src.canister_color)
 		return
 
@@ -143,6 +203,7 @@ update_flag
 	if(check_change()) //Returns 1 if no change needed to icons.
 		return
 
+<<<<<<< HEAD
 	src.set_overlays(0)
 
 	if(update_flag & 1)
@@ -157,14 +218,30 @@ update_flag
 		add_overlays("can-o2")
 	else if(update_flag & 32)
 		add_overlays("can-o3")
+=======
+	src.cut_overlays()
+
+	if(update_flag & 1)
+		add_overlay("can-open")
+	if(update_flag & 2)
+		add_overlay("can-connector")
+	if(update_flag & 4)
+		add_overlay("can-o0")
+	if(update_flag & 8)
+		add_overlay("can-o1")
+	else if(update_flag & 16)
+		add_overlay("can-o2")
+	else if(update_flag & 32)
+		add_overlay("can-o3")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > temperature_resistance)
 		health -= 5
-		healthcheck()
+		healthCheck()
 
-/obj/machinery/portable_atmospherics/canister/proc/healthcheck()
+/obj/machinery/portable_atmospherics/canister/healthCheck()
 	if(destroyed)
 		return 1
 
@@ -233,8 +310,14 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())
+<<<<<<< HEAD
 		src.health -= round(Proj.get_structure_damage() / 2)
 		healthcheck()
+=======
+		if (!(Proj.testing))
+			src.health -= round(Proj.get_structure_damage() / 2)
+			healthCheck()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/I, var/mob/user)
@@ -275,7 +358,11 @@ update_flag
 		visible_message(SPAN_WARNING("\The [user] hits \the [src] with \a [I]!"))
 		src.health -= I.force
 		src.add_fingerprint(user)
+<<<<<<< HEAD
 		healthcheck()
+=======
+		healthCheck()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	SSnano.update_uis(src) // Update all NanoUIs attached to src
 
@@ -283,9 +370,9 @@ update_flag
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
-	return src.ui_interact(user)
+	return src.nano_ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/portable_atmospherics/canister/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if (src.destroyed)
 		return
 

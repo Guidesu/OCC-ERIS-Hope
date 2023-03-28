@@ -1,12 +1,22 @@
 //Grown foods.
 /obj/item/reagent_containers/food/snacks/grown
+<<<<<<< HEAD
 
 	name = "fruit"
+=======
+	name = "any grown plant"
+	matter = list(MATERIAL_BIOMATTER = 5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/hydroponics_products.dmi'
 	icon_state = "blank"
 	desc = "Nutritious! Probably."
 	slot_flags = SLOT_HOLSTER
+<<<<<<< HEAD
 	spawn_frequency = 0
+=======
+	price_tag = 1
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/plantname
 	var/datum/seed/seed
 	var/potency = -1
@@ -21,6 +31,8 @@
 	src.pixel_y = rand(-5.0, 5)
 
 	// Fill the object up with the appropriate reagents.
+
+
 	if(planttype)
 		plantname = planttype
 
@@ -74,6 +86,18 @@
 		if(CHEESE_FOOD in seed.taste_tag)//Occu Edit
 			taste_tag.Remove(VEGAN_FOOD)//Cheese isn't vegan. Occu edit
 
+<<<<<<< HEAD
+=======
+	if (!seed.materials)
+		return
+
+	if (seed.materials) matter = seed.materials.Copy()
+	if (seed.origin_tech) origin_tech = seed.origin_tech.Copy()
+
+/obj/item/reagent_containers/food/snacks/grown/New()
+	..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
 
 	if(!seed)
@@ -111,6 +135,8 @@
 			descriptors |= "hallucinogenic"
 		if(reagents.has_reagent("bicaridine"))
 			descriptors |= "medicinal"
+		if(reagents.has_reagent("sanguinum"))
+			descriptors |= "metallic"
 		if(reagents.has_reagent(MATERIAL_GOLD))
 			descriptors |= "shiny"
 		if(reagents.has_reagent("lube"))
@@ -141,7 +167,11 @@
 		plant_controller.product_descs["[seed.uid]"] = desc
 	desc += ". Delicious! Probably."
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/food/snacks/grown/on_update_icon()
+=======
+/obj/item/reagent_containers/food/snacks/grown/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!seed || !plant_controller || !plant_controller.plant_icon_cache)
 		return
 	cut_overlays()
@@ -153,6 +183,7 @@
 		plant_icon = image('icons/obj/hydroponics_products.dmi',"blank")
 		var/image/fruit_base = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
 		fruit_base.color = "[seed.get_trait(TRAIT_PRODUCT_COLOUR)]"
+<<<<<<< HEAD
 		plant_icon.overlays |= (fruit_base)
 		if("[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf" in icon_states('icons/obj/hydroponics_products.dmi'))
 			var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
@@ -160,6 +191,15 @@
 			plant_icon.overlays |= (fruit_leaves)
 		plant_controller.plant_icon_cache[icon_key] = plant_icon
 	associate_with_overlays(plant_icon)
+=======
+		plant_icon.add_overlay(fruit_base)
+		if("[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf" in icon_states('icons/obj/hydroponics_products.dmi'))
+			var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
+			fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+			plant_icon.add_overlay(fruit_leaves)
+		plant_controller.plant_icon_cache[icon_key] = plant_icon
+	add_overlay(plant_icon)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
@@ -205,7 +245,7 @@
 		else if(W.sharp)
 			if(seed.kitchen_tag == "pumpkin") // Ugggh these checks are awful.
 				user.show_message(SPAN_NOTICE("You carve a face into [src]!"), 1)
-				new /obj/item/clothing/head/pumpkinhead (user.loc)
+				new /obj/item/clothing/head/costume/halloween/pumpkin (user.loc)
 				qdel(src)
 				return
 			else if(seed.chems)
@@ -302,6 +342,7 @@
 		return
 
 	if(seed.get_trait(TRAIT_SPREAD) > 0)
+<<<<<<< HEAD
 		to_chat(user, SPAN_NOTICE("You plant the [src.name]."))
 		new /obj/machinery/portable_atmospherics/hydroponics/soil/invisible(get_turf(user),src.seed)
 		qdel(src)
@@ -328,6 +369,70 @@
 /obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris
 	plantname = "ambrosia"
 
+=======
+		var/turf/current_turf = get_turf(user)
+		if(!locate(/obj/machinery/portable_atmospherics/hydroponics/soil/invisible) in current_turf.contents)	// Prevents infinite plant stacking
+			to_chat(user, SPAN_NOTICE("You plant the [src]."))
+			new /obj/machinery/portable_atmospherics/hydroponics/soil/invisible(current_turf, seed)
+			qdel(src)
+
+/obj/item/reagent_containers/food/snacks/grown/pre_pickup(mob/user)
+    if(!seed)
+        return FALSE
+    if(seed.get_trait(TRAIT_STINGS))
+        var/mob/living/carbon/human/H = user
+        if(istype(H) && H.gloves)
+            return  ..()
+        if(!reagents || reagents.total_volume <= 0)
+            return  ..()
+        reagents.remove_any(rand(1,3)) //Todo, make it actually remove the reagents the seed uses.
+        seed.do_thorns(H,src)
+        seed.do_sting(H,src,pick(BP_R_ARM, BP_L_ARM))
+    return ..()
+
+// Predefined types for placing on the map.
+/obj/plant_spawner
+	name = "plant spawner"
+	var/seedtype = "ambrosia" //default to ambrosia for roach taming
+/*
+/obj/plant_spawner/Initialize(mapload)
+	var/datum/seed/S = plant_controller.seeds[seedtype]
+	S.harvest(loc,0,0,1)
+	spawn(1) if(src) qdel(src)
+*/
+/obj/plant_spawner/New()
+	addtimer(CALLBACK(src, /obj/plant_spawner/proc/spawn_growth), 2)
+
+/obj/plant_spawner/proc/spawn_growth()
+	var/datum/seed/S = plant_controller.seeds[seedtype]
+	S.harvest(loc,0,0,1)
+	spawn(5) if(src) qdel(src)
+
+/obj/plant_spawner/libertycap
+	seedtype = "libertycap"
+
+/obj/plant_spawner/ambrosiavulgaris
+	seedtype = "ambrosia"
+
+/obj/plant_spawner/grass
+	seedtype = "grass"
+
+/obj/plant_spawner/wheat
+	seedtype = "wheat"
+
+/obj/plant_spawner/poppy
+	seedtype = "poppies"
+
+/obj/plant_spawner/sunflower
+	seedtype = "sunflowers"
+
+/obj/plant_spawner/harebells
+	seedtype = "harebells"
+
+/obj/plant_spawner/towercaps
+	seedtype = "towercap"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/snacks/fruit_slice
 	name = "fruit slice"
 	desc = "A slice of some tasty fruit."
@@ -353,9 +458,17 @@ var/list/fruit_icon_cache = list()
 		var/image/I = image(icon,"fruit_rind")
 		I.color = rind_colour
 		fruit_icon_cache["rind-[rind_colour]"] = I
+<<<<<<< HEAD
 	associate_with_overlays(fruit_icon_cache["rind-[rind_colour]"])
+=======
+	add_overlay(fruit_icon_cache["rind-[rind_colour]"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!fruit_icon_cache["slice-[rind_colour]"])
 		var/image/I = image(icon,"fruit_slice")
 		I.color = flesh_colour
 		fruit_icon_cache["slice-[rind_colour]"] = I
+<<<<<<< HEAD
 	associate_with_overlays(fruit_icon_cache["slice-[rind_colour]"])
+=======
+	add_overlay(fruit_icon_cache["slice-[rind_colour]"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

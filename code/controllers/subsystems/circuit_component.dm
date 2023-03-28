@@ -15,7 +15,11 @@ SUBSYSTEM_DEF(circuit_components)
 /datum/controller/subsystem/circuit_components/fire(resumed = FALSE)
 	if(paused_ticks >= 10) // The likeliest fail mode, due to the fast tick rate, is that it can never clear the full queue, running resumed every tick and accumulating a backlog.
 		log_and_message_admins(SPAN_DANGER("Alert. Integrated Circuit Components Subsystem report <b>LEVEL ONE DEFCON</b>, automatically attempt to avoid server lags by disabling IC."))
+<<<<<<< HEAD
 		suspend()          // As this SS deals with optional and potentially abusable content, it will autodisable if overtaxing the server.
+=======
+		src.can_fire = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/list/queued_components = src.queued_components
@@ -40,6 +44,7 @@ SUBSYSTEM_DEF(circuit_components)
 			break
 	position = null
 
+<<<<<<< HEAD
 /datum/controller/subsystem/circuit_components/suspend()
 	..()
 	queued_components.Cut()
@@ -49,6 +54,8 @@ SUBSYSTEM_DEF(circuit_components)
 	..()
 	log_and_message_admins("Circuit component processing has been enabled.")
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Store the entries like this so that components can be queued multiple times at once.
 // With immediate set, will generally imitate the order of the call stack if execution happened directly.
 // With immediate off, you go to the bottom of the pile.

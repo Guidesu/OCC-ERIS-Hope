@@ -13,12 +13,15 @@
 "d" = (
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
+<<<<<<< HEAD
 "e" = (
 /obj/machinery/light/built{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "f" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
@@ -70,10 +73,13 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/crawler)
+<<<<<<< HEAD
 "p" = (
 /obj/machinery/light/built,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "q" = (
 /obj/structure/railing{
 	dir = 1
@@ -103,6 +109,26 @@
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"y" = (
+/obj/structure/railing/grey,
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/crawler)
+"W" = (
+/obj/structure/catwalk,
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/crawler)
+"Y" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 b
@@ -117,13 +143,21 @@ b
 "}
 (2,1,1) = {"
 b
+<<<<<<< HEAD
 a
+=======
+y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 g
 g
 g
 d
+<<<<<<< HEAD
 r
+=======
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (3,1,1) = {"
@@ -144,7 +178,11 @@ l
 s
 s
 s
+<<<<<<< HEAD
 p
+=======
+d
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 b
 "}
@@ -173,12 +211,21 @@ m
 (7,1,1) = {"
 m
 b
+<<<<<<< HEAD
 e
 i
 k
 i
 p
 g
+=======
+d
+i
+k
+i
+d
+b
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 m
 "}
 (8,1,1) = {"
@@ -187,7 +234,11 @@ c
 f
 u
 n
+<<<<<<< HEAD
 n
+=======
+W
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 c
 m
@@ -209,7 +260,11 @@ c
 f
 o
 n
+<<<<<<< HEAD
 n
+=======
+W
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 c
 b
@@ -217,11 +272,19 @@ b
 (11,1,1) = {"
 b
 b
+<<<<<<< HEAD
 e
 j
 d
 j
 p
+=======
+d
+j
+d
+j
+d
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 b
 "}

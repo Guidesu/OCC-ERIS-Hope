@@ -1,14 +1,27 @@
 /mob/living/simple_animal/spider_core
+<<<<<<< HEAD
 	name = "spider core"
+=======
+	name = "carrion"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A horrifying face on spider-like legs."
 	speak_emote = list("creaks")
 	response_help  = "pokes"
 	response_disarm = "prods"
 	response_harm   = "stomps on"
+<<<<<<< HEAD
 	icon_state = "spider_core"
 
 	health = 60
 	maxHealth = 60 //Same as post nerf blitz hp
+=======
+	icon = 'icons/mob/mobs-spider.dmi'
+	icon_state = "spider_core"
+
+	health = 40
+	maxHealth = 40 //Really low as they have a body normally
+	var/time_to_generate_body = 66 SECONDS		// Should be longer than the time it takes for the core to die in a vacuum. Adjust accordingly when maxHealth changes (as of March 27 2022, it's 1 damage per second).
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	speed = -1
 	see_in_dark = 8
@@ -23,7 +36,11 @@
 	hunger_enabled = FALSE
 	pass_flags = PASSTABLE
 	universal_understand = 1
+<<<<<<< HEAD
 	density = TRUE //Should be 0, but then these things would be a nightmare to kill.
+=======
+	density = 0 //This makes them a nightmare to kill, fun fun.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	faction = "spiders"
 
 /mob/living/simple_animal/spider_core/New()
@@ -44,8 +61,13 @@
 
 	to_chat(src, SPAN_NOTICE("You start building a body"))
 
+<<<<<<< HEAD
 	if(!do_after(src, 1 MINUTES, src))
 		to_chat(src, SPAN_NOTICE("The new body is not ready yet, it takes a minute to make one. You have to stand still."))
+=======
+	if(!do_after(src, time_to_generate_body, src))
+		to_chat(src, SPAN_NOTICE("The new body is not ready yet, it takes a little over a minute to make one. You have to stand still."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(loc)

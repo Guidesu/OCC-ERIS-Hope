@@ -1,6 +1,11 @@
 /obj/structure/cyberplant
+<<<<<<< HEAD
 	name = "\"FluorescEnt\""
 	desc = "One of those famous holoplants! Add to your Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that your flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
+=======
+	name = "Lonestar \"FluorescEnt\""
+	desc = "A holographic plant powered by a nuclear battery. Doesn't need much upkeep."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/cyberplants.dmi'
 	icon_state = "holopot"
 	w_class = ITEM_SIZE_TINY
@@ -8,6 +13,7 @@
 	var/emagged = FALSE
 	var/interference = FALSE
 	var/icon/plant = null
+	var/custom_color
 	var/plant_color
 	var/glow_color
 	var/hologram_opacity = 0.85
@@ -41,14 +47,23 @@
 
 	AddComponent(/datum/component/atom_sanity, sanity_value, "")
 
+<<<<<<< HEAD
 /obj/structure/cyberplant/on_update_icon()
+=======
+/obj/structure/cyberplant/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	cut_overlays()
 	if (!plant)
 		return
 
+<<<<<<< HEAD
 	plant.ChangeOpacity(hologram_opacity)
 	add_overlays(plant)
+=======
+//		plant.ChangeOpacity(hologram_opacity)
+	add_overlay(plant)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/cyberplant/proc/change_plant(var/state)
 	plant = prepare_icon(state)
@@ -58,19 +73,22 @@
 		return
 
 	if(!color)
-		color = pick(possible_colors)
+		color = custom_color ? custom_color : pick(possible_colors)
 
 	glow_color = color
 	plant_color = color
 	plant.ColorTone(color)
 
-	set_light(l_color=color)
+	set_light(l_color = color)
 
+<<<<<<< HEAD
 /obj/structure/cyberplant/attack_hand(var/mob/user)
 	if(!interference)
 		change_plant()
 		update_icon()
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/cyberplant/attackby(obj/item/I, mob/user )
 	if(istype(I, /obj/item/card/id))
 		if(!emagged)
@@ -81,6 +99,14 @@
 			if(prob(10))
 				to_chat(user, "<i>You hear soft giggle</i>")
 			rollback()
+
+/obj/structure/cyberplant/attack_hand(mob/user)
+	var/color_of_choice = input("Choose a color.", "\"FluorescEnt\" configuration", custom_color) as color|null
+	custom_color = color_of_choice
+	if(!interference)
+		change_plant()
+		change_color()
+		update_icon()
 
 /obj/structure/cyberplant/proc/prepare_icon(var/state)
 	if(!state)
@@ -135,25 +161,33 @@
 	if(!interference)
 		interference = TRUE
 		spawn(0)
-			if (QDELETED(src))
+			if(QDELETED(src))
 				return
 
 			cut_overlays()
 			set_light(0, 0)
 			sleep(3)
-			if (QDELETED(src))
+			if(QDELETED(src))
 				return
 
+<<<<<<< HEAD
 			add_overlays(plant)
+=======
+			add_overlay(plant)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			set_light(brightness_on, brightness_on/2)
 			sleep(3)
-			if (QDELETED(src))
+			if(QDELETED(src))
 				return
 
+<<<<<<< HEAD
 			remove_overlays(plant)
+=======
+			cut_overlay(plant)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			set_light(0, 0)
 			sleep(3)
-			if (QDELETED(src))
+			if(QDELETED(src))
 				return
 
 			change_color()
@@ -162,6 +196,12 @@
 
 			interference = FALSE
 
+<<<<<<< HEAD
 /obj/structure/cyberplant/Crossed(var/mob/living/L)
 	if (istype(L))
 		doInterference()
+=======
+/obj/structure/cyberplant/Crossed(mob/living/L)
+	if(istype(L))
+		doInterference()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

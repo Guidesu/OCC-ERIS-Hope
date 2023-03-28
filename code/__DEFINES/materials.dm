@@ -3,6 +3,7 @@
 #define MATERIAL_STEEL "steel"
 #define MATERIAL_GLASS "glass"
 #define MATERIAL_RGLASS "rglass"
+<<<<<<< HEAD
 #define MATERIAL_PHORONGLASS "borosilicate glass"
 #define MATERIAL_RPHORONGLASS "reinforced borosilicate glass"
 #define MATERIAL_SILVER "silver"
@@ -10,11 +11,27 @@
 #define MATERIAL_PHORON "phoron"
 #define MATERIAL_URANIUM "uranium"
 #define MATERIAL_DIAMOND "diamond"
+=======
+#define MATERIAL_PLASMAGLASS "borosilicate glass"
+#define MATERIAL_RPLASMAGLASS "reinforced borosilicate glass"
+#define MATERIAL_SILVER "silver"
+#define MATERIAL_GOLD "gold"
+#define MATERIAL_PLASMA "plasma"
+#define MATERIAL_URANIUM "uranium"
+#define MATERIAL_DIAMOND "diamond"
+#define MATERIAL_DURASTEEL "durasteel"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define MATERIAL_PLASTIC "plastic"
 #define MATERIAL_IRON "iron"
 #define MATERIAL_CARDBOARD "cardboard"
 #define MATERIAL_CLOTH "cloth"
+<<<<<<< HEAD
 #define MATERIAL_LEATHER "leather"
+=======
+#define MATERIAL_SILK "silk"
+#define MATERIAL_LEATHER "leather"
+#define MATERIAL_BONE "bone"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define MATERIAL_MARBLE "marble"
 #define MATERIAL_MHYDROGEN "mhydrogen"
 #define MATERIAL_OSMIUM "osmium"
@@ -26,27 +43,49 @@
 #define MATERIAL_WOOD "wood"
 #define MATERIAL_XENOCHITIN "chitin"
 #define MATERIAL_VOXALLOY "voxalloy"
+<<<<<<< HEAD
 #define MATERIAL_RESIN "resin"
 #define MATERIAL_CARPET "carpet"
 #define MATERIAL_BIOMATTER "biomatter"
 #define MATERIAL_RSCRAP "refined scrap" // Occ
+=======
+#define MATERIAL_CARPET "carpet"
+#define MATERIAL_BIOMATTER "biomatter"
+#define MATERIAL_COMPRESSED_MATTER "compressed matter"
+#define MATERIAL_AMERIDIAN "ameridian"
+#define MATERIAL_RSCRAP "refined scrap"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define MATERIAL_LIST list(\
 	MATERIAL_STEEL,\
 	MATERIAL_GLASS,\
 	MATERIAL_RGLASS,\
+<<<<<<< HEAD
 	MATERIAL_PHORONGLASS,\
 	MATERIAL_RPHORONGLASS,\
 	MATERIAL_SILVER,\
 	MATERIAL_GOLD,\
 	MATERIAL_PHORON,\
+=======
+	MATERIAL_PLASMAGLASS,\
+	MATERIAL_RPLASMAGLASS,\
+	MATERIAL_SILVER,\
+	MATERIAL_GOLD,\
+	MATERIAL_PLASMA,\
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	MATERIAL_URANIUM,\
 	MATERIAL_DIAMOND,\
 	MATERIAL_PLASTIC,\
 	MATERIAL_IRON,\
 	MATERIAL_CARDBOARD,\
 	MATERIAL_CLOTH,\
+<<<<<<< HEAD
 	MATERIAL_LEATHER,\
+=======
+	MATERIAL_SILK,\
+	MATERIAL_LEATHER,\
+	MATERIAL_BONE,\
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	MATERIAL_MARBLE,\
 	MATERIAL_MHYDROGEN,\
 	MATERIAL_OSMIUM,\
@@ -58,11 +97,44 @@
 	MATERIAL_WOOD,\
 	MATERIAL_XENOCHITIN,\
 	MATERIAL_VOXALLOY,\
+<<<<<<< HEAD
 	MATERIAL_RESIN,\
 	MATERIAL_CARPET,\
 	MATERIAL_BIOMATTER,\
 	MATERIAL_RSCRAP) // Occ
+=======
+	MATERIAL_CARPET,\
+	MATERIAL_BIOMATTER,\
+	MATERIAL_COMPRESSED_MATTER, \
+	MATERIAL_AMERIDIAN, \
+	MATERIAL_RSCRAP)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define PLASTEEL_COLOUR "#8e9799"
 //Color to exactly match concept art #b0bcbe
 //I made it slightly darker than that, because the original color was too bright and causes eyestrain imo
+<<<<<<< HEAD
+=======
+
+#define ORE_CARBON "o_carbon"
+#define ORE_IRON "o_hematite"
+#define ORE_PLASMA "o_plasma"
+#define ORE_SAND "o_sand"
+#define ORE_URANIUM "o_pitchblende"
+#define ORE_DIAMOND "o_diamond"
+#define ORE_SILVER "o_silver"
+#define ORE_GOLD "o_gold"
+#define ORE_PLATINUM "o_platinum"
+#define ORE_HYDROGEN "o_hydrogen"
+
+#define ORE_LIST list(\
+	ORE_CARBON,\
+	ORE_IRON,\
+	ORE_PLASMA,\
+	ORE_SAND,\
+	ORE_URANIUM,\
+	ORE_DIAMOND,\
+	ORE_SILVER,\
+	ORE_GOLD,\
+	ORE_PLATINUM)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

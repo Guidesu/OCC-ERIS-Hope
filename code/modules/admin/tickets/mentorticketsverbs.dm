@@ -30,4 +30,8 @@ ADMIN_VERB_ADD(/client/verb/openMentorUserUI, R_ADMIN, FALSE)
 	set name = "My Mentor Tickets"
 	set category = "Admin"
 	SSmentor_tickets.userDetailUI(usr)
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

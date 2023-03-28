@@ -1,5 +1,9 @@
 // Matter decompiler.
 /obj/item/matter_decompiler
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "matter decompiler"
 	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
 	icon = 'icons/obj/device.dmi'
@@ -43,6 +47,8 @@
 				wood.add_charge(2000)
 			if(plastic)
 				plastic.add_charge(2000)
+			if(glass)
+				glass.add_charge(2000)
 			return
 
 		else if(isdrone(M) && !M.client)
@@ -104,6 +110,8 @@
 				metal.add_charge(1000)
 			if(plastic)
 				plastic.add_charge(3000)
+			if(glass)
+				plastic.add_charge(3000)
 		else if(istype(W,/obj/effect/decal/cleanable/blood/gibs/robot))
 			if(metal)
 				metal.add_charge(2000)
@@ -118,9 +126,23 @@
 		else if(istype(W,/obj/item/material/shard))
 			if(glass)
 				glass.add_charge(1000)
+<<<<<<< HEAD
+=======
+		else if(istype(W,/obj/item/tool/broken_bottle))
+			if(glass)
+				glass.add_charge(2000)
+		else if(istype(W,/obj/item/circuitboard/broken))
+			if(glass)
+				glass.add_charge(1000)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else if(istype(W,/obj/item/reagent_containers/food/snacks/grown))
 			if(wood)
 				wood.add_charge(4000)
+		else if(istype(W,/obj/item/remains))
+			if(metal)
+				metal.add_charge(2000)
+			if(glass)
+				glass.add_charge(2000)
 		else if(istype(W,/obj/item/pipe))
 			// This allows drones and engiborgs to clear pipe assemblies from floors.
 		else
@@ -177,7 +199,7 @@
 
 	dat += tools
 
-	if (emagged)
+	if (HasTrait(CYBORG_TRAIT_EMAGGED))
 		if (!module.emag)
 			dat += text("<B>Resource depleted</B><BR>")
 		else if(activated(module.emag))

@@ -8,7 +8,11 @@
 	var/datum/disease2/effectholder/memorybank
 	var/list/species_buffer
 	var/analysed = 0
+<<<<<<< HEAD
 	var/obj/item/virusdish/dish
+=======
+	var/obj/item/virusdish/dish = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/burning = 0
 	var/splicing = 0
 	var/scanning = 0
@@ -37,9 +41,9 @@
 
 /obj/machinery/computer/diseasesplicer/attack_hand(mob/user)
 	if(..()) return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/diseasesplicer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/diseasesplicer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/data[0]

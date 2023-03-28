@@ -27,6 +27,13 @@
 		return INITIALIZE_HINT_QDEL
 
 	datum.spawn_stash()
+<<<<<<< HEAD
 	datum.spawn_note(loc)
 	//Aaaand we are done -- would've never guessed that
 	return INITIALIZE_HINT_QDEL
+=======
+	//datum.spawn_note(loc)
+
+	//Aaaand we are done -- would've never guessed that
+	return INITIALIZE_HINT_QDEL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

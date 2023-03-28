@@ -14,8 +14,8 @@ var/list/flooring_types
 // [icon_base]_broken: damaged overlay.
 // if has_damage_range is set, append 0-damage_range for state ie.
 //   [icon_base]_broken[has_damage_range]
-// [icon_base]_edges: directional overlays for edges.
-// [icon_base]_corners: directional overlays for non-edge corners.
+// [icon_base]_edges: directional over-lays for edges.
+// [icon_base]_corners: directional over-lays for non-edge corners.
 
 /decl/flooring
 	var/name = "floor"
@@ -125,6 +125,7 @@ var/list/flooring_types
 /decl/flooring/proc/Entered(mob/living/M as mob)
 	return
 
+<<<<<<< HEAD
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
@@ -148,6 +149,8 @@ var/list/flooring_types
 	build_type = null //Todo: add bags of fertilised soil or something to create dirt floors
 	footstep_sound = "gravel"
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /decl/flooring/asteroid
 	name = "coarse sand"
 	desc = "Gritty and unpleasant."
@@ -234,7 +237,11 @@ var/list/flooring_types
 				var/obj/structure/catwalk/CT = new /obj/structure/catwalk(T)
 				T.contents += CT
 
+<<<<<<< HEAD
 /decl/flooring/reinforced/plating/under/get_plating_type(turf/location)
+=======
+/decl/flooring/reinforced/plating/under/get_plating_type(var/turf/location)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (turf_is_lower_hull(location)) //Hull plating is only on the lowest level of the ship
 		return plating_type
 	else if (turf_is_upper_hull(location))
@@ -248,7 +255,11 @@ var/list/flooring_types
 		return /decl/flooring/reinforced/plating
 	else return null
 
+<<<<<<< HEAD
 /decl/flooring/reinforced/plating/under/Entered(mob/living/M)
+=======
+/decl/flooring/reinforced/plating/under/Entered(mob/living/M as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/obj/structure/catwalk/C in get_turf(M))
 		return
 
@@ -257,7 +268,17 @@ var/list/flooring_types
 		return
 	var/mob/living/carbon/human/our_trippah = M
 	if(MOVING_QUICKLY(M))
+<<<<<<< HEAD
 		if(prob(50 - our_trippah.stats.getStat(STAT_COG) * 2)) // The art of calculating the vectors required to avoid tripping on the metal beams requires big quantities of brain power
+=======
+		if(M.stats.getPerk(PERK_SURE_STEP))
+			return
+ // The art of calculating the vectors required to avoid tripping on the metal beams requires big quantities of brain power
+		if(prob(50 - our_trippah.stats.getStat(STAT_COG))) //50 cog makes you unable to trip
+			if(!our_trippah.back)
+				to_chat(our_trippah, SPAN_WARNING("You would have tripped if you didn't balance."))
+				return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			our_trippah.adjustBruteLoss(5)
 			our_trippah.trip(src, 6)
 			return
@@ -332,7 +353,7 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/carpet/sblucarpet
 
 /decl/flooring/carpet/gaycarpet
-	name = "clown carpet"
+	name = "pink carpet"
 	icon_base = "gaycarpet"
 	build_type = /obj/item/stack/tile/carpet/gaycarpet
 
@@ -624,7 +645,11 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/floor/techmaint/cargo
 	footstep_sound = "floor"
 
+<<<<<<< HEAD
 //==========MISC==============\\
+=======
+//==========MISC==============//
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/flooring/wood
 	name = "wooden floor"
@@ -639,6 +664,34 @@ var/list/flooring_types
 	smooth_nothing = TRUE
 	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
 
+<<<<<<< HEAD
+=======
+/decl/flooring/wood/wild1
+	icon_base = "wooden_floor_s1"
+	build_type = /obj/item/stack/tile/wood/ashen/red
+
+/decl/flooring/wood/wild2
+	icon_base = "wooden_floor_s2"
+	build_type = /obj/item/stack/tile/wood/ashen/dull
+
+/decl/flooring/wood/wild3
+	icon_base = "wooden_floor_s3"
+	build_type = /obj/item/stack/tile/wood/ashen
+
+/decl/flooring/wood/wild4
+	icon_base = "wooden_floor_s4"
+	build_type = /obj/item/stack/tile/wood/old
+
+/decl/flooring/wood/wild5
+	icon_base = "wooden_floor_s5"
+	build_type = /obj/item/stack/tile/wood/old/veridical
+
+/decl/flooring/wood/wood_old
+	icon = 'icons/turf/flooring/wood_old.dmi'
+	icon_base = "wood"
+	build_type = /obj/item/stack/tile/wood/wood_old
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /decl/flooring/reinforced
 	name = "reinforced floor"
 	desc = "Heavily reinforced with steel rods."
@@ -680,7 +733,11 @@ var/list/flooring_types
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_HIDES_THINGS
 	can_paint = null
 
+<<<<<<< HEAD
 //==========Derelict==============\\
+=======
+//==========Derelict==============//
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /decl/flooring/tiling/derelict
 	name = "floor"
@@ -707,3 +764,253 @@ var/list/flooring_types
 	name = "floor"
 	icon_base = "derelict4"
 	build_type = /obj/item/stack/tile/derelict/white_big_edges
+<<<<<<< HEAD
+=======
+
+/*Beach/Water*/
+
+/decl/flooring/beach/sand
+	name = "sand"
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "sand"
+	flags = TURF_REMOVE_SHOVEL | TURF_CAN_BURN
+	build_type = null
+	footstep_sound = "asteroid"
+	plating_type = /decl/flooring/dirt
+
+/decl/flooring/beach/desert
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "desert"
+
+/decl/flooring/beach/drywater
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "sand1"
+
+/decl/flooring/beach/coastline
+	icon = 'icons/turf/flooring/beach2.dmi'
+	icon_base = "sandwater"
+
+/decl/flooring/beach/water
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "water"
+	resistance = RESISTANCE_TOUGH
+	health = 9999999
+
+/decl/flooring/beach/water/coastwater
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "beach"
+
+/decl/flooring/beach/water/coastwatercorner
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "beachcorner"
+
+/decl/flooring/beach/water/swamp
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow_swamp"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/jungle
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow_jungle1"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/flooded
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow_jungle2"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/ice
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow_frozen"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/ocean
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seadeep"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/jungledeep
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow_jungle3"
+	footstep_sound = "water"
+
+/decl/flooring/beach/water/shallow
+	icon = 'icons/turf/flooring/beach.dmi'
+	icon_base = "seashallow"
+	footstep_sound = "water"
+
+/*Grass*/
+/decl/flooring/grass
+	name = "grass"
+	icon = 'icons/turf/flooring/grass.dmi'
+	icon_base = "grass"
+	has_base_range = 3
+	damage_temperature = T0C+80
+	flags = TURF_REMOVE_SHOVEL | TURF_EDGES_EXTERNAL | TURF_HAS_CORNERS
+	build_type = /obj/item/stack/tile/grass
+	plating_type = /decl/flooring/dirt
+	footstep_sound = "grass"
+	floor_smooth = SMOOTH_NONE
+	space_smooth = SMOOTH_NONE
+
+/decl/flooring/grass2
+	name = "grass"
+	icon = 'icons/turf/flooring/grass.dmi'
+	build_type = null
+	footstep_sound = "grass"
+	resistance = RESISTANCE_TOUGH
+	plating_type = /decl/flooring/dirt
+
+/decl/flooring/grass2/virgoforest
+	icon_base = "grass-light"
+
+/decl/flooring/grass2/virgoforestdark
+	icon_base = "grass-dark"
+
+/decl/flooring/grass2/sif
+	icon_base = "grass_sif"
+
+/decl/flooring/grass2/sifdark
+	icon_base = "grass_sif_dark"
+
+/decl/flooring/grass2/jungle
+	icon_base = "grass_jungle"
+
+/decl/flooring/grass2/snow_grass
+	icon_base = "snowgrass_nes"
+
+/decl/flooring/grass2/snowjungle
+	icon_base = "snowjungle"
+
+/decl/flooring/grass2/plowed_snow
+	icon_base = "plowed_snow"
+
+/decl/flooring/grass2/dry
+	icon_base = "grass_dry"
+
+/decl/flooring/grass2/colonial1
+	icon_base = "cmgrass1"
+
+/decl/flooring/grass2/colonial2
+	icon_base = "cmgrass2"
+
+/decl/flooring/grass2/colonial3
+	icon_base = "cmgrass3"
+
+/decl/flooring/grass2/colonialjungle1
+	icon_base = "junglegrass1"
+
+/decl/flooring/grass2/colonialjungle2
+	icon_base = "junglegrass2"
+
+/decl/flooring/grass2/colonialjungle3
+	icon_base = "junglegrass3"
+
+/decl/flooring/grass2/colonialjungle4
+	icon_base = "junglegrass4"
+
+/decl/flooring/grass2/colonialbeach
+	icon_base = "grassbeach"
+
+/decl/flooring/grass2/colonialbeach/corner
+	icon_base = "gbcorner"
+
+/*Dirt*/
+/decl/flooring/dirt
+	name = "dirt"
+	icon = 'icons/turf/flooring/dirt.dmi'
+	icon_base = "dirt"
+	build_type = null
+	footstep_sound = "gravel"
+	resistance = RESISTANCE_TOUGH
+	health = 9999999
+
+/decl/flooring/dirt/dark
+	icon_base = "dirtnewdark"
+
+/decl/flooring/dirt/dark/plough
+	icon_base = "dirt_ploughed"
+
+/decl/flooring/dirt/flood
+	icon_base = "flood_dirt"
+
+/decl/flooring/dirt/flood/plough
+	icon_base = "flood_dirt_ploughed"
+
+/decl/flooring/dirt/dust
+	icon_base = "dust"
+
+/decl/flooring/dirt/ground
+	icon_base = "desert"
+
+/decl/flooring/dirt/coast
+	icon_base = "dirtbeach"
+
+/decl/flooring/dirt/coast/corner
+	icon_base = "dirtbeachcorner1"
+
+/decl/flooring/dirt/coast/corner2
+	icon_base = "dirtbeachcorner2"
+
+/decl/flooring/dirt/burned
+	icon_base = "burned_dirt"
+
+/decl/flooring/dirt/mud
+	icon_base = "mud_dark"
+
+/decl/flooring/dirt/mud/light
+	icon_base = "mud_light"
+
+/*Rock*/
+/decl/flooring/rock
+	name = "rock"
+	icon = 'icons/turf/flooring/dirt.dmi'
+	icon_base = "rock"
+	build_type = null
+	footstep_sound = "gravel"
+	resistance = RESISTANCE_TOUGH
+	health = 9999999
+
+/decl/flooring/rock/alt
+	icon_base = "rock_alt"
+
+/decl/flooring/rock/grey
+	icon_base = "rock_grey"
+
+/decl/flooring/rock/dark
+	icon_base = "rock_dark"
+
+/decl/flooring/rock/old
+	icon_base = "rock_old"
+
+/decl/flooring/rock/manmade/ruin1
+	icon_base = "stone_old"
+
+/decl/flooring/rock/manmade/ruin2
+	icon_base = "stone_old1"
+
+/decl/flooring/rock/manmade/ruin3
+	icon_base = "stone_old2"
+
+/decl/flooring/rock/seafloor
+	icon_base = "seafloor"
+
+/decl/flooring/rock/manmade/concrete
+	icon_base = "concrete6"
+
+/decl/flooring/rock/manmade/asphalt
+	icon_base = "asphalt"
+
+/decl/flooring/rock/manmade/road
+	icon_base = "road_1"
+
+/*POOL - basic pool tile details*/
+/decl/flooring/pool
+	name = "poolwater"
+	icon = 'icons/turf/flooring/tiles_white.dmi'
+	icon_base = "tiles"
+	build_type = null
+	footstep_sound = "water"
+	resistance = RESISTANCE_TOUGH
+	health = 9999999
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

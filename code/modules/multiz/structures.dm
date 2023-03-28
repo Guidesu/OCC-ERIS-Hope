@@ -22,6 +22,9 @@
 				qdel(src)
 			return .
 
+/obj/structure/multiz/ex_act(severity)
+	return //We cant be broken like this to prevent people getting unfairly stuck do to bad rng
+
 /obj/structure/multiz/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
@@ -69,7 +72,7 @@
 
 /obj/structure/multiz/ladder
 	name = "ladder"
-	desc = "A ladder.  You can climb it up and down."
+	desc = "A ladder. You can climb it up and down."
 	icon_state = "ladderdown"
 	var/climb_delay = 30
 
@@ -138,11 +141,19 @@
 		attack_hand(user)
 
 /obj/structure/multiz/ladder/attack_hand(var/mob/M)
+<<<<<<< HEAD
 	if (M.buckled)//Occulus Edit: Prevents buckled mobs from getting stuck on ladders
 		return//Occulus Edit
 	if (isrobot(M) && !isdrone(M))
 		var/mob/living/silicon/robot/R = M
 		climb(M, (climb_delay)/R.speed_factor) //Robots are not built for climbing, they should go around where possible	// OCCULUS EDIT - Removed the *6 multiplier from robot climb delay
+=======
+	if (M.buckled)//Prevents buckled mobs from getting stuck on ladders
+		return
+	if (isrobot(M) && !isdrone(M))
+		var/mob/living/silicon/robot/R = M
+		climb(M, (climb_delay*3)/R.speed_factor) //Robots are not built for climbing, they should go around where possible
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//I'd rather make them unable to use ladders at all, but eris' labyrinthine maintenance necessitates it
 	else
 		climb(M, climb_delay)
@@ -213,11 +224,20 @@
 						user.client.perspective = MOB_PERSPECTIVE
 						user.hud_used.updatePlaneMasters(user)
 						user.is_watching = FALSE
+<<<<<<< HEAD
+=======
+						user.can_multiz_pb = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					else if(user.is_watching == FALSE)
 						user.client.eye = target
 						user.client.perspective = EYE_PERSPECTIVE
 						user.hud_used.updatePlaneMasters(user)
 						user.is_watching = TRUE
+<<<<<<< HEAD
+=======
+						if(Adjacent(user))
+							user.can_multiz_pb = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 		else
 			to_chat(user, SPAN_NOTICE("You can't do it right now."))
@@ -228,11 +248,15 @@
 		user.hud_used.updatePlaneMasters(user)
 		user.is_watching = FALSE
 		return
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ////STAIRS////
 
 /obj/structure/multiz/stairs
 	name = "stairs"
-	desc = "Stairs leading to another deck. Not too useful if the gravity goes out."
+	desc = "Stairs leading to another level. Not too useful if destroyed."
 	icon_state = "ramptop"
 	layer = 2.4
 
@@ -326,9 +350,12 @@
 	icon_state = "rampup"
 	istop = FALSE
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/multiz/ladder/burrow_hole
 	name = "ancient maintenance tunnel"
 	desc = "A deep metal tunnel. You wonder where it leads."
@@ -354,4 +381,8 @@
 		free_deepmaint_ladders -= src
 		my_burrow.collapse()
 
+<<<<<<< HEAD
 	..()
+=======
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

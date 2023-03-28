@@ -15,11 +15,12 @@ em						{font-style: normal;font-weight: bold;}
 .log_message			{color: #386AFF;	font-weight: bold;}
 
 /* OOC */
-.ooc					{font-weight: bold;}
+.ooc					{font-weight: bold; color: #002eb8;}
 .ooc img.text_tag		{width: 32px; height: 10px;}
 
 .ooc .everyone			{color: #002eb8;}
-.ooc .looc				{color: #3A9696;}
+.ooc .looc				{color: #46B2B2;} /*Old LOOC: {color: #3A9696;}*/
+.ooc .rlooc				{color: #307B7B;}
 .ooc .elevated			{color: #2e78d9;}
 .ooc .moderator			{color: #184880;}
 .ooc .developer			{color: #1b521f;}
@@ -35,7 +36,11 @@ em						{font-style: normal;font-weight: bold;}
 .mod_channel			{color: #735638;	font-weight: bold;}
 .mod_channel .admin		{color: #b82e00;	font-weight: bold;}
 .admin_channel			{color: #9611D4;	font-weight: bold;}
+<<<<<<< HEAD
 .adminticket			{color: #386AFF;	font-weight: bold;}
+=======
+.adminticket {color: #386AFF; font-weight: bold;}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /* Radio: Misc */
 .deadsay				{color: #530FAD;}
@@ -52,11 +57,17 @@ em						{font-style: normal;font-weight: bold;}
 .ntradio				{color: #D4AF37;}
 
 .secradio				{color: #A30000;}
+.bsradio				{color: #88100a;}
 .engradio				{color: #A66300;}
 .medradio				{color: #0081A3;}
+<<<<<<< HEAD
+=======
+.medaltradio				{color: #0081A3;}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 .sciradio				{color: #993399;}
 .supradio				{color: #5F4519;}
-.srvradio				{color: #6eaa2c;}
+.srvradio				{color: #6EAA2C;}
+.proradio				{color: #209848;}
 
 /* Miscellaneous */
 .name					{font-weight: bold;}
@@ -89,9 +100,10 @@ h1.alert, h2.alert		{color: #000000;}
 .monkey					{color: #22228B;}
 .rough					{font-family: Trebuchet MS, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
-.russian				{color: #635d17}
-.serbian				{color: #Ad6f1d}
+.slavic					{color: #635d17}
+.illyrian				{color: #Ad6f1d}
 .jive					{color: #666666}
+<<<<<<< HEAD
 .alien					{color: #543354;}
 .tajaran				{color: #803B56;}
 .tajaran_signlang		{color: #941C1C;}
@@ -110,6 +122,17 @@ h1.alert, h2.alert		{color: #000000;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 .scraptalk				{color: #AAAFB7;}
+=======
+.euro					{color: #990000}
+.jana					{color: #993399}
+.latin					{color: #deb63d}
+.romana					{color: #ed7961}
+.yassari				{color: #5fbf4e}
+.kriosan				{color: #ff8000}
+.marqua					{color: #00FFFF}
+.akula					{color: #f8412c}
+.plant					{color: #882d17}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 .interface				{color: #330033;}
 

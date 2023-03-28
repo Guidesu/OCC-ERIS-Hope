@@ -68,25 +68,41 @@
 		return 1
 
 	if(href_list["change_zeroth_law"])
+<<<<<<< HEAD
 		var/new_law = sanitize(input("Enter new law Zero. Leaving the field blank will cancel the edit.", "Edit Law", zeroth_law))
+=======
+		var/new_law = sanitize(input("Enter new law Zero. Leaving the field blank will cancel the edit.", "Edit Law", zeroth_law) as text|null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(new_law && new_law != zeroth_law && can_still_topic())
 			zeroth_law = new_law
 		return 1
 
 	if(href_list["change_ion_law"])
+<<<<<<< HEAD
 		var/new_law = sanitize(input("Enter new ion law. Leaving the field blank will cancel the edit.", "Edit Law", ion_law))
+=======
+		var/new_law = sanitize(input("Enter new ion law. Leaving the field blank will cancel the edit.", "Edit Law", ion_law) as text|null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(new_law && new_law != ion_law && can_still_topic())
 			ion_law = new_law
 		return 1
 
 	if(href_list["change_inherent_law"])
+<<<<<<< HEAD
 		var/new_law = sanitize(input("Enter new inherent law. Leaving the field blank will cancel the edit.", "Edit Law", inherent_law))
+=======
+		var/new_law = sanitize(input("Enter new inherent law. Leaving the field blank will cancel the edit.", "Edit Law", inherent_law) as text|null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(new_law && new_law != inherent_law && can_still_topic())
 			inherent_law = new_law
 		return 1
 
 	if(href_list["change_supplied_law"])
+<<<<<<< HEAD
 		var/new_law = sanitize(input("Enter new supplied law. Leaving the field blank will cancel the edit.", "Edit Law", supplied_law))
+=======
+		var/new_law = sanitize(input("Enter new supplied law. Leaving the field blank will cancel the edit.", "Edit Law", supplied_law) as text|null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(new_law && new_law != supplied_law && can_still_topic())
 			supplied_law = new_law
 		return 1
@@ -101,7 +117,11 @@
 		if(is_malf(usr))
 			var/datum/ai_law/AL = locate(href_list["edit_law"]) in owner.laws.all_laws()
 			if(AL)
+<<<<<<< HEAD
 				var/new_law = sanitize(input(usr, "Enter new law. Leaving the field blank will cancel the edit.", "Edit Law", AL.law))
+=======
+				var/new_law = sanitize(input(usr, "Enter new law. Leaving the field blank will cancel the edit.", "Edit Law", AL.law) as text|null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(new_law && new_law != AL.law && is_malf(usr) && can_still_topic())
 					log_and_message_admins("has changed a law of [owner] from '[AL.law]' to '[new_law]'")
 					AL.law = new_law
@@ -147,7 +167,7 @@
 
 	return 0
 
-/datum/nano_module/law_manager/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/law_manager/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
 	var/data[0]
 	owner.lawsync()
 
@@ -203,7 +223,7 @@
 	return law_sets
 
 /datum/nano_module/law_manager/proc/is_malf(var/mob/user)
-	return (is_admin(user) && !owner.is_slaved()) || owner.is_malf_or_traitor()
+	return (is_admin(user) && !owner.is_slaved()) || owner.is_malf_or_contractor()
 
 /mob/living/silicon/proc/is_slaved()
 	return 0

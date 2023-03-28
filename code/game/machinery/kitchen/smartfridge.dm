@@ -5,8 +5,13 @@
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "smartfridge"
 	layer = BELOW_OBJ_LAYER
+<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
+=======
+	density = 1
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -25,6 +30,8 @@
 	var/scan_id = 1
 	var/is_secure = 0
 	var/datum/wires/smartfridge/wires = null
+
+	atmos_canpass = CANPASS_NEVER
 
 
 
@@ -50,20 +57,35 @@
 /obj/machinery/smartfridge/kitchen
 	name = "\improper Agro-Club Fridge"
 	desc = "The panel says it won't allow anyone without access to the kitchen or hydroponics."
+<<<<<<< HEAD
 	req_one_access = list(access_hydroponics,access_kitchen)
+=======
+	req_one_access = list(access_hydroponics, access_kitchen)
 
+/obj/machinery/smartfridge/kitchen/church
+	name = "\improper Church Fridge"
+	desc = "The panel says it won't allow anyone without access to the church."
+	req_one_access = list(access_nt_disciple)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
+/obj/machinery/smartfridge/kitchen/church/public
+	name = "\improper Public Church Fridge"
+	desc = "The panel says anyone may take what they like."
+	req_one_access = null
 
 
 /*******************
 *   Xenobio Slime Fridge
 ********************/
 /obj/machinery/smartfridge/secure/extract
-	name = "\improper Slime Extract Storage"
-	desc = "A refrigerated storage unit for slime extracts"
+	name = "\improper slime extract SmartFridge"
+	desc = "A refrigerated storage unit for slime extracts and potions."
 	req_access = list(access_moebius)
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/slime_extract))
+		return 1
+	if(istype(O,/obj/item/slime_potion))
 		return 1
 	return 0
 
@@ -73,7 +95,7 @@
 *   Chemistry Medicine Storage
 ********************/
 /obj/machinery/smartfridge/secure/medbay
-	name = "\improper Refrigerated Medicine Storage"
+	name = "\improper medicine SmartFridge"
 	desc = "A refrigerated storage unit for storing medicine and chemicals."
 	req_one_access = list(access_moebius,access_chemistry)
 
@@ -91,7 +113,7 @@
 *   Virus Storage
 ********************/
 /obj/machinery/smartfridge/secure/virology
-	name = "\improper Refrigerated Virus Storage"
+	name = "\improper virus SmartFridge"
 	desc = "A refrigerated storage unit for storing viral material."
 	req_access = list(access_virology)
 	icon_state = "smartfridge_virology"
@@ -106,7 +128,7 @@
 	return 0
 
 /obj/machinery/smartfridge/chemistry
-	name = "\improper Smart Chemical Storage"
+	name = "\improper chemical SmartFridge"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
@@ -124,19 +146,27 @@
 *   Bar Drinks Showcase
 **************************/
 /obj/machinery/smartfridge/drinks
-	name = "\improper Drink Showcase"
+	name = "\improper drink showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 	icon_state = "showcase"
 	icon_on = "showcase"
 	icon_off = "showcase-off"
 	icon_panel = "showcase-panel"
 	var/icon_fill = "showcase-fill"
+<<<<<<< HEAD
+=======
+	density = FALSE // For placing atop tables as a proper storage, like on the old layout. - Seb
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/food/drinks) || istype(O,/obj/item/reagent_containers/food/condiment))
 		return 1
 
+<<<<<<< HEAD
 /obj/machinery/smartfridge/drinks/on_update_icon()
+=======
+/obj/machinery/smartfridge/drinks/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = icon_off
@@ -144,22 +174,36 @@
 		icon_state = icon_on
 
 	if(panel_open && icon_panel)
+<<<<<<< HEAD
 		add_overlays(image(icon, icon_panel))
 
 	if(contents.len && !(stat & NOPOWER))
 		add_overlays(image(icon, icon_fill))
 
+=======
+		add_overlay(image(icon, icon_panel))
+
+	if(contents.len && !(stat & NOPOWER))
+		add_overlay(image(icon, icon_fill))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /***************************
 *   Hydroponics Drying Rack
 ****************************/
 /obj/machinery/smartfridge/drying_rack
-	name = "\improper Drying Rack"
+	name = "\improper drying rack"
 	desc = "A machine for drying plants."
 	icon_state = "drying_rack"
 	icon_on = "drying_rack_on"
 	icon_off = "drying_rack"
+<<<<<<< HEAD
 	var/drying_power = 0.01 	//Occulus Edit, Doubled drying power so you're not spending 30 minutes waiting for your weed or tobacco
+=======
+	use_power = NO_POWER_USE
+	idle_power_usage = 0
+	active_power_usage = 0
+	var/drying_power = 0.1 //should take a bit but. why make people wait a lifetime to DRY PLANTS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/currently_drying = FALSE
 
 /obj/machinery/smartfridge/drying_rack/accept_check(var/obj/item/O as obj)
@@ -176,23 +220,33 @@
 	if(contents.len)
 		dry()
 
+<<<<<<< HEAD
 /obj/machinery/smartfridge/drying_rack/on_update_icon()
+=======
+/obj/machinery/smartfridge/drying_rack/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(inoperable())
 		icon_state = icon_off
 	else
 		icon_state = icon_on
 	if(contents.len)
+<<<<<<< HEAD
 		add_overlays("drying_rack_filled")
 		if(!inoperable() && currently_drying)
 			add_overlays("drying_rack_drying")
+=======
+		add_overlay("drying_rack_filled")
+		if(!inoperable() && currently_drying)
+			add_overlay("drying_rack_drying")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	var/drying_something = FALSE //While we're here, check if anything is undried and still processing
 	for(var/obj/item/reagent_containers/food/snacks/S in contents)
 		if(S.dry)
 			continue
-		S.dryness += drying_power * (rand(0.85, 1.15))
+		S.dryness += drying_power
 		if (S.dryness >= 1)
 			if(S.dried_type == S.type || !S.dried_type)
 				S.dry = TRUE
@@ -239,7 +293,11 @@
 	return ..()
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+<<<<<<< HEAD
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/reagent_containers/food/snacks/meat/) || istype(O,/obj/item/reagent_containers/food/snacks/egg/))
+=======
+	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/reagent_containers/food/snacks/meat/) || istype(O,/obj/item/reagent_containers/food/snacks/egg/ || istype(O,/obj/item/reagent_containers/food/snacks/chickenbreast)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return 1
 	return 0
 
@@ -258,7 +316,11 @@
 	if(old_stat != stat)
 		update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/smartfridge/on_update_icon()
+=======
+/obj/machinery/smartfridge/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = icon_off
@@ -266,6 +328,7 @@
 		icon_state = icon_on
 
 	if(panel_open && icon_panel)
+<<<<<<< HEAD
 		add_overlays(image(icon, icon_panel))
 	if(!panel_open && icon_panel) //SYZYGY edit - Remove overlays if the panel isn't open!
 		remove_overlays(image(icon, icon_panel))
@@ -277,6 +340,17 @@
 			add_overlays(image(icon, icon_fill20))
 		else
 			add_overlays(image(icon, icon_fill30))
+=======
+		add_overlay(image(icon, icon_panel))
+
+	if(contents.len)
+		if(contents.len <= 10)
+			add_overlay(image(icon, icon_fill10))
+		else if(contents.len <= 20)
+			add_overlay(image(icon, icon_fill20))
+		else
+			add_overlay(image(icon, icon_fill30))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*******************
 *   Item Adding
@@ -346,7 +420,7 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
 /obj/machinery/smartfridge/proc/update_contents()
@@ -357,7 +431,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/smartfridge/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/data[0]
@@ -421,7 +495,7 @@
 		return 1
 	return 0
 
-/obj/machinery/smartfridge/proc/throw_item()
+/obj/machinery/smartfridge/throw_item()
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)

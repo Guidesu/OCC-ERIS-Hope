@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/recycler
 	name = T_BOARD("Recycler")
+=======
+/obj/item/circuitboard/recycler
+	build_name = "Recycler"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/recycler
 	board_type = "machine"
 	origin_tech = list(TECH_ENGINEERING = 3)
@@ -18,22 +23,30 @@
 	var/safety_mode = FALSE // Temporality stops the machine if it detects a mob
 	var/grinding = FALSE
 	var/icon_name = "grinder-o"
+	circuit = /obj/item/circuitboard/recycler
 	var/blood = FALSE
 	var/eat_dir = WEST
-	var/chance_to_recycle = 1
+	var/chance_to_recycle = 33
 
 /obj/machinery/recycler/Initialize()
 	// On us
 	. = ..()
+<<<<<<< HEAD
 	component_parts = list()
 	component_parts += new /obj/item/electronics/circuitboard/recycler(null)
 	component_parts += new /obj/item/stock_parts/manipulator(null)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	RefreshParts()
 	update_icon()
 
 /obj/machinery/recycler/RefreshParts()
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
+<<<<<<< HEAD
 		chance_to_recycle = 25 * M.rating //% of materials salvaged
+=======
+		chance_to_recycle = 33 * M.rating //% of materials salvaged level 3 parts is 99%
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	chance_to_recycle = min(100, chance_to_recycle)
 
 /obj/machinery/recycler/examine(mob/user)
@@ -112,9 +125,15 @@
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	var/chance_mod = 1
 	if(!istype(I, /obj/item/scrap_lump))
+<<<<<<< HEAD
 		chance_mod = 5
 	if(prob(chance_to_recycle / chance_mod))
 		new /obj/item/stack/material/refined_scrap(loc) // Occ Fix
+=======
+		chance_mod = chance_to_recycle
+	if(prob(chance_to_recycle - chance_mod)) //changes it so that only lumps of scrap can be used to make refined scrap.
+		new /obj/item/stack/sheet/refined_scrap(loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	qdel(I)
 
 /obj/machinery/recycler/proc/stop(mob/living/L)
@@ -136,14 +155,14 @@
 	if(issilicon(L))
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	else
-		L.emote("scream", , , 1)
+		L.emote("painscream", , , 1)
 
 	var/gib = TRUE
 	// By default, the emagged recycler will gib all non-carbons. (human simple animal mobs don't count)
 	if(iscarbon(L))
 		gib = FALSE
 		if(L.stat == CONSCIOUS)
-			L.emote("scream", , , 1)
+			L.emote("painscream", , , 1)
 		add_blood(L)
 
 	if(!blood && !issilicon(L))

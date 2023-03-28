@@ -31,7 +31,13 @@
 	if(mode == 2)
 		STOP_PROCESSING_POWER_OBJECT(src)
 	. = ..()
+<<<<<<< HEAD
 */
+=======
+
+*/
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/powersink/attackby(obj/item/I, mob/user)
 	if(QUALITY_SCREW_DRIVING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_MEC))
@@ -53,7 +59,11 @@
 			else
 				if (mode == 2)
 					STOP_PROCESSING(SSmachines, src)
+<<<<<<< HEAD
 				anchored = FALSE
+=======
+				anchored = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				mode = 0
 				src.visible_message(SPAN_NOTICE("[user] detaches [src] from the cable!"))
 				set_light(0)
@@ -80,7 +90,11 @@
 			mode = 1
 			set_light(0)
 			icon_state = "powersink0"
+<<<<<<< HEAD
 			STOP_PROCESSING(SSmachines, src)
+=======
+			START_PROCESSING(SSmachines, src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/powersink/pwr_drain()
 	if(!attached)

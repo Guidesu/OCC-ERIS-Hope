@@ -9,17 +9,25 @@
 #define ANIM_CLOSE -1
 
 /obj/machinery/neotheology/cloner
+<<<<<<< HEAD
 	name = "SLT-73 Clonepod Prototype"
 	desc = "One of the more fruitful results of NT's investment in Lazarus, this baby puts a person back together from organic slurry just in a few minutes. Now with clear biomass fluids for all your gross anatomy viewing needs."
+=======
+	name = "Strange pod"
+	desc = "This pod seems entirely alien and smells disgustingly of old biomass left to rot."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/neotheology_pod.dmi'
 	icon_state = "preview"
 	density = TRUE
 	anchored = TRUE
 	layer = 2.8
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/neotheology/cloner
 
 	frame_type = FRAME_VERTICAL
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/machinery/neotheology/reader/reader
 	var/reader_loc
 
@@ -32,7 +40,7 @@
 
 	var/progress = 0
 
-	var/time_multiplier = 1	//Try to avoid use of non integer values
+	var/cloning_speed  = 1	//Try to avoid use of non integer values
 
 	var/biomass_consumption = 2
 
@@ -54,6 +62,7 @@
 	return ..()
 
 
+<<<<<<< HEAD
 /obj/machinery/neotheology/cloner/RefreshParts()
 	var/mn_rating = 0
 	var/mn_ammount = 0
@@ -65,6 +74,8 @@
 	else
 		time_multiplier = 0 // ... so it wont work without manipulators
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/neotheology/cloner/proc/find_container()
 	for(var/obj/machinery/neotheology/biomass_container/BC in orange(1,src))
 		return BC
@@ -122,7 +133,11 @@
 		occupant.forceMove(loc)
 		occupant = null
 	else
+<<<<<<< HEAD
 		if(progress >= CLONING_MEAT)
+=======
+		if(get_progress(progress) >= CLONING_MEAT)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			new /obj/item/reagent_containers/food/snacks/meat(loc)
 
 	update_icon()
@@ -237,7 +252,12 @@
 				return
 
 			occupant = new/mob/living/carbon/human(src)
+<<<<<<< HEAD
 			occupant.dna = R.host_dna.Clone()
+=======
+			occupant.dna = R.dna.Clone()
+			//occupant.stats = R.mind.stats.Clone()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			occupant.set_species()
 			occupant.real_name = R.host_dna.real_name
 			occupant.age = R.host_age
@@ -247,16 +267,28 @@
 			occupant.stats = R.host_stats // Syzygy edit to copy stats from old mob to other
 			// occupant.stats = R.stats // commented out because it's a variable used by the cruciform, uncomment when we're back to using cruciforms
 
+<<<<<<< HEAD
 		if(progress == CLONING_BODY || progress <= CLONING_BODY && progress > CLONING_BODY-10)
+=======
+		if(progress == CLONING_BODY*cloning_speed )
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/datum/effect/effect/system/spark_spread/s = new
 			s.set_up(3, 1, src)
 			s.start()
 
+<<<<<<< HEAD
 		if(progress == CLONING_DONE || progress >= CLONING_DONE-5)
 			open_anim()
 			closed = FALSE
 
 		if(progress >= CLONING_DONE + 2)
+=======
+		if(progress == CLONING_DONE*cloning_speed )
+			open_anim()
+			closed = FALSE
+
+		if(progress >= CLONING_DONE*cloning_speed  + 2)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			done()
 
 		update_icon()
@@ -264,6 +296,7 @@
 	use_power(power_cost)
 
 
+<<<<<<< HEAD
 /obj/machinery/neotheology/cloner/attackby(obj/item/I, mob/user as mob)
 
 	if(default_deconstruction(I, user))
@@ -273,28 +306,47 @@
 		return
 
 /obj/machinery/neotheology/cloner/on_update_icon()
+=======
+/obj/machinery/neotheology/cloner/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "pod_base0"
 
 	cut_overlays()
 
 	if(panel_open)
 		var/image/P = image(icon, "pod_panel")
+<<<<<<< HEAD
 		add_overlays(P)
+=======
+		add_overlay(P)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/image/I = image(icon, "pod_base1")
 	I.layer = 5
 	I.pixel_z = 32
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(closed)
 		I = image(icon, "pod_under")
 		I.layer = 5
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		I = image(icon, "pod_top_on")
 		I.layer = 5.021
 		I.pixel_z = 32
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	/////////BODY
@@ -308,22 +360,34 @@
 		I.layer = 5
 		I.pixel_z = 11 + crop
 
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(P >= CLONING_BONES)
 			I = image(icon, "clone_meat")
 			I.alpha = min(255,round(((P-CLONING_BONES)/(CLONING_MEAT-CLONING_BONES))*255))
 			I.layer = 5
 			I.pixel_z = 11
+<<<<<<< HEAD
 			add_overlays(I)
+=======
+			add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			if(P >= CLONING_MEAT && occupant)
 				I = image(occupant.icon, occupant.icon_state)
 				I.alpha = min(255,round(((P-CLONING_MEAT)/(CLONING_BODY-CLONING_MEAT))*255))
-				I.overlays = occupant.overlays
+				I.copy_overlays(occupant.get_overlays(), TRUE)
 				I.layer = 5
 				I.pixel_z = 11
+<<<<<<< HEAD
 				add_overlays(I)
+=======
+				add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//////////////
 
@@ -331,25 +395,45 @@
 		if(!anim0 && !anim1)
 			I = image(icon, "pod_glass0")
 			I.layer = 5.01
+<<<<<<< HEAD
 			add_overlays(I)
+=======
+			add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			I = image(icon, "pod_glass1")
 			I.layer = 5.01
 			I.pixel_z = 32
+<<<<<<< HEAD
 			add_overlays(I)
 
 			I = image(icon, "pod_liquid0")
 			I.layer = 5.01
 			add_overlays(I)
+=======
+			add_overlay(I)
+
+			I = image(icon, "pod_liquid0")
+			I.layer = 5.01
+			add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			I = image(icon, "pod_liquid1")
 			I.layer = 5.01
 			I.pixel_z = 32
+<<<<<<< HEAD
 			add_overlays(I)
 
 	if(anim0 && anim1)
 		add_overlays(anim0)
 		add_overlays(anim1)
+=======
+			add_overlay(I)
+
+	if(anim0 && anim1)
+		add_overlay(anim0)
+		add_overlay(anim1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	I = image(icon, "pod_top0")
 
@@ -358,12 +442,20 @@
 	else
 		I.layer = 5.02
 
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	I = image(icon, "pod_top1")
 	I.layer = 5.02
 	I.pixel_z = 32
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /////////////////////
@@ -373,16 +465,25 @@
 /////////////////////
 
 /obj/machinery/neotheology/biomass_container
+<<<<<<< HEAD
 	name = "Lazarus' biomass container"
 	desc = "A barrel that makes strange noises, filled with a substance which at any time may become someone else's body."
 	icon_state = "biocan"
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/electronics/circuitboard/neotheology/biocan
+=======
+	name = "Strange biomass container"
+	desc = "It seems to be a biomass container."
+	icon_state = "biocan"
+	density = TRUE
+	anchored = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/biomass_capacity = 600
 
 
+<<<<<<< HEAD
 /obj/machinery/neotheology/biomass_container/Initialize(mapload, d, bolt=TRUE)
 	. = ..()
 	create_reagents(biomass_capacity)
@@ -411,6 +512,13 @@
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		T += M.rating * 200
 	biomass_capacity = T
+=======
+/obj/machinery/neotheology/biomass_container/New()
+	..()
+	create_reagents(biomass_capacity)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		reagents.add_reagent("biomatter", 300)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/neotheology/biomass_container/examine(mob/user)
 	if(!..(user, 2))
@@ -421,6 +529,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("Filled to [reagents.total_volume]/[biomass_capacity]."))
 
+<<<<<<< HEAD
 /obj/machinery/neotheology/biomass_container/attackby(obj/item/I, mob/user)
 
 	if(default_deconstruction(I, user))
@@ -460,6 +569,49 @@
 			to_chat(user, SPAN_NOTICE("You transfer some of biomatter from \the [container] to \the [name]."))
 		else
 			to_chat(user, SPAN_NOTICE("You need clear biomatter to fill \the [name]."))
+=======
+/obj/machinery/neotheology/biomass_container/attackby(obj/item/I, mob/user as mob)
+	if (istype(I, /obj/item/stack/material/biomatter))
+		var/obj/item/stack/material/biomatter/B = I
+		if (B.biomatter_in_sheet && B.amount)
+			var/sheets_amount_to_transphere = input(user, "How many sheets you want to load?", "Biomatter melting", 1) as num
+			if(sheets_amount_to_transphere)
+				var/total_transphere_from_stack = 0
+				var/i = 1
+				while(i <= sheets_amount_to_transphere)
+					reagents.add_reagent("biomatter", B.biomatter_in_sheet)
+					total_transphere_from_stack += B.biomatter_in_sheet
+					i++
+				B.use(sheets_amount_to_transphere)
+				user.visible_message(
+									"[user.name] inserted \the [B.name]'s sheets in \the [name].",
+									"You inserted \the [B.name] in  (in amount: [sheets_amount_to_transphere]) \the [name].\
+									And after that you see how the counter on \the [name] is incremented by [total_transphere_from_stack]."
+									)
+				ping()
+			else
+				to_chat(user, SPAN_WARNING("You can't insert [sheets_amount_to_transphere] in [name]"))
+			return
+		else
+			to_chat(user, SPAN_WARNING("\The [B.name] is exhausted and can't be melted to biomatter. "))
+
+	if(istype(I, /obj/item/reagent_containers) && I.is_open_container())
+		var/obj/item/reagent_containers/container = I
+		if(container.reagents.get_reagent_amount("biomatter") == container.reagents.total_volume)
+			container.reagents.trans_to_holder(reagents, container.amount_per_transfer_from_this)
+			to_chat(user, SPAN_NOTICE("You transfer some of biomatter from \the [container] to \the [name]."))
+		else
+			to_chat(user, SPAN_NOTICE("You need clear biomatter to fill \the [name]."))
+
+
+/obj/machinery/neotheology/biomass_container/update_icon()
+	cut_overlays()
+
+	if(panel_open)
+		var/image/P = image(icon, "biocan_panel")
+		P.dir = dir
+		add_overlay(P)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /////////////////////
 
@@ -468,6 +620,7 @@
 /////////////////////
 
 /obj/machinery/neotheology/reader
+<<<<<<< HEAD
 	name = "SLT-73-B Core Implant Reader"
 	desc = "A neat-looking device capable of extracting DNA and conciousness imprints from a core implant."
 	icon_state = "reader_off"
@@ -476,10 +629,20 @@
 	circuit = /obj/item/electronics/circuitboard/neotheology/reader
 
 	var/obj/item/implant/core_implant/soulcrypt/implant
+=======
+	name = "strange scanner"
+	desc = "It thrums and seems to be scanning anyone who gets near it judging from the small beeps."
+	icon_state = "reader_off"
+	density = TRUE
+	anchored = TRUE
+
+	var/obj/item/implant/core_implant/cruciform/implant
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/reading = FALSE
 
 
 /obj/machinery/neotheology/reader/attackby(obj/item/I, mob/user as mob)
+<<<<<<< HEAD
 
 	if(default_deconstruction(I, user))
 		return
@@ -489,6 +652,10 @@
 
 	if(istype(I, /obj/item/implant/core_implant/soulcrypt))
 		var/obj/item/implant/core_implant/soulcrypt/C = I
+=======
+	if(istype(I, /obj/item/implant/core_implant/cruciform))
+		var/obj/item/implant/core_implant/cruciform/C = I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		user.drop_item()
 		C.forceMove(src)
 		implant = C
@@ -502,7 +669,11 @@
 		return
 
 	if(reading)
+<<<<<<< HEAD
 		to_chat(user, SPAN_WARNING("You try to eject the [implant], but it does not move.")) //Occulus Edit: Synthetics no longer delete crypts
+=======
+		to_chat(user, SPAN_WARNING("You try to pull the [implant], but it does not move."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	implant.forceMove(loc) //Occulus Edit: Synthetics no longer delete crypts
@@ -517,12 +688,20 @@
 		implant = null
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/neotheology/reader/on_update_icon()
+=======
+/obj/machinery/neotheology/reader/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if(panel_open)
 		var/image/P = image(icon, "reader_panel")
+<<<<<<< HEAD
 		add_overlays(P)
+=======
+		add_overlay(P)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 	icon_state = "reader_off"
@@ -535,7 +714,11 @@
 		var/image/I = image(icon, "reader_c_green")
 		if(implant.get_module(CRUCIFORM_PRIEST))
 			I = image(icon, "reader_c_red")
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /////////////////////

@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+//Tells all active shield generators in the world to update, at some point in future
+/proc/update_shield_generators()
+	for (var/obj/machinery/power/shield_generator/S in GLOB.machines)
+		S.needs_update = TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/proc/getEffectShield()
 	for (var/obj/effect/shield/S in contents)
 		if (!S.isInactive())
@@ -25,7 +33,11 @@
 	anchored = TRUE
 	plane = GAME_PLANE
 	layer = BELOW_OBJ_LAYER
+<<<<<<< HEAD
 	density = TRUE
+=======
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	invisibility = 0
 	var/obj/machinery/power/shield_generator/gen = null
 	var/disabled_for = 0
@@ -247,6 +259,7 @@ Like for example singulo act and whatever.
 
 // Projectiles
 /obj/effect/shield/bullet_act(var/obj/item/projectile/proj)
+<<<<<<< HEAD
 	if(proj.damage_types[BURN])
 		take_damage(proj.damage_types[BURN], SHIELD_DAMTYPE_HEAT, proj)
 	if(proj.damage_types[BRUTE])
@@ -254,6 +267,15 @@ Like for example singulo act and whatever.
 	else
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM, proj)
 
+=======
+	if (!(proj.testing))
+		if(proj.damage_types[BURN])
+			take_damage(proj.damage_types[BURN], SHIELD_DAMTYPE_HEAT, proj)
+		if(proj.damage_types[BRUTE])
+			take_damage(proj.damage_types[BRUTE], SHIELD_DAMTYPE_PHYSICAL, proj)
+		else
+			take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM, proj)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
 /obj/effect/shield/attackby(var/obj/item/I as obj, var/mob/user as mob)
@@ -353,7 +375,7 @@ Like for example singulo act and whatever.
 	if(!S.gen.check_flag(MODEFLAG_OVERCHARGE))
 		return
 	S.overcharge_shock(src)
-
+/*
 /obj/effect/meteor/shield_impact(var/obj/effect/shield/S)
 	if(!S.gen.check_flag(MODEFLAG_HYPERKINETIC))
 		return
@@ -370,7 +392,7 @@ Like for example singulo act and whatever.
 	visible_message("<span class='danger'>\The [src] breaks into dust!</span>")
 	make_debris()
 	qdel(src)
-
+*/
 
 
 //This function takes a turf to prevent race conditions, as the object calling it will probably be deleted in the same frame

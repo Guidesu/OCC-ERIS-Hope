@@ -21,8 +21,12 @@
 	throw_speed = 7
 	throw_range = 15
 	matter = list(MATERIAL_STEEL = 1)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 6
+=======
+	preloaded_reagents = list("acetone" = 9,"aluminum"= 3, "tungsten" = 5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/colour = "black"	//what colour the ink is!
 
 
@@ -60,7 +64,11 @@
 	colour = "white"
 
 
+<<<<<<< HEAD
 /obj/item/pen/attack(mob/M, mob/user)
+=======
+/obj/item/pen/attack(mob/M as mob, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!ismob(M))
 		return
 	to_chat(user, SPAN_WARNING("You stab [M] with the pen."))
@@ -84,7 +92,11 @@
 	..()
 	create_reagents(30)
 
+<<<<<<< HEAD
 /obj/item/pen/reagent/attack(mob/living/M, mob/user)
+=======
+/obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!istype(M))
 		return
@@ -128,7 +140,11 @@
 	var/signature = ""
 	spawn_blacklisted = TRUE
 
+<<<<<<< HEAD
 /obj/item/pen/chameleon/attack_self(mob/user)
+=======
+/obj/item/pen/chameleon/attack_self(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	/*
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()

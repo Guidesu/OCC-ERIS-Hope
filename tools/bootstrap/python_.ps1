@@ -50,7 +50,11 @@ if (!(Test-Path $PythonExe -PathType Leaf)) {
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($Archive, $PythonDir)
 
 	# Copy a ._pth file without "import site" commented, so pip will work
+<<<<<<< HEAD
 	Copy-Item "$Bootstrap/python36._pth" $PythonDir `
+=======
+	Copy-Item "$Bootstrap/python37._pth" $PythonDir `
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		-ErrorAction Stop
 
 	Remove-Item $Archive

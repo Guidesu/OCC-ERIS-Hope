@@ -1,7 +1,7 @@
 // These are basically USB data sticks and may be used to transfer files between devices
 /obj/item/computer_hardware/hard_drive/portable
 	name = "data disk"
-	desc = "Removable disk used to store data."
+	desc = "A removable disk used to store data."
 	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/obj/discs.dmi'
 	icon_state = "blue"
@@ -16,6 +16,14 @@
 	var/disk_name
 	var/license = 0
 
+<<<<<<< HEAD
+=======
+/obj/item/computer_hardware/hard_drive/get_item_cost(export)
+	. = ..()
+	for(var/datum/computer_file/wealth_of_file in stored_files)
+		. += (wealth_of_file.added_wealth * wealth_of_file.size)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/computer_hardware/hard_drive/portable/basic
 	name = "basic data disk"
 	icon_state = "yellow"
@@ -26,7 +34,7 @@
 
 /obj/item/computer_hardware/hard_drive/portable/advanced
 	name = "advanced data disk"
-	desc = "Removable disk used to store large amounts of data."
+	desc = "A removable disk used to store large amounts of data."
 	icon_state = "black"
 	max_capacity = 256
 	origin_tech = list(TECH_DATA = 4)
@@ -55,6 +63,18 @@
 		/datum/computer_file/program/revelation/primed
 	)
 
+<<<<<<< HEAD
+=======
+/obj/item/computer_hardware/hard_drive/portable/advanced/coin
+	name = "data disk"
+	icon_state = "ruined"
+	disk_name = "Key-Authenticated Zipped K-oin"
+	max_capacity = 60 //50 x 60 = 3000
+	default_files = list(
+		/datum/computer_file/program/coin_miner/disk //Fancy anticheat verson
+	)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/computer_hardware/hard_drive/portable/Initialize()
 	. = ..()
 	w_class = ITEM_SIZE_SMALL
@@ -85,7 +105,11 @@
 		store_file(D)
 	..()
 
+<<<<<<< HEAD
 /obj/item/computer_hardware/hard_drive/portable/ui_data()
+=======
+/obj/item/computer_hardware/hard_drive/portable/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = ..()
 	data["license"] = license
 	return data

@@ -11,7 +11,7 @@
 
 /obj/item/borg/stun
 	name = "electrified arm"
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/decals-warning.dmi'
 	icon_state = "shock"
 
 /obj/item/borg/stun/apply_hit_effect(mob/living/M, mob/living/silicon/robot/user, var/hit_zone)
@@ -34,14 +34,14 @@
 
 /obj/item/borg/overdrive
 	name = "overdrive"
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/decals-warning.dmi'
 	icon_state = "shock"
 
 /**********************************************************************
 						HUD/SIGHT things
 ***********************************************************************/
 /obj/item/borg/sight
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/decals-warning.dmi'
 	icon_state = "securearea"
 	var/sight_mode
 	var/obj/screen/overlay
@@ -49,8 +49,6 @@
 /obj/item/borg/sight/xray
 	name = "\proper x-ray vision"
 	sight_mode = BORGXRAY
-
-
 
 /obj/item/borg/sight/thermal
 	name = "\proper thermal vision"
@@ -62,8 +60,6 @@
 	..()
 	overlay = global_hud.thermal
 
-
-
 /obj/item/borg/sight/meson
 	name = "\proper meson vision"
 	sight_mode = BORGMESON
@@ -74,7 +70,6 @@
 	..()
 	overlay = global_hud.meson
 
-
 /obj/item/borg/sight/material
 	name = "\proper material scanner vision"
 	sight_mode = BORGMATERIAL
@@ -83,25 +78,22 @@
 	name = "hud"
 	var/obj/item/clothing/glasses/hud/hud
 
-
-
 /obj/item/borg/sight/hud/med
 	name = "medical hud"
 	icon_state = "healthhud"
 	icon = 'icons/inventory/eyes/icon.dmi'
 
-	New()
-		..()
-		hud = new /obj/item/clothing/glasses/hud/health(src)
-		return
-
+/obj/item/borg/sight/hud/med/New()
+	..()
+	hud = new /obj/item/clothing/glasses/hud/health(src)
+	return
 
 /obj/item/borg/sight/hud/sec
 	name = "security hud"
 	icon_state = "securityhud"
 	icon = 'icons/inventory/eyes/icon.dmi'
 
-	New()
-		..()
-		hud = new /obj/item/clothing/glasses/hud/security(src)
-		return
+/obj/item/borg/sight/hud/med/New()
+	..()
+	hud = new /obj/item/clothing/glasses/hud/security(src)
+	return

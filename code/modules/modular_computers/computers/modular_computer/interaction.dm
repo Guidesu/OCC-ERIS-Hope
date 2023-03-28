@@ -14,7 +14,7 @@
 
 	verbs |= /obj/item/modular_computer/verb/emergency_shutdown
 
-/obj/item/modular_computer/proc/can_interact(var/mob/user)
+/obj/item/modular_computer/can_interact(mob/user)
 	if(usr.incapacitated())
 		to_chat(user, "<span class='warning'>You can't do that.</span>")
 		return FALSE
@@ -143,7 +143,7 @@
 
 /obj/item/modular_computer/attack_ghost(var/mob/observer/ghost/user)
 	if(enabled)
-		ui_interact(user)
+		nano_ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))
 		var/response = alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", "Yes", "No")
 		if(response == "Yes")
@@ -160,7 +160,7 @@
 // On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(var/mob/user)
 	if(enabled && screen_on)
-		ui_interact(user)
+		nano_ui_interact(user)
 	else if(!enabled && screen_on)
 		turn_on(user)
 
@@ -218,6 +218,10 @@
 		user.drop_item()
 		W.loc = get_turf(src)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/tool/tool = W
 	if(tool)
 		var/list/usable_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_WELDING, QUALITY_BOLT_TURNING)
@@ -297,4 +301,5 @@
 /obj/item/modular_computer/CtrlAltClick(mob/user)
 	if(!CanPhysicallyInteract(user))
 		return
-	open_terminal(user)
+	if(user.stat_check(STAT_COG, STAT_LEVEL_BASIC)) // Make sure the user can at least do the exit command.
+		open_terminal(user)

@@ -121,21 +121,25 @@
 
 	else if(href_list["add_faction"] && faction_id && !faction)
 		var/list/L = list()
+<<<<<<< HEAD
 		for(var/datum/faction/F in GLOB.current_factions)
+=======
+		for(var/datum/antag_faction/F in GLOB.current_factions)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			L["[F.name], faction of [F.antag] ([F.id])"] = F
 
 		L["CANCEL"] = null
 
 		var/f_id = input("Select faction for this antagonist.", "Select faction", "CANCEL") in L
 
-		var/datum/faction/F = L[f_id]
+		var/datum/antag_faction/F = L[f_id]
 		if(F)
 			F.add_member(src)
 
 
 	else if(href_list["new_faction"] && faction_id && !faction)
 		var/t = GLOB.faction_types[faction_id]
-		var/datum/faction/F = new t
+		var/datum/antag_faction/F = new t
 		F.customize()
 		F.add_leader(src)
 
@@ -169,7 +173,7 @@
 			if(!M.client)      dat += " <i>(logged out)</i>"
 			if(M.stat == DEAD) dat += " <b><font color=red>(DEAD)</font></b>"
 			dat += "</td>"
-			dat += "<td>\[<A href='?src=\ref[caller];priv_msg=\ref[M]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=\ref[M]'>TP</A>\]</td>"
+			dat += "<td>\[<A href='?src=\ref[caller];priv_msg=\ref[M]'>PM</A>\]\[<A href='?src=\ref[caller];contractor=\ref[M]'>TP</A>\]</td>"
 		else
 			dat += "<td><i>Mob not found/([player.key])!</i></td>"
 		dat += "</tr>"

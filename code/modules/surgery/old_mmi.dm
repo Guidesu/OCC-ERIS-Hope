@@ -10,8 +10,11 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected == null)
 		return 0
+<<<<<<< HEAD
 	if (affected.status & ORGAN_DESTROYED)
 		return 0
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!BP_IS_ROBOTIC(affected))
 		return 0
 	return 1
@@ -72,7 +75,11 @@
 
 	var/obj/item/device/mmi/M = tool
 	var/obj/item/organ/mmi_holder/holder = new(target, 1)
+<<<<<<< HEAD
 	target.internal_organs_by_efficiency[BP_BRAIN] += holder
+=======
+	target.internal_organs_by_efficiency[BP_BRAIN] = holder
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.drop_from_inventory(tool)
 	tool.loc = holder
 	holder.stored_mmi = tool
@@ -85,4 +92,8 @@
 	user.visible_message(
 		SPAN_WARNING("[user]'s hand slips."),
 		SPAN_WARNING("Your hand slips.")
+<<<<<<< HEAD
 	)
+=======
+	)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

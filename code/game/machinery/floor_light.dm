@@ -105,7 +105,11 @@ var/list/floor_light_cache = list()
 	var/need_update
 	if((!anchored || broken()) && on)
 		use_power = NO_POWER_USE
+<<<<<<< HEAD
 		on = FALSE
+=======
+		on = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		need_update = 1
 	else if(use_power && !on)
 		use_power = NO_POWER_USE
@@ -125,7 +129,11 @@ var/list/floor_light_cache = list()
 	active_power_usage = ((light_range + light_power) * 10)
 	update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/floor_light/on_update_icon()
+=======
+/obj/machinery/floor_light/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(use_power && !broken())
 		if(isnull(damaged))
@@ -135,7 +143,11 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = ABOVE_OPEN_TURF_LAYER
 				floor_light_cache[cache_key] = I
+<<<<<<< HEAD
 			associate_with_overlays(floor_light_cache[cache_key])
+=======
+			add_overlay(floor_light_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			if(damaged == 0) //Needs init.
 				damaged = rand(1,4)
@@ -145,7 +157,11 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = ABOVE_OPEN_TURF_LAYER
 				floor_light_cache[cache_key] = I
+<<<<<<< HEAD
 			associate_with_overlays(floor_light_cache[cache_key])
+=======
+			add_overlay(floor_light_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/floor_light/proc/broken()
 	return (stat & (BROKEN|NOPOWER))

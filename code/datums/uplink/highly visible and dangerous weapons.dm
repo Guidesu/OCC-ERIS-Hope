@@ -4,6 +4,12 @@
 /datum/uplink_item/item/visible_weapons
 	category = /datum/uplink_category/visible_weapons
 
+/datum/uplink_item/item/visible_weapons/makarov
+	name = "\"Makarov\" pistol"
+	desc = "Ammo not induced."
+	item_cost = 2 //Ammo not induced
+	path = /obj/item/gun/projectile/makarov
+
 /datum/uplink_item/item/visible_weapons/dartgun
 	name = "Dart Gun"
 	item_cost = 4
@@ -19,6 +25,7 @@
 	item_cost = 6
 	path = /obj/item/melee/energy/sword
 
+<<<<<<< HEAD
 /datum/uplink_item/item/visible_weapons/pistol
 	name = "Silenced .25 Caseless Handgun"
 	item_cost = 6
@@ -29,21 +36,48 @@
 	item_cost = 4
 	path = /obj/item/mech_equipment/mounted_system/taser/laser
 
+=======
+/datum/uplink_item/item/visible_weapons/rafale
+	name = "Silenced 10mm pistol"
+	item_cost = 6
+	path = /obj/item/storage/box/syndie_kit/pistol
+
+/datum/uplink_item/item/visible_weapons/socom
+	name = "Silenced 12mm pistol"
+	item_cost = 8
+	path = /obj/item/storage/box/syndie_kit/hpistol
+
+/datum/uplink_item/item/visible_weapons/painrevolver
+	name = "12mm Hornet Revolver"
+	item_cost = 8
+	path = /obj/item/storage/box/syndie_kit/painrevolver
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver"
 	item_cost = 7
 	path = /obj/item/storage/box/syndie_kit/revolver
 
+<<<<<<< HEAD
 /datum/uplink_item/item/visible_weapons/submachinegun
 	name = "Submachine Gun"
 	item_cost = 8
+=======
+//These are for contractors (or other antags, perhaps) to have the option of purchasing some merc gear.
+/datum/uplink_item/item/visible_weapons/submachinegun
+	name = "Sub-Machine Gun"
+	item_cost = 7
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/storage/box/syndie_kit/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle"
 	item_cost = 8
+<<<<<<< HEAD
 	path = /obj/item/storage/box/syndie_kit/sts35
+=======
+	path = /obj/item/storage/box/syndie_kit/sts
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item/visible_weapons/pug
 	name = "Pug Shotgun"
@@ -51,6 +85,7 @@
 	path = /obj/item/storage/box/syndie_kit/pug
 
 /datum/uplink_item/item/visible_weapons/heavysniper
+<<<<<<< HEAD
 	name = "Anti-material Rifle"
 	item_cost = 20
 	path = /obj/item/storage/briefcase/antimaterial_rifle
@@ -88,3 +123,8 @@
 	if(.)
 		var/obj/item/gun/energy/psychic/lasercannon/L = .
 		L.owner = U.uplink_owner
+=======
+	name = "Anti-Materiel Rifle"
+	item_cost = 20
+	path = /obj/item/storage/box/syndie_kit/antimaterial_rifle
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -154,9 +154,15 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 /obj/item/integrated_circuit/Destroy()
 	. = ..()
+<<<<<<< HEAD
 	QDEL_CLEAR_LIST(inputs)
 	QDEL_CLEAR_LIST(outputs)
 	QDEL_CLEAR_LIST(activators)
+=======
+	QDEL_LIST(inputs)
+	QDEL_LIST(outputs)
+	QDEL_LIST(activators)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	SScircuit_components.dequeue_component(src)
 	if(ext_moved_triggerable && moved_event_created)
 		GLOB.moved_event.unregister(moved_object, src)
@@ -190,15 +196,25 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		displayed_name = input
 
 /obj/item/integrated_circuit/interact(mob/user)
+<<<<<<< HEAD
 	ui_interact(user)
 
 /obj/item/integrated_circuit/ui_interact(mob/user)
+=======
+	nano_ui_interact(user)
+
+/obj/item/integrated_circuit/nano_ui_interact(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	if(!check_interactivity(user))
 		return
 
 	if(assembly)
+<<<<<<< HEAD
 		assembly.ui_interact(user, src)
+=======
+		assembly.nano_ui_interact(user, src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 
 	var/table_edge_width = "30%"

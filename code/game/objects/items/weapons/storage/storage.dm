@@ -13,6 +13,7 @@
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
 	var/max_w_class = ITEM_SIZE_NORMAL //Max size of objects that this object can store (in effect only if can_hold isn't set)
+<<<<<<< HEAD
 	var/max_storage_space //Total storage cost of items this can hold. Will be autoset based on storage_slots if left null.
 	var/storage_slots //The number of storage slots in this container.
 	var/use_to_pickup //Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
@@ -22,6 +23,31 @@
 	var/collection_mode = TRUE //0 = pick one at a time, 1 = pick all on tile
 	var/use_sound = "rustle" //sound played when used. null for no sound.
 	var/is_tray_hidden = FALSE //hides from even t-rays
+=======
+	var/max_storage_space = null //Total storage cost of items this can hold. Will be autoset based on storage_slots if left null.
+	var/storage_slots = null //The number of storage slots in this container.
+	var/use_to_pickup = null //Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
+	var/display_contents_with_number = null //Set this to make the storage item group contents of the same type and display them as a number.
+	var/allow_quick_empty = null //Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
+	var/allow_quick_gather = null //Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
+	var/collection_mode = TRUE //0 = pick one at a time, 1 = pick all on tile
+	var/use_sound = "rustle" //sound played when used. null for no sound.
+	contained_sprite = FALSE
+
+	var/insertion_sound
+	var/extraction_sound
+
+	var/exspand_when_spawned = TRUE
+
+/obj/item/storage/debug
+	name = "Destickinator"
+	desc = "A case that can fit legitimately anything inside it, used by Bluespace Technicians and the like to remove items stuck from people's hands. \
+	Seems it somehow was made stable as well, allowing you to de-stick even bluespace items without risk of losing your limbs."
+	icon_state = "desticker"
+	w_class = ITEM_SIZE_PLANET
+	max_w_class = 999
+	max_storage_space = 999
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/storage/New()
 	can_hold |= can_hold_extra
@@ -40,24 +66,40 @@
 /HUD_element/slottedItemBackground
 	icon = 'icons/HUD/block.png'
 
+<<<<<<< HEAD
 /obj/item/storage/proc/storageBackgroundClick(HUD_element/sourceElement, mob/clientMob, location, control, params)
+=======
+/obj/item/storage/proc/storageBackgroundClick(var/HUD_element/sourceElement, var/mob/clientMob, location, control, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/atom/A = sourceElement.getData("item")
 	if(A)
 		var/obj/item/I = clientMob.get_active_hand()
 		if(I)
 			clientMob.ClickOn(A)
 
+<<<<<<< HEAD
 /obj/item/storage/proc/itemBackgroundClick(HUD_element/sourceElement, mob/clientMob, location, control, params)
+=======
+/obj/item/storage/proc/itemBackgroundClick(var/HUD_element/sourceElement, var/mob/clientMob, location, control, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/atom/A = sourceElement.getData("item")
 	if(A)
 		clientMob.ClickOn(A)
 
+<<<<<<< HEAD
 /obj/item/storage/proc/closeButtonClick(HUD_element/sourceElement, mob/clientMob, location, control, params)
+=======
+/obj/item/storage/proc/closeButtonClick(var/HUD_element/sourceElement, var/mob/clientMob, location, control, params)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/storage/S = sourceElement.getData("item")
 	if(S)
 		S.close(clientMob)
 
+<<<<<<< HEAD
 /obj/item/storage/proc/setupItemBackground(var/HUD_element/itemBackground, atom/item, itemCount)
+=======
+/obj/item/storage/proc/setupItemBackground(var/HUD_element/itemBackground, var/atom/item, var/itemCount)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	itemBackground.setClickProc(.proc/itemBackgroundClick)
 	itemBackground.setData("item", item)
 
@@ -79,7 +121,11 @@
 	if (itemCount)
 		item.maptext = "<font color='white'>[itemCount]</font>"
 
+<<<<<<< HEAD
 /obj/item/storage/proc/generateHUD(datum/hud/data)
+=======
+/obj/item/storage/proc/generateHUD(var/datum/hud/data)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	RETURN_TYPE(/HUD_element)
 	var/HUD_element/main = new("storage")
 	main.setDeleteOnHide(TRUE)
@@ -118,7 +164,7 @@
 			var/HUD_element/threePartBox/storedItemBackground/itemBackground = new()
 			storageBackground.add(itemBackground)
 
-			var/itemBackgroundWidth = round(minBackgroundWidth * itemStorageCost/max_storage_space)
+			var/itemBackgroundWidth = round(minBackgroundWidth * itemStorageCost/max(max_storage_space, 1))
 			itemBackground.setPosition(totalWidth,0)
 			itemBackground.scaleToSize(itemBackgroundWidth)
 			itemBackground.setAlignment(HUD_NO_ALIGNMENT,HUD_CENTER_ALIGNMENT) //vertical center
@@ -224,12 +270,16 @@
 			L += G.gift:return_inv()
 	return L
 
+<<<<<<< HEAD
 /obj/item/storage/proc/show_to(mob/user)
+=======
+/obj/item/storage/proc/show_to(var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!user.client)
 		return
 
 	if(user.s_active != src) //opening a new storage item
-		if (user.s_active) //user already had a storage item open
+		if(user.s_active) //user already had a storage item open
 			user.s_active.close(user)
 
 		for(var/obj/item/I in src)
@@ -241,12 +291,19 @@
 		generateHUD(data).show(user.client)
 		is_seeing |= user
 		user.s_active = src
+<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_STORAGE_OPENED, user)
 	SEND_SIGNAL(user, COMSIG_STORAGE_OPENED, src)
 
 /obj/item/storage/proc/hide_from(mob/user)
+=======
+	LEGACY_SEND_SIGNAL(src, COMSIG_STORAGE_OPENED, user)
+	LEGACY_SEND_SIGNAL(user, COMSIG_STORAGE_OPENED, src)
+
+/obj/item/storage/proc/hide_from(var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	is_seeing -= user
-	if (user.s_active == src)
+	if(user.s_active == src)
 		user.s_active = null
 
 	if(!user.client)
@@ -254,22 +311,47 @@
 
 	user.client.hide_HUD_element("storage")
 
+<<<<<<< HEAD
 /obj/item/storage/proc/open(mob/user)
+=======
+/obj/item/storage/proc/open(var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(src.use_sound)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 
 	show_to(user)
 
+<<<<<<< HEAD
 /obj/item/storage/proc/close(mob/user)
 	hide_from(user)
 
 /obj/item/storage/proc/close_all()
 	for(var/mob/M in is_seeing)
+=======
+/obj/item/storage/proc/close(var/mob/user)
+	hide_from(user)
+
+/obj/item/storage/AltClick(mob/user)
+	if(user.incapacitated())
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
+		return
+	if(!in_range(src, user))
+		return
+	else
+		src.open(user)
+
+/obj/item/storage/proc/close_all()
+	for (var/mob/M in is_seeing)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		close(M)
 
 /obj/item/storage/proc/refresh_all()
 	for (var/mob/M in is_seeing)
+<<<<<<< HEAD
 		if (M.client)
+=======
+		if(M.client)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/datum/hud/data = GLOB.HUDdatums[M.defaultHUD]
 			if (data)
 				generateHUD(data).show(M.client)
@@ -308,7 +390,7 @@
 			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return 0
 
-	if (max_w_class != null && W.w_class > max_w_class)
+	if(max_w_class != null && W.w_class > max_w_class)
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
 		return 0
@@ -334,11 +416,15 @@
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
+<<<<<<< HEAD
 /obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0)
+=======
+/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user, suppress_warning = FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!istype(W)) return 0
 	if (usr)
 		usr.prepare_for_slotmove(W)
-		usr.update_icons() //update our overlays
+		usr.update_icons() //update our over-lays
 
 	W.loc = src
 	W.on_enter_storage(src)
@@ -349,6 +435,7 @@
 		W.dropped(usr)
 		add_fingerprint(usr)
 
+<<<<<<< HEAD
 		if (!prevent_warning)
 			for (var/mob/M in viewers(usr, null))
 				if (M == usr)
@@ -357,6 +444,17 @@
 					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
 				else if (W && W.w_class >= ITEM_SIZE_NORMAL) //Otherwise they can only see large or normal items from a distance...
 					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
+=======
+		if(!suppress_warning)
+			if(!prevent_warning && W.w_class >= ITEM_SIZE_NORMAL)
+				if(insertion_sound)
+					playsound(get_turf(src), insertion_sound, 100)
+				visible_message(SPAN_NOTICE("[usr] puts \a [W] in \the [src]."),
+								SPAN_NOTICE("You put \a [W] in \the [src].")
+				)
+			else
+				to_chat(usr, SPAN_NOTICE("You put \a [W] in \the [src]."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	refresh_all()
 
@@ -364,7 +462,11 @@
 	return 1
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
+<<<<<<< HEAD
 /obj/item/storage/proc/remove_from_storage(obj/item/W, atom/new_location)
+=======
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!istype(W))
 		return
 
@@ -372,8 +474,6 @@
 		var/obj/item/storage/fancy/F = src
 		F.update_icon(1)
 
-	W.layer = initial(W.layer)
-	W.set_plane(initial(W.plane))
 
 	if (new_location)
 		W.loc = new_location
@@ -386,10 +486,18 @@
 		W.maptext = ""
 
 	W.on_exit_storage(src)
+	W.layer = initial(W.layer)
+	W.set_plane(initial(W.plane))
+	if(extraction_sound)
+		playsound(get_turf(src), extraction_sound, 100)
 	update_icon()
 
 //This proc is called when you want to place an item into the storage item.
+<<<<<<< HEAD
 /obj/item/storage/attackby(obj/item/W, mob/user)
+=======
+/obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if(istype(W, /obj/item/device/lightreplacer))
 		var/obj/item/device/lightreplacer/LP = W
@@ -423,12 +531,19 @@
 				to_chat(user, SPAN_WARNING("God damnit!"))
 
 	W.add_fingerprint(user)
-	return handle_item_insertion(W)
+	return handle_item_insertion(W,,user)
 
+<<<<<<< HEAD
 /obj/item/storage/dropped(mob/user)
 	return
 
 /obj/item/storage/attack_hand(mob/user)
+=======
+/obj/item/storage/dropped(mob/user as mob)
+	return
+
+/obj/item/storage/attack_hand(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// v Why does that exist? ~Luduk
 	/*if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -461,7 +576,11 @@
 		if(0)
 			to_chat(usr, "[src] now picks up one item at a time.")
 
+<<<<<<< HEAD
 /obj/item/storage/proc/collectItems(turf/target, mob/user)
+=======
+/obj/item/storage/proc/collectItems(var/turf/target, var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	ASSERT(istype(target))
 	. = FALSE
 	var/limiter = 15
@@ -470,7 +589,7 @@
 			break
 		if(can_be_inserted(I, TRUE))
 			. |= TRUE
-			handle_item_insertion(I, TRUE)
+			handle_item_insertion(I, TRUE, user, TRUE)
 
 	if(user)
 		if(.)
@@ -504,6 +623,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T))
 		return
+<<<<<<< HEAD
 	dump_it(T, usr)
 
 /obj/item/storage/proc/dump_it(turf/target) //he bought?
@@ -511,6 +631,14 @@
 		return
 	if(!Adjacent(usr))
 		return
+=======
+	dump_it(T)
+
+
+/obj/item/storage/proc/dump_it(var/turf/target) //he bought?
+	if(!isturf(target))
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hide_from(usr)
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, target)
@@ -537,7 +665,12 @@
 	var/total_storage_space = 0
 	for(var/obj/item/I in contents)
 		total_storage_space += I.get_storage_cost()
+<<<<<<< HEAD
 	max_storage_space = max(total_storage_space, max_storage_space) //prevents spawned containers from being too small for their contents
+=======
+	if(exspand_when_spawned)
+		max_storage_space = max(total_storage_space, max_storage_space) //prevents spawned containers from being too small for their contents
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Override in subtypes
 /obj/item/storage/proc/populate_contents()
@@ -549,7 +682,11 @@
 			O.emp_act(severity)
 	..()
 
+<<<<<<< HEAD
 /obj/item/storage/attack_self(mob/user)
+=======
+/obj/item/storage/attack_self(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(user.get_active_hand() == src && user.get_inactive_hand() == null)
 		if(user.swap_hand())
 			open(user)
@@ -625,7 +762,11 @@
 
 
 //Useful for spilling the contents of containers all over the floor
+<<<<<<< HEAD
 /obj/item/storage/proc/spill(dist = 2, turf/T)
+=======
+/obj/item/storage/proc/spill(var/dist = 2, var/turf/T = null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!istype(T))//If its not on the floor this might cause issues
 		T = get_turf(src)
 

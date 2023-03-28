@@ -241,9 +241,15 @@
 	var/assembly_path = all_assemblies[assembly_params["type"]]
 	var/obj/item/I = cached_assemblies[assembly_path]
 	var/obj/item/device/electronic_assembly/assembly = I
+<<<<<<< HEAD
 /*	if(istype(I, /obj/item/implant/integrated_circuit))
 		var/obj/item/implant/integrated_circuit/implant = I
 		assembly = implant.IC*/
+=======
+	if(istype(I, /obj/item/implant/integrated_circuit))
+		var/obj/item/implant/integrated_circuit/implant = I
+		assembly = implant.IC
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!assembly)
 		return "Invalid assembly type."
 
@@ -341,9 +347,15 @@
 	var/assembly_path = all_assemblies[assembly_params["type"]]
 	var/obj/item/I = new assembly_path(null)
 	var/obj/item/device/electronic_assembly/assembly = I
+<<<<<<< HEAD
 //	if(istype(I, /obj/item/implant/integrated_circuit))
 //		var/obj/item/implant/integrated_circuit/implant = I
 //		assembly = implant.IC
+=======
+	if(istype(I, /obj/item/implant/integrated_circuit))
+		var/obj/item/implant/integrated_circuit/implant = I
+		assembly = implant.IC
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	assembly.load(assembly_params)
 
 

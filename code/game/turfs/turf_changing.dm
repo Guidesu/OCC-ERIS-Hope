@@ -102,7 +102,11 @@
 	src.set_dir(other.dir)
 	src.icon_state = other.icon_state
 	src.icon = other.icon
+<<<<<<< HEAD
 	src.set_overlays(other.overlays.Copy())
+=======
+	src.copy_overlays(other.overlays.Copy(), TRUE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.underlays = other.underlays.Copy()
 	src.opacity = other.opacity
 	if(hasvar(src, "blocks_air"))

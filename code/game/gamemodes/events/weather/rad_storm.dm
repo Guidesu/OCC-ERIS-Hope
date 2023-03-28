@@ -17,10 +17,17 @@
 	end_message = "<span class='notice'>The air seems to be cooling off again.</span>"
 
 	area_type = /area
+<<<<<<< HEAD
 	protected_areas = list(/area/shuttle/escape, /area/shuttle/escape_pod1, /area/shuttle/escape_pod2, /area/shuttle/escape_pod3, \
 	/area/shuttle/escape_pod5, /area/shuttle/specops/centcom, /area/shuttle/mercenary, /area/shuttle/administration, /area/eris/maintenance, \
 	/area/eris/crew_quarters/sleep/cryo, /area/eris/security/disposal, /area/eris/security/maintpost, /area/eris/rnd/anomalisolone, \
 	/area/eris/rnd/anomalisoltwo, /area/eris/rnd/anomalisolthree, /area/eris/rnd/server, \
 	/area/outpost/blacksite/small, /area/outpost/blacksite/medium, /area/outpost/blacksite/large)
+=======
+	protected_areas = list(/area/asteroid/rogue, /area/shuttle/mining, /area/deepmaint, /area/shuttle/escape, /area/shuttle/escape_pod1, /area/shuttle/escape_pod2, /area/shuttle/escape_pod3, \
+	/area/shuttle/escape_pod5, /area/shuttle/specops/centcom, /area/shuttle/mercenary, /area/shuttle/administration, /area/nadezhda/maintenance, \
+	/area/nadezhda/crew_quarters/sleep/cryo, /area/nadezhda/security/disposal, /area/nadezhda/security/maintpost, /area/nadezhda/rnd/anomalisolone, \
+	/area/nadezhda/rnd/anomalisoltwo, /area/nadezhda/rnd/anomalisolthree, /area/nadezhda/rnd/server)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	immunity_type = "rad"

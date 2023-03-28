@@ -4,12 +4,21 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "d66"
 	w_class = ITEM_SIZE_TINY
+<<<<<<< HEAD
+=======
+	var/sides = 6
+	var/allow_alt_sprites = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	attack_verb = list("diced")
 	price_tag = 1
 	spawn_tags = SPAWN_TAG_DICE
 	var/sides = 6
 
+<<<<<<< HEAD
 /obj/item/dice/Initialize(mapload)
+=======
+/obj/item/dice/New()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	icon_state = "[name][rand(1,sides)]"
 
@@ -51,9 +60,41 @@
 
 /obj/item/dice/d100
 	name = "d100"
-	desc = "A dice with hundred sides. Can be used as a golfball."
-	icon_state = "d10010"
-	sides = 10
+	desc = "A dice with hundred sides. Can be used as a golf ball."
+	icon_state = "d100"
+	allow_alt_sprites = FALSE
+	sides = 100
+
+/*
+ * Dice packs
+ */
+
+/obj/item/storage/pill_bottle/dice	//7d6
+	name = "bag of dice"
+	desc = "It's a small bag with dice inside."
+	icon = 'icons/obj/dice.dmi'
+	icon_state = "dicebag"
+
+/obj/item/storage/pill_bottle/dice/New()
+	..()
+	for(var/i = 1 to 7)
+		new /obj/item/dice( src )
+
+/obj/item/storage/pill_bottle/dice_nerd	//DnD dice
+	name = "bag of gaming dice"
+	desc = "It's a small bag with gaming dice inside."
+	icon = 'icons/obj/dice.dmi'
+	icon_state = "magicdicebag"
+
+/obj/item/storage/pill_bottle/dice_nerd/New()
+	..()
+	new /obj/item/dice/d4( src )
+	new /obj/item/dice( src )
+	new /obj/item/dice/d8( src )
+	new /obj/item/dice/d10( src )
+	new /obj/item/dice/d12( src )
+	new /obj/item/dice/d20( src )
+	new /obj/item/dice/d100( src )
 
 /*
 Code below is works, but has duplication of a code.
@@ -68,7 +109,8 @@ Another builds like baystation12 also have a duplication.
 		comment = "Ouch, bad luck."
 	else if (result == 20 && sides == 20)
 		comment = "Nat 20!"
-	icon_state = "[name][result]"
+	if(allow_alt_sprites)
+		icon_state = "[name][result]"
 	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
 						 SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
 						 SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))

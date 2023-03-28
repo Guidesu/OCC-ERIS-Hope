@@ -7,11 +7,17 @@ RSF
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
 	desc = "A device used to rapidly deploy service items."
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcd"
 	opacity = 0
+<<<<<<< HEAD
 	density = FALSE
 	anchored = FALSE
+=======
+	density = 0
+	anchored = 0.0
+	var/max_stored_matter = 30
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/stored_matter = 30
 	var/mode = 1
 	w_class = ITEM_SIZE_NORMAL
@@ -21,6 +27,7 @@ RSF
 		to_chat(user, "It currently holds [stored_matter]/30 fabrication-units.")
 
 /obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
+<<<<<<< HEAD
 	..()
 	if (istype(W, /obj/item/rcd_ammo))
 
@@ -35,6 +42,20 @@ RSF
 		to_chat(user, "The RSF now holds [stored_matter]/30 fabrication-units.")
 		return
 
+=======
+	var/obj/item/stack/material/M = W
+	if(istype(M) && M.material.name == MATERIAL_COMPRESSED_MATTER)
+		var/amount = min(M.get_amount(), round(max_stored_matter - stored_matter))
+		if(M.use(amount) && stored_matter < max_stored_matter)
+			stored_matter += amount
+			playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
+			to_chat(user, "<span class='notice'>You load [amount] Compressed Matter into \the [src].</span>. The RSF now holds [stored_matter]/30 matter-units.")
+		if (M.use(amount) && stored_matter >= max_stored_matter)
+			to_chat(user, "<span class='notice'>The RSF is full.")
+	else
+		..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/rsf/attack_self(mob/user as mob)
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	if (mode == 1)

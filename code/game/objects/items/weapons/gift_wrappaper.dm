@@ -27,7 +27,11 @@
 	qdel(src)
 	return
 
+<<<<<<< HEAD
 /obj/item/a_gift/attack_self(mob/M)
+=======
+/obj/item/a_gift/attack_self(mob/M as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/gift_type = pick(
 		/obj/item/storage/wallet,
 		/obj/item/storage/photo_album,
@@ -37,7 +41,11 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/soap/deluxe,
 		/obj/item/pen/invisible,
+<<<<<<< HEAD
 		/obj/item/lipstick/random,
+=======
+//		/obj/item/lipstick/jade,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/contraband/poster,
@@ -46,6 +54,7 @@
 		/obj/item/bikehorn,
 		/obj/item/beach_ball,
 		/obj/item/beach_ball/holoball,
+<<<<<<< HEAD
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
@@ -64,12 +73,36 @@
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
 		/obj/item/toy/sword,
+=======
+		/obj/item/toy/junk/balloon,
+		/obj/item/toy/junk/blink,
+		/obj/item/toy/weapon/crossbow,
+		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/toy/weapon/katana,
+		/obj/item/toy/figure/mecha/deathripley,
+		/obj/item/toy/figure/mecha/durand,
+		/obj/item/toy/figure/mecha/fireripley,
+		/obj/item/toy/figure/mecha/gygax,
+		/obj/item/toy/figure/mecha/honk,
+		/obj/item/toy/figure/mecha/marauder,
+		/obj/item/toy/figure/mecha/mauler,
+		/obj/item/toy/figure/mecha/odysseus,
+		/obj/item/toy/figure/mecha/phazon,
+		/obj/item/toy/figure/mecha/ripley,
+		/obj/item/toy/figure/mecha/seraph,
+		/obj/item/toy/junk/spinningtoy,
+		/obj/item/toy/weapon/sword,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/reagent_containers/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/device/paicard,
 		/obj/item/device/violin,
 		/obj/item/storage/belt/utility/full,
+<<<<<<< HEAD
 		/obj/item/clothing/accessory/horrible)
+=======
+		/obj/item/clothing/accessory/tie/yellow)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!ispath(gift_type,/obj/item))	return
 
@@ -90,7 +123,11 @@
 	item_state = "gift"
 	w_class = ITEM_SIZE_BULKY
 
+<<<<<<< HEAD
 /obj/item/gift/attack_self(mob/user)
+=======
+/obj/item/gift/attack_self(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.drop_item()
 	if(src.gift && (src.gift in src.contents))
 		user.put_in_active_hand(gift)
@@ -104,7 +141,11 @@
 		return
 	to_chat(user, SPAN_WARNING("You can't move."))
 
+<<<<<<< HEAD
 /obj/effect/spresent/attackby(obj/item/W, mob/user)
+=======
+/obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 	if (!istype(W, /obj/item/tool/wirecutters))
@@ -127,6 +168,7 @@
 	icon_state = "c_tube"
 	throwforce = WEAPON_FORCE_HARMLESS
 	w_class = ITEM_SIZE_SMALL
+	matter = list(MATERIAL_CARDBOARD = 1)
 	throw_speed = 4
 	throw_range = 5
 	rarity_value = 10
@@ -137,12 +179,19 @@
 	desc = "You can use this to wrap items in."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "wrap_paper"
+<<<<<<< HEAD
 	matter = list(MATERIAL_BIOMATTER = 4)
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_JUNK
 	var/amount = 20
 
 /obj/item/wrapping_paper/attackby(obj/item/W, mob/user)
+=======
+	matter = list(MATERIAL_BIOMATTER = 4, MATERIAL_CARDBOARD = 1)
+	var/amount = 20.0
+
+/obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if (!( locate(/obj/structure/table, src.loc) ))
 		to_chat(user, SPAN_WARNING("You MUST put the paper on a table!"))
@@ -182,7 +231,11 @@
 	if(..(user, 1))
 		to_chat(user, text("There is about [] square units of paper left!", src.amount))
 
+<<<<<<< HEAD
 /obj/item/wrapping_paper/attack(mob/target, mob/user)
+=======
+/obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!ishuman(target))
 		return
 	var/mob/living/carbon/human/H = target
@@ -205,4 +258,8 @@
 		else
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
+<<<<<<< HEAD
 		to_chat(user, "They are moving around too much. A straightjacket would help.")
+=======
+		to_chat(user, "They are moving around too much. A straitjacket would help.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

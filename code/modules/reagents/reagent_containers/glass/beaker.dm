@@ -3,10 +3,14 @@
 	desc = "A beaker."
 	icon_state = "beaker"
 	item_state = "beaker"
+<<<<<<< HEAD
 	label_icon_state = "label_beaker"
 	filling_states = "20;40;60;80;100"
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 20
+=======
+	filling_states = "-10;10;25;50;75;80;100"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
@@ -20,7 +24,11 @@
 	..()
 	playsound(src,'sound/items/Glass_Fragment_drop.ogg',50,1)
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/beaker/on_update_icon()
+=======
+/obj/item/reagent_containers/glass/beaker/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if(reagents?.total_volume)
@@ -38,6 +46,10 @@
 		var/mutable_appearance/label = mutable_appearance(icon, label_icon)
 		add_overlay(label)
 
+	if(label_text)
+		var/label_icon = label_icon_state ? label_icon_state : "label_[icon_state]"
+		var/mutable_appearance/label = mutable_appearance(icon, label_icon)
+		add_overlay(label)
 
 //// Subtypes ////
 
@@ -49,8 +61,12 @@
 	matter = list(MATERIAL_GLASS = 2)
 	volume = 120
 	amount_per_transfer_from_this = 10
+<<<<<<< HEAD
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
 	rarity_value = 40
+=======
+	possible_transfer_amounts = list(5,10,15,25,30,60,100,120)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -70,6 +86,7 @@
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_PHORON = 1)
 	volume = 300
 	amount_per_transfer_from_this = 10
+<<<<<<< HEAD
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
 	lid_icon_state = "lid_beakerbluespace"
 	spawn_blacklisted = TRUE
@@ -84,6 +101,15 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,180)
 	unacidable = FALSE
+=======
+	possible_transfer_amounts = list(5,10,15,25,30,60,100,120,300)
+	lid_icon_state = "lid_beakerlarge"
+
+/obj/item/reagent_containers/glass/beaker/bluespace/New()
+	..()
+	item_flags |= BLUESPACE
+	bluespace_entropy(1, get_turf(src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/glass/beaker/vial
 	name = "vial"
@@ -100,6 +126,7 @@
 
 /obj/item/reagent_containers/glass/beaker/vial/nanites
 	preloaded_reagents = list("nanites" = 30)
+<<<<<<< HEAD
 	rarity_value = 40
 
 /obj/item/reagent_containers/glass/beaker/vial/uncapnanites
@@ -121,6 +148,25 @@
 	matter = list(MATERIAL_PLASTIC = 1)
 
 
+=======
+
+/obj/item/reagent_containers/glass/beaker/vial/uncapnanites
+	preloaded_reagents = list("uncap nanites" = 30)
+
+/obj/item/reagent_containers/glass/beaker/cryoxadone
+	preloaded_reagents = list("cryoxadone" = 30)
+
+/obj/item/reagent_containers/glass/beaker/sulphuric
+	preloaded_reagents = list("sacid" = 60)
+
+/obj/item/reagent_containers/glass/beaker/vial/vape
+	name = "vape vial"
+	desc = "A small plastic vial."
+	icon_state = "vial_plastic"
+	matter = list(MATERIAL_PLASTIC = 1)
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/glass/beaker/vial/vape/berry
 	name = "berry vape vial"
 	preloaded_reagents = list("nicotine" = 20, "berryjuice" = 10)
@@ -133,6 +179,13 @@
 	name= "banana vape vial"
 	preloaded_reagents = list("nicotine" = 20, "banana" = 10)
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/glass/beaker/vial/vape/mint
+	name= "mint vape vial"
+	preloaded_reagents = list("nicotine" = 20, "mint" = 10)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/glass/beaker/vial/vape/nicotine
 	name = "nicotine vape vial"
 	preloaded_reagents = list("nicotine" = 30)
@@ -146,13 +199,21 @@
 	matter = list(MATERIAL_PLASTIC = 2)
 	w_class = ITEM_SIZE_NORMAL
 	amount_per_transfer_from_this = 20
+<<<<<<< HEAD
 	possible_transfer_amounts = list(10,20,30,60,120,200)
+=======
+	possible_transfer_amounts = list(10,20,30,60,100,120,200)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	volume = 200
 	unacidable = 0
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 20
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/bucket/attackby(obj/D, mob/user)
+=======
+/obj/item/reagent_containers/glass/bucket/attackby(var/obj/D, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(is_proximity_sensor(D))
 		to_chat(user, "You add [D] to [src].")
@@ -166,6 +227,7 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/bucket/on_update_icon()
 	cut_overlays()
 	if(reagents.total_volume >= 1)
@@ -177,3 +239,46 @@
 /obj/item/reagent_containers/glass/beaker/hivemind
 	preloaded_reagents = list("nanites" = 30, "uncap nanites" = 30)
 	spawn_blacklisted = TRUE
+=======
+/obj/item/reagent_containers/glass/bucket/update_icon()
+	cut_overlays()
+	if(reagents.total_volume >= 1)
+		add_overlay("water_bucket")
+	if(has_lid())
+		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
+		add_overlay(lid)
+
+/obj/item/reagent_containers/glass/plastic_jug
+	name = "plastic jug"
+	desc = "It's a plastic jug, made of polyethylene and other compounds. Robust enough to carry a lot of liquid." // Jesse we have to cook
+	item_state = "plastic_jug"
+	icon_state = "plastic_jug"
+	matter = list(MATERIAL_PLASTIC = 3)
+	w_class = ITEM_SIZE_BULKY
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(10,20,30,60,100,120,300)
+	volume = 300 // Bigger than a bucket
+	unacidable = 1
+
+/obj/item/reagent_containers/glass/plastic_jug/update_icon() // Necessary as it has no filling states.
+	cut_overlays()
+
+	if(has_lid())
+		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
+		add_overlay(lid)
+
+/obj/item/reagent_containers/glass/urn
+	name = "Urn"
+	desc = "A tall, rounded vase with a base, with a short stem, used for storing the ashes of a cremated person."
+	icon_state = "urn"
+	amount_per_transfer_from_this = 1 //No
+	possible_transfer_amounts = list(1) //No
+	volume = 30
+	can_be_placed_into = null
+
+/obj/item/reagent_containers/glass/urn/veteran
+	name = "Martyr's Urn"
+	desc = "An urn filled with mixed ashes from the faithful defenders of New Byzantine. Only a very small number of bodies could be retrieved from the planet after its occupation by SolFed forces, each one coming at terrible risk. Augustine has declared the ashes a relic of all those who died in defense of the faith. Do not spill."
+	icon_state = "saint_urn"
+	preloaded_reagents = list("carbon" = 30)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,20 +1,46 @@
+/*
+Bullets are fickle and lead to ammo choices, for idea ranges, damage types and affects wanted.
+Bullets tend to also embed and be much more deadly then lasers making them ideal when used correctly.
+Bullet also tend to have more armor against them do to this and can be douged unless are hitscan
+*/
 /obj/item/projectile/bullet
 	name = "bullet"
 	icon_state = "bullet"
+<<<<<<< HEAD
 	damage_types = list(BRUTE = 40)
 	nodamage = 0
 	check_armour = ARMOR_BULLET
 	embed = TRUE
 	sharp = FALSE
+=======
+	damage_types = list(BRUTE = 20)
+	nodamage = 0
+	check_armour = ARMOR_BULLET
+	embed = TRUE
+	sharp = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hitsound_wall = "ric_sound"
+
+	affective_damage_range = 6
+	affective_ap_range = 10
+
+	has_drop_off = TRUE
+
 	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/bullet/muzzle
+	recoil = 3
+	structure_damage_factor = 2 //Bullets are great at destorying things, unlike lasers
 
 /obj/item/projectile/bullet/on_hit(atom/target)
 	if (..(target))
 		var/mob/living/L = target
+<<<<<<< HEAD
 		shake_camera(L, 1, 1, 0.5)
+=======
+		if (!testing)
+			shake_camera(L, 1, 1, 0.5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/projectile/bullet/attack_mob(var/mob/living/target_mob, distance, miss_modifier)
 	if(penetrating > 0 && damage_types[BRUTE] > 20 && prob(damage_types[BRUTE]))
@@ -29,11 +55,16 @@
 
 /obj/item/projectile/bullet/can_embed()
 	//prevent embedding if the projectile is passing through the mob
+<<<<<<< HEAD
 	if(mob_passthrough_check)
+=======
+	if(mob_passthrough_check || testing)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	return ..()
 
 /obj/item/projectile/bullet/check_penetrate(var/atom/A)
+<<<<<<< HEAD
 	if((!A || !A.density) && !istype(A, /obj/item/shield)) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
 
 	if(istype(A, /mob/living/exosuit))
@@ -45,10 +76,31 @@
 		if(iscarbon(A))
 			damage *= 0.7
 		return 1
+=======
+	var/datum/penetration_holder/holder = penetration_holder
+	if(!A || !A.density)
+		return TRUE //if whatever it was got destroyed when we hit it, then I guess we can just keep going
+
+	if(istype(A, /obj/mecha))
+		return TRUE //mecha have their own penetration handling
+	var/damage = damage_types[BRUTE]
+	if(ismob(A))
+		if(mob_passthrough_check || (A in holder.force_penetration_on))
+			if(iscarbon(A))
+				damage *= 0.7
+			if (testing) //we are only tracking as a trace
+				holder.force_penetration_on += A
+			else
+				holder.force_penetration_on -= A
+			return TRUE
+		else
+			return FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/chance = 0
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
+<<<<<<< HEAD
 		chance = round(penetrating * armor_penetration * 2 / W.material.integrity * 180)
 	else if(istype(A, /obj/item/shield))
 		var/obj/item/shield/S = A
@@ -56,6 +108,15 @@
 	else if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
 		chance = round(penetrating * armor_penetration * 2 / D.maxhealth * 180)
+=======
+		chance = round(damage/W.material.integrity*180)
+	else if(istype(A, /obj/item/shield)) // Shields block projectiles as intended
+		var/obj/item/shield/S = A
+		chance = round(S.durability / armor_penetration)
+	else if(istype(A, /obj/machinery/door))
+		var/obj/machinery/door/D = A
+		chance = round(damage/D.maxHealth*180)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
@@ -63,6 +124,7 @@
 		chance = armor_penetration * penetrating
 
 
+<<<<<<< HEAD
 	if(prob(chance))
 		var/maintainedVelocity = min(chance, 90) / 100 //the chance to penetrate is used to calculate leftover velocity, capped at 90%
 		armor_penetration *= maintainedVelocity
@@ -75,8 +137,20 @@
 			A.visible_message(SPAN_WARNING("\The [src] pierces through \the [A]!"))
 
 		return 1
+=======
+	if(prob(chance) || (A in holder.force_penetration_on))
+		if(A.opacity || istype(A, /obj/item/shield))
+			//display a message so that people on the other side aren't so confused
+			A.visible_message(SPAN_WARNING("\The [src] pierces through \the [A]!"))
+			playsound(A.loc, 'sound/weapons/shield/shieldpen.ogg', 50, 1)
+		if (testing)
+			holder.force_penetration_on += A //we are only tracking as a trace
+		else
+			holder.force_penetration_on -= A
+		return TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	return 0
+	return FALSE
 
 //For projectiles that actually represent clouds of projectiles
 /obj/item/projectile/bullet/pellet
@@ -150,3 +224,13 @@
 			if(M.lying || !M.CanPass(src, loc)) //Bump if lying or if we would normally Bump.
 				if(Bump(M)) //Bump will make sure we don't hit a mob multiple times
 					return
+
+/obj/item/projectile/bullet/pellet/adjust_damages(var/list/newdamages)
+	if(!newdamages.len)
+		return
+	for(var/damage_type in newdamages)
+		var/bonus = pellets > 2 ? newdamages[damage_type] / pellets * 2 : newdamages[damage_type]
+		if(damage_type == IRRADIATE)
+			irradiate += bonus
+			continue
+		damage_types[damage_type] += bonus

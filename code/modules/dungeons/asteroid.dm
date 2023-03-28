@@ -91,7 +91,11 @@
 		spot_add(1,3,type_wall)
 		spot_add(2,1,type_wall)
 		spot_add(2,2,type_under) //Center floor
+<<<<<<< HEAD
 		spot_add(2,2,/obj/spawner/contraband/) //Loot!
+=======
+		spot_add(2,2,/obj/random/contraband/) //Loot!
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		spot_add(2,3,type_wall)
 		spot_add(3,1,type_wall)
 		spot_add(3,2,type_wall)
@@ -104,7 +108,11 @@
 
 	New()
 		..()
+<<<<<<< HEAD
 		spot_add(2,2,/obj/spawner/contraband) //EXTRA loot!
+=======
+		spot_add(2,2,/obj/random/contraband) //EXTRA loot!
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		spot_add(2,2,/mob/living/simple_animal/hostile/alien) //GRRR
 
 //Longer cargo container for higher difficulties
@@ -134,9 +142,15 @@
 		spot_add(3,3,type_under) //Mid floor
 		spot_add(4,3,type_under) //Right floor
 
+<<<<<<< HEAD
 		spot_add(2,3,/obj/spawner/contraband) //Left loot
 		spot_add(3,3,/obj/spawner/contraband) //Mid loot
 		spot_add(4,3,/obj/spawner/contraband) //Right loot
+=======
+		spot_add(2,3,/obj/random/contraband) //Left loot
+		spot_add(3,3,/obj/random/contraband) //Mid loot
+		spot_add(4,3,/obj/random/contraband) //Right loot
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(prob(30))
 			spot_add(3,3,/mob/living/simple_animal/hostile/alien) //And maybe a friend.
@@ -165,9 +179,15 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 	alpha = 120
+<<<<<<< HEAD
 	anchored = TRUE
 	unacidable = 1
 	simulated = FALSE
+=======
+	anchored = 1
+	unacidable = 1
+	simulated = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	invisibility = 101
 	var/delay = 2
 
@@ -223,9 +243,13 @@
 			var/mobchoice = pick(mobgenlist)
 			var/mob/living/newmob = new mobchoice(get_turf(MS))
 			newmob.faction = "asteroid_belt" //so they won't just kill each other
+<<<<<<< HEAD
 	if(!LAZYLEN(myarea.teleporter_spawns))	//Occulus Edit: Fixes runtime if no teleporter spawns are set
 		return 								//Occulus Edit^
 	var/teleporter = pick(myarea.teleporter_spawns)	
+=======
+	var/teleporter = pick(myarea.teleporter_spawns)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	generate_teleporter(teleporter)
 
 /obj/asteroid_generator/proc/generate_teleporter(var/obj/asteroid_spawner/rogue_teleporter/TP)

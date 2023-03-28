@@ -21,6 +21,7 @@
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	description_info = "Will flash people that run"
 	icon_state = "pflash1"
 	strength = 8
 	anchored = FALSE
@@ -49,7 +50,12 @@
 
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
+<<<<<<< HEAD
 	if (istype(W, /obj/item/tool/wirecutters))
+=======
+	var/tool_type = W.get_tool_type(user, list(QUALITY_WIRE_CUTTING), src)
+	if(tool_type == QUALITY_WIRE_CUTTING)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
@@ -85,6 +91,7 @@
 			var/mob/living/carbon/human/H = O
 			if(!H.eyecheck() <= 0)
 				continue
+<<<<<<< HEAD
 			flash_time *= H.species.flash_mod
 			var/obj/item/organ/internal/eyes/E = H.random_organ_by_process(OP_EYES)
 			if(!E)
@@ -93,13 +100,29 @@
 				if (O.HUDtech.Find("flash"))
 					FLICK("e_flash", O.HUDtech["flash"])
 				E.damage += rand(1, 5)
+=======
+			O.flash(strength, FALSE , TRUE , TRUE , 10)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
-			if(!O.blinded)
+			if(isrobot(O))
+				var/mob/living/silicon/robot/robo = O
+				if(robo.HasTrait(CYBORG_TRAIT_FLASH_RESISTANT))
+					continue
+				else
+					robo.flash(strength, FALSE, FALSE , FALSE)
+					continue
+			else
 				if (istype(O,/mob/living/silicon/ai))
 					return
+<<<<<<< HEAD
 				if (O.HUDtech.Find("flash"))
 					FLICK("flash", O.HUDtech["flash"])
 		O.Weaken(flash_time)
+=======
+				O.flash(strength , FALSE, FALSE ,FALSE)
+			O.Weaken(flash_time)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/flasher/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
@@ -121,7 +144,12 @@
 			src.flash()
 
 /obj/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
+<<<<<<< HEAD
 	if (istype(W, /obj/item/tool/wrench))
+=======
+	var/tool_type = W.get_tool_type(user, list(QUALITY_BOLT_TURNING), src)
+	if(tool_type == QUALITY_BOLT_TURNING)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		add_fingerprint(user)
 		src.anchored = !src.anchored
 
@@ -131,7 +159,11 @@
 
 		else if (src.anchored)
 			user.show_message(text(SPAN_WARNING("[src] is now secured.")))
+<<<<<<< HEAD
 			src.add_overlays("[base_state]-s")
+=======
+			src.add_overlay("[base_state]-s")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/button/flasher
 	name = "flasher button"

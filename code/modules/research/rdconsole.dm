@@ -42,7 +42,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/rdconsole
+=======
+	circuit = /obj/item/circuitboard/rdconsole
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/research/files								//Stores all the collected research data.
 	var/obj/item/computer_hardware/hard_drive/portable/disk = null	//Stores the data disk.
 
@@ -50,7 +54,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/obj/machinery/autolathe/rnd/protolathe/linked_lathe = null		//Linked Protolathe
 	var/obj/machinery/autolathe/rnd/imprinter/linked_imprinter = null	//Linked Circuit Imprinter
 
+<<<<<<< HEAD
 	var/screen = SCREEN_MAIN	//Which screen is currently showing.
+=======
+	var/screen = SCREEN_LOCKED	//Which screen is currently showing.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/id     = 0			//ID of the computer (for server restrictions).
 	var/sync   = 1		//If sync = 0, it doesn't show up on Server Control Console
 	var/can_research = TRUE   //Is this console capable of researching
@@ -58,6 +66,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 	req_access = list(access_research_equipment) //Data and setting manipulation requires scientist access.
 
+<<<<<<< HEAD
+=======
+	var/list/known_mutations = list()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/tech/selected_tech_tree
 	var/datum/technology/selected_technology
 	var/show_settings = FALSE
@@ -97,6 +109,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	. = ..()
 	files = new /datum/research(src) //Setup the research data holder.
 	SyncRDevices()
+<<<<<<< HEAD
+=======
+	sync_tech() //To stop cheaters
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/rdconsole/Destroy()
 	files = null
@@ -122,11 +138,19 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		D.forceMove(src)
 		disk = D
 		to_chat(user, SPAN_NOTICE("You add \the [D] to the machine."))
+<<<<<<< HEAD
 	else if(istype(D, /obj/item/device/science_tool)) // Used when you want to upload autopsy/other scanned data to the console
 		var/research_points = files.experiments.read_science_tool(D)
 		if(research_points > 0)
 			to_chat(user, SPAN_NOTICE("[name] received [research_points] research points from uploaded data."))
 			files.research_points += research_points
+=======
+	else if(istype(D, /obj/item/device/science_tool) || istype(D,/obj/item/portable_destructive_analyzer)) // Used when you want to upload autopsy/other scanned data to the console
+		var/research_points = files.experiments.read_science_tool(D)
+		if(research_points > 0)
+			to_chat(user, SPAN_NOTICE("[name] received [research_points] research points from uploaded data."))
+			files.adjust_research_points(research_points)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			to_chat(user, SPAN_NOTICE("There was no useful data inside [D.name]'s buffer."))
 	else
@@ -149,7 +173,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 /obj/machinery/computer/rdconsole/proc/handle_item_analysis(obj/item/I) // handles deconstructing items.
 	files.check_item_for_tech(I)
+<<<<<<< HEAD
 	files.research_points += files.experiments.get_object_research_value(I)
+=======
+	files.adjust_research_points(files.experiments.get_object_research_value(I))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	files.experiments.do_research_object(I)
 	var/list/matter = I.get_matter()
 	if(linked_lathe && matter)
@@ -342,7 +370,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			server_processed = TRUE
 		if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
 			S.produce_heat(100)
+<<<<<<< HEAD
 	files.research_points = 0 //Occulus edit. Fixes exploit
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	reset_screen()
 
 
@@ -372,7 +403,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					can_build = min(can_build, can_build_temp)
 
 				designs_list += list(list(
+<<<<<<< HEAD
 					"data" = D.ui_data(),
+=======
+					"data" = D.nano_ui_data(),
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					"id" = "\ref[D]",
 					"can_create" = can_build,
 					"missing_materials" = missing_materials,
@@ -381,12 +416,26 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	return designs_list
 
 /obj/machinery/computer/rdconsole/attack_hand(mob/user)
+<<<<<<< HEAD
 	if(..())
+=======
+	if(!user.stats?.getPerk(PERK_SI_SCI) && !usr.stat_check(STAT_COG, 60))
+		to_chat(usr, SPAN_WARNING("This is a bit beyond your cognitive understanding."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	ui_interact(user)
 
+<<<<<<< HEAD
 
 /obj/machinery/computer/rdconsole/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null) // Here we go again
+=======
+	if(..())
+		return
+	nano_ui_interact(user)
+
+
+/obj/machinery/computer/rdconsole/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null) // Here we go again
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if((screen == SCREEN_PROTO && !linked_lathe) || (screen == SCREEN_IMPRINTER && !linked_imprinter))
 		screen = SCREEN_MAIN // Kick us from protolathe or imprinter screen if they were destroyed
 
@@ -426,7 +475,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		if(linked_destroy)
 			if(linked_destroy.loaded_item)
 				// TODO: If you're refactoring origin_tech, remove this shit. Thank you from the past!
+<<<<<<< HEAD
 				var/list/tech_names = list(TECH_MATERIAL = "Materials", TECH_ENGINEERING = "Engineering", TECH_PHORON = "Phoron", TECH_POWER = "Power", TECH_BLUESPACE = "Blue-space", TECH_BIO = "Biotech", TECH_COMBAT = "Combat", TECH_MAGNET = "Electromagnetic", TECH_DATA = "Programming", TECH_COVERT = "Covert")
+=======
+				var/list/tech_names = list(TECH_MATERIAL = "Materials", TECH_ENGINEERING = "Engineering", TECH_PLASMA = "Plasma", TECH_POWER = "Power", TECH_BLUESPACE = "Blue-space", TECH_BIO = "Biotech", TECH_COMBAT = "Combat", TECH_MAGNET = "Electromagnetic", TECH_DATA = "Programming", TECH_ILLEGAL = "Covert")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				var/list/temp_tech = linked_destroy.loaded_item.origin_tech
 				var/list/item_data = list()
@@ -676,12 +729,16 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		ui.set_auto_update(1)
 
 /obj/machinery/computer/rdconsole/robotics
-	name = "Robotics R&D Console"
+	name = "robotics R&D console"
 	id = 2
 	req_access = list(access_robotics)
 
+/obj/machinery/computer/rdconsole/unlicensed
+	name = "unlicensed R&D console"
+	id = 3
+
 /obj/machinery/computer/rdconsole/core
-	name = "Core R&D Console"
+	name = "core R&D console"
 	id = 1
 
 #undef SCREEN_MAIN
@@ -689,4 +746,8 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 #undef SCREEN_IMPRINTER
 #undef SCREEN_WORKING
 #undef SCREEN_TREES
+<<<<<<< HEAD
 #undef SCREEN_LOCKED
+=======
+#undef SCREEN_LOCKED
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

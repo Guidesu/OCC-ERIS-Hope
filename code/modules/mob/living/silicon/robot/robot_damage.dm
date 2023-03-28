@@ -50,11 +50,11 @@
 
 /mob/living/silicon/robot/proc/get_armour()
 
-	if(!components.len) return 0
+	if(!components.len) return FALSE
 	var/datum/robot_component/C = components["armour"]
 	if(C && C.installed == 1)
 		return C
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/heal_organ_damage(var/brute, var/burn)
 	var/list/datum/robot_component/parts = get_damaged_components(brute,burn)
@@ -74,7 +74,13 @@
 		var/absorb_brute_cost = (brute*shield.shield_level)*100
 		var/absorb_burn_cost = (burn*shield.shield_level)*100
 
+<<<<<<< HEAD
 		if(cell.is_empty())
+=======
+		cell.charge -= cost
+		if(cell.charge <= 0)
+			cell.charge = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(src, "\red Your shield has overloaded!")
 		else
 			var/absorb_brute = cell.use(absorb_brute_cost)/100
@@ -119,7 +125,13 @@
 		var/absorb_brute_cost = (brute*shield.shield_level)*100
 		var/absorb_burn_cost = (burn*shield.shield_level)*100
 
+<<<<<<< HEAD
 		if(cell.is_empty())
+=======
+		cell.charge -= cost
+		if(cell.charge <= 0)
+			cell.charge = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(src, "\red Your shield has overloaded!")
 		else
 			var/absorb_brute = cell.use(absorb_brute_cost)/100

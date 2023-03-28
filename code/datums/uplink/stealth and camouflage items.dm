@@ -18,12 +18,17 @@
 	name = "Agent ID card"
 	item_cost = 3
 	path = /obj/item/card/id/syndicate
+<<<<<<< HEAD
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
+=======
+//	antag_roles = list(ROLE_contractor,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item/stealth_items/chameleon_kit
 	name = "Chameleon Kit"
 	item_cost = 5
 	path = /obj/item/storage/box/syndie_kit/chameleon
+<<<<<<< HEAD
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
 
 /datum/uplink_item/item/stealth_items/cleanup
@@ -31,11 +36,13 @@
 	item_cost = 2
 	antag_roles = list(ROLE_TRAITOR, ROLE_CARRION)
 	path = /obj/item/storage/box/syndie_kit/cleanup_kit
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/uplink_item/item/stealth_items/voice
-	name = "Voice Changer"
+	name = "Chameleon Changer"
 	item_cost = 5
-	path = /obj/item/clothing/mask/gas/voice
+	path = /obj/item/clothing/mask/chameleon/voice
 
 /datum/uplink_item/item/stealth_items/chameleon_projector
 	name = "Chameleon-Projector"
@@ -46,6 +53,7 @@
 /datum/uplink_item/item/stealth_items/tool_dampener
 	name = "Tool Upgrade: Aural Dampener"
 	item_cost = 1
+<<<<<<< HEAD
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
 	path = /obj/item/tool_upgrade/augment/dampener
 	antag_roles = list(ROLE_TRAITOR,ROLE_MARSHAL,ROLE_INQUISITOR,ROLE_MERCENARY,ROLE_CARRION)
@@ -59,3 +67,6 @@
     name = "Syndicate \"Profesional Killer\" scope"
     item_cost = 2
     path = /obj/item/gun_upgrade/scope/killer
+=======
+	path = /obj/item/tool_upgrade/augment/dampener
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

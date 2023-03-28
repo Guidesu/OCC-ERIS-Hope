@@ -9,18 +9,41 @@
 
 /mob/living/carbon/Life()
 	. = ..()
+<<<<<<< HEAD
 	handle_viruses()
 	// Increase germ_level regularly
 	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
 		germ_level++
+=======
+
+	handle_viruses()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/Destroy()
-	qdel(ingested)
-	qdel(touching)
-	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	QDEL_NULL_LIST(internal_organs)
-	QDEL_NULL_LIST(stomach_contents)
-	QDEL_NULL_LIST(hallucinations)
+
+	bloodstr.parent = null //these exist due to a GC failure linked to these vars
+	bloodstr.my_atom = null //while they should be cleared by the qdels, they evidently aren't
+
+	ingested.parent = null
+	ingested.my_atom = null
+
+	touching.parent = null
+	touching.my_atom = null
+
+	metabolism_effects.parent = null
+	reagents = null
+	QDEL_NULL(ingested)
+	QDEL_NULL(touching)
+	QDEL_NULL(reagents) //TODO: test deleting QDEL_NULL(reagents) since QDEL_NULL(bloodstr) might be all we need
+	QDEL_NULL(bloodstr)
+	QDEL_NULL(metabolism_effects)
+	// qdel(metabolism_effects) //not sure why, but this causes a GC failure, maybe this isnt supposed to qdel?
+	// We don't qdel(bloodstr) because it's the same as qdel(reagents) // then why arent you qdeling reagents
+	QDEL_LIST(internal_organs)
+	QDEL_LIST(hallucinations)
+	if(vessel)
+		vessel.my_atom = null //sanity check
+		QDEL_NULL(vessel)
 	return ..()
 
 /mob/living/carbon/rejuvenate()
@@ -36,13 +59,14 @@
 	. = ..()
 	if(.)
 		if (src.nutrition && src.stat != 2)
-			src.nutrition -= DEFAULT_HUNGER_FACTOR/10
+			src.nutrition -= (movement_hunger_factors * (DEFAULT_HUNGER_FACTOR/10))
 			if (move_intent.flags & MOVE_INTENT_EXERTIVE)
-				src.nutrition -= DEFAULT_HUNGER_FACTOR/10
+				src.nutrition -= (movement_hunger_factors * (DEFAULT_HUNGER_FACTOR/10))
 
 		if(is_watching == TRUE)
 			reset_view(null)
 			is_watching = FALSE
+<<<<<<< HEAD
 		// Moving around increases germ_level faster
 		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
 			germ_level++
@@ -72,11 +96,12 @@
 						A.loc = loc
 						stomach_contents.Remove(A)
 					src.gib()
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
-		if(M in src.stomach_contents)
-			src.stomach_contents.Remove(M)
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
@@ -108,9 +133,15 @@
 			"\red <B>You feel a powerful shock course through your body!</B>", \
 			"\red You hear a heavy electrical crack." \
 		)
+<<<<<<< HEAD
 		SEND_SIGNAL(src, COMSIG_CARBON_ELECTROCTE)
 		Stun(10)//This should work for now, more is really silly and makes you lay there forever
 		Weaken(10)
+=======
+		LEGACY_SEND_SIGNAL(src, COMSIG_CARBON_ELECTROCTE)
+		Stun(5)//This should work for now, more is really silly and makes you lay there forever
+		Weaken(5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		src.visible_message(
 			"\red [src] was mildly shocked by the [source].", \
@@ -192,13 +223,24 @@
 							src.ExtinguishMob()
 							src.fire_stacks = 0
 		else
+<<<<<<< HEAD
 			var/datum/gender/t_him = gender_datums[get_gender()].him // OCCULUS EDIT - adjusting for gender rework
+=======
+			var/t_him = gender_word("him")
+			if (ishuman(src) && src:w_uniform)
+				var/mob/living/carbon/human/H = src
+				H.w_uniform.add_fingerprint(M)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			var/show_ssd
 			var/target_organ_exists = FALSE
 			var/mob/living/carbon/human/H = src
 			if(istype(H))
+<<<<<<< HEAD
 				show_ssd = H.species.show_ssd
+=======
+				show_ssd = H.form.show_ssd
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				var/obj/item/organ/external/O = H.get_organ(M.targeted_organ)
 				target_organ_exists = (O && O.is_usable())
 			if(show_ssd && !client && !teleop)
@@ -213,7 +255,11 @@
 			else if((M.targeted_organ == BP_HEAD) && target_organ_exists)
 				M.visible_message(SPAN_NOTICE("[M] pats [src]'s head."), \
 									SPAN_NOTICE("You pat [src]'s head."))
+<<<<<<< HEAD
 			else if(M.targeted_organ == BP_R_HAND || M.targeted_organ == BP_L_HAND) //Syz Edit
+=======
+			else if(M.targeted_organ == BP_R_ARM || M.targeted_organ == BP_L_ARM)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(target_organ_exists)
 					M.visible_message(SPAN_NOTICE("[M] shakes hands with [src]."), \
 										SPAN_NOTICE("You shake hands with [src]."))
@@ -238,9 +284,6 @@
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
-/mob/living/carbon/proc/eyecheck()
-	return 0
-
 // ++++ROCKDTBEN++++ MOB PROCS -- Ask me before touching.
 // Stop! ... Hammertime! ~Carn
 
@@ -251,6 +294,14 @@
 	dna = newDNA
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
+
+/mob/living/carbon/flash(duration = 0, drop_items = FALSE, doblind = FALSE, doblurry = FALSE)
+	if(blinded)
+		return
+	if(species)
+		..(duration * flash_mod, drop_items, doblind, doblurry)
+	else
+		..(duration, drop_items, doblind, doblurry)
 
 //Throwing stuff
 /mob/proc/throw_item(atom/target)
@@ -266,6 +317,14 @@
 
 	if(!item) return
 
+<<<<<<< HEAD
+=======
+	if(istype(item, /obj/item/stack/thrown))
+		var/obj/item/stack/thrown/V = item
+		V.fireAt(target, src)
+		return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (istype(item, /obj/item/grab))
 		var/obj/item/grab/G = item
 		item = G.throw_held() //throw the person instead of the grab
@@ -373,14 +432,23 @@
 	Weaken(FLOOR(stun_duration * 0.5, 1))
 	return 1
 
+<<<<<<< HEAD
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
 	if(effect == CE_ALCOHOL)
 		if(stats.getPerk(/datum/perk/inspiration))
 			stats.addPerk(/datum/perk/active_inspiration)
 		if(stats.getPerk(PERK_ALCOHOLIC))
 			stats.addPerk(PERK_ALCOHOLIC_ACTIVE)
+=======
+/mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1, var/limited = FALSE)
+	if(effect == CE_ALCOHOL && stats.getPerk(PERK_INSPIRATION))
+		stats.addPerk(PERK_ACTIVE_INSPIRATION)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(effect in chem_effects)
-		chem_effects[effect] += magnitude
+		if(limited)
+			chem_effects[effect] = max(magnitude, chem_effects[effect])
+		else
+			chem_effects[effect] += magnitude
 	else
 		chem_effects[effect] = magnitude
 
@@ -416,5 +484,15 @@
 /mob/living/carbon/proc/has_appendage(var/limb_check)
 	return 0
 
+<<<<<<< HEAD
 /mob/living/carbon/proc/need_breathe()
 	return TRUE
+=======
+/mob/living/carbon/can_feel_pain(var/check_organ)
+	if(isSynthetic())
+		return 0
+	return !(species.flags & NO_PAIN)
+
+/mob/living/carbon/proc/need_breathe()
+	return TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

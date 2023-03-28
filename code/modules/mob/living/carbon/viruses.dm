@@ -35,6 +35,6 @@
 			// check if we're immune
 			var/list/common_antibodies = V.antigen & src.antibodies
 			if(common_antibodies.len)
-				V.dead = 1
+				V.cure(src)
 
 	return

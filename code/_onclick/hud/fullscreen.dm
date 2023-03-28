@@ -5,8 +5,11 @@
 	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+<<<<<<< HEAD
 	var/severity = 0 //Occulus Var
 	var/allstate = 0 //shows if it should show up for dead people too //Occulus Var, worried what it'll impact
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/screen/fullscreen/New(new_icon_state)
 	..(null)
@@ -16,6 +19,7 @@
 /obj/screen/fullscreen/tile
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = ui_entire_screen
+<<<<<<< HEAD
 
 ///// Occulus changes start, stole all this from baycode just to make credits work. /////
 
@@ -93,3 +97,5 @@
 /obj/screen/fullscreen/fishbed
 	icon_state = "fishbed"
 ///// Occulus changes end /////
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

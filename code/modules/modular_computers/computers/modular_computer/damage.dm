@@ -50,6 +50,7 @@
 // "Brute" damage mostly damages the casing.
 /obj/item/modular_computer/bullet_act(var/obj/item/projectile/P)
 	for(var/i in P.damage_types)
+<<<<<<< HEAD
 		if(i == BRUTE)
 			take_damage(P.damage_types[i], P.damage_types[i] / 2)
 		// TODO: enable after baymed
@@ -57,3 +58,13 @@
 			take_damage(Proj.damage, Proj.damage / 3, 0)*/
 		if(i == BURN)
 			take_damage(P.damage_types[i], P.damage_types[i] / 1.5)
+=======
+		if (!(P.testing))
+			if(i == BRUTE)
+				take_damage(P.damage_types[i], P.damage_types[i] / 2)
+			// TODO: enable after baymed
+			/*if(PAIN)
+				take_damage(Proj.damage, Proj.damage / 3, 0)*/
+			if(i == BURN)
+				take_damage(P.damage_types[i], P.damage_types[i] / 1.5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

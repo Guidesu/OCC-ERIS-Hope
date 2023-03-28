@@ -4,8 +4,13 @@
 	parent_organ_base = BP_GROIN
 	organ_efficiency = list(OP_APPENDIX = 100)
 	specific_organ_size = 0
+<<<<<<< HEAD
 	price_tag = 50
+=======
+	price_tag = 750
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/inflamed = 0 //Counter, not boolean
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/organ/internal/appendix/on_update_icon()
 	..()
@@ -22,12 +27,11 @@
 			owner.emote("me",1,"winces slightly.")
 		if(inflamed > 200)
 			if(prob(3))
-				take_damage(0.1)
+				take_damage(10, BRUTE)
 				owner.emote("me",1,"winces painfully.")
-				owner.adjustToxLoss(1)
+				owner.adjustHalLoss(1)
 		if(inflamed > 400)
 			if(prob(1))
-				germ_level += rand(2,6)
 				if (owner.nutrition > 100)
 					owner.vomit()
 				else
@@ -37,6 +41,11 @@
 			if(prob(1))
 				to_chat(owner, SPAN_DANGER("Your abdomen is a world of pain!"))
 				owner.Weaken(10)
+<<<<<<< HEAD
 				owner.adjustToxLoss(25)
+=======
+
+				owner.adjustHalLoss(25)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				removed()
 				qdel(src)

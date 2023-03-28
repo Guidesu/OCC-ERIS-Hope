@@ -35,7 +35,11 @@ var/next_station_date_change = 1 DAYS
 	if(!station_date || update_time)
 		var/extra_days = round(station_time_in_ticks / (1 DAYS)) DAYS
 		var/timeofday = world.timeofday + extra_days
+<<<<<<< HEAD
 		station_date = num2text((text2num(time2text(timeofday, "YYYY")) + 400)) + "-" + time2text(timeofday, "MM-DD") //Occulus edit, keep this at +400
+=======
+		station_date = num2text((text2num(time2text(timeofday, "YYYY")) + 629)) + "-" + time2text(timeofday, "MM-DD")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return station_date
 
 /proc/time_stamp()
@@ -70,6 +74,9 @@ proc/isDay(var/month, var/day)
 
 var/next_duration_update = 0
 var/last_roundduration2text = 0
+var/last_rounddurationcountdown2text = 0
+var/last_rounddurationcountdown2text_update =0
+var/endtime
 var/round_start_time = 0
 
 /hook/roundstart/proc/start_timer()
@@ -94,6 +101,20 @@ var/round_start_time = 0
 	next_duration_update = world.time + 1 MINUTES
 	return last_roundduration2text
 
+/proc/rounddurationcountdown2text(delay)
+	if(!round_start_time)
+		return "00:00"
+	if(last_rounddurationcountdown2text && world.time < last_rounddurationcountdown2text_update)
+		return last_rounddurationcountdown2text
+	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
+	if(delay && !endtime)
+		endtime = delay + 1 MINUTE
+	if(!endtime)
+		return "N/A"
+	endtime = endtime - 1 MINUTE
+	last_rounddurationcountdown2text = "[endtime/600] minutes left until round end!"
+	last_rounddurationcountdown2text_update = world.time + 1 MINUTES
+	return last_rounddurationcountdown2text
 
 var/global/midnight_rollovers = 0
 var/global/rollovercheck_last_timeofday = 0
@@ -103,10 +124,40 @@ var/global/rollovercheck_last_timeofday = 0
 		return midnight_rollovers++
 	return midnight_rollovers
 
+/proc/ticks_to_text(var/ticks)
+	if(ticks%1 != 0)
+		return "ERROR"
+	var/response = ""
+	var/counter = 0
+	while(ticks >= 1 DAYS)
+		ticks -= 1 DAYS
+		counter++
+	if(counter)
+		response += "[counter] Day[counter>1 ? "s" : ""][ticks ? ", " : ""]"
+	counter=0
+	while(ticks >= 1 HOURS)
+		ticks -= 1 HOURS
+		counter++
+	if(counter)
+		response += "[counter] Hour[counter>1 ? "s" : ""][ticks?", ":""]"
+	counter=0
+	while(ticks >= 1 MINUTES)
+		ticks -= 1 MINUTES
+		counter++
+	if(counter)
+		response += "[counter] Minute[counter>1 ? "s" : ""][ticks?", ":""]"
+		counter=0
+	while(ticks >= 1 SECONDS)
+		ticks -= 1 SECONDS
+		counter++
+	if(counter)
+		response += "[counter][ticks?".[ticks]" : ""] Second[counter>1 ? "s" : ""]"
+	return response
 
 //Increases delay as the server gets more overloaded,
 //as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
 #define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
+#define UNTIL(X) while(!X) stoplag()
 
 /proc/stoplag()
 	if (!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))

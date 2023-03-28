@@ -42,10 +42,13 @@
 	name = "Pantyhose"
 	icon_state = "pantyhose"
 
+<<<<<<< HEAD
 /datum/category_item/underwear/socks/pantyhoserip
 	name = "Ripped Pantyhose"
 	icon_state = "pantyhose_ripped"
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/category_item/underwear/socks/thin_thigh
 	name = "Thigh, thin"
 	icon_state = "thin_thigh"
@@ -67,8 +70,15 @@
 /datum/category_item/underwear/socks/fishnet
 	name = "Fishnet"
 	icon_state = "fishnet"
+<<<<<<< HEAD
 
 /datum/category_item/underwear/socks/garter
 	name = "Garterbelt"
 	icon_state = "garter"
+=======
+	
+/datum/category_item/underwear/socks/leggings
+	name = "Leggings"
+	icon_state = "leggings"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	has_color = TRUE

@@ -28,24 +28,33 @@
 /mob/living/simple_animal/parrot
 	name = "\improper Parrot"
 	desc = "The parrot squaks, \"It's a Parrot! BAWWK!\""
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/mobs-domestic.dmi'
 	icon_state = "parrot_fly"
 	icon_dead = "parrot_dead"
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
+	leather_amount = 0
 
 	speak_emote = list("squawks","says","yells")
 	emote_see = list("flutters its wings","squawks","bawks")
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
+<<<<<<< HEAD
 	meat_type = /obj/item/reagent_containers/food/snacks/cracker/
+=======
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken // Enough with the cracker meme.
+	meat_amount = 2
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	response_help  = "pets"
 	response_disarm = "gently moves aside"
 	response_harm   = "swats"
 	stop_automated_movement = 1
 	universal_speak = 1
+
+	colony_friend = TRUE
+	friendly_to_colony = TRUE
 
 	var/parrot_state = PARROT_WANDER //Hunt for a perch when created
 	var/parrot_sleep_max = 25 //The time the parrot sits while perched before looking around. Mosly a way to avoid the parrot's AI in life() being run every single tick.
@@ -81,6 +90,7 @@
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.
 	var/obj/item/held_item = null
 
+	sanity_damage = -1
 
 /mob/living/simple_animal/parrot/New()
 	..()
@@ -106,7 +116,7 @@
 	if(held_item)
 		held_item.loc = src.loc
 		held_item = null
-	walk(src,0)
+	SSmove_manager.stop_looping(src)
 	..()
 
 /mob/living/simple_animal/parrot/Stat()
@@ -247,15 +257,16 @@
 //Bullets
 /mob/living/simple_animal/parrot/bullet_act(var/obj/item/projectile/Proj)
 	..()
-	if(!stat && !client)
-		if(parrot_state == PARROT_PERCH)
-			parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
+	if (!(Proj.testing))
+		if(!stat && !client)
+			if(parrot_state == PARROT_PERCH)
+				parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
 
-		parrot_interest = null
-		parrot_state = PARROT_WANDER //OWFUCK, Been shot! RUN LIKE HELL!
-		parrot_been_shot += 5
-		icon_state = "parrot_fly"
-		drop_held_item(0)
+			parrot_interest = null
+			parrot_state = PARROT_WANDER //OWFUCK, Been shot! RUN LIKE HELL!
+			parrot_been_shot += 5
+			icon_state = "parrot_fly"
+			drop_held_item(0)
 	return
 
 
@@ -348,7 +359,7 @@
 //-----WANDERING - This is basically a 'I dont know what to do yet' state
 	else if(parrot_state == PARROT_WANDER)
 		//Stop movement, we'll set it later
-		walk(src, 0)
+		SSmove_manager.stop_looping(src)
 		parrot_interest = null
 
 		//Wander around aimlessly. This will help keep the loops from searches down
@@ -387,7 +398,7 @@
 				return
 //-----STEALING
 	else if(parrot_state == (PARROT_SWOOP | PARROT_STEAL))
-		walk(src,0)
+		SSmove_manager.stop_looping(src)
 		if(!parrot_interest || held_item)
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
 			return
@@ -411,12 +422,13 @@
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
 			return
 
-		walk_to(src, parrot_interest, 1, parrot_speed)
+		if (stat != DEAD)
+			SSmove_manager.move_to(src, parrot_interest, 1, parrot_speed)
 		return
 
 //-----RETURNING TO PERCH
 	else if(parrot_state == (PARROT_SWOOP | PARROT_RETURN))
-		walk(src, 0)
+		SSmove_manager.stop_looping(src)
 		if(!parrot_perch || !isturf(parrot_perch.loc)) //Make sure the perch exists and somehow isnt inside of something else.
 			parrot_perch = null
 			parrot_state = PARROT_WANDER
@@ -429,16 +441,17 @@
 			icon_state = "parrot_sit"
 			return
 
-		walk_to(src, parrot_perch, 1, parrot_speed)
+		if (stat != DEAD)
+			SSmove_manager.move_to(src, parrot_perch, 1, parrot_speed)
 		return
 
 //-----FLEEING
 	else if(parrot_state == (PARROT_SWOOP | PARROT_FLEE))
-		walk(src,0)
+		SSmove_manager.stop_looping(src)
 		if(!parrot_interest || !isliving(parrot_interest)) //Sanity
 			parrot_state = PARROT_WANDER
 
-		walk_away(src, parrot_interest, 1, parrot_speed-parrot_been_shot)
+		SSmove_manager.move_away(src, parrot_interest, 1, parrot_speed-parrot_been_shot)
 		parrot_been_shot--
 		return
 
@@ -475,7 +488,11 @@
 			if(ishuman(parrot_interest))
 				var/mob/living/carbon/human/H = parrot_interest
 				var/obj/item/organ/external/affecting = H.get_organ(ran_zone(pick(parrot_dam_zone)))
+<<<<<<< HEAD
 				H.damage_through_armor(damage, BRUTE, affecting, ARMOR_MELEE, 0, 0, sharp = TRUE)
+=======
+				H.damage_through_armor(damage, BRUTE, affecting, ARMOR_MELEE, 0, 0, sharp = 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				var/msg3 = (pick("pecks [H]'s [affecting].", "cuts [H]'s [affecting] with its talons."))
 				src.visible_message("<span class='name'>[src]</span> [msg3].")
 			else
@@ -485,12 +502,12 @@
 			return
 
 		//Otherwise, fly towards the mob!
-		else
-			walk_to(src, parrot_interest, 1, parrot_speed)
+		else if (stat != DEAD)
+			SSmove_manager.move_to(src, parrot_interest, 1, parrot_speed)
 		return
 //-----STATE MISHAP
 	else //This should not happen. If it does lets reset everything and try again
-		walk(src,0)
+		SSmove_manager.stop_looping(src)
 		parrot_interest = null
 		parrot_perch = null
 		drop_held_item()
@@ -735,7 +752,7 @@
 
 
 
-/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
+/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, part_c, var/mob/speaker = null, var/hard_to_hear = 0)
 	if(prob(50))
 		parrot_hear("[pick(available_channels)] [message]")
 	..(message,verb,language,part_a,part_b,speaker,hard_to_hear)
@@ -763,3 +780,34 @@
 	parrot_state = PARROT_SWOOP | PARROT_ATTACK //Attack other animals regardless
 	icon_state = "parrot_fly"
 	return success
+
+/mob/living/simple_animal/jungle_bird
+	name = "bird"
+	desc = "One of the local birds, looks uncannily like the ones from earth save that they can mimic anything they hear and have a habit of stealing things."
+	pass_flags = PASSTABLE
+	mob_size = MOB_SMALL
+	faction = "pond"
+	speak_chance = 5
+	sanity_damage = -1
+
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken // You monster.
+	meat_amount = 2
+
+	speak_emote = list("squawks","says","yells")
+	emote_see = list("flutters its wings","squawks","bawks")
+
+	speak_chance = 5//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
+	turns_per_move = 5
+
+	response_help  = "pets"
+	response_disarm = "gently moves aside"
+	response_harm   = "swats"
+	universal_speak = 1
+	wander = 1
+
+	colony_friend = TRUE
+	friendly_to_colony = TRUE
+
+/mob/living/simple_animal/jungle_bird/Initialize()
+	icon_state = "bird-[rand(1, 17)]"
+	icon_dead = (icon_state + "_dead")

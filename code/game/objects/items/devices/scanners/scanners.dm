@@ -7,6 +7,7 @@
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_SMALL
 	throwforce = WEAPON_FORCE_HARMLESS
+<<<<<<< HEAD
 	throw_speed = 3
 	throw_range = 7
 
@@ -14,6 +15,14 @@
 	origin_tech = list(TECH_BIO = 1)
 	bad_type = /obj/item/device/scanner
 
+=======
+	throw_speed = 4
+	throw_range = 20
+
+	origin_tech = null
+
+	cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	suitable_cell = /obj/item/cell/small
 
 	var/scan_title
@@ -27,9 +36,21 @@
 	var/window_height = 600
 
 	var/charge_per_use = 0
+<<<<<<< HEAD
 
 	var/is_virtual = FALSE // for non-physical scanner to avoid displaying action messages
 
+=======
+	var/is_virtual = FALSE // for non-physical scanner to avoid displaying action messages
+
+	throw_speed = 3
+	throw_range = 7
+
+	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
+	origin_tech = list(TECH_BIO = 1)
+
+	price_tag = 100
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/scanner/attack_self(mob/user)
 	if(!scan_data)
@@ -50,7 +71,12 @@
 		return
 	if (!user.IsAdvancedToolUser())
 		return
+<<<<<<< HEAD
 	if(!cell_use_check(charge_per_use, user))
+=======
+	if(!cell_use_check(charge_per_use))
+		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	return TRUE
 
@@ -82,6 +108,42 @@
 		if(!scan_title)
 			scan_title = "[capitalize(name)] scan - [A]"
 
+<<<<<<< HEAD
+=======
+/obj/item/device/scanner/proc/cell_check()
+	if(!cell && suitable_cell)
+		cell = new suitable_cell(src)
+
+//all user was replased on usr
+/obj/item/device/scanner/proc/cell_use_check(charge)
+	. = TRUE
+	if(!cell || !cell.checked_use(charge))
+		to_chat(usr, SPAN_WARNING("[src] battery is dead or missing."))
+		. = FALSE
+
+/obj/item/device/scanner/Initialize()
+	. = ..()
+	cell_check()
+
+/obj/item/device/scanner/get_cell()
+	return cell
+
+/obj/item/device/scanner/handle_atom_del(atom/A)
+	..()
+	if(A == cell)
+		cell = null
+		update_icon()
+
+/obj/item/device/scanner/MouseDrop(over_object)
+	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
+		cell = null
+
+/obj/item/device/scanner/attackby(obj/item/C, mob/living/user)
+	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
+		src.cell = C
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/scanner/proc/print_report_verb()
 	set name = "Print Report"
 	set category = "Object"
@@ -96,6 +158,11 @@
 
 /obj/item/device/scanner/OnTopic(var/user, var/list/href_list)
 	if(href_list["print"])
+<<<<<<< HEAD
+=======
+		to_chat(user, "The [src] hums as it begins printing a report.")
+		sleep(50)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		print_report(user)
 		return 1
 	if(href_list["clear"])
@@ -105,7 +172,11 @@
 		user << browse(null, "window=scanner")
 		return 1
 
+<<<<<<< HEAD
 /obj/item/device/scanner/proc/print_report(mob/living/user)
+=======
+/obj/item/device/scanner/proc/print_report(var/mob/living/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!scan_data)
 		to_chat(user, "There is no scan data to print.")
 		return
@@ -115,4 +186,8 @@
 
 /obj/item/device/scanner/examine(mob/user)
 	if(..(user, 2) && scan_data)
+<<<<<<< HEAD
 		show_results(user)
+=======
+		show_results(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

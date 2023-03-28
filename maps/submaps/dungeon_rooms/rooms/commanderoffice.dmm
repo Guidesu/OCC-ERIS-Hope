@@ -9,10 +9,13 @@
 "c" = (
 /turf/simulated/floor/wood,
 /area/crawler)
+<<<<<<< HEAD
 "d" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/wood,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "e" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/wood,
@@ -23,6 +26,7 @@
 /area/crawler)
 "g" = (
 /obj/structure/bed,
+<<<<<<< HEAD
 /obj/item/weapon/bedsheet/brown,
 /turf/simulated/floor/wood,
 /area/crawler)
@@ -30,6 +34,13 @@
 /obj/machinery/door/blast/shutters{
 	id = 2
 	},
+=======
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/wood,
+/area/crawler)
+"h" = (
+/obj/effect/window_lwall_spawn/smartspawn/onestar,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "i" = (
@@ -45,15 +56,20 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)
 "l" = (
+<<<<<<< HEAD
 /obj/machinery/shieldwallgen{
 	anchored = 1
 	},
+=======
+/obj/random/turret/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "m" = (
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "n" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/roomba/boomba,
 /turf/simulated/floor/wood,
 /area/crawler)
@@ -61,6 +77,11 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
+=======
+/mob/living/carbon/superior_animal/robot/greyson/roomba/boomba,
+/turf/simulated/floor/wood,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "p" = (
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
@@ -72,6 +93,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+<<<<<<< HEAD
+=======
+/obj/random/booze,
+/obj/random/booze,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "r" = (
@@ -82,6 +108,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
+=======
+/obj/random/ammo_fancy,
+/obj/random/ammo_fancy,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "s" = (
@@ -107,6 +138,7 @@
 "y" = (
 /obj/structure/table/onestar,
 /obj/item/device/lighting/toggleable/lamp/green,
+<<<<<<< HEAD
 /turf/simulated/floor/wood,
 /area/crawler)
 "z" = (
@@ -114,10 +146,21 @@
 	id = 2
 	},
 /obj/structure/low_wall,
+=======
+/obj/random/booze,
+/turf/simulated/floor/wood,
+/area/crawler)
+"z" = (
+/obj/structure/low_wall/onestar,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "A" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "B" = (
@@ -161,6 +204,38 @@
 	},
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"I" = (
+/obj/random/structures/os,
+/turf/simulated/floor/wood,
+/area/crawler)
+"N" = (
+/obj/structure/table/onestar,
+/obj/random/structures/os,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crawler)
+"O" = (
+/obj/random/credits,
+/turf/simulated/floor/tiled/cafe,
+/area/crawler)
+"W" = (
+/obj/random/credits,
+/turf/simulated/floor/wood,
+/area/crawler)
+"Y" = (
+/obj/structure/table/rack,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/random/gun_fancy,
+/obj/random/gun_fancy,
+/turf/simulated/floor/wood,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -180,26 +255,42 @@ y
 A
 c
 v
+<<<<<<< HEAD
 p
+=======
+O
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 G
 a
 "}
 (3,1,1) = {"
 a
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 B
 c
 a
 p
+<<<<<<< HEAD
 o
+=======
+p
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
 a
 g
 s
+<<<<<<< HEAD
 c
+=======
+W
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 a
 F
@@ -220,11 +311,19 @@ b
 (6,1,1) = {"
 b
 c
+<<<<<<< HEAD
 d
 j
 j
 j
 d
+=======
+c
+j
+j
+j
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 b
 "}
@@ -234,7 +333,11 @@ c
 c
 C
 E
+<<<<<<< HEAD
 k
+=======
+N
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 r
 b
@@ -243,11 +346,19 @@ b
 b
 e
 c
+<<<<<<< HEAD
 k
 k
 k
 c
 q
+=======
+N
+k
+N
+c
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (9,1,1) = {"
@@ -257,19 +368,32 @@ n
 D
 D
 j
+<<<<<<< HEAD
 c
+=======
+W
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 b
 "}
 (10,1,1) = {"
 a
 c
+<<<<<<< HEAD
 d
 c
 c
 c
 d
 c
+=======
+c
+c
+c
+c
+c
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"

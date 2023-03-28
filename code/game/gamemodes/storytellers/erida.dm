@@ -1,7 +1,11 @@
 /datum/storyteller/erida
 	config_tag = "erida"
 	name = "Erida"
+<<<<<<< HEAD
 	welcome = "Welcome to CEV Northern Light!"
+=======
+	welcome = "Welcome to the Nadezhda colony!"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	description = "Experimental storyteller based on card deck system"
 
 	var/deck_size = 0

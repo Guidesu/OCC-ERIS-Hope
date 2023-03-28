@@ -1,14 +1,21 @@
-///////////////////////////////////////////////Alchohol bottles! -Agouri //////////////////////////
+///////////////////////////////////////////////Alcohol bottles! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
+//Many thanks to Eris and CeUvi, WalterJe to make most the bottle/can sprites
 
 /obj/item/reagent_containers/food/drinks/bottle
 	amount_per_transfer_from_this = 10
 	volume = 100
+	description_info = "Thrown bottles don't break when you throw them while being on help intent."
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
+<<<<<<< HEAD
 	force = 5
 	rarity_value = 14
 	bad_type = /obj/item/reagent_containers/food/drinks/bottle
+=======
+	force = WEAPON_FORCE_WEAK
+	throwforce = WEAPON_FORCE_WEAK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
@@ -16,13 +23,19 @@
 	var/rag_underlay = "rag"
 	var/icon_state_full
 	var/icon_state_empty
+	var/bottle_thrower_intent
 
 /obj/item/reagent_containers/food/drinks/bottle/on_reagent_change()
 	update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/Initialize()
 	icon_state_full = "[icon_state]"
+<<<<<<< HEAD
 	icon_state_empty = "[icon_state]_empty"
+=======
+	if (icon_state_empty == null)
+		icon_state_empty = "[icon_state]_empty"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	if(isGlass)
 		unacidable = TRUE
@@ -34,29 +47,38 @@
 	rag = null
 	return ..()
 
+/obj/item/reagent_containers/food/drinks/bottle/throw_at(atom/target, range, speed, thrower)
+	var/mob/H = thrower
+	if(istype(H))
+		bottle_thrower_intent = H.a_intent
+	..()
+	bottle_thrower_intent = null
+
 //when thrown on impact, bottles smash and spill their contents
 /obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, speed)
 	..()
 
-	var/mob/M = thrower
-	if(isGlass && istype(M) && M.a_intent == I_HURT)
-		var/throw_dist = get_dist(throw_source, loc)
-		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
-			if(reagents)
-				hit_atom.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [hit_atom]!"))
-				reagents.splash(hit_atom, reagents.total_volume)
-			src.smash(loc, hit_atom)
+	if(bottle_thrower_intent != I_HELP)
+		if(reagents)
+			hit_atom.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [hit_atom]!"))
+			reagents.splash(hit_atom, reagents.total_volume)
+		src.smash(loc, hit_atom)
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(distance)
 	if(!isGlass || !smash_duration)
 		return 0
+	else
+		return TRUE
 
+<<<<<<< HEAD
 	var/list/chance_table = list(90, 90, 85, 85, 60, 35, 15) //starting from distance 0
 	var/idx = max(distance + 1, 1) //since list indices start at 1
 	if(idx > chance_table.len)
 		return 0
 	return prob(chance_table[idx])
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against)
 	if(ismob(loc))
 		var/mob/M = loc
@@ -123,7 +145,11 @@
 	if(rag) return
 	..()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/food/drinks/bottle/on_update_icon()
+=======
+/obj/item/reagent_containers/food/drinks/bottle/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays.Cut()
 	if(rag)
 		var/underlay_image = image(icon='icons/obj/drinks.dmi', icon_state=rag.on_fire? "[rag_underlay]_lit" : rag_underlay)
@@ -173,24 +199,39 @@
 	icon_state = "ginbottle"
 	center_of_mass = list("x"=16, "y"=4)
 	preloaded_reagents = list("gin" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 
 /obj/item/reagent_containers/food/drinks/bottle/whiskey
 	name = "Uncle Git's Special Reserve"
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/whiskey
+	name = "Uncle Git's Special Reserve Whiskey"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
 	icon_state = "whiskeybottle"
 	center_of_mass = list("x"=16, "y"=3)
 	preloaded_reagents = list("whiskey" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 
 /obj/item/reagent_containers/food/drinks/bottle/vodka
 	name = "Tunguska Triple Distilled"
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/vodka
+	name = "Tunguska Triple Distilled Vodka"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Aah, vodka. Prime choice of drink AND fuel by Russians worldwide."
 	icon_state = "vodkabottle"
 	center_of_mass = list("x"=17, "y"=3)
 	preloaded_reagents = list("vodka" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 	rarity_value = 7
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/tequilla
 	name = "Caccavo Guaranteed Quality Tequilla"
@@ -198,7 +239,10 @@
 	icon_state = "tequillabottle"
 	center_of_mass = list("x"=16, "y"=3)
 	preloaded_reagents = list("tequilla" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
@@ -208,12 +252,19 @@
 	preloaded_reagents = list("nothing" = 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/patron
+<<<<<<< HEAD
 	name = "Wrapp Artiste Patron"
+=======
+	name = "Wrapp Artiste Patron Tequilla"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("patron" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/rum
 	name = "Captain Pete's Cuban Spiced Rum"
@@ -221,14 +272,27 @@
 	icon_state = "rumbottle"
 	center_of_mass = list("x"=16, "y"=8)
 	preloaded_reagents = list("rum" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/rombuty
+	name = "Captain Flint's Secret Rum"
+	desc = "For some reason, to you, the label on this bottle reads the same as Death."
+	icon_state = "rombuty"
+	item_state = "rombuty"
+	center_of_mass = list("x"=16, "y"=8)
+	preloaded_reagents = list("rum" = 100)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/drinks/bottle/vermouth
 	name = "Goldeneye Vermouth"
 	desc = "Sweet, sweet dryness~"
 	icon_state = "vermouthbottle"
 	center_of_mass = list("x"=17, "y"=3)
 	preloaded_reagents = list("vermouth" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 
 /obj/item/reagent_containers/food/drinks/bottle/kahlua
@@ -238,6 +302,15 @@
 	center_of_mass = list("x"=17, "y"=3)
 	preloaded_reagents = list("kahlua" = 100)
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/kahlua
+	name = "Robert Robust's Coffee Kahlua"
+	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936."
+	icon_state = "kahluabottle"
+	center_of_mass = list("x"=17, "y"=3)
+	preloaded_reagents = list("kahlua" = 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/goldschlager
 	name = "College Girl Goldschlager"
@@ -245,7 +318,10 @@
 	icon_state = "goldschlagerbottle"
 	center_of_mass = list("x"=15, "y"=3)
 	preloaded_reagents = list("goldschlager" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
@@ -253,7 +329,10 @@
 	icon_state = "cognacbottle"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("cognac" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/wine
 	name = "Doublebeard Bearded Special Wine"
@@ -261,48 +340,90 @@
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 	preloaded_reagents = list("wine" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 
 /obj/item/reagent_containers/food/drinks/bottle/ntcahors
 	name = "Saint's Wing Cahors"
 	desc = "Lift the body and lift the spirit."
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/ntcahors
+	name = "Absolutism Cahors Wine"
+	desc = "Ritual drink that cleanses the soul and body."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "ntcahors"
 	center_of_mass = list("x"=16, "y"=4)
 	preloaded_reagents = list("ntcahors" = 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/absinthe
+<<<<<<< HEAD
 	name = "Jailbreaker Verte"
+=======
+	name = "Jailbreaker Absinthe"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "One sip of this and you just know you're gonna have a good time."
 	icon_state = "absinthebottle"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("absinthe" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
 	desc = "A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light."
-	icon_state = "alco-green" //Placeholder.
+	icon_state = "alco-green"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("melonliquor" = 100)
+<<<<<<< HEAD
 	icon_state_empty = "alco-clear"
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+	icon_state_empty = "alco-empty"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/bluecuracao
 	name = "Miss Blue Curacao"
 	desc = "A fruity, exceptionally azure drink. Does not allow the imbiber to use the fifth magic."
-	icon_state = "alco-blue" //Placeholder.
+	icon_state = "alco-blue"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("bluecuracao" = 100)
+<<<<<<< HEAD
 	icon_state_empty = "alco-clear"
 	spawn_tags = SPAWN_TAG_BOOZE
 
+=======
+	icon_state_empty = "alco-empty"
+
+/obj/item/reagent_containers/food/drinks/bottle/redcandywine
+	name = "Mister Red Candy Liquor"
+	desc = "Made from astored sweets, candies and even flowers."
+	icon_state = "alco-red"
+	center_of_mass = list("x"=16, "y"=6)
+	preloaded_reagents = list("redcandyliquor" = 100)
+	icon_state_empty = "alco-empty"
+
+/obj/item/reagent_containers/food/drinks/bottle/nanatsunoumi
+	name = "Nanatsunoumi"
+	desc = "A harsh salty alcohol that is from Japanese origin."
+	icon_state = "alco-white"
+	center_of_mass = list("x"=16, "y"=6)
+	preloaded_reagents = list("nanatsunoumi" = 100)
+	icon_state_empty = "alco-empty"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/drinks/bottle/grenadine
 	name = "Briar Rose Grenadine Syrup"
 	desc = "Sweet and tangy, a bar syrup used to add color or flavor to drinks."
 	icon_state = "grenadinebottle"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("grenadine" = 100)
+<<<<<<< HEAD
 	icon_state_empty = "grenadinebottle"
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/reagent_containers/food/drinks/bottle/cola
 	name = "\improper Space Cola"
@@ -331,7 +452,24 @@
 	icon_state = "pwinebottle"
 	center_of_mass = list("x"=16, "y"=4)
 	preloaded_reagents = list("pwine" = 100)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/fernet
+	name = "Fernet Bronca"
+	desc = "A bottle of pure Fernet Bronca, imported from Cordoba Space Station."
+	icon_state = "fernetbottle"
+	center_of_mass = list("x"=16, "y"=4)
+	preloaded_reagents = list("fernet" = 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/neulandschnapps
+	name = "Neuland Himbeergeist"
+	desc = "A kriosan-approved spirits covered in german text, wax stamp on the bottle with the crest of a obscure and minor Castellan Lord. Time to shout 'Prost!' Ja?"
+	icon_state = "neulandschnapps"
+	center_of_mass = list("x"=16, "y"=6)
+	preloaded_reagents = list("schnapps" = 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //////////////////////////JUICES AND STUFF ///////////////////////
 
@@ -370,6 +508,18 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 	preloaded_reagents = list("limejuice" = 100)
+<<<<<<< HEAD
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/pineapplejuice
+	name = "Pineapple Juice"
+	desc = "Sweet, tangy juice. Imported from nearby colony's"
+	icon_state = "pineapplejuice"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=7)
+	isGlass = 0
+	preloaded_reagents = list("pineapplejuice" = 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Small bottles
 /obj/item/reagent_containers/food/drinks/bottle/small
@@ -385,9 +535,20 @@
 	icon_state = "beer"
 	center_of_mass = list("x"=16, "y"=12)
 	preloaded_reagents = list("beer" = 30)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
 	rarity_value = 2
 
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/small/beer_two
+	name = "Mickey Finn's Special Brew"
+	desc = "A bottle of what looks like a beer but is a mix of sleeping agents, malt and hops."
+	icon_state = "beer"
+	center_of_mass = list("x"=16, "y"=12)
+	preloaded_reagents = list("beer" = 30)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/reagent_containers/food/drinks/bottle/small/ale
 	name = "\improper Magm-Ale"
 	desc = "A true dorf's drink of choice."
@@ -395,4 +556,15 @@
 	item_state = "beer"
 	center_of_mass = list("x"=16, "y"=10)
 	preloaded_reagents = list("ale" = 30)
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_BOOZE
+=======
+
+/obj/item/reagent_containers/food/drinks/bottle/small/kvass
+	name = "Magpie Kvass"
+	desc = "A traditional russian drink. Made with in colony ingredients."
+	icon_state = "Kvass_Bottle"
+	isGlass = 0
+	center_of_mass = list("x"=16, "y"=12)
+	preloaded_reagents = list("Kvass" = 30)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

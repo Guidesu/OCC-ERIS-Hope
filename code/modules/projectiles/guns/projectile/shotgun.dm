@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //New shotgun dm, could be expanded
 /obj/item/gun/projectile/shotgun
@@ -23,3 +24,12 @@
 		if(robustness < STAT_LEVEL_GODLIKE)
 			if(!prob(robustness))
 				step(user, pick(cardinal - user.dir))
+=======
+/obj/item/gun/projectile/shotgun
+	//  New shotgun dm, could be expanded
+	var/recentpumpmsg = 0 //  Variable to prevent chat message spam
+	gun_tags = list(GUN_PROJECTILE, GUN_INTERNAL_MAG)
+
+	wield_delay = 2 SECOND
+	wield_delay_factor = 0.5// 50 vig
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

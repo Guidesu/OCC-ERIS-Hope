@@ -1,6 +1,6 @@
 
 /obj/machinery/artifact_harvester
-	name = "Exotic Particle Harvester"
+	name = "exotic particle harvester"
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "incubator"	//incubator_on
 	anchored = TRUE
@@ -14,13 +14,21 @@
 	var/obj/machinery/artifact_scanpad/owned_scanner = null
 	var/last_process = 0
 
+<<<<<<< HEAD
+=======
+//Upon creation attempt to connect to scan pad.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/artifact_harvester/Initialize() //This can't be new. Needs to happen after the maps loaded. Occulist Edit
 	..()
-	//connect to a nearby scanner pad
+	reconnect_scanner()
+
+//Allows us to reconnect to nearby scanner pads if we arn't connected.
+/obj/machinery/artifact_harvester/proc/reconnect_scanner()
 	owned_scanner = locate(/obj/machinery/artifact_scanpad) in get_step(src, dir)
 	if(!owned_scanner)
 		owned_scanner = locate(/obj/machinery/artifact_scanpad) in orange(1, src)
 
+//Battery Insert Segment.
 /obj/machinery/artifact_harvester/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/anobattery))
 		if(!inserted_battery)
@@ -44,8 +52,12 @@
 	user.set_machine(src)
 	var/dat = "<B>Artifact Power Harvester</B><BR>"
 	dat += "<HR><BR>"
-	//
-	if(owned_scanner)
+	//Scanner Pad connection check, Flows into user interface of battery charge.
+	if(!owned_scanner)
+		reconnect_scanner()
+	if(!owned_scanner)
+		dat += "<B><font color=red>Unable to locate analysis pad.</font><BR></b>"
+	else if(owned_scanner)
 		if(harvesting)
 			if(harvesting > 0)
 				dat += "Please wait. Harvesting in progress ([round((inserted_battery.stored_charge/inserted_battery.capacity)*100)]%).<br>"
@@ -62,8 +74,6 @@
 
 			else
 				dat += "No battery inserted.<BR>"
-	else
-		dat += "<B><font color=red>Unable to locate analysis pad.</font><BR></b>"
 	//
 	dat += "<HR>"
 	dat += "<A href='?src=\ref[src];refresh=1'>Refresh</A> <A href='?src=\ref[src];close=1'>Close<BR>"

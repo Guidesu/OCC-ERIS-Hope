@@ -20,9 +20,9 @@
 
 /obj/item/device/aicard/attack_self(mob/user)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/device/aicard/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state =GLOB.inventory_state)
+/obj/item/device/aicard/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state =GLOB.inventory_state)
 	var/data[0]
 	data["has_ai"] = carded_ai != null
 	if(carded_ai)
@@ -77,11 +77,19 @@
 		update_icon()
 	return 1
 
+<<<<<<< HEAD
 /obj/item/device/aicard/on_update_icon()
 	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
 			add_overlays(image('icons/obj/pda.dmi', "aicard-on"))
+=======
+/obj/item/device/aicard/update_icon()
+	cut_overlays()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			add_overlay(image('icons/obj/pda.dmi', "aicard-on"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(carded_ai.stat)
 			icon_state = "aicard-404"
 		else

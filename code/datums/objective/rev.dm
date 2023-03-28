@@ -42,7 +42,11 @@
 
 /datum/objective/timed/excelsior/New()
 	..()
+<<<<<<< HEAD
 	explanation_text = "Expand and grow in power before the ship's systems detect your presence! The detection countdown of [time2hours(detect_timer)] Hour starts once you force-implant a new comrade. It is lowered by [time2minutes(convert_decrease)] Minutes for each additional recruit, and increased by [time2minutes(mandate_increase)] Minutes for each completed mandate"
+=======
+	explanation_text = "Expand and grow in power before the colony systems detect your presence! The detection countdown of [time2hours(detect_timer)] Hour starts once you force-implant a new comrade. It is lowered by [time2minutes(convert_decrease)] Minutes for each additional recruit, and increased by [time2minutes(mandate_increase)] Minutes for each completed mandate"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/objective/timed/excelsior/proc/start_excel_timer()
 	START_PROCESSING(SSobj, src)
@@ -51,11 +55,19 @@
 /datum/objective/timed/excelsior/Process()
 	detect_timer -= 1 SECONDS
 	if(detect_timer <= 0)
+<<<<<<< HEAD
 		//level_nine_announcement()
+=======
+		level_nine_announcement()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		STOP_PROCESSING(SSobj, src)
 
 /datum/objective/timed/excelsior/proc/on_convert()
 	detect_timer -= convert_decrease
 
 /datum/objective/timed/excelsior/proc/mandate_completion()
+<<<<<<< HEAD
 	detect_timer += mandate_increase
+=======
+	detect_timer += mandate_increase
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

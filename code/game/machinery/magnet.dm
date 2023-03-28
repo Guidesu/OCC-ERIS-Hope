@@ -8,11 +8,19 @@
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_magnet-f"
+<<<<<<< HEAD
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
 	level = BELOW_PLATING_LEVEL		// underfloor
 	layer = LOW_OBJ_LAYER
 	anchored = TRUE
+=======
+	name = "electromagnetic generator"
+	desc = "A device that uses colony power to create points of magnetic energy."
+	level = BELOW_PLATING_LEVEL		// underfloor
+	layer = LOW_OBJ_LAYER
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 50
 
@@ -198,8 +206,13 @@
 	name = "Magnetic Control Console"
 	icon = 'icons/obj/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
+<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
+=======
+	density = 1
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 45
 	var/frequency = 1449

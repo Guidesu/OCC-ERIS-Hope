@@ -1,5 +1,6 @@
 /obj/item/clipboard
 	name = "clipboard"
+	desc = "A board for attaching papers and a pen."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "clipboard"
 	item_state = "clipboard"
@@ -8,11 +9,15 @@
 	item_flags = DRAG_AND_DROP_UNEQUIP
 	throw_speed = 3
 	throw_range = 10
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_ITEM
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/pen/haspen		//The stored pen.
 	var/obj/item/toppaper	//The topmost piece of paper.
 	slot_flags = SLOT_BELT
 
+<<<<<<< HEAD
 /obj/item/clipboard/Initialize(mapload)
 	. = ..()
 	update_icon()
@@ -25,6 +30,19 @@
 	if(haspen)
 		add_overlays("clipboard_pen")
 	add_overlays("clipboard_over")
+=======
+/obj/item/clipboard/New()
+	update_icon()
+
+/obj/item/clipboard/update_icon()
+	cut_overlays()
+	if(toppaper)
+		add_overlay(toppaper.icon_state)
+		add_overlay(toppaper.get_overlays())
+	if(haspen)
+		add_overlay("clipboard_pen")
+	add_overlay("clipboard_over")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)

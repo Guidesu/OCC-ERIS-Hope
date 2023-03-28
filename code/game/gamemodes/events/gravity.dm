@@ -2,7 +2,7 @@
 	Very simple event that temporarily disables gravity all over the ship. Quite fun, but can also lead to people getting stuck
 	This event used to contain some bullshit about forming black holes. No code provision exists for any such thing, so that is removed
 */
-
+/*
 /datum/storyevent/gravity
 	id = "gravity_failure"
 	name = "gravity failure"
@@ -22,7 +22,7 @@
 	endWhen = rand(30, 200) //1-6 minutes
 
 /datum/event/gravity/announce()
-	command_announcement.Announce("Feedback surge detected in mass-distributions systems. Artificial gravity has been disabled whilst the system reinitializes.", "Gravity Failure")
+	command_announcement.Announce("Anomalous activities detected in local area. A gravity storm has been detected, caution is advised until it passes.", "Gravity Failure")
 
 /datum/event/gravity/start()
 	if (GLOB.active_gravity_generator)
@@ -32,4 +32,5 @@
 	if (GLOB.active_gravity_generator)
 		GLOB.active_gravity_generator.set_state(TRUE)
 
-	command_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.", "Gravity Restored")
+	command_announcement.Announce("The gravity storm has passed, report any further anomalous activies that remain. Sorry for any inconvenience.", "Gravity Restored")
+*/

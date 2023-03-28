@@ -25,4 +25,8 @@
 
 /datum/hallucination/sanity_mirage/end()
 	if(holder.client)
+<<<<<<< HEAD
 		holder.client.images -= things
+=======
+		holder.client.images -= things
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

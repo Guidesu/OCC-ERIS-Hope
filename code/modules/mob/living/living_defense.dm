@@ -5,11 +5,26 @@
 //If you need to do something else with armor - just use getarmor() proc and do with those numbers all you want
 //Random absorb system was a cancer, and was removed from all across the codebase. Don't recreate it. Clockrigger 2019
 
+<<<<<<< HEAD
 /mob/living/proc/damage_through_armor(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/attack_flag = ARMOR_MELEE, var/armour_pen = 0, var/used_weapon = null, var/sharp = FALSE, var/edge = FALSE)
+=======
+/mob/living/proc/damage_through_armor(
+	damage					= 0,
+	damagetype				= BRUTE,
+	def_zone				= null,
+	attack_flag				= ARMOR_MELEE,
+	armour_pen				= 0,
+	used_weapon				= null,
+	sharp					= FALSE,
+	edge					= FALSE,
+	post_pen_mult			= 1
+	)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(damage == 0)
 		return FALSE
 
+<<<<<<< HEAD
 	//GDR - guaranteed damage reduction. It's a value that deducted from damage before all calculations
 	var/armor = getarmor(def_zone, attack_flag)
 	var/guaranteed_damage_red = armor * ARMOR_GDR_COEFFICIENT
@@ -36,6 +51,90 @@
 		if((H.get_organ_efficiency(BP_SPCORE) || mutations.len) && (SANCTIFIED in I.aspects))
 			sanctified_attack = TRUE */
 	//Feedback UNCOMMENT THE ABOVE WHEN WE PORT ERISMED2. It's basically checking if someone is baseline human, and Smite Evil's them if they aren't.  - Bear
+=======
+	//Used for simple/super mobs do to their armor being checked twice
+	var/armor_times_mod = 1
+
+	if(istype(src,/mob/living/simple_animal/) || istype(src,/mob/living/carbon/superior_animal/))
+		armor_times_mod = 0.5
+
+	//GDR - guaranteed damage reduction. It's a value that deducted from damage before all calculations
+	var/armor = getarmor(def_zone, attack_flag)
+	var/guaranteed_damage_red = armor * ARMOR_GDR_COEFFICIENT
+	var/armor_effectiveness = max(0, ((armor * armor_times_mod) - armour_pen))
+	var/effective_damage = damage - guaranteed_damage_red
+
+	if(istype(src,/mob/living/simple_animal/) || istype(src,/mob/living/carbon/superior_animal/))
+		var/mob_brute_armor = src.getarmor(def_zone, "bullet") //All brute over-pen checks bullet rather then melee for simple mobs to keep melee viable
+		var/mob_laser_armor = src.getarmor(def_zone, "energy")
+		var/mob_agony_armor = src.getarmor(def_zone, "agony")
+
+		//message_admins("mob_brute_armor = [mob_brute_armor]!")
+		//message_admins("mob_laser_armor = [mob_laser_armor]!")
+		//message_admins("mob_agony_armor = [mob_agony_armor]!")
+
+		//We take the armor pen and baseline armor for calulating the armor pen rather then the reduction so that we get correct values
+		var/burns_armor_overpenetration = armour_pen - mob_laser_armor
+		var/brute_armor_overpenetration = armour_pen - mob_brute_armor
+
+		//This is put here rather then above over-pen as we want to keep over-pen being with baseline armor rather then halfed.
+		mob_brute_armor = mob_brute_armor * armor_times_mod
+		mob_laser_armor = mob_laser_armor * armor_times_mod
+
+		//message_admins("brute_armor_overpenetration = [brute_armor_overpenetration]!")
+		//message_admins("burns_armor_overpenetration = [burns_armor_overpenetration]!")
+
+		//message_admins("effective_damage = [effective_damage]!")
+
+		if(damagetype == HALLOSS)
+			effective_damage =  max(0,round(effective_damage - mob_agony_armor))
+
+		if(brute_armor_overpenetration > 0 && damagetype == BRUTE)
+			effective_damage += max(0,round(brute_armor_overpenetration))
+
+		if(burns_armor_overpenetration > 0 && damagetype == BURN)
+			effective_damage += max(0,round(burns_armor_overpenetration))
+
+		//message_admins("post math effective_damage = [effective_damage]!")
+
+	else
+
+		if(damagetype == HALLOSS)
+			//First we get the nervs!
+			effective_damage = round(effective_damage * max(0.5, (get_specific_organ_efficiency(OP_NERVE, def_zone) / 100)))
+			var/pain_armor = max(0, (src.getarmor(def_zone, "bullet") +  src.getarmor(def_zone, "melee") - armour_pen))//All brute over-pen checks bullet rather then melee for simple mobs to keep melee viable
+			var/pain_no_matter_what = (effective_damage * 0.15) //we deal 15% of are pain, this is to stop rubbers being *completely* uses with basic armor - Its not perfect in melee
+			effective_damage = max(pain_no_matter_what, (effective_damage - pain_armor))
+			if(ishuman(src))
+				var/mob/living/carbon/human/victim = src
+				if(prob(25 + (effective_damage * 2)))
+					if(!victim.stat && !(victim.has_shield()))
+						if(victim.headcheck(def_zone))
+							//Harder to score a stun but if you do it lasts a bit longer
+							if(prob(effective_damage))
+								visible_message(SPAN_DANGER("[src] [victim.form.knockout_message]"))
+								apply_effect(5, PARALYZE, getarmor(def_zone, ARMOR_MELEE) )
+						else
+							//Easier to score a stun but lasts less time
+							if(prob(effective_damage + 10))
+								visible_message(SPAN_DANGER("[src] has been knocked down!"))
+								apply_effect(1, WEAKEN, getarmor(def_zone, ARMOR_MELEE) )
+
+
+
+	if(effective_damage <= 0)
+		show_message(SPAN_NOTICE("Your armor fully absorbs the blow!"))
+		return FALSE
+
+
+	//Here we can remove edge or sharpness from the blow
+	if((sharp || edge) && prob (getarmor(def_zone, attack_flag)))
+		sharp = 0
+		edge = 0
+
+
+	//Feedback
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//In order to show both target and everyone around that armor is actually working, we are going to send message for both of them
 	//Goon/tg chat should take care of spam issue on this one
 
@@ -52,9 +151,14 @@
 
 	//No armor? Damage as usual
 	if(armor_effectiveness == 0)
+<<<<<<< HEAD
 		apply_damage(effective_damage, damagetype, def_zone, sharp, edge, used_weapon)
 		if(sanctified_attack)
 			apply_damage(effective_damage / 2, BURN, def_zone, sharp, edge, used_weapon)
+=======
+		apply_damage(effective_damage * post_pen_mult, damagetype, def_zone, used_weapon, sharp, edge)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Here we split damage in two parts, where armor value will determine how much damage will get through
 	else
 		//Pain part of the damage, that simulates impact from armor absorbtion
@@ -65,9 +169,13 @@
 
 		//Actual part of the damage that passed through armor
 		var/actual_damage = round ( ( effective_damage * ( 100 - armor_effectiveness ) ) / 100 )
+<<<<<<< HEAD
 		apply_damage(actual_damage, damagetype, def_zone, sharp, edge, used_weapon)
 		if(sanctified_attack)
 			apply_damage(actual_damage / 2, BURN, def_zone, sharp, edge, used_weapon)
+=======
+		apply_damage(actual_damage * post_pen_mult, damagetype, def_zone, used_weapon, sharp, edge)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return actual_damage
 	return effective_damage
 
@@ -75,6 +183,17 @@
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
 /mob/living/proc/getarmor(var/def_zone, var/type)
 	return 0
+
+/mob/living/simple_animal/getarmor(var/def_zone, var/type)
+	return src.armor[type]
+
+/mob/living/carbon/superior_animal/getarmor(var/def_zone, var/type)
+	return src.armor[type]
+
+/mob/living/proc/hit_impact(damage, dir)
+	if(incapacitated(INCAPACITATION_DEFAULT|INCAPACITATION_BUCKLED_PARTIALLY))
+		return
+	shake_animation(damage)
 
 
 /mob/living/proc/hit_impact(damage, dir)
@@ -86,11 +205,15 @@
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 	var/hit_dir = get_dir(P, src)
 
+<<<<<<< HEAD
 	if (P.is_hot() >= HEAT_MOBIGNITE_THRESHOLD)
+=======
+	if (P.is_hot() >= HEAT_MOBIGNITE_THRESHOLD && (!(P.testing)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		IgniteMob()
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/device/assembly/signaler))
+	if(istype(get_active_hand(),/obj/item/device/assembly/signaler) && (!(P.testing)))
 		var/obj/item/device/assembly/signaler/signaler = get_active_hand()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
@@ -99,16 +222,29 @@
 
 	//Stun Beams
 	if(P.taser_effect)
+<<<<<<< HEAD
 		stun_effect_act(0, P.agony, def_zone, P)
 		to_chat(src, SPAN_WARNING("You have been hit by [P]!"))
 		qdel(P)
 		return TRUE
 
 	if(P.knockback && hit_dir)
+=======
+		if (!(P.testing))
+			stun_effect_act(0, P.agony, def_zone, P)
+			to_chat(src, SPAN_WARNING("You have been hit by [P]!"))
+		else
+			P.on_impact(src, TRUE) //not sure if this will work
+		qdel(P)
+		return TRUE
+
+	if(P.knockback && hit_dir && (!(P.testing)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		throw_at(get_edge_target_turf(src, hit_dir), P.knockback, P.knockback)
 
 	//Armor and damage
 	if(!P.nodamage)
+<<<<<<< HEAD
 		hit_impact(P.get_structure_damage(), hit_dir)
 		for(var/damage_type in P.damage_types)
 			var/damage = P.damage_types[damage_type]
@@ -120,6 +256,30 @@
 
 
 	P.on_hit(src, def_zone)
+=======
+		if (!(P.testing))
+			hit_impact(P.get_structure_damage(), hit_dir)
+		for(var/damage_type in P.damage_types)
+			var/damage = P.damage_types[damage_type]
+			var/dmult = 1
+			if(LAZYLEN(P.effective_faction))
+				if(faction in P.effective_faction)
+					dmult += P.damage_mult
+			if(LAZYLEN(P.supereffective_types))
+				if(is_type_in_list(src, P.supereffective_types, TRUE))
+					dmult += P.supereffective_mult
+			damage *= dmult
+			if (!(P.testing))
+				damage_through_armor(damage, damage_type, def_zone, P.check_armour, armour_pen = P.armor_penetration, used_weapon = P, sharp=is_sharp(P), edge=has_edge(P), post_pen_mult = P.post_penetration_dammult)
+
+
+	if(P.agony > 0 && istype(P,/obj/item/projectile/bullet))
+		if (!(P.testing))
+			hit_impact(P.agony, hit_dir)
+			damage_through_armor(P.agony, HALLOSS, def_zone, P.check_armour, armour_pen = P.armor_penetration, used_weapon = P, sharp = is_sharp(P), edge = has_edge(P))
+
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 //Handles the effects of "stun" weapons
@@ -136,7 +296,10 @@
 		Weaken(stun_amount * armor_coefficient)
 		apply_effect(STUTTER, stun_amount * armor_coefficient)
 		apply_effect(EYE_BLUR, stun_amount * armor_coefficient)
+<<<<<<< HEAD
 		SEND_SIGNAL(src, COMSIG_LIVING_STUN_EFFECT)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if (agony_amount && armor_coefficient)
 
@@ -178,7 +341,11 @@
 		effective_force *= 2
 
 	//Apply weapon damage
+<<<<<<< HEAD
 	if (damage_through_armor(effective_force, I.damtype, hit_zone, ARMOR_MELEE, I.armor_penetration, used_weapon = I, sharp = is_sharp(I), edge = has_edge(I)))
+=======
+	if (damage_through_armor(effective_force, I.damtype, hit_zone, ARMOR_MELEE, I.armor_penetration, used_weapon = I, sharp = is_sharp(I), edge = has_edge(I), post_pen_mult = I.post_penetration_dammult))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	else
 		return FALSE
@@ -188,12 +355,12 @@
 	if(istype(AM,/obj/))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throwforce //Are minium damage we do is baseline in cases were we do more damage we do more
 
 		var/miss_chance = 15
 		if (O.throw_source)
 			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+			miss_chance = max(15*(distance-4), 0)
 
 		if (prob(miss_chance))
 			visible_message("\blue \The [O] misses [src] narrowly!")
@@ -204,8 +371,16 @@
 			IgniteMob()
 
 		src.visible_message(SPAN_WARNING("[src] has been hit by [O]."))
+<<<<<<< HEAD
 
 		damage_through_armor(throw_damage, dtype, null, ARMOR_MELEE, null, used_weapon = O, sharp = is_sharp(O), edge = has_edge(O))
+=======
+		var/ppd = 1
+		if(isitem(O))
+			var/obj/item/thingytocheck = O
+			ppd = thingytocheck.post_penetration_dammult
+		damage_through_armor(throw_damage, dtype, null, ARMOR_MELEE, null, used_weapon = O, sharp = is_sharp(O), edge = has_edge(O), post_pen_mult = ppd)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		O.throwing = 0		//it hit, so stop moving
 
@@ -246,6 +421,11 @@
 					src.pinned += O
 
 /mob/living/proc/embed(var/obj/item/O, var/def_zone=null)
+<<<<<<< HEAD
+=======
+	if(O.wielded)
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(ismob(O.loc))
 		var/mob/living/L = O.loc
 		if(!L.unEquip(O, src))
@@ -291,40 +471,39 @@
 
 /mob/living/proc/IgniteMob()
 	if(fire_stacks > 0 && !on_fire)
-		on_fire = 1
-		set_light(light_range + 3)
+		on_fire = TRUE
+		set_light(light_range + 3, l_color = COLOR_RED)
 		update_fire()
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
-		on_fire = 0
+		on_fire = FALSE
 		fire_stacks = 0
 		set_light(max(0, light_range - 3))
 		update_fire()
 
 /mob/living/proc/update_fire()
-	return
+	cut_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
+	if(on_fire)
+		add_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing"))
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
     fire_stacks = CLAMP(fire_stacks + add_fire_stacks, FIRE_MIN_STACKS, FIRE_MAX_STACKS)
 
-/mob/living/proc/handle_fire()
-	if(fire_stacks < 0)
-		fire_stacks = min(0, ++fire_stacks) //If we've doused ourselves in water to avoid fire, dry off slowly
+/mob/living/proc/handle_fire(flammable_gas, turf/location)
+	if(never_stimulate_air)
+		if (fire_stacks > 0)
+			ExtinguishMob() //We dont simulate air thus we dont simulate fire
+		return
 
-	if(!on_fire)
-		return 1
-	else if(fire_stacks <= 0)
-		ExtinguishMob() //Fire's been put out.
-		return 1
+	var/burn_temperature = fire_burn_temperature()
+	var/thermal_protection = get_heat_protection(burn_temperature)
 
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas["oxygen"] < 1)
-		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
-		return 1
-
-	var/turf/location = get_turf(src)
-	location.hotspot_expose(fire_burn_temperature(), 50, 1)
+	if (thermal_protection < 1 && bodytemperature < burn_temperature && on_fire)
+		bodytemperature += round(BODYTEMP_HEATING_MAX*(1-thermal_protection), 1)
+		if(world.time >= next_onfire_brn)
+			next_onfire_brn = world.time + 50
+			adjustFireLoss(fire_stacks*5 + 3) //adjusted to be lower. You need time to put yourself out. And each roll only removes 2.5 stacks.
 
 /mob/living/fire_act()
 	adjust_fire_stacks(2)
@@ -339,11 +518,11 @@
 //Finds the effective temperature that the mob is burning at.
 /mob/living/proc/fire_burn_temperature()
 	if (fire_stacks <= 0)
-		return 0
+		return FALSE
 
 	//Scale quadratically so that single digit numbers of fire stacks don't burn ridiculously hot.
 	//lower limit of 700 K, same as matches and roughly the temperature of a cool flame.
-	return min(5200,max(2.25*round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2), 700))
+	return FIRESTACKS_TEMP_CONV(fire_stacks)
 
 /mob/living/proc/reagent_permeability()
 	return 1
@@ -362,6 +541,11 @@
 					I.action = new/datum/action/item_action
 				I.action.name = I.action_button_name
 				I.action.target = I
+				if(I.action_button_proc)
+					I.action.action_type = AB_ITEM_PROC
+					I.action.procname = I.action_button_proc
+					if(I.action_button_arguments)
+						I.action.arguments = I.action_button_arguments
 			I.action.Grant(src)
 	return
 

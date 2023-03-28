@@ -22,18 +22,52 @@
 	update_lying_buckled_and_verb_status()
 	invisibility = initial(invisibility)
 
-	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
+	if(!form.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
 		gib()
 		return
 
 	for(var/obj/item/W in src)
 		drop_from_inventory(W)
 
-	set_species(species.primitive_form)
+	set_species(form.primitive_form)
 	dna.SetSEState(MONKEYBLOCK,1)
 	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
+<<<<<<< HEAD
+=======
+	qdel(animation)
+	return src
+
+/mob/living/carbon/human/proc/humanize()
+	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
+		return
+	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
+	canmove = 0
+	stunned = 1
+	icon = null
+	invisibility = 101
+	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
+	animation.plane = plane
+	animation.layer = ABOVE_MOB_LAYER
+	animation.icon_state = "blank"
+	animation.icon = 'icons/mob/mob.dmi'
+	animation.master = src
+	flick("h2monkey", animation)
+	sleep(48)
+	//animation = null
+
+	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
+	stunned = 0
+
+	update_lying_buckled_and_verb_status()
+	invisibility = initial(invisibility)
+
+	set_species("Human", null, FALSE)
+	dna.SetSEState(MONKEYBLOCK,0)
+
+	to_chat(src, "<B>You are now [species.name]. </B>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	qdel(animation)
 	return src
 
@@ -160,4 +194,46 @@
 	new_mob.key = key
 	to_chat(new_mob, "You feel more... animalistic")
 
+<<<<<<< HEAD
 	qdel(src)
+=======
+	qdel(src)
+
+/* Certain mob types have problems and should not be allowed to be controlled by players.
+ *
+ * This proc is here to force coders to manually place their mob in this list, hopefully tested.
+ * This also gives a place to explain -why- players shouldnt be turn into certain mobs and hopefully someone can fix them.
+ */
+/mob/proc/safe_animal(var/MP)
+
+//Bad mobs! - Remember to add a comment explaining what's wrong with the mob
+	if(!MP)
+		return 0	//Sanity, this should never happen.
+
+	if(ispath(MP, /mob/living/simple_animal/space_worm))
+		return 0 //Unfinished. Very buggy, they seem to just spawn additional space worms everywhere and eating your own tail results in new worms spawning.
+
+//Good mobs!
+	if(ispath(MP, /mob/living/simple_animal/cat))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/corgi))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/crab))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/hostile/carp))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/mushroom))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/hostile/tomato))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/mouse))
+		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)
+	if(ispath(MP, /mob/living/simple_animal/hostile/bear))
+		return 1 //Bears will auto-attack mobs, even if they're player controlled (Fixed! - Nodrak)
+	if(ispath(MP, /mob/living/simple_animal/parrot))
+		return 1 //Parrots are no longer unfinished! -Nodrak
+
+	//Not in here? Must be untested!
+	return 0
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

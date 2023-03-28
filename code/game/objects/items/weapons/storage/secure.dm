@@ -104,15 +104,24 @@
 				src.l_set = 1
 			else if ((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
 				src.locked = 0
+<<<<<<< HEAD
 				src.set_overlays(null)
 				add_overlays(image('icons/obj/storage.dmi', icon_opened))
+=======
+				src.cut_overlays()
+				add_overlay(image('icons/obj/storage.dmi', icon_opened))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				src.code = null
 			else
 				src.code = "ERROR"
 		else
 			if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
 				src.locked = 1
+<<<<<<< HEAD
 				src.set_overlays(null)
+=======
+				src.cut_overlays()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				src.code = null
 				src.close(usr)
 			else
@@ -129,13 +138,23 @@
 /obj/item/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
 	if(!emagged)
 		emagged = 1
+<<<<<<< HEAD
 		src.add_overlays(image('icons/obj/storage.dmi', icon_sparking))
 		sleep(6)
 		src.set_overlays(null)
 		add_overlays(image('icons/obj/storage.dmi', icon_locking))
+=======
+		src.add_overlay(image('icons/obj/storage.dmi', icon_sparking))
+		sleep(6)
+		src.cut_overlays()
+		add_overlay(image('icons/obj/storage.dmi', icon_locking))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		locked = 0
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
+
+/obj/item/storage/secure/briefcase/AltClick(mob/user)
+	return attack_hand(user)
 
 // -----------------------------
 //        Secure Briefcase
@@ -144,7 +163,7 @@
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
-	item_state = "sec-case"
+	item_state = "sec_secure"
 	desc = "A large briefcase with a digital locking system."
 	force = WEAPON_FORCE_NORMAL
 	throw_speed = 1

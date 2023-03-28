@@ -88,6 +88,10 @@ def rewrite_sources(resources):
                 os.remove(path)
                 os.rename(path + ".tmp", path)
 
+<<<<<<< HEAD
 dirs = read_filedirs("cev_eris.dme");
+=======
+dirs = read_filedirs("liberty-station.dme");
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 resources = index_files(dirs)
 rewrite_sources(resources)

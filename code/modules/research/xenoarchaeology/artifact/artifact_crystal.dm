@@ -20,11 +20,19 @@
 /obj/structure/crystal/Destroy()
 	src.visible_message("\red<b>[src] shatters!</b>")
 	if(prob(75))
+<<<<<<< HEAD
 		new /obj/item/material/shard/phoron(src.loc)
 	if(prob(50))
 		new /obj/item/material/shard/phoron(src.loc)
 	if(prob(25))
 		new /obj/item/material/shard/phoron(src.loc)
+=======
+		new /obj/item/material/shard/plasma(src.loc)
+	if(prob(50))
+		new /obj/item/material/shard/plasma(src.loc)
+	if(prob(25))
+		new /obj/item/material/shard/plasma(src.loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(prob(75))
 		new /obj/item/material/shard(src.loc)
 	if(prob(50))

@@ -1,10 +1,19 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/carp,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "b" = (
 /turf/simulated/floor/plating/under/airless,
+=======
+/obj/random/mob/carp,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"b" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "c" = (
 /obj/structure/lattice,
@@ -12,11 +21,16 @@
 /area/template_noop)
 "d" = (
 /obj/effect/window_lwall_spawn/smartspawn,
+<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
+=======
+/turf/simulated/floor/plating,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "e" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
+<<<<<<< HEAD
 "f" = (
 /obj/spawner/scrap/sparse,
 /turf/simulated/floor/plating/under/airless,
@@ -32,6 +46,14 @@
 "x" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/under/airless,
+=======
+"h" = (
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"x" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "O" = (
 /turf/template_noop,
@@ -46,6 +68,7 @@ x
 "}
 (2,1,1) = {"
 c
+<<<<<<< HEAD
 a
 d
 h
@@ -54,6 +77,16 @@ d
 (3,1,1) = {"
 b
 f
+=======
+h
+d
+b
+d
+"}
+(3,1,1) = {"
+b
+a
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 c
 O
@@ -61,8 +94,13 @@ O
 (4,1,1) = {"
 c
 c
+<<<<<<< HEAD
 g
 g
+=======
+h
+b
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 "}
 (5,1,1) = {"

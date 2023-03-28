@@ -7,7 +7,11 @@
 	use_power = IDLE_POWER_USE
 	active_power_usage = 8000 //8kW for the scenery + 500W per holoitem
 
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/holodeckcontrol
+=======
+	circuit = /obj/item/circuitboard/holodeckcontrol
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/item_power_usage = 500
 
@@ -106,7 +110,11 @@
 			return
 
 		if(safety_disabled && emagged)
+<<<<<<< HEAD
 			return //if a traitor has gone through the trouble to emag the thing, let them keep it.
+=======
+			return //if a contractor has gone through the trouble to emag the thing, let them keep it.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		safety_disabled = !safety_disabled
 		update_projections()
@@ -211,7 +219,7 @@
 		var/mob/M = obj.loc
 		if(ismob(M))
 			M.remove_from_mob(obj)
-			M.update_icons()	//so their overlays update
+			M.update_icons()	//so their over-lays update
 
 	if(!silent)
 		var/obj/oldobj = obj
@@ -275,6 +283,7 @@
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)
 	for(var/obj/holo_obj in holographic_objs)
 		holo_obj.alpha *= 0.8 //give holodeck objs a slight transparency
+		//holo_obj.plane = 95 //This makes all objects load on plane 4, set this to plane 2 (where the holodeck would be on Soj instead of Eris). Unsure what the number for plane 2 is, will fix later. This is not dynamic.
 
 	if(HP.ambience)
 		linkedholodeck.forced_ambience = HP.ambience

@@ -7,11 +7,19 @@
 /obj/item/organ/internal/xenos/proc/check_alien_ability(var/cost,var/needs_foundation)
 	var/obj/item/organ/internal/xenos/phoronvessel/P = owner.internal_organs_by_name[BP_PHORON]
 	if(!istype(P))
+<<<<<<< HEAD
 		to_chat(owner, SPAN_DANGER("Your phoron vessel has been removed!"))
 		return
 
 	if(P.stored_phoron < cost)
 		to_chat(owner, SPAN_WARNING("You don't have enough phoron stored to do that."))
+=======
+		to_chat(owner, SPAN_DANGER("Your plasma vessel has been removed!"))
+		return
+
+	if(P.stored_plasma < cost)
+		to_chat(owner, SPAN_WARNING("You don't have enough plasma stored to do that."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(needs_foundation)

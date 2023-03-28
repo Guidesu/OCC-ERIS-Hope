@@ -45,9 +45,15 @@
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 
+<<<<<<< HEAD
 	var/health = 25
 	var/mob/living/affecting //Who it is currently affecting, if anyone.
 	var/mob/living/master    //Who shot web. Will let this person know if the net was successful.
+=======
+	health = 25
+	var/mob/living/affecting = null //Who it is currently affecting, if anyone.
+	var/mob/living/master = null    //Who shot web. Will let this person know if the net was successful.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/countdown = -1
 
 /obj/effect/energy_net/teleport
@@ -68,7 +74,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/energy_net/proc/healthcheck()
+/obj/effect/energy_net/healthCheck()
 
 	if(health <=0)
 		density = FALSE
@@ -93,13 +99,14 @@
 		return
 
 /obj/effect/energy_net/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.get_structure_damage()
-	healthcheck()
+	if (!(Proj.testing))
+		health -= Proj.get_structure_damage()
+		healthCheck()
 	return 0
 
 /obj/effect/energy_net/ex_act()
 	health = 0
-	healthcheck()
+	healthCheck()
 
 /obj/effect/energy_net/attack_hand(var/mob/user)
 
@@ -118,10 +125,10 @@
 
 	to_chat(H, "<span class='danger'>You claw at the energy net.</span>")
 
-	healthcheck()
+	healthCheck()
 	return
 
 /obj/effect/energy_net/attackby(obj/item/W as obj, mob/user as mob)
 	health -= W.force
-	healthcheck()
+	healthCheck()
 	..()

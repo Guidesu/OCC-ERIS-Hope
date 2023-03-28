@@ -178,9 +178,14 @@
 
 /mob/living/silicon/robot/AltClickOn(var/atom/A)
 	if(ai_access)
+<<<<<<< HEAD
 		A.BorgAltClick(src)
 	else
 		..()
+=======
+		return A.BorgAltClick(src)
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /atom/proc/BorgCtrlShiftClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
 	CtrlShiftClick(user)

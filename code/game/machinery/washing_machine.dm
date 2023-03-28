@@ -3,6 +3,7 @@
 #define WASHSTATE_FULLOPENDOOR 3
 #define WASHSTATE_FULLCLOSEDDOOR 4
 #define WASHSTATE_RUNNING 5
+<<<<<<< HEAD
 #define WASHSTATE_BLOODOPENDOOR 6
 #define WASHSTATE_BLOODCLOSEDDOOR 7
 #define WASHSTATE_BLOODRUNNING 8
@@ -10,16 +11,28 @@
 //Halved as the Machinery SS takes 2 seconds to fire
 #define WASH_BASETIME 30
 #define WASH_ADDTIME 2.5
+=======
+
+//Halved as the Machinery SS takes 2 seconds to fire
+#define WASH_BASETIME 15
+#define WASH_ADDTIME 1.5
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/washing_machine
 	name = "Washing Machine"
 	desc = "Always able to clean your muddy clothes."
+<<<<<<< HEAD
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
+=======
+	icon = 'icons/obj/machines/washing_machine.dmi' //Sprites by Rosalimo
+	icon_state = "wm_1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	density = TRUE
 	anchored = TRUE
 	active_power_usage = 400
 	var/state = WASHSTATE_EMPTYOPENDOOR
+<<<<<<< HEAD
 	//1 = empty, open door
 	//2 = empty, closed door
 	//3 = full, open door
@@ -35,6 +48,8 @@
 	//0 = not hacked
 	//1 = hacked
 	var/gibs_ready = 0
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/crayon
 
 	var/tick = 0
@@ -45,7 +60,13 @@
 	/obj/item/bedsheet,
 	/obj/item/storage/belt,
 	/obj/item/storage/backpack,
+<<<<<<< HEAD
 	/obj/item/rig)
+=======
+	/obj/item/rig,
+	/obj/item/towel,
+	/obj/item/underwear)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/washing_machine/Destroy()
 	qdel(crayon)
@@ -62,11 +83,18 @@
 		if(istype(A, /obj/item))
 			var/obj/item/I = A
 			I.decontaminate()
+<<<<<<< HEAD
 //		O.make_young() Occulus Edit: Gootbye, so long my friend, bye bye
 		O.color = "white" //Occulus Edit
 
 /obj/machinery/washing_machine/Process()
 	if(tick > 0 && (state in list(WASHSTATE_BLOODRUNNING, WASHSTATE_RUNNING)))
+=======
+		O.make_young()
+
+/obj/machinery/washing_machine/Process()
+	if(tick > 0 && (state == WASHSTATE_RUNNING))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(--tick <= 0)
 			for(var/atom/A in contents)
 				wash(A)
@@ -85,17 +113,25 @@
 				WL.amount = HH.amount
 				qdel(HH)
 
+<<<<<<< HEAD
 			if( locate(/mob,contents) )
 				state = WASHSTATE_BLOODCLOSEDDOOR
 				gibs_ready = 1
 			else
 				state = WASHSTATE_FULLCLOSEDDOOR
+=======
+			state = WASHSTATE_FULLCLOSEDDOOR
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			use_power = IDLE_POWER_USE
 			update_icon()
 
 /obj/machinery/washing_machine/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	if(tick > 0 && (state in list(WASHSTATE_BLOODRUNNING, WASHSTATE_RUNNING)))
+=======
+	if(tick > 0 && (state ==WASHSTATE_RUNNING))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_NOTICE("It has [tick*(SSmachines.wait/10)] seconds remaining on this cycle."))
 
 
@@ -107,6 +143,7 @@
 	if(!isliving(usr)) //ew ew ew usr, but it's the only way to check.
 		return
 
+<<<<<<< HEAD
 	if( state != WASHSTATE_FULLCLOSEDDOOR )
 		to_chat(usr, "The washing machine cannot run in this state.")
 		return
@@ -115,6 +152,13 @@
 		state = WASHSTATE_BLOODRUNNING
 	else
 		state = WASHSTATE_RUNNING
+=======
+	if(state != WASHSTATE_FULLCLOSEDDOOR)
+		to_chat(usr, "The washing machine cannot run in this state.")
+		return
+
+	state = WASHSTATE_RUNNING
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_icon()
 	tick = WASH_BASETIME
 	for(var/atom/A in contents)
@@ -128,6 +172,7 @@
 	set src in usr.loc
 
 	sleep(20)
+<<<<<<< HEAD
 	if(state in list(WASHSTATE_EMPTYOPENDOOR,WASHSTATE_FULLOPENDOOR,WASHSTATE_BLOODOPENDOOR) )
 		usr.loc = src.loc
 
@@ -148,6 +193,19 @@
 		to_chat(user, "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>")*/
 	if(istype(W,/obj/item/pen/crayon))
 		if( state in list(WASHSTATE_EMPTYOPENDOOR,WASHSTATE_FULLOPENDOOR,WASHSTATE_BLOODOPENDOOR) )
+=======
+	if(state in list(WASHSTATE_EMPTYOPENDOOR, WASHSTATE_FULLOPENDOOR) )
+		usr.loc = src.loc
+
+
+/obj/machinery/washing_machine/update_icon()
+	icon_state = "wm_[state]"
+
+
+/obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/pen/crayon))
+		if(state in list(WASHSTATE_EMPTYOPENDOOR, WASHSTATE_FULLOPENDOOR))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!crayon)
 				user.drop_item()
 				crayon = W
@@ -158,7 +216,11 @@
 			..()
 	else if(is_type_in_list(W, allowed_types))
 		if(contents.len < 10)
+<<<<<<< HEAD
 			if( state in list(WASHSTATE_EMPTYOPENDOOR, WASHSTATE_FULLOPENDOOR) )
+=======
+			if(state in list(WASHSTATE_EMPTYOPENDOOR, WASHSTATE_FULLOPENDOOR))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				user.unEquip(W, src)
 				state = WASHSTATE_FULLOPENDOOR
 			else
@@ -188,6 +250,7 @@
 			state = WASHSTATE_EMPTYOPENDOOR
 		if(WASHSTATE_RUNNING)
 			to_chat(user, SPAN_WARNING("The [src] is busy."))
+<<<<<<< HEAD
 		if(WASHSTATE_BLOODOPENDOOR)
 			state = WASHSTATE_BLOODCLOSEDDOOR
 		if(WASHSTATE_BLOODCLOSEDDOOR)
@@ -201,6 +264,8 @@
 			crayon = null
 			state = WASHSTATE_EMPTYOPENDOOR
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	update_icon()
 
@@ -209,9 +274,15 @@
 #undef WASHSTATE_FULLOPENDOOR
 #undef WASHSTATE_FULLCLOSEDDOOR
 #undef WASHSTATE_RUNNING
+<<<<<<< HEAD
 #undef WASHSTATE_BLOODOPENDOOR
 #undef WASHSTATE_BLOODCLOSEDDOOR
 #undef WASHSTATE_BLOODRUNNING
 
 #undef WASH_BASETIME
 #undef WASH_ADDTIME
+=======
+
+#undef WASH_BASETIME
+#undef WASH_ADDTIME
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

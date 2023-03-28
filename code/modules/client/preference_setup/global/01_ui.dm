@@ -31,7 +31,11 @@
 	pref.UI_style_color	= sanitize_hexcolor(pref.UI_style_color, initial(pref.UI_style_color))
 	pref.UI_style_alpha	= sanitize_integer(pref.UI_style_alpha, 0, 255, initial(pref.UI_style_alpha))
 	pref.ooccolor		= sanitize_hexcolor(pref.ooccolor, initial(pref.ooccolor))
+<<<<<<< HEAD
 	pref.clientfps	    = sanitize_integer(pref.clientfps, 0, 1000, initial(pref.clientfps))	// OCCULUS EDIT - Enabling Client FPS
+=======
+	pref.clientfps	    = sanitize_integer(pref.clientfps, CLIENT_MIN_FPS, CLIENT_MAX_FPS, initial(pref.clientfps)) //Enabled by SoJ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/category_item/player_setup_item/player_global/ui/content(var/mob/user)
 	. += "<b>UI Settings</b><br>"
@@ -45,7 +49,11 @@
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>Using Default</b></a><br>"
 		else
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table> <a href='?src=\ref[src];reset=ooc'>reset</a><br>"
+<<<<<<< HEAD
 	. += "<b>Client FPS:</b> <a href='?src=\ref[src];select_fps=1'><b>[pref.clientfps]</b></a><br>" // OCCULUS EDIT - Enabling Client FPS
+=======
+	. += "<b>Client FPS:</b> <a href='?src=\ref[src];select_fps=1'><b>[pref.clientfps]</b></a><br>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, var/mob/user)
@@ -76,8 +84,13 @@
 			pref.ooccolor = new_ooccolor
 			return TOPIC_REFRESH
 
+<<<<<<< HEAD
 	// OCCULUS EDIT - Enabling Client FPS
 	else if(href_list["select_fps"])
+=======
+
+	else if(href_list["select_fps"]) //Re-abled by SoJ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/version_message
 		if (user.client && user.client.byond_version < 511)
 			version_message = "\nYou need to be using byond version 511 or later to take advantage of this feature, your version of [user.client.byond_version] is too low"
@@ -85,7 +98,11 @@
 			version_message += "\nThis server does not currently support client side fps. You can set now for when it does."
 		var/new_fps = input(user, "Choose your desired fps.[version_message]\n(0 = synced with server tick rate (currently:[world.fps]))", "Global Preference") as num|null
 		if (isnum(new_fps) && CanUseTopic(user))
+<<<<<<< HEAD
 			pref.clientfps = CLAMP(new_fps, 0, 1000)
+=======
+			pref.clientfps = CLAMP(new_fps, CLIENT_MIN_FPS, CLIENT_MAX_FPS)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			var/mob/target_mob = preference_mob()
 			if(target_mob && target_mob.client)

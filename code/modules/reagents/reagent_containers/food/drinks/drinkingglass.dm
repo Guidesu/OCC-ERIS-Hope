@@ -7,8 +7,11 @@
 	matter = list(MATERIAL_GLASS = 0.5)
 	volume = 30
 	unacidable = 1 //glass
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 20
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/morf_glass = TRUE
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shot
@@ -38,7 +41,11 @@
 	volume = 15
 	morf_glass = FALSE
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/food/drinks/drinkingglass/double
+=======
+/obj/item/reagent_containers/food/drinks/drinkingglass/doble
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "double"
 	desc = "Your standard drinking glass."
 	icon_state = "double"
@@ -46,16 +53,26 @@
 	morf_glass = FALSE
 
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/food/drinks/drinkingglass/on_update_icon()
+=======
+/obj/item/reagent_containers/food/drinks/drinkingglass/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = initial(name)
 	desc = initial(desc)
 	icon_state = initial(icon_state)
 	center_of_mass = initial(center_of_mass)
 	cut_overlays()
 
+<<<<<<< HEAD
 	if(reagents && reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(R.glass_unique_appearance && morf_glass)
+=======
+	if(reagents?.total_volume)
+		var/datum/reagent/R = reagents.get_master_reagent()
+		if((R.glass_unique_appearance || R.glass_icon_state) && morf_glass)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(R.glass_icon_state)
 				icon_state = R.glass_icon_state
 			else
@@ -84,9 +101,14 @@
 // for /obj/machinery/vending/sovietsoda
 /obj/item/reagent_containers/food/drinks/drinkingglass/soda
 	preloaded_reagents = list("sodawater" = 50)
+<<<<<<< HEAD
 	rarity_value = 40
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/cola
 	preloaded_reagents = list("cola" = 50)
 	rarity_value = 40
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
+/obj/item/reagent_containers/food/drinks/drinkingglass/cola
+	preloaded_reagents = list("cola" = 50)

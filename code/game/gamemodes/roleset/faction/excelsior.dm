@@ -4,11 +4,12 @@
 	name = "excelsior"
 	role_id = ROLE_EXCELSIOR_REV
 	faction_id = FACTION_EXCELSIOR
-	faction_type = /datum/faction/excelsior
+	faction_type = /datum/antag_faction/excelsior
 	//min_cost = 10
 	//max_cost = 20
 
-	base_quantity = 2 //They're a group antag, we want a few of em
+	min_quantity = 3	// Don't fire unless we have at least 3 candidates in the pool
+	base_quantity = 3 //They're a group antag, we want a few of em	scaling_threshold = 8
 	scaling_threshold = 8
 
 	req_crew = 6

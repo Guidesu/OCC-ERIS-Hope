@@ -121,7 +121,11 @@ Their only special behaviour atm is to delete themselves shortly after creation
 /obj/effect/trail_particle/ion_trails
 	name = "ion trails"
 	icon_state = "ion_fade"
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/trail_particle/fire
 	name = "fire trail"

@@ -1,16 +1,48 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
+<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
+=======
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "b" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
+<<<<<<< HEAD
+=======
+"c" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "d" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "e" = (
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint/airless,
+=======
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+/obj/structure/railing{
+	dir = 1;
+	tag = "icon-railing0 (NORTH)"
+	},
+/obj/random/scrap/dense_weighted/low_chance,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "f" = (
 /obj/structure/cable/green{
@@ -18,12 +50,24 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing{
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
+<<<<<<< HEAD
 /obj/spawner/traps/wire_splicing/low_chance,
 /turf/simulated/floor/plating/under/airless,
+=======
+/obj/random/traps/wire_splicing/low_chance,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "g" = (
 /obj/structure/cable/green{
@@ -31,10 +75,18 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing{
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
+<<<<<<< HEAD
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
@@ -50,6 +102,18 @@
 	},
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/plating/under/airless,
+=======
+/obj/random/junk/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"h" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/blue{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "i" = (
 /obj/structure/cable/green{
@@ -57,10 +121,18 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing{
 	dir = 1;
 	tag = "icon-railing0 (NORTH)"
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "j" = (
@@ -78,10 +150,56 @@
 "m" = (
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/tiled/techmaint/airless,
+=======
+/obj/random/scrap/dense_weighted/low_chance,
+/obj/random/mob/carp/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"j" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/blue{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+/obj/random/junk/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"k" = (
+/obj/structure/girder,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"l" = (
+/obj/random/toy/plushie_onlycarp,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"m" = (
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"s" = (
+/obj/structure/lattice,
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"G" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/blue{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+/obj/random/scrap/dense_weighted/low_chance,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"P" = (
+/obj/structure/lattice,
+/obj/random/lowkeyrandom/low_chance,
+/turf/template_noop,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Q" = (
 /turf/template_noop,
 /area/template_noop)
+<<<<<<< HEAD
 
 (1,1,1) = {"
 Q
@@ -89,32 +207,82 @@ b
 b
 f
 b
+=======
+"R" = (
+/obj/random/mob/carp/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"Z" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4;
+	tag = "icon-intact (EAST)"
+	},
+/obj/structure/railing{
+	dir = 1;
+	tag = "icon-railing0 (NORTH)"
+	},
+/obj/random/traps/wire_splicing/low_chance,
+/obj/random/lowkeyrandom/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+
+(1,1,1) = {"
+R
+P
+b
+f
+s
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 Q
 k
 l
 g
+<<<<<<< HEAD
 a
+=======
+h
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (3,1,1) = {"
 Q
 d
 m
+<<<<<<< HEAD
 h
 a
+=======
+e
+G
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (4,1,1) = {"
 b
 d
+<<<<<<< HEAD
 e
+=======
+a
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 j
 "}
 (5,1,1) = {"
 k
 d
+<<<<<<< HEAD
 a
 f
 b
+=======
+c
+Z
+s
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

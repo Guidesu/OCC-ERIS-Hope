@@ -3,11 +3,16 @@
 
 /obj/machinery/cellshower
 	name = "P.A.I.N. dispenser"
-	desc = "Pacification And INdignity dispenser."
+	desc = "Pacification And Indignity dispenser."
 	icon = 'icons/obj/machines/shower.dmi'
 	icon_state = "sprayer"
+<<<<<<< HEAD
 	density = FALSE
 	anchored = TRUE
+=======
+	density = 0
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 	var/id
 	var/on = FALSE
@@ -48,7 +53,11 @@
 	if(on)
 		visible_message("<span class='warning'>[src] clicks and distributes some pain.")
 		var/obj/machinery/cellshower/targetshower = locate(x, y, z - 1)
+<<<<<<< HEAD
 		for(var/turf/T in RANGE_TURFS(1, targetshower))
+=======
+		for(var/turf/T in trange(1, targetshower))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(T.density)
 				continue
 			var/obj/effect/shower/S = new(T)
@@ -60,7 +69,11 @@
 	visible_message("<span class='warning'>[src] clicks and distributes some pain.")
 	playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1)
 	var/obj/machinery/cellshower/targetshower = locate(x, y, z - 1)
+<<<<<<< HEAD
 	for(var/turf/T in RANGE_TURFS(1, targetshower))
+=======
+	for(var/turf/T in trange(1, targetshower))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(T.density)
 			continue
 		spawn(0)
@@ -91,14 +104,22 @@
 	master = null
 	return ..()
 
+<<<<<<< HEAD
 /obj/effect/shower/on_update_icon()
+=======
+/obj/effect/shower/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(mymist)
 		qdel(mymist)
 		mymist = null
 
 	if(master && master.on)
+<<<<<<< HEAD
 		add_overlays(image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir))
+=======
+		add_overlay(image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(master.watertemp == "freezing")
 			return
 		if(!ismist)
@@ -200,7 +221,7 @@
 		var/turf/tile = loc
 		loc.clean_blood()
 		for(var/obj/effect/E in tile)
-			if(istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay))
+			if(istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay) && !istype(E, /obj/effect/overlay/water))
 				del(E)
 
 /obj/effect/shower/Process()

@@ -1,12 +1,18 @@
 //these are probably broken
 
 /obj/machinery/floodlight
-	name = "Emergency Floodlight"
+	name = "emergency floodlight"
 	icon = 'icons/obj/machines/floodlight.dmi'
 	icon_state = "flood00"
+<<<<<<< HEAD
 	density = TRUE
 	var/on = FALSE
 	var/obj/item/cell/large/cell
+=======
+	density = 1
+	var/on = 0
+	var/obj/item/cell/large/cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/use = 200 // 200W light
 	var/unlocked = FALSE
 	var/open = FALSE
@@ -26,7 +32,11 @@
 		cell = null
 		update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/floodlight/on_update_icon()
+=======
+/obj/machinery/floodlight/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
 
@@ -119,12 +129,21 @@
 			if(unlocked)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
 					if(open)
+<<<<<<< HEAD
 						open = FALSE
 						set_overlays(null)
 						to_chat(user, SPAN_NOTICE("You crowbar the battery panel in place."))
 					else
 						if(unlocked)
 							open = TRUE
+=======
+						open = 0
+						cut_overlays()
+						to_chat(user, SPAN_NOTICE("You crowbar the battery panel in place."))
+					else
+						if(unlocked)
+							open = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 							to_chat(user, SPAN_NOTICE("You remove the battery panel."))
 					update_icon()
 				return

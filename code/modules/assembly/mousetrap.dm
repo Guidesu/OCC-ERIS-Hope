@@ -73,8 +73,13 @@
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else
+<<<<<<< HEAD
 		if((CLUMSY in user.mutations) && prob(50))
 			var/which_hand = BP_L_HAND
+=======
+		if((CLUMSY in user.mutations)&& prob(15))
+			var/which_hand = "l_hand"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!user.hand)
 				which_hand = BP_R_HAND
 			triggered(user, which_hand)
@@ -89,8 +94,13 @@
 
 /obj/item/device/assembly/mousetrap/attack_hand(mob/living/user as mob)
 	if(armed)
+<<<<<<< HEAD
 		if((CLUMSY in user.mutations) && prob(50))
 			var/which_hand = BP_L_HAND
+=======
+		if((CLUMSY in user.mutations) && prob(15))
+			var/which_hand = "l_hand"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!user.hand)
 				which_hand = BP_R_HAND
 			triggered(user, which_hand)

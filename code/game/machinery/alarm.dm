@@ -10,7 +10,11 @@
 	name = "alarm"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "alarm0"
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 80
 	active_power_usage = 3000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
@@ -31,7 +35,7 @@
 
 	var/datum/wires/alarm/wires
 
-	var/mode = AALARM_MODE_SCRUBBING
+	var/mode = AALARM_MODE_OFF
 	var/screen = AALARM_SCREEN_MAIN
 	var/area_uid
 	var/area/alarm_area
@@ -71,7 +75,11 @@
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+<<<<<<< HEAD
 	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
+=======
+	TLV["plasma"] =			list(-1.0, -1.0, 0.01, 0.5) // Partial pressure, kpa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(0, ONE_ATMOSPHERE * 0.10, ONE_ATMOSPHERE * 1.40, ONE_ATMOSPHERE * 1.60) /* kpa */
 	TLV["temperature"] =	list(20, 40, 140, 160) // K
@@ -84,7 +92,11 @@
 	wires = null
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/alarm/New(loc, dir, building = 0)
+=======
+/obj/machinery/alarm/New(var/loc, var/dir, var/building = 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	GLOB.alarm_list += src
 	if(building)
 		if(dir)
@@ -116,7 +128,11 @@
 	// breathable air according to human/Life()
 	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
+<<<<<<< HEAD
 	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
+=======
+	TLV["plasma"] =			list(-1.0, -1.0, 0.01, 0.5) // Partial pressure, kpa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(ONE_ATMOSPHERE*0.80,ONE_ATMOSPHERE*0.90,ONE_ATMOSPHERE*1.10,ONE_ATMOSPHERE*1.20) /* kpa */
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+40, T0C+66) // K
@@ -127,6 +143,9 @@
 	set_frequency(frequency)
 	if(buildstage == 2 && !master_is_operating())
 		elect_master()
+
+/obj/machinery/alarm/fire_act()
+	return
 
 /obj/machinery/alarm/Process()
 	if((stat & (NOPOWER|BROKEN)) || shorted || buildstage != 2)
@@ -467,7 +486,7 @@
 	frequency.post_signal(src, alert_signal)
 
 /obj/machinery/alarm/attack_ai(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/alarm/attack_hand(mob/user)
 	. = ..()
@@ -476,10 +495,10 @@
 	return interact(user)
 
 /obj/machinery/alarm/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/alarm/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
+/obj/machinery/alarm/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, var/master_ui = null, var/datum/nano_topic_state/state = GLOB.default_state)
 	var/data[0]
 	var/remote_connection = 0
 	var/remote_access = 0
@@ -607,7 +626,7 @@
 
 			data["thresholds"] = thresholds
 
-/obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list = list())
+/obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/nano_topic_state/state, var/href_list = list())
 	if(buildstage != 2)
 		return STATUS_CLOSE
 
@@ -631,7 +650,7 @@
 			AA.apply_danger_level(0)
 	update_icon()
 
-/obj/machinery/alarm/Topic(href, href_list, var/datum/topic_state/state)
+/obj/machinery/alarm/Topic(href, href_list, var/datum/nano_topic_state/state)
 	if(..(href, href_list, state))
 		return 1
 
@@ -660,7 +679,10 @@
 			else
 				target_temperature = input_temperature + T0C
 			investigate_log("had it's target temperature changed by [key_name(usr)]", "atmos")
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		playsound(loc, 'sound/machines/button.ogg', 100, 1)
 		return 1
 
@@ -828,7 +850,11 @@
 			if(buildstage == 1)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					to_chat(user, "You pry out the circuit!")
+<<<<<<< HEAD
 					var/obj/item/electronics/airalarm/circuit = new /obj/item/electronics/airalarm()
+=======
+					var/obj/item/airalarm_electronics/circuit = new /obj/item/airalarm_electronics()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					circuit.loc = user.loc
 					buildstage = 0
 					update_icon()
@@ -866,7 +892,11 @@
 					return
 
 		if(0)
+<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/airalarm))
+=======
+			if(istype(I, /obj/item/airalarm_electronics))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, "You insert the circuit!")
 				qdel(I)
 				buildstage = 1
@@ -904,6 +934,7 @@
 		return
 	toggle_lock(user)
 
+<<<<<<< HEAD
 
 
 // Eclipse proc - added to reduce impact to Process() call
@@ -913,11 +944,17 @@
 		playsound(src.loc, 'sound/misc/airalarm.ogg', 40, 0, 5)
 		sleep(4 SECONDS)
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
 AIR ALARM CIRCUIT
 Just a object used in constructing air alarms
 */
+<<<<<<< HEAD
 /obj/item/electronics/airalarm
+=======
+/obj/item/airalarm_electronics
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "air alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -938,7 +975,11 @@ FIRE ALARM
 	var/time = 10.0
 	var/timing = 0.0
 	var/lockdownbyai = 0
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -949,7 +990,11 @@ FIRE ALARM
 	var/alarm_audible_cooldown = 1000		//Audible cooldown time, in ticks (1/10sec) Occulus Edit
 	var/last_sound_time = 0			//When did the audible last fire? Occulus Edit
 
+<<<<<<< HEAD
 /obj/machinery/firealarm/on_update_icon()
+=======
+/obj/machinery/firealarm/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if(wiresexposed)
@@ -980,7 +1025,11 @@ FIRE ALARM
 			var/decl/security_level/sl = security_state.current_security_level
 
 			set_light(sl.light_max_bright, sl.light_inner_range, sl.light_outer_range, 2, sl.light_color_alarm)
+<<<<<<< HEAD
 			src.add_overlays(image('icons/obj/monitors.dmi', sl.overlay_firealarm))
+=======
+			src.add_overlay(image('icons/obj/monitors.dmi', sl.overlay_firealarm))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(src.detecting)
@@ -992,10 +1041,13 @@ FIRE ALARM
 	. = ..()
 	if (.)
 		return
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/machinery/firealarm/bullet_act()
-	return src.alarm()
+/obj/machinery/firealarm/bullet_act(var/obj/item/projectile/Proj)
+	if (!(Proj.testing))
+		return src.alarm()
+	else
+		return
 
 /obj/machinery/firealarm/emp_act(severity)
 	if(prob(50/severity))
@@ -1053,7 +1105,11 @@ FIRE ALARM
 			if(buildstage == 1)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 					to_chat(user, "You pry out the circuit!")
+<<<<<<< HEAD
 					var/obj/item/electronics/airalarm/circuit = new /obj/item/electronics/airalarm()
+=======
+					var/obj/item/firealarm_electronics/circuit = new /obj/item/firealarm_electronics()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					circuit.loc = user.loc
 					buildstage = 0
 					update_icon()
@@ -1086,7 +1142,11 @@ FIRE ALARM
 					return
 
 		if(0)
+<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/firealarm))
+=======
+			if(istype(I, /obj/item/firealarm_electronics))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, "You insert the circuit!")
 				qdel(I)
 				buildstage = 1
@@ -1125,7 +1185,7 @@ FIRE ALARM
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.outside_state)
+/obj/machinery/firealarm/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.outside_state)
 	var/data[0]
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.maps_data.security_state)
 
@@ -1221,6 +1281,7 @@ FIRE ALARM
 /obj/machinery/firealarm/Destroy()
 	GLOB.firealarm_list -= src
 	..()
+<<<<<<< HEAD
 
 
 //Eclipse proc - added to reduce overhead on Process()
@@ -1232,12 +1293,18 @@ FIRE ALARM
 			return
 		playsound(src.loc, 'sound/misc/firealarm.ogg', 40, 0, 5)
 		sleep(4 SECONDS)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*
 FIRE ALARM CIRCUIT
 Just a object used in constructing fire alarms
 */
+<<<<<<< HEAD
 /obj/item/electronics/firealarm
+=======
+/obj/item/firealarm_electronics
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "fire alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -1255,7 +1322,11 @@ Just a object used in constructing fire alarms
 	var/time = 10
 	var/timing = 0
 	var/lockdownbyai = 0
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -1330,6 +1401,7 @@ Just a object used in constructing fire alarms
 /obj/machinery/partyalarm/Topic(href, href_list)
 	if(..())
 		return 1
+<<<<<<< HEAD
 
 	if (href_list["reset"])
 		reset()
@@ -1341,3 +1413,17 @@ Just a object used in constructing fire alarms
 		var/tp = text2num(href_list["tp"])
 		time += tp
 		time = min(max(round(time), 0), 120)
+=======
+
+	if (href_list["reset"])
+		reset()
+	else if (href_list["alarm"])
+		alarm()
+	else if (href_list["time"])
+		timing = text2num(href_list["time"])
+	else if (href_list["tp"])
+		var/tp = text2num(href_list["tp"])
+		time += tp
+		time = min(max(round(time), 0), 120)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

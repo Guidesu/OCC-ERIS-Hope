@@ -1,7 +1,6 @@
 /*
 all vars and procs starting with _ are meant to be used only internally
 see external_procs.dm for usable procs and documentation on how to use them
-
 each element can only be seen by 1 client
 element identifiers are used to manage different hud parts for clients, f.e. there can be only one "storage" identifier element displayed for a client
 */
@@ -134,4 +133,3 @@ element identifiers are used to manage different hud parts for clients, f.e. the
 
 /HUD_element/set_plane(var/np)
 	plane = np
-

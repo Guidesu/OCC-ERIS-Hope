@@ -51,7 +51,11 @@
 
 	var/obj/item/organ/external/E = pick(H.organs)
 	to_chat(src, SPAN_DANGER("You burrow deeply into \the [H]'s [E.name]!"))
+<<<<<<< HEAD
 	var/obj/item/weapon/holder/holder = new (loc)
+=======
+	var/obj/item/holder/holder = new (loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.loc = holder
 	holder.name = src.name
 	E.embed(holder,0,"\The [src] burrows deeply into \the [H]'s [E.name]!")
@@ -93,7 +97,7 @@
 	if(!istype(H))
 		to_chat(src, "You are not inside a host.")
 		return
-	var/obj/item/weapon/holder/holder = loc
+	var/obj/item/holder/holder = loc
 	var/obj/item/organ/external/affected
 	if(istype(holder))
 		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.

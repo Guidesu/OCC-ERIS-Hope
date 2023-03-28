@@ -11,7 +11,7 @@
 		equip_to_slot_if_possible(W, slot)
 
 //These procs handle putting s tuff in your hand. It's probably best to use these rather than setting l_hand = ...etc
-//as they handle all relevant stuff like adding it to the player's screen and updating their overlays.
+//as they handle all relevant stuff like adding it to the player's screen and updating their over-lays.
 
 //Returns the thing in our active hand
 /mob/proc/get_active_hand()
@@ -45,7 +45,7 @@
 	W.forceMove(get_turf(src))
 	W.layer = initial(W.layer)
 	W.set_plane(initial(W.plane))
-	W.dropped()
+	W.dropped(usr)
 	return FALSE
 
 // Removes an item from inventory and places it in the target atom.
@@ -80,6 +80,25 @@
 /mob/proc/drop_item(var/atom/Target)
 	var/obj/item/I = get_active_hand()
 	unEquip(I, Target, MOVED_DROP)
+
+/mob/proc/is_holding(var/obj/item/W)
+	return is_holding_in_active_hand(W) || is_holding_in_inactive_hand(W)
+
+/mob/proc/is_holding_in_active_hand(var/obj/item/W)
+	return get_active_hand() == W
+
+/mob/proc/is_holding_in_inactive_hand(var/obj/item/W)
+	return get_inactive_hand() == W
+
+//You should never need to use these unless the item calling requires proper alignment with a structure.
+/mob/proc/is_holding_in_l_hand(var/obj/item/W)
+	return l_hand == W
+
+/mob/proc/is_holding_in_r_hand(var/obj/item/W)
+	return r_hand == W
+
+/mob/proc/hands_are_full()
+	return l_hand && r_hand
 
 /*
 	Removes the object from any slots the mob might have, calling the appropriate icon update proc.
@@ -128,9 +147,15 @@
 /mob/proc/unEquip(obj/item/I, var/atom/Target = null, force = 0) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!canUnEquip(I))
 		return
+<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_CLOTH_DROPPED, I)
 	if(I)
 		SEND_SIGNAL(I, COMSIG_CLOTH_DROPPED, src)
+=======
+	//Removed until we have features that need them, so these aren't being rapid-fired needlessly. - Hex
+	//LEGACY_SEND_SIGNAL(src, COMSIG_CLOTH_DROPPED, I)
+	//LEGACY_SEND_SIGNAL(I, COMSIG_CLOTH_DROPPED, src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return drop_from_inventory(I,Target)
 
 //Attemps to remove an object on a mob.
@@ -175,9 +200,12 @@
 
 /mob/proc/get_max_w_class()
 	return 0 //zero
+<<<<<<< HEAD
 
 /mob/proc/get_total_style()
 	return 0 //zero
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Returns the inventory slot for the current hand
 /mob/proc/get_active_hand_slot()
@@ -209,3 +237,33 @@
 		var/obj/item/I = entry
 		if(I.body_parts_covered & body_parts)
 			. += I
+
+/mob/living/carbon/human/verb/bag_equip()
+	set name = "bag-equip"
+	set hidden = TRUE
+
+	var/obj/item/storage/S
+
+	for(var/i in list(get_inactive_hand(), back, get_active_hand()))
+		if(istype(i, /obj/item/storage))
+			S = i
+			break
+
+		else if(istype(i, /obj/item/rig))
+			var/obj/item/rig/R = i
+			if(R.storage)
+				S = R.storage.container
+				break
+
+	if(S && (!istype(S, /obj/item/storage/backpack) || S:worn_check()))
+		equip_to_from_bag(get_active_hand(), S)
+
+/mob/living/carbon/human/proc/equip_to_from_bag(var/obj/item/Item, obj/item/storage/store)
+	if(Item)
+		store.attackby(Item,src)
+		return TRUE
+	else if(!Item && store.contents.len >=1)
+		var/return_hand = hand ? slot_l_hand : slot_r_hand
+		equip_to_slot_if_possible(store.contents[store.contents.len], return_hand)
+		return TRUE
+	return FALSE

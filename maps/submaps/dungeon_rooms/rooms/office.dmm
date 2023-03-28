@@ -2,6 +2,7 @@
 "aa" = (
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
 "ab" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -10,6 +11,8 @@
 /obj/item/remains/human,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "ac" = (
 /obj/structure/noticeboard,
 /turf/simulated/wall/untinted/onestar_reinforced,
@@ -19,6 +22,10 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/office/dark,
+<<<<<<< HEAD
+=======
+/obj/random/mob/roomba,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "ae" = (
@@ -42,7 +49,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/item/modular_computer/console,
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "ai" = (
@@ -54,6 +65,10 @@
 	},
 /obj/machinery/light/floor,
 /obj/item/remains/human,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aj" = (
@@ -79,8 +94,13 @@
 	},
 /obj/structure/table/onestar,
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/stamp/denied,
+=======
+/obj/item/paper_bin,
+/obj/item/stamp/denied,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "am" = (
@@ -88,7 +108,10 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/stamp/chameleon,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "an" = (
@@ -99,8 +122,13 @@
 	dir = 1
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/stamp/denied,
 /obj/item/weapon/pen,
+=======
+/obj/item/stamp/denied,
+/obj/item/pen,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "ao" = (
@@ -109,6 +137,7 @@
 	},
 /obj/structure/table/onestar,
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 /obj/item/weapon/storage/lunchbox/rainbow,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
@@ -119,6 +148,11 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
+=======
+/obj/item/storage/lunchbox/rainbow,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "aq" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -142,7 +176,10 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/clothing/accessory/medal/conduct,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "at" = (
@@ -150,7 +187,11 @@
 	dir = 4
 	},
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/item/clothing/accessory/blue,
+=======
+/obj/item/clothing/accessory/tie/blue,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "au" = (
@@ -161,7 +202,11 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
+=======
+/obj/item/paper_bin,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "av" = (
@@ -172,7 +217,11 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
+=======
+/obj/item/paper_bin,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aw" = (
@@ -189,14 +238,22 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/office/dark,
+<<<<<<< HEAD
 /obj/item/weapon/pen,
+=======
+/obj/item/pen,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "ay" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/item/clothing/accessory/red,
+=======
+/obj/item/clothing/accessory/tie/red,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "az" = (
@@ -208,7 +265,12 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/item/weapon/pen,
+=======
+/obj/item/pen,
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aA" = (
@@ -216,18 +278,28 @@
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "aB" = (
+<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/dark/brown_platform,
+=======
+/obj/structure/table/onestar,
+/obj/item/device/toner,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "aC" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/item/weapon/storage/briefcase,
+=======
+/obj/item/storage/briefcase,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aD" = (
@@ -248,9 +320,13 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/item/modular_computer/console{
 	dir = 4
 	},
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aF" = (
@@ -283,17 +359,28 @@
 	dir = 8
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/stamp/denied,
 /obj/item/weapon/pen,
+=======
+/obj/item/paper_bin,
+/obj/item/stamp/denied,
+/obj/item/pen,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aI" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/item/weapon/oddity/common/paper_omega,
 /obj/item/clothing/accessory/horrible,
+=======
+/obj/item/oddity/common/paper_omega,
+/obj/item/clothing/accessory/tie/yellow,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aJ" = (
@@ -305,7 +392,11 @@
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aK" = (
+<<<<<<< HEAD
 /obj/item/weapon/pen,
+=======
+/obj/item/pen,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aL" = (
@@ -316,8 +407,13 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
+=======
+/obj/item/paper_bin,
+/obj/item/pen,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aM" = (
@@ -332,6 +428,10 @@
 	dir = 8
 	},
 /obj/item/remains/human,
+<<<<<<< HEAD
+=======
+/obj/random/mob/roomba,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aO" = (
@@ -357,7 +457,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/light/floor,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/remains/human,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/dark/brown_platform,
@@ -367,12 +470,19 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office/dark,
+<<<<<<< HEAD
 /obj/item/weapon/lipstick/black,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "aS" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/phone,
+=======
+/obj/item/phone,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aT" = (
@@ -383,9 +493,13 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/item/modular_computer/console{
 	dir = 8
 	},
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aV" = (
@@ -403,13 +517,24 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/stamp/denied,
+=======
+/obj/item/stamp/denied,
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aY" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/pen/reagent/sleepy,
 /obj/item/weapon/newspaper,
+=======
+/obj/item/pen/reagent/sleepy,
+/obj/item/newspaper,
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "aZ" = (
@@ -424,7 +549,11 @@
 	dir = 1
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/stamp/denied,
+=======
+/obj/item/stamp/denied,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
@@ -442,6 +571,7 @@
 	dir = 8
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /obj/effect/decal/cleanable/blood/drip,
@@ -449,6 +579,33 @@
 /obj/spawner/ammo,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
+=======
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/random/ammo,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/crawler)
+"nA" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"vJ" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/crawler)
+"DW" = (
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/crawler)
+"MQ" = (
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/crawler)
+"SY" = (
+/obj/random/mob/roomba,
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 aa
@@ -485,7 +642,11 @@ aa
 "}
 (4,1,1) = {"
 ac
+<<<<<<< HEAD
 ab
+=======
+aN
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aR
 aM
 ae
@@ -507,8 +668,13 @@ ar
 "}
 (6,1,1) = {"
 ar
+<<<<<<< HEAD
 af
 af
+=======
+aB
+MQ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 aW
 aZ
@@ -518,19 +684,33 @@ ar
 "}
 (7,1,1) = {"
 ar
+<<<<<<< HEAD
 af
 aT
+=======
+vJ
+SY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 af
 aZ
 ae
+<<<<<<< HEAD
 aB
+=======
+aR
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ar
 "}
 (8,1,1) = {"
 ar
+<<<<<<< HEAD
 af
 af
+=======
+DW
+MQ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 aT
 af
@@ -544,7 +724,11 @@ an
 av
 af
 af
+<<<<<<< HEAD
 af
+=======
+nA
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ba
 bc
 ar
@@ -568,7 +752,11 @@ aV
 af
 aZ
 aN
+<<<<<<< HEAD
 ap
+=======
+aR
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (12,1,1) = {"

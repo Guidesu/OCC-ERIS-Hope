@@ -7,7 +7,11 @@
 	color = "#0F4800"
 	strength = 0.15
 	var/heal_strength = 5
+<<<<<<< HEAD
 	metabolism = REM//Quick and dirty Occulus Edit
+=======
+	metabolism = REM * 0.1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	heating_point = T0C + 260
 	heating_products = list("carbon", "protein")
@@ -15,7 +19,21 @@
 /datum/reagent/toxin/blattedin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(istype(M, /mob/living/carbon/superior_animal/roach))
 		var/mob/living/carbon/superior_animal/roach/bug = M
+		bug.heal_organ_damage(heal_strength*removed)
+	else if(M.species?.reagent_tag == IS_CHTMANT || (ROACH_BLOOD in M.mutations))
+		M.adjustOxyLoss(-0.6)
+		M.heal_organ_damage(0.3)
+		M.adjustToxLoss(-0.3)
+		M.add_chemical_effect(CE_BLOODCLOT, 0.1)
+	else
+		. = ..()
+
+/datum/reagent/toxin/blattedin/on_mob_add(mob/living/L)
+	..()
+	if(istype(L, /mob/living/carbon/superior_animal/roach))
+		var/mob/living/carbon/superior_animal/roach/bug = L
 		if(bug.stat == DEAD)
+<<<<<<< HEAD
 			if((bug.blattedin_revives_left > 0) && prob(70))//Roaches sometimes can come back to life from healing vapors Occulus Edit Start
 				bug.blattedin_revives_left = max(0, bug.blattedin_revives_left - 1)
 				bug.rejuvenate()
@@ -25,3 +43,14 @@
 			bug.heal_organ_damage(heal_strength*removed)
 	else
 		.=..()
+=======
+			if((bug.blattedin_revives_left >= 0) && prob(70))//Roaches sometimes can come back to life from healing vapors
+				bug.visible_message("<b>\The [bug.name]</b> twitches as it comes back to life!")
+				blattedin_revive(bug)
+
+/datum/reagent/toxin/blattedin/proc/blattedin_revive(var/mob/living/carbon/superior_animal/roach/bug)
+	bug.blattedin_revives_left = max(0, bug.blattedin_revives_left - 1)
+	bug.rejuvenate()
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

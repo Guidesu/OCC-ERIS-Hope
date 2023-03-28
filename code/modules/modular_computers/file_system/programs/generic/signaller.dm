@@ -32,7 +32,11 @@
 
 	return TRUE
 
+<<<<<<< HEAD
 /datum/computer_file/program/signaller/ui_data()
+=======
+/datum/computer_file/program/signaller/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = computer.get_header_data()
 
 	data["freq"] = computer?.network_card.frequency
@@ -43,8 +47,13 @@
 	return data
 
 
+<<<<<<< HEAD
 /datum/computer_file/program/signaller/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	var/list/data = ui_data(user)
+=======
+/datum/computer_file/program/signaller/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS, datum/nano_topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

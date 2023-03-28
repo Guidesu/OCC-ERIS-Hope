@@ -26,7 +26,7 @@
 	//We'll pick space tiles which have windows nearby
 	//This means that drones will only be spawned in places where someone could see them
 		//And thusly, places where they might fire into the ship
-	var/area/spess = locate(/area/space) in world
+	var/area/spess = locate(/area/nadezhda/outside/forest) in world
 	for (var/turf/T in spess)
 		if (!(T.z in GLOB.maps_data.station_levels))
 			continue
@@ -36,7 +36,7 @@
 
 		//The number of windows near each tile is recorded
 		var/numwin
-		for (var/obj/structure/window/W in view(4, T))
+		for (var/turf/simulated/floor/asteroid/grass/W in view(4, T))
 			numwin++
 
 		//And the square of it is entered into the list as a weight
@@ -52,11 +52,11 @@
 /datum/event/rogue_drone/announce()
 	var/msg
 	if(prob(33))
-		msg = "A combat drone wing operating out of the IHS Atomos has failed to return from a sweep of this sector, if any are sighted approach with caution."
+		msg = "Lost combat drones have been reported somewhere outside the colony walls, if any are sighted approach with caution."
 	else if(prob(50))
-		msg = "Contact has been lost with a combat drone wing operating out of the IHS Atomos. If any are sighted in the area, approach with caution."
+		msg = "Contact has been lost with an automated combat drone performing a scouting mission outside colony borders. If any are sighted in the area, approach with caution."
 	else
-		msg = "Unidentified hackers have targetted a combat drone wing deployed from the IHS Atomos. If any are sighted in the area, approach with caution."
+		msg = "Unidentified hackers have targetted a combat drone performing a scouting mission outside colony borders. If any are sighted in the area, approach with caution."
 	command_announcement.Announce(msg, "Rogue drone alert")
 
 /datum/event/rogue_drone/start()
@@ -89,6 +89,6 @@
 	log_and_message_admins("Despawning [num_recovered] hostile combat drones due to event end.") //OCCULUS EDIT - better logging
 	
 	if(num_recovered > drones_list.len * 0.75)
-		command_announcement.Announce("Icarus drone control reports the malfunctioning wing has been recovered safely.", "Rogue drone alert")
+		command_announcement.Announce("Soteria drone control reports the malfunctioning wing has been recovered safely.", "Rogue drone alert")
 	else
-		command_announcement.Announce("Icarus drone control registers disappointment at the loss of the drones, but the survivors have been recovered.", "Rogue drone alert")
+		command_announcement.Announce("Soteria drone control registers disappointment at the loss of the drones, but the survivors have been recovered.", "Rogue drone alert")

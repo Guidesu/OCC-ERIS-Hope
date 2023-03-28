@@ -22,13 +22,17 @@
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "g" = (
+<<<<<<< HEAD
 /obj/machinery/door/blast/shutters,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "h" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
 "i" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -37,6 +41,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating/under,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "j" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under,
@@ -48,6 +54,7 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
+<<<<<<< HEAD
 "l" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -66,6 +73,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating/under,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "n" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -73,6 +82,7 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/crawler)
+<<<<<<< HEAD
 "o" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -83,6 +93,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating/under,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "p" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -150,9 +162,15 @@ a
 a
 a
 a
+<<<<<<< HEAD
 i
 j
 m
+=======
+n
+j
+t
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -172,9 +190,15 @@ b
 b
 a
 a
+<<<<<<< HEAD
 l
 j
 o
+=======
+k
+j
+p
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 b
@@ -194,9 +218,15 @@ b
 b
 a
 a
+<<<<<<< HEAD
 i
 q
 m
+=======
+n
+q
+t
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 b
@@ -216,9 +246,15 @@ b
 a
 a
 a
+<<<<<<< HEAD
 l
 j
 o
+=======
+k
+j
+p
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a

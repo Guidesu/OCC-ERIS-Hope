@@ -2,6 +2,21 @@
 // POWERS
 ///////////////////////////////////
 
+/datum/dna/gene/basic/monkey
+	name="Monkified"
+	activation_messages=list("You feel primitive")
+
+	New()
+		block=MONKEYBLOCK
+
+/* Just in case we want to use this again
+	deactivate(var/mob/M, var/connected, var/flags)
+		..(M,connected,flags)
+		if(istype(M, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			H.humanize()
+*/
+
 /datum/dna/gene/basic/nobreath
 	name="No Breathing"
 	activation_messages=list("You feel no need to breathe.")
@@ -159,14 +174,26 @@
 			return 0
 		return ..(M,flags)
 
+<<<<<<< HEAD
 	OnDrawUnderlays(var/mob/M,var/g)
 		return "hulk_[g]_s"
+=======
+	OnDrawUnderlays(var/mob/M,var/g,var/fat)
+		if(fat)
+			return "hulk_[fat]_s"
+		else
+			return "hulk_[g]_s"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	OnMobLife(var/mob/living/carbon/human/M)
 		if(!istype(M)) return
 		if(M.health <= 25)
 			M.mutations.Remove(HULK)
+<<<<<<< HEAD
 			M.update_mutations()		//update our mutation overlays
+=======
+			M.update_mutations()		//update our mutation over-lays
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(M, SPAN_WARNING("You suddenly feel very weak."))
 			M.Weaken(3)
 			M.emote("collapse")

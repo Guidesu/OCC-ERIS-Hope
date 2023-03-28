@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/vending
+=======
+obj/item/circuitboard/vending
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "circuit board (custom vendomat)"
 	build_path = /obj/machinery/vending/custom
 	board_type = "machine"

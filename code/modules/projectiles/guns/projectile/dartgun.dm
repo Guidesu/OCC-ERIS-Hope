@@ -2,6 +2,7 @@
 	name = "dart"
 	icon_state = "dart"
 	damage_types = list(BRUTE = 5)
+<<<<<<< HEAD
 	sharp = TRUE
 	embed = 1 //the dart is shot fast enough to pierce space suits, so I guess splintering inside the target can be a thing. Should be rare due to low damage.
 	kill_count = 15 //shorter range
@@ -10,13 +11,36 @@
 
 /obj/item/projectile/bullet/chemdart/New()
 	create_reagents(reagent_amount)
+=======
+	sharp = 1
+	embed = 1 //the dart is shot fast enough to pierce space suits, so I guess splintering inside the target can be a thing. Should be rare due to low damage.
+	kill_count = 15 //shorter range
+	muzzle_type = null
+	reagent_flags = NO_REACT
+	var/reagent_amount = 15
+
+/obj/item/projectile/bullet/chemdart/New()
+	if (!testing)
+		create_reagents(reagent_amount)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 /obj/item/projectile/bullet/chemdart/on_hit(atom/target, def_zone = null)
 	if(isliving(target))
 		var/mob/living/L = target
+<<<<<<< HEAD
 		if(L.can_inject(target_zone = def_zone))
 			reagents.trans_to_mob(L, reagent_amount, CHEM_BLOOD)
+=======
+		if (!testing)
+			if(L.can_inject(target_zone = def_zone))
+				reagents.trans_to_mob(L, reagent_amount, CHEM_BLOOD)
+				return
+	reagents.splash(target, reagent_amount, reagent_amount/2)
+
+/obj/item/projectile/bullet/chemdart/on_impact(atom/target)
+	reagents.splash(target, reagent_amount, reagent_amount)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/ammo_casing/chemdart
 	name = "chemical dart"
@@ -42,17 +66,28 @@
 	mag_well = MAG_WELL_DART
 
 /obj/item/gun/projectile/dartgun
+<<<<<<< HEAD
 	name = "Z-H P Artemis"
 	desc = "Zeng-Hu Pharmaceutical's entry into the arms market, the Z-H P Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances."
+=======
+	name = "SI \"Artemis\""
+	desc = "The Soteria Institute's entry into the arms market, the SI Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/guns/projectile/dartgun.dmi'
 	icon_state = "dartgun-empty"
 	caliber = CAL_DART
 	fire_sound = 'sound/weapons/empty.ogg'
 	fire_sound_text = "a metallic click"
+<<<<<<< HEAD
 	matter = list(MATERIAL_STEEL = 20, MATERIAL_PLASTIC = 10)
 	recoil_buildup = 0
 	silenced = 1
 	load_method = MAGAZINE
+=======
+	init_recoil = HANDGUN_RECOIL(0)
+	silenced = TRUE
+	load_method = SINGLE_CASING|MAGAZINE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	magazine_type = /obj/item/ammo_magazine/chemdart
 	auto_eject = 0
 	mag_well = MAG_WELL_DART
@@ -62,9 +97,16 @@
 	var/max_beakers = 3
 	var/dart_reagent_amount = 15
 	var/beaker_type = /obj/item/reagent_containers/glass/beaker
+<<<<<<< HEAD
 	var/list/starting_chems
 
 /obj/item/gun/projectile/dartgun/New()
+=======
+	var/list/starting_chems = null
+	serial_type = "SI"
+
+/obj/item/gun/projectile/dartgun/dartgun/New()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if(starting_chems)
 		for(var/chem in starting_chems)
@@ -73,7 +115,11 @@
 			beakers += B
 	update_icon()
 
+<<<<<<< HEAD
 /obj/item/gun/projectile/dartgun/on_update_icon()
+=======
+/obj/item/gun/projectile/dartgun/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 	if(ammo_magazine)
 		icon_state = "dartgun-[round(ammo_magazine.stored_ammo.len,2)]"
@@ -124,6 +170,13 @@
 			B.reagents.trans_to_obj(dart, mix_amount)
 
 /obj/item/gun/projectile/dartgun/attack_self(mob/user)
+<<<<<<< HEAD
+=======
+	src.interact(user)
+
+
+/obj/item/gun/projectile/dartgun/interact(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.set_machine(src)
 	var/dat = "<b>[src] mixing control:</b><br><br>"
 
@@ -156,11 +209,16 @@
 	onclose(user, "dartgun", src)
 
 /obj/item/gun/projectile/dartgun/proc/check_beaker_mixing(var/obj/item/B)
+<<<<<<< HEAD
 	if(!mixing || !beakers)
 		return 0
 	for(var/obj/item/M in mixing)
 		if(M == B)
 			return 1
+=======
+	if(mixing && (B in mixing))
+		return 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return 0
 
 /obj/item/gun/projectile/dartgun/Topic(href, href_list)
@@ -168,14 +226,11 @@
 	src.add_fingerprint(usr)
 	if(href_list["stop_mix"])
 		var/index = text2num(href_list["stop_mix"])
-		if(index <= beakers.len)
-			for(var/obj/item/M in mixing)
-				if(M == beakers[index])
-					mixing -= M
-					break
+		if(beakers[index] in mixing)
+			mixing.Remove(beakers[index])
 	else if (href_list["mix"])
 		var/index = text2num(href_list["mix"])
-		if(index <= beakers.len)
+		if(!(beakers[index] in mixing))
 			mixing += beakers[index]
 	else if (href_list["eject"])
 		var/index = text2num(href_list["eject"])
@@ -188,5 +243,18 @@
 				B.loc = get_turf(src)
 	else if (href_list["eject_cart"])
 		unload_ammo(usr)
-	src.updateUsrDialog()
+	src.updateDialog()
 	return
+<<<<<<< HEAD
+=======
+
+/obj/item/gun/projectile/dartgun/vox
+	name = "alien dart gun"
+	desc = "A small gas-powered dartgun, fitted for nonhuman hands."
+
+/obj/item/gun/projectile/dartgun/vox/medical
+	starting_chems = list("kelotane","bicaridine","anti_toxin")
+
+/obj/item/gun/projectile/dartgun/vox/raider
+	starting_chems = list("space_drugs","stoxin","impedrezene")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

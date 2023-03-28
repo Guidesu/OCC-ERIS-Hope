@@ -5,6 +5,7 @@
 
 /obj/machinery/clonepod
 	name = "biomass pod"
+<<<<<<< HEAD
 	desc = "An electronically-lockable pod for growing organic tissue."
 	density = TRUE
 	anchored = TRUE
@@ -12,6 +13,15 @@
 	icon_state = "pod_0"
 	req_access = list(access_genetics) //For premature unlocking.
 	circuit = /obj/item/electronics/circuitboard/clonepod
+=======
+	desc = "An electronically-lockable pod for growing organic tissue. A grinding noise makes it sound as if it isn't working."
+	density = 1
+	anchored = 1
+	icon = 'icons/obj/cloning.dmi'
+	icon_state = "pod_0"
+	req_access = list(access_genetics) //For premature unlocking.
+	circuit = /obj/item/circuitboard/clonepod
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mob/living/occupant
 	var/heal_level = 20 //The clone is released once its health reaches this level.
 	var/heal_rate = 1

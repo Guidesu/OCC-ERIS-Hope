@@ -1,12 +1,15 @@
 /obj/item/tool/multitool/hacktool
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE//traitor item
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/is_hacking = 0
 	var/max_known_targets
 
 	var/in_hack_mode = 0
 	var/list/known_targets
 	var/list/supported_types
-	var/datum/topic_state/default/must_hack/hack_state
+	var/datum/nano_topic_state/default/must_hack/hack_state
 
 /obj/item/tool/multitool/hacktool/New()
 	..()
@@ -41,7 +44,7 @@
 	if(!attempt_hack(user, A))
 		return 0
 
-	A.ui_interact(user, state = hack_state)
+	A.nano_ui_interact(user, state = hack_state)
 	return 1
 
 /obj/item/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
@@ -85,18 +88,22 @@
 /obj/item/tool/multitool/hacktool/proc/on_target_destroy(var/target)
 	known_targets -= target
 
+<<<<<<< HEAD
 /datum/topic_state/default/must_hack
+=======
+/datum/nano_topic_state/default/must_hack
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/tool/multitool/hacktool/hacktool
 
-/datum/topic_state/default/must_hack/New(var/hacktool)
+/datum/nano_topic_state/default/must_hack/New(var/hacktool)
 	src.hacktool = hacktool
 	..()
 
-/datum/topic_state/default/must_hack/Destroy()
+/datum/nano_topic_state/default/must_hack/Destroy()
 	hacktool = null
 	return ..()
 
-/datum/topic_state/default/must_hack/can_use_topic(var/src_object, var/mob/user)
+/datum/nano_topic_state/default/must_hack/can_use_topic(var/src_object, var/mob/user)
 	if(!hacktool || !hacktool.in_hack_mode || !(src_object in hacktool.known_targets))
 		return STATUS_CLOSE
 	return ..()

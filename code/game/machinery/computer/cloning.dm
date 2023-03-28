@@ -11,8 +11,13 @@
 	var/scantemp = "Scanner unoccupied"
 	var/menu = 1 //Which menu screen to display
 	var/list/records = list()
+<<<<<<< HEAD
 	var/datum/dna2/record/active_record
 	var/obj/item/disk/data/diskette //Mostly so the geneticist can steal everything.
+=======
+	var/datum/dna2/record/active_record = null
+	var/obj/item/disk/data/diskette = null //Mostly so the geneticist can steal everything.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/loading = 0 // Nice loading text
 
 /obj/machinery/computer/cloning/Initialize()
@@ -88,7 +93,11 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[num++]"
 
+<<<<<<< HEAD
 /obj/machinery/computer/cloning/attackby(obj/item/W, mob/user)
+=======
+/obj/machinery/computer/cloning/attackby(obj/item/W as obj, mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (istype(W, /obj/item/disk/data)) //INSERT SOME DISKETTES
 		if (!src.diskette)
 			user.drop_item()
@@ -101,7 +110,11 @@
 		..()
 	return
 
+<<<<<<< HEAD
 /obj/machinery/computer/cloning/attack_hand(mob/user)
+=======
+/obj/machinery/computer/cloning/attack_hand(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(..())
 		return
 	user.set_machine(src)
@@ -410,7 +423,7 @@
 	else
 		R.implant = "\ref[imp]"
 
-	if (!isnull(subject.mind)) //Save that mind so traitors can continue traitoring after cloning.
+	if (!isnull(subject.mind)) //Save that mind so contractors can continue contractoring after cloning.
 		R.mind = "\ref[subject.mind]"
 
 	src.records += R

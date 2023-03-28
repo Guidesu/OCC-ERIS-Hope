@@ -7,7 +7,7 @@ var/global/list/ashtray_cache = list()
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 	var/image/base_image
-	var/max_butts = 10
+	var/max_butts = 20
 
 /obj/item/material/ashtray/New(var/newloc, var/material_name)
 	..(newloc, material_name)
@@ -20,7 +20,11 @@ var/global/list/ashtray_cache = list()
 	update_icon()
 	return
 
+<<<<<<< HEAD
 /obj/item/material/ashtray/on_update_icon()
+=======
+/obj/item/material/ashtray/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	color = null
 	cut_overlays()
 	var/cache_key = "base-[material.name]"
@@ -28,17 +32,29 @@ var/global/list/ashtray_cache = list()
 		var/image/I = image('icons/obj/objects.dmi',"ashtray")
 		I.color = material.icon_colour
 		ashtray_cache[cache_key] = I
+<<<<<<< HEAD
 	associate_with_overlays(ashtray_cache[cache_key])
+=======
+	add_overlay(ashtray_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if (contents.len == max_butts)
 		if(!ashtray_cache["full"])
 			ashtray_cache["full"] = image('icons/obj/objects.dmi',"ashtray_full")
+<<<<<<< HEAD
 		associate_with_overlays(ashtray_cache["full"])
+=======
+		add_overlay(ashtray_cache["full"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		desc = "It's stuffed full."
 	else if (contents.len > max_butts/2)
 		if(!ashtray_cache["half"])
 			ashtray_cache["half"] = image('icons/obj/objects.dmi',"ashtray_half")
+<<<<<<< HEAD
 		associate_with_overlays(ashtray_cache["half"])
+=======
+		add_overlay(ashtray_cache["half"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		desc = "It's half-filled."
 	else
 		desc = "An ashtray made of [material.display_name]."

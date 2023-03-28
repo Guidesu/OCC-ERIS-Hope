@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /obj/item/electronics/airlock
+=======
+/obj/item/airlock_electronics
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "airlock electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -15,6 +19,7 @@
 	var/locked = TRUE
 	var/lockable = TRUE
 
+<<<<<<< HEAD
 /obj/item/electronics/airlock/attack_self(mob/user)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
@@ -24,6 +29,17 @@
 
 /obj/item/electronics/airlock/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
 	var/list/data = ui_data()
+=======
+/obj/item/airlock_electronics/attack_self(mob/user)
+	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
+		return ..(user)
+
+	nano_ui_interact(user)
+
+
+/obj/item/airlock_electronics/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/nano_topic_state/state = GLOB.hands_state)
+	var/list/data = nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -31,7 +47,11 @@
 		ui.set_initial_data(data)
 		ui.open()
 
+<<<<<<< HEAD
 /obj/item/electronics/airlock/ui_data()
+=======
+/obj/item/airlock_electronics/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 	var/list/regions = list()
 
@@ -55,7 +75,11 @@
 
 	return data
 
+<<<<<<< HEAD
 /obj/item/electronics/airlock/OnTopic(mob/user, list/href_list, state)
+=======
+/obj/item/airlock_electronics/OnTopic(mob/user, list/href_list, state)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(lockable)
 		if(href_list["unlock"])
 			if(!req_access || istype(user, /mob/living/silicon))
@@ -95,7 +119,11 @@
 		return TOPIC_REFRESH
 
 
+<<<<<<< HEAD
 /obj/item/electronics/airlock/proc/toggle_access(var/acc)
+=======
+/obj/item/airlock_electronics/proc/toggle_access(var/acc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (acc == "all")
 		conf_access = null
 	else
@@ -114,7 +142,11 @@
 
 
 
+<<<<<<< HEAD
 /obj/item/electronics/airlock/secure
+=======
+/obj/item/airlock_electronics/secure
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "secure airlock electronics"
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
 	origin_tech = list(TECH_DATA = 2)

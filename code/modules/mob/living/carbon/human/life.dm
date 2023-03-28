@@ -32,8 +32,12 @@
 	var/fire_alert = FIRE_ALERT_NONE
 	var/pressure_alert = 0
 	var/temperature_alert = 0
+<<<<<<< HEAD
 	var/in_stasis = FALSE
 	var/stasis_timeofdeath = 0
+=======
+	var/in_stasis = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/pulse = PULSE_NORM
 	var/global/list/overlays_cache = null
 
@@ -69,7 +73,11 @@
 
 		//Organs and blood
 		handle_organs()
+<<<<<<< HEAD
 		process_internal_ograns()
+=======
+		process_internal_organs()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		handle_blood()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
 
@@ -283,16 +291,21 @@
 				take_overall_damage(0, 5 * RADIATION_SPEED_COEFFICIENT, used_weapon = "Radiation Burns")
 			if(prob(1))
 				to_chat(src, SPAN_WARNING("You feel strange!"))
+<<<<<<< HEAD
 				adjustCloneLoss(5 * RADIATION_SPEED_COEFFICIENT)
+=======
+				var/obj/item/organ/external/E = pick(organs)
+				E.mutate()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				emote("gasp")
 
 		if(damage)
 			damage *= species.radiation_mod
-			adjustToxLoss(damage * RADIATION_SPEED_COEFFICIENT)
-			updatehealth()
 			if(organs.len)
 				var/obj/item/organ/external/O = pick(organs)
-				if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
+				O.take_damage(damage * RADIATION_SPEED_COEFFICIENT, TOX, silent = TRUE)
+				if(istype(O))
+					O.add_autopsy_data("Radiation Poisoning", damage)
 
 	/** breathing **/
 
@@ -356,8 +369,12 @@
 
 		oxygen_alert = max(oxygen_alert, 1)
 		return 0
+<<<<<<< HEAD
 
 	if(get_organ_efficiency(OP_LUNGS) > 1)
+=======
+	if(get_organ_efficiency(OP_LUNGS))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		failed_last_breath = !handle_breath_lungs(breath)
 	else
 		failed_last_breath = 1
@@ -450,23 +467,41 @@
 	// Too much poison in the air.
 
 	if(toxins_pp > safe_toxins_max)
+<<<<<<< HEAD
 		var/ratio = (poison/safe_toxins_max) * 10
 		reagents.add_reagent("toxin", CLAMP(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 		breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		phoron_alert = 1
 	else
 		phoron_alert = 0
+=======
+		var/ratio = CLAMP((poison/safe_toxins_max) * 10, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE)
+		var/obj/item/organ/internal/I = pick(internal_organs_by_efficiency[OP_LUNGS])
+		I.take_damage(4 * ratio, TOX)
+		breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
+		plasma_alert = 1
+	else
+		plasma_alert = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	// If there's some other shit in the air lets deal with it here.
 	if(breath.gas["sleeping_agent"])
 		var/SA_pp = (breath.gas["sleeping_agent"] / breath.total_moles) * breath_pressure
 		if(SA_pp > SA_para_min)		// Enough to make us paralysed for a bit
+<<<<<<< HEAD
 			Paralyse(3)	// 3 gives them one second to wake up and run away a bit!
 			if(SA_pp > SA_sleep_min)	// Enough to make us sleep as well
 				Sleeping(5)
 		else if(SA_pp > 0.15)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 			if(prob(20))
 				emote(pick("giggle", "laugh"))
+=======
+			reagents.add_reagent("sagent", 2)
+			if(SA_pp > SA_sleep_min)	// Enough to make us sleep as well
+				reagents.add_reagent("sagent", 5)
+		else if(SA_pp > 0.15)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
+			reagents.add_reagent("sagent", 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		breath.adjust_gas("sleeping_agent", -breath.gas["sleeping_agent"]/6, update = 0) //update after
 
@@ -535,7 +570,10 @@
 	else if(breath.temperature <= species.cold_discomfort_level)
 		species.get_environment_discomfort(src,"cold")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
 	if(!environment)
 		return
@@ -759,42 +797,79 @@
 	if(in_stasis)
 		return
 
+	if(species.reagent_tag == IS_SYNTHETIC)
+		return
+
 	if(reagents)
 		chem_effects.Cut()
 		analgesic = 0
 
-		if(touching) touching.metabolize()
-		if(ingested) ingested.metabolize()
-		if(bloodstr) bloodstr.metabolize()
+		if(touching)
+			touching.metabolize()
+		if(ingested)
+			ingested.metabolize()
+		if(bloodstr)
+			bloodstr.metabolize()
 		metabolism_effects.process()
 
 		if(CE_PAINKILLER in chem_effects)
 			analgesic = chem_effects[CE_PAINKILLER]
+<<<<<<< HEAD
 		if(!(CE_ALCOHOL in chem_effects))
 			if(stats.getPerk(/datum/perk/inspiration))
 				stats.removePerk(/datum/perk/active_inspiration)
 			if(stats.getPerk(PERK_ALCOHOLIC))
 				stats.removePerk(PERK_ALCOHOLIC_ACTIVE)
+=======
+		if(!(CE_ALCOHOL in chem_effects) && stats.getPerk(PERK_INSPIRATION))
+			stats.removePerk(PERK_ACTIVE_INSPIRATION)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		var/total_phoronloss = 0
 		for(var/obj/item/I in src)
 			if(I.contaminated)
+<<<<<<< HEAD
 				total_phoronloss += vsc.plc.CONTAMINATION_LOSS
 		if(!(status_flags & GODMODE)) adjustToxLoss(total_phoronloss)
+=======
+				total_plasmaloss += vsc.plc.CONTAMINATION_LOSS
+		if(!(status_flags & GODMODE))
+			bloodstr.add_reagent("plasma", total_plasmaloss)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return FALSE	//godmode
 
-	if(species.light_dam)
+	if(stats.getPerk(PERK_NANITE_REGEN)) // Do they have the nanite regen perk?
+		var/datum/perk/nanite_regen/P = stats.getPerk(PERK_NANITE_REGEN) // Add a reference to the perk for us to use.
+		if(P && P.regen_rate) // Check if the perk is actually there and got regeneration enabled.
+			heal_overall_damage(P.regen_rate, P.regen_rate, P.regen_rate)
+
+	if(species.light_dam)//TODO: Use this proc for flora and mycus races. Search proc mycus. -Note for Kaz.
 		var/light_amount = 0
 		if(isturf(loc))
 			var/turf/T = loc
 			light_amount = round((T.get_lumcount()*10)-5)
 
-		if(light_amount > species.light_dam) //if there's enough light, start dying
-			take_overall_damage(1,1)
-		else //heal in the dark
-			heal_overall_damage(1,1)
+		if(stats.getPerk(PERK_FOLKEN_HEALING) || stats.getPerk(PERK_FOLKEN_HEALING_YOUNG)) // Folken will have this perk
+			if(light_amount >= species.light_dam) // Enough light threshold
+				if(stats.getPerk(PERK_FOLKEN_HEALING_YOUNG)) // They are young Folken and will heal faster
+					heal_overall_damage(2,2)
+					adjustNutrition(2)
+				else
+					heal_overall_damage(1,1)
+					adjustNutrition(1)
 
+<<<<<<< HEAD
+=======
+		else if(stats.getPerk(PERK_DARK_HEAL)) // Is the species a Mycus?
+			if(light_amount <= species.light_dam) // Enough light threshold
+				heal_overall_damage(1,1)
+
+		else if(light_amount > species.light_dam) //if there's enough light, start dying
+			take_overall_damage(1,1)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// TODO: stomach and bloodstream organ.
 	handle_trace_chems()
 
@@ -809,7 +884,7 @@
 	if(status_flags & GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
-	if(species.show_ssd && !client && !teleop)
+	if(form.show_ssd && !client && !teleop)
 		Sleeping(2)
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
@@ -822,6 +897,7 @@
 			blinded = 1
 			silent = 0
 			return 1
+<<<<<<< HEAD
 		if(health <= HEALTH_THRESHOLD_DEAD) //No health = death
 			if(stats.getPerk(PERK_UNFINISHED_DELIVERY) && prob(33)) //Unless you have this perk
 				heal_organ_damage(20, 20)
@@ -830,6 +906,16 @@
 				AdjustSleeping(rand(20,30))
 				updatehealth()
 				stats.removePerk(PERK_UNFINISHED_DELIVERY)
+=======
+		if(health <= death_threshold) //No health = death
+			if(stats.getPerk(PERK_UNFINISHED_DELIVERY) && prob(33)) //Unless you have this perk
+				heal_organ_damage(20, 20)
+				adjustOxyLoss(-100)
+				AdjustSleeping(rand(20,30))
+				updatehealth()
+				stats.removePerk(PERK_UNFINISHED_DELIVERY)
+				learnt_tasks.attempt_add_task_mastery(/datum/task_master/task/return_to_sender, "RETURN_TO_SENDER", skill_gained = 1, learner = src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				death()
 				blinded = 1
@@ -897,18 +983,13 @@
 		handle_statuses()
 
 		if (drowsyness)
-			drowsyness--
+			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
 				sleeping += 1
 				Paralyse(5)
 
 		confused = max(0, confused - 1)
-
-		// If you're dirty, your gloves will become dirty, too.
-		if(gloves && germ_level > gloves.germ_level && prob(10))
-			gloves.germ_level += 1
-
 	return 1
 
 /mob/living/carbon/human/handle_regular_hud_updates()
@@ -943,7 +1024,7 @@
 		overlays_cache[22] = image('icons/mob/screen1_full.dmi', "icon_state" = "brutedamageoverlay5")
 		overlays_cache[23] = image('icons/mob/screen1_full.dmi', "icon_state" = "brutedamageoverlay6")
 
-	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
+	if(hud_updateflag) // update our mob's hud over-lays, AKA what others see flaoting above our head
 		handle_hud_list()
 
 	// now handle what we see on our screen
@@ -987,7 +1068,23 @@
 		if(stat == DEAD)
 			holder.icon_state = "hudhealth-100" 	// X_X
 		else
-			var/percentage_health = RoundHealth((health-HEALTH_THRESHOLD_CRIT)/(maxHealth-HEALTH_THRESHOLD_CRIT)*100)
+			var/organ_health
+			var/organ_damage
+			var/limb_health
+			var/limb_damage
+
+			for(var/obj/item/organ/external/E in organs)
+				organ_health += E.total_internal_health
+				organ_damage += E.severity_internal_wounds
+				limb_health += E.max_damage
+				limb_damage += max(E.brute_dam, E.burn_dam)
+
+			var/crit_health = (health / maxHealth) * 100
+			var/external_health = (1 - (limb_health ? limb_damage / limb_health : 0)) * 100
+			var/internal_health = (1 - (organ_health ? organ_damage / organ_health : 0)) * 100
+
+			var/percentage_health = RoundHealth(min(crit_health, external_health, internal_health))	// Old: RoundHealth((health-HEALTH_THRESHOLD_CRIT)/(maxHealth-HEALTH_THRESHOLD_CRIT)*100)
+
 			holder.icon_state = "hud[percentage_health]"
 		hud_list[HEALTH_HUD] = holder
 
@@ -1122,6 +1219,7 @@
 		speech_problem_flag = 1
 	return stuttering
 
+/* not being activated now, only gettign in the way of burn damage, in case of doubt look at any handle_fire above this
 /mob/living/carbon/human/handle_fire()
 	if(..())
 		return
@@ -1131,6 +1229,10 @@
 
 	if (thermal_protection < 1 && bodytemperature < burn_temperature)
 		bodytemperature += round(BODYTEMP_HEATING_MAX*(1-thermal_protection), 1)
+		if(world.time >= next_onfire_hal)
+			next_onfire_hal = world.time + 50
+			adjustHalLoss(fire_stacks*5 + 3) //adjusted to be lower. You need time to put yourself out. And each roll only removes 2.5 stacks.
+*/
 
 /mob/living/carbon/human/rejuvenate()
 	sanity.setLevel(sanity.max_level)
@@ -1154,7 +1256,7 @@
 
 /mob/living/carbon/human/handle_vision()
 	if(client)
-		client.screen.Remove(global_hud.blurry, global_hud.druggy, global_hud.vimpaired, global_hud.darkMask, global_hud.nvg, global_hud.thermal, global_hud.meson, global_hud.science)
+		client.screen.Remove(global_hud.blurry, global_hud.druggy, global_hud.vimpaired, global_hud.darkMask, global_hud.lightMask, global_hud.nvg, global_hud.thermal, global_hud.meson, global_hud.science)
 	if(machine)
 		var/viewflags = machine.check_eye(src)
 		if(viewflags < 0)
@@ -1174,10 +1276,14 @@
 			isRemoteObserve = TRUE
 		else if(client.eye && istype(client.eye,/obj/structure/multiz))
 			isRemoteObserve = TRUE
+<<<<<<< HEAD
 		else if(((mRemote in mutations) || remoteviewer) && remoteview_target)
+=======
+		else if((mRemote in mutations) && remoteview_target)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(remoteview_target.stat == CONSCIOUS)
 				isRemoteObserve = TRUE
-		if(!isRemoteObserve && client && !client.adminobs)
+		if(!isRemoteObserve && client && !client.adminobs && !using_scope)
 			remoteview_target = null
 			reset_view(null, FALSE)
 
@@ -1190,6 +1296,7 @@
 		return
 	if(XRAY in mutations)
 		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
+<<<<<<< HEAD
 
 /mob/living/carbon/human/proc/EnterStasis()
 	in_stasis = TRUE
@@ -1199,3 +1306,12 @@
 /mob/living/carbon/human/proc/ExitStasis()
 	in_stasis = FALSE
 	stasis_timeofdeath = 0
+=======
+	if(unnatural_mutations.getMutation("MUTATION_CAT_EYES", TRUE))
+		see_invisible = SEE_INVISIBLE_NOLIGHTING
+	if(unnatural_mutations.getMutation("MUTATION_ECHOLOCATION", TRUE))
+		see_invisible = SEE_INVISIBLE_NOLIGHTING
+		sight |= SEE_MOBS
+	if(CE_DARKSIGHT in chem_effects)//TODO: Move this to where it belongs, doesn't work without being right here for now. -Kaz/k5.
+		see_invisible = min(see_invisible, chem_effects[CE_DARKSIGHT])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

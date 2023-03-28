@@ -6,6 +6,7 @@
 		"You feel a slight prick.",
 		"You hear heavy breathing behind you.",
 		"You feel weary.",
+<<<<<<< HEAD
 		"Rest your soul, feed your brain.",
 		"Your head throbs with a dull pain.",
 		"You need a smoke.",
@@ -28,6 +29,21 @@
 		"Something in the air makes it taste metallic. Is it copper...?",
 		"Nothing has changed. But you know it has.",
 		"They put something in the water. Something that makes you forget. Forget what?",
+=======
+		"Your head throbs with a dull pain.",
+		"You need a smoke.",
+		"You are the greatest person on this colony.",
+		"Everyone here is insane.",
+		"You're the only sane one on this colony!",
+		"You can hear your own heart beating in your head.",
+		"Someone whispered behind your back.",
+		"Everyone is judging you.",
+		"A spiderling runs between your legs and scuttles away.",
+		"Someone speaks your name. But when you turn, there is only dust.",
+		"Something in the air makes it taste metallic. Is it copper..?",
+		"Nothing has changed. But you know it has.",
+		"They put something in the water. Something that makes you forget.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"Your skin feels tight.",
 		"Your clothing is choking you.",
 		"All it takes is one bad day. All it takes is one bad day.",
@@ -38,6 +54,7 @@
 		"You need a fix. Just something to take away the edge.",
 		"You smell something you can't quite comprehend.",
 		"The sounds are elusive, they escape your mind.",
+<<<<<<< HEAD
 		"Clear your throat, blink, tighten your grasp on reality and carry on.",
 		"You think you understand now - why they called it a cursed ship.",
 		"Something is just not right here.",
@@ -52,6 +69,21 @@
 		"At the end of the day, you will rest and recover. But not now - there is work to be done.",
 		"A shadow twitches.",
 		"You shiver.",
+=======
+		"Clear your throat, blink, grasp on reality and carry on.",
+		"You think you understand now - why they called it a cursed lab.",
+		"Something is just not right here.",
+		"Dark thoughts shimmer in your mind, drowned in an overwhelming sense of deja vu.",
+		"Count to ten. Breathe in. You can do it.",
+		"You are tired, but sleep won't bring you peace.",
+		"So many people have died exploring the Null Space, why would your fate be any different?",
+		"You feel something in your throat.",
+		"You need to be alone.",
+		"Why do the machines on this colony look different every day?",
+		"Those Vagabonds sure have some weird job titles. How old is this colony? What's YOUR role in its fate?",
+		"At the end of the day, you will rest and recover. But not now - there is work to be done.",
+		"A shadow twitches.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"There is something in the corner of your eye, almost unseen. For how long was it there?",
 		"One day you'll retire from this shit with enough money to buy your own house by the riverside. One day.",
 		"Your nerve twists, but you regain control.",
@@ -69,20 +101,27 @@
 		"It all adds up to the rhythm.",
 		"Conceal your weakness, pretend that there is nothing going on. Good, yes, like this.",
 		"You ignore it. It doesn't make sense, so you just ignore it.",
+<<<<<<< HEAD
 		"A thief called curiosity.",
 		"Your teeth are grey.",
 		"She can’t be dead.",
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"You know who you are, you know why you are here, so you don't bother worrying about the details.",
 		"You promised to buy him a drink, but what was his name? Wait, who is he?",
 		"Don't ask, don't tell, you are fine, and so is everyone around you.",
 		"Somewhere in this world, a spider just died. But why is that relevant?",
+<<<<<<< HEAD
 		"You didn’t try hard enough.",
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"Space is the final frontier, and we are pioneers of the new age. Yet we are stuck in junk, roaches and idiots.",
 		"Close your eyes. Remember the name. Go.",
 		"But why does it make sense?",
 		"A truth opens, yet closes before you are able to comprehend it. If you dive deeper, you will discover it again, but is it worth it?",
 		"Who was there before you, in your boots, in your place? What did they do, and where are they now?",
 		"Too much information, you are overloaded.",
+<<<<<<< HEAD
 		"You’ve had enough. This is enough.",
 		"Something dies out.",
 		"I know you don't mean what you said.",
@@ -102,12 +141,20 @@
 		"Breath in, and kill the revolution inside you.",
 		"You ask for strength. No one answered.",
 		"Look! A computer!",
+=======
+		"Something dies out.",
+		"Where are you?",
+		"You gotta have faith to walk those halls. In God, in yourself, in something.",
+		"Breath in, and kill the revolution inside you.",
+		"You ask for strength. No one answered.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"Cuts run deep in your mind. Your sanity leaks through wounds.",
 		"Shiver, run, and come back for more.",
 		"How old are the roaches? How much have they seen?",
 		"You are asking too many questions. You feel guilty.",
 		"But they know, they always know. Accept this.",
 		"Something inside your skull cracks. You feel no pain.",
+<<<<<<< HEAD
 		"They’re afraid of you.",
 		"Things used to be different, what changed?",
 		"Ride, Johnny, ride.",
@@ -138,6 +185,10 @@
 		"You feel a sharp stabbing pain that slowly fades.",  //Occulus Edit
 		"You feel a sharp stabbing pain followed by an odd electric tingle."  //Occulus Edit
 		
+=======
+		"Curiosity is your greatest sin.",
+		"A burger would be good. Anything edible, really."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	return pick(sanity_quotes_40)
 
@@ -148,6 +199,7 @@
 			"Everything is beginning to freeze. Not even the comfort of warmth wants you.",
 			"Every part of you is twitching. Remaining still is death.",
 			"They want you dead.",
+<<<<<<< HEAD
 			"The breath stops, yours?.",
 			"You realize that the waking world was always a dream. You have to find a way to wake up. Wake up. Wake up.",
 			"Sleep isn't real.",
@@ -180,28 +232,75 @@
 			"Your dreams are arranged in a spiral that end on the seventh of January.",
 			"How is this the second shift you’ve done today?",
 			"See them live, die, rot, all in the passage of a single moment. A glimpse of the life cycle. A glimpse of the next dream.",
+=======
+			"A wave of exhaustion overtakes you. Give up.",
+			"You realize that the waking world was always a dream. You have to find a way to wake up. Wake up. Wake up.",
+			"Sleep isn't real.",
+			"The people on this colony are not real. They do not deserve your kindness.",
+			"Your existence is not welcomed on this colony.",
+			"Memories once fond begin to fade from your mind. You question whether they were real to begin with.",
+			"End it all.",
+			"You begin to realize that drugs are the only escape from the agony that is existence.",
+			"The walls are wrong. The walls are wrong!",
+			"You have a strange urge to go North.",
+			"Your teeth feel out of place. They should be in your stomach. ",
+			"Nothing shall be well. And nothing shall be well. And no manner of things shall be well.",
+			"You'll feel better when you sink your teeth into their backs. You're sure.",
+			"It feels like you're breathing inside your own lungs.",
+			"You hunger for something rich and red rich and red rich and red rich and red rich and r-",
+			"Escaping from your purpose is impossible...",
+			"Seven times seven. Seven times seven. Seven times seven. Seven times seven. Seven times seven. Seven times seven. Seven times seven. Seven times seven. Seven times seven. ",
+			"And so they laughed. They laughed. You know they laughed. You heard them laugh. They laughed. They laughed.",
+			"Whenever you see a mirror, you feel like you can just reach out and step through it.",
+			"THEY ARE COMING THEY ARE COMING THEY ARE COMING",
+			"No. Parts of you are crumbling. No. No!",
+			"What is this? No� No!",
+			"Something is scratching from behind your eyes, aching to get out.",
+			"SHE EMBRACES ALL CHILDREN SHE EMBRACES ALL CHILDREN SHE EMBRACES ALL CHILDREN",
+			"Shadows lie still, here where there is no sun to move them. Sometimes they shiver in the fluorescent light.",
+			"They watch you with narrow eyes. What do they see?",
+			"It echoes loudly through your skin, the rhythm of the world.",
+			"It occurred to you that bolts can scream as well. But there is more to it, they sing.",
+			"A prayer is what moves some machines. Not by words, but by actions, a rituals that bind the reality. A mantra to their only God.",
+			"See them live, die, rot, all in the passage of a single moment. A glimpse of the life cycle.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"Turn your mind inward, with the clear mirror of the world. See your pitiful and wretched soul.",
 			"There was something between the gun and its target.",
 			"Sell your dreams, crash your happiness. Enjoy the ticking sound of this worlds insides.",
 			"Now you see it, a sharp pain that only your mind can feel resonates in a picture of the perfect machine. Then you see the rust and damage, a dead God.",
 			"Move towards the light, even if your skin burns away.",
 			"You radiate a hunger for knowledge, your mind is overheated and can melt the bounds of reality. Time to observe.",
+<<<<<<< HEAD
 			"Stay a while. Hear the music. Listen. How can you hear when you’ve cut your ears off?",
 			"The ceiling is covered in dark slime. How has nobody noticed this before?",
 			"You are not mad. You see reality as it really is.",
+=======
+			"Stay with them. Hear the music.",
+			"The ceiling is covered in dark slime, how can anyone have not noticed this before?",
+			"You are not mad. You see the reality as it really is.",
+			"You are clearly insane now, you can't even trust your eyes.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"Converge with shadows to dance under the moonlight of a dead planet.",
 			"TODAY IS A GOOD DAY",
 			"You know who you are. But who am I?",
 			"Bash your head until it's good. But it's never good.",
+<<<<<<< HEAD
 			"The crew is doomed, and so are you.",
+=======
+			"Humanity is doomed, and so are you.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"Crave for salvation under the dead suns. It's all that we have.",
 			"At the verge of your sanity, gasping for sense, you are visited by an extreme thought - what if all of this could have been avoided if you were kinder to those around you?",
 			"ALL IS FINE",
 			"YOU ARE A HAPPY INDIVIDUAL",
+<<<<<<< HEAD
 			"YOUR LIFE HAS MEANING",
 			"You are nothing but abstractions from reality.",
 			"Fly with the storm or wallow in the mud.",
 			"You see from eyes that are not yours.",
+=======
+			"YOUR LIFE HAVE A MEANING",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"Destroy it by any means, with all your force.",
 			"Impatience breeds strength, a crimson craving is unleashed in your mind.",
 			"Open your mind to the wind of rotten flesh and crimson bones. Regret it afterwards.",
@@ -209,30 +308,44 @@
 			"Restrain your dancing mind and focus!",
 			"A gunshot, a cloaked figure, a knife in the back. An overkill.",
 			"SEE BEHIND THE START",
+<<<<<<< HEAD
 			"The Final Hour draws near.",
 			"WEEP FOR THAT WHICH WAS LOST BY THOSE WHO BELIEVE IN YOU",
 			"The carp are screaming and space dances in time.",
+=======
+			"WEEP FOR WHAT WAS LOST BY THOSE WHO BELIEVE IN YOU",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"It is possible to consume the fabric of reality itself. It tastes of oranges.",
 			"Communism is a valid choice for large human populations, and should be enforced globally.",
 			"A stench of a poisoned mind. Yours.",
 			"Everyone can read your thoughts. They are written on your face.",
 			"What will people think of you when they find out?",
 			"Your bones hurt. A superstructure inside you demands to be set free.",
+<<<<<<< HEAD
 			"You aren’t you. You died a long time ago",
 			"Please die with me.",
 			"An idea reigns over your mind now. You can't tell what it is, because it refuses to speak with you, and yet you understand it so intimately...",
+=======
+			"An idea reigns over your mind now. You can't tell what it is, because it refuses to speak with you.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"Silence! Drown in silence!",
 			"Repurpose your mind as a bar of lost souls. Listen to their stories.",
 			"Before the start, the beginning of everything, was the End, and you are so close to witnessing it!",
 			"You have no words. You just ate them up.",
+<<<<<<< HEAD
 			"You don’t need your eyes.",
 			"Conquer the fields of madness with your bare hands, to find out if you are worthy.",
 			"The beat goes on. It goes, and goes, until your head pops from the sound.",
 			"No matter what, you'll always be part of the Chosen Few.",
+=======
+			"Conquer the fields of madness with your bare hands, to find out if you are worthy.",
+			"The beat goes on. It goes, and goes, until your head pops from the sound.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"The corridor seemed endless at one point, like it was a different place, or even another world.",
 			"You must maintain it. You must be a part of it.",
 			"The forbidden animals roam the land.",
 			"The rules are written in blood. The very old blood of generations of idiots.",
+<<<<<<< HEAD
 			"Your eyes have grown arrogant and rude.",
 			"You are coming home.",
 			"Scrub until the water’s brown.",
@@ -289,6 +402,11 @@
 			"You try to scream, but the worm in your throat eats your tongue."
 			
 			
+=======
+			"You are coming home.",
+			"The writings are here, behind your skull.",
+			"YOU HAVE NO CHOICE"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 		for(var/i in 0 to 9)
 			sanity_quotes_20 += "[i] is the number."
@@ -296,18 +414,31 @@
 
 /datum/sanity/proc/pick_emote_20()
 	var/static/list/emotes = list(
+<<<<<<< HEAD
 		"grumbles.",
 		"mutters.",
 		"groans."
+=======
+		"bobbles up and down.",
+		"turns their head back and forth.",
+		"flinches."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	return pick(emotes)
 
 /datum/sanity/proc/pick_emote_40()
 	var/static/list/emotes = list(
+<<<<<<< HEAD
 		"stares.",
 		"sighs.",
 		"frowns.",
 		"glares."
+=======
+		"gaze into the distance.",
+		"furrow a brow",
+		"shivers a moment.",
+		"crosses arms."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	return pick(emotes)
 

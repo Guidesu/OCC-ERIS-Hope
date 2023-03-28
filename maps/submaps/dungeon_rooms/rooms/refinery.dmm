@@ -16,8 +16,15 @@
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "e" = (
+<<<<<<< HEAD
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
+=======
+/obj/machinery/conveyor_switch/oneway{
+	id = 1
+	},
+/turf/simulated/floor/tiled/derelict/white_big_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "f" = (
 /turf/simulated/floor/tiled/derelict,
@@ -35,6 +42,10 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "j" = (
@@ -55,6 +66,10 @@
 /area/crawler)
 "m" = (
 /obj/structure/bed/chair/office/dark,
+<<<<<<< HEAD
+=======
+/obj/random/material,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/crawler)
 "n" = (
@@ -63,15 +78,24 @@
 	},
 /obj/structure/railing/grey,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+<<<<<<< HEAD
+=======
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "o" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
 "p" = (
 /turf/simulated/floor/bluegrid,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "q" = (
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
@@ -92,6 +116,10 @@
 /obj/machinery/conveyor/northeast/ccw{
 	id = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/random/material_rare,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "u" = (
@@ -99,7 +127,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "v" = (
+<<<<<<< HEAD
 /obj/machinery/light/floor,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/crawler)
 "w" = (
@@ -110,16 +141,20 @@
 /area/crawler)
 "x" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
+<<<<<<< HEAD
 /obj/machinery/conveyor_switch/oneway{
 	id = 1
 	},
 /obj/machinery/light/floor,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "y" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/structure/railing/grey{
 	dir = 8
 	},
@@ -131,12 +166,23 @@
 /area/crawler)
 "A" = (
 /obj/structure/salvageable/autolathe,
+=======
+/obj/random/material,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+"A" = (
+/obj/structure/salvageable/autolathe_os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
 "B" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+<<<<<<< HEAD
+=======
+/obj/random/material_resources,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "C" = (
@@ -155,10 +201,13 @@
 /obj/structure/plushie/beepsky,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
+<<<<<<< HEAD
 "F" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "G" = (
 /obj/machinery/conveyor/northwest{
 	id = 1
@@ -176,10 +225,18 @@
 /obj/machinery/conveyor/southwest{
 	id = 1
 	},
+<<<<<<< HEAD
+=======
+/obj/random/material_rare,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/crawler)
 "J" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/crawler)
 "K" = (
@@ -190,25 +247,65 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "L" = (
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/machinery/light/floor,
+=======
+/obj/random/material,
+/obj/random/material,
+/obj/random/material,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/crawler)
 "M" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"Q" = (
+/obj/random/material_resources,
+/turf/simulated/floor/tiled/derelict/white_big_edges,
+/area/crawler)
+"R" = (
+/obj/random/material,
+/turf/simulated/floor/tiled/derelict/white_big_edges,
+/area/crawler)
+"S" = (
+/obj/random/material_resources,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"T" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"V" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict/white_big_edges,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
 a
+<<<<<<< HEAD
 p
 p
 z
+=======
+o
+o
+o
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -220,19 +317,32 @@ d
 q
 q
 q
+<<<<<<< HEAD
 F
 F
+=======
+T
+T
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
 a
+<<<<<<< HEAD
 e
+=======
+f
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 f
 q
 M
 q
 f
+<<<<<<< HEAD
 e
+=======
+f
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
@@ -241,15 +351,25 @@ d
 d
 M
 q
+<<<<<<< HEAD
 q
 F
 F
+=======
+Q
+T
+T
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
 b
 f
+<<<<<<< HEAD
 f
+=======
+S
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 r
 M
 D
@@ -273,7 +393,11 @@ c
 a
 j
 t
+<<<<<<< HEAD
 a
+=======
+q
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 C
 G
 a
@@ -284,8 +408,13 @@ c
 a
 k
 a
+<<<<<<< HEAD
 a
 a
+=======
+q
+e
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 H
 a
 c
@@ -318,7 +447,11 @@ g
 m
 q
 q
+<<<<<<< HEAD
 q
+=======
+R
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 J
 a
 a
@@ -327,7 +460,11 @@ a
 a
 h
 v
+<<<<<<< HEAD
 q
+=======
+V
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 A
 E
 L

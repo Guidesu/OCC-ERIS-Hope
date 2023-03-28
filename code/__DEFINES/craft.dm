@@ -2,12 +2,20 @@
 #define CRAFT_ON_FLOOR     2
 #define CRAFT_BATCH        4
 
+<<<<<<< HEAD
 #define CRAFT_MATERIAL		"material"
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define CRAFT_WITH_USER_DIR  0
 #define CRAFT_TOWARD_USER    1
 #define CRAFT_DEFAULT_DIR    2
 
+<<<<<<< HEAD
+=======
+#define CRAFT_MATERIAL		"material"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define CRAFT_REFERENCE 0
 #define CRAFT_VARIATION 1
 

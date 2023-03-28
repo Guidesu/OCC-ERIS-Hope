@@ -16,6 +16,10 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
             // change ui styling to "excelsior mode"
 			excelsiorMode: function() {
 				$('body').css("background-color","#d0854c");
@@ -29,13 +33,21 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
             // change ui styling to "carrion mode"
 			carrionMode: function() {
 				$('body').css("background-color","#230a04");
 				$('body').css("background-image","url('uiBackground-Carrion.png')");
 				$('body').css("background-position","centre");
 				$('body').css("background-repeat","repeat-x");
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return '';
 			},
             // change ui styling to "meat mode"

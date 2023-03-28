@@ -18,6 +18,7 @@
 
 	return null//If we get here, the holder must be buried many layers deep in nested containers, or else is somehow contained in nullspace
 
+<<<<<<< HEAD
 /atom/proc/add_overlay(overlay)
 	ASSERT(overlay)
 
@@ -25,6 +26,8 @@
 		add_overlays(image(icon,icon_state = overlay))
 	else
 		add_overlays(overlay)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /atom/proc/in_maintenance()
 	var/area/A = get_area(src)

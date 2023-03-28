@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //HTML ENCODE/DECODE + RUS TO CP1251 TODO: OVERRIDE html_encode after fix
 /proc/rhtml_encode(var/msg)
 	msg = replacetext(msg, "<", "&lt;")
@@ -201,3 +202,7 @@ var/global/list/cyrillic_unicode_keys = list(
 	for(var/key in cyrillic_unicode_keys)
 		text = replacetext(text, key[2], key[1])
 	return text
+=======
+/* This File Intentionally Left Blank */
+/* If I have to remove it again, I'm putting it in the gitignore. */
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

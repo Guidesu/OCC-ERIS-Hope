@@ -3,6 +3,7 @@
 /turf/space,
 /area/space)
 "ab" = (
+<<<<<<< HEAD
 /turf/unsimulated/wall,
 /area/space)
 "ac" = (
@@ -6516,6 +6517,17 @@
 	icon_state = "dark"
 	},
 /area/centcom/evac)
+=======
+/obj/map_data/eris{
+	height = 1
+	},
+/turf/space,
+/area/space)
+"QI" = (
+/obj/effect/overmap/ship/eris,
+/turf/space,
+/area/space)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 aa
@@ -6527,6 +6539,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -6718,6 +6731,9 @@ aa
 aa
 aa
 qI
+=======
+ab
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 aa
@@ -6729,6 +6745,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -6920,6 +6937,9 @@ aa
 aa
 aa
 aa
+=======
+QI
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (3,1,1) = {"
 aa
@@ -6932,6 +6952,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -7122,6 +7143,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (4,1,1) = {"
 aa
@@ -7134,6 +7157,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -7324,6 +7348,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (5,1,1) = {"
 aa
@@ -7336,6 +7362,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -7526,6 +7553,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (6,1,1) = {"
 aa
@@ -7538,6 +7567,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -7728,6 +7758,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (7,1,1) = {"
 aa
@@ -7740,6 +7772,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -7930,6 +7963,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (8,1,1) = {"
 aa
@@ -7942,6 +7977,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -8132,6 +8168,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (9,1,1) = {"
 aa
@@ -8144,6 +8182,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -8334,6 +8373,8 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (10,1,1) = {"
 aa
@@ -8346,6 +8387,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -46916,4 +46958,6 @@ aa
 aa
 aa
 aa
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

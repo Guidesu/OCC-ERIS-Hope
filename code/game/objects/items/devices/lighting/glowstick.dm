@@ -27,13 +27,17 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.visible_message(
-			"[src] slowly burn out.",
-			"[src] slowly burn out in your hand."
+			"[src] slowly burns out.",
+			"[src] slowly burns out in your hand."
 		)
 	else
-		visible_message("[src] slowly burn out")
+		visible_message("[src] slowly burns out")
 
+<<<<<<< HEAD
 /obj/item/device/lighting/glowstick/on_update_icon()
+=======
+/obj/item/device/lighting/glowstick/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(!fuel)
 		icon_state = "[initial(icon_state)]-empty"
@@ -42,7 +46,11 @@
 	else if(on)
 		var/image/I = image(icon,"[initial(icon_state)]-on",color)
 		I.blend_mode = BLEND_ADD
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		item_state = "[initial(icon_state)]-on"
 		set_light(brightness_on)
 	else
@@ -74,7 +82,13 @@
 	color = "#49F37C"
 	icon_state = "glowstick"
 	action_button_name = null
+<<<<<<< HEAD
 	brightness_on = 4 //Same as a flare
+=======
+	brightness_on = 6 //Same as a flare
+	light_power = 4
+	//So were accully viable for what we want to do, and that is light up a large area
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	max_fuel = 4000
 
 /obj/item/device/lighting/glowstick/red

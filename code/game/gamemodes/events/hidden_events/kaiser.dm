@@ -22,6 +22,7 @@ It will also bring a hoard of roaches with it.
 	endWhen = 0
 	var/failure = FALSE
 	var/list/reward = list(
+<<<<<<< HEAD
 		/obj/structure/scrap_spawner/vehicle,
 		/obj/structure/scrap_spawner/guns,
 		/obj/structure/scrap_spawner/science,
@@ -31,6 +32,17 @@ It will also bring a hoard of roaches with it.
 		/obj/spawner/mob/roaches/cluster,
 		/obj/spawner/mob/roaches/cluster,
 		/obj/spawner/mob/roaches/cluster
+=======
+		/obj/structure/scrap/vehicle,
+		/obj/structure/scrap/guns,
+		/obj/structure/scrap/science,
+	)
+	var/list/kaiser_rutinue = list(
+		/obj/random/cluster/roaches,
+		/obj/random/cluster/roaches,
+		/obj/random/cluster/roaches,
+		/obj/random/cluster/roaches
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 	var/obj/structure/burrow/enter_burrow
 	var/obj/structure/burrow/exit_burrow
@@ -52,12 +64,16 @@ It will also bring a hoard of roaches with it.
 	spawn_mobs()
 
 /datum/event/kaiser/proc/spawn_mobs()
+<<<<<<< HEAD
 	var/spawnedroach
 	if(prob(1))
 		spawnedroach = /mob/living/carbon/superior_animal/roach/kaiser/kaiserin
 	else
 		spawnedroach = /mob/living/carbon/superior_animal/roach/kaiser
 	new spawnedroach(enter_burrow)
+=======
+	new /mob/living/carbon/superior_animal/roach/kaiser(enter_burrow)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/R in kaiser_rutinue)
 		new R(enter_burrow)
 
@@ -68,7 +84,11 @@ It will also bring a hoard of roaches with it.
 
 	var/i = floors.len
 	for(i, i>0, i--)
+<<<<<<< HEAD
 		var/obj/structure/scrap_spawner/scrap = pick(reward)
+=======
+		var/obj/structure/scrap/scrap = pick(reward)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/turf/simulated/floor/floor = pick(floors)
 		new scrap(floor)
 		floors.Remove(floor) // To avoid multiple scrap piles on one tile

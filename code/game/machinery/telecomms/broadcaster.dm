@@ -3,7 +3,6 @@
 /*
 	The broadcaster sends processed messages to all radio devices in the game. They
 	do not have to be headsets; intercoms and station-bounced radios suffice.
-
 	They receive their message from a server after the message has been logged.
 */
 
@@ -12,6 +11,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 /obj/machinery/telecomms/broadcaster
 	name = "subspace broadcaster"
+<<<<<<< HEAD
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	idle_power_usage = 25
@@ -19,6 +19,16 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	produces_heat = 0
 	delay = 7
 	circuit = /obj/item/electronics/circuitboard/telecomms/broadcaster
+=======
+	icon = 'icons/obj/machines/telecomms.dmi'
+	icon_state = "broadcaster"
+	desc = "A dish-shaped machine used to broadcast processed subspace signals."
+	idle_power_usage = 250 //Less then others base tends to be 600
+	machinetype = 5
+	produces_heat = 0
+	delay = 7
+	circuit = /obj/item/circuitboard/telecomms/broadcaster
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 	// Don't broadcast rejected signals
@@ -110,6 +120,10 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 /obj/machinery/telecomms/allinone
 	name = "telecommunications mainframe"
+<<<<<<< HEAD
+=======
+	icon = 'icons/obj/machines/telecomms.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommuniations processing."
 	use_power = NO_POWER_USE
@@ -159,60 +173,44 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 
 /**
-
 	Here is the big, bad function that broadcasts a message given the appropriate
 	parameters.
-
 	@param connection:
 		The datum generated in radio.dm, stored in signal.data["connection"].
-
 	@param M:
 		Reference to the mob/speaker, stored in signal.data["mob"]
-
 	@param vmask:
 		Boolean value if the mob is "hiding" its identity via voice mask, stored in
 		signal.data["vmask"]
-
 	@param vmessage:
 		If specified, will display this as the message; such as "chimpering"
 		for monkies if the mob is not understood. Stored in signal.data["vmessage"].
-
 	@param radio:
 		Reference to the radio broadcasting the message, stored in signal.data["radio"]
-
 	@param message:
 		The actual string message to display to mobs who understood mob M. Stored in
 		signal.data["message"]
-
 	@param name:
 		The name to display when a mob receives the message. signal.data["name"]
-
 	@param job:
 		The name job to display for the AI when it receives the message. signal.data["job"]
-
 	@param realname:
 		The "real" name associated with the mob. signal.data["realname"]
-
 	@param vname:
 		If specified, will use this name when mob M is not understood. signal.data["vname"]
-
 	@param data:
 		If specified:
 				1 -- Will only broadcast to intercoms
-				2 -- Will only broadcast to intercoms and station-bounced radios
+				2 -- Will only broadcast to intercoms and ham radios
 				3 -- Broadcast to syndicate frequency
 				4 -- AI can't track down this person. Useful for imitation broadcasts where you can't find the actual mob
-
 	@param compression:
 		If 0, the signal is audible
 		If nonzero, the signal may be partially inaudible or just complete gibberish.
-
 	@param level:
 		The list of Z levels that the sending radio is broadcasting to. Having 0 in the list broadcasts on all levels
-
 	@param freq
 		The frequency of the signal
-
 **/
 
 /proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
@@ -242,7 +240,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 
-			if(istype(R, /obj/item/device/radio/headset))
+			if(istype(R, /obj/item/device/radio/headset) && !R.adhoc_fallback)
 				continue
 
 			if(R.receive_range(display_freq, level) > -1)
@@ -280,7 +278,11 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	for (var/mob/R in receive)
+<<<<<<< HEAD
 		SEND_SIGNAL(radio, COMSIG_MESSAGE_RECEIVED, R)
+=======
+		LEGACY_SEND_SIGNAL(radio, COMSIG_MESSAGE_RECEIVED, R)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	  /* --- Loop through the receivers and categorize them --- */
 		if(isnewplayer(R)) // we don't want new players to hear messages. rare but generates runtimes.
 			continue
@@ -321,8 +323,12 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
   /* ###### Begin formatting and sending the message ###### */
 	if (length(heard_masked) || length(heard_normal) || length(heard_voice) || length(heard_garbled) || length(heard_gibberish))
 		if(text_size)
+<<<<<<< HEAD
 			//Occulus Edit: This now scales properly.
 			message = "<span style='font-size:[max(text_size, 1)]em'>[message]</span>"
+=======
+			message = "<FONT size='[max(text_size, 1)]'>[message]</FONT>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	  /* --- Some miscellaneous variables to format the string output --- */
 		var/freq_text = get_frequency_name(display_freq)
@@ -364,15 +370,15 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_medical += blackbox_msg
 				if(ENG_FREQ)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(SEC_FREQ, BLS_FREQ, MAR_FREQ)
 					blackbox.msg_security += blackbox_msg
 				if(DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
 				if(SYND_FREQ)
 					blackbox.msg_syndicate += blackbox_msg
-				if(SUP_FREQ)
+				if(SUP_FREQ, PRO_FREQ)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(SRV_FREQ, PT_BT_FREQ, PT_RT_FREQ, PT_YT_FREQ, PT_GT_FREQ)
 					blackbox.msg_service += blackbox_msg
 				if(NT_FREQ)
 					blackbox.msg_nt += blackbox_msg
@@ -388,33 +394,33 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name)
+				R.hear_radio(message,verbage, speaking, part_a, part_b, part_c, M, 0, name)
 
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 
 		if (length(heard_normal))
 			for (var/mob/R in heard_normal)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname)
+				R.hear_radio(message, verbage, speaking, part_a, part_b, part_c, M, 0, realname)
 
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 
 		if (length(heard_voice))
 			for (var/mob/R in heard_voice)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname)
+				R.hear_radio(message,verbage, speaking, part_a, part_b, part_c, M,0, vname)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")
 
 		if (length(heard_garbled))
 			for (var/mob/R in heard_garbled)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 1, vname)
+				R.hear_radio(message, verbage, speaking, part_a, part_b, part_c, M, 1, vname)
 
 
 		/* --- Complete gibberish. Usually happens when there's a compressed message --- */
 
 		if (length(heard_gibberish))
 			for (var/mob/R in heard_gibberish)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 1)
+				R.hear_radio(message, verbage, speaking, part_a, part_b, part_c, M, 1)
 
 	return 1
 
@@ -541,15 +547,15 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_medical += blackbox_msg
 				if(ENG_FREQ)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(SEC_FREQ, BLS_FREQ, MAR_FREQ)
 					blackbox.msg_security += blackbox_msg
 				if(DTH_FREQ)
 					blackbox.msg_deathsquad += blackbox_msg
 				if(SYND_FREQ)
 					blackbox.msg_syndicate += blackbox_msg
-				if(SUP_FREQ)
+				if(SUP_FREQ, PRO_FREQ)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(SRV_FREQ, PT_BT_FREQ, PT_RT_FREQ, PT_YT_FREQ, PT_GT_FREQ)
 					blackbox.msg_service += blackbox_msg
 				if(NT_FREQ)
 					blackbox.msg_nt += blackbox_msg
@@ -625,4 +631,3 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	//log_world("Level: [signal.data["level"]] - Done: [signal.data["done"]]")
 
 	return signal
-

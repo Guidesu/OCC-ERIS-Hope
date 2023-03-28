@@ -77,12 +77,14 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 					rights |= R_FUN
 				if("server")
 					rights |= R_SERVER
+				if("sound")
+					rights |= R_SOUND
 				if("debug")
 					rights |= R_DEBUG
 				if("permissions", "rights")
 					rights |= R_PERMISSIONS
 				if("everything", "host", "all")
-					rights |= (R_ADMIN | R_FUN | R_SERVER | R_DEBUG | R_PERMISSIONS | R_MOD | R_MENTOR)
+					rights |= (R_ADMIN | R_FUN | R_SERVER | R_DEBUG | R_PERMISSIONS | R_MOD | R_MENTOR | R_SOUND)
 				if("mod")
 					rights |= R_MOD
 				if("mentor")
@@ -123,7 +125,11 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 			config.admin_legacy_system = 1
 			load_admins_legacy()
 			return FALSE
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /proc/load_admins()
@@ -156,7 +162,7 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 	if(!dbcon.IsConnected())
 		return flag
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT fun, server, debug, permissions, mentor, moderator, admin, host FROM permissions WHERE player_id = [player_id]")
+	var/DBQuery/query = dbcon.NewQuery("SELECT fun, server, debug, permissions, mentor, moderator, sound, admin, host FROM permissions WHERE player_id = [player_id]")
 	if(!query.Execute())
 		return flag
 
@@ -169,8 +175,9 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 			"permissions" = query.item[4],
 			"mentor" = query.item[5],
 			"moderator" = query.item[6],
-			"admin" = query.item[7],
-			"host" = query.item[8],
+			"sound" = query.item[7],
+			"admin" = query.item[8],
+			"host" = query.item[9],
 		)
 
 	for(var/key in permissions)

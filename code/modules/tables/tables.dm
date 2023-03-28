@@ -7,7 +7,11 @@
 var/list/custom_table_appearance = list(
 					"Bar - special" 	= list("bar table", "Well designed bar table.", "bar_table", CUSTOM_TABLE_ICON_REPLACE, TRUE),
 					"Gambling" 			= list("gambling table", null, "carpet", CUSTOM_TABLE_COVERING, FALSE),
+<<<<<<< HEAD
 					"OneStar"			= list("onestar", "Very durable table made by an extinct empire", "onestar", CUSTOM_TABLE_ICON_REPLACE, TRUE )
+=======
+					"Onestar"			= list("greyson table", "Very durable table made by an extinct megacorp.", "onestar", CUSTOM_TABLE_ICON_REPLACE, TRUE )
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 										)
 
 
@@ -23,8 +27,8 @@ var/list/custom_table_appearance = list(
 	throwpass = 1
 	matter = list(MATERIAL_STEEL = 2)
 	var/flipped = 0
-	var/maxhealth = 10
-	var/health = 10
+	maxHealth = 10
+	health = 10
 
 	// For racks.
 	var/can_reinforce = 1
@@ -41,29 +45,33 @@ var/list/custom_table_appearance = list(
 	var/list/connections = list("nw0", "ne0", "sw0", "se0")
 
 /obj/structure/table/get_matter()
+<<<<<<< HEAD
 	var/list/matter = ..()
 	. = matter.Copy()
+=======
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(material)
 		LAZYAPLUS(., material.name, 1)
 	if(reinforced)
 		LAZYAPLUS(., reinforced.name, 1)
 
 /obj/structure/table/proc/update_material()
-	var/old_maxhealth = maxhealth
+	var/old_maxHealth = maxHealth
 	if(!material)
-		maxhealth = 10
+		maxHealth = 10
 		if(can_plate)
 			layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 		else
 			layer = TABLE_LAYER
 	else
-		maxhealth = material.integrity / 2
+		maxHealth = material.integrity / 2
 		layer = TABLE_LAYER
 
 		if(reinforced)
-			maxhealth += reinforced.integrity / 2
+			maxHealth += reinforced.integrity / 2
 
-	health += maxhealth - old_maxhealth
+	health += maxHealth - old_maxHealth
 
 /obj/structure/table/proc/take_damage(amount)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
@@ -97,17 +105,27 @@ var/list/custom_table_appearance = list(
 		T.update_icon()
 	. = ..()
 
+<<<<<<< HEAD
 /obj/structure/table/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(isliving(mover))
 		var/mob/living/L = mover
 		if(L.weakened)
 			return 1
 	return ..()
+=======
+/obj/structure/table/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
+	if(istype(user))
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.do_attack_animation(src)
+		visible_message(SPAN_DANGER("[user] smashes into [src]!"))
+		take_damage(damage)
+		return 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
+	if(health < maxHealth)
+		switch(health / maxHealth)
 			if(0.0 to 0.5)
 				to_chat(user, SPAN_WARNING("It looks severely damaged!"))
 			if(0.25 to 0.5)
@@ -122,7 +140,7 @@ var/list/custom_table_appearance = list(
 		usable_qualities.Add(QUALITY_SCREW_DRIVING)
 	if(custom_appearance)
 		usable_qualities.Add(QUALITY_PRYING)
-	if(health < maxhealth)
+	if(health < maxHealth)
 		usable_qualities.Add(QUALITY_WELDING)
 	if(!reinforced && !custom_appearance)
 		usable_qualities.Add(QUALITY_BOLT_TURNING)
@@ -143,12 +161,19 @@ var/list/custom_table_appearance = list(
 			return
 
 		if(QUALITY_PRYING)
+<<<<<<< HEAD
 			if(user.a_intent == I_HELP)//Occulus Edit
 				return ..()
 			if(custom_appearance)
 				/*if(custom_appearance[5] && !reinforced) SYZYGY Edit - This was preventing people from modifying the bar tables at all. Fixed!
 					to_chat(user, SPAN_WARNING("This type of design can't be applied to simple tables. Reinforce it first."))
 					return*/
+=======
+			if(custom_appearance)
+				if(custom_appearance[5] && !reinforced)
+					to_chat(user, SPAN_WARNING("This type of design can't be applied to simple tables. Reinforce it first."))
+					return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY,  required_stat = STAT_MEC))
 					user.visible_message(
 						SPAN_NOTICE("\The [user] removes the carpet from \the [src]."),
@@ -162,17 +187,24 @@ var/list/custom_table_appearance = list(
 			return
 
 		if(QUALITY_WELDING)
+<<<<<<< HEAD
 			if(user.a_intent == I_HELP)//Occulus Edit
 				return ..()
 			if(health < maxhealth)
+=======
+			if(health < maxHealth)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY,  required_stat = STAT_MEC))
 					user.visible_message(SPAN_NOTICE("\The [user] repairs some damage to \the [src]."),SPAN_NOTICE("You repair some damage to \the [src]."))
-					health = min(health+(maxhealth/5), maxhealth)//max(health+(maxhealth/5), maxhealth) // 20% repair per application
+					health = min(health+(maxHealth/5), maxHealth)//max(health+(maxHealth/5), maxHealth) // 20% repair per application
 			return
 
 		if(QUALITY_BOLT_TURNING)
+<<<<<<< HEAD
 			if(user.a_intent == I_HELP)//Occulus Edit
 				return ..()
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!reinforced && !custom_appearance)
 				if(material)
 					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY,  required_stat = STAT_MEC))
@@ -342,7 +374,11 @@ var/list/custom_table_appearance = list(
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
 			I = image(icon, dir = 1<<(i-1), icon_state = connections[i])
+<<<<<<< HEAD
 			add_overlays(I)
+=======
+			add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		//If there no any custom appearance or its an overlay, we use standard images
 		if(!custom_appearance || (custom_appearance && !(custom_appearance[4] == CUSTOM_TABLE_ICON_REPLACE)))
@@ -353,23 +389,39 @@ var/list/custom_table_appearance = list(
 						I = image(icon, "glass_[connections[i]]", dir = 1<<(i-1))
 						if(material.icon_colour)
 							I.color = material.icon_colour
+<<<<<<< HEAD
 						add_overlays(I)
 						var/material/glass/G = material
 						if (G.is_reinforced())
 							I = image(icon, "rglass_[connections[i]]", dir = 1<<(i-1))
 							add_overlays(I)
+=======
+						add_overlay(I)
+						var/material/glass/G = material
+						if (G.is_reinforced())
+							I = image(icon, "rglass_[connections[i]]", dir = 1<<(i-1))
+							add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				else if (istype(material, /material/wood))
 					for(var/i = 1 to 4)
 						I = image(icon, "wood_[connections[i]]", dir = 1<<(i-1))
+<<<<<<< HEAD
 						add_overlays(I)
+=======
+						add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				else
 					for(var/i = 1 to 4)
 						I = image(icon, "[material.icon_base]_[connections[i]]", dir = 1<<(i-1))
 						if(material.icon_colour) I.color = material.icon_colour
 						I.alpha = 255 * material.opacity
+<<<<<<< HEAD
 						add_overlays(I)
+=======
+						add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			// Reinforcements
 			if(reinforced)
@@ -377,12 +429,20 @@ var/list/custom_table_appearance = list(
 					I = image(icon, "[reinforced.icon_reinf]_[connections[i]]", dir = 1<<(i-1))
 					I.color = material.icon_colour
 					I.alpha = 255 * reinforced.opacity
+<<<<<<< HEAD
 					add_overlays(I)
+=======
+					add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//Custom appearance
 		if(custom_appearance)
 			for(var/i = 1 to 4)
 				I = image(icon, "[custom_appearance[3]]_[connections[i]]", dir = 1<<(i-1))
+<<<<<<< HEAD
 				add_overlays(I)
+=======
+				add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		cut_overlays()
 		var/type = 0
@@ -403,16 +463,28 @@ var/list/custom_table_appearance = list(
 		icon_state = "flip[type]"
 		if(custom_appearance && custom_appearance[4] == CUSTOM_TABLE_ICON_REPLACE)
 			var/image/I = image(icon, "[custom_appearance[3]]_flip[type]")
+<<<<<<< HEAD
 			add_overlays(I)
 		else if(material)
 			if (istype(material, /material/wood))
 				var/image/I = image(icon, "wood_flip[type]")
 				add_overlays(I)
+=======
+			add_overlay(I)
+		else if(material)
+			if (istype(material, /material/wood))
+				var/image/I = image(icon, "wood_flip[type]")
+				add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				var/image/I = image(icon, "[material.icon_base]_flip[type]")
 				I.color = material.icon_colour
 				I.alpha = 255 * material.opacity
+<<<<<<< HEAD
 				add_overlays(I)
+=======
+				add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			name = "[material.display_name] table"
 		else
 			name = "table frame"
@@ -421,10 +493,17 @@ var/list/custom_table_appearance = list(
 			var/image/I = image(icon, "[reinforced.icon_reinf]_flip[type]")
 			I.color = reinforced.icon_colour
 			I.alpha = 255 * reinforced.opacity
+<<<<<<< HEAD
 			add_overlays(I)
 
 		if(custom_appearance && custom_appearance[4] == CUSTOM_TABLE_COVERING)
 			add_overlays("[custom_appearance[3]]_flip[type]")
+=======
+			add_overlay(I)
+
+		if(custom_appearance && custom_appearance[4] == CUSTOM_TABLE_COVERING)
+			add_overlay("[custom_appearance[3]]_flip[type]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/proc/update_connections(propagate=0)

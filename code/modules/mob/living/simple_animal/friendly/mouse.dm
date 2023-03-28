@@ -1,8 +1,12 @@
 /mob/living/simple_animal/mouse
-	name = "mouse"
-	real_name = "mouse"
+	name = "rat"
+	real_name = "rat"
 	desc = "It's a small, disgusting rodent, often found being annoying, and aiding in the spread of disease."
+<<<<<<< HEAD
 	icon = 'icons/mob/mouse.dmi'
+=======
+	icon = 'icons/mob/mobs-mouse.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "mouse_gray"
 	item_state = "mouse_gray"
 	icon_living = "mouse_gray"
@@ -26,7 +30,11 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps on"
+<<<<<<< HEAD
 	density = FALSE
+=======
+	density = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	layer = MOB_LAYER
 	mob_size = MOB_MINISCULE
 	min_oxy = 16 //Require atleast 16kPA oxygen
@@ -86,10 +94,6 @@
 					squeals++
 					last_squealgain = world.time
 
-	else
-		if ((world.time - timeofdeath) > decompose_time)
-			dust()
-
 
 //Pixel offsetting as they scamper around
 /mob/living/simple_animal/mouse/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
@@ -115,7 +119,7 @@
 	real_name = name
 
 	if(!body_color)
-		body_color = pick( list("brown","gray","white") )
+		body_color = pick( list("brown","gray","white","hooded","irish") )
 	icon_state = "mouse_[body_color]"
 	item_state = "mouse_[body_color]"
 	icon_living = "mouse_[body_color]"
@@ -127,6 +131,13 @@
 		holder_type = /obj/item/holder/mouse/gray
 	if (body_color == "white")
 		holder_type = /obj/item/holder/mouse/white
+<<<<<<< HEAD
+=======
+	if (body_color == "hooded")
+		holder_type = /obj/item/holder/mouse/hooded
+	if (body_color == "irish")
+		holder_type = /obj/item/holder/mouse/irish
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//verbs += /mob/living/simple_animal/mouse/proc/squeak
 	//verbs += /mob/living/simple_animal/mouse/proc/squeak_soft
@@ -240,11 +251,18 @@
 
 /mob/living/simple_animal/mouse/death()
 	layer = MOB_LAYER
+<<<<<<< HEAD
 	if (stat != DEAD)
 		if(ckey || prob(35))
 			squeak_loud(0)//deathgasp
 
 		addtimer(CALLBACK(src, .proc/dust), decompose_time)
+=======
+	if(ckey || prob(35))
+		squeak_loud(0)//deathgasp
+
+	addtimer(CALLBACK(src, .proc/dust), decompose_time)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	..()
 
@@ -283,11 +301,28 @@
 	icon_state = "mouse_brown"
 	icon_rest = "mouse_brown_sleep"
 	holder_type = /obj/item/holder/mouse/brown
+<<<<<<< HEAD
+=======
+
+/mob/living/simple_animal/mouse/hooded
+	body_color = "hooded"
+	icon_state = "mouse_hooded"
+	icon_rest = "mouse_hooded_sleep"
+	holder_type = /obj/item/holder/mouse/hooded
+
+/mob/living/simple_animal/mouse/irish
+	body_color = "irish"
+	icon_state = "mouse_irish"
+	icon_rest = "mouse_irish_sleep"
+	holder_type = /obj/item/holder/mouse/irish
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/simple_animal/mouse/brown/Tom
 	name = "Tom"
 	real_name = "Tom"
 	desc = "Jerry the cat is not amused."
+	colony_friend = TRUE
+	friendly_to_colony = TRUE
 
 /mob/living/simple_animal/mouse/brown/Tom/Initialize()
 	. = ..()
@@ -297,6 +332,3 @@
 
 /mob/living/simple_animal/mouse/cannot_use_vents()
 	return
-
-
-

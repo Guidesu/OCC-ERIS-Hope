@@ -1,11 +1,16 @@
 /obj/structure/ominous
 	name = "ominous generator"
 	icon_state = "ominous"
+<<<<<<< HEAD
 	desc = "It looks like ancient, and strange generator."
 	icon = 'icons/obj/machines/excelsior/objects.dmi'
 	rarity_value = 10
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_OMINOUS
+=======
+	desc = "It looks like an ancient and strange generator."
+	icon = 'icons/obj/machines/excelsior/objects.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/cooldown = FALSE
 	var/entropy_value = 3
 
@@ -57,4 +62,31 @@
 	if(world.time < last_use + 66 SECONDS)
 		return
 	last_use = world.time
+<<<<<<< HEAD
 	teleport()
+=======
+	teleport()
+
+/obj/structure/invislight
+	name = "invisible light"
+	desc = "You should not be able to see this. Contact the nearest bluespace tech."
+	icon = null
+	layer = HIDING_MOB_PLANE
+	invisibility = 101
+	anchored = TRUE
+
+/obj/structure/invislight/New()
+	set_light(7, 5, "#999999")
+	. = ..()
+
+/obj/structure/invislightsmall
+	name = "small invisible light"
+	icon = null
+	layer = HIDING_MOB_PLANE
+	invisibility = 101
+	anchored = TRUE
+
+/obj/structure/invislightsmall/New()
+	set_light(1, 1, "#999999")
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

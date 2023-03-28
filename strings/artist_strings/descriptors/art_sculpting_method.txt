@@ -1,9 +1,13 @@
 carved onto
 sculpted onto
 hammered onto
+<<<<<<< HEAD
 printed onto
 embossed onto
 enscribed onto
 etched onto
 carved out of
 fletched out of
+=======
+printed onto
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

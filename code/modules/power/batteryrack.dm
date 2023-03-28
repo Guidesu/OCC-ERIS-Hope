@@ -9,7 +9,11 @@
 	input_level_max = 0
 	output_level_max = 0
 	icon_state = "gsmes"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/batteryrack
+=======
+	circuit = /obj/item/circuitboard/batteryrack
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
@@ -32,7 +36,11 @@
 	capacity = C * 40   //Basic cells are such crap. Hyper cells needed to get on normal SMES levels.
 
 
+<<<<<<< HEAD
 /obj/machinery/power/smes/batteryrack/on_update_icon()
+=======
+/obj/machinery/power/smes/batteryrack/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(stat & BROKEN)	return
 
@@ -48,6 +56,7 @@
 		br_cache[7] = image('icons/obj/power.dmi', "gsmes_og4")
 
 	if (output_attempt)
+<<<<<<< HEAD
 		add_overlays(br_cache[1])
 	if(inputting)
 		add_overlays(br_cache[2])
@@ -55,6 +64,15 @@
 	var/clevel = chargedisplay()
 	if(clevel>0)
 		add_overlays(br_cache[3+clevel])
+=======
+		add_overlay(br_cache[1])
+	if(inputting)
+		add_overlay(br_cache[2])
+
+	var/clevel = chargedisplay()
+	if(clevel>0)
+		add_overlay(br_cache[3+clevel])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 
@@ -103,15 +121,24 @@
 /obj/machinery/power/smes/batteryrack/makeshift
 	name = "makeshift PSU"
 	desc = "A rack of batteries connected by a mess of wires posing as a PSU."
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/apc
 	var/overcharge_percent = 0
 
 
 /obj/machinery/power/smes/batteryrack/makeshift/on_update_icon()
+=======
+	circuit = /obj/item/circuitboard/apc
+	var/overcharge_percent = 0
+
+
+/obj/machinery/power/smes/batteryrack/makeshift/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(stat & BROKEN)	return
 
 	if (output_attempt)
+<<<<<<< HEAD
 		add_overlays(br_cache[1])
 	if(inputting)
 		add_overlays(br_cache[2])
@@ -121,6 +148,17 @@
 		var/clevel = chargedisplay()
 		if(clevel>0)
 			add_overlays(br_cache[3+clevel])
+=======
+		add_overlay(br_cache[1])
+	if(inputting)
+		add_overlay(br_cache[2])
+	if (overcharge_percent > 100)
+		add_overlay(br_cache[3])
+	else
+		var/clevel = chargedisplay()
+		if(clevel>0)
+			add_overlay(br_cache[3+clevel])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 //This mess of if-elses and magic numbers handles what happens if the engies don't pay attention and let it eat too much charge
@@ -176,7 +214,7 @@
 /obj/machinery/power/smes/batteryrack/makeshift/Process()
 	if(stat & BROKEN)	return
 
-	//store machine state to see if we need to update the icon overlays
+	//store machine state to see if we need to update the icon over-lays
 	var/last_disp = chargedisplay()
 	var/last_chrg = inputting
 	var/last_onln = output_attempt

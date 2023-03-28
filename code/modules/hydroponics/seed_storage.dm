@@ -18,12 +18,17 @@
 	return 0
 
 /obj/machinery/seed_storage
-	name = "Seed storage"
+	name = "SeedMaster"
 	desc = "It stores, sorts, and dispenses seeds."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "seeds"
+<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
+=======
+	density = 1
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 100
 
@@ -42,22 +47,25 @@
 			add(O)
 
 /obj/machinery/seed_storage/random // This is mostly for testing, but I guess admins could spawn it
-	name = "Random seed storage"
+	name = "random SeedMaster"
 	scanner = list("stats", "produce", "soil", "temperature", "light")
 	starting_seeds = list(/obj/item/seeds/random = 50)
 
 /obj/machinery/seed_storage/garden
-	name = "Garden seed storage"
+	name = "garden SeedMaster"
 	scanner = list("stats")
 	starting_seeds = list(
 		/obj/item/seeds/appleseed = 3,
 		/obj/item/seeds/bananaseed = 3,
 		/obj/item/seeds/berryseed = 3,
+		/obj/item/seeds/blueberryseed = 3,
+		/obj/item/seeds/brootseed = 2,
 		/obj/item/seeds/cabbageseed = 3,
 		/obj/item/seeds/carrotseed = 3,
 		/obj/item/seeds/chantermycelium = 3,
 		/obj/item/seeds/cherryseed = 3,
 		/obj/item/seeds/chiliseed = 3,
+		/obj/item/seeds/cinnamonseed = 2,
 		/obj/item/seeds/cocoapodseed = 3,
 		/obj/item/seeds/cornseed = 3,
 		/obj/item/seeds/eggplantseed = 3,
@@ -65,9 +73,11 @@
 		/obj/item/seeds/grassseed = 3,
 		/obj/item/seeds/lemonseed = 3,
 		/obj/item/seeds/limeseed = 3,
+		/obj/item/seeds/mintseed = 2,
 		/obj/item/seeds/mtearseed = 2,
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/pineappleseed = 2,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
 		/obj/item/seeds/potatoseed = 3,
@@ -77,7 +87,7 @@
 		/obj/item/seeds/sugarcaneseed = 3,
 		/obj/item/seeds/sunflowerseed = 3,
 		/obj/item/seeds/shandseed = 2,
-		/obj/item/seeds/tobaccoseed = 3,
+		/obj/item/seeds/strawberryseed = 3,
 		/obj/item/seeds/tomatoseed = 3,
 		/obj/item/seeds/towermycelium = 3,
 		/obj/item/seeds/watermelonseed = 3,
@@ -86,31 +96,38 @@
 	)
 
 /obj/machinery/seed_storage/xenobotany
-	name = "Xenobotany seed storage"
+	name = "xenobotany SeedMaster"
 	scanner = list("stats", "produce", "soil", "temperature", "light")
-	starting_seeds = list(/obj/item/seeds/ambrosiavulgarisseed = 3,
+	starting_seeds = list(
+		/obj/item/seeds/ambrosiavulgarisseed = 3,
 		/obj/item/seeds/appleseed = 3,
 		/obj/item/seeds/amanitamycelium = 2,
 		/obj/item/seeds/bananaseed = 3,
 		/obj/item/seeds/berryseed = 3,
+		/obj/item/seeds/blueberryseed = 3,
+		/obj/item/seeds/brootseed = 2,
 		/obj/item/seeds/cabbageseed = 3,
 		/obj/item/seeds/carrotseed = 3,
 		/obj/item/seeds/chantermycelium = 3,
 		/obj/item/seeds/cherryseed = 3,
 		/obj/item/seeds/chiliseed = 3,
+		/obj/item/seeds/cinnamonseed = 2,
 		/obj/item/seeds/cocoapodseed = 3,
 		/obj/item/seeds/cornseed = 3,
 		/obj/item/seeds/eggplantseed = 3,
 		/obj/item/seeds/glowshroom = 2,
 		/obj/item/seeds/grapeseed = 3,
 		/obj/item/seeds/grassseed = 3,
+		/obj/item/seeds/harebell = 2,
 		/obj/item/seeds/lemonseed = 3,
 		/obj/item/seeds/libertymycelium = 2,
 		/obj/item/seeds/limeseed = 3,
+		/obj/item/seeds/mintseed = 2,
 		/obj/item/seeds/mtearseed = 2,
 		/obj/item/seeds/nettleseed = 2,
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/pineappleseed = 2,
 		/obj/item/seeds/plastiseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
@@ -122,13 +139,20 @@
 		/obj/item/seeds/sugarcaneseed = 3,
 		/obj/item/seeds/sunflowerseed = 3,
 		/obj/item/seeds/shandseed = 2,
-		/obj/item/seeds/tobaccoseed = 3,
+		/obj/item/seeds/strawberryseed = 3,
 		/obj/item/seeds/tomatoseed = 3,
 		/obj/item/seeds/towermycelium = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3,
 		/obj/item/seeds/kudzuseed = 2,
+		/obj/item/seeds/jurlmah = 2,
+		/obj/item/seeds/amauri = 2,
+		/obj/item/seeds/gelthi = 2,
+		/obj/item/seeds/vale = 2,
+		/obj/item/seeds/surik = 2,
+		/obj/item/seeds/telriis = 2,
+		/obj/item/seeds/thaadra = 2,
 		/obj/item/seeds/random = 6
 	)
 

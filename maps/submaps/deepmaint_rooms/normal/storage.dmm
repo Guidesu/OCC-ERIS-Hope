@@ -10,19 +10,36 @@
 /area/deepmaint)
 "d" = (
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth/low_chance,
 /obj/spawner/pack/cloth/low_chance,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth/low_chance,
+/obj/random/pack/cloth/low_chance,
+/obj/random/pack/cloth/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/deepmaint)
 "e" = (
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/medical/low_chance,
 /obj/spawner/medical/low_chance,
 /obj/spawner/medical/low_chance,
 /obj/spawner/medical/low_chance,
+=======
+/obj/random/medical/low_chance,
+/obj/random/medical/low_chance,
+/obj/random/medical/low_chance,
+/obj/random/medical/low_chance,
+/obj/random/medical/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/deepmaint)
 "f" = (
@@ -37,27 +54,57 @@
 /area/deepmaint)
 "h" = (
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
 /obj/spawner/pack/tech_loot/low_chance,
+=======
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/deepmaint)
 "i" = (
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
 /obj/spawner/pack/gun_loot/low_chance,
+=======
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/dungeon_gun_ballistic/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/deepmaint)
 "j" = (
 /obj/structure/table/rack/shelf,
+<<<<<<< HEAD
 /obj/spawner/pack/rare/low_chance,
 /turf/simulated/floor/tiled/steel/brown_platform,
 /area/deepmaint)
 "k" = (
 /obj/spawner/mob/roaches/cluster/low_chance,
+=======
+/obj/random/pack/rare/low_chance,
+/obj/random/common_oddities/low_chance,
+/obj/random/powercell/low_chance,
+/obj/random/lathe_disk/advanced/low_chance,
+/obj/random/tool_upgrade/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"k" = (
+/obj/random/cluster/psi_monster/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
 "l" = (
@@ -69,6 +116,10 @@
 /area/deepmaint)
 "n" = (
 /obj/machinery/light/small,
+<<<<<<< HEAD
+=======
+/obj/random/mob/psi_monster/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/deepmaint)
 "o" = (
@@ -77,6 +128,7 @@
 	},
 /turf/simulated/floor/tiled/steel/panels,
 /area/deepmaint)
+<<<<<<< HEAD
 
 (1,1,1) = {"
 a
@@ -85,6 +137,53 @@ a
 a
 a
 a
+=======
+"p" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"A" = (
+/obj/structure/table/rack/shelf,
+/obj/random/pack/rare/low_chance,
+/obj/random/common_oddities/low_chance,
+/obj/random/powercell/low_chance,
+/obj/random/lathe_disk/advanced/low_chance,
+/obj/random/pouch/low_chance,
+/obj/random/tool_upgrade/rare/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"F" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel/monofloor,
+/area/deepmaint)
+"L" = (
+/obj/structure/table/rack/shelf,
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/pack/gun_loot/low_chance,
+/obj/random/dungeon_gun_energy/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"O" = (
+/obj/structure/table/rack/shelf,
+/obj/random/pack/rare/low_chance,
+/obj/random/common_oddities/low_chance,
+/obj/random/powercell/low_chance,
+/obj/random/lathe_disk/advanced/low_chance,
+/obj/random/techpart/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+
+(1,1,1) = {"
+a
+p
+a
+a
+a
+p
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -126,7 +225,11 @@ b
 h
 n
 b
+<<<<<<< HEAD
 j
+=======
+A
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 l
 a
 "}
@@ -145,6 +248,7 @@ a
 "}
 (6,1,1) = {"
 a
+<<<<<<< HEAD
 c
 c
 c
@@ -154,6 +258,17 @@ c
 c
 c
 c
+=======
+F
+c
+F
+c
+c
+F
+c
+c
+F
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (7,1,1) = {"
@@ -178,7 +293,11 @@ b
 i
 n
 b
+<<<<<<< HEAD
 j
+=======
+O
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 l
 a
 "}
@@ -188,10 +307,17 @@ b
 e
 f
 b
+<<<<<<< HEAD
 i
 f
 b
 j
+=======
+L
+f
+b
+O
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 l
 a
 "}
@@ -210,11 +336,19 @@ a
 "}
 (11,1,1) = {"
 a
+<<<<<<< HEAD
 a
 a
 a
 a
 a
+=======
+p
+a
+a
+a
+p
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a

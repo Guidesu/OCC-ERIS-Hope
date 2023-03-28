@@ -1,11 +1,16 @@
 
 /obj/machinery/microwave
-	name = "Microwave"
+	name = "microwave"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = BELOW_OBJ_LAYER
+<<<<<<< HEAD
 	density = TRUE
 	anchored = TRUE
+=======
+	density = 0
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -14,7 +19,11 @@
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
+<<<<<<< HEAD
 	var/dinger = TRUE //so we don't have the campfire dinging
+=======
+	var/dinger = TRUE // var added so that the barrel doesn't ding when finished
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/global/list/datum/recipe/available_recipes // List of the recipes you can use
 	var/global/list/acceptable_items // List of the items you can put in
 	var/global/list/acceptable_reagents // List of the reagents you can put in
@@ -69,6 +78,7 @@
 			if(QUALITY_SCREW_DRIVING)
 				if(broken == 2)
 					user.visible_message( \
+<<<<<<< HEAD
 						SPAN_NOTICE("\The [user] starts to fix part of the [src]."), \
 						SPAN_NOTICE("You start to fix part of the [src].") \
 					)
@@ -76,6 +86,15 @@
 						user.visible_message( \
 							SPAN_NOTICE("\The [user] fixes part of the [src]."), \
 							SPAN_NOTICE("You have fixed part of the [src].") \
+=======
+						SPAN_NOTICE("\The [user] starts to fix part of \the [src]."), \
+						SPAN_NOTICE("You start to fix part of \the [src].") \
+					)
+					if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+						user.visible_message( \
+							SPAN_NOTICE("\The [user] fixes part of \the [src]."), \
+							SPAN_NOTICE("You have fixed part of \the [src].") \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						)
 						src.broken = 1
 						return
@@ -84,18 +103,27 @@
 			if(QUALITY_BOLT_TURNING)
 				if(broken == 1)
 					user.visible_message( \
+<<<<<<< HEAD
 						SPAN_NOTICE("\The [user] starts to fix part of the [src]."), \
 						SPAN_NOTICE("You start to fix part of the [src].") \
+=======
+						SPAN_NOTICE("\The [user] starts to fix part of \the [src]."), \
+						SPAN_NOTICE("You start to fix part of \the [src].") \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					)
 					if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 						user.visible_message( \
 							SPAN_NOTICE("\The [user] fixes the [src]."), \
+<<<<<<< HEAD
 							SPAN_NOTICE("You have fixed the [src].") \
+=======
+							SPAN_NOTICE("You have fixed \the [src].") \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						)
-						src.icon_state = "mw"
+						src.icon_state = "[initial(icon_state)]"
 						src.broken = 0 // Fix it!
 						src.dirty = 0 // just to be sure
-						src.reagent_flags = OPENCONTAINER
+						src.reagent_flags = OPENCONTAINER | NO_REACT
 						return
 					return
 
@@ -107,6 +135,7 @@
 		return
 
 	else if(src.dirty==100) // The microwave is all dirty so can't be used!
+<<<<<<< HEAD
 		if(istype(I, /obj/item/reagent_containers/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
 				SPAN_NOTICE("\The [user] starts to clean the [src]."), \
@@ -116,17 +145,32 @@
 				user.visible_message( \
 					SPAN_NOTICE("\The [user] has cleaned the [src]."), \
 					SPAN_NOTICE("You have cleaned the [src].") \
+=======
+		if(istype(I, /obj/item/reagent_containers/spray  || /obj/item/reagent_containers/glass/rag || /obj/item/soap)) // If they're trying to clean it then let them
+			user.visible_message( \
+				SPAN_NOTICE("\The [user] starts to clean \the [src]."), \
+				SPAN_NOTICE("You start to clean \the [src].") \
+			)
+			if(do_after(user, 20, src))
+				user.visible_message( \
+					SPAN_NOTICE("\The [user] has cleaned \the [src]."), \
+					SPAN_NOTICE("You have cleaned \the [src].") \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				)
 				src.dirty = 0 // It's clean!
 				src.broken = 0 // just to be sure
-				src.icon_state = "mw"
-				src.reagent_flags = OPENCONTAINER
+				src.icon_state = "[initial(icon_state)]"
+				src.reagent_flags = OPENCONTAINER | NO_REACT
 		else //Otherwise bad luck!!
 			to_chat(user, SPAN_WARNING("It's dirty!"))
 			return 1
 	else if(is_type_in_list(I,acceptable_items))
 		if(length(contents) >= max_n_of_items)
+<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("This [src] is full of ingredients, you cannot put more."))
+=======
+			to_chat(user, SPAN_WARNING("\The [src] is full of ingredients, you cannot put more."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return 1
 		if(istype(I, /obj/item/stack) && I:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = I
@@ -152,11 +196,16 @@
 			return 1
 		for (var/datum/reagent/R in I.reagents.reagent_list)
 			if(!acceptable_reagents.Find(R.id))
+<<<<<<< HEAD
 				to_chat(user, SPAN_WARNING("Your [I] contains components unsuitable for cookery."))
+=======
+				to_chat(user, SPAN_WARNING("Your [I] contains components unsuitable for cooking."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return 1
 		return
 	if(QUALITY_BOLT_TURNING in I.tool_qualities)
 		user.visible_message( \
+<<<<<<< HEAD
 		"<span class='notice'>\The [user] begins [src.anchored ? "securing" : "unsecuring"] the [src].</span>", \
 		"<span class='notice'>You attempt to [src.anchored ? "secure" : "unsecure"] the [src].</span>"
 		)
@@ -164,6 +213,15 @@
 			user.visible_message( \
 			"<span class='notice'>\The [user] [src.anchored ? "secures" : "unsecures"] the [src].</span>", \
 			"<span class='notice'>You [src.anchored ? "secure" : "unsecure"] the [src].</span>"
+=======
+		"<span class='notice'>\The [user] begins [src.anchored ? "unsecuring" : "securing"] \the [src].</span>", \
+		"<span class='notice'>You attempt to [src.anchored ? "unsecure" : "secure"] \the [src].</span>"
+		)
+		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_EASY,  required_stat = STAT_MEC))
+			user.visible_message( \
+			"<span class='notice'>\The [user] [src.anchored ? "unsecures" : "secures"] \the [src].</span>", \
+			"<span class='notice'>You [src.anchored ? "unsecure" : "secure"] \the [src].</span>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			)
 			src.anchored = !src.anchored
 	else
@@ -191,7 +249,7 @@
 /obj/machinery/microwave/interact(mob/user as mob) // The microwave Menu
 	var/dat = ""
 	if(src.broken > 0)
-		dat = {"<TT>Bzzzzttttt</TT>"}
+		dat = {"<TT>You can't cook on a broken [src]!</TT>"}
 	else if(src.operating)
 		dat = {"<TT>Cooking in progress!<BR>Please wait...!</TT>"}
 	else if(src.dirty==100)
@@ -212,9 +270,15 @@
 				items_measures[display_name] = "slab of meat"
 				items_measures_p[display_name] = "slabs of meat"
 			if(istype(O,/obj/item/reagent_containers/food/snacks/donkpocket))
+<<<<<<< HEAD
 				display_name = "Turnovers"
 				items_measures[display_name] = "turnover"
 				items_measures_p[display_name] = "turnovers"
+=======
+				display_name = "Donk Pockets"
+				items_measures[display_name] = "donk pocket"
+				items_measures_p[display_name] = "donk pockets"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(istype(O,/obj/item/reagent_containers/food/snacks/meat/carp))
 				items_measures[display_name] = "fillet of meat"
 				items_measures_p[display_name] = "fillets of meat"
@@ -238,15 +302,23 @@
 			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
 
 		if(length(items_counts) == 0 && length(reagents.reagent_list) == 0)
+<<<<<<< HEAD
 			dat = {"<B>The [src] is empty</B><BR>"}
+=======
+			dat = {"<B>\The [src] is empty</B><BR>"}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			dat = {"<b>Ingredients:</b><br>[dat]"}
 		dat += {"<HR><BR>\
-<A href='?src=\ref[src];action=cook'>Turn on!<BR>\
+<A href='?src=\ref[src];action=cook'>Begin cooking!<BR>\
 <A href='?src=\ref[src];action=dispose'>Eject ingredients!<BR>\
 "}
 
+<<<<<<< HEAD
 	user << browse("<HEAD><TITLE>[src] Controls</TITLE></HEAD><TT>[dat]</TT>", "window=[src]")
+=======
+	user << browse("<HEAD><TITLE>[src] Options</TITLE></HEAD><TT>[dat]</TT>", "window=[src]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	onclose(user, "[src]")
 	return
 
@@ -271,7 +343,11 @@
 	var/obj/cooked
 	if(!recipe)
 		dirty += 1
+<<<<<<< HEAD
 		if(prob(max(10, dirty * 5)))
+=======
+		if(prob(max(10,dirty*5)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!wzhzhzh(4))
 				abort()
 				return
@@ -326,21 +402,25 @@
 	return 0
 
 /obj/machinery/microwave/proc/start()
+<<<<<<< HEAD
 	src.visible_message(SPAN_NOTICE("The [src] turns on."), SPAN_NOTICE("You hear a [src]."))
+=======
+	src.visible_message(SPAN_NOTICE("\The [src] begins cooking."), SPAN_NOTICE("You hear a [src] cooking."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.operating = 1
-	src.icon_state = "mw1"
+	src.icon_state = "[initial(icon_state)]-1"
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/abort()
 	src.operating = 0 // Turn it off again aferwards
-	src.icon_state = "mw"
+	src.icon_state = "[initial(icon_state)]"
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/stop()
 	if(dinger)
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 	src.operating = 0 // Turn it off again aferwards
-	src.icon_state = "mw"
+	src.icon_state = "[initial(icon_state)]"
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/dispose()
@@ -349,23 +429,45 @@
 	if(reagents.total_volume)
 		dirty++
 	reagents.clear_reagents()
+<<<<<<< HEAD
 	to_chat(usr, SPAN_NOTICE("You dispose of the [src] contents."))
+=======
+	to_chat(usr, SPAN_NOTICE("You dispose \the [src]'s contents."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/muck_start()
 	playsound(src.loc, 'sound/effects/splat.ogg', 50, 1) // Play a splat sound
-	src.icon_state = "mwbloody1" // Make it look dirty!!
+	src.icon_state = "[initial(icon_state)]-bloody1" // Make it look dirty!!
 
 /obj/machinery/microwave/proc/muck_finish()
 	if(dinger)
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+<<<<<<< HEAD
 	src.visible_message(SPAN_WARNING("The [src] gets covered in muck!"))
+=======
+	src.visible_message(SPAN_WARNING("\The [src] gets covered in muck!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.dirty = 100 // Make it dirty so it can't be used util cleaned
 	src.reagent_flags = NONE //So you can't add condiments
-	src.icon_state = "mwbloody" // Make it look dirty too
+	src.icon_state = "[initial(icon_state)]-bloody" // Make it look dirty too
 	src.operating = 0 // Turn it off again aferwards
 	src.updateUsrDialog()
 
+<<<<<<< HEAD
+=======
+/obj/machinery/microwave/proc/broke()
+	var/datum/effect/effect/system/spark_spread/s = new
+	s.set_up(2, 1, src)
+	s.start()
+	src.icon_state = "[initial(icon_state)]-br" // Make it look all busted up and shit
+	src.visible_message(SPAN_WARNING("\The [src] breaks!")) //Let them know they're stupid
+	src.broken = 2 // Make it broken so it can't be used util fixed
+	src.reagent_flags = NONE //So you can't add condiments
+	src.operating = 0 // Turn it off again aferwards
+	src.updateUsrDialog()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/microwave/proc/fail()
 	var/obj/item/reagent_containers/food/snacks/badrecipe/ffuu = new(src)
 	var/amount = 0
@@ -398,6 +500,7 @@
 			dispose()
 	return
 
+<<<<<<< HEAD
 /obj/machinery/microwave/campfire
 	name = "burn barrel"
 	icon = 'icons/obj/kitchen.dmi'
@@ -410,6 +513,20 @@
 	var/lit = FALSE
 
 /obj/machinery/microwave/campfire/verb/ToggleLight()
+=======
+/obj/machinery/microwave/burnbarrel
+	name = "burn barrel"
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "barrelfire"
+	desc = "The classic fire in an old barrel. Perfect for campings in the far corners of the planet and cooking your meals hobo style."
+	use_power = FALSE
+	idle_power_usage = 0
+	active_power_usage = 0
+	dinger = FALSE // Isn't a machine, shouldn't ding!
+	var/lit_fam = FALSE //Controls whether it can be used as a cooking machine or not
+
+/obj/machinery/microwave/burnbarrel/verb/ToggleLight()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set name = "Toggle Fire"
 	set category = "Object"
 	set src in view(1)
@@ -421,6 +538,7 @@
 	if (usr.incapacitated())
 		return
 
+<<<<<<< HEAD
 	if(!lit)
 		playsound(loc, 'sound/effects/flare.ogg', 50, 1)
 		visible_message(SPAN_NOTICE("The fire is stoked up."), SPAN_NOTICE("You hear a crackling fire."))
@@ -470,3 +588,65 @@
 	..()
 	playsound(loc, 'sound/effects/flare.ogg', 50, 1)
 	icon_state = "barrelfire"
+=======
+	if(!lit_fam)
+		playsound(loc, 'sound/effects/fireplace.ogg', 50, 1) // Making a repeating sound var for this is a chore. Either follow jukebox example and lag players or see repeating_sound in sound.dm - Seb
+		visible_message(SPAN_NOTICE("The fire is stoked up."), SPAN_NOTICE("You hear a crackling fire."))
+		set_light(3,2)
+		lit_fam = TRUE
+		if (src.dirty==100)
+			icon_state = "barrelfire-bloody1"
+		else
+			icon_state = "barrelfire-1"
+	else
+		playsound(loc, 'sound/effects/fireout.ogg', 50, 1)
+		set_light(0)
+		lit_fam = FALSE
+		if (src.dirty==100)
+			icon_state = "barrelfire-bloody"
+		else
+			icon_state = "barrelfire"
+
+/obj/machinery/microwave/burnbarrel/cook()
+	if(!lit_fam)
+		visible_message(SPAN_WARNING("You must start a fire to cook on this barrel!"))
+		return
+	..()
+
+/obj/machinery/microwave/burnbarrel/start()
+	..()
+	playsound(loc, 'sound/effects/fireplace.ogg', 50, 1)
+	icon_state = "barrelfire-1"
+	visible_message(SPAN_NOTICE("You hear glorious grilling."))
+
+/obj/machinery/microwave/burnbarrel/abort()
+	..()
+	playsound(loc, 'sound/items/smoking.ogg', 50, 1)
+	icon_state = "barrelfire-1"
+
+/obj/machinery/microwave/burnbarrel/stop()
+	..()
+	playsound(loc, 'sound/items/smoking.ogg', 50, 1)
+	icon_state = "barrelfire-1"
+
+/obj/machinery/microwave/burnbarrel/dispose()
+	..()
+	playsound(loc, 'sound/items/cigs_lighters/cig_snuff.ogg', 50, 1)
+
+/obj/machinery/microwave/burnbarrel/muck_start()
+	..()
+	icon_state = "barrelfire-bloody1"
+
+/obj/machinery/microwave/burnbarrel/muck_finish()
+	..()
+	playsound(loc, 'sound/items/cigs_lighters/cig_snuff.ogg', 50, 1)
+	icon_state = "barrelfire-bloody1"
+
+/obj/machinery/microwave/burnbarrel/broke()
+	..()
+	src.visible_message(SPAN_WARNING("The burn barrel implodes and breaks!"))
+	playsound(loc, 'sound/effects/bang.ogg', 50, 1)
+	lit_fam = FALSE // Have to do both of these so that it's not kept lit to operate after changing icon_state to its broken one
+	set_light(0) // Just to be safe.
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

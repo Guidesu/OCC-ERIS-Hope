@@ -8,8 +8,14 @@
 	throw_range = 15
 	sharp = TRUE
 	edge =  1
-	embed_mult = 5 //We want these to embed
+	embed_mult = 20 //We want these to embed
 
+<<<<<<< HEAD
+=======
+/obj/item/material/star/uranium
+	default_material = MATERIAL_URANIUM
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/material/star/New()
 	..()
 	src.pixel_x = rand(-12, 12)
@@ -19,7 +25,11 @@
 	..()
 	if(material && material.radioactivity>0 && isliving(hit_atom))
 		var/mob/living/M = hit_atom
-		M.adjustToxLoss(rand(20,40))
+		M.adjustCloneLoss(rand(20,40))
 
 /obj/item/material/star/ninja
+<<<<<<< HEAD
 	default_material = null
+=======
+	default_material = MATERIAL_STEEL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

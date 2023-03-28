@@ -8,6 +8,7 @@
 	var/list/hud_list[10]
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/obj/item/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_lying_buckled_and_verb_status() call.
+<<<<<<< HEAD
 	var/obj/item/gun/using_scope // This is not very good either, because I've copied it. Sorry.
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species)
@@ -27,7 +28,12 @@
 		name = real_name
 		if(mind)
 			mind.name = real_name
+=======
+	var/using_scope // This is not very good either, because I've copied it. Sorry.
+	var/show_title = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
+/mob/living/carbon/human/New(var/new_loc, var/new_species, var/new_form)
 	hud_list[HEALTH_HUD]      = image('icons/mob/hud.dmi', src, "hudhealth100", ON_MOB_HUD_LAYER)
 	hud_list[STATUS_HUD]      = image('icons/mob/hud.dmi', src, "hudhealthy",   ON_MOB_HUD_LAYER)
 	hud_list[LIFE_HUD]        = image('icons/mob/hud.dmi', src, "hudhealthy",   ON_MOB_HUD_LAYER)
@@ -43,6 +49,28 @@
 	GLOB.human_mob_list |= src
 	..()
 
+	if(!dna)
+		dna = new /datum/dna(null)
+		// Species name is handled by set_species()
+
+	if(new_species)
+		set_species(new_species,1)
+	if(!species)
+		set_species()
+
+	if(new_form)
+		set_form(new_form, 1)
+	if(!form && species)
+		set_form(species.default_form)
+	if(!form)
+		form = new /datum/species_form/human
+
+	if(species)
+		real_name = species.get_random_name(gender)
+		name = real_name
+		if(mind)
+			mind.name = real_name
+
 	if(dna)
 		dna.ready_dna(src)
 		dna.real_name = real_name
@@ -50,12 +78,26 @@
 		dna.flavor_text = flavor_text
 		dna.stats = stats
 		sync_organ_dna()
+
 	make_blood()
 
 	sanity = new(src)
 
+<<<<<<< HEAD
 	AddComponent(/datum/component/fabric)
 
+=======
+	flash_mod = species.flash_mod
+	movement_hunger_factors *= species.hunger_factor
+
+	AddComponent(/datum/component/fabric)
+
+/mob/living/carbon/human/add_initial_transforms()
+	. = ..()
+
+	add_new_transformation(/datum/transform_type/human/size_scaling)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
 
@@ -64,6 +106,13 @@
 	for(var/organ in organs)
 		qdel(organ)
 	organs.Cut()
+<<<<<<< HEAD
+=======
+
+	QDEL_NULL(sanity)
+	QDEL_NULL(vessel)
+	worn_underwear.Cut()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /mob/living/carbon/human/Stat()
@@ -83,11 +132,19 @@
 				stat("Internal Atmosphere Info", internal.name)
 				stat("Tank Pressure", internal.air_contents.return_pressure())
 				stat("Distribution Pressure", internal.distribute_pressure)
+<<<<<<< HEAD
 /* OCCULUS EDIT - wtf is this bullshit
 		var/obj/item/organ/internal/xenos/phoronvessel/P = internal_organs_by_name[BP_PHORON]
 		if(P)
 			stat(null, "Phoron Stored: [P.stored_phoron]/[P.max_phoron]")
 */
+=======
+
+		//var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[BP_PLASMA]
+		//if(P)
+		//	stat(null, "Plasma Stored: [P.stored_plasma]/[P.max_plasma]")
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(back && istype(back,/obj/item/rig))
 			var/obj/item/rig/suit = back
 			var/cell_status = "ERROR"
@@ -103,6 +160,7 @@
 			stat("Gnawing hunger", "[carrion_hunger]/[round(maw_efficiency/10)]")
 
 		var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
+<<<<<<< HEAD
 		if (C)
 			stat("Cruciform", "[C.power]/[C.max_power]")
 
@@ -110,16 +168,55 @@
 	if(!blinded)
 		if (HUDtech.Find("flash"))
 			FLICK("flash", HUDtech["flash"])
+=======
+		if(C)
+			stat("Faith", "[C.power]/[C.max_power]")
+			stat("Channeling Boost", "[C.channeling_boost]")
+
+		var/obj/item/organ/internal/psionic_tumor/B = random_organ_by_process(BP_PSION)
+		if(B)
+			stat("Psi Essence", "[B.psi_points]/[B.max_psi_points]")
+
+		var/obj/item/organ/internal/nanogate/N = random_organ_by_process(BP_NANOGATE)
+		if(N)
+			stat("Nanites Point", "[N.nanite_points]")
+
+	else if(statpanel("Perks"))
+		for(var/obj/effect/statclick/perkHolder in src.stats.perk_stats)
+			perkHolder.update()
+
+	if(mind)
+		statpanel("Perks",src.stats.perk_stats)
+
+	src.stats.initialized = TRUE
+
+/mob/living/carbon/human/flash(duration = 0, drop_items = FALSE, doblind = FALSE, doblurry = FALSE, eye_damage = 0)
+	if(blinded)
+		return
+	if(eye_damage)
+		eye_damage *= species.flash_mod // increase based on how susceptible they are
+		var/obj/item/organ/internal/eyes/E = src.random_organ_by_process(OP_EYES)
+		E.take_damage(eye_damage, FALSE)
+		if (E && E.damage >= E.min_bruised_damage)
+			to_chat(src, SPAN_DANGER("Your eyes start to burn badly!"))
+	..(duration, drop_items, doblind, doblurry)
+
+/mob/living/carbon/human/ex_act(severity)
+	flash(5, FALSE, TRUE , TRUE, 5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/shielded = 0
 	var/b_loss
 	var/f_loss
 	var/bomb_defense = getarmor(null, ARMOR_BOMB) + mob_bomb_defense
+<<<<<<< HEAD
 	var/target_turf = get_turf_away_from_target_simple(src, epicenter, 8)
 	var/throw_distance = 8 - 2*severity
 	throw_at(target_turf, throw_distance, 5)
 	Weaken(severity) // If they don't get knocked out , weaken them for a bit.
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	switch (severity)
 		if (1.0)
 			b_loss += 500
@@ -140,16 +237,13 @@
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				ear_damage += 30
 				ear_deaf += 120
-			if (prob(70) && !shielded)
-				Paralyse(10)
 
 		if(3.0)
 			b_loss += 100
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				ear_damage += 15
 				ear_deaf += 60
-			if (prob(50) && !shielded)
-				Paralyse(10)
+
 	if (bomb_defense)
 		b_loss = max(b_loss - bomb_defense, 0)
 		f_loss = max(f_loss - bomb_defense, 0)
@@ -197,7 +291,11 @@
 		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];item=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"*/
 
 	// Do they get an option to set internals?
+<<<<<<< HEAD
 	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/space))
+=======
+	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(istype(back, /obj/item/tank) || istype(belt, /obj/item/tank) || istype(s_store, /obj/item/tank))
 			dat += "<BR><A href='?src=\ref[src];item=internals'>Toggle internals.</A>"
 
@@ -260,6 +358,7 @@
 //Trust me I'm an engineer
 //I think we'll put this shit right here
 var/list/rank_prefix = list(\
+<<<<<<< HEAD
 	"Aegis Operative" = "Operative",\
 	"Aegis Inspector" = "Inspector",\
 	"Aegis Gunnery Sergeant" = "Sergeant",\
@@ -268,6 +367,24 @@ var/list/rank_prefix = list(\
 	"Captain" = "Captain",\
 	"Medical Doctor" = "Doctor",\
 	"Chief Medical Officer" = "Doctor",\
+=======
+	"Warrant Officer" = "Warrant Officer",\
+	"Supply Specialist" = "Specialist",\
+	"Ranger" = "Ranger",\
+	"Marshal Officer" = "Officer",\
+	"Blackshield Commander" = "Commander",\
+	"Sergeant" = "Sergeant",\
+	"Corpsman" = "Corpsman",\
+	"Blackshield Trooper" = "Trooper",\
+	"Premier" = "Premier",\
+	"Steward" = "Steward",\
+	"Guild Master" = "Master",\
+	"Chief Biolab Overseer" = "Overseer",\
+	"Chief Research Overseer" = "Overseer",\
+	"Chief Executive Officer" = "Executive",\
+	"Prime" = "Prime",\
+	"Foreman" = "Foreman",\
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /mob/living/carbon/human/proc/rank_prefix_name(name)
@@ -276,6 +393,7 @@ var/list/rank_prefix = list(\
 	if(get_id_rank())
 		if(findtext(name, " "))
 			name = copytext(name, findtext(name, " "))
+<<<<<<< HEAD
 			no_space = FALSE
 
 		if(!no_space)		//if the name had a space (forename and surname), we don't need to do anything special
@@ -283,7 +401,13 @@ var/list/rank_prefix = list(\
 		else				//If the name did not have a space (single-barrel name), we need to add a space
 			name = get_id_rank() + " " + name
 // // // END ECLIPSE EDITS // // //
+=======
+		else
+			name = " [name]"
+		name = get_id_rank() + name
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return name
+
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
@@ -321,6 +445,8 @@ var/list/rank_prefix = list(\
 		id = wear_id.GetIdCard()
 	if(!id)
 		id = get_idcard()
+	if(show_title == FALSE)
+		return ""
 	if(id)
 		rank = id.rank
 		if(rank_prefix[rank])
@@ -619,11 +745,19 @@ var/list/rank_prefix = list(\
 ///Returns a number between -1 to 2
 /mob/living/carbon/human/eyecheck()
 	if(!species.has_process[OP_EYES]) //No eyes, can't hurt them.
+<<<<<<< HEAD
 		return FLASH_PROTECTION_MAJOR
 
 	var/eye_efficiency = get_organ_efficiency(OP_EYES)
 	if(eye_efficiency <= 1)
 		return FLASH_PROTECTION_MAJOR
+=======
+		return FLASH_PROTECTION_MODERATE
+
+	var/eye_efficiency = get_organ_efficiency(OP_EYES)
+	if(eye_efficiency <= 0)
+		return FLASH_PROTECTION_MODERATE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return flash_protection
 
@@ -692,7 +826,11 @@ var/list/rank_prefix = list(\
 		return FALSE
 	return TRUE
 
+<<<<<<< HEAD
 /mob/living/carbon/human/vomit()
+=======
+/mob/living/carbon/human/vomit(forced = 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!check_has_mouth())
 		return
@@ -700,23 +838,39 @@ var/list/rank_prefix = list(\
 		return
 	if(!lastpuke)
 		lastpuke = 1
+<<<<<<< HEAD
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
 		spawn(150)	//15 seconds until second warning
 			to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
 			spawn(100)	//and you have 10 more for mad dash to the bucket
 				Stun(5)
+=======
+		if(!forced)
+			to_chat(src, SPAN_WARNING("You feel nauseous..."))
+			sleep(150)	//15 seconds until second warning
+			to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
+			sleep(100)	//and you have 10 more for mad dash to the bucket
+		Stun(2)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-				src.visible_message(SPAN_WARNING("[src] throws up!"),SPAN_WARNING("You throw up!"))
-				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+		visible_message(SPAN_WARNING("[src] throws up!"),SPAN_WARNING("You throw up!"))
+		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-				var/turf/location = loc
-				if (istype(location, /turf/simulated))
-					location.add_vomit_floor(src, 1)
+		var/turf/location = loc
+		if(istype(location, /turf/simulated))
+			location.add_vomit_floor(src, 1)
 
-				nutrition -= 40
-				adjustToxLoss(-3)
-				spawn(350)	//wait 35 seconds before next volley
-					lastpuke = 0
+		adjustNutrition(-40)
+		if(src.ingested && src.ingested.reagent_list.len > 0) // If we have anything on our stomach...
+			for(var/datum/reagent/R in src.ingested.reagent_list)
+				if(R == src)
+					continue
+				src.ingested.remove_reagent(R.id, 10, 0) // ...We vomit some of it down!
+		//regen_slickness(-3)
+		//dodge_time = get_game_time()
+		//confidence = FALSE
+		spawn(350)	//wait 35 seconds before next volley
+			lastpuke = 0
 
 /mob/living/carbon/human/proc/morph()
 	set name = "Morph"
@@ -796,7 +950,7 @@ var/list/rank_prefix = list(\
 	regenerate_icons()
 	check_dna()
 
-	visible_message("\blue \The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!", "\blue You change your appearance!", "\red Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!")
+	visible_message("\blue \The [src] morphs and changes [gender_word("his")] appearance!", "\blue You change your appearance!", "\red Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!")
 
 /mob/living/carbon/human/proc/remotesay()
 	set name = "Project mind"
@@ -812,7 +966,8 @@ var/list/rank_prefix = list(\
 		return
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in world)
-		creatures += h
+		if(!h.is_mannequin) // Can't talk mannequins
+			creatures += h // Add the player to the list we can talk to
 	var/mob/target = input("Who do you want to project your mind to ?") as null|anything in creatures
 	if (isnull(target))
 		return
@@ -864,17 +1019,6 @@ var/list/rank_prefix = list(\
 		remoteview_target = null
 		reset_view(0)
 
-/mob/living/carbon/human/proc/get_visible_gender()
-	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
-		return NEUTER
-	return gender
-
-/mob/living/carbon/human/proc/increase_germ_level(n)
-	if(gloves)
-		gloves.germ_level += n
-	else
-		germ_level += n
-
 /mob/living/carbon/human/revive()
 
 	if(species && !(species.flags & NO_BLOOD))
@@ -908,6 +1052,7 @@ var/list/rank_prefix = list(\
 
 	..()
 
+<<<<<<< HEAD
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = random_organ_by_process(OP_LUNGS)
 	return L && L.is_bruised()
@@ -953,13 +1098,17 @@ var/list/rank_prefix = list(\
 
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
+=======
+/mob/living/carbon/human/add_blood(mob/living/carbon/human/M)
+	if(!..())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return 0
 	//if this blood isn't already in the list, add it
 	if(istype(M))
 		if(!blood_DNA[M.dna.unique_enzymes])
 			blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	hand_blood_color = blood_color
-	src.update_inv_gloves()	//handles bloody hands overlays and updating
+	src.update_inv_gloves()	//handles bloody hands over-lays and updating
 	verbs += /mob/living/carbon/human/proc/bloody_doodle
 	return 1 //we applied blood to the item
 
@@ -976,12 +1125,10 @@ var/list/rank_prefix = list(\
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves()
-		gloves.germ_level = 0
 	else
 		if(bloody_hands)
 			bloody_hands = 0
 			update_inv_gloves()
-		germ_level = 0
 
 	gunshot_residue = null
 
@@ -993,7 +1140,11 @@ var/list/rank_prefix = list(\
 			if(feet_blood_DNA && feet_blood_DNA.len)
 				feet_blood_color = null
 				feet_blood_DNA.Cut()
+<<<<<<< HEAD
 				feet_blood_DNA = null //OCCULUS EDIT: Overlays remain if DNA is anything other than null. Cut sets it to empty list.
+=======
+				feet_blood_DNA = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				update_inv_shoes()
 
 	return
@@ -1033,26 +1184,45 @@ var/list/rank_prefix = list(\
 					to_chat(src, msg)
 				var/mob/living/carbon/human/H = organ.owner
 				if(!MOVING_DELIBERATELY(H))
+<<<<<<< HEAD
 					organ.take_damage(rand(1,3), 0, 0)
 					if(organ.setBleeding())
 						src.adjustToxLoss(rand(1,3))
+=======
+					organ.take_damage(3, BRUTE, organ.max_damage, 6.7, TRUE, TRUE)	// When the limb is at 60% of max health, internal organs start taking damage.
+					if(organ.setBleeding())
+						organ.take_damage(2, BRUTE) //Extra 2 damage
+					if(species.reagent_tag == IS_CHTMANT)
+						hallucination(30, 50)
+						adjustHalLoss(3)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/verb/browse_sanity()
 	set name		= "Show sanity"
 	set desc		= "Browse your character sanity."
 	set category	= "IC"
 	set src			= usr
+<<<<<<< HEAD
 	ui_interact(src)
 
 /mob/living/carbon/human/ui_data()
 	var/list/data = list()
 
 	data["style"] = get_total_style()
+=======
+	nano_ui_interact(src)
+
+/mob/living/carbon/human/nano_ui_data()
+	var/list/data = list()
+
+	//data["style"] = get_total_style()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	data["min_style"] = MIN_HUMAN_STYLE
 	data["max_style"] = MAX_HUMAN_STYLE
 	data["sanity"] = sanity.level
 	data["sanity_max_level"] = sanity.max_level
 	data["insight"] = sanity.insight
+<<<<<<< HEAD
 	data["desires"] = sanity.desires
 	data["rest"] = sanity.resting
 	data["insight_rest"] = sanity.insight_rest
@@ -1066,6 +1236,21 @@ var/list/rank_prefix = list(\
 
 /mob/living/carbon/human/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
 	var/list/data = ui_data()
+=======
+	data["desires"] = sanity.list_desires()
+	data["rest"] = sanity.resting
+	data["insight_rest"] = sanity.insight_rest
+
+	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
+	if(C)
+		data["cruciform"] = TRUE
+		//data["righteous_life"] = C.righteous_life
+
+	return data
+
+/mob/living/carbon/human/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
+	var/list/data = nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, user, ui_key, ui, data, force_open)
 	if(!ui)
@@ -1073,6 +1258,16 @@ var/list/rank_prefix = list(\
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()
+<<<<<<< HEAD
+=======
+
+/mob/living/carbon/human/verb/Toggle_Title()
+	set name = "Toggle Title"
+	set desc = "Shows or hides your title."
+	set category = "IC"
+	show_title = !show_title
+	to_chat(usr, "You change your mind about showing your title.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"
@@ -1104,7 +1299,7 @@ var/list/rank_prefix = list(\
 	else
 		to_chat(usr, SPAN_WARNING("You failed to check the pulse. Try again."))
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
+/mob/living/carbon/human/proc/set_species(var/new_species, var/default_color, var/rebuild_organs = TRUE)
 	if(!dna)
 		if(!new_species)
 			new_species = "Human"
@@ -1116,7 +1311,7 @@ var/list/rank_prefix = list(\
 
 	// No more invisible screaming wheelchairs because of set_species() typos.
 	if(!all_species[new_species])
-		new_species = "Human"
+		new_species = SPECIES_HUMAN
 
 	if(species)
 
@@ -1132,12 +1327,15 @@ var/list/rank_prefix = list(\
 
 	species = all_species[new_species]
 
+	set_form(species.default_form, default_color)
+
 	if(species.language)
 		add_language(species.language)
 
 	if(species.default_language)
 		add_language(species.default_language)
 
+<<<<<<< HEAD
 	var/skincolor//Occulus Edit Start: Banish the Tarpeople!
 	if(species.base_color && default_colour)
 		skincolor = species.base_color
@@ -1149,16 +1347,28 @@ var/list/rank_prefix = list(\
 	b_skin = hex2num(copytext(skincolor,6,8))
 	//Occulus Edit End: banish the Tarpeople!
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(species.holder_type)
 		holder_type = species.holder_type
 
 	icon_state = lowertext(species.name)
 
+<<<<<<< HEAD
 	if(species.has_process.len)
 		for(var/process in species.has_process)
 			internal_organs_by_efficiency[process] = list()
 
 	rebuild_organs()
+=======
+	if(rebuild_organs)
+		if(species.has_process.len)
+			for(var/process in species.has_process)
+				internal_organs_by_efficiency[process] = list()
+
+		rebuild_organs()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.sync_organ_dna()
 	species.handle_post_spawn(src)
 
@@ -1167,14 +1377,17 @@ var/list/rank_prefix = list(\
 	update_client_colour(0)
 
 	spawn(0)
+		if(QDELETED(src))	// Needed because mannequins will continue this proc and runtime after being qdel'd
+			return
 		regenerate_icons()
-		if(vessel.total_volume < species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
-		else if(vessel.total_volume > species.blood_volume)
-			vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-		fixblood()
+		if(!QDELETED(src))
+			if(vessel.total_volume < species.blood_volume)
+				vessel.maximum_volume = species.blood_volume
+				vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
+			else if(vessel.total_volume > species.blood_volume)
+				vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
+				vessel.maximum_volume = species.blood_volume
+			fixblood()
 
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
@@ -1192,6 +1405,14 @@ var/list/rank_prefix = list(\
 	else
 		return 0
 
+<<<<<<< HEAD
+=======
+/mob/living/carbon/human/proc/set_form(var/new_form = FORM_HUMAN, var/default_color)
+	form = GLOB.all_species_form_list[new_form]
+	if(default_color)
+		skin_color = form.base_color
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //Needed for augmentation
 /mob/living/carbon/human/proc/rebuild_organs(from_preference)
 	if(!species)
@@ -1203,6 +1424,7 @@ var/list/rank_prefix = list(\
 	var/list/organs_to_readd = list()
 	if(core) //kinda wack, this whole proc should be remade
 		for(var/obj/item/organ/internal/carrion/C in internal_organs)
+<<<<<<< HEAD
 			C.removed_mob()
 			organs_to_readd += C
 
@@ -1225,8 +1447,28 @@ var/list/rank_prefix = list(\
 		organs_by_name.Cut()
 	if(internal_organs_by_efficiency.len)
 		internal_organs_by_efficiency.Cut()
+=======
+			C.removed()
+			organs_to_readd += C
+
+	var/obj/item/implant/core_implant/CI = get_core_implant()
+	var/checkprefcruciform = FALSE	// To reset the cruciform to original form
+	if(CI)
+		checkprefcruciform = TRUE
+		qdel(CI)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(from_preference)
+		for(var/obj/item/organ/organ in (organs|internal_organs))
+			qdel(organ)
+
+		if(organs.len)
+			organs.Cut()
+		if(internal_organs.len)
+			internal_organs.Cut()
+		if(organs_by_name.len)
+			organs_by_name.Cut()
+
 		var/datum/preferences/Pref
 		if(istype(from_preference, /datum/preferences))
 			Pref = from_preference
@@ -1240,9 +1482,15 @@ var/list/rank_prefix = list(\
 		for(var/tag in species.has_limbs)
 			BM = Pref.get_modification(tag)
 			var/datum/organ_description/OD = species.has_limbs[tag]
+<<<<<<< HEAD
 //			var/datum/body_modification/PBM = Pref.get_modification(OD.parent_organ_base)
 //			if(PBM && (PBM.nature == MODIFICATION_SILICON || PBM.nature == MODIFICATION_REMOVED))
 //				BM = PBM
+=======
+			//var/datum/body_modification/PBM = Pref.get_modification(OD.parent_organ_base)
+			//if(PBM && (PBM.nature == MODIFICATION_SILICON || PBM.nature == MODIFICATION_REMOVED))
+			//	BM = PBM
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(BM.is_allowed(tag, Pref, src))
 				BM.create_organ(src, OD, Pref.modifications_colors[tag])
 			else
@@ -1255,6 +1503,7 @@ var/list/rank_prefix = list(\
 			else
 				var/organ_type = species.has_process[tag]
 				new organ_type(src)
+<<<<<<< HEAD
 /* haha this spaghetti just made things 100x worse
 //	OCCULUS EDIT START - Spaghetti to fix spaghetti
 		var/datum/category_item/setup_option/core_implant/I = Pref.get_option("Core implant")
@@ -1262,6 +1511,33 @@ var/list/rank_prefix = list(\
 			I.apply(src)
 //	OCCULUS EDIT END
 */
+=======
+
+		var/datum/category_item/setup_option/core_implant/I = Pref.get_option("Core implant")
+		if(I)
+			if(I.implant_type)
+				var/obj/item/implant/core_implant/C = new I.implant_type
+				C.install(src)
+				C.activate()
+				if(mind)
+					C.install_default_modules_by_job(mind.assigned_job)
+					C.access.Add(mind.assigned_job.cruciform_access)
+					C.install_default_modules_by_path(mind.assigned_job)
+					C.security_clearance = mind.assigned_job.security_clearance
+
+			switch(I.implant_organ_type)
+				if("psionic tumor")
+					src.make_psion()
+				if("cultured tumor")
+					src.make_psion_psych()
+				if("nanogate")
+					src.give_nanogate("Standard")
+				if("artificer nanogate")
+					src.give_nanogate("Artificer")
+				if("opifex nanogate")
+					src.give_nanogate("Opifex")
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		var/organ_type
 
@@ -1270,8 +1546,11 @@ var/list/rank_prefix = list(\
 			var/obj/item/I = organs_by_name[limb_tag]
 			if(I && I.type == OD.default_type)
 				continue
+<<<<<<< HEAD
 			else if(I)
 				qdel(I)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			OD.create_organ(src)
 
 		for(var/organ_tag in species.has_process)
@@ -1279,8 +1558,11 @@ var/list/rank_prefix = list(\
 			var/obj/item/I = random_organ_by_process(organ_tag)
 			if(I && I.type == organ_type)
 				continue
+<<<<<<< HEAD
 			else if(I)
 				qdel(I)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			new organ_type(src)
 /* guess this isn't working out after all
 //	OCCULUS EDIT START - Spaghetti to fix spaghetti
@@ -1293,11 +1575,30 @@ var/list/rank_prefix = list(\
 	for(var/obj/item/organ/internal/carrion/C in organs_to_readd)
 		C.replaced(get_organ(C.parent_organ_base))
 
+<<<<<<< HEAD
+=======
+		if(checkprefcruciform)
+			if(client)
+				var/datum/category_item/setup_option/core_implant/I = client.prefs.get_option("Core implant")
+				if(I.implant_type && (!mind || mind.assigned_role != "Robot"))
+					var/obj/item/implant/core_implant/C = new I.implant_type
+					C.install(src)
+					C.activate()
+					C.install_default_modules_by_job(mind.assigned_job)
+					C.access.Add(mind.assigned_job.cruciform_access)
+					C.install_default_modules_by_path(mind.assigned_job)
+					C.security_clearance = mind.assigned_job.security_clearance
+
+	for(var/obj/item/organ/internal/carrion/C in organs_to_readd)
+		C.replaced(get_organ(C.parent_organ_base))
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	status_flags &= ~REBUILDING_ORGANS
 	species.organs_spawned(src)
 
 	update_body()
 
+<<<<<<< HEAD
 /mob/living/carbon/human/proc/post_prefinit()	//OCCULUS EDIT - This proc is completely redundant.
 	return
 	/*
@@ -1308,6 +1609,8 @@ var/list/rank_prefix = list(\
 		C.install_default_modules_by_job(mind.assigned_job)
 		C.access |= mind.assigned_job.cruciform_access*/
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
 	set name = "Write in blood"
@@ -1410,19 +1713,24 @@ var/list/rank_prefix = list(\
 		if(BP_IS_LIFELIKE(affecting) && user.stats.getStat(STAT_BIO) < STAT_LEVEL_BASIC)
 			fail_msg = "Skin is tough and inelastic."
 		else if(!fail_msg)
+<<<<<<< HEAD
 			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on that body part"] to inject into."	// OCCULUS EDIT: Be more clear about the failure
+=======
+			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on their body"] to inject into."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_WARNING(fail_msg))
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
-	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
+/*	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
 
 	for(var/obj/item/clothing/C in equipment)
 		if(C.body_parts_covered & FACE)
 			// Do not show flavor if face is hidden
-			return
+			return*/
 
 	if(client)
 		flavor_text = client.prefs.flavor_text
+<<<<<<< HEAD
 
 	if (flavor_text && flavor_text != "" && !shrink)
 		var/msg = trim(replacetext(flavor_text, "\n", " "))
@@ -1431,6 +1739,9 @@ var/list/rank_prefix = list(\
 			return "<font color='blue'>[msg]</font>"
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a></font>"
+=======
+		ooc_text = client.prefs.ooc_text
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /mob/living/carbon/human/getDNA()
@@ -1472,6 +1783,7 @@ var/list/rank_prefix = list(\
 		to_chat(src, SPAN_WARNING("You tripped over!"))
 	Weaken(stun_duration)
 	return TRUE
+<<<<<<< HEAD
 
 /mob/living/carbon/human/proc/undislocate()
 	set category = "Object"
@@ -1526,6 +1838,8 @@ var/list/rank_prefix = list(\
 		to_chat(U, SPAN_DANGER("You pop [S]'s [current_limb.joint] back in!"))
 		to_chat(S, SPAN_DANGER("[U] pops your [current_limb.joint] back in!"))
 	current_limb.undislocate()
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
 	..()
@@ -1557,7 +1871,11 @@ var/list/rank_prefix = list(\
 
 	if(stat) return
 	pulling_punches = !pulling_punches
+<<<<<<< HEAD
 	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
+=======
+	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "" : "not "]pulling your punches.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 //generates realistic-ish pulse output based on preset levels
@@ -1580,7 +1898,11 @@ var/list/rank_prefix = list(\
 //			output for machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/human/proc/pulse()
+<<<<<<< HEAD
 	if(!(organ_list_by_process(OP_HEART).len))
+=======
+	if(stat == DEAD || !(organ_list_by_process(OP_HEART).len))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return PULSE_NONE
 	else
 		return pulse
@@ -1590,6 +1912,9 @@ var/list/rank_prefix = list(\
 	set desc = "If you want to know what's above."
 	set category = "IC"
 
+	// /mob/living/handle_vision has vision not reset if the user has the machine var referencing something
+	// which it will always have since it is very poorly handled in its dereferencing SPCR - 2022
+	machine = null
 	if(!is_physically_disabled())
 		var/turf/above = GetAbove(src)
 		if(shadow)
@@ -1611,18 +1936,43 @@ var/list/rank_prefix = list(\
 	var/obj/item/organ/external/affecting
 	if(organ_check in list(OP_HEART, OP_LUNGS, OP_STOMACH))
 		affecting = organs_by_name[BP_CHEST]
+<<<<<<< HEAD
 	else if(organ_check in list(OP_LIVER, OP_KIDNEYS))
+=======
+	else if(organ_check in list(OP_LIVER, OP_KIDNEYS, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		affecting = organs_by_name[BP_GROIN]
 
 	if(affecting && (BP_IS_ROBOTIC(affecting)))
 		return FALSE
 	return (species && species.has_process[organ_check])
+<<<<<<< HEAD
+=======
+
+/mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
+	if(isSynthetic())
+		return 0
+	/*if(check_organ)
+		if(!istype(check_organ))
+			return 0
+		return check_organ.organ_can_feel_pain() */ //TODO: This also doesn't work on Eris :))
+	return !(species.flags & NO_PAIN)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/proc/check_self_for_injuries()
 	if(stat)
 		return
 
 	to_chat(src, SPAN_NOTICE("You check yourself for injuries."))
+
+	if(species.reagent_tag == IS_CHTMANT)
+		switch(toxloss)
+			if(10 to 35)
+				to_chat(src, "<span class='average	'>You feel something is off.</span>")
+			if(35 to 45)
+				to_chat(src, "<span class='danger'>You feel something is not well within.</span>")
+			if(45 to INFINITY)
+				to_chat(src, "<span class='danger'>You feel the need to purge something from your body!</span>")
 
 	for(var/obj/item/organ/external/org in organs)
 		var/list/status = list()
@@ -1643,37 +1993,72 @@ var/list/rank_prefix = list(\
 
 		switch(burndamage)
 			if(1 to 10)
-				status += "numb"
+				status += "stinging"
 			if(10 to 40)
 				status += "blistered"
 			if(40 to INFINITY)
 				status += "peeling away"
 
-		if(org.is_stump())
-			status += "MISSING"
+		if(org.is_stump()) // You at least have a stump still
+			status += "just a stump"
+		//Sanity check. You should not be able to see this
+		// as the limb gets removed from the list of organs asked at the start of this proc
+		if(!org) // NO LIMB!
+			status += "<b>GONE!</b>"
 		if(org.status & ORGAN_MUTATED)
-			status += "weirdly shapen"
-		if(org.dislocated == 2)
-			status += "dislocated"
+			status += "misshapen"
+		if(org.nerve_struck == 2)
+			status += "torpid"
 		if(org.status & ORGAN_BROKEN)
 			status += "hurts when touched"
+		if(org.status & ORGAN_BLEEDING) // "Oh hey, I'm bleeding"
+			status += "<b>bleeding profusely</b>"
 		if(org.status & ORGAN_DEAD)
-			status += "is bruised and necrotic"
+			status += "<b><font color='005500'>rotten</font></b>" // Necrotic
 		if(!org.is_usable())
 			status += "dangling uselessly"
-
+		for(var/obj/item/organ/internal/blood_vessel/BV in org.internal_organs)
+			if(BV.damage > 4) // Same as examine text, if our blood vessels are damaged beyond self-healing threshold...
+				status += "<font color='6533da'>swollen with black and blue spots</font>" // ...Let us see our bruises.
+		if(org.status & ORGAN_SPLINTED) // If our limb is splinted, tell us...
+			status += "<a href='?src=\ref[src];item=splints'>splinted</a>" // ...And let us remove the splints ourselves!
 		var/status_text = SPAN_NOTICE("OK")
 		if(status.len)
 			status_text = SPAN_WARNING(english_list(status))
 
 		src.show_message("My [org.name] is [status_text].",1)
 
+<<<<<<< HEAD
+=======
+// Furry Stuff
+/mob/living/carbon/human/verb/switch_tail_layer()
+	set name = "Switch Tail Layer"
+	set desc = "Put your tail above or below some clothing types."
+	set category = "IC"
+
+	tail_over = !tail_over
+	update_tail()
+
+/mob/living/carbon/human/proc/get_visible_gender()
+	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
+		return NEUTER
+	return get_sex()
+
+/mob/living/carbon/human/get_gender()
+	if(identifying_gender) return GLOB.gender_datums[identifying_gender]
+	. = ..()
+
+/mob/living/carbon/human/gender_word(var/position, var/datum/gender/G = null) //Humans can adopt gender identities other than their own.
+	. = ..(position, G ? G : get_gender())
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/carbon/human/need_breathe()
 	if(!(mNobreath in mutations))
 		return TRUE
 	else
 		return FALSE
 
+<<<<<<< HEAD
 /mob/living/carbon/human/proc/set_remoteview(var/atom/A)
 	remoteview_target = A
 	reset_view(A)
@@ -1715,3 +2100,43 @@ var/list/rank_prefix = list(\
 				else
 					break
 	return 1
+=======
+/mob/living/carbon/human/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
+	. = ..()
+	if(.)
+		if(species.reagent_tag == IS_SLIME) // Slimes clean the floor. Code stolen from the roombas
+			var/turf/tile = loc
+			var/nutrition_gained = 5 // Up here for ease of modification
+			if(isturf(tile))
+				tile.clean_blood()
+				for(var/A in tile)
+					if(istype(A, /obj/effect))
+						if(istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
+							qdel(A)
+							src.nutrition += nutrition_gained // Gain some nutrition
+					else if(istype(A, /obj/item))
+						var/obj/item/cleaned_item = A
+						cleaned_item.clean_blood()
+					else if(ishuman(A))
+						var/mob/living/carbon/human/cleaned_human = A
+						if(cleaned_human.lying)
+							if(cleaned_human.head)
+								cleaned_human.head.clean_blood()
+								cleaned_human.update_inv_head(0)
+							if(cleaned_human.wear_suit)
+								cleaned_human.wear_suit.clean_blood()
+								cleaned_human.update_inv_wear_suit(0)
+							else if(cleaned_human.w_uniform)
+								cleaned_human.w_uniform.clean_blood()
+								cleaned_human.update_inv_w_uniform(0)
+							if(cleaned_human.shoes)
+								cleaned_human.shoes.clean_blood()
+								cleaned_human.update_inv_shoes(0)
+							cleaned_human.clean_blood(1)
+							to_chat(cleaned_human, SPAN_DANGER("[src] cleans your face!"))
+
+
+/mob/living/carbon/human/proc/set_remoteview(var/atom/A)
+	remoteview_target = A
+	reset_view(A)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

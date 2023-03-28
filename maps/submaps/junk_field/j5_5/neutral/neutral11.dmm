@@ -4,19 +4,34 @@
 /area/template_noop)
 "b" = (
 /obj/effect/window_lwall_spawn/smartspawn,
+<<<<<<< HEAD
 /turf/simulated/floor/plating/airless,
 /area/template_noop)
 "c" = (
+=======
+/turf/simulated/floor/plating,
+/area/template_noop)
+"c" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/wall,
 /area/template_noop)
 "d" = (
 /obj/structure/lattice,
+<<<<<<< HEAD
+=======
+/obj/random/mob/carp/low_chance,
+/obj/random/material/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/template_noop,
 /area/template_noop)
 "e" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/template_noop)
 "f" = (
@@ -36,12 +51,35 @@
 "i" = (
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/tiled/techmaint/airless,
+=======
+/obj/random/material/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"f" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"g" = (
+/obj/structure/table/standard,
+/obj/random/lowkeyrandom,
+/obj/random/junkfood/rotten/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"h" = (
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"i" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "j" = (
 /obj/machinery/door/airlock/maintenance_common{
 	name = "Service Maintenance";
 	req_access = list(12)
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
 /area/template_noop)
 "k" = (
@@ -53,12 +91,46 @@
 "m" = (
 /obj/spawner/traps,
 /turf/simulated/floor/tiled/techmaint/airless,
+=======
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/template_noop)
+"k" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"l" = (
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"m" = (
+/obj/random/traps,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"v" = (
+/obj/structure/lattice,
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/structure/girder,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"H" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/obj/random/material/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 
 (1,1,1) = {"
 d
 f
+<<<<<<< HEAD
 d
+=======
+v
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 k
 l
 "}
@@ -79,7 +151,11 @@ a
 (4,1,1) = {"
 b
 g
+<<<<<<< HEAD
 i
+=======
+H
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 i
 a
 "}
@@ -88,5 +164,9 @@ a
 a
 a
 a
+<<<<<<< HEAD
 f
+=======
+z
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

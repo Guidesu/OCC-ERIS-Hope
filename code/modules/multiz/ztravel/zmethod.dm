@@ -2,23 +2,21 @@
 	These datums are used to handle ztravel in multiz/movement.dm. That is, vertical movement between
 	floors/zlevels. This system is designed to handle jetpacks, climbing, superhuman jumping, etc.
 	In future it can be expanded to flight and grappling hooks
-
 	Each vertical_travel_method datum details one possible method of motion
-
 	Each one contains a proc used to query whether the mob is currently able to ztravel via this method
 	Each one also contains an optional animation proc which is run asynchronously (in a spawn call)
 		This animation proc is used to do pixel offsets, scaling, etc
-
 	For now, one of every possible method is created and used to test, then deleted if it can't run
 	This design offers a future possibility of optimisation by having each mob store a list of methods
 	which they could possibly use, based on equipment. And only checking those
-
 	The #1 rule when writing a VTM datum: Always call parent, using .=..() at the top of your function
 	Unless you're reeeally sure what you're doing
 */
 /datum/vertical_travel_method
 	//The thing which is attempting to travel. May be a mob or a vehicle
 	var/atom/movable/M
+
+	var/list/given_transformations = list()
 
 	//The mob that is travelling, if any. Used only for messages
 	var/mob/mob
@@ -115,13 +113,25 @@
 	animate(M)
 	M.pixel_x = prev_x
 	M.pixel_y = prev_y
-	M.transform = prev_matrix
+	M.remove_transformations(given_transformations)
+	given_transformations.Cut()
 	M.alpha = prev_alpha
 	M.layer = prev_layer
 	M.set_plane(prev_plane)
 	if (travelsound)
 		travelsound.stop()
 	M.used_now = FALSE
+<<<<<<< HEAD
+=======
+
+
+/datum/vertical_travel_method/proc/delete_self()
+	var/mob/owner = M
+	if(ismob(owner))
+		spawn(3)
+		owner.current_vertical_travel_method = null
+	qdel(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/vertical_travel_method/proc/calculate_time()
@@ -145,7 +155,6 @@
 	Can perform checks whether its possible to do this ztravel method.
 	Naturally the return value can be true or false, but it can also be a text string.
 	In this case, it's treated as a failure with an error message, which will be shown to the user.
-
 	This should be used for rare edge cases where someone is almost able to do a transition, but minor details ruin it
 	Like if they're wearing a jetpack but it's empty or not turned on.
 	Generally, use a message in a case where a user would expect it to work, to explain why it doesn't.
@@ -161,6 +170,11 @@
 	if (!get_destination())
 		to_chat(M, SPAN_NOTICE("There is nothing in that direction."))
 		return FALSE
+
+	if(ismob(M))
+		var/mob/O = M
+		if(O.resting)
+			return FALSE
 
 	return TRUE
 
@@ -191,6 +205,8 @@
 	if (prob(slip_chance))
 		slip()
 
+	delete_self()
+
 /datum/vertical_travel_method/proc/finish()
 	animating = FALSE
 	reset_values()
@@ -198,7 +214,11 @@
 	//this is bullshit, but animation is always halted on z change. Vars such as floating remain the same
 	//So we gotta "prepare" it right after successful zmove
 	var/mob/mob = M
+<<<<<<< HEAD
 	if(istype(mob, /mob))
+=======
+	if(ismob(mob))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		mob.stop_floating()
 		mob.update_floating()
 	// end_of_dirty_bullshit.dm
@@ -207,6 +227,7 @@
 	if (prob(slip_chance))
 		slip()
 	announce_end()
+	delete_self()
 
 /datum/vertical_travel_method/proc/get_destination()
 	destination = (direction == UP) ? GetAbove(origin) : GetBelow(origin)
@@ -292,4 +313,8 @@
 	M.Move(target)
 	if (ismob(M))
 		mob.Weaken(2)
+<<<<<<< HEAD
 	to_chat(mob, SPAN_DANGER("You lose control and slip into freefall"))
+=======
+	to_chat(mob, SPAN_DANGER("You lose control and slip into freefall"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

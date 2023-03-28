@@ -10,7 +10,12 @@
 	var/askDelay = 10 * 60 * 1
 	req_access = list(access_robotics)
 	locked = 0
+<<<<<<< HEAD
 
+=======
+	mecha = null//This does not appear to be used outside of reference in mecha.dm.
+	price_tag = 750
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/mmi/digital/posibrain/attack_self(mob/user as mob)
 	if(brainmob && !brainmob.key && searching == 0)

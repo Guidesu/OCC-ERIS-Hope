@@ -25,6 +25,15 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_records_dsc(datum/data/record/a, datum/data/record/b)
 	return sorttext(a.fields[GLOB.cmp_field], b.fields[GLOB.cmp_field])
 
+<<<<<<< HEAD
+=======
+/proc/cmp_mutations_asc(datum/genetics/mutation/a, datum/genetics/mutation/b)
+	return sorttext(b.name, a.name)
+/proc/cmp_mutations_dsc(datum/genetics/mutation/a, datum/genetics/mutation/b)
+	return sorttext(a.name, b.name)
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /proc/cmp_ckey_asc(client/a, client/b)
 	return sorttext(b.ckey, a.ckey)
 
@@ -65,4 +74,21 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 	return b.priority - a.priority
 
 /proc/cmp_smeslist_rcon_tag(list/A, list/B)
+<<<<<<< HEAD
 	return sorttext(A["RCON_tag"], B["RCON_tag"])
+=======
+	return sorttext(A["RCON_tag"], B["RCON_tag"])
+
+// Sorts entries in a performance stats list.
+/proc/cmp_generic_stat_item_time(list/A, list/B)
+	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
+	if (!.)
+		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
+
+/proc/cmp_rcon_smes(obj/machinery/power/smes/buildable/S1, obj/machinery/power/smes/buildable/S2)
+	return sorttext(S2.RCon_tag, S1.RCon_tag)
+
+/proc/cmp_rcon_bbox(obj/machinery/power/breakerbox/BR1, obj/machinery/power/breakerbox/BR2)
+	return sorttext(BR2.RCon_tag, BR1.RCon_tag)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

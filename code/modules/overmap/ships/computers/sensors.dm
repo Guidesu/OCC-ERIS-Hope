@@ -4,7 +4,11 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
+<<<<<<< HEAD
 	//circuit = /obj/item/electronics/circuitboard/sensors
+=======
+	//circuit = /obj/item/circuitboard/sensors
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/effect/overmap/ship/linked
 	var/obj/machinery/shipsensors/sensors
 	var/viewing = 0
@@ -24,7 +28,7 @@
 			sensors = S
 			break
 
-/obj/machinery/computer/sensors/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/sensors/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		return
 
@@ -76,7 +80,7 @@
 		user.set_machine(src)
 		if(linked)
 			user.reset_view(linked)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/sensors/Topic(href, href_list, state)
 	if(..())
@@ -122,7 +126,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "sensors"
 	var/max_health = 200
-	var/health = 200
+	health = 200
 	var/critical_heat = 50 // sparks and takes damage when active & above this heat
 	var/heat_reduction = 1.5 // mitigates this much heat per tick
 	var/current_heat = 0
@@ -167,7 +171,8 @@
 		to_chat(user, "\The [src] shows signs of damage!")
 
 /obj/machinery/shipsensors/bullet_act(var/obj/item/projectile/Proj)
-	take_damage(Proj.get_structure_damage())
+	if (!(Proj.testing))
+		take_damage(Proj.get_structure_damage())
 	..()
 
 /obj/machinery/shipsensors/proc/toggle()

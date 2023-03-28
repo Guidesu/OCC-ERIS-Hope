@@ -25,7 +25,12 @@ obj/machinery/atmospherics/pipe/zpipe
 		var/travel_direction_name = "UNDEFINED"
 		var/travel_direction = "UNDEFINED"
 
+<<<<<<< HEAD
 		level = BELOW_PLATING_LEVEL
+=======
+		level = ABOVE_PLATING_LEVEL
+		layer = GAS_PIPE_VISIBLE_LAYER
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 obj/machinery/atmospherics/pipe/zpipe/New()
 	..()
@@ -149,10 +154,6 @@ obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 					node2 = target
 					break
 
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
-
 ///////////////////////
 // and the down pipe //
 ///////////////////////
@@ -191,10 +192,6 @@ obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
 				if (check_connect_types(target,src))
 					node2 = target
 					break
-
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
 
 ///////////////////////
 // supply/scrubbers  //

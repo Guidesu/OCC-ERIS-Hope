@@ -4,20 +4,28 @@
 	or they can be emagged to accept any ID for use in disguises.
 */
 
+
+//All badge sprites done by - CeUvi
+
 /obj/item/clothing/accessory/badge
+<<<<<<< HEAD
 	name = "Inspector's badge"
 	desc = "A Aegis Security badge, made from gold and set on false leather."
+=======
+	name = "Ranger's badge"
+	desc = "A marshal ranger badge, made from gold and set on leather."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "badge"
 	item_state = "marshalbadge"
 	slot_flags = SLOT_BELT | SLOT_ACCESSORY_BUFFER
 	price_tag = 200
 
 	var/stored_name
-	var/badge_string = "Ironhammer Security"
+	var/badge_string = "Marshal"
 
 /obj/item/clothing/accessory/badge/old
 	name = "faded badge"
-	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."
+	desc = "A faded badge, backed with leather. It bears the emblem of a forensic division."
 	icon_state = "badge_round"
 
 /obj/item/clothing/accessory/badge/proc/set_name(var/new_name)
@@ -44,14 +52,44 @@
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo
 	name = "holobadge"
+<<<<<<< HEAD
 	desc = "This glowing blue badge marks the holder as a member of Cobalt Security."
+=======
+	desc = "This glowing blue badge marks the holder as a member of security."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "holobadge"
 	item_state = "holobadge"
+	badge_string = "Security"
 	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/cord
 	icon_state = "holobadge-cord"
 	slot_flags = SLOT_MASK | SLOT_ACCESSORY_BUFFER
+
+
+/obj/item/clothing/accessory/badge/holo/wo
+	name = "holobadge"
+	desc = "This glowing golden badge marks the holder as a member of security."
+	icon_state = "marshalbadge"
+	item_state = "marshalbadge"
+
+/obj/item/clothing/accessory/badge/holo/inspector
+	name = "holobadge"
+	desc = "This glowing silver badge marks the holder as a member of security."
+	icon_state = "inspectorbadge"
+	item_state = "inspectorbadge"
+
+/obj/item/clothing/accessory/badge/holo/co
+	name = "holobadge"
+	desc = "This glowing red badge marks the holder as a member of blackshield."
+	icon_state = "sargebadge"
+	item_state = "sargebadge"
+
+/obj/item/clothing/accessory/badge/holo/warden
+	name = "holobadge"
+	desc = "This glowing cyan badge marks the holder as a member of security."
+	icon_state = "specbadge"
+	item_state = "holobadge"
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user as mob)
 	if(!stored_name)
@@ -95,23 +133,50 @@
 
 
 /obj/item/clothing/accessory/badge/warden
+<<<<<<< HEAD
 	name = "Gunnery Sergeant badge"
 	desc = "A silver Cobalt Security badge. Stamped with the words 'Sergeant.'"
 	icon_state = "silverbadge"
+=======
+	name = "Supply specialist badge"
+	desc = "A silver supply specialist badge. Stamped with the words 'SS.'"
+	icon_state = "silverbadgez"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	slot_flags = SLOT_ACCESSORY_BUFFER
 	spawn_blacklisted = TRUE
 
 
 /obj/item/clothing/accessory/badge/hos
+<<<<<<< HEAD
 	name = "Commander's badge"
 	desc = "An immaculately polished gold Aegis Cobalt Security badge. Labeled 'Commander.'"
+=======
+	name = "Warrant officer's badge"
+	desc = "An immaculately polished gold Warrant Officer badge."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "goldbadge"
 	slot_flags = SLOT_ACCESSORY_BUFFER
 	spawn_blacklisted = TRUE
 
+<<<<<<< HEAD
 /obj/item/clothing/accessory/badge/marshal
 	name = "Marshal's badge"
 	desc = "A leather-backed gold badge displaying the crest of the Aegis Marshals."
 	icon_state = "marshalbadge"
 	badge_string = "Ironhammer Marshal Bureau"
 	spawn_blacklisted = TRUE
+=======
+/obj/item/clothing/accessory/badge/smc
+	name = "blackshield commander's badge"
+	desc = "An immaculately polished gold blackshield commander badge."
+	icon_state = "goldbadge"
+	badge_string = "Blackshield"
+	slot_flags = SLOT_ACCESSORY_BUFFER
+
+/obj/item/clothing/accessory/badge/marshal
+	name = "commando's badge"
+	desc = "A leather-backed gold badge displaying the crest of the Brigadier and Provost Marshal, signifying the wearer as an agent of both, carrying the full authority over both organizations."
+	icon_state = "marshalbadge"
+	badge_string = "Special Agent"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

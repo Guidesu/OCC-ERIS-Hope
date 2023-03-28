@@ -16,7 +16,10 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	unacidable = 1//So effect are not targeted by alien acid.
 	pass_flags = PASSTABLE | PASSGRILLE
 
+/obj/effect/add_initial_transforms()
+	. = ..()
 
+<<<<<<< HEAD
 /obj/effect/Initialize(mapload, ...)
 	. = ..()
 	if (random_rotation)
@@ -38,6 +41,15 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	if(reagents)
 		reagents.delete()
 	return ..()
+=======
+	var/rotation_amount = 0
+	switch (random_rotation)
+		if (1)
+			rotation_amount = pick(0, 90, 180, -90)
+		if (2)
+			rotation_amount= rand(0,360)
+	add_new_transformation(/datum/transform_type/modular, list(rotation = rotation_amount, flag = EFFECT_INITIAL_ROTATION_TRANSFORM, priority = EFFECT_INITIAL_ROTATION_TRANSFORM_PRIORITY))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/effect/effect/system
 	var/number = 3
@@ -128,7 +140,11 @@ steam.start() -- spawns the effect
 	name = "sparks"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	mouse_opacity = 0
 	var/amount = 6
 
@@ -268,18 +284,26 @@ steam.start() -- spawns the effect
 	var/radius = 3
 	var/brightness = 2
 
-/obj/effect/effect/light/New(var/newloc, var/radius, var/brightness)
+/obj/effect/effect/light/forceMove(atom/destination, var/special_event, glide_size_override=0)
+	. = ..()
+	update_light()
+
+/obj/effect/effect/light/New(var/newloc, var/radius, var/brightness, color, selfdestruct_timer)
 	..()
 
 	src.radius = radius
 	src.brightness = brightness
 
 	set_light(radius,brightness)
+	if(selfdestruct_timer)
+		spawn(selfdestruct_timer)
+		qdel(src)
 
 /obj/effect/effect/light/set_light(l_range, l_power, l_color)
 	..()
 	radius = l_range
 	brightness = l_power
+	color = l_color
 
 /obj/effect/effect/smoke/illumination
 	name = "illumination"
@@ -287,10 +311,10 @@ steam.start() -- spawns the effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 
-/obj/effect/effect/smoke/illumination/New(var/newloc, var/brightness=15, var/lifetime=10)
+/obj/effect/effect/smoke/illumination/New(var/newloc, var/brightness=15, var/lifetime=10, var/color=COLOR_WHITE)
 	time_to_live=lifetime
 	..()
-	set_light(brightness)
+	set_light(brightness, 1, color)
 
 /////////////////////////////////////////////
 // Bad smoke
@@ -332,6 +356,18 @@ steam.start() -- spawns the effect
 		M.emote("cough")
 		spawn ( 20 )
 			M.coughedtime = 0
+
+/////////////////////////////////////////////
+//  White phosphorous
+/////////////////////////////////////////////
+
+/obj/effect/effect/smoke/white_phosphorous
+    name = "white phosphorous smoke"
+
+/obj/effect/effect/smoke/white_phosphorous/affect(mob/living/carbon/M)
+    M.fire_stacks += 5
+    M.fire_act()
+
 /////////////////////////////////////////////
 // Mustard Gas
 /////////////////////////////////////////////
@@ -402,11 +438,11 @@ steam.start() -- spawns the effect
 /datum/effect/effect/system/smoke_spread/sleepy
 	smoke_type = /obj/effect/effect/smoke/sleepy
 
-
 /datum/effect/effect/system/smoke_spread/mustard
 	smoke_type = /obj/effect/effect/smoke/mustard
 
-
+/datum/effect/effect/system/smoke_spread/white_phosphorous
+	smoke_type = /obj/effect/effect/smoke/white_phosphorous
 
 
 
@@ -417,10 +453,8 @@ steam.start() -- spawns the effect
 
 	set_up (amt, loc, flash = 0, flash_fact = 0)
 		amount = amt
-		if(istype(loc, /turf/))
-			location = loc
-		else
-			location = get_turf(loc)
+
+		location = loc
 
 		flashing = flash
 		flashing_factor = flash_fact
@@ -428,14 +462,20 @@ steam.start() -- spawns the effect
 		return
 
 	start()
-		if (amount <= 2)
+		if (amount <= 3)
 			var/datum/effect/effect/system/spark_spread/s = new
-			s.set_up(2, 1, location)
+			s.set_up(3, 1, location)
 			s.start()
 
+<<<<<<< HEAD
 			for(var/mob/M in viewers(5, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 			for(var/mob/M in viewers(1, location))
+=======
+			for(var/mob/M in viewers(5, get_turf(location)))
+				to_chat(M, SPAN_WARNING("The solution violently explodes."))
+			for(var/mob/M in viewers(1, get_turf(location)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if (prob (50 * amount))
 					to_chat(M, SPAN_WARNING("The explosion knocks you down."))
 					M.Weaken(rand(1,5))
@@ -459,7 +499,11 @@ steam.start() -- spawns the effect
 			if (flashing && flashing_factor)
 				flash = (amount/4) * flashing_factor
 
+<<<<<<< HEAD
 			for(var/mob/M in viewers(8, location))
+=======
+			for(var/mob/M in viewers(8, get_turf(location)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 
 			explosion(

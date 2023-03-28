@@ -12,18 +12,52 @@
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_CLOTHING
 	var/flash_protection = FLASH_PROTECTION_NONE	// Sets the item's level of flash protection.
+	var/psi_blocking = 0							// Sets the item's level of psionic protection.
 	var/tint = TINT_NONE							// Sets the item's level of visual impairment tint.
+<<<<<<< HEAD
 	var/list/species_restricted				// Only these species can wear this kit.
+=======
+	var/list/species_restricted						// Only these species can wear this kit.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/gunshot_residue								// Used by forensics.
 	var/initial_name = "clothing"					// For coloring
-
 	var/list/accessories = list()
 	var/list/valid_accessory_slots
 	var/list/restricted_accessory_slots
 	var/equip_delay = 0 //If set to a nonzero value, the item will require that much time to wear and remove
+	stiffness = 0 // Recoil caused by moving, defined in obj/item
+	obscuration = 0 // Similar to tint, but decreases firearm accuracy instead via giving minimum extra offset, defined in obj/item
 
 	//Used for hardsuits. If false, this piece cannot be retracted while the core module is engaged
 	var/retract_while_active = TRUE
+	blacklist_upgrades = list(
+							/obj/item/tool_upgrade/augment = TRUE,
+							/obj/item/tool_upgrade/refinement = TRUE,
+							/obj/item/gun_upgrade = TRUE, // Goodbye tacticool clothing
+							/obj/item/tool_upgrade/artwork_tool_mod = TRUE)
+
+/obj/item/clothing/Initialize(mapload, ...)
+	. = ..()
+
+	var/list/init_accessories = accessories
+	accessories = list()
+	for (var/path in init_accessories)
+		attach_accessory(null, new path (src))
+
+	var/obj/screen/item_action/action = new /obj/screen/item_action/top_bar/clothing_info
+	action.owner = src
+	if(!hud_actions)
+		hud_actions = list()
+	hud_actions += action
+
+	if(matter)
+		return
+
+	else if(chameleon_type)
+		matter = list(MATERIAL_PLASTIC = 2 * w_class)
+		origin_tech = list(TECH_ILLEGAL = 3)
+	else
+		matter = list(MATERIAL_BIOMATTER = 5 * w_class)
 
 	var/style = STYLE_NONE
 	var/no_fibers = FALSE	// OCCULUS EDIT: For clothing that should not leave fibers, like detective's gear
@@ -66,7 +100,7 @@
 //Delayed equipping
 /obj/item/clothing/pre_equip(mob/user, slot)
 	..(user, slot)
-	if (equip_delay > 0)
+	if (equip_delay > 0 && !user.stats.getPerk(PERK_SECOND_SKIN))
 		//If its currently worn, we must be taking it off
 		if (is_worn())
 			if(unequip_sound != null) // OCCULUS EDIT: For playing specific audio files when unequipping the clothing item.
@@ -95,7 +129,11 @@
 	if(!pre_equip(usr, over_object))
 		..()
 
+<<<<<<< HEAD
 /proc/body_part_coverage_to_string(body_parts)
+=======
+/proc/body_part_coverage_to_string(var/body_parts)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/body_partsL = list()
 	if(body_parts & HEAD)
 		body_partsL.Add("head")
@@ -126,7 +164,11 @@
 
 	return english_list(body_partsL)
 
+<<<<<<< HEAD
 /obj/item/clothing/ui_data()
+=======
+/obj/item/clothing/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 	var/list/armorlist = armor.getList()
 	if(armorlist.len)
@@ -142,6 +184,11 @@
 		var/body_part_string = body_part_coverage_to_string(body_parts_covered)
 		data["body_coverage"] = body_part_string
 	data["slowdown"] = slowdown
+<<<<<<< HEAD
+=======
+	data["stiffness"] = stiffness
+	data["obscuration"] = obscuration
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(heat_protection)
 		data["heat_protection"] = body_part_coverage_to_string(heat_protection)
 		data["heat_protection_temperature"] = max_heat_protection_temperature
@@ -151,8 +198,13 @@
 	data["equip_delay"] = equip_delay
 	return data
 
+<<<<<<< HEAD
 /obj/item/clothing/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
 	var/list/data = ui_data(user)
+=======
+/obj/item/clothing/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -163,7 +215,11 @@
 
 /obj/item/clothing/ui_action_click(mob/living/user, action_name)
 	if(action_name == "Clothing information")
+<<<<<<< HEAD
 		ui_interact(user)
+=======
+		nano_ui_interact(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 	return ..()
 
@@ -174,6 +230,14 @@
 	name = "Clothing information"
 	icon_state = "info"
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/refresh_upgrades()
+	var/obj/item/clothing/referencecarmor = new type()
+	armor = referencecarmor.armor
+	qdel(referencecarmor)
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects
@@ -224,7 +288,10 @@
 	icon = 'icons/mob/screen1_Midnight.dmi'
 	icon_state = "blocked"
 	slot_flags = SLOT_EARS | SLOT_TWOEARS
+<<<<<<< HEAD
 	spawn_tags = null
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/master_item
 
 /obj/item/clothing/ears/offear/New(obj/O)
@@ -251,6 +318,70 @@
 	slot_flags = SLOT_EARS | SLOT_TWOEARS
 
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/ears/earmuffs/mp3
+	name = "headphones"
+	desc = "A black portable wireless stereo headset, with a built-in FM radio."
+	icon_state = "headphones"
+	item_state = "headphones"
+	action_button_name = "action_music"
+	var/obj/item/device/player/player = null
+	var/tick_cost = 0.1
+	cell = null
+	suitable_cell = /obj/item/cell/small
+
+
+/*
+/obj/item/clothing/ears/earmuffs/mp3/New()
+	..()
+	player = new(src)
+	START_PROCESSING(SSobj, src)
+	if(!cell && suitable_cell)
+		cell = new suitable_cell(src)
+
+
+
+/obj/item/clothing/ears/earmuffs/mp3/update_icon()
+	cut_overlays()
+	..() //blood overlay, etc.
+	if(player.current_track)
+		add_overlay("headphones_on")
+
+/obj/item/clothing/ears/earmuffs/mp3/ui_action_click()
+	player.OpenInterface(usr)
+
+/obj/item/clothing/ears/earmuffs/mp3/dropped(var/mob/user)
+	..()
+	player.stop(user)
+
+/obj/item/clothing/ears/earmuffs/mp3/equipped(var/mob/user, var/slot)
+	..()
+	if(cell && cell.checked_use(tick_cost))
+		player.active = TRUE
+		player.play(user)
+
+/obj/item/clothing/ears/earmuffs/mp3/Process()
+	if(player.active)
+		if(!cell || !cell.checked_use(tick_cost))
+			if(ismob(src.loc))
+				player.outofenergy()
+				to_chat(src.loc, SPAN_WARNING("[src] flashes with error - LOW POWER."))
+
+
+/obj/item/clothing/ears/earmuffs/mp3/MouseDrop(over_object)
+	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
+		cell = null
+	else
+		return ..()
+
+/obj/item/clothing/ears/earmuffs/mp3/attackby(obj/item/C, mob/living/user)
+	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
+		src.cell = C
+
+		*/
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ///////////////////////////////////////////////////////////////////////
 //Glasses
 /*
@@ -283,10 +414,17 @@ BLIND     // can't see anything
 	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/inventory/hands/icon.dmi'
 	siemens_coefficient = 0.75
+<<<<<<< HEAD
 	bad_type = /obj/item/clothing/gloves
 	spawn_tags = SPAWN_TAG_GLOVES
 	body_parts_covered = HANDS
 	armor = list(melee = 10, bullet = 0, energy = 15, bomb = 0, bio = 0, rad = 0)
+=======
+	var/wired = 0
+	var/clipped = 0
+	body_parts_covered = ARMS
+	armor_list = list(melee = 10, bullet = 0, energy = 15, bomb = 0, bio = 0, rad = 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
 	var/wired = 0
@@ -343,7 +481,17 @@ BLIND     // can't see anything
 	else
 		return ..(user)
 
+<<<<<<< HEAD
 /obj/item/clothing/head/proc/update_flashlight(mob/user = null)
+=======
+/obj/item/clothing/head/refresh_upgrades()
+	var/obj/item/clothing/head/referencecarmor = new type()
+	armor = referencecarmor.armor
+	qdel(referencecarmor)
+	..()
+
+/obj/item/clothing/head/proc/update_flashlight(var/mob/user = null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(on && !light_applied)
 		set_light(brightness_on)
 		light_applied = 1
@@ -393,7 +541,11 @@ BLIND     // can't see anything
 		// Generate object icon.
 		if(!light_overlay_cache["[light_overlay]_icon"])
 			light_overlay_cache["[light_overlay]_icon"] = image('icons/obj/light_overlays.dmi', light_overlay)
+<<<<<<< HEAD
 		associate_with_overlays(light_overlay_cache["[light_overlay]_icon"])
+=======
+		add_overlay(light_overlay_cache["[light_overlay]_icon"])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
 		var/cache_key = "[light_overlay][H ? "_[H.species.get_bodytype()]" : ""]"
@@ -414,7 +566,8 @@ BLIND     // can't see anything
 	bad_type = /obj/item/clothing/mask
 	spawn_tags = SPAWN_TAG_MASK
 
-	var/voicechange = 0
+	var/muffle_voice = FALSE
+	var/voicechange = FALSE
 	var/list/say_messages
 	var/list/say_verbs
 
@@ -434,7 +587,16 @@ BLIND     // can't see anything
 	spawn_tags = SPAWN_TAG_SHOES
 	bad_type = /obj/item/clothing/shoes
 
+<<<<<<< HEAD
 	armor = list(melee = 10, bullet = 0, energy = 10, bomb = 0, bio = 0, rad = 0)
+=======
+	var/can_hold_knife = 0
+	var/obj/item/holding
+	var/noslip = 0
+	var/module_inside = 0
+
+	armor_list = list(melee = 10, bullet = 0, energy = 10, bomb = 0, bio = 0, rad = 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
 	force = 2
@@ -469,7 +631,6 @@ BLIND     // can't see anything
 	if(!holding)
 		verbs -= /obj/item/clothing/shoes/proc/draw_knife
 
-	update_icon()
 	return
 
 /obj/item/clothing/shoes/AltClick()
@@ -486,10 +647,15 @@ BLIND     // can't see anything
 
 /obj/item/clothing/shoes/attackby(obj/item/I, mob/user)
 	var/global/knifes
+<<<<<<< HEAD
+=======
+	var/global/not_a_knife
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(I,/obj/item/noslipmodule))
 		if (item_flags != 0)
 			noslip = item_flags
 		module_inside = 1
+<<<<<<< HEAD
 		to_chat(user, "You attached no slip sole")
 		permeability_coefficient = 0.05
 		item_flags = NOSLIP | SILENT
@@ -497,25 +663,50 @@ BLIND     // can't see anything
 		siemens_coefficient = 0 // DAMN BOI
 		qdel(I)
 
+=======
+		to_chat(user, "You attached a no-slip sole to \the [src].")
+		permeability_coefficient = 0.05
+		item_flags = NOSLIP | SILENT
+		origin_tech = list(TECH_ILLEGAL = 3)
+		siemens_coefficient = 0 // DAMN BOI
+		qdel(I)
+
+	if(istype(I, /obj/item/tool/knife/psionic_blade))
+		return ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!knifes)
 		knifes = list(
 			/obj/item/tool/knife,
 			/obj/item/material/shard,
+<<<<<<< HEAD
 			/obj/item/tool/knife/butterfly,
 			/obj/item/material/kitchen/utensil,
 			/obj/item/tool/knife/tacknife,
 			/obj/item/oddity/common/old_knife, //Syzygy change that should have been done forever ago
 			/obj/item/tool/shiv,
+=======
+			/obj/item/material/butterfly,
+			/obj/item/material/kitchen/utensil,
+			/obj/item/tool/knife/tacknife,
+			/obj/item/tool/knife/shiv
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
+	if(!not_a_knife)
+		not_a_knife = list(/obj/item/tool/knife/psionic_blade)
 	if(can_hold_knife && is_type_in_list(I, knifes))
 		if(holding)
 			to_chat(user, SPAN_WARNING("\The [src] is already holding \a [holding]."))
+<<<<<<< HEAD
+=======
+			return
+		if(is_type_in_list(I, not_a_knife))
+			to_chat(user, SPAN_WARNING("\The [src] is not a real knife."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 		if(user.unEquip(I, src))
 			holding = I
 			user.visible_message(SPAN_NOTICE("\The [user] shoves \the [I] into \the [src]."))
 			verbs |= /obj/item/clothing/shoes/proc/draw_knife
-			update_icon()
 	else
 		return ..()
 
@@ -529,6 +720,7 @@ BLIND     // can't see anything
 			item_flags = noslip
 		var/obj/item/noslipmodule/NSM = new()
 		usr.put_in_hands(NSM)
+<<<<<<< HEAD
 	else to_chat(usr, "You haven't got any accessories in your shoes")
 
 
@@ -536,6 +728,14 @@ BLIND     // can't see anything
 	cut_overlays()
 	if(holding)
 		add_overlays(image(icon, "[icon_state]_knife"))
+=======
+	else to_chat(usr, "You haven't got any accessories in your shoes.")
+
+/obj/item/clothing/shoes/update_icon()
+	cut_overlays()
+	//if(holding)
+	//	add_overlay(image(icon, "[icon_state]_knife"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /obj/item/clothing/shoes/proc/handle_movement(turf/walking, running)
@@ -550,15 +750,29 @@ BLIND     // can't see anything
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	allowed = list(
 		/obj/item/clipboard,
+<<<<<<< HEAD
 		/obj/item/storage/pouch/,
 		/obj/item/gun,
 		/obj/item/melee,
 		/obj/item/tool,
+=======
+		/obj/item/pen,
+		/obj/item/paper,
+		/obj/item/device/flash,
+		/obj/item/storage/pouch,
+		/obj/item/storage/sheath,
+		/obj/item/gun,
+		/obj/item/melee,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/material,
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/handcuffs,
 		/obj/item/tank,
+<<<<<<< HEAD
+=======
+		/obj/item/tool, //People are going to so abuse this
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/device/suit_cooling_unit,
 		/obj/item/cell,
 		/obj/item/storage/fancy,
@@ -566,8 +780,18 @@ BLIND     // can't see anything
 		/obj/item/device/lighting,
 		/obj/item/device/scanner,
 		/obj/item/reagent_containers/spray,
+<<<<<<< HEAD
 		/obj/item/device/radio,
 		/obj/item/clothing/mask)
+=======
+		/obj/item/device/lighting/toggleable/flashlight,
+		/obj/item/storage/box/matches,
+		/obj/item/reagent_containers/food/drinks/flask,
+		/obj/item/device/radio,
+		/obj/item/clothing/mask,
+		/obj/item/storage/backpack/guncase,
+		/obj/item/implant/carrion_spider/holographic)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
@@ -576,11 +800,35 @@ BLIND     // can't see anything
 	bad_type = /obj/item/clothing/suit
 	var/fire_resist = T0C+100
 	var/list/extra_allowed = list()
+<<<<<<< HEAD
 	style = STYLE_HIGH
+=======
+	blacklisted_allowed = list(
+		/obj/item/tool/knife/psionic_blade,
+		/obj/item/tool/hammer/telekinetic_fist,
+		/obj/item/flame/pyrokinetic_spark,
+		/obj/item/tool/psionic_omnitool,
+		/obj/item/shield/riot/crusader/psionic,
+		/obj/item/gun/kinetic_blaster
+		)
+	equip_delay = 1 SECONDS
+
+	valid_accessory_slots = list("armband","decor")
+	restricted_accessory_slots = list("utility", "armband")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/suit/Initialize(mapload, ...)
 	.=..()
+<<<<<<< HEAD
 	allowed |= extra_allowed
+=======
+
+/obj/item/clothing/suit/refresh_upgrades()
+	var/obj/item/clothing/suit/referencecarmor = new type()
+	armor = referencecarmor.armor
+	qdel(referencecarmor)
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 ///////////////////////////////////////////////////////////////////////
 //Under clothing
@@ -605,6 +853,7 @@ BLIND     // can't see anything
 		3 = Report location
 		*/
 	var/displays_id = 1
+	var/rolldown = FALSE
 	equip_delay = 2 SECONDS
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
@@ -623,6 +872,7 @@ BLIND     // can't see anything
 /obj/item/clothing/under/New()
 	..()
 	item_state_slots[slot_w_uniform_str] = icon_state //TODO: drop or gonna use it?
+	sensor_mode = 3 // All clothing on tracking by default now.
 
 /obj/item/clothing/under/examine(mob/user)
 	..(user)
@@ -674,6 +924,7 @@ BLIND     // can't see anything
 				for(var/mob/V in viewers(usr, 1))
 					V.show_message("[usr] sets [src.loc]'s sensors to maximum.", 1)
 
+<<<<<<< HEAD
 /obj/item/clothing/under/rank
 	bad_type = /obj/item/clothing/under/rank
 	spawn_blacklisted = TRUE
@@ -684,6 +935,20 @@ BLIND     // can't see anything
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/U)
 	if(I.get_tool_type(usr, list(QUALITY_SCREW_DRIVING), src) && ishuman(U))
+=======
+/obj/item/clothing/under/attackby(var/obj/item/I, var/mob/U)
+	if(I.get_tool_type(usr, list(QUALITY_SCREW_DRIVING), src) && ishuman(U) && !is_sharp(I)) // No setting sensors with knives!
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		set_sensors(U)
 	else
 		return ..()
+
+/obj/item/clothing/under/verb/roll_down()
+	set name = "Toggle Jumpsuit"
+	set desc = "Toggle the appearance of your jumpsuit."
+	set category = "Object"
+
+	usr.visible_message("[usr] adjusts their jumpsuit.", \
+	"You adjust your jumpsuit.")
+	rolldown = !rolldown
+	usr.update_inv_w_uniform()

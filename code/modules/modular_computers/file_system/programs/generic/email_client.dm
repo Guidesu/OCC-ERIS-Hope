@@ -202,7 +202,11 @@
 	last_message_count = 0
 	read_message_count = 0
 
+<<<<<<< HEAD
 /datum/nano_module/email_client/ui_data(mob/user)
+=======
+/datum/nano_module/email_client/nano_ui_data(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = host.initial_data()
 	// Password has been changed by other client connected to this email account
 	if(current_account)
@@ -300,8 +304,13 @@
 		data["stored_password"] = stars(stored_password, 0)
 	return data
 
+<<<<<<< HEAD
 /datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = ui_data(user)
+=======
+/datum/nano_module/email_client/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -360,7 +369,7 @@
 	var/mob/living/user = usr
 
 	if(href_list["open"])
-		ui_interact()
+		nano_ui_interact()
 
 	check_for_new_messages(1)		// Any actual interaction (button pressing) is considered as acknowledging received message, for the purpose of notification icons.
 	if(href_list["login"])
@@ -407,7 +416,11 @@
 		return 1
 
 	if(href_list["edit_title"])
+<<<<<<< HEAD
 		var/newtitle = sanitize(input(user,"Enter title for your message:", "Message title", msg_title), 100)
+=======
+		var/newtitle = sanitize(input(user,"Enter title for your message:", "Message title", msg_title) as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(newtitle)
 			msg_title = newtitle
 		return 1
@@ -417,13 +430,21 @@
 		var/oldtext = html_decode(msg_body)
 		oldtext = replacetext(oldtext, "\[br\]", "\n")
 
+<<<<<<< HEAD
 		var/newtext = sanitize(replacetext(input(usr, "Enter your message. You may use most tags from paper formatting", "Message Editor", oldtext), "\n", "\[br\]"), 20000)
+=======
+		var/newtext = sanitize(replacetext(input(usr, "Enter your message. You may use most tags from paper formatting", "Message Editor", oldtext) as text|null, "\n", "\[br\]"), 20000)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(newtext)
 			msg_body = newtext
 		return 1
 
 	if(href_list["edit_recipient"])
+<<<<<<< HEAD
 		var/newrecipient = sanitize(input(user,"Enter recipient's email address:", "Recipient", msg_recipient), 100)
+=======
+		var/newrecipient = sanitize(input(user,"Enter recipient's email address:", "Recipient", msg_recipient) as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(newrecipient)
 			msg_recipient = newrecipient
 			addressbook = 0
@@ -434,13 +455,21 @@
 		return 1
 
 	if(href_list["edit_login"])
+<<<<<<< HEAD
 		var/newlogin = sanitize(input(user,"Enter login", "Login", stored_login), 100)
+=======
+		var/newlogin = sanitize(input(user,"Enter login", "Login", stored_login) as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(newlogin)
 			stored_login = newlogin
 		return 1
 
 	if(href_list["edit_password"])
+<<<<<<< HEAD
 		var/newpass = sanitize(input(user,"Enter password", "Password"), 100)
+=======
+		var/newpass = sanitize(input(user,"Enter password", "Password") as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(newpass)
 			stored_password = newpass
 		return 1
@@ -499,7 +528,7 @@
 		var/atom/movable/AM = host
 		if(istype(AM))
 			if(ismob(AM.loc))
-				ui_interact(AM.loc)
+				nano_ui_interact(AM.loc)
 		return 1
 
 	if(href_list["view"])
@@ -517,6 +546,7 @@
 		return 1
 
 	if(href_list["changepassword"])
+<<<<<<< HEAD
 		var/oldpassword = sanitize(input(user,"Please enter your old password:", "Password Change"), 100)
 		if(!oldpassword)
 			return 1
@@ -524,6 +554,15 @@
 		if(!newpassword1)
 			return 1
 		var/newpassword2 = sanitize(input(user,"Please re-enter your new password:", "Password Change"), 100)
+=======
+		var/oldpassword = sanitize(input(user,"Please enter your old password:", "Password Change") as text|null, 100)
+		if(!oldpassword)
+			return 1
+		var/newpassword1 = sanitize(input(user,"Please enter your new password:", "Password Change") as text|null, 100)
+		if(!newpassword1)
+			return 1
+		var/newpassword2 = sanitize(input(user,"Please re-enter your new password:", "Password Change") as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!newpassword2)
 			return 1
 
@@ -554,7 +593,11 @@
 			error = "Error exporting file. Are you using a functional and NTOS-compliant device?"
 			return 1
 
+<<<<<<< HEAD
 		var/filename = sanitize(input(user,"Please specify file name:", "Message export"), 100)
+=======
+		var/filename = sanitize(input(user,"Please specify file name:", "Message export") as text|null, 100)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!filename)
 			return 1
 

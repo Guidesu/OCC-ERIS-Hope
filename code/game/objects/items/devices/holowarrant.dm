@@ -1,12 +1,17 @@
 /obj/item/device/holowarrant
 	name = "warrant projector"
+<<<<<<< HEAD
 	desc = "The practical paperwork replacement for the officer on the go."
+=======
+	desc = "The practical paperwork replacement for the marshal on the go."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "holowarrant"
 	item_state = "holowarrant"
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
+<<<<<<< HEAD
 	slot_flags = SLOT_BELT
 	req_access = list(list(access_heads, access_security))
 	var/boss_name = "Aegis Security"
@@ -14,6 +19,15 @@
 	var/datum/computer_file/data/warrant/active
 
 //look at it
+=======
+	slot_flags = SLOT_BELT|SLOT_POCKET // QOL improvement tbh
+	req_access = list(list(access_heads, access_security))
+	var/boss_name = "Marshals"
+	var/station_name = "The Nadezhda Colony"
+	var/datum/computer_file/data/warrant/active
+
+//Examine text
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/holowarrant/examine(mob/user, distance)
 	. = ..()
 	if(active)
@@ -21,9 +35,15 @@
 	if(distance <= 1)
 		show_content(user)
 	else
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You have to be closer if you want to read it.</span>")
 
 // an active warrant with access authorized grants access
+=======
+		to_chat(user, "<span class='notice'>You'll have to move closer if you want to read it!</span>")
+
+// An active warrant with access authorized grants access
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/holowarrant/GetAccess()
 	. = list()
 
@@ -35,7 +55,11 @@
 
 	. |= active.fields["access"]
 
+<<<<<<< HEAD
 //hit yourself with it
+=======
+// Use in-hand
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/holowarrant/attack_self(mob/living/user as mob)
 	active = null
 	var/list/warrants = list()
@@ -43,7 +67,11 @@
 		if(!W.archived)
 			warrants += W.fields["namewarrant"]
 	if(warrants.len == 0)
+<<<<<<< HEAD
 		to_chat(user,"<span class='notice'>There are no warrants available</span>")
+=======
+		to_chat(user,"<span class='notice'>There are no warrants available.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	var/temp
 	temp = input(user, "Which warrant would you like to load?") as null|anything in warrants
@@ -53,6 +81,10 @@
 	update_icon_status()
 	update_icon()
 
+<<<<<<< HEAD
+=======
+// Use your ID on it to authorize warrants
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/holowarrant/attackby(obj/item/W, mob/user)
 	if(active)
 		var/obj/item/card/id/I = W.GetIdCard()
@@ -68,9 +100,15 @@
 		return 1
 	..()
 
+<<<<<<< HEAD
 //hit other people with it
 /obj/item/device/holowarrant/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	user.visible_message("<span class='notice'>[user] holds up a warrant projector and shows the contents to [M].</span>", \
+=======
+// Hit other people with it to show them the warrant
+/obj/item/device/holowarrant/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+	user.visible_message("<span class='notice'>[user] holds up a warrant projector and shows its contents to [M].</span>", \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"<span class='notice'>You show the warrant to [M].</span>")
 	M.examinate(src)
 
@@ -86,7 +124,11 @@
 	if(active.fields["arrestsearch"] == "arrest")
 		var/output = {"
 		<HTML><HEAD><TITLE>[active.fields["namewarrant"]]</TITLE></HEAD>
+<<<<<<< HEAD
 		<BODY bgcolor='#ffffff'><center><large><b>AC SEC Warrant Tracker System</b></large></br>
+=======
+		<BODY bgcolor='#ffffff'><center><large><b>MARSHALS SECURITY Warrant Tracker System</b></large></br>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		</br>
 		Issued under the jurisdiction of the</br>
 		[boss_name]</br>
@@ -95,7 +137,11 @@
 		</br>
 		This document serves as authorization and notice for the arrest of _<u>[active.fields["namewarrant"]]</u>____ for the crime(s) of:</br>[active.fields["charges"]]</br>
 		</br>
+<<<<<<< HEAD
 		Vessel or habitat: _<u>[station_name]</u>____</br>
+=======
+		In situs: _<u>[station_name]</u>____</br>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		</br>_<u>[active.fields["auth"]]</u>____</br>
 		<small>Person authorizing arrest</small></br>
 		</BODY></HTML>
@@ -105,7 +151,11 @@
 	if(active.fields["arrestsearch"] ==  "search")
 		var/output= {"
 		<HTML><HEAD><TITLE>Search Warrant: [active.fields["namewarrant"]]</TITLE></HEAD>
+<<<<<<< HEAD
 		<BODY bgcolor='#ffffff'><center><large><b>AC SEC Warrant Tracker System</b></large></br>
+=======
+		<BODY bgcolor='#ffffff'><center><large><b>MARSHALS SECURITY Warrant Tracker System</b></large></br>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		</br>
 		Issued under the jurisdiction of the</br>
 		[boss_name]</br>
@@ -118,6 +168,7 @@
 		</br>
 		<b>Warrant issued by: </b> [active.fields ["auth"]]</br>
 		</br>
+<<<<<<< HEAD
 		Vessel or habitat: _<u>[station_name]</u>____</br>
 		</br>
 		<center><small><i>The Aegis Cobalt Security Operative(s) bearing this Warrant are hereby authorized by the Issuer to conduct a one time lawful search of the Suspect's person/belongings/premises and/or Organization for any items and materials that could be connected to the suspected criminal act described below, pending an investigation in progress.</br>
@@ -127,8 +178,23 @@
 		The Suspect/Organization staff is expected to offer full co-operation.</br>
 		</br>
 		In the event of the Suspect/Organization staff attempting to resist/impede this search or flee, they must be taken into custody immediately! </br>
+=======
+		Jurisdiction: _<u>[station_name]</u>____</br>
+		</br>
+		<center><small><i>The Marshals Officer(s) bearing this Warrant are hereby authorized by the Issuer to conduct a one-time lawful search of the Suspect's person/belongings/premises and/or Department for any items and materials that could be connected to the suspected criminal charges described below, pending an investigation in progress.</br>
+		</br>
+		The Marshals Officer(s) are obligated to remove any and all such items from the Suspect's posession and/or Department and file it as evidence.</br>
+		</br>
+		The Suspect/Departamental staff is expected to offer full co-operation.</br>
+		</br>
+		In the event of the Suspect/Departamental staff attempting to resist/impede this search or flee, they must be taken into custody immediately! </br>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		</br>
 		All confiscated items must be filed and taken to Evidence!</small></i></center></br>
 		</BODY></HTML>
 		"}
 		show_browser(user, output, "window=Search warrant for [active.fields["namewarrant"]]")
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

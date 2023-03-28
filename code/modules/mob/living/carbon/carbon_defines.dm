@@ -1,7 +1,10 @@
 /mob/living/carbon
 	gender = MALE
 	var/datum/species/species //Contains icon generation and language information, set during New().
-	var/list/stomach_contents = list()
+	var/datum/species_form/form //Steals the icon generation info from above.
+	var/species_aan = ""
+	var/species_color_key = "#000000"
+	var/species_name = "Carbon Lifeform"
 	var/list/datum/disease2/disease/virus2 = list()
 	var/list/antibodies = list()
 
@@ -11,6 +14,10 @@
 	// total amount of wounds on mob, used to spread out healing and the like over all wounds
 	var/obj/item/handcuffed = null //Whether or not the mob is handcuffed
 	var/obj/item/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Active emote/pose
 	var/pose = null
 
@@ -19,10 +26,17 @@
 	var/total_oxygen_req = 50
 	var/total_nutriment_req = DEFAULT_HUNGER_FACTOR
 
+<<<<<<< HEAD
 	var/datum/reagents/metabolism/bloodstr
 	var/datum/reagents/metabolism/ingested
 	var/datum/reagents/metabolism/touching
 	var/datum/metabolism_effects/metabolism_effects
+=======
+	var/datum/reagents/metabolism/bloodstr = null
+	var/datum/reagents/metabolism/ingested = null
+	var/datum/reagents/metabolism/touching = null
+	var/datum/metabolism_effects/metabolism_effects = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/losebreath = 0 //if we failed to breathe last tick
 
 	var/coughedtime = null
@@ -31,11 +45,21 @@
 	var/cpr_time = 1.0
 	nutrition = 400.0//Carbon
 
+<<<<<<< HEAD
 	is_watching = TRUE  //used for remote viewing of multiz structures
 
 	var/obj/item/tank/internal //Human/Monkey
 
 
 	bad_type = /mob/living/carbon
+=======
+	var/flesh_color = "#A10808"
+
+	var/obj/item/tank/internal = null//Human/Monkey
+	colony_friend = TRUE //For mobs to make sure if they are also friendly dont attack humans
+	friendly_to_colony = TRUE //So we dont attack monkeys/BST/People if we allied
+
+	var/movement_hunger_factors = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//TODO: move to brain
 

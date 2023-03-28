@@ -31,7 +31,7 @@
 #define DNA_UI_EYES_G      12
 #define DNA_UI_EYES_B      13
 #define DNA_UI_GENDER      14
-#define DNA_UI_BODYBUILD   15
+#define DNA_UI_FORM        15
 #define DNA_UI_BEARD_STYLE 16
 #define DNA_UI_HAIR_STYLE  17
 #define DNA_UI_EAR_STYLE   18 // Eclipse snippet.
@@ -180,6 +180,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 	SetUIState(DNA_UI_GENDER,         character.gender!=MALE,        1)
 
+<<<<<<< HEAD
 	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  GLOB.hair_styles_list.len,       1)
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, GLOB.facial_hair_styles_list.len,1)
 
@@ -258,6 +259,10 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone, 220,    1) // Value can be negative.
 
 	SetUIState(DNA_UI_GENDER,         character.gender!=MALE,        1)
+=======
+	var/form_ind = GLOB.all_species_form_list.Find(character.form.name)
+	SetUIValueRange(DNA_UI_FORM, form_ind, GLOB.all_species_form_list.len, 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  GLOB.hair_styles_list.len,       1)
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, GLOB.facial_hair_styles_list.len,1)

@@ -1,6 +1,11 @@
+//Sprites by CeUvi#1236
 /obj/item/stack/rods
 	name = "metal rod"
+<<<<<<< HEAD
 	desc = "Some rods. Can be used for building, or something."
+=======
+	desc = "Some rods. Widely used within construction work."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/stack/items.dmi'
 	singular_name = "metal rod"
 	icon_state = "rods"
@@ -12,15 +17,22 @@
 	throw_speed = 5
 	throw_range = 20
 	matter = list(MATERIAL_STEEL = 1)
-	max_amount = 60
+	max_amount = 120
 	attack_verb = list("hit", "bludgeoned", "whacked")
 	price_tag = 1
+	novariants = FALSE
+	stacktype_alt = /obj/item/stack/rods/random
 
 /obj/item/stack/rods/random
 	rand_min = 2
+<<<<<<< HEAD
 	rand_max = 30
 	spawn_tags = SPAWN_TAG_ORE_TAG_JUNK
 	rarity_value = 10
+=======
+	rand_max = 5
+	stacktype_alt = /obj/item/stack/rods
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/stack/rods/cyborg
 	name = "metal rod synthesizer"

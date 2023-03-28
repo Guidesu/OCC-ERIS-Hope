@@ -295,10 +295,14 @@
 	direction = mob.AdjustMovementDirection(direction)
 	var/old_turf = get_turf(mob)
 	step(mob, direction)
+	mob.add_momentum(direction)
 
 	// Something with pulling things
 	var/extra_delay = HandleGrabs(direction, old_turf)
 	mob.add_move_cooldown(extra_delay)
+
+	if(!MOVING_DELIBERATELY(mob) && ishuman(mob)) //Do humans not have their own?
+		mob.handle_movement_recoil()
 
 	/* TODO: Bay grab system
 	for (var/obj/item/grab/G in mob)
@@ -308,10 +312,17 @@
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
 	*/
+<<<<<<< HEAD
 	//SYZYGY EDIT - PIXEL SHIFTING SUPPORT
 	mob.pixel_x = mob.default_pixel_x //Reset pixel shifting x
 	mob.pixel_y = mob.default_pixel_y //REset pixel shifting y
 	//END SYGZYGY EDIT
+=======
+	//Liberty pixel shift port
+	mob.pixel_x = mob.default_pixel_x//Reset pixel shifting x
+	mob.pixel_y = mob.default_pixel_y//Reset pixel shifting y
+	//End of edit
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	mob.moving = 0
 
 /datum/movement_handler/mob/movement/MayMove(var/mob/mover)

@@ -1,6 +1,11 @@
 /obj/machinery/keycard_auth
+<<<<<<< HEAD
 	name = "Keycard Authentication Device"
 	desc = "This device is used to trigger ship functions, which require more than one ID card to authenticate."
+=======
+	name = "keycard authentication device"
+	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
 	use_power = NO_POWER_USE
@@ -31,9 +36,9 @@
 		return
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/keycard_auth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/keycard_auth/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.maps_data.security_state)
 

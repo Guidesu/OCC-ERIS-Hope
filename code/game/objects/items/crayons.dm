@@ -63,8 +63,13 @@
 	grindable = FALSE
 
 /obj/item/pen/crayon/rainbow/attack_self(mob/living/user as mob)
+<<<<<<< HEAD
 	colour = input(user, "Please select the main colour.", "Crayon colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
+=======
+	colour = input(user, "Please select the main color.", "Crayon color") as color
+	shadeColour = input(user, "Please select the shade color.", "Crayon color") as color
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)

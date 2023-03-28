@@ -39,6 +39,17 @@
 				if (!C || !C.check_charge(E.charge_cost))
 					can_fire = FALSE
 
+<<<<<<< HEAD
+=======
+			//Bullet weapons need to have bullet
+			if(istype(gun, /obj/item/gun/projectile))
+				var/obj/item/gun/projectile/P = gun
+				if(!P.chambered)
+					can_fire = FALSE
+				else
+					can_fire = TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			//TODO: Centralise all this into some can_fire proc
 			if (can_fire)
 				enable = TRUE
@@ -66,7 +77,11 @@
 		//Create and assign the click handler
 		//A click handler intercepts mouseup/drag/down events which allow fullauto firing
 		CH = new /datum/click_handler/charge()
+<<<<<<< HEAD
 		CH.reciever = gun //Reciever is the gun that gets the fire events
+=======
+		CH.receiver = gun //receiver is the gun that gets the fire events
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		L.client.CH = CH //Put it on the client
 		CH.owner = L.client //And tell it where it is
 
@@ -77,14 +92,22 @@
 /datum/click_handler/charge
 	handler_name = "charge mode"
 	var/atom/target = null
+<<<<<<< HEAD
 	var/obj/item/gun/energy/reciever
+=======
+	var/obj/item/gun/receiver
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/click_handler/charge/Click()
 	return TRUE //As we don't use the normal click, but the MouseDown/MouseUp, this function is not needed at all. This also bypasses the delete on use check
 
 //Begin charging
 /datum/click_handler/charge/MouseDown(object,location,control,params)
+<<<<<<< HEAD
 	reciever.begin_charge(owner.mob)
+=======
+	receiver.begin_charge(owner.mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Fire charged attack
 /datum/click_handler/charge/MouseUp(object,location,control,params)
@@ -93,12 +116,17 @@
 		var/atom/target = object
 		target = object
 		owner.mob.face_atom(target)
+<<<<<<< HEAD
 	reciever.release_charge(object, owner.mob)
+=======
+	receiver.release_charge(object, owner.mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /******************
 	The actual code
 ******************/
 
+<<<<<<< HEAD
 /obj/item/gun/energy/proc/begin_charge(var/mob/living/user)
 	to_chat(user, SPAN_NOTICE("You begin charging \the [src]."))
 	overcharge_timer = addtimer(CALLBACK(src, .proc/add_charge, user), 1 SECONDS, TIMER_STOPPABLE)
@@ -110,6 +138,36 @@
 		set_light(2, overcharge_level/2, "#ff0d00")
 		if(overcharge_level < overcharge_max)
 			overcharge_timer = addtimer(CALLBACK(src, .proc/add_charge, user), 1 SECONDS, TIMER_STOPPABLE)
+=======
+/obj/item/gun/proc/begin_charge(var/mob/living/user)
+	return
+
+/obj/item/gun/proc/add_charge(var/mob/living/user)
+	return
+
+/obj/item/gun/proc/release_charge(var/atom/target, var/mob/living/user)
+	return
+
+/obj/item/gun/proc/get_overcharge_add(var/mob/living/user)
+	return overcharge_rate+user.stats.getStat(STAT_VIG)*VIG_OVERCHARGE_GEN
+
+/obj/item/gun/proc/overcharge_level_to_mult()
+	return overcharge_level/10
+
+
+/obj/item/gun/energy/begin_charge(mob/living/user)
+	to_chat(user, SPAN_NOTICE("You begin charging \the [src]."))
+	overcharge_timer = addtimer(CALLBACK(src, .proc/add_charge, user), overcharge_timer_step, TIMER_STOPPABLE)
+
+/obj/item/gun/energy/add_charge(mob/living/user)
+	deltimer(overcharge_timer)
+	if(get_holding_mob() == user && get_cell() && cell.checked_use(1))
+		overcharge_level = min(overcharge_max, overcharge_level + get_overcharge_add(user))
+		to_chat(user, SPAN_NOTICE("[src] is now at [overcharge_level]/[overcharge_max] beam charge."))
+		set_light(2, overcharge_level/2, "#ff0d00")
+		if(overcharge_level < overcharge_max)
+			overcharge_timer = addtimer(CALLBACK(src, .proc/add_charge, user), overcharge_timer_step, TIMER_STOPPABLE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			visible_message(SPAN_NOTICE("\The [src] clicks."))
 		return
@@ -117,10 +175,14 @@
 	visible_message(SPAN_WARNING("\The [src] sputters out."))
 	overcharge_level = 0
 
+<<<<<<< HEAD
 /obj/item/gun/energy/proc/get_overcharge_add(var/mob/living/user)
 	return overcharge_rate+user.stats.getStat(STAT_VIG)*VIG_OVERCHARGE_GEN
 
 /obj/item/gun/energy/proc/release_charge(var/atom/target, var/mob/living/user)
+=======
+/obj/item/gun/energy/release_charge(atom/target, mob/living/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	deltimer(overcharge_timer)
 	var/overcharge_add = overcharge_level_to_mult()
 	damage_multiplier += overcharge_add
@@ -134,6 +196,7 @@
 	penetration_multiplier -= overcharge_add
 	overcharge_level = 0
 
+<<<<<<< HEAD
 /obj/item/gun/energy/proc/overcharge_level_to_mult()
 	return overcharge_level/10
 
@@ -141,3 +204,9 @@
 	..()
 	if(overcharge_level)
 		overcharge_level = 0
+=======
+/obj/item/gun/dropped(mob/user)
+	..()
+	if(overcharge_level)
+		overcharge_level = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

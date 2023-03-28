@@ -22,6 +22,10 @@ var/global/ManifestJSON
 	var/list/sci = new()
 	var/list/car = new()
 	var/list/chr = new()
+<<<<<<< HEAD
+=======
+	var/list/pro = new()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/civ = new()
 	var/list/bot = new()
 	var/list/misc = new()
@@ -75,6 +79,12 @@ var/global/ManifestJSON
 		if(real_rank in cargo_positions)
 			car[name] = rank
 			department = 1
+<<<<<<< HEAD
+=======
+		if(real_rank in prospector_positions)
+			pro[name] = rank
+			department = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(real_rank in church_positions)
 			chr[name] = rank
 			department = 1
@@ -136,6 +146,14 @@ var/global/ManifestJSON
 		for(name in chr)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[chr[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
+<<<<<<< HEAD
+=======
+	if(pro.len > 0)
+		dat += "<tr><th colspan=3>Prospector</th></tr>"
+		for(name in pro)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pro[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(civ.len > 0)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in civ)
@@ -186,7 +204,11 @@ var/global/ManifestJSON
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
 		if(H.mind.initial_account)
+<<<<<<< HEAD
 			G.fields["pay_account"]	= H.mind.initial_account.account_number ? H.mind.initial_account.account_number : "N/A"
+=======
+			G.fields["pay_account"]	= H.mind.initial_account.account_number
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		G.fields["email"]		= H.mind.initial_email_login["login"]
 		G.fields["p_stat"]		= "Active"
 		G.fields["m_stat"]		= "Stable"
@@ -253,12 +275,21 @@ var/global/ManifestJSON
 	var/datum/job/J = SSjob.GetJob(H.mind.assigned_role)
 	if(J)
 		var/t_state
+<<<<<<< HEAD
 		temp = new /icon('icons/inventory/uniform/mob.dmi', t_state)
 
 		temp.Blend(new /icon('icons/inventory/feet/mob.dmi', t_state), ICON_OVERLAY)
 	else
 		temp = new /icon('icons/inventory/uniform/mob.dmi', "grey")
 		temp.Blend(new /icon('icons/inventory/feet/mob.dmi', "black"), ICON_OVERLAY)
+=======
+		temp = new /icon(H.form.get_mob_icon("uniform", t_state), t_state)
+
+		temp.Blend(new /icon(H.form.get_mob_icon("shoes", t_state), t_state), ICON_OVERLAY)
+	else
+		temp = new /icon(H.form.get_mob_icon("uniform", "grey"), "grey")
+		temp.Blend(new /icon(H.form.get_mob_icon("shoes", "black"), "black"), ICON_OVERLAY)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
@@ -350,11 +381,6 @@ var/global/ManifestJSON
 /proc/find_security_record(field, value)
 	return find_record(field, value, data_core.security)
 
-/proc/find_record(field, value, list/L)
-	for(var/datum/data/record/R in L)
-		if(R.fields[field] == value)
-			return R
-
 /*/proc/GetAssignment(var/mob/living/carbon/human/H)
 	if(H.mind.assigned_role)
 		return H.mind.assigned_role
@@ -380,6 +406,10 @@ var/global/ManifestJSON
 	var/med[0]
 	var/sci[0]
 	var/chr[0]
+<<<<<<< HEAD
+=======
+	var/pro[0]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/civ[0]
 	var/bot[0]
 	var/misc[0]
@@ -395,7 +425,7 @@ var/global/ManifestJSON
 			heads[++heads.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
 			depthead = 1
-			if(rank=="Captain" && heads.len != 1)
+			if(rank=="Premier" && heads.len != 1)
 				heads.Swap(1, heads.len)
 
 		if(real_rank in security_positions)
@@ -428,6 +458,15 @@ var/global/ManifestJSON
 			if(depthead && chr.len != 1)
 				chr.Swap(1, chr.len)
 
+<<<<<<< HEAD
+=======
+		if(real_rank in prospector_positions)
+			pro[++pro.len] = list("name" = name, "rank" = rank, "active" = isactive)
+			department = 1
+			if(depthead && pro.len != 1)
+				pro.Swap(1, pro.len)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(real_rank in civilian_positions)
 			civ[++civ.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
@@ -449,6 +488,10 @@ var/global/ManifestJSON
 		"med" = med,
 		"sci" = sci,
 		"chr" = chr,
+<<<<<<< HEAD
+=======
+		"pro" = pro,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"civ" = civ,
 		"bot" = bot,
 		"misc" = misc

@@ -19,7 +19,11 @@
 .mod_channel			{color: #735638;	font-weight: bold;}
 .mod_channel .admin		{color: #b82e00;	font-weight: bold;}
 .admin_channel			{color: #9611D4;	font-weight: bold;}
+<<<<<<< HEAD
 .adminticket			{color: #386AFF;	font-weight: bold;}
+=======
+.adminticket {color: #386AFF; font-weight: bold;}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /* Radio: Misc */
 .deadsay				{color: #530FAD;}
@@ -28,11 +32,19 @@
 .newscaster				{color: #750000;}
 
 /* Radio Channels */
+<<<<<<< HEAD
 .comradio				{color: #193A7A;}
+=======
+.comradio				{color: #5177FF;}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 .centradio				{color: #5C5C8A;}
 
 .engradio				{color: #A66300;}
 .medradio				{color: #008160;}
+<<<<<<< HEAD
+=======
+.medaltradio				{color: #008160;}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 .supradio				{color: #5F4519;}
 
 /* Game Messages */
@@ -47,6 +59,7 @@
 /* Languages */
 
 .monkey					{color: #22228B;}
+<<<<<<< HEAD
 .rough					{font-family: Trebuchet MS, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 .russian				{color: #635d17}
@@ -64,6 +77,22 @@
 .vulpkanin				{color: #B97A57;}
 .vox					{color: #AA00AA;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
+=======
+.chthive				{color: #4f8529;}
+.rough					{font-family: Trebuchet MS, cursive, sans-serif;}
+.say_quote				{font-family: Georgia, Verdana, sans-serif;}
+.slavic					{color: #635d17}
+.illyrian				{color: #Ad6f1d}
+.jive					{color: #666666}
+.jana					{color: #993399}
+.latin					{color: #deb63d}
+.romana					{color: #ed7961}
+.euro					{color: #6533da}
+.yassari				{color: #5fbf4e}
+.marqua					{color: #00FFFF}
+.akula					{color: #f8412c}
+.plant					{color: #882d17}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 .good                   {color: #4f8529; font-weight: bold;}
 .bad                    {color: #ee0000; font-weight: bold;}

@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
-	var/list/syndicate_coalition = list() // list of traitor-compatible factions
+	var/list/syndicate_coalition = list() // list of contractor-compatible factions
 	var/list/factions = list()			  // list of all factions
 	var/list/availablefactions = list()	  // list of factions with openings
 
@@ -46,6 +46,8 @@ SUBSYSTEM_DEF(ticker)
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
+	var/scheduled_restart = null
+	var/automatic_restart_allowed = TRUE
 
 	var/list/round_start_events
 
@@ -89,7 +91,10 @@ SUBSYSTEM_DEF(ticker)
 			if(!start_immediately)
 				to_chat(world, "Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.")
 			current_state = GAME_STATE_PREGAME
+<<<<<<< HEAD
 			send_assets()
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			fire()
 
 		if(GAME_STATE_PREGAME)
@@ -131,7 +136,14 @@ SUBSYSTEM_DEF(ticker)
 			if(!process_empty_server())
 				return
 
+<<<<<<< HEAD
 			var/game_finished = (evacuation_controller.round_over() || ship_was_nuked || universe_has_ended)
+=======
+			if(automatic_restart_allowed && config.automatic_restart_time && config.automatic_restart_time < world.time)
+				shift_end()
+
+			var/game_finished = (evacuation_controller.round_over() || ship_was_nuked  || universe_has_ended || (scheduled_restart && scheduled_restart < world.time))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 			if(!nuke_in_progress && game_finished)
 				current_state = GAME_STATE_FINISHED
@@ -143,7 +155,11 @@ SUBSYSTEM_DEF(ticker)
 
 					if(universe_has_ended)
 						if(!delay_end)
+<<<<<<< HEAD
 							to_chat(world, SPAN_NOTICE("<b>Rebooting due to destruction of ship in [restart_timeout/10] seconds</b>"))
+=======
+							to_chat(world, SPAN_NOTICE("<b>Rebooting due to destruction of station in [restart_timeout/10] seconds</b>"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					else
 						if(!delay_end)
 							to_chat(world, SPAN_NOTICE("<b>Restarting in [restart_timeout/10] seconds</b>"))
@@ -225,6 +241,7 @@ SUBSYSTEM_DEF(ticker)
 	GLOB.storyteller.announce()
 
 	setup_economy()
+	setup_nanite_mailer()
 	newscaster_announcements = pick(newscaster_standard_feeds)
 
 	create_characters() //Create player characters and transfer them
@@ -236,6 +253,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !SSjob.ShouldCreateRecords(H.mind.assigned_role))
+			log_debug("Skipping creating records for [H.mind]")
 			continue
 		CreateModularRecord(H)
 	data_core.manifest()
@@ -259,6 +277,7 @@ SUBSYSTEM_DEF(ticker)
 	SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 	//Holiday Round-start stuff	~Carn
 	Holiday_Game_Start()
+<<<<<<< HEAD
 
 	for(var/mob/new_player/N in SSmobs.mob_list)
 		N.new_player_panel_proc()
@@ -270,6 +289,20 @@ SUBSYSTEM_DEF(ticker)
 	excel_check()
 	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
 	addtimer(CALLBACK(src, .proc/crew_transfer), 240 MINUTES)	// SYZYGY EDIT - Crew transfer vote, initially starts 4 hours in. Check zzz_modular_syzygy/vote.dm for the actual vote
+=======
+	SSvote.start_restart_vote_loop()
+
+	for(var/mob/new_player/N in SSmobs.mob_list)
+		N.new_player_panel_proc()
+
+	generate_contracts(min(6 + round(minds.len / 5), 12))
+	generate_excel_contracts(min(6 + round(minds.len / 5), 12))
+	generate_blackshield_contracts(min(6 + round(minds.len / 5), 12))
+	excel_check()
+	//blackshield_check() - does nothing FOR NOWWWW!!!! - likely ever
+	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//start_events() //handles random events and space dust.
 	//new random event system is handled from the MC.
 
@@ -398,7 +431,11 @@ SUBSYSTEM_DEF(ticker)
 			SSticker.minds |= player.mind
 
 /datum/controller/subsystem/ticker/proc/generate_contracts(count)
+<<<<<<< HEAD
 	var/list/candidates = (subtypesof(/datum/antag_contract) - typesof(/datum/antag_contract/excel))
+=======
+	var/list/candidates = (subtypesof(/datum/antag_contract) - typesof(/datum/antag_contract/excel) - typesof(/datum/antag_contract/blackshield))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	while(count--)
 		while(candidates.len)
 			var/contract_type = pick(candidates)
@@ -412,6 +449,28 @@ SUBSYSTEM_DEF(ticker)
 				candidates -= contract_type
 			break
 
+<<<<<<< HEAD
+=======
+/datum/controller/subsystem/ticker/proc/generate_blackshield_contracts(count)
+	var/list/candidates = subtypesof(/datum/antag_contract/blackshield)
+	while(count--)
+		while(candidates.len)
+			var/contract_type = pick(candidates)
+			var/datum/antag_contract/C = new contract_type
+			if(!C.can_place())
+				candidates -= contract_type
+				qdel(C)
+				continue
+			C.place()
+			if(C.unique)
+				candidates -= contract_type
+			break
+
+///datum/controller/subsystem/ticker/proc/blackshield_check()
+
+//	addtimer(CALLBACK(src, .proc/blackshield_check), 3 MINUTES)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/controller/subsystem/ticker/proc/generate_excel_contracts(count)
 	var/list/candidates = subtypesof(/datum/antag_contract/excel)
 	while(count--)
@@ -444,18 +503,31 @@ SUBSYSTEM_DEF(ticker)
 		var/marked_areas = 0
 		if(M.completed)
 			return
+<<<<<<< HEAD
 		for (var/obj/item/device/propaganda_chip/C in SSobj.processing) // Doubles as an active check
 			if (get_area(C) in targets)
 				marked_areas += 1
+=======
+		for (var/obj/item/device/propaganda_chip/C in ship_areas)
+			if (C.active)
+				if (get_area(C) in targets)
+					marked_areas += 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if (marked_areas >= 3)
 			M.complete()
 	addtimer(CALLBACK(src, .proc/excel_check), 3 MINUTES)
 
 /datum/controller/subsystem/ticker/proc/contract_tick()
 	generate_contracts(1)
+<<<<<<< HEAD
 	generate_excel_contracts(1)
 	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
 
+=======
+	generate_blackshield_contracts(1)
+	generate_excel_contracts(1)
+	addtimer(CALLBACK(src, .proc/contract_tick), 15 MINUTES)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
 	var/captainless = TRUE
@@ -469,7 +541,11 @@ SUBSYSTEM_DEF(ticker)
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!isnewplayer(M))
+<<<<<<< HEAD
 				to_chat(M, "Captainship not forced on anyone.")
+=======
+				to_chat(M, "Premier role not forced on anyone.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/controller/subsystem/ticker/proc/move_characters_to_spawnpoints()
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
@@ -479,17 +555,21 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	to_chat(world, "<br><br><br><H1>A round has ended!</H1>")
+<<<<<<< HEAD
 
 	for(var/client/C)
 		if(!C.credits)
 			C.RollCredits()
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)
 				if(evacuation_controller.round_over() && evacuation_controller.emergency_evacuation)
 					if(isNotAdminLevel(playerTurf.z))
+<<<<<<< HEAD
 						to_chat(Player, "<font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font>")
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
@@ -499,20 +579,41 @@ SUBSYSTEM_DEF(ticker)
 					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
 				else
 					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+=======
+						to_chat(Player, "<font color='green'><b>You managed to survive today's events on the [station_name()] as [Player.real_name].</b></font>") //No more "getting marooned" on a goddamn planet.
+					else
+						to_chat(Player, "<font color='green'><b>You managed to survive today's events on the [station_name()] as [Player.real_name].</b></font>")
+				else if(isAdminLevel(playerTurf.z))
+					to_chat(Player, "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>")
+				else if(issilicon(Player))
+					to_chat(Player, "<font color='green'><b>You remained operational after today's events on the [station_name()] as [Player.real_name].</b></font>")
+				else
+					to_chat(Player, "<font color='green'><b>You managed to survive today's events on the [station_name()] as [Player.real_name].</b></font>") //No such "crew transfer" here, unless people take the lift back home.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				if(isghost(Player))
 					var/mob/observer/ghost/O = Player
 					if(!O.started_as_observer)
+<<<<<<< HEAD
 						to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
 				else
 					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
+=======
+						to_chat(Player, "<font color='red'><b>You did not survive today's events on the [station_name()]...</b></font>")
+				else
+					to_chat(Player, "<font color='red'><b>You did not survive today's events on the [station_name()]...</b></font>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(world, "<br>")
 
 	for(var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
 		if(aiPlayer.stat != DEAD)
 			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 		else
+<<<<<<< HEAD
 			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b>")
+=======
+			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the time of their deactivation were:</b>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		aiPlayer.show_laws(TRUE)
 
 		if(aiPlayer.connected_robots.len)
@@ -520,8 +621,11 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
 			to_chat(world, "[robolist]")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	for(var/mob/living/silicon/robot/robo in SSmobs.mob_list)
 		if(!isdrone(robo) && !robo.connected_ai)
@@ -537,7 +641,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b>")
 
 	GLOB.storyteller.declare_completion()//To declare normal completion.
-
+	scoreboard()//scores
 	//Ask the event manager to print round end information
 	SSevent.RoundEnd()
 
@@ -557,6 +661,15 @@ SUBSYSTEM_DEF(ticker)
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
+<<<<<<< HEAD
+=======
+/datum/controller/subsystem/ticker/proc/shift_end(round_end_time = config.automatic_restart_delay)
+	command_announcement.Announce("Today's shift will be ending in [round(round_end_time/(1 MINUTE))] minute[round_end_time >= 1 MINUTE && round_end_time < 2 MINUTES ? "" : "s"]. Please finish up all current tasks and return all departmental equipment used.", "Shift End Call", new_sound = 'sound/misc/notice3.ogg')
+	automatic_restart_allowed = FALSE
+	scheduled_restart = world.time + round_end_time
+	rounddurationcountdown2text(round_end_time)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/controller/subsystem/ticker/proc/HasRoundStarted()
 	return current_state >= GAME_STATE_PLAYING
 

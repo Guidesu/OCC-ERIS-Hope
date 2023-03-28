@@ -1,9 +1,17 @@
 /obj/machinery/holoposter
+<<<<<<< HEAD
 	name = "Holographic Poster"
 	desc = "A wall-mounted holographic projector displaying advertisements by all manner of factions. How much do they pay to advertise here?"
 	icon = 'icons/obj/holoposter.dmi'
 	icon_state = "off"
 	anchored = TRUE
+=======
+	name = "holographic poster"
+	desc = "A wall-mounted holographic projector displaying various advertisements."
+	icon = 'icons/obj/holoposter.dmi'
+	icon_state = "off"
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 80
 	power_channel = STATIC_ENVIRON

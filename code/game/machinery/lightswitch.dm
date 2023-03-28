@@ -6,7 +6,11 @@
 	desc = "It turns lights on and off. What are you, simple?"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "light1"
+<<<<<<< HEAD
 	anchored = TRUE
+=======
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	power_channel = STATIC_LIGHT
@@ -43,7 +47,7 @@
 					if(!on)
 						dramatic_turning()
 			else
-				next_check = world.time + 10 MINUTES
+				next_check = world.time + 30 MINUTES
 		else
 			set_on(FALSE, FALSE)
 
@@ -73,8 +77,13 @@
 
 	for(var/obj/machinery/light/L in area)
 		L.seton(L.has_power())
+<<<<<<< HEAD
 		if(prob(50))
 			L.flick_light(rand(1, 3))
+=======
+		if(prob(1)) //We have good lights that dont flicker
+			L.flicker(rand(1, 3))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		sleep(10)
 
 		if(forceful_toggle)
@@ -96,7 +105,7 @@
 		L.update_icon()
 
 	if(on_)
-		next_check = world.time + 10 MINUTES
+		next_check = world.time + 90 MINUTES
 
 	area.power_change()
 

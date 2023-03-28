@@ -17,6 +17,10 @@
 /obj/effect/window_lwall_spawn/smartspawn/onestar
 	wall_path = /obj/structure/low_wall/onestar
 
+/obj/effect/window_lwall_spawn/smartspawn/church
+	wall_path = /obj/structure/low_wall/church
+	icon_state = "sp_church_full_window"
+
 // stops ZAS expanding zones past us, the windows will block the zone anyway
 /obj/effect/window_lwall_spawn/CanPass()
 	return FALSE
@@ -86,10 +90,17 @@
 	icon_state = "sp_full_window_plasma"
 	win_path = /obj/structure/window/phoronbasic/full
 
+<<<<<<< HEAD
 /obj/effect/window_lwall_spawn/phoron/reinforced
 	name = "reinforced phoron window low-wall spawner"
 	icon_state = "sp_full_window_phoron_reinforced"
 	win_path = /obj/structure/window/reinforced/phoron/full
+=======
+/obj/effect/window_lwall_spawn/plasma/reinforced
+	name = "reinforced plasma window low-wall spawner"
+	icon_state = "sp_full_window_plasma_reinforced"
+	win_path = /obj/structure/window/reinforced/plasma/full
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/effect/window_lwall_spawn/smartspawnphoron
 	name = "reinforced phoron window low-wall smart spawner"

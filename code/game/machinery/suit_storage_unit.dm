@@ -67,7 +67,11 @@
 	..()
 	update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/suit_storage_unit/on_update_icon()
+=======
+/obj/machinery/suit_storage_unit/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 
 	if(overlay_color)
@@ -88,7 +92,11 @@
 	if(inoperable())
 		add_overlay("nopower")
 	else
+<<<<<<< HEAD
 		// Add lights overlays
+=======
+		// Add lights over-lays
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(HELMET)
 			add_overlay("light1")
 		if(SUIT)
@@ -240,7 +248,11 @@
 		return  // eject_occupant opens the door, so we need to return
 	isopen = !isopen
 
+<<<<<<< HEAD
 	FLICK(isopen ? "anim_open" : "anim_close", door_overlay)
+=======
+	flick(isopen ? "anim_open" : "anim_close", door_overlay)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	playsound(src.loc, 'sound/machines/Custom_openunit.ogg', 50, 0)
 
 
@@ -283,7 +295,11 @@
 			OCCUPANT.take_organ_damage(0, burndamage)
 			OCCUPANT.apply_effect(50, IRRADIATE)
 			if (!(OCCUPANT.species && (OCCUPANT.species.flags & NO_PAIN)))
+<<<<<<< HEAD
 				OCCUPANT.emote("scream")
+=======
+				OCCUPANT.emote("painscream")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//End of the cycle
 	if(!issuperUV)
@@ -462,7 +478,11 @@
 /obj/machinery/suit_storage_unit/standard_unit
 	overlay_color = "#B0B0B0"
 	SUIT_TYPE = /obj/item/clothing/suit/space
+<<<<<<< HEAD
 	HELMET_TYPE = /obj/item/clothing/head/space
+=======
+	HELMET_TYPE = /obj/item/clothing/head/helmet/space
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	MASK_TYPE = /obj/item/clothing/mask/breath
 
 /obj/machinery/suit_storage_unit/medical
@@ -472,6 +492,7 @@
 
 /obj/machinery/suit_storage_unit/security
 	overlay_color = "#50649A"
+<<<<<<< HEAD
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/security
 	var/active = 0          // PLEASE HOLD.
 	var/irradiating = 0     // If this is > 0, the cycler is decontaminating whatever is inside it.
@@ -479,6 +500,10 @@
 	var/model_text = ""     // Some flavour text for the topic box.
 	var/can_repair          // If set, the cycler can repair voidsuits.
 	var/electrified = 0
+=======
+	SUIT_TYPE = /obj/item/clothing/suit/space/void/security/equipped
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/suit_storage_unit/engineering
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/engineering
@@ -486,6 +511,7 @@
 /obj/machinery/suit_storage_unit/engineering/atmos
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/atmos
 
+<<<<<<< HEAD
 
 /obj/machinery/suit_storage_unit/moebius
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/hazardsuit/moebius
@@ -503,11 +529,28 @@
 	SUIT_TYPE = /obj/item/clothing/suit/armor/custodian
 	HELMET_TYPE = /obj/item/clothing/head/armor/custodian
 
+=======
+/obj/machinery/suit_storage_unit/rad_unit
+	SUIT_TYPE = /obj/item/clothing/suit/radiation
+	HELMET_TYPE = /obj/item/clothing/head/radiation
+
+/obj/machinery/suit_storage_unit/nt
+	SUIT_TYPE = /obj/item/clothing/suit/space/void/acolyte
+
+/obj/machinery/suit_storage_unit/nt/agrolyte
+	SUIT_TYPE = /obj/item/clothing/suit/space/void/agrolyte
+
+/obj/machinery/suit_storage_unit/nt/custodian
+	SUIT_TYPE = /obj/item/clothing/suit/space/void/custodian
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/suit_storage_unit/mining
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/mining
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/suit_storage_unit/excelsior
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/excelsior
 
@@ -515,4 +558,10 @@
 /obj/machinery/suit_storage_unit/merc
 	overlay_color = "#D04044"
 	SUIT_TYPE = /obj/item/clothing/suit/space/void/merc
+<<<<<<< HEAD
 	MASK_TYPE = /obj/item/clothing/mask/gas/syndicate
+=======
+	HELMET_TYPE = /obj/item/clothing/head/helmet/space/void/merc
+	MASK_TYPE = /obj/item/clothing/mask/gas/tactical
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

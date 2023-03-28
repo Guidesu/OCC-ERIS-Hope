@@ -55,6 +55,14 @@ Reloaded
 Reworked
 Broken
 Low
+<<<<<<< HEAD
+=======
+Stupid
+Idiotic
+Garbage
+Useless
+Mentally Challenged
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Dead
 Punished
 Solid
@@ -75,6 +83,7 @@ Fascist
 Capitalist
 United
 Federated
+<<<<<<< HEAD
 Republican
 Modded
 Transformed
@@ -83,3 +92,6 @@ Synthetic
 Valiant
 Stern
 Loyal
+=======
+Republican
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

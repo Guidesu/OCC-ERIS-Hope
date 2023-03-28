@@ -1,10 +1,16 @@
 var/global/list/body_modifications = list()
 var/global/list/modifications_types = list(
 	BP_CHEST = "",  "chest2" = "", BP_HEAD = "",   BP_GROIN = "",
+<<<<<<< HEAD
 	BP_L_ARM  = "", BP_R_ARM  = "", BP_L_HAND = "", BP_R_HAND = "",
 	BP_L_LEG  = "", BP_R_LEG  = "", BP_L_FOOT = "", BP_R_FOOT = "",
 	OP_HEART  = "", OP_LUNGS  = "", OP_LIVER  = "", OP_EYES   = "",
 	OP_KIDNEYS = "", OP_STOMACH = "", BP_BRAIN = ""
+=======
+	BP_L_ARM  = "", BP_R_ARM  = "", BP_L_LEG  = "", BP_R_LEG  = "",
+	OP_HEART  = "", OP_LUNGS  = "", OP_LIVER  = "", OP_EYES   = "",
+	OP_KIDNEY_LEFT = "", OP_KIDNEY_RIGHT = "" , OP_STOMACH = "", BP_BRAIN = ""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 )
 
 /proc/generate_body_modification_lists()
@@ -21,7 +27,7 @@ var/global/list/modifications_types = list(
 
 /proc/get_default_modificaton(var/nature = MODIFICATION_ORGANIC)
 	switch(nature)
-		if(MODIFICATION_ORGANIC)
+		if(MODIFICATION_ORGANIC, MODIFICATION_SUPERIOR)
 			return body_modifications["nothing"]
 		if(MODIFICATION_SILICON)
 			return body_modifications["robotize_organ"]
@@ -34,9 +40,14 @@ var/global/list/modifications_types = list(
 	var/id = ""								// For savefile. Must be unique.
 	var/desc = ""							// Description.
 	var/list/body_parts = list(				// For sorting'n'selection optimization.
+<<<<<<< HEAD
 		BP_CHEST, "chest2", BP_HEAD, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG,\
 		BP_L_FOOT, BP_R_FOOT,\
 		OP_HEART, OP_LUNGS, OP_LIVER, BP_BRAIN, OP_EYES, OP_STOMACH, OP_KIDNEYS) //Occulus Edit: Allowing unmodified stomaches and kidneys
+=======
+		BP_CHEST, BP_BACK, BP_HEAD, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG,\
+		OP_HEART, OP_LUNGS, OP_LIVER, BP_BRAIN, OP_EYES, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT, OP_STOMACH)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/allowed_species = list("Human")// Species restriction.
 	var/replace_limb = null					// To draw usual limb or not.
 	var/mob_icon = ""
@@ -44,8 +55,13 @@ var/global/list/modifications_types = list(
 	var/nature = MODIFICATION_ORGANIC
 	var/hascolor = FALSE
 	var/allow_nt = TRUE
+	var/list/department_specific = ALL_DEPARTMENTS
 
+<<<<<<< HEAD
 /datum/body_modification/proc/get_mob_icon(organ, color="#ffffff", gender = MALE, species)	//Use in setup character only
+=======
+/datum/body_modification/proc/get_mob_icon(organ, body_build = "", color="#ffffff", gender = MALE, var/datum/species_form/species_form)	//Use in setup character only
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return new/icon('icons/mob/human.dmi', "blank")
 
 /datum/body_modification/proc/is_allowed(organ = "", datum/preferences/P, mob/living/carbon/human/H)
@@ -57,6 +73,7 @@ var/global/list/modifications_types = list(
 		var/list/organ_data = organ_structure[organ_parent]
 		if(organ in organ_data["children"])
 			parent_organ = organ_parent
+<<<<<<< HEAD
 
 	if(parent_organ)
 		var/datum/body_modification/parent = P.get_modification(parent_organ)
@@ -79,6 +96,37 @@ var/global/list/modifications_types = list(
 		if(H?.get_core_implant(/obj/item/implant/core_implant/cruciform))
 			return FALSE
 */
+=======
+
+	if(parent_organ)
+		var/datum/body_modification/parent = P.get_modification(parent_organ)
+		if(parent.nature > nature)
+			to_chat(usr, "[name] can't be attached to [parent.name]")
+			return FALSE
+
+	if(department_specific.len && !(department_specific ~= ALL_DEPARTMENTS))
+		if(H && H.mind)
+			var/department = H.mind.assigned_job.department
+			if(!department)
+				return FALSE
+			if(!department_specific.Find(department))
+				to_chat(usr, "This body-mod does not match your chosen department.")
+				return FALSE
+		else if(P)
+			var/datum/job/J
+			if(ASSISTANT in P.job_low)
+				J = SSjob.GetJob(ASSISTANT)
+			else
+				J = SSjob.GetJob(P.job_high)
+			if(!J || !department_specific.Find(J.department))
+				to_chat(usr, "This body-mod does not match your highest-priority department.")
+				return FALSE
+
+	if(!allow_nt && H?.get_core_implant(/obj/item/implant/core_implant/cruciform))
+		to_chat(usr, "Your cruciform prevents you from using this modification.")
+		return FALSE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /datum/body_modification/proc/create_organ(var/mob/living/carbon/holder, var/organ, var/color)
@@ -111,7 +159,11 @@ var/global/list/modifications_types = list(
 	short_name = "Removed"
 	id = "amputated"
 	desc = "Organ was removed."
+<<<<<<< HEAD
 	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+=======
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT, OP_EYES) // No more headless, crotchless people. Also organs are VITAL!
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	replace_limb = 1
 	nature = MODIFICATION_REMOVED
 
@@ -121,6 +173,7 @@ var/global/list/modifications_types = list(
 /datum/body_modification/limb/prosthesis
 	name = "Unbranded prosthesis"
 	id = "prosthesis_basic"
+<<<<<<< HEAD
 	desc = "Simple, brutal and reliable prosthesis"
 	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG) //
 	replace_limb = /obj/item/organ/external/robotic
@@ -128,6 +181,14 @@ var/global/list/modifications_types = list(
 	nature = MODIFICATION_SILICON
 	allow_nt = FALSE
 	var/prosthetic_model
+=======
+	desc = "A simple, brutal and reliable prosthesis."
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+	replace_limb = /obj/item/organ/external/robotic
+	icon = 'icons/mob/human_races/cyberlimbs/generic.dmi'
+	nature = MODIFICATION_SILICON
+	allow_nt = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/body_modification/limb/prosthesis/New()
 	var/obj/item/organ/external/robotic/R = replace_limb
@@ -148,6 +209,50 @@ var/global/list/modifications_types = list(
 	replace_limb = /obj/item/organ/external/robotic/serbian
 	icon = 'icons/mob/human_races/cyberlimbs/serbian.dmi'
 
+<<<<<<< HEAD
+/datum/body_modification/limb/prosthesis/frozen_star
+	id = "prosthesis_frozen_star"
+	replace_limb = /obj/item/organ/external/robotic/frozen_star
+	icon = 'icons/mob/human_races/cyberlimbs/frozen_star.dmi'
+=======
+/datum/body_modification/limb/prosthesis/hesphaistos/alt
+	id = "prosthesis_hesphaistos_alt"
+	replace_limb = /obj/item/organ/external/robotic/hesphaistos/athena
+	icon = 'icons/mob/human_races/cyberlimbs/hesphaistos_alt.dmi'
+
+/datum/body_modification/limb/prosthesis/zenghu
+	id = "prosthesis_zenghu"
+	replace_limb = /obj/item/organ/external/robotic/zenghu
+	icon = 'icons/mob/human_races/cyberlimbs/zenghu.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
+/datum/body_modification/limb/prosthesis/technomancer
+	id = "prosthesis_technomancer"
+	replace_limb = /obj/item/organ/external/robotic/technomancer
+	icon = 'icons/mob/human_races/cyberlimbs/technomancer.dmi'
+
+/datum/body_modification/limb/prosthesis/ward
+	id = "ward"
+	replace_limb = /obj/item/organ/external/robotic/ward
+	icon = 'icons/mob/human_races/cyberlimbs/ward.dmi'
+
+/datum/body_modification/limb/prosthesis/ward/spirit
+	id = "prosthesis_spirit"
+	replace_limb = /obj/item/organ/external/robotic/ward/spirit
+	icon = 'icons/mob/human_races/cyberlimbs/spirit.dmi'
+
+/datum/body_modification/limb/prosthesis/asters
+	id = "prosthesis_asters"
+	replace_limb = /obj/item/organ/external/robotic/asters
+	icon = 'icons/mob/human_races/cyberlimbs/asters.dmi'
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN, BP_HEAD)
+
+/datum/body_modification/limb/prosthesis/serbian
+	id = "prosthesis_serbian"
+	replace_limb = /obj/item/organ/external/robotic/serbian
+	icon = 'icons/mob/human_races/cyberlimbs/serbian.dmi'
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN, BP_HEAD)
+
 /datum/body_modification/limb/prosthesis/frozen_star
 	id = "prosthesis_frozen_star"
 	replace_limb = /obj/item/organ/external/robotic/frozen_star
@@ -157,6 +262,37 @@ var/global/list/modifications_types = list(
 	id = "prosthesis_technomancer"
 	replace_limb = /obj/item/organ/external/robotic/technomancer
 	icon = 'icons/mob/human_races/cyberlimbs/technomancer.dmi'
+
+/datum/body_modification/limb/prosthesis/junktech
+	id = "prosthesis_ghetto"
+	replace_limb = /obj/item/organ/external/robotic/junktech
+	icon = 'icons/mob/human_races/cyberlimbs/advanced_ghetto.dmi'
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN)
+
+/datum/body_modification/limb/prosthesis/synthskin
+	id = "prosthesis_full_body_prosthetic"
+	replace_limb = /obj/item/organ/external/robotic/synthskin
+	icon = 'icons/mob/human_races/cyberlimbs/fbp.dmi'
+
+/datum/body_modification/limb/prosthesis/moebius
+	id = "prosthesis_moebius"
+	replace_limb = /obj/item/organ/external/robotic/moebius
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+	icon = 'icons/mob/human_races/cyberlimbs/moebius.dmi'
+	department_specific = list(DEPARTMENT_MEDICAL, DEPARTMENT_SCIENCE)
+
+/datum/body_modification/limb/prosthesis/blackshield
+	id = "prosthesis_blackshield"
+	replace_limb = /obj/item/organ/external/robotic/blackshield
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+	icon = 'icons/mob/human_races/cyberlimbs/blackshield.dmi'
+	department_specific = list(DEPARTMENT_SECURITY)
+
+/datum/body_modification/limb/prosthesis/church
+	id = "prosthesis_church"
+	replace_limb = /obj/item/organ/external/robotic/church
+	body_parts = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+	icon = 'icons/mob/human_races/cyberlimbs/church.dmi'
 
 /datum/body_modification/limb/mutation/New()
 	short_name = "M: [name]"
@@ -181,14 +317,18 @@ var/global/list/modifications_types = list(
 		return new replace_limb(holder)
 	else
 		return new organ(holder)
-
+/* Commented out due to no way to differenciate them.
 /datum/body_modification/organ/assisted
 	name = "Assisted organ"
 	short_name = "P: assisted"
 	id = "assisted"
 	desc = "Assisted organ."
+<<<<<<< HEAD
 	body_parts = list(OP_HEART, OP_LUNGS, OP_KIDNEYS, OP_STOMACH, BP_BRAIN, OP_LIVER, OP_EYES)
 	allow_nt = FALSE
+=======
+	body_parts = list(OP_HEART, OP_LUNGS, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT, OP_STOMACH, BP_BRAIN, OP_LIVER, OP_EYES)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/body_modification/organ/assisted/create_organ(var/mob/living/carbon/holder, var/O, var/color)
 	var/obj/item/organ/I = ..(holder,O,color)
@@ -196,16 +336,21 @@ var/global/list/modifications_types = list(
 	I.min_bruised_damage = 15
 	I.min_broken_damage = 35
 	return I
-
+*/
 
 /datum/body_modification/organ/robotize_organ
 	name = "Robotic organ"
 	short_name = "P: prosthesis"
 	id = "robotize_organ"
 	desc = "Robotic organ."
+<<<<<<< HEAD
 	body_parts = list(OP_HEART, OP_LUNGS, OP_KIDNEYS, OP_STOMACH, BP_BRAIN, OP_LIVER, OP_EYES)
 	nature = MODIFICATION_SILICON
 	allow_nt = FALSE
+=======
+	body_parts = list(OP_HEART, OP_LUNGS, OP_KIDNEY_LEFT, OP_KIDNEY_RIGHT, OP_STOMACH, BP_BRAIN, OP_LIVER, OP_EYES)
+	nature = MODIFICATION_SILICON
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/body_modification/organ/robotize_organ/create_organ(var/mob/living/carbon/holder, O, color)
 	var/obj/item/organ/I = ..(holder,O,color)
@@ -226,9 +371,15 @@ var/global/list/modifications_types = list(
 	hascolor = TRUE
 	replace_limb = /obj/item/organ/internal/eyes/oneeye
 
+<<<<<<< HEAD
 /datum/body_modification/organ/oneeye/get_mob_icon(organ, color, gender, species)
 	var/datum/species/S = all_species[species]
 	var/icon/I = new/icon(S.faceicobase, "eye_l")
+=======
+/datum/body_modification/organ/oneeye/get_mob_icon(organ, body_build, color, gender, species_form)
+	var/datum/species_form/S = GLOB.all_species_form_list[species_form]
+	var/icon/I = new/icon(S.face, "eye_l[body_build]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	I.Blend(color, ICON_ADD)
 	return I
 
@@ -243,9 +394,15 @@ var/global/list/modifications_types = list(
 	id = "missed_eye_right"
 	replace_limb = /obj/item/organ/internal/eyes/oneeye/right
 
+<<<<<<< HEAD
 /datum/body_modification/organ/oneeye/right/get_mob_icon(organ, color, gender, species)
 	var/datum/species/S = all_species[species]
 	var/icon/I = new/icon(S.faceicobase, "eye_r")
+=======
+/datum/body_modification/organ/oneeye/right/get_mob_icon(organ, body_build, color, gender, species_form)
+	var/datum/species_form/S = GLOB.all_species_form_list[species_form]
+	var/icon/I = new/icon(S.face, "eye_r[body_build]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	I.Blend(color, ICON_ADD)
 	return I
 
@@ -257,9 +414,15 @@ var/global/list/modifications_types = list(
 	body_parts = list(BP_EYES)
 	hascolor = TRUE
 
+<<<<<<< HEAD
 /datum/body_modification/organ/heterochromia/get_mob_icon(organ, color, gender, species)
 	var/datum/species/S = all_species[species]
 	var/icon/I = new/icon(S.faceicobase, "eye_l")
+=======
+/datum/body_modification/organ/heterochromia/get_mob_icon(organ, body_build, color, gender, species_form)
+	var/datum/species_form/S = GLOB.all_species_form_list[species_form]
+	var/icon/I = new/icon(S.face, "eye_l[body_build]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	I.Blend(color, ICON_ADD)
 	return I
 

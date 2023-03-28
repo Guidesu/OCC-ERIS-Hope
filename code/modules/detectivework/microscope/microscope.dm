@@ -38,8 +38,12 @@
 
 	to_chat(user, SPAN_NOTICE("Printing findings now..."))
 	var/obj/item/paper/report = new(get_turf(src))
+<<<<<<< HEAD
 	report.stamped = list(/obj/item/stamp)
 	report.set_overlays(list("paper_stamped"))
+=======
+	report.copy_overlays(list("paper_stamped"), TRUE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	report_num++
 
 	if(istype(sample, /obj/item/forensics/swab))

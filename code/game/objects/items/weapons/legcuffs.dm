@@ -1,5 +1,9 @@
 /obj/item/legcuffs
+<<<<<<< HEAD
 	name = "legcuffs"
+=======
+	name = "leg cuffs"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
@@ -11,3 +15,8 @@
 	matter = list(MATERIAL_STEEL = 2)
 	var/breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 
+/obj/item/legcuffs/fuzzy
+	name = "fuzzy leg cuffs"
+	icon_state = "fuzzylegcuff"
+	breakouttime = 150
+	desc = "Use this to keep... 'prisoners' in line."

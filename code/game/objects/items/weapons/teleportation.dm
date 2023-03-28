@@ -4,6 +4,124 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ * Locator
+ */
+/obj/item/locator
+	name = "locator"
+	desc = "Used to track those with locater implants."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "locator"
+	var/temp = null
+	var/frequency = 1451
+	var/broadcasting = null
+	var/listening = 1
+	flags = CONDUCT
+	w_class = ITEM_SIZE_SMALL
+	item_state = "electronic"
+	throw_speed = 4
+	throw_range = 20
+	origin_tech = list(TECH_MAGNET = 1)
+	matter = list(MATERIAL_PLASTIC = 2)
+
+/obj/item/locator/attack_self(mob/user)
+	user.set_machine(src)
+	var/dat
+	if (src.temp)
+		dat = "[src.temp]<BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear</A>"
+	else
+		dat = {"
+<B>Persistent Signal Locator</B><HR>
+Frequency:
+<A href='byond://?src=\ref[src];freq=-10'>-</A>
+<A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(src.frequency)]
+<A href='byond://?src=\ref[src];freq=2'>+</A>
+<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
+
+<A href='?src=\ref[src];refresh=1'>Refresh</A>"}
+	user << browse(dat, "window=radio")
+	onclose(user, "radio")
+	return
+
+/obj/item/locator/Topic(href, href_list)
+	..()
+	if(usr.stat || usr.restrained())
+		return
+	var/turf/current_location = get_turf(usr)//What turf is the user on?
+	if(!current_location||current_location.z==2)//If turf was not found or they're on z level 2.
+		to_chat(usr, "The [src] is malfunctioning!")
+		return
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+		usr.set_machine(src)
+		if (href_list["refresh"])
+			src.temp = "<B>Persistent Signal Locator</B><HR>"
+			var/turf/sr = get_turf(src)
+
+			if (sr)
+				src.temp += "<B>Located Beacons:</B><BR>"
+
+				for(var/obj/item/device/radio/beacon/W in world)
+					if (W.frequency == src.frequency)
+						var/turf/tr = get_turf(W)
+						if (tr.z == sr.z && tr)
+							var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
+							if (direct < 5)
+								direct = "very strong"
+							else
+								if (direct < 10)
+									direct = "strong"
+								else
+									if (direct < 20)
+										direct = "weak"
+									else
+										direct = "very weak"
+							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
+
+				src.temp += "<B>Extraneous Signals:</B><BR>"
+				for (var/obj/item/implant/tracking/W in world)
+					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc)))
+						continue
+					else
+						var/mob/M = W.loc
+						if (M.stat == 2)
+							if (M.timeofdeath + 6000 < world.time)
+								continue
+
+					var/turf/tr = get_turf(W)
+					if (tr.z == sr.z && tr)
+						var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
+						if (direct < 20)
+							if (direct < 5)
+								direct = "very strong"
+							else
+								if (direct < 10)
+									direct = "strong"
+								else
+									direct = "weak"
+							src.temp += "[W.id]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
+
+				src.temp += "<B>You are at \[[sr.x],[sr.y],[sr.z]\]</B> in orbital coordinates.<BR><BR><A href='byond://?src=\ref[src];refresh=1'>Refresh</A><BR>"
+			else
+				src.temp += "<B><FONT color='red'>Processing Error:</FONT></B> Unable to locate orbital position.<BR>"
+		else
+			if (href_list["freq"])
+				src.frequency += text2num(href_list["freq"])
+				src.frequency = sanitize_frequency(src.frequency)
+			else
+				if (href_list["temp"])
+					src.temp = null
+		if (ismob(loc))
+			attack_self(loc)
+		else
+			for(var/mob/M in viewers(1, src))
+				if (M.client)
+					src.attack_self(M)
+	return
+
+
+/*
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
  * Hand-tele
  */
 /obj/item/hand_tele
@@ -18,13 +136,23 @@
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
 	matter = list(MATERIAL_PLASTIC = 3, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1, MATERIAL_URANIUM = 1)
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE///obj/item/hand_tele
 	var/obj/item/cell/cell
 	var/suitable_cell = /obj/item/cell/small
+=======
+	cell = null
+	suitable_cell = /obj/item/cell/small
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/portal_type = /obj/effect/portal
 	var/portal_fail_chance
 	var/cell_charge_per_attempt = 33
+<<<<<<< HEAD
 	var/entropy_value = 1  //for bluespace entropy
+=======
+	var/entropy_value = 2  //for bluespace entropy
+	price_tag = 780
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/hand_tele/Initialize()
 	. = ..()
@@ -45,8 +173,12 @@
 		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 		return
 	var/turf/current_location = get_turf(user)//What turf is the user on?
+<<<<<<< HEAD
 	// OCCULUS EDIT - Z level 2 absolutely does exist, and zs above 7 do as well
 	if(!current_location)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
+=======
+	if(!current_location||current_location.z>=7)//If turf was not found or they're on z >7 which does not currently exist.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning!"))
 		return
 	var/list/L = list()
@@ -94,7 +226,7 @@
 
 /obj/item/hand_tele/handmade
 	name = "Handmade hand-teleporter"
-	desc = "Handmade version of hand-tele. Woah, that's was they call an experimental science!"
+	desc = "An improvised hand-teleporter. Highly experimental and unstable."
 	icon_state = "hm_hand-tele"
 	portal_type = /obj/effect/portal/unstable
 	portal_fail_chance = 50
@@ -102,7 +234,11 @@
 	entropy_value = 3 //for bluespace entropy
 	spawn_blacklisted = FALSE
 	var/calibration_required = TRUE
+<<<<<<< HEAD
 	entropy_value = 4 //for bluespace entropy
+=======
+	entropy_value = 3 //for bluespace entropy
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/hand_tele/handmade/attackby(obj/item/C, mob/living/user)
 	..()
@@ -143,8 +279,20 @@
 	icon_state = "telespear"
 	item_state = "telespear"
 	slot_flags = SLOT_BACK
+<<<<<<< HEAD
 	var/entropy_value = 1 //for bluespace entropy
 
+=======
+	var/entropy_value = 1
+	price_tag = 350
+
+	item_icons = list(
+		slot_back_str = 'icons/inventory/back/mob.dmi')
+	item_state_slots = list(
+		slot_back_str = "telespear_back"
+		)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/tele_spear/attack(mob/living/carbon/human/M, mob/living/carbon/user)
 	playsound(src.loc, 'sound/effects/EMPulse.ogg', 65, 1)
 	var/turf/teleport_location = pick( getcircle(user.loc, 8) )

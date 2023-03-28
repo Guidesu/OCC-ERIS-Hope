@@ -4,7 +4,11 @@
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = COLOR_LIGHTING_GREEN_MACHINERY
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/curefab
+=======
+	circuit = /obj/item/circuitboard/curefab
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/curing
 	var/virusing
 	CheckFaceFlag = 0

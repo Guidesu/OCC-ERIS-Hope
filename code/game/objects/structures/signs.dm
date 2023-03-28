@@ -1,6 +1,10 @@
 /obj/structure/sign
+<<<<<<< HEAD
 	icon = 'icons/obj/decals.dmi'
 	anchored = TRUE
+=======
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	opacity = 0
 	density = FALSE
 	layer = SIGN_LAYER
@@ -21,7 +25,11 @@
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
+<<<<<<< HEAD
 	if(istype(tool, /obj/item/tool/screwdriver) && !istype(src, /obj/structure/sign/double))
+=======
+	if(istype(tool, /obj/item/tool/screwdriver) && !istype(src, /obj/structure/sign/neon/barsign))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
@@ -35,8 +43,6 @@
 
 /obj/item/sign
 	name = "sign"
-	desc = ""
-	icon = 'icons/obj/decals.dmi'
 	w_class = ITEM_SIZE_NORMAL		//big
 	var/sign_state = ""
 
@@ -60,6 +66,7 @@
 		S.icon_state = sign_state
 		to_chat(user, "You fasten \the [S] with your [tool].")
 		qdel(src)
+<<<<<<< HEAD
 	else ..()
 
 /obj/structure/sign/double/map
@@ -600,3 +607,6 @@
 	name = "Old sign"
 	desc = "A propaganda poster asking crew to look out for suspicious activity. You can't be too cautious nowadays as well."
 	icon_state = "something-old3"
+=======
+	else ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

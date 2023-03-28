@@ -32,6 +32,7 @@
 	status_flags = CANPUSH
 	minbodytemp = 0
 	heat_damage_per_tick = 20
+	sanity_damage = 2
 
 
 /mob/living/simple_animal/hostile/alien/drone
@@ -68,10 +69,11 @@
 	projectilesound = 'sound/weapons/pierce.ogg'
 	rapid = 1
 	status_flags = 0
+	sanity_damage = 4
 
 /mob/living/simple_animal/hostile/alien/queen/large
 	name = "alien empress"
-	icon = 'icons/mob/alienqueen.dmi'
+	icon = 'icons/mob/64x64.dmi'
 	icon_state = "queen_s"
 	icon_dead = "queen_dead"
 	move_to_delay = 4
@@ -79,7 +81,11 @@
 	health = 400
 
 /obj/item/projectile/neurotox
+<<<<<<< HEAD
 	damage_types = list(BRUTE = 30)
+=======
+	damage_types = list(BURN = 30)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "toxin"
 
 /mob/living/simple_animal/hostile/alien/death()

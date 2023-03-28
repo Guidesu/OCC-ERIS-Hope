@@ -1,21 +1,40 @@
+<<<<<<< HEAD
 /* This file has been completely restructured for Occulus*/
 
 #define NANOBOTS_BLOOD_DRAIN 0.003
 // Nanobots blood drain per unit
 
 /*Basic Nanite Defines*/
+=======
+/* This file has been completely restructured for Occulus && Soj*/
+
+#define NANOBOTS_BLOOD_DRAIN 0.003
+// Nanobots blood drain per unit
+#define NANOBOTS_HEAVY_BLOOD_DRAIN 0.01 //.0010 more then normal, ontop of are 0.003
+//Chtmans lose more
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites
 	name = ""
 	id = "dont use these"
 	description = "Microscopic construction robots."
+<<<<<<< HEAD
 	taste_description = "slimey metal"
 	reagent_state = SOLID
+=======
+	taste_description = "slimy metal"
+	reagent_state = LIQUID
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	color = "#696969" // ( ͡° ͜ʖ ͡°)
 	metabolism = REM/2
 	heating_point = 523
 	heating_products = list("nanites")
+<<<<<<< HEAD
 	scannable = 1
+=======
+	scannable = TRUE
+	affects_dead = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	reagent_type = "Nanites"
 
 /datum/reagent/nanites/proc/eat_blood(mob/living/carbon/M) // Yam !
@@ -23,6 +42,12 @@
 	// blood regeneratin 0.1 u every tick so with NANOBOTS_BLOOD_DRAIN = 0.003 human can sustain 30u nanobots without losing blood
 	if(B && B.volume)
 		B.remove_self(volume * NANOBOTS_BLOOD_DRAIN)
+<<<<<<< HEAD
+=======
+		if(M.species.reagent_tag == IS_CHTMANT)
+			B.remove_self(volume * NANOBOTS_HEAVY_BLOOD_DRAIN) //If we are a Chtmant we lose more
+			M.add_chemical_effect(CE_TOXIN, 0.1) //We also take toxin damage
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites/proc/will_occur(mob/living/carbon/M, alien, var/location)
 	if(location == CHEM_BLOOD)
@@ -34,6 +59,10 @@
 	else
 		return 0
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/reagent/nanites/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	eat_blood(M)
 	if(M.get_blood_volume() < M.total_blood_req + BLOOD_VOLUME_OKAY_MODIFIER)
@@ -73,7 +102,14 @@
 
 /datum/reagent/nanites/dead/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	if(..())
+<<<<<<< HEAD
 		M.adjustToxLoss(0.2 * effect_multiplier)
+=======
+		M.add_chemical_effect(CE_TOXIN, 2 * effect_multiplier)
+	if(M.species.reagent_tag == IS_CHTMANT) //If we are a Chtmant we take double the affect
+		M.add_chemical_effect(CE_TOXIN, 2 * effect_multiplier) //All and all this is 0.4 x effect mult + 0.1! REALLY lethal to Chtmants
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites/uncapped
 	name = "Raw Uncapped Nanobots"
@@ -137,9 +173,17 @@
 /datum/reagent/nanites/nanosymbiotes/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	if(..())
 		M.heal_organ_damage(1 * effect_multiplier, 1 * effect_multiplier, 3 * effect_multiplier, 3 * effect_multiplier)
+<<<<<<< HEAD
 		M.adjustToxLoss(-((1 + (M.getToxLoss() * 0.03)) * effect_multiplier))
 		M.adjustCloneLoss(-(1 + (M.getCloneLoss() * 0.03)) * effect_multiplier)
 		M.adjustBrainLoss(-(1 + (M.getBrainLoss() * 0.03)) * effect_multiplier)
+=======
+		M.add_chemical_effect(CE_TOXIN, -((1 + (M.chem_effects[CE_TOXIN] * 0.03)) * effect_multiplier))
+		M.adjustOxyLoss(-(1 + (M.getOxyLoss() * 0.03)) * effect_multiplier)
+	if(!M.species.reagent_tag == IS_CHTMANT) //If we are a Chtmant we dont heal are toxloss from nanites
+		M.add_chemical_effect(CE_TOXIN, -((1 + (M.chem_effects[CE_TOXIN] * 0.03)) * effect_multiplier))
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*Oxyrush - Removes oxygen damage from the target*/
 
@@ -230,9 +274,15 @@
 
 /datum/reagent/nanites/uncapped/control_booster_utility/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	if(..())
+<<<<<<< HEAD
 		M.stats.addTempStat(STAT_MEC, STAT_LEVEL_ADEPT, STIM_TIME, "CBU")
 		M.stats.addTempStat(STAT_BIO, STAT_LEVEL_ADEPT, STIM_TIME, "CBU")
 		M.stats.addTempStat(STAT_COG, STAT_LEVEL_ADEPT, STIM_TIME, "CBU")
+=======
+		M.stats.addTempStat(STAT_MEC, STAT_LEVEL_EXPERT, STIM_TIME, "CBU")
+		M.stats.addTempStat(STAT_BIO, STAT_LEVEL_EXPERT, STIM_TIME, "CBU")
+		M.stats.addTempStat(STAT_COG, STAT_LEVEL_EXPERT, STIM_TIME, "CBU")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites/uncapped/control_booster_combat
 	name = "Control Booster Combat"
@@ -244,9 +294,15 @@
 
 /datum/reagent/nanites/uncapped/control_booster_combat/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	if(..())
+<<<<<<< HEAD
 		M.stats.addTempStat(STAT_VIG, STAT_LEVEL_ADEPT, STIM_TIME, "CBC")
 		M.stats.addTempStat(STAT_TGH, STAT_LEVEL_ADEPT, STIM_TIME, "CBC")
 		M.stats.addTempStat(STAT_ROB, STAT_LEVEL_ADEPT, STIM_TIME, "CBC")
+=======
+		M.stats.addTempStat(STAT_VIG, STAT_LEVEL_EXPERT, STIM_TIME, "CBC")
+		M.stats.addTempStat(STAT_TGH, STAT_LEVEL_EXPERT, STIM_TIME, "CBC")
+		M.stats.addTempStat(STAT_ROB, STAT_LEVEL_EXPERT, STIM_TIME, "CBC")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites/uncapped/voice_mimic
 	name = "Voice mimics"
@@ -267,6 +323,10 @@
 	var/uni_identity
 	heating_point = 523
 	heating_products = list("uncap nanites")
+<<<<<<< HEAD
+=======
+	illegal = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/nanites/uncapped/dynamic_handprints/on_mob_add(mob/living/L)
 	..()
@@ -280,4 +340,47 @@
 /datum/reagent/nanites/uncapped/dynamic_handprints/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
 	if(..())
 		M.add_chemical_effect(CE_DYNAMICFINGERS, uni_identity)
+<<<<<<< HEAD
 /*End Occulus Edit*/
+=======
+
+// FBP med - simple nanites for dealing with wounds and applying robo-chem effects
+/datum/reagent/nanites/fbp
+	name = "simple nanobots"
+	description = "Microscopic construction robots. Useless without programming and have limited use."
+	id = "dont use these either"
+	constant_metabolism = TRUE
+
+/datum/reagent/nanites/fbp/will_occur(mob/living/carbon/M, alien, var/location)
+	if(location == CHEM_INGEST)
+		return TRUE
+
+// "Blood" clot
+/datum/reagent/nanites/fbp/repair
+	name = "repair nanites"
+	description = "Microscopic construction robots programmed to repair internal components."
+	id = "fbp_repair"
+	overdose = REAGENTS_OVERDOSE / 6
+
+/datum/reagent/nanites/fbp/repair/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
+	if(!..())
+		return
+	M.add_chemical_effect(CE_MECH_REPAIR, 0.25)
+
+/datum/reagent/nanites/fbp/repair/overdose(mob/living/carbon/M, alien)
+	if(!..())
+		return
+	M.add_chemical_effect(CE_MECH_REPAIR, 0.75)
+
+/* Uncomment when CE_MECH_REPLENISH has a use
+// "Blood" restore
+/datum/reagent/nanites/fbp/replenish
+	name = "replenishing nanobots"
+	description = "Microscopic construction robots programmed to replenish internal fluids."
+	id = "fbp_replenish"
+/datum/reagent/nanites/fbp/replenish/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
+	if(!..())
+		return
+	M.add_chemical_effect(CE_MECH_REPLENISH, 1)
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

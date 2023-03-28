@@ -21,12 +21,22 @@
 	if(state != GRAB_KILL)
 		to_chat(user, SPAN_NOTICE("You need to grab \the [target] by the neck!"))
 		return FALSE
+<<<<<<< HEAD
 	var/mob/living/carbon/human/H = target
 	var/list/damaged = H.get_damaged_organs(TRUE, FALSE)
 	for(var/obj/item/organ/external/chest/G in damaged)
 		if(G.brute_dam > 200)
 			to_chat(user, "[H] is too badly damaged to hold onto the meat spike.")
 			return 
+=======
+	if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+		var/list/damaged = H.get_damaged_organs(TRUE, FALSE)
+		for(var/obj/item/organ/external/chest/G in damaged)
+			if(G.brute_dam > 200)
+				to_chat(user, "[H] is too badly damaged to hold onto the meat spike.")
+				return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	visible_message(SPAN_DANGER("[user] is trying to force \the [target] onto \the [src]!"))
 	if(do_after(user, 80))
 		if(spike(target))
@@ -43,10 +53,11 @@
 /obj/structure/kitchenspike/proc/spike(mob/living/victim)
 
 	if(!istype(victim))
-		return
+		return FALSE
 
 	if(ishuman(victim))
 		var/mob/living/carbon/human/H = victim
+<<<<<<< HEAD
 		if(!issmall(H))
 			return 0
 		meat_type = H.species.meat_type
@@ -54,18 +65,41 @@
 	else if(isalien(victim))
 		meat_type = /obj/item/reagent_containers/food/snacks/meat/xenomeat
 		icon_state = "spikebloodygreen"
+=======
+		meat_type = H.form.meat_type
+		icon_state = "spike_[H.species.name]"
+		meat = 3
+	else if (isanimal(victim))
+		var/mob/living/simple_animal/animal = victim
+		if(!ispath(animal.meat_type, /obj/item/reagent_containers/food/snacks/meat))
+			return FALSE
+		meat_type = animal.meat_type
+		icon_state = "spike_Monkey"
+		meat = animal.meat_amount
+	else if (issuperioranimal(victim))
+		var/mob/living/carbon/superior_animal/s_animal = victim
+		if(!ispath(s_animal.meat_type, /obj/item/reagent_containers/food/snacks/meat))
+			return FALSE
+		meat_type = s_animal.meat_type
+		icon_state = "spike_Monkey"
+		meat = s_animal.meat_amount
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		return FALSE
 	victim.loc = src
 	victim_name = victim.name
 	occupant = victim
 	occupied = TRUE
+<<<<<<< HEAD
 	meat = 5
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return TRUE
 
 /obj/structure/kitchenspike/attack_hand(mob/living/carbon/human/user)
 	if(..() || !occupied)
 		return
+<<<<<<< HEAD
 	to_chat(user, "You start to remove [victim_name] from \the [src].")	
 	if(!do_after(user, 40))
 		return 0
@@ -76,6 +110,28 @@
 	to_chat(user, "You remove [victim_name] from \the [src].")	
 	icon_state = initial(icon_state)
 
+=======
+	to_chat(user, "You start to remove [victim_name] from \the [src].")
+	if(!do_after(user, 40))
+		return 0
+
+	//Prevent infinite amounts of meat being generated
+	if (isanimal(occupant))
+		var/mob/living/simple_animal/animal = occupant
+		animal.meat_amount = meat
+	else if (issuperioranimal(occupant))
+		var/mob/living/carbon/superior_animal/s_animal = occupant
+		s_animal.meat_amount = meat
+
+	occupant.loc = get_turf(src)
+	occupied = FALSE
+	meat = 0
+	meat_type = initial(meat_type)
+	to_chat(user, "You remove [victim_name] from \the [src].")
+
+	icon_state = initial(icon_state)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/kitchenspike/attackby(obj/item/I, mob/living/carbon/human/user)
 	var/list/usable_qualities = list(QUALITY_BOLT_TURNING, QUALITY_CUTTING)
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
@@ -95,33 +151,55 @@
 			if(meat < 1)
 				to_chat(user, "There is no more meat on \the [victim_name].")
 				return
+<<<<<<< HEAD
 			new meat_type(get_turf(src))
+=======
+			var/obj/item/reagent_containers/food/snacks/meat/new_meat = new meat_type(get_turf(src))
+			new_meat.name = "[occupant.name] [new_meat.name]"
+			new_meat.initialize_genetics(occupant)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(meat > 1)
 				to_chat(user, "You remove some meat from \the [victim_name].")
 			else if(meat == 1)
 				to_chat(user, "You remove the last piece of meat from \the [victim_name]!")
 			meat--
+<<<<<<< HEAD
 			if(meat_type == user.species.meat_type)
+=======
+			if(meat_type == user.form.meat_type)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				user.sanity.changeLevel(-(15*((user.nutrition ? user.nutrition : 1)/user.max_nutrition))) // The more hungry the less sanity damage.
 				to_chat(user, SPAN_NOTICE("You feel your [user.species.name]ity shrivel as you cut a slab off \the [src]")) // Human-ity , Monkey-ity , Slime-Ity
 		else
 			tearing = FALSE
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if (tool_type == QUALITY_BOLT_TURNING)
 		if (!occupied)
 			if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
 				user.visible_message(SPAN_NOTICE("\The [user] dismantles \the [src]."),SPAN_NOTICE("You dismantle \the [src]."))
-				new /obj/item/stack/rods(src.loc, 3)
+				new /obj/item/stack/rods(loc, 3)
 				qdel(src)
 			return
 		else
 			to_chat(user, SPAN_DANGER(" \The [src] has something on it, remove it first!"))
 			return
 
+<<<<<<< HEAD
 	else 
+=======
+	else
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return ..()
 
 /obj/structure/kitchenspike/examine(mob/user, distance, infix, suffix)
 	if(distance < 4)
 		to_chat(user, SPAN_NOTICE("\a [victim_name] is hooked onto \the [src]"))
+<<<<<<< HEAD
 	..()
+=======
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

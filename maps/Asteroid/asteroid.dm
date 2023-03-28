@@ -1,0 +1,45 @@
+#include "map/asteroid.dmm"
+
+/obj/map_data/asteroid
+	name = "Asteroid Level"
+	is_player_level = TRUE
+	is_contact_level = TRUE
+	generate_asteroid = TRUE
+	is_accessable_level = TRUE
+	height = 1
+
+//MINING-1 // CLUSTER
+/obj/effect/overmap/sector/asteroid
+	name = "unknown spatial phenomenon"
+	desc = "A large asteroid. Mineral content detected."
+	generic_waypoints = list(
+		"nav_asteroid_1",
+		"nav_asteroid_2"
+	)
+<<<<<<< HEAD:maps/encounters/asteroid/asteroid.dm
+=======
+	start_x = 9
+	start_y = 10
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e:maps/Asteroid/asteroid.dm
+	known = 1
+	in_space = 0
+	
+	name_stages = list("asteroid", "unknown object", "unknown spatial phenomenon")
+
+/obj/effect/overmap/sector/asteroid/Initialize()
+	. = ..()
+	icon_stages = list(pick("asteroid0", "asteroid1", "asteroid2", "asteroid3"), "object", "poi")
+
+/obj/effect/shuttle_landmark/asteroid/nav1
+	name = "Asteroid Landing zone #1"
+	icon_state = "shuttle-green"
+	landmark_tag = "nav_asteroid_1"
+	base_area = /area/mine/explored
+	base_turf = /turf/simulated/floor/asteroid
+
+/obj/effect/shuttle_landmark/asteroid/nav2
+	name = "Asteroid Landing zone #2"
+	icon_state = "shuttle-green"
+	landmark_tag = "nav_asteroid_2"
+	base_area = /area/mine/explored
+	base_turf = /turf/simulated/floor/asteroid

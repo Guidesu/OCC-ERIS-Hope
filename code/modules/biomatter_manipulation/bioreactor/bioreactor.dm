@@ -5,7 +5,11 @@
 //There are six various machines where multistructure datum is just a holder, each part proccess almost independently
 
 #define CLEANING_TIME 2 SECONDS
+<<<<<<< HEAD
 #define CLONE_DAMAGE_PER_TICK 5
+=======
+#define BIOREACTOR_DAMAGE_PER_TICK 20
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/multistructure/bioreactor
@@ -96,11 +100,19 @@
 				if(chamber_closed)
 					glass.icon_state = ""
 					glass.density = FALSE
+<<<<<<< HEAD
 					FLICK("glassdoor_open", glass)
 				else
 					glass.icon_state = "platform_door"
 					glass.density = initial(glass.density)
 					FLICK("glassdoor_close", glass)
+=======
+					flick("glassdoor_open", glass)
+				else
+					glass.icon_state = "platform_door"
+					glass.density = initial(glass.density)
+					flick("glassdoor_close", glass)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				playsound(glass.loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	chamber_closed = !chamber_closed
 
@@ -110,12 +122,20 @@
 		return
 	if(chamber_solution)
 		solution.icon_state = ""
+<<<<<<< HEAD
 		FLICK("solution_pump_out", solution)
+=======
+		flick("solution_pump_out", solution)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/obj/machinery/multistructure/bioreactor_part/platform/platform in platforms)
 			platform.set_light(0)
 	else
 		solution.icon_state = initial(solution.icon_state)
+<<<<<<< HEAD
 		FLICK("solution_pump_in", solution)
+=======
+		flick("solution_pump_in", solution)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/obj/machinery/multistructure/bioreactor_part/platform/platform in platforms)
 			platform.set_light(1, 3, COLOR_LIGHTING_ORANGE_DARK)
 	chamber_solution = !chamber_solution
@@ -137,12 +157,19 @@
 //#####################################
 /obj/structure/reagent_dispensers/biomatter
 	name = "medium biomatter canister"
+<<<<<<< HEAD
 	desc = "A biomatter canister. It is used to store large amounts of biomatter."
+=======
+	desc = "A biomatter canister. It is used to store high amounts of biomatter."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/bioreactor_misc.dmi'
 	icon_state = "biomatter_tank_medium"
 	amount_per_transfer_from_this = 50
 	volume = 400
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/reagent_dispensers/biomatter/large
@@ -156,4 +183,8 @@
 	icon = 'icons/obj/machines/bioreactor.dmi'
 	icon_state = "solution"
 	layer = ABOVE_MOB_LAYER
+<<<<<<< HEAD
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+=======
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

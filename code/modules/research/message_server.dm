@@ -50,9 +50,15 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /obj/machinery/message_server
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
+<<<<<<< HEAD
 	name = "Messaging Server"
 	density = TRUE
 	anchored = TRUE
+=======
+	name = "messaging server"
+	density = 1
+	anchored = 1.0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
@@ -145,7 +151,11 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
 	if (active && !(stat & (BROKEN|NOPOWER)) && (spamfilter_limit < MESSAGE_SERVER_DEFAULT_SPAM_LIMIT*2) && \
+<<<<<<< HEAD
 		istype(O,/obj/item/electronics/circuitboard/message_monitor))
+=======
+		istype(O,/obj/item/circuitboard/message_monitor))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		spamfilter_limit += round(MESSAGE_SERVER_DEFAULT_SPAM_LIMIT / 2)
 		user.drop_item()
 		qdel(O)

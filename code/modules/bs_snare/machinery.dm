@@ -3,8 +3,13 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "tele0"
 	w_class = ITEM_SIZE_GARGANTUAN
+<<<<<<< HEAD
 	density = FALSE
 	anchored = TRUE
+=======
+	density = 0
+	anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	interact_offline = 1
 
 	var/silk_id = ""
@@ -19,7 +24,11 @@
 
 /obj/machinery/bssilk_hub/attackby(obj/item/I, mob/user)
 	sync_with_parts()
+<<<<<<< HEAD
 	if(QUALITY_PULSING in I.tool_qualities)
+=======
+	if(isMultitool(I))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		switch(alert("What you want to configure console ID or snare ID?", "BS Snare Hub ID system", "Snare", "Console"))
 			if("Snare")
 				var/input_id = input("Enter new BS Snare ID", "Snare ID", silk_id)
@@ -68,7 +77,11 @@
 	return mobs
 
 /obj/machinery/bssilk_hub/proc/teleport_back(mob/target)
+<<<<<<< HEAD
 	to_chat(target, SPAN_WARNING("You feel like something pull you in bluespace."))
+=======
+	to_chat(target, SPAN_WARNING("You feel like something is pulling you into bluespace."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Creat animation and move  mob into it and mob will not walking. Camera will follow animation.
 	var/obj/effect/temporary/A = new(get_turf(target), 24.5, animation_icon, back_animation)
 	target.dir = 2
@@ -92,7 +105,11 @@
 	name = "bluespace snare control"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/bssilk_cons
+=======
+	circuit = /obj/item/circuitboard/bssilk_cons
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	icon_keyboard = "rd_key"
 	icon_screen = "telesci"
@@ -107,10 +124,17 @@
 
 /obj/machinery/computer/bssilk_control/attack_hand(mob/user)
 	if(connected_hub) connected_hub.sync_with_parts()
+<<<<<<< HEAD
 	ui_interact(user)
 
 /obj/machinery/computer/bssilk_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/list/data = ui_data()
+=======
+	nano_ui_interact(user)
+
+/obj/machinery/computer/bssilk_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/list/data = nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(!connected_hub)
 		data["fail_connect"] = TRUE
@@ -147,6 +171,10 @@
 		hub_id = new_id
 		if(connected_hub) connected_hub.sync_with_parts()
 		connected_hub = null
+<<<<<<< HEAD
 		find_hub()
+=======
+		src.find_hub()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return TOPIC_REFRESH

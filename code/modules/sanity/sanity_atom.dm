@@ -11,7 +11,11 @@
 
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/onMoved)
 
+<<<<<<< HEAD
 	onMoved(null, null, A.loc)
+=======
+	onMoved(null, A.loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/component/atom_sanity/proc/onMoved(oldloc, newloc)
 	if(isturf(oldloc))
@@ -23,4 +27,8 @@
 	if(isturf(newloc))
 		var/area/new_area = get_area(newloc) //Actually new area is curret
 		var/datum/area_sanity/AS = new_area.sanity
+<<<<<<< HEAD
 		AS.register(src)
+=======
+		AS.register(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

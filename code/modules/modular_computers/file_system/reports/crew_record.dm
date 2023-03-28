@@ -24,10 +24,13 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 
 /datum/computer_file/report/crew_record/proc/load_from_mob(var/mob/living/carbon/human/H)
 	if(istype(H))
+<<<<<<< HEAD
 		if(H.mind.role_alt_title == "Vagabond") // As stowaways, Vagabond do not show up on the crew manifest.	// OCCULUS EDIT - vagabond fix
 			GLOB.all_crew_records.Remove(src)
 			return
 	if(istype(H))
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		photo_front = getFlatIcon(H, SOUTH)
 		photo_side = getFlatIcon(H, WEST)
 	else
@@ -62,9 +65,15 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	set_account((H && H.mind) ? H.mind.initial_account.account_number : "000000")
 
 	// TODO: enable after baymed
+<<<<<<< HEAD
 	set_species(H ? H.get_species() : SPECIES_HUMAN)	//OCCULUS EDIT: ENABLED
 
 	//set_species("Human")	//OCCULUS EDIT: DISABLED
+=======
+	set_species(H ? H.get_species() : SPECIES_HUMAN)
+
+	//set_species(/datum/species)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//set_branch(H ? (H.char_branch && H.char_branch.name) : "None")
 	//set_rank(H ? (H.char_rank && H.char_rank.name) : "None")
 
@@ -77,6 +86,15 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	set_dna(H ? H.dna.unique_enzymes : "")
 	set_fingerprint(H ? md5(H.dna.uni_identity) : "")
 	set_secRecord(H && H.sec_record && !jobban_isbanned(H, "Records") ? html_decode(H.sec_record) : "No record supplied")
+
+	//Hex: Don't questions, just trust me on this one
+	var/nepotism = 1
+	if(H && H.stats.getPerk(PERK_NEPOTISM))
+		nepotism += 0.3
+	if(H && H.stats.getPerk(PERK_DEBTOR))
+		nepotism -= 0.5
+	set_nepotismMod(nepotism)
+	//set_nepotismMod(1)
 
 	// Employment record
 	var/employment_record = "No record supplied"
@@ -113,6 +131,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 // Global methods
 // Used by character creation to create a record for new arrivals.
 /proc/CreateModularRecord(var/mob/living/carbon/human/H)
+	log_debug("Creating records for [H.mind]")
 	var/datum/computer_file/report/crew_record/CR = new/datum/computer_file/report/crew_record()
 	GLOB.all_crew_records.Add(CR)
 	CR.load_from_mob(H)
@@ -229,6 +248,9 @@ FIELD_SHORT("Home System", homeSystem, access_heads, access_change_ids)
 FIELD_SHORT("Faction", faction, access_heads, access_heads)
 FIELD_LONG("Qualifications", skillset, access_heads, access_heads)
 
+//WAGE RECORDS
+FIELD_NUM("Employee Value Index", nepotismMod, access_captain, access_captain)
+
 // ANTAG RECORDS
 FIELD_LONG("Exploitable Information", antagRecord, access_syndicate, access_syndicate)
 
@@ -257,7 +279,7 @@ FIELD_LONG("Exploitable Information", antagRecord, access_syndicate, access_synd
 /datum/report_field/options/crew_record/sex/proc/record_genders()
 	. = list()
 	. |= "Unset"
-	for(var/G in gender_datums)
+	for(var/G in GLOB.gender_datums)
 		. |= gender2text(G)
 
 /datum/report_field/options/crew_record/branch/proc/record_branches()

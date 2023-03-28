@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 /obj/spawner/traps
 	name = "random trap"
 	icon_state = "trap-red"
 	alpha = 128
 	tags_to_spawn = list(SPAWN_TRAP_ARMED)
 	check_density = FALSE
+=======
+/obj/random/traps
+	name = "random trap"
+	icon_state = "trap-red"
+	alpha = 128
+
+/obj/random/traps/item_to_spawn()
+	var/list/possible_traps = list(/obj/structure/wire_splicing = 1,
+	/obj/item/mine/armed = 0.15,
+	/obj/item/mine/improvised/armed = 0.30,
+	/obj/item/beartrap/armed = 0.45,
+	/obj/item/beartrap/makeshift/armed = 0.8)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/spawner/traps/valid_candidates()
 	var/list/possible_traps = ..()
@@ -24,7 +38,15 @@
 	icon_state = "trap-red-low"
 	spawn_nothing_percentage = 75
 
+<<<<<<< HEAD
 /obj/spawner/traps/wire_splicing
+=======
+/obj/random/traps/low_chance
+	icon_state = "trap-red-low"
+	spawn_nothing_percentage = 80
+
+/obj/random/traps/wire_splicing
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "wire splicing"
 	icon_state = "trap-orange"
 	alpha = 128
@@ -40,6 +62,7 @@
 	.=TRUE
 	if(locate(trap) in T)
 		return FALSE
+<<<<<<< HEAD
 	if(ispath(trap, /obj/structure/wire_splicing))
 		if(locate(/obj/structure/cable) in dview(3, T))
 			return
@@ -70,3 +93,30 @@
 	if(use_biome_range)
 		spread_range = biome.range
 		loc = biome.loc
+=======
+
+//Spider trap, knocks a person down and spawns an emporer spider.
+/obj/random/spider_trap
+	name = "spider trap"
+	icon_state = "trap-red"
+	alpha = 128
+
+/obj/random/spider_trap/item_to_spawn()
+	return (/obj/item/spider_shadow_trap)
+
+/obj/random/spider_trap/low_chance
+	icon_state = "trap-red-low"
+	spawn_nothing_percentage = 80
+
+/obj/random/spider_trap_burrowing
+	name = "burrow spider trap"
+	icon_state = "trap-red"
+	alpha = 128
+
+/obj/random/spider_trap_burrowing/item_to_spawn()
+	return (/obj/item/spider_shadow_trap/burrowing)
+
+/obj/random/spider_trap_burrowing/low_chance
+	icon_state = "trap-red-low"
+	spawn_nothing_percentage = 80
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

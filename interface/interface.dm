@@ -13,26 +13,34 @@
 
 /client/verb/discordurl()
 	set name = "discordurl"
-	set desc = "Visit the Discordia Github."
+	set desc = "Visit the Discord Server."
 	set hidden = 1
 	if( config.discordurl )
-		if(alert("This will open the Discordia Discord  invite in your browser. Are you sure?",,"Yes","No")=="No")
+		if(alert("This will open the Discord invite in your browser. Are you sure?",,"Yes","No")=="No")
 			return
 		src << link(config.discordurl)
 	else
+<<<<<<< HEAD
 		to_chat(src, SPAN_WARNING("The Discordia Discord invite is not set in the server configuration."))
+=======
+		to_chat(src, SPAN_WARNING("The Discord invite is not set in the server configuration."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /client/verb/githuburl()
 	set name = "githuburl"
-	set desc = "Visit the Discordia Github."
+	set desc = "Visit the Github."
 	set hidden = 1
 	if( config.githuburl )
-		if(alert("This will open the Discordia Github page in your browser. Are you sure?",,"Yes","No")=="No")
+		if(alert("This will open the Github page in your browser. Are you sure?",,"Yes","No")=="No")
 			return
 		src << link(config.githuburl)
 	else
+<<<<<<< HEAD
 		to_chat(src, SPAN_WARNING("The Discordia Github is not set in the server configuration."))
+=======
+		to_chat(src, SPAN_WARNING("The Github is not set in the server configuration."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /client/verb/ticketsshortcut()
@@ -182,3 +190,18 @@ Any-Mode: (hotkey doesn't need to be on)
 		to_chat(src, other)
 	if(holder)
 		to_chat(src, admin)
+<<<<<<< HEAD
+=======
+
+/client/verb/changelog()
+	set name = "Changelog"
+	set category = "OOC"
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.ui_interact(mob)
+	if(prefs.lastchangelog != changelog_hash)
+		prefs.lastchangelog = changelog_hash
+		prefs.save_preferences()
+		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

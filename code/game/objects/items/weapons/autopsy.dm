@@ -10,7 +10,11 @@
 	flags = CONDUCT
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+<<<<<<< HEAD
 	rarity_value = 50
+=======
+	matter = list(MATERIAL_PLASTIC = 1, MATERIAL_STEEL = 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/datum/autopsy_data_scanner/wdata = list()
 	var/list/datum/autopsy_data_scanner/chemtraces = list()
 	var/target_name
@@ -54,10 +58,17 @@
 			*/
 
 			// Buffing this stuff up for now!
+<<<<<<< HEAD
 			if(prob(min(20 + (user.stats.getMult(STAT_BIO, STAT_LEVEL_EXPERT) * 100 ), 100)))
 				W.pretend_weapon = W.weapon
 			else
 				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
+=======
+			//if(prob(min(20 + (user.stats.getMult(STAT_BIO, STAT_LEVEL_EXPERT) * 100 ), 100)))
+			W.pretend_weapon = W.weapon
+			//else
+				//W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 		var/datum/autopsy_data_scanner/D = wdata[V]
@@ -176,12 +187,20 @@
 	usr.put_in_hands(P)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*4) //To stop people spamclicking and generating tons of paper
 
+<<<<<<< HEAD
 
 /obj/item/autopsy_scanner/attack(mob/living/carbon/human/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))
 		return
 
 	if(!can_operate(M, user) == CAN_OPERATE_ALL)
+=======
+/obj/item/autopsy_scanner/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+	if(!istype(M))
+		return
+
+	if(!can_operate(M, user))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_WARNING("You need to lay the cadaver down on a table first!"))
 		return
 
@@ -203,11 +222,22 @@
 		return
 	for(var/mob/O in viewers(M))
 		O.show_message(SPAN_NOTICE("\The [user] scans the wounds on [M.name]'s [S.name] with \the [src]"), 1)
+<<<<<<< HEAD
 
+=======
+	LEGACY_SEND_SIGNAL(user, COMSING_AUTOPSY, M)
+	if(user.mind && user.mind.assigned_job && (user.mind.assigned_job.department in GLOB.department_moebius))
+		GLOB.moebius_autopsies_mobs |= M
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.add_data(S, user)
 
 	return 1
 
+<<<<<<< HEAD
 
 /obj/item/autopsy_scanner/attack_self()
 	print_data()
+=======
+/obj/item/autopsy_scanner/attack_self()
+	print_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(misc)
 	name = "Misc"
+<<<<<<< HEAD
 	init_order = INIT_ORDER_LATELOAD
 	flags = SS_NO_FIRE
 	var/num_exoplanets = 2
@@ -11,6 +12,14 @@ SUBSYSTEM_DEF(misc)
 	initialize_cursors()
 	build_exoplanets()
 //	build_junk_field()
+=======
+	init_order = INIT_ORDER_DEFAULT
+	flags = SS_NO_FIRE
+
+/datum/controller/subsystem/misc/Initialize(timeofday)
+	initialize_cursors()
+	build_junk_field()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 GLOBAL_LIST_INIT(cursor_icons, list()) //list of icon files, which point to lists of offsets, which point to icons
@@ -19,6 +28,7 @@ GLOBAL_LIST_INIT(cursor_icons, list()) //list of icon files, which point to list
 	for(var/i = 0 to MAX_ACCURACY_OFFSET)
 		make_cursor_icon('icons/obj/gun_cursors/standard/standard.dmi', i)
 
+<<<<<<< HEAD
 /datum/controller/subsystem/misc/proc/build_exoplanets()
 	if(!config.use_overmap)
 		return
@@ -32,3 +42,8 @@ GLOBAL_LIST_INIT(cursor_icons, list()) //list of icon files, which point to list
 	var/obj/jtb_generator/jtb_gen = locate(/obj/jtb_generator)
 	jtb_gen.generate_junk_field()
 */
+=======
+/datum/controller/subsystem/misc/proc/build_junk_field()
+	var/obj/jtb_generator/jtb_gen = locate(/obj/jtb_generator)
+	jtb_gen.generate_junk_field()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

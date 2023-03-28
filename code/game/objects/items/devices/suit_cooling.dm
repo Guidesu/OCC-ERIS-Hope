@@ -17,6 +17,10 @@
 	suitable_cell = /obj/item/cell/large
 	var/on = FALSE				//is it turned on?
 	var/cover_open = 0		//is the cover open?
+<<<<<<< HEAD
+=======
+	cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/max_cooling = 12				//in degrees per second - probably don't need to mess with heat capacity here
 	var/charge_consumption = 3		//charge per second at max_cooling
 	var/thermostat = T20C
@@ -27,6 +31,20 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+<<<<<<< HEAD
+=======
+	cell = new /obj/item/cell/large(src)	//comes with the crappy default power cell - high-capacity ones shouldn't be hard to find
+
+/obj/item/device/suit_cooling_unit/get_cell()
+	return cell
+
+/obj/item/device/suit_cooling_unit/handle_atom_del(atom/A)
+	..()
+	if(A == cell)
+		cell = null
+		update_icon()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/device/suit_cooling_unit/Process()
 	if(!on)
 		return
@@ -114,8 +132,13 @@
 		cell.add_fingerprint(user)
 		cell.update_icon()
 
+<<<<<<< HEAD
 		to_chat(user, "You remove the [cell].")
 		cell = null
+=======
+		to_chat(user, "You remove the [src.cell].")
+		src.cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		updateicon()
 		return
 
@@ -123,6 +146,7 @@
 	if(on)
 		turn_off(user)
 	else
+<<<<<<< HEAD
 		turn_on(user)
 		if(on)
 			to_chat(user, "You switch on the [src].")
@@ -137,6 +161,35 @@
 			to_chat(user, "You unscrew the panel.")
 		updateicon()
 		return
+=======
+		turn_on()
+		if (on)
+			to_chat(user, "You switch on the [src].")
+
+/obj/item/device/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/tool/screwdriver))
+		if(cover_open)
+			cover_open = 0
+			to_chat(user, "You screw the panel into place.")
+		else
+			cover_open = 1
+			to_chat(user, "You unscrew the panel.")
+		updateicon()
+		return
+
+	if (istype(W, /obj/item/cell/large))
+		if(cover_open)
+			if(cell)
+				to_chat(user, "There is a [cell] already installed here.")
+			else
+				user.drop_item()
+				W.loc = src
+				cell = W
+				to_chat(user, "You insert the [cell].")
+		updateicon()
+		return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return ..()
 
 /obj/item/device/suit_cooling_unit/proc/updateicon()
@@ -152,8 +205,13 @@
 	if(!..(user, 1))
 		return
 
+<<<<<<< HEAD
 	if(on)
 		if(attached_to_suit(loc))
+=======
+	if (on)
+		if (attached_to_suit(src.loc))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, "It's switched on and running.")
 		else
 			to_chat(user, "It's switched on, but not attached to anything.")
@@ -166,3 +224,10 @@
 		else
 			to_chat(user, "The panel is open.")
 
+<<<<<<< HEAD
+=======
+	if (cell)
+		to_chat(user, "The charge meter reads [round(cell.percent())]%.")
+	else
+		to_chat(user, "It doesn't have a power cell installed.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

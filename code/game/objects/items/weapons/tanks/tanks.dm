@@ -22,6 +22,7 @@ var/list/global/tank_gauge_cache = list()
 	throw_speed = 1
 	throw_range = 4
 
+<<<<<<< HEAD
 	//spawn_values
 	rarity_value = 10
 	spawn_frequency = 10
@@ -44,6 +45,19 @@ var/list/global/tank_gauge_cache = list()
 	if (!item_state)
 		item_state = icon_state
 
+=======
+	var/datum/gas_mixture/air_contents = null
+	var/distribute_pressure = ONE_ATMOSPHERE
+	var/default_pressure = 3*ONE_ATMOSPHERE
+	var/default_gas = null
+	var/integrity = 3
+	var/volume = 70 //liters
+	var/manipulated_by = null		//Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
+						//If they have and we haven't scanned it with the PDA or gas analyzer then we might just breath whatever they put in it.
+
+/obj/item/tank/Initialize(mapload, ...)
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	air_contents = new /datum/gas_mixture(volume)
 	air_contents.temperature = T20C
 	spawn_gas()
@@ -103,9 +117,13 @@ var/list/global/tank_gauge_cache = list()
 	if (!(src.air_contents))
 		return
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
+<<<<<<< HEAD
 /obj/item/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+=======
+/obj/item/tank/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/mob/living/carbon/location = null
 
 	if(istype(loc, /obj/item/rig))		// check for tanks in rigs
@@ -262,7 +280,11 @@ var/list/global/tank_gauge_cache = list()
 	cut_overlays()
 	if(!tank_gauge_cache[indicator])
 		tank_gauge_cache[indicator] = image(icon, indicator)
+<<<<<<< HEAD
 	add_overlays(tank_gauge_cache[indicator])
+=======
+	add_overlay(tank_gauge_cache[indicator])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/tank/proc/check_status()
 	//Handle exploding, leaking, and rupturing of the tank

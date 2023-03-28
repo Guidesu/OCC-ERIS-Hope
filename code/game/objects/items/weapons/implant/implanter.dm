@@ -7,9 +7,13 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_STEEL = 1)
+<<<<<<< HEAD
 	var/obj/item/implant/implant
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 6
+=======
+	var/obj/item/implant/implant = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implanter/New()
 	..()
@@ -18,7 +22,11 @@
 		update_icon()
 
 
+<<<<<<< HEAD
 /obj/item/implanter/attack_self(mob/user)
+=======
+/obj/item/implanter/attack_self(var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!implant)
 		return ..()
 	user.put_in_hands(implant)
@@ -28,11 +36,19 @@
 	update_icon()
 	return
 
+<<<<<<< HEAD
 /obj/item/implanter/on_update_icon()
 	cut_overlays()
 	if(implant)
 		var/image/content = image('icons/obj/items.dmi', icon_state = implant.implant_overlay)
 		add_overlay(content)
+=======
+/obj/item/implanter/update_icon()
+	cut_overlays()
+	if(src.implant)
+		add_overlay("implantstorage_[implant:overlay_icon]")
+	return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implanter/attack(mob/living/M, mob/living/user)
 	if(!istype(M) || !implant)
@@ -54,7 +70,6 @@
 
 	if(do_mob(user, M, 50) && src && implant)
 
-
 		if(implant.install(M, user.targeted_organ, user))
 			M.visible_message(
 			SPAN_WARNING("[user] has implanted [M] in [affected]."),
@@ -66,5 +81,16 @@
 			"Implanted with \the [src.name] ([implant.name])",
 			"used an implanter, [src.name] ([implant.name]), on"
 			)
+			log_and_message_admins(" - [implant.name] injected into [M] at \the [jumplink(src)] X:[src.x] Y:[src.y] Z:[src.z] User:[user]") //So we can go to it
+
+			if(istype(implant, /obj/item/implant/excelsior) && ishuman(M))
+				var/datum/antag_faction/F = get_faction_by_id(FACTION_EXCELSIOR)
+				var/datum/objective/timed/excelsior/E = (locate(/datum/objective/timed/excelsior) in F.objectives)
+				if(E)
+					if(!E.active)
+						E.start_excel_timer()
+					else
+						E.on_convert()
+
 			implant = null
 			update_icon()

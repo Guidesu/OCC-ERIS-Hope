@@ -16,6 +16,7 @@
 
 	see_in_dark = 8
 	update_slimes = 0
+	inherent_mutations = list(MUTATION_SLIME_BONE, MUTATION_BOTTOMLESS_BELLY, MUTATION_RAND_UNSTABLE)
 
 	// canstun and canweaken don't affect slimes because they ignore stun and weakened variables
 	// for the sake of cleanliness, though, here they are.
@@ -175,15 +176,20 @@
 
 /mob/living/carbon/slime/adjustFireLoss(amount)
 	..(-abs(amount)) // Heals them
+	handle_regular_status_updates()
 	return
 
 /mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
-	attacked += 10
+	if (!(Proj.testing))
+		attacked += 10
 	..(Proj)
+	if (!(Proj.testing))
+		handle_regular_status_updates()
 	return 0
 
 /mob/living/carbon/slime/emp_act(severity)
 	powerlevel = 0 // oh no, the power!
+	handle_regular_status_updates()
 	..()
 
 /mob/living/carbon/slime/ex_act(severity)
@@ -207,7 +213,7 @@
 
 	adjustBruteLoss(b_loss)
 	adjustFireLoss(f_loss)
-
+	handle_regular_status_updates()
 	updatehealth()
 
 
@@ -220,7 +226,7 @@
 /mob/living/carbon/slime/attack_hand(mob/living/carbon/human/M as mob)
 
 	..()
-
+	handle_regular_status_updates()
 	if(Victim)
 		if(Victim == M)
 			if(prob(60))
@@ -284,7 +290,7 @@
 
 			G.synch()
 
-			LAssailant = M
+			LAssailant_weakref = WEAKREF(M)
 
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			visible_message(SPAN_WARNING("[M] has grabbed [src] passively!"))
@@ -322,7 +328,11 @@
 /mob/living/carbon/slime/attackby(obj/item/W, mob/user)
 	if(W.force > 0)
 		attacked += 10
+<<<<<<< HEAD
 		if(prob(25))
+=======
+		if(prob(25) && !user.stats?.getPerk(PERK_SI_SCI))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_DANGER("[W] passes right through [src]!"))
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
@@ -376,6 +386,7 @@
 								if(user)
 									step_away(src, user)
 							canmove = 1
+	handle_regular_status_updates()
 	..()
 
 /mob/living/carbon/slime/restrained()
@@ -395,6 +406,7 @@ mob/living/carbon/slime/toggle_throw_mode()
 			powerlevel = 10
 			adjustToxLoss(-10)
 	nutrition = max(nutrition, get_max_nutrition())
+	handle_regular_status_updates()
 
 /mob/living/carbon/slime/cannot_use_vents()
 	if(Victim)

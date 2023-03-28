@@ -57,7 +57,7 @@ A small pool of thematically appropriate religious items that are generally chea
 //A priest cruciform implant, allows field promotion of a disciple to a preacher.
 //This also requires an inquisitor ritual to complete the process, so it can't be done by anyone else
 /datum/uplink_item/item/neotheology/priest
-	name = "Preacher Ascension Kit"
+	name = "Prime Ascension Kit"
 	item_cost = 3
 	path = /obj/item/coreimplant_upgrade/cruciform/priest
 
@@ -72,35 +72,52 @@ A small pool of thematically appropriate religious items that are generally chea
 /datum/uplink_item/item/neotheology/coat
 	name = "Preacher Coat"
 	item_cost = 3
+<<<<<<< HEAD
 	path = /obj/item/clothing/suit/storage/neotheology_coat
 
 /datum/uplink_item/item/neotheology/hat
 	name = "Preacher Hat"
 	item_cost = 3
 	path = /obj/item/clothing/head/preacher
+=======
+	path = /obj/item/clothing/suit/storage/chaplain
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /*
 	Guns: All taken from the NeoTheology Armory of the New Testament
-	All guns are 1 TC cheaper than the closest equivilant in normal traitor gear
+	All guns are 1 TC cheaper than the closest equivilant in normal contractor gear
 */
 /datum/uplink_item/item/neotheology/laser
 	item_cost = 10
+<<<<<<< HEAD
 	name = "NT LG \"Lightfall\""
+=======
+	name = "OT LG \"Lightfall\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/laser
 
 /datum/uplink_item/item/neotheology/ion
 	item_cost = 8
+<<<<<<< HEAD
 	name = "NT IR \"Halicon\""
+=======
+	name = "OT IR \"Halicon\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/ionrifle
 
 
 /datum/uplink_item/item/neotheology/pulse
 	item_cost = 10
+<<<<<<< HEAD
 	name = "NT PR \"Dominion\""
+=======
+	name = "OT PR \"Dominion\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/plasma
 
 /datum/uplink_item/item/neotheology/pulse_destroyer
 	item_cost = 10
+<<<<<<< HEAD
 	name = "NT PR \"Purger\""
 	path = /obj/item/gun/energy/plasma/destroyer
 
@@ -109,16 +126,32 @@ A small pool of thematically appropriate religious items that are generally chea
 /datum/uplink_item/item/neotheology/xbow
 	item_cost = 5
 	name = "NT EC \"Nemesis\""
+=======
+	name = "OT PR \"Purger\""
+	path = /obj/item/gun/energy/plasma/destroyer
+
+/datum/uplink_item/item/neotheology/xbow
+	item_cost = 5
+	name = "OT EC \"Nemesis\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/crossbow
 
 /datum/uplink_item/item/neotheology/xbow_heavy
 	item_cost = 8
+<<<<<<< HEAD
 	name = "NT EC \"Themis\""
+=======
+	name = "OT EC \"Themis\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/crossbow/largecrossbow
 
 
 /datum/uplink_item/item/neotheology/sniper
 	item_cost = 13
+<<<<<<< HEAD
 	name = "NT MER \"Valkyrie\""
+=======
+	name = "OT MER \"Valkyrie\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	path = /obj/item/gun/energy/sniperrifle
 

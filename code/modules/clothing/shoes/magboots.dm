@@ -6,6 +6,17 @@
 	force = WEAPON_FORCE_WEAK
 	overslot = 1
 	action_button_name = "Toggle Magboots"
+<<<<<<< HEAD
+=======
+	armor_list = list(
+		melee = 20,
+		bullet = 10,
+		energy = 20,
+		bomb = 25,
+		bio = 100,
+		rad = 90
+	)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	siemens_coefficient = 0 // DAMN BOI
 	//This armor only applies to legs
 	style = STYLE_NEG_LOW
@@ -35,7 +46,11 @@
 		force = WEAPON_FORCE_PAINFUL
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
+<<<<<<< HEAD
 	user.update_inv_shoes()	//so our mob-overlays update
+=======
+	user.update_inv_shoes()	//so our mob-over-lays update
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.update_action_buttons()
 	user.update_floating()
 
@@ -62,4 +77,11 @@
 	mag_slow = 0
 	icon_base = null
 	can_hold_knife = TRUE
+<<<<<<< HEAD
 	action_button_name = null
+=======
+	overshoes = 0
+	mag_slow = 2
+	icon_base = "mercboots"
+	action_button_name = "Toggle Magboots"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

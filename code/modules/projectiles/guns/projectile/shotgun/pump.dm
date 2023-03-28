@@ -1,22 +1,28 @@
 /obj/item/gun/projectile/shotgun/pump
+<<<<<<< HEAD
 	name = "FS SG \"Kammerer\""
 	desc = "When an old Remington design meets modern materials, this is the result. A favourite weapon of militia forces throughout many worlds."
+=======
+	name = "\"Grizzly\" shotgun"
+	desc = "A common open-source pump-action shotgun, a bastard child of the three primary pump shotguns on the market, all rolled together once their patents expired. Can hold up to 4+1 20mm shells in its tube magazine."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/guns/projectile/shotgun.dmi'
 	icon_state = "shotgun"
 	item_state = "shotgun"
 	max_shells = 4
 	w_class = ITEM_SIZE_HUGE
 	force = WEAPON_FORCE_PAINFUL
-	flags =  CONDUCT
+	flags = CONDUCT
 	slot_flags = SLOT_BACK
 	caliber = CAL_SHOTGUN
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	load_method = SINGLE_CASING
+	load_method = SINGLE_CASING|SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	handle_casings = HOLD_CASINGS
 	fire_sound = 'sound/weapons/guns/fire/shotgunp_fire.ogg'
 	bulletinsert_sound 	= 'sound/weapons/guns/interact/shotgun_insert.ogg'
 	matter = list(MATERIAL_PLASTEEL = 20, MATERIAL_WOOD = 10)
+<<<<<<< HEAD
 	price_tag = 1000
 	rarity_value = 16
 	recoil_buildup = 20
@@ -25,19 +31,53 @@
 	saw_off = TRUE
 	sawn = /obj/item/gun/projectile/shotgun/pump/sawn
 
+=======
+	price_tag = 600
+	damage_multiplier = 1 //Baseline shotgun
+	init_recoil = RIFLE_RECOIL(1.1)
+	saw_off = TRUE
+	sawn = /obj/item/gun/projectile/shotgun/pump/sawn
+	allow_racking = FALSE
+	serial_type = "H&S"
+
+	wield_delay = 0.6 SECOND
+	wield_delay_factor = 0.3 // 30 vig
+	gun_parts = list(/obj/item/part/gun/frame/grizzly = 1, /obj/item/part/gun/grip/wood = 1, /obj/item/part/gun/mechanism/shotgun = 1, /obj/item/part/gun/barrel/shotgun = 1)
+
+/obj/item/part/gun/frame/grizzly
+	name = "Grizzly frame"
+	desc = "A Grizzly shotgun frame. A militiaman's favorite."
+	icon_state = "frame_shotgun"
+	result = /obj/item/gun/projectile/shotgun/pump
+	resultvars = list(/obj/item/gun/projectile/shotgun/pump)
+	gripvars = list(/obj/item/part/gun/grip/wood)
+	mechanismvar = /obj/item/part/gun/mechanism/shotgun
+	barrelvars = list(/obj/item/part/gun/barrel/shotgun)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
 		return chambered.BB
 	return null
 
+<<<<<<< HEAD
 /obj/item/gun/projectile/shotgun/pump/attack_self(mob/living/user)
+=======
+/obj/item/gun/projectile/shotgun/pump/attack_self(mob/living/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(world.time >= recentpumpmsg + 10)
 		pump(user)
 		recentpumpmsg = world.time
 
+<<<<<<< HEAD
 /obj/item/gun/projectile/shotgun/pump/proc/pump(mob/M)
 	var/turf/newloc = get_turf(src)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
+=======
+/obj/item/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
+	var/turf/newloc = get_turf(src)
+	playsound(M, pumpshotgun_sound, 60, 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(chambered)//We have a shell in the chamber
 		chambered.forceMove(newloc) //Eject casing
@@ -51,9 +91,34 @@
 	update_icon()
 
 /obj/item/gun/projectile/shotgun/pump/sawn
+<<<<<<< HEAD
 	name = "sawn-off FS SG \"Kammerer\""
 	desc = "When an old Remington design meets a hacksaw, this is the result. Hacked up, sawn down, and ready to rob a liquor store."
 	icon = 'icons/obj/guns/projectile/obrez_sg.dmi'
+=======
+	name = "sawn-down \"Grizzly\" shotgun"
+	desc = "A common open-source pump-action shotgun, a bastard child of the three primary pump shotguns on the market, all rolled together once their patents expired. This one has been slightly cut down."
+	icon = 'icons/obj/guns/projectile/sawnoff/shotgun.dmi'
+	icon_state = "shotgun"
+	item_state = "shotgun"
+	w_class = ITEM_SIZE_BULKY
+	slot_flags = SLOT_BACK|SLOT_BELT
+	matter = list(MATERIAL_PLASTEEL = 15, MATERIAL_WOOD = 10)
+	price_tag = 450
+	damage_multiplier = 1
+	penetration_multiplier = 0.9
+	init_recoil = RIFLE_RECOIL(1.2)
+	saw_off = TRUE
+	sawn = /obj/item/gun/projectile/shotgun/pump/obrez
+
+	wield_delay = 0.4 SECOND
+	wield_delay_factor = 0.3 // 30 vig
+
+/obj/item/gun/projectile/shotgun/pump/obrez
+	name = "obrez \"Grizzly\" shotgun"
+	desc = "A common open-source pump-action shotgun, hacked up, sawn down, and ready to rob a liquor store."
+	icon = 'icons/obj/guns/projectile/sawnoff/shotgunobrez.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "obrez"
 	item_state = "obrez"
 	max_shells = 3
@@ -61,6 +126,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	slot_flags = SLOT_BACK|SLOT_BELT|SLOT_HOLSTER
 	matter = list(MATERIAL_PLASTEEL = 10, MATERIAL_WOOD = 5)
+<<<<<<< HEAD
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet/scrap
 	price_tag = 350
 	damage_multiplier = 0.5
@@ -70,3 +136,13 @@
 	can_dual = TRUE
 	saw_off = FALSE
 	spawn_blacklisted = TRUE
+=======
+	price_tag = 350
+	damage_multiplier = 0.8
+	penetration_multiplier = 0.8
+	init_recoil = RIFLE_RECOIL(1.3)
+	saw_off = FALSE
+
+	wield_delay = 0.2 SECOND
+	wield_delay_factor = 0.2 // 20 vig
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

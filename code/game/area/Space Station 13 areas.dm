@@ -27,6 +27,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 	var/eject
 	var/is_maintenance = FALSE
+	var/is_dungeon_lootable = FALSE
 	var/debug = 0
 	var/requires_power = 1
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
@@ -34,7 +35,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/power_equip = 1
 	var/power_light = 1
 	var/power_environ = 1
+<<<<<<< HEAD
 	var/area_light_color		//Used by lights to create different light on different departments and locations
+=======
+	var/area_light_color = null		//Used by lights to create different light on different departments and locations
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/has_gravity = 1
 	var/cached_gravity = 1		//stores updated has_gravity even if it's blocked
@@ -50,8 +55,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/vessel = "CEV Northern Light" //The ship or station this area is on. This is so far just for the benefit of shield generators
 	var/holomap_color // Color of this area on station holomap
 
+<<<<<<< HEAD
+=======
+	var/vessel = "Nadezhda Colony" //The ship or station this area is on. This is so far just for the benefit of shield generators
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Consoles can only control shields on the same vessel as them
-
+	var/holomap_color // Color of this area on station holomap
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 
@@ -90,7 +99,7 @@ area/space/atmosalert()
 /area/space/partyalert()
 	return
 
-/area/turret_protected/
+/area/turret_protected
 	flags = AREA_FLAG_CRITICAL
 
 /area/arrival
@@ -381,19 +390,20 @@ area/space/atmosalert()
 //EXTRA
 
 /area/asteroid					// -- TLE
-	name = "\improper Moon"
+	name = "\improper Underground"
 	icon_state = "asteroid"
 	requires_power = 0
 	sound_env = ASTEROID
+	base_turf = /turf/simulated/floor/asteroid
 
 /area/asteroid/cave				// -- TLE
-	name = "\improper Moon - Underground"
+	name = "\improper Underground"
 	icon_state = "cave"
 	requires_power = 0
 	sound_env = ASTEROID
 
 /area/asteroid/artifactroom
-	name = "\improper Moon - Artifact"
+	name = "\improper Artifact Cave"
 	icon_state = "cave"
 	sound_env = SMALL_ENCLOSED
 
@@ -688,6 +698,59 @@ area/space/atmosalert()
 	name = "\improper AI Main New"
 	icon_state = "storage"
 
+//Elevators
+/area/shuttle/mining_elevator
+	name = "\improper Mining Elevator"
+	base_turf = /turf/simulated/floor/plating/under
+	requires_power = 1
+	dynamic_lighting = 0
+
+/area/shuttle/mining_elevator/colony
+	icon_state = "shuttle2"
+
+/area/shuttle/mining_elevator/deep_t
+	icon_state = "shuttle"
+	base_turf = /turf/simulated/floor/plating/under
+
+/area/shuttle/research_elevator
+	name = "\improper Research Elevator"
+	base_turf = /turf/simulated/floor/plating/under
+	requires_power = 1
+	dynamic_lighting = 0
+
+/area/shuttle/research_elevator/colony
+	icon_state = "shuttle2"
+
+/area/shuttle/research_elevator/deep_t
+	icon_state = "shuttle"
+	base_turf = /turf/simulated/floor/plating/under
+
+/area/shuttle/surface_elevator1
+	name = "\improper Surface Elevator 1"
+	base_turf = /turf/simulated/floor/plating/under
+	requires_power = 1
+	dynamic_lighting = 0
+
+/area/shuttle/surface_elevator1/surface
+	icon_state = "shuttle2"
+
+/area/shuttle/surface_elevator1/underground
+	icon_state = "shuttle"
+	base_turf = /turf/simulated/floor/plating/under
+
+/area/shuttle/surface_elevator2
+	name = "\improper Surface Elevator 2"
+	base_turf = /turf/simulated/floor/plating/under
+	requires_power = 1
+	dynamic_lighting = 0
+
+/area/shuttle/surface_elevator2/colony
+	icon_state = "shuttle2"
+
+/area/shuttle/surface_elevator2/deep_t
+	icon_state = "shuttle"
+	base_turf = /turf/simulated/floor/plating/under
+
 
 
 //Misc
@@ -802,6 +865,69 @@ area/space/atmosalert()
 	icon_state = "away"
 	requires_power = 0
 
+/area/deepmaint
+	icon_state = "away"
+	name = "Deep Maintenance"
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = list('sound/ambience/occ_scaryambie.ogg')
+	base_turf = /turf/simulated/floor/tiled
+	has_gravity = 1
+	requires_power = 0
+	area_light_color = COLOR_NAVY_BLUE //That is below is that of above
+
+// This area is mostly there to prevent the initial crystals from processing when there is no one nearby.
+// In an ideal situation, it would be wider than the potential full size of the field to prevent any escapes. -R4d6
+/area/crystal_field
+	name = "Crystal Field"
+	icon_state = "crystal_field"
+	has_gravity = 1
+	requires_power = 0 // Weird crystal power stuff
+	var/process_delay = 5 MINUTES // Delay between Process() calls
+
+/area/crystal_field/New()
+	..()
+	spawn(20) // I don't know if the area get initialized before or after the crystals inside it, so better safe than sorry. -R4d6
+		stop_crystal_processing() // Stop the crystals from processing
+		Process()
+
+/area/crystal_field/Entered(atom/movable/Obj, atom/newloc)
+	if(istype(Obj, /mob/living) && !istype(Obj, /mob/living/carbon/superior_animal/ameridian_golem)) // If a mob enter the area, start processing, except if it is a golem
+		start_crystal_processing()
+		//to_chat(usr, "The crystals seems to wake up") // TODO, better sentence and have it only be visible to psions -R4d6
+
+/area/crystal_field/Exited(atom/movable/Obj, atom/newloc)
+	if(!check_contents()) // If we don't have any mobs inside the area, stop processing the crystals
+		stop_crystal_processing()
+
+/area/crystal_field/Process()
+	if(check_contents()) // If we have any live creatures inside
+		start_crystal_processing()
+	else
+		stop_crystal_processing()
+
+	spawn(process_delay) .() // We loop forever
+
+// Check the area for living non-golem mobs
+// Return TRUE if there is any living mob that isn't an Ameridian golem
+/area/crystal_field/proc/check_contents()
+	. = FALSE // Default return value is false by default
+	for(var/mob/living/L in contents) // Check every mob
+		if(!istype(L, /mob/living/carbon/superior_animal/ameridian_golem) && L.stat != DEAD) // Ignore golems & dead people
+			. = TRUE
+			break // No need to check further
+
+// Iterate through every crystal in the area and prevent it from processing
+/area/crystal_field/proc/stop_crystal_processing()
+	for(var/obj/structure/ameridian_crystal/AC in contents)
+		if(AC.is_processing) // Safety check to make sure the crystals are processing before shutting them
+			STOP_PROCESSING(SSobj, AC) // Make the crystal stop processing
+
+/area/crystal_field/proc/start_crystal_processing()
+	for(var/obj/structure/ameridian_crystal/AC in contents)
+		if(!AC.is_processing) // Safety check to make sure the crystals are not processing before starting them
+			START_PROCESSING(SSobj, AC) // Make the crystal start processing
+
 /area/awaymission/beach
 	name = "Beach"
 	icon_state = "null"
@@ -882,11 +1008,16 @@ var/list/centcom_areas = list (
 //Rouguelike Mining
 /area/asteroid/rogue
 	icon_state = "away"
+<<<<<<< HEAD
 	name = "Asteroid Belt"
+=======
+	name = "Deep Forest Underground"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/asteroid_spawns = list()
 	var/mob_spawns = list()
 	var/teleporter_spawns = list()
 	var/teleporter
+<<<<<<< HEAD
 
 /area/deepmaint
 	icon_state = "away"
@@ -898,3 +1029,7 @@ var/list/centcom_areas = list (
 	has_gravity = 1
 	requires_power = 0
 	area_light_color = COLOR_LIGHTING_MAINT_DARK
+=======
+	base_turf = /turf/simulated/floor/asteroid/dirt
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

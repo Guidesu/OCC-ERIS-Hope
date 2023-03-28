@@ -9,11 +9,16 @@
 	var/oxygen = 0
 	var/carbon_dioxide = 0
 	var/nitrogen = 0
+<<<<<<< HEAD
 	var/phoron = 0
 
 	var/list/initial_gas
 
 	var/footstep_type
+=======
+	var/plasma = 0
+	var/hydrogen = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -36,6 +41,10 @@
 								// This is a more generic way of handling open space turfs
 	var/is_wall = FALSE 	//True for wall turfs, but also true if they contain a low wall object
 
+	/// How pathing algorithm will check if this turf is passable by itself (not including content checks). By default it's just density check.
+	/// WARNING: Currently to use a density shortcircuiting this does not support dense turfs with special allow through function
+	var/pathing_pass_method = TURF_PATHING_PASS_DENSITY
+
 /turf/New()
 	..()
 	for(var/atom/movable/AM as mob|obj in src)
@@ -43,6 +52,12 @@
 			src.Entered(AM)
 			return
 
+<<<<<<< HEAD
+=======
+/turf/update_icon()
+	return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/Initialize()
 	turfs += src
 	var/area/A = loc
@@ -103,57 +118,52 @@
 	..()
 
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
-		return 1
+		return TRUE
 
 	//First, check objects to block exit that are not on the border
 	for(var/obj/obstacle in mover.loc)
 		if(!(obstacle.flags & ON_BORDER) && (mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
 				mover.Bump(obstacle, 1)
-				return 0
+				return FALSE
 
 	//Now, check objects to block exit that are on the border
 	for(var/obj/border_obstacle in mover.loc)
 		if((border_obstacle.flags & ON_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
 			if(!border_obstacle.CheckExit(mover, src))
 				mover.Bump(border_obstacle, 1)
-				return 0
+				return FALSE
 
 	//Next, check objects to block entry that are on the border
 	for(var/obj/border_obstacle in src)
 		if(border_obstacle.flags & ON_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				mover.Bump(border_obstacle, 1)
-				return 0
+				return FALSE
 
 	//Then, check the turf itself
 	if (!src.CanPass(mover, src))
 		mover.Bump(src, 1)
-		return 0
+		return FALSE
 
 	//Finally, check objects/mobs to block entry that are not on the border
 	for(var/atom/movable/obstacle in src)
 		if(!(obstacle.flags & ON_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
-				return 0
-	return 1 //Nothing found to block so return success!
+				return FALSE
+	return TRUE //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
+/turf/Entered(atom/movable/AM)
 
 	if(movement_disabled)
 		to_chat(usr, SPAN_WARNING("Movement is admin-disabled.")) //This is to identify lag problems
 		return
 	..()
 
-	if(!istype(atom, /atom/movable))
-		return
-
-	var/atom/movable/A = atom
-
-	if(ismob(A))
-		var/mob/M = A
+	if(ismob(AM))
+		var/mob/M = AM
 
 		M.update_floating()
 		if(M.check_gravity() || M.incorporeal_move)
@@ -173,15 +183,15 @@ var/const/enterloopsanity = 100
 			L.handle_footstep(src)
 
 	var/objects = 0
-	if(A && (A.flags & PROXMOVE))
+	if(AM && (AM.flags & PROXMOVE))
 		for(var/atom/movable/thing in range(1))
 			if(objects > enterloopsanity) break
 			objects++
 			spawn(0)
-				if(A)
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.flags & PROXMOVE))
-						thing.HasProximity(A, 1)
+				if(AM)
+					AM.HasProximity(thing, 1)
+					if ((thing && AM) && (thing.flags & PROXMOVE))
+						thing.HasProximity(AM, 1)
 	return
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
@@ -273,6 +283,7 @@ var/const/enterloopsanity = 100
 	sound =  footstep_sound("floor")
 	if(catwalk)
 		sound = footstep_sound("catwalk")
+<<<<<<< HEAD
 
 	else if(flooring)
 		sound = footstep_sound(flooring.footstep_sound)
@@ -280,8 +291,44 @@ var/const/enterloopsanity = 100
 		var/decl/flooring/floor = initial_flooring
 		sound = footstep_sound(floor.footstep_sound)
 
+=======
+	else if(flooring)
+		sound = footstep_sound(flooring.footstep_sound)
+	else if(initial_flooring)
+		var/decl/flooring/floor = decls_repository.get_decl(initial_flooring)
+		sound = footstep_sound(floor.footstep_sound)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return sound
 
 /turf/AllowDrop()
 	return TRUE
+
+//Moves the contents of this turf onto another.
+//Excludes any objects in the 'exclude' list.
+//'where' should be a turf.
+/turf/proc/Unload(var/turf/where, var/list/exclude = null)
+	if(where)
+		var/list/what = contents - exclude
+		sleep(-1)
+		for(var/atom/movable/obj in what)
+			if(!obj.anchored && obj.loc == src)// prevents the object from being affected if it's not currently here.
+				obj.forceMove(where)
+			CHECK_TICK
+
+//Slides the contents of this turf onto an adjacent turf.
+//Excludes any objects in the 'exclude' list.
+//Should respect collisions, obstacles, or other immovables.
+//'where' should be a direction.
+/turf/proc/UnloadSlide(var/where, var/list/exclude, speed)
+	if(isnum(where))
+		var/list/what = contents - exclude
+		sleep(1)
+		for(var/atom/movable/obj in what)
+			if(!obj.anchored && obj.loc == src)// prevents the object from being affected if it's not currently here.
+				step_glide(obj, where, speed)
+			CHECK_TICK
+
+/turf/CtrlClick(mob/user)
+	user.haul_all_objs_proc(src)
+	..()

@@ -8,7 +8,11 @@
 	Returns
 	standard 0 if fail
 */
+<<<<<<< HEAD
 /mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/sharp = FALSE, var/edge = FALSE, var/used_weapon = null)
+=======
+/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, armor_divisor = 1, wounding_multiplier = 1, sharp = FALSE, edge = FALSE, used_weapon = null)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	activate_ai()
 	switch(damagetype)
 
@@ -141,5 +145,13 @@
 	if (damage > 0)
 		take_overall_damage(damage)
 		playsound(src, pick(punch_sound), 100, 1, 10)
+<<<<<<< HEAD
 		Weaken(4)
+=======
+		if(ishuman(src))
+			if(!src.stats.getPerk(PERK_PARKOUR))
+				src.Weaken(4)
+		else
+			src.Weaken(4)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		updatehealth()

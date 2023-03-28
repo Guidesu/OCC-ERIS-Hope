@@ -7,6 +7,7 @@
 	see_invisible = FALSE
 	vision_flags = SEE_MOBS
 	flash_protection = FLASH_PROTECTION_REDUCED
+<<<<<<< HEAD
 	origin_tech = list(TECH_COVERT = 3)
 	/// Saves the overlay of the last goggles converted , just for the sake of not deleting it
 	var/saved_last_overlay = FALSE
@@ -16,6 +17,17 @@
 /obj/item/clothing/glasses/attachable_lenses/New()
 	..()
 	overlay = global_hud.thermal
+=======
+	origin_tech = list(TECH_ILLEGAL = 3)
+	/// Saves the overlay of the last goggles converted , just for the sake of not deleting it
+	var/saved_last_overlay = FALSE
+
+// Yep , we have to do it in new , because global.
+/obj/item/clothing/glasses/attachable_lenses/New()
+	..()
+	overlays = global_hud.thermal
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/glasses/verb/detach_lenses()
 	set name = "Detach lenses"
@@ -27,11 +39,23 @@
 		see_invisible = initial(see_invisible)
 		vision_flags = initial(vision_flags)
 		var/obj/item/clothing/glasses/attachable_lenses/lenses = have_lenses
+<<<<<<< HEAD
 		overlay = lenses.saved_last_overlay
 		lenses.saved_last_overlay = FALSE
 		to_chat(usr, "You detach \the [have_lenses] from \the [src]");
 		usr.put_in_hands(have_lenses)
 		SEND_SIGNAL(src, COMSIG_GLASS_LENSES_REMOVED, usr, src)
+=======
+		overlays = lenses.saved_last_overlay
+		lenses.saved_last_overlay = FALSE
+		to_chat(usr, "You detach \the [have_lenses] from \the [src]");
+		usr.put_in_hands(have_lenses)
+
+		/*
+		Further purging of signals for interacting with things -Hex
+		LEGACY_SEND_SIGNAL(src, COMSIG_GLASS_LENSES_REMOVED, usr, src)
+		*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		have_lenses = FALSE
 	else
 		to_chat(usr, "You haven't got any lenses in \the [src]");
@@ -41,9 +65,15 @@
 	if(target.have_lenses)
 		to_chat(inserter, "You already have lenses in \the [target]")
 		return FALSE
+<<<<<<< HEAD
 	if(overlay)
 		saved_last_overlay = target.overlay
 		target.overlay = overlay
+=======
+	if(overlays)
+		saved_last_overlay = target.overlays
+		target.overlays = overlays
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(vision_flags) // Don/t override if we don't have it set.
 		target.vision_flags = vision_flags
 	if(see_invisible)
@@ -56,6 +86,7 @@
 	inserter.drop_item(src)
 	forceMove(target)
 
+<<<<<<< HEAD
 
 /*
  Good example of how to make a subtype of googles that handles everything.
@@ -67,11 +98,40 @@
 	vision_flags = FALSE
 	flash_protection = FALSE
 	origin_tech = list(TECH_COVERT = 3, TECH_COMBAT = 2 , TECH_ENGINEERING = 5)
+=======
+/obj/item/clothing/glasses/attachable_lenses/thermal
+//Legit the same as its parrent
+
+/obj/item/clothing/glasses/attachable_lenses/thermal/New()
+	..()
+	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
+	I.weapon_upgrades = list(
+		GUN_UPGRADE_THERMAL = TRUE
+		)
+	I.gun_loc_tag = GUN_SIGHT
+	I.req_gun_tags = list(GUN_SIGHT)
+
+/*
+//Good example of how to make a subtype of googles that handles everything.
+// A shame I had to comment it out. -Hex
+/obj/item/clothing/glasses/attachable_lenses/explosive
+	name = "\"Mortality\" explosive lenses"
+	desc = "Lenses for glasses, these ones explode when someone wears goggles containing them. \
+	Some say it lets you see ghosts, likely do to being dead after waring such a horrable lens...."
+	icon_state = "thermal_lens"
+	vision_flags = FALSE
+	flash_protection = FALSE
+	origin_tech = list(TECH_ILLEGAL = 3, TECH_COMBAT = 2 , TECH_ENGINEERING = 5)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/charge_exploded = FALSE
 
 /obj/item/clothing/glasses/attachable_lenses/explosive/New()
 	..()
+<<<<<<< HEAD
 	overlay = null
+=======
+	overlays = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/glasses/attachable_lenses/explosive/handle_insertion(obj/item/clothing/glasses/target, mob/living/carbon/human/inserter)
 	..()
@@ -88,12 +148,21 @@
 		return FALSE
 	visible_message(SPAN_DANGER("[unfortunate_man]'s skull gets pierced by a jet of molten slag as he puts \the [loc] on his eyes"),
 					SPAN_DANGER("You hear the sound of a skull cracking and meat sizzling"), 6)
+<<<<<<< HEAD
 	playsound(get_turf(loc), 'sound/effects/bangtaper.ogg' ,50, 1)
 	spawn(1 SECONDS)
 		playsound(get_turf(loc), 'sound/effects/flare.ogg', 100, 1)
 	unfortunate_man.adjustBrainLoss(200)
 	for(var/obj/item/organ/internal/organ in unfortunate_man.get_organ(BP_HEAD).contents)
 		organ.take_damage(200)
+=======
+	playsound(get_turf(loc), 'sound/effects/bang.ogg' ,50, 1)
+	spawn(1 SECONDS)
+		playsound(get_turf(loc), 'sound/effects/Custom_flare.ogg', 100, 1)
+	unfortunate_man.adjustBrainLoss(60) //Get the kill
+	for(var/obj/item/organ/internal/organ in unfortunate_man.get_organ(BP_HEAD).contents)
+		organ.take_damage(30) //Lets not gib heads
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	charge_exploded = TRUE
 	// F
 	handle_removal()
@@ -101,9 +170,15 @@
 /obj/item/clothing/glasses/attachable_lenses/explosive/proc/handle_removal(mob/living/carbon/human/remover, obj/item/clothing/glasses/holder)
 	UnregisterSignal(holder, COMSIG_CLOTH_EQUIPPED)
 	UnregisterSignal(holder, COMSIG_GLASS_LENSES_REMOVED)
+<<<<<<< HEAD
 
 */
 
 
 
 
+=======
+*/
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

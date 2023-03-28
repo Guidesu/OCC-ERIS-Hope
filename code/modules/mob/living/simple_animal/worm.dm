@@ -1,7 +1,7 @@
 /mob/living/simple_animal/space_worm
 	name = "space worm segment"
 	desc = "A part of a space worm."
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/mobs-monster.dmi'
 	icon_state = "spaceworm"
 	status_flags = 0
 
@@ -68,7 +68,11 @@
 		current.Attach(newSegment)
 		current = newSegment
 
+<<<<<<< HEAD
 /mob/living/simple_animal/space_worm/head/on_update_icon()
+=======
+/mob/living/simple_animal/space_worm/head/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(stat == CONSCIOUS || stat == UNCONSCIOUS)
 		icon_state = "spacewormhead[previous?1:0]"
 		if(previous)
@@ -120,7 +124,11 @@
 
 	return
 
+<<<<<<< HEAD
 /mob/living/simple_animal/space_worm/on_update_icon() //only for the sake of consistency with the other update icon procs
+=======
+/mob/living/simple_animal/space_worm/update_icon() //only for the sake of consistency with the other update icon procs
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(stat == CONSCIOUS || stat == UNCONSCIOUS)
 		if(previous) //midsection
 			icon_state = "spaceworm[get_dir(src,previous) | get_dir(src,next)]" //see 3 lines below
@@ -172,18 +180,32 @@
 	for(var/atom/movable/stomachContent in contents)
 		if(prob(digestionProbability))
 			if(istype(stomachContent,/obj/item/stack)) //converts to plasma, keeping the stack value
+<<<<<<< HEAD
 				if(!istype(stomachContent,/obj/item/stack/material/phoron))
 					var/obj/item/stack/oldStack = stomachContent
 					new /obj/item/stack/material/phoron(src, oldStack.get_amount())
+=======
+				if(!istype(stomachContent,/obj/item/stack/material/plasma))
+					var/obj/item/stack/oldStack = stomachContent
+					new /obj/item/stack/material/plasma(src, oldStack.get_amount())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					qdel(oldStack)
 					continue
 			else if(istype(stomachContent,/obj/item)) //converts to plasma, keeping the w_class
 				var/obj/item/oldItem = stomachContent
+<<<<<<< HEAD
 				new /obj/item/stack/material/phoron(src, oldItem.w_class)
 				qdel(oldItem)
 				continue
 			else
 				new /obj/item/stack/material/phoron(src, flatPlasmaValue) //just flat amount
+=======
+				new /obj/item/stack/material/plasma(src, oldItem.w_class)
+				qdel(oldItem)
+				continue
+			else
+				new /obj/item/stack/material/plasma(src, flatPlasmaValue) //just flat amount
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				qdel(stomachContent)
 				continue
 

@@ -8,6 +8,9 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+<<<<<<< HEAD
 
 [*.md]
 max_line_length = 80
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

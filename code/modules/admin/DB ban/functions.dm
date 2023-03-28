@@ -343,7 +343,11 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 		output += "<option value='[j]'>[j]</option>"
 	for(var/j in nonhuman_positions)
 		output += "<option value='[j]'>[j]</option>"
+<<<<<<< HEAD
 	var/list/bantypes = list("traitor","carrion","operative","revolutionary","cultist","wizard") //For legacy bans.
+=======
+	var/list/bantypes = list("contractor","carrion","operative","revolutionary","cultist","wizard") //For legacy bans.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/ban_type in GLOB.antag_bantypes) // Grab other bans.
 		bantypes |= GLOB.antag_bantypes[ban_type]
 	for(var/j in bantypes)

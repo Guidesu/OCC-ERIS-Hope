@@ -126,8 +126,13 @@
 	spawn(20)
 		qdel(src)
 
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/unary_atmos/engine
 	name = T_BOARD("gas thruster")
+=======
+/obj/item/circuitboard/unary_atmos/engine
+	build_name = "gas thruster"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "mcontroller"
 	build_path = /obj/machinery/atmospherics/unary/engine/
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 2)

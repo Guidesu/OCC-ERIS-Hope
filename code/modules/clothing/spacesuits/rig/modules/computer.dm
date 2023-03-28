@@ -24,18 +24,26 @@
 		to_chat(usr, "Your module is not installed in a hardsuit.")
 		return
 
-	module.holder.ui_interact(usr, nano_state = GLOB.contained_state)
+	module.holder.nano_ui_interact(usr, nano_state = GLOB.contained_state)
 
 /obj/item/rig_module/ai_container
 	name = "IIS module"
 	desc = "An integrated intelligence system module suitable for most hardsuits."
 	icon_state = "iis"
+<<<<<<< HEAD
 	toggleable = 1
 	usable = 1
 	disruptive = 0
 	activates_on_touch = 1
 	rarity_value = 2
 	spawn_tags = SPAWN_TAG_RIG_MODULE_COMMON
+=======
+	toggleable = TRUE
+	usable = TRUE
+	disruptive = FALSE
+	activates_on_touch = TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	engage_string = "Eject AI"
 	activate_string = "Enable Dataspike"
@@ -49,15 +57,15 @@
 	var/obj/item/ai_verbs/verb_holder
 
 /mob
-	var/get_rig_stats = 0
+	var/get_rig_stats = FALSE
 
 /obj/item/rig_module/ai_container/Process()
 	if(integrated_ai)
 		var/obj/item/rig/rig = get_rig()
 		if(rig && rig.ai_override_enabled)
-			integrated_ai.get_rig_stats = 1
+			integrated_ai.get_rig_stats = TRUE
 		else
-			integrated_ai.get_rig_stats = 0
+			integrated_ai.get_rig_stats = FALSE
 
 /mob/living/Stat()
 	. = ..()
@@ -74,7 +82,7 @@
 	else
 		verb_holder.forceMove(src)
 
-/obj/item/rig_module/ai_container/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/rig_module/ai_container/accepts_item(obj/item/input_device, mob/living/user)
 
 	// Check if there's actually an AI to deal with.
 	var/mob/living/silicon/ai/target_ai
@@ -94,7 +102,7 @@
 
 		// Terminal interaction only works with an intellicarded AI.
 		if(!istype(card))
-			return 0
+			return FALSE
 
 		// Since we've explicitly checked for three types, this should be safe.
 		input_device.attackby(card,user)
@@ -106,7 +114,7 @@
 		else
 			eject_ai()
 		update_verb_holder()
-		return 1
+		return TRUE
 
 	if(istype(input_device,/obj/item/device/aicard))
 		// We are carding the AI in our suit.
@@ -119,9 +127,9 @@
 		else
 			// You're using an empty card on an empty suit, idiot.
 			if(!target_ai)
-				return 0
+				return FALSE
 			integrate_ai(input_device,user)
-		return 1
+		return TRUE
 
 	// Okay, it wasn't a terminal being touched, check for all the simple insertions.
 	if(input_device.type in list(/obj/item/device/paicard, /obj/item/device/mmi, /obj/item/device/mmi/digital/posibrain))
@@ -133,43 +141,47 @@
 				eject_ai()
 		else
 			integrate_ai(input_device,user)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/rig_module/ai_container/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!target)
 		if(ai_card)
 			if(istype(ai_card,/obj/item/device/aicard))
-				ai_card.ui_interact(H, state =GLOB.deep_inventory_state)
+				ai_card.nano_ui_interact(H, state =GLOB.deep_inventory_state)
 			else
 				eject_ai(H)
 		update_verb_holder()
-		return 1
+		return TRUE
 
 	if(accepts_item(target,H))
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/rig_module/ai_container/uninstalled()
 	eject_ai()
 	..()
 
-/obj/item/rig_module/ai_container/proc/eject_ai(var/mob/user)
+/obj/item/rig_module/ai_container/proc/eject_ai(mob/user)
 
 	if(ai_card)
 		if(istype(ai_card, /obj/item/device/aicard))
 			if(integrated_ai && !integrated_ai.stat)
 				if(user)
 					to_chat(user, SPAN_DANGER("You cannot eject your currently stored AI. Purge it manually."))
+<<<<<<< HEAD
 				return 0
+=======
+				return FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_DANGER("You purge the remaining scraps of data from your previous AI, freeing it for use."))
 			if(integrated_ai)
 				integrated_ai.ghostize()
@@ -186,7 +198,7 @@
 	integrated_ai = null
 	update_verb_holder()
 
-/obj/item/rig_module/ai_container/proc/integrate_ai(var/obj/item/ai,var/mob/user)
+/obj/item/rig_module/ai_container/proc/integrate_ai(obj/item/ai,mob/user)
 	if(!ai) return
 
 	// The ONLY THING all the different AI systems have in common is that they all store the mob inside an item.
@@ -206,9 +218,9 @@
 					if(target_card.grab_ai(ai_mob, user))
 						source_card.clear()
 					else
-						return 0
+						return FALSE
 				else
-					return 0
+					return FALSE
 			else
 				user.drop_from_inventory(ai)
 				ai.forceMove(src)
@@ -233,17 +245,26 @@
 	desc = "A simple induction datalink module."
 	icon_state = "datajack"
 	passive_power_cost = 0
+<<<<<<< HEAD
 	toggleable = 1
 	activates_on_touch = 1
 	usable = 0
+=======
+	toggleable = TRUE
+	activates_on_touch = TRUE
+	usable = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	activate_string = "Enable Datajack"
 	deactivate_string = "Disable Datajack"
 
 	interface_name = "contact datajack"
 	interface_desc = "An induction-powered high-throughput datalink suitable for hacking encrypted networks."
+<<<<<<< HEAD
 	rarity_value = 3.5
 	spawn_tags = SPAWN_TAG_RIG_MODULE_COMMON
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/research/files
 
 /obj/item/rig_module/datajack/New()
@@ -252,13 +273,13 @@
 
 /obj/item/rig_module/datajack/engage(atom/target)
 	if(!..())
-		return 0
+		return FALSE
 
 	if(target)
 		var/mob/living/carbon/human/H = holder.wearer
 		if(!accepts_item(target,H))
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/item/rig_module/datajack/accepts_item(obj/item/input_device, mob/living/user)
 
@@ -272,7 +293,7 @@
 				to_chat(user, SPAN_WARNING("The disk does not contain any new research data. It is useless to you."))
 		else
 			to_chat(user, SPAN_WARNING("The disk is blank. It is useless to you."))
-		return 1
+		return TRUE
 
 	// I fucking hate R&D code. This typecheck spam would be totally unnecessary in a sane setup.
 	// true, but your code is also equally shit
@@ -305,8 +326,13 @@
 	name = "electrowarfare module"
 	desc = "A bewilderingly complex bundle of fiber optics and chips."
 	icon_state = "ewar"
+<<<<<<< HEAD
 	toggleable = 1
 	usable = 0
+=======
+	toggleable = TRUE
+	usable = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	passive_power_cost = 0
 	active_power_cost = 0.08
 
@@ -324,7 +350,8 @@
 
 	// This is not the best way to handle this, but I don't want it to mess with ling camo
 	var/mob/living/M = holder.wearer
-	M.digitalcamo++
+	if(M)
+		M.digitalcamo++
 
 /obj/item/rig_module/electrowarfare_suite/deactivate()
 
@@ -332,15 +359,22 @@
 		return
 
 	var/mob/living/M = holder.wearer
-	M.digitalcamo = max(0,(M.digitalcamo-1))
+	if(M)
+		M.digitalcamo = max(0,(M.digitalcamo-1))
 
 /obj/item/rig_module/power_sink
 	name = "hardsuit power sink"
 	desc = "An heavy-duty power sink."
 	icon_state = "powersink"
+<<<<<<< HEAD
 	toggleable = 1
 	passive_power_cost = 0
 	activates_on_touch = 1
+=======
+	toggleable = TRUE
+	passive_power_cost = 0
+	activates_on_touch = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	disruptive = 0
 
 	activate_string = "Enable Power Sink"
@@ -372,23 +406,23 @@
 /obj/item/rig_module/power_sink/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	//Target wasn't supplied or we're already draining.
 	if(interfaced_with)
-		return 0
+		return FALSE
 
 	if(!target)
-		return 1
+		return TRUE
 
 	// Are we close enough?
 	var/mob/living/carbon/human/H = holder.wearer
 	if(!target.Adjacent(H))
-		return 0
+		return FALSE
 
 	// Is it a valid power source?
 	if(target.drain_power(1) <= 0)
-		return 0
+		return FALSE
 
 	to_chat(H, "<span class = 'danger'>You begin draining power from [target]!</span>")
 	interfaced_with = target
@@ -397,14 +431,14 @@
 	holder.spark_system.start()
 	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
 
-	return 1
+	return TRUE
 
-/obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/rig_module/power_sink/accepts_item(obj/item/input_device, mob/living/user)
 	var/can_drain = input_device.drain_power(1)
 	if(can_drain > 0)
 		engage(input_device)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/rig_module/power_sink/Process()
 
@@ -416,7 +450,7 @@
 		H = holder.wearer
 
 	if(!H || !istype(H))
-		return 0
+		return FALSE
 
 	holder.spark_system.start()
 	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
@@ -447,9 +481,9 @@
 	holder.cell.give(target_drained * CELLRATE)
 	total_power_drained += target_drained
 
-	return 1
+	return TRUE
 
-/obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
+/obj/item/rig_module/power_sink/proc/drain_complete(mob/living/M)
 
 	if(!interfaced_with)
 		if(M) to_chat(M, "<font color='blue'><b>Total power drained:</b> [round(total_power_drained/1000)]kJ.</font>")

@@ -6,17 +6,23 @@
 /obj/structure/extinguisher_cabinet,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
 "c" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/dark/techfloor_grid,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "d" = (
 /obj/machinery/antigrav,
 /turf/simulated/floor/bluegrid,
 /area/crawler)
+<<<<<<< HEAD
 "e" = (
 /turf/simulated/floor/bluegrid,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "f" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -43,11 +49,19 @@
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/crawler)
 "k" = (
+<<<<<<< HEAD
 /obj/machinery/r_n_d/server,
 /turf/simulated/floor/bluegrid,
 /area/crawler)
 "l" = (
 /obj/machinery/computer,
+=======
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/bluegrid,
+/area/crawler)
+"l" = (
+/obj/structure/salvageable/console_os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/bluegrid,
 /area/crawler)
 "m" = (
@@ -97,6 +111,7 @@
 /area/crawler)
 "w" = (
 /obj/effect/floor_decal/industrial/warning/corner{
+<<<<<<< HEAD
 	icon_state = "warningcorner";
 	dir = 4
 	},
@@ -112,6 +127,15 @@
 /area/crawler)
 "z" = (
 /obj/structure/table/rack,
+=======
+	dir = 4;
+	icon_state = "warningcorner"
+	},
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"z" = (
+/obj/structure/salvageable/data_os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/bluegrid,
 /area/crawler)
 "A" = (
@@ -130,6 +154,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/spawner/toolbox,
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/crawler)
@@ -151,12 +176,43 @@
 /area/crawler)
 "I" = (
 /obj/structure/salvageable/data,
+=======
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/crawler)
+"F" = (
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor/bluegrid,
+/area/crawler)
+"I" = (
+/obj/structure/salvageable/console_os{
+	dir = 1
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/bluegrid,
 /area/crawler)
 "J" = (
 /obj/crawler/crawler_wallbreaker,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"Q" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/salvageable/data_os,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/crawler)
+"T" = (
+/obj/structure/salvageable/console_broken_os,
+/turf/simulated/floor/bluegrid,
+/area/crawler)
+"X" = (
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/bluegrid,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -172,12 +228,21 @@ a
 (2,1,1) = {"
 a
 d
+<<<<<<< HEAD
 c
 e
 a
 B
 c
 G
+=======
+n
+z
+a
+B
+n
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
@@ -186,9 +251,15 @@ A
 n
 u
 a
+<<<<<<< HEAD
 e
 n
 H
+=======
+z
+n
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
@@ -199,7 +270,11 @@ u
 a
 C
 n
+<<<<<<< HEAD
 F
+=======
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -248,9 +323,15 @@ J
 "}
 (9,1,1) = {"
 b
+<<<<<<< HEAD
 j
 r
 j
+=======
+Q
+r
+Q
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 j
 r
@@ -261,32 +342,57 @@ J
 a
 k
 n
+<<<<<<< HEAD
 x
 a
 E
 n
 G
+=======
+z
+a
+F
+n
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
 a
 l
 n
+<<<<<<< HEAD
 y
 a
 F
 n
 H
+=======
+B
+a
+F
+n
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
+<<<<<<< HEAD
 k
 c
 z
 a
 E
 c
+=======
+T
+n
+z
+a
+X
+n
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 I
 a
 "}

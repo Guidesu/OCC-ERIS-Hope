@@ -36,11 +36,19 @@
 	return secured
 
 
+<<<<<<< HEAD
 /obj/item/device/assembly/infra/on_update_icon()
 	cut_overlays()
 	attached_overlays = list()
 	if(on)
 		add_overlays("infrared_on")
+=======
+/obj/item/device/assembly/infra/update_icon()
+	cut_overlays()
+	attached_overlays = list()
+	if(on)
+		add_overlay("infrared_on")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		attached_overlays += "infrared_on"
 
 	if(holder)

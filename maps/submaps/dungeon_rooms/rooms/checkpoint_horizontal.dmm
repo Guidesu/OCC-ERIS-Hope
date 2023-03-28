@@ -10,6 +10,10 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+<<<<<<< HEAD
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "d" = (
@@ -33,10 +37,17 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "i" = (
 /obj/machinery/light/floor,
+=======
+/obj/random/structures/os,
+/turf/simulated/floor/plating/under,
+/area/crawler)
+"i" = (
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 4
 	},
@@ -52,10 +63,17 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "l" = (
 /obj/machinery/light/floor,
+=======
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/crawler)
+"l" = (
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 8
 	},
@@ -75,7 +93,10 @@
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "p" = (
+<<<<<<< HEAD
 /obj/structure/low_wall/onestar,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/window_lwall_spawn/smartspawn/onestar,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
@@ -108,8 +129,13 @@
 /area/crawler)
 "w" = (
 /obj/effect/floor_decal/industrial/warning/corner{
+<<<<<<< HEAD
 	icon_state = "warningcorner";
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "warningcorner"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
@@ -118,7 +144,10 @@
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "y" = (
+<<<<<<< HEAD
 /obj/machinery/light/floor,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -135,7 +164,10 @@
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/crawler)
 "A" = (
+<<<<<<< HEAD
 /obj/machinery/light/floor,
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -157,6 +189,20 @@
 /obj/structure/closet/onestar/tier3,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"E" = (
+/obj/structure/table/rack,
+/obj/random/circuitboard/low_chance,
+/obj/random/circuitboard/low_chance,
+/obj/random/boxes/low_chance,
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/crawler)
+"U" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -239,8 +285,13 @@ b
 b
 g
 C
+<<<<<<< HEAD
 s
 q
+=======
+E
+U
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 D
 j
 f

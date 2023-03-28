@@ -28,4 +28,8 @@
 	push_data()
 
 /datum/integrated_io/string/display_pin_type()
+<<<<<<< HEAD
   return IC_FORMAT_STRING
+=======
+	return IC_FORMAT_STRING
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

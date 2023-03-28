@@ -257,7 +257,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	current_user = M.client
 	//Blank
 	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = ABOVE_HUD_LAYER)
-	menu_holder.appearance_flags |= KEEP_APART|RESET_ALPHA
+	menu_holder.appearance_flags |= KEEP_APART|RESET_ALPHA|DEFAULT_APPEARANCE_FLAGS
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder
 
@@ -312,4 +312,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/answer = menu.selected_choice
 	GLOB.radial_menus -= uniqueid
 	qdel(menu)
+<<<<<<< HEAD
 	return answer
+=======
+	return answer
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

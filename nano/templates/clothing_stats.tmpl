@@ -25,6 +25,25 @@
 				{{:helper.displayBar(data.slowdown, -5, 20, data.slowdown < 1 ? 'good' : data.slowdown > 1 ? 'bad': 'average', data.slowdown+' delay units')}}
 			</div>
 		{{/if}}
+<<<<<<< HEAD
+=======
+		{{if data.stiffness != 1}}
+			<div class="itemLabel">
+				Stiffness:
+			</div>
+			<div class="itemContent">
+				{{:helper.displayBar(data.stiffness, -5, 20, data.stiffness < 1 ? 'good' : data.stiffness > 1 ? 'bad': 'average', data.stiffness+' delay units')}}
+			</div>
+		{{/if}}
+		{{if data.obscuration != 1}}
+			<div class="itemLabel">
+				Obscuration:
+			</div>
+			<div class="itemContent">
+				{{:helper.displayBar(data.obscuration, -5, 20, data.obscuration < 1 ? 'good' : data.obscuration > 1 ? 'bad': 'average', data.obscuration+' delay units')}}
+			</div>
+		{{/if}}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		<br>
 		{{if data.body_coverage}}
 			<div class="itemLabel">

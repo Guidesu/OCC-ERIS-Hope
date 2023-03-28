@@ -2,7 +2,9 @@
 	if ((stat != CONSCIOUS) || !canmove || resting || lying || stasis || AI_inactive || client || grabbed_by_friend)
 		stance = HOSTILE_STANCE_IDLE
 		target_mob = null
-		walk(src, 0)
+		lost_sight = FALSE
+		target_location = null
+		SSmove_manager.stop_looping(src)
 		return
 
 	return 1
@@ -11,6 +13,8 @@
 
 /mob/living/carbon/superior_animal/Life()
 	. = ..()
+
+	moved = FALSE
 
 	objectsInView = null
 
@@ -22,6 +26,7 @@
 	if (!check_AI_act())
 		return
 
+<<<<<<< HEAD
 	if (!check_gravity() && !allow_spacemove())	// OCCULUS EDIT: if there is no gravity and spacemove is disallowed...
 		walk(src, 0)							// 				 stop movement.
 
@@ -36,10 +41,23 @@
 		if(HOSTILE_STANCE_ATTACK)
 			if(destroy_surroundings)
 				destroySurroundings()
+=======
+	if(stance == HOSTILE_STANCE_IDLE)
+		if (!busy) // if not busy with a special task
+			stop_automated_movement = 0
+		target_mob = findTarget()
+		if (target_mob)
+			stance = HOSTILE_STANCE_ATTACK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
+	if(stance == HOSTILE_STANCE_ATTACK)
+		if(destroy_surroundings)
+			destroySurroundings()
+		if(!ranged)
 			stop_automated_movement = 1
 			stance = HOSTILE_STANCE_ATTACKING
 			set_glide_size(DELAY2GLIDESIZE(move_to_delay))
+<<<<<<< HEAD
 			if(!kept_distance)
 				handle_walk_to(target_mob) // OCCULUS EDIT: Move to shared function
 			else
@@ -52,7 +70,32 @@
 			if(destroy_surroundings)
 				destroySurroundings()
 
+=======
+			walk_to(src, target_mob, 1, move_to_delay)
+			moved = 1
+		if(ranged)
+			stop_automated_movement = 1
+			if(get_dist(src, target_mob) <= comfy_range)
+				stance = HOSTILE_STANCE_ATTACKING
+				return //We do a safty return
+			else
+				set_glide_size(DELAY2GLIDESIZE(move_to_delay))
+				walk_to(src, target_mob, 4, move_to_delay)
+			stance = HOSTILE_STANCE_ATTACKING
+
+	if(stance == HOSTILE_STANCE_ATTACKING)
+		if(destroy_surroundings)
+			destroySurroundings()
+		if(!ranged)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			prepareAttackOnTarget()
+		if(ranged)
+			if(get_dist(src, target_mob) <= 6)
+				OpenFire(target_mob)
+			else
+				set_glide_size(DELAY2GLIDESIZE(move_to_delay))
+				walk_to(src, target_mob, 4, move_to_delay)
+				OpenFire(target_mob)
 
 	//random movement
 	if(wander && !stop_automated_movement && !anchored)
@@ -89,21 +132,33 @@
 			turns_since_move = 0
 // OCCULUS EDIT END
 
+	if((following) && !(findTarget())) // Are we following someone and not attacking something?
+		walk_to(src, following, follow_distance, move_to_delay) // Follow the mob referenced in 'following' and stand almost next to them.
+
+	if(!following && !(findTarget())) // Stop following
+		walk_to(src, 0)
+
+*/
+
 /mob/living/carbon/superior_animal/handle_chemicals_in_body()
+	if(reagent_immune)
+		return FALSE
 	if(reagents)
 		chem_effects.Cut()
 		analgesic = 0
 
-		if(touching) touching.metabolize()
-		if(ingested) ingested.metabolize()
-		if(bloodstr) bloodstr.metabolize()
+		//If a mob dosnt have one of these then something is wrong with that mob!
+		touching.metabolize()
+		ingested.metabolize()
+		bloodstr.metabolize()
+
 		metabolism_effects.process()
 
 		if(CE_PAINKILLER in chem_effects)
 			analgesic = chem_effects[CE_PAINKILLER]
 
 	if(status_flags & GODMODE)
-		return 0
+		return FALSE
 
 	if(light_dam)
 		var/light_amount = 0
@@ -117,7 +172,8 @@
 			heal_overall_damage(1,1)
 
 	// nutrition decrease
-	if (hunger_factor && (nutrition > 0) && (stat != DEAD))
-		nutrition = max (0, nutrition - hunger_factor)
+	if(stat != DEAD)
+		if (hunger_factor && (nutrition > 0))
+			nutrition = max (0, nutrition - hunger_factor)
 
 	updatehealth()

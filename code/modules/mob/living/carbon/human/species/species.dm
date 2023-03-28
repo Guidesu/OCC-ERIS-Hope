@@ -2,17 +2,22 @@
 	Datum-based species. Should make for much cleaner and easier to maintain race code.
 */
 #define SPECIES_BLOOD_DEFAULT 560
+
 /datum/species
 
 	// Descriptors and strings.
-	var/name                                             // Species name.
-	var/name_plural                                      // Pluralized name (since "[name]s" is not always valid)
-	var/blurb = "A completely nondescript species."      // A brief lore summary for use in the chargen screen.
+	var/name                                            // Species name.
+	var/name_plural                                     // Pluralized name (since "[name]s" is not always valid)
+	var/aan = ""										// Whether to use an "a", an "an" or "the" to describe a species. Right now, only "" for a and "n" for an work.
+	var/blurb = "A completely nondescript species."		// A brief lore summary for use in the chargen screen.
+	var/mobtype = "/mob/living/carbon/human"			// The mob type that should be spawned for this. TODO: Make spawn code use it.
+	var/dark_color = "#ffffff"	//The color of the species name by default in a dark theme.
+	var/light_color = "#000000"	//The color of the species name by default in a light theme.
 
-	// Icon/appearance vars.
-	var/icobase = 'icons/mob/human_races/r_human.dmi'    // Normal icon set.
-	var/deform = 'icons/mob/human_races/r_def_human.dmi' // Mutated icon set.
-	var/faceicobase = 'icons/mob/human_face.dmi'
+	var/default_form = FORM_HUMAN	//If nothing else sets it, what do we look like.
+	var/obligate_form = FALSE		//If true, character creation will force the use of either this form or its subforms.
+	var/obligate_name = TRUE		//If true, forces the character's species name and name color to conform.
+
 
 	//This is for overriding tail rendering with a specific icon in icobase, for static
 	//tails only, since tails would wag when dead if you used this
@@ -27,11 +32,17 @@
 	var/damage_mask = 'icons/mob/human_races/masks/dam_mask_human.dmi'
 	var/blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
 
-	var/prone_icon                                       // If set, draws this from icobase when mob is prone.
-	var/eyes = "eyes_s"                                  // Icon for eyes.
-	var/has_floating_eyes                                // Eyes will overlay over darkness (glow)
+	var/list/permitted_ears  = null
+	var/list/permitted_tail  = null
+	var/list/permitted_wings = null
+
+	var/min_age = 18
+	var/max_age = 90
+
+
 	var/blood_color = "#A10808"                          // Red.
 	var/flesh_color = "#FFC896"                          // Pink.
+
 	var/base_color                                       // Used by carrions. Should also be used for icon previes..
 	var/tail                                             // Name of tail state in species effects icon file.
 	var/tail_animation                                   // If set, the icon to obtain tail animation states from.
@@ -39,16 +50,20 @@
 	var/tail_hair
 	var/race_key = 0       	                             // Used for mob icon cache string.
 	var/icon/icon_template                               // Used for mob icon generation for non-32x32 species.
+
+	var/gibbed_anim = "gibbed-h"
+
+
 	var/mob_size	= MOB_MEDIUM
-	var/show_ssd = "fast asleep"
 	var/virus_immune
 	var/blood_volume = 560                               // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR            // Multiplier for hunger.
 	var/taste_sensitivity = TASTE_NORMAL                 // How sensitive the species is to minute tastes.
-
-	var/min_age = 17
-	var/max_age = 70
 	var/preview_icon = null
+
+	var/show_ssd = "fast asleep"
+
+
 	// Language/culture vars.
 	var/default_language = LANGUAGE_COMMON   // Default language is used when 'say' is used without modifiers.
 	var/language = LANGUAGE_COMMON           // Default racial language, if any.
@@ -76,6 +91,7 @@
 	var/list/hair_styles
 	var/list/facial_hair_styles
 
+
 	// Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/gibber_type = /obj/effect/gibspawner/human
@@ -93,23 +109,34 @@
 	var/breath_type = "oxygen"                        // Non-oxygen gas breathed, if any.
 	var/poison_type = "phoron"                        // Poisonous air.
 	var/exhale_type = "carbon_dioxide"                // Exhaled gas type.
-	var/cold_level_1 = 260                            // Cold damage level 1 below this point.
-	var/cold_level_2 = 200                            // Cold damage level 2 below this point.
-	var/cold_level_3 = 120                            // Cold damage level 3 below this point.
-	var/heat_level_1 = 360                            // Heat damage level 1 above this point.
-	var/heat_level_2 = 400                            // Heat damage level 2 above this point.
-	var/heat_level_3 = 1000                           // Heat damage level 3 above this point.
+	var/cold_level_1 = 270                            // Cold damage level 1 below this point.
+	var/cold_level_2 = 230                            // Cold damage level 2 below this point.
+	var/cold_level_3 = 200                            // Cold damage level 3 below this point.
+	var/heat_level_1 = 330                            // Heat damage level 1 above this point.
+	var/heat_level_2 = 380                            // Heat damage level 2 above this point.
+	var/heat_level_3 = 460                           // Heat damage level 3 above this point.
 	var/passive_temp_gain = 0		                  // Species will gain this much temperature every second
 	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE   // Dangerously high pressure.
 	var/warning_high_pressure = WARNING_HIGH_PRESSURE // High pressure warning.
 	var/warning_low_pressure = WARNING_LOW_PRESSURE   // Low pressure warning.
 	var/hazard_low_pressure = HAZARD_LOW_PRESSURE     // Dangerously low pressure.
+	var/eyes_are_impermeable = FALSE         // If TRUE, this species' eyes are not damaged by plasma.
 	var/light_dam                                     // If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/body_temperature = 310.15	                  // Non-IS_SYNTHETIC species will try to stabilize at this temperature.
 	                                                  // (also affects temperature processing)
+	var/list/stat_modifiers = list(
+		STAT_BIO = 0,
+		STAT_COG = 0,
+		STAT_MEC = 0,
+		STAT_ROB = 0,
+		STAT_TGH = 0,
+		STAT_VIG = 0
+	)
 
-	var/heat_discomfort_level = 315                   // Aesthetic messages about feeling warm.
-	var/cold_discomfort_level = 285                   // Aesthetic messages about feeling chilly.
+	var/list/perks = list()
+
+	var/heat_discomfort_level = 330                   // Aesthetic messages about feeling warm.
+	var/cold_discomfort_level = 270                   // Aesthetic messages about feeling chilly.
 	var/list/heat_discomfort_strings = list(
 		"You feel sweat drip down your neck.",
 		"You feel uncomfortably warm.",
@@ -131,7 +158,6 @@
 	var/siemens_coefficient = 1   // The lower, the thicker the skin and better the insulation.
 	var/darksight = 2             // Native darksight distance.
 	var/flags = 0                 // Various specific features.
-	var/appearance_flags = 0      // Appearance/display related features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
 	var/species_flags = 0
 	var/species_preview = 0
@@ -148,7 +174,8 @@
 		OP_LUNGS =    /obj/item/organ/internal/lungs,
 		OP_STOMACH =  /obj/item/organ/internal/stomach,
 		OP_LIVER =    /obj/item/organ/internal/liver,
-		OP_KIDNEYS =  /obj/item/organ/internal/kidneys,
+		OP_KIDNEY_LEFT =  /obj/item/organ/internal/kidney/left,
+		OP_KIDNEY_RIGHT = /obj/item/organ/internal/kidney/right,
 		BP_BRAIN =    /obj/item/organ/internal/brain,
 		OP_APPENDIX = /obj/item/organ/internal/appendix,
 		OP_EYES =     /obj/item/organ/internal/eyes
@@ -199,6 +226,7 @@
 	unarmed_attacks = list()
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
+
 
 /datum/species/proc/get_station_variant()
 	return name
@@ -359,7 +387,12 @@
 		return 1
 
 	if(!H.druggy)
-		H.see_in_dark = (H.sight == SEE_TURFS|SEE_MOBS|SEE_OBJS) ? 8 : min(darksight + H.equipment_darkness_modifier, 8)
+		H.see_in_dark = (H.sight == SEE_TURFS|SEE_MOBS|SEE_OBJS) ? darksight : min(darksight + H.equipment_darkness_modifier, darksight)
+		H.see_in_dark += H.equipment_darkness_modifier
+		H.see_in_dark += H.additional_darksight //Done like this for sake of easyer to read
+
+		if(H.see_in_dark <= 0)
+			H.see_in_dark = 1
 
 	if(H.equipment_see_invis)
 		H.see_invisible = H.equipment_see_invis
@@ -378,6 +411,8 @@
 			H.client.screen += global_hud.darkMask
 		else if((!H.equipment_prescription && (H.disabilities & NEARSIGHTED)) || H.equipment_tint_total == TINT_MODERATE)
 			H.client.screen += global_hud.vimpaired
+		else if(H.equipment_tint_total == TINT_LOW)
+			H.client.screen += global_hud.lightMask
 //	if(H.eye_blurry)	H.client.screen += global_hud.blurry
 //	if(H.druggy)		H.client.screen += global_hud.druggy
 
@@ -439,6 +474,7 @@
 		if(!(slot in hud.equip_slots))
 			return FALSE
 	return TRUE
+
 
 /datum/species/proc/get_description(var/header, var/append, var/verbose = TRUE, var/skip_detail, var/skip_photo)
 	var/list/damage_types = list(
@@ -510,3 +546,26 @@
 	dat += "</tr>"
 	dat += "</table><hr/>"
 	return jointext(dat, null)
+
+/datum/species/proc/add_stats(var/mob/living/carbon/human/H)
+	for(var/name in stat_modifiers)
+		H.stats.changeStat(name, stat_modifiers[name])
+	for(var/perk in perks)
+		H.stats.addPerk(perk)
+	if(H.species.reagent_tag == IS_CHTMANT)
+		H.faction = "roach"
+		H.add_language(LANGUAGE_CHTMANT)
+	if(H.species.reagent_tag == IS_OPIFEX)
+		H.add_language(LANGUAGE_OPIFEXEE)
+	if(H.species.reagent_tag == IS_KRIOSAN)
+		H.add_language(LANGUAGE_KRIOSAN)
+	if(H.species.reagent_tag == IS_AKULA)
+		H.add_language(LANGUAGE_AKULA)
+	if(H.species.reagent_tag == IS_MARQUA)
+		H.add_language(LANGUAGE_MARQUA)
+	if(H.species.reagent_tag == IS_TREE)
+		H.add_language(LANGUAGE_PLANT)
+	if(H.species.reagent_tag == IS_SYNTHETIC)
+		H.add_language(LANGUAGE_SYNTHETIC)
+	if(H.species.reagent_tag == IS_NARAMAD)
+		H.add_language(LANGUAGE_MERP)

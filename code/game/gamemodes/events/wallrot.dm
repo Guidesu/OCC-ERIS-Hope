@@ -22,7 +22,11 @@
 	endWhen = announceWhen + 1
 
 /datum/event/wallrot/announce()
+<<<<<<< HEAD
 	command_announcement.Announce("Harmful fungi detected on ship. ship structures may be contaminated.", "Biohazard Alert", new_sound = pick('sound/AI/fungi.ogg', 'sound/AI/funguy.ogg', 'sound/AI/fun_guy.ogg', 'sound/AI/fun_gi.ogg'))
+=======
+	command_announcement.Announce("Harmful fungi detected within the colony. Colony structures may be contaminated.", "Biohazard Alert", new_sound = pick('sound/AI/fungi.ogg', 'sound/AI/funguy.ogg', 'sound/AI/fun_guy.ogg', 'sound/AI/fun_gi.ogg'))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/event/wallrot/start()
 	set waitfor = FALSE
@@ -35,7 +39,7 @@
 		if(istype(candidate, /turf/simulated/wall))
 			center = candidate //If necessary we'll settle for any wall
 			var/area/A = get_area(center)
-			if (!istype(A, /area/eris/maintenance)) //But ideally we want a wall that's not in maintenance, so players are likely to see it
+			if (!istype(A, /area/nadezhda/maintenance)) //But ideally we want a wall that's not in maintenance, so players are likely to see it
 				//We'll keep going til we find a wall that isnt in maint
 				break
 

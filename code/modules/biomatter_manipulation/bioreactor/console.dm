@@ -7,7 +7,10 @@
 	icon_state = "screen"
 	layer = ABOVE_MOB_LAYER + 0.1
 	idle_power_usage = 350
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/neotheology/bioreactor_metrics
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/multistructure/bioreactor_part/console/Initialize()
 	. = ..()
@@ -16,10 +19,17 @@
 
 /obj/machinery/multistructure/bioreactor_part/console/attack_hand(mob/user as mob)
 	if(MS)
+<<<<<<< HEAD
 		ui_interact(user)
 
 
 /obj/machinery/multistructure/bioreactor_part/console/ui_data()
+=======
+		nano_ui_interact(user)
+
+
+/obj/machinery/multistructure/bioreactor_part/console/nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = list()
 	if(MS_bioreactor.is_operational())
 		if(MS_bioreactor.chamber_solution)
@@ -57,14 +67,20 @@
 	return data
 
 
+<<<<<<< HEAD
 /obj/machinery/multistructure/bioreactor_part/console/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	var/list/data = ui_data()
+=======
+/obj/machinery/multistructure/bioreactor_part/console/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nano_topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "bioreactor.tmpl", src.name, 410, 500, state = state)
 		ui.set_initial_data(data)
 		ui.open()
+<<<<<<< HEAD
 		ui.set_auto_update(1)
 
 /obj/machinery/multistructure/bioreactor_part/console/CanUseTopic(var/mob/user)
@@ -102,3 +118,6 @@
 		. = 1
 
 	ui_interact(usr)
+=======
+		ui.set_auto_update(1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

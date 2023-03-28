@@ -7,6 +7,13 @@
 	return organ.is_open() && organ.can_add_item(tool, user)
 
 /datum/surgery_step/insert_item/begin_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
+<<<<<<< HEAD
+=======
+	if(istype(tool, /obj/item/gripper/chemistry)) // Robots have to do surgery somehow
+		var/obj/item/gripper/chemistry/SG = tool
+		if(SG.wrapped)
+			tool = SG.wrapped // We want to install whatever the gripper is holding, not the gripper itself
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(tool, /obj/item/organ/external))
 		user.visible_message(
 			SPAN_NOTICE("[user] starts connecting [tool] to [organ.get_surgery_name()]."),
@@ -20,6 +27,14 @@
 	organ.owner_custom_pain("The pain in your [organ.name] is living hell!", 1)
 
 /datum/surgery_step/insert_item/end_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
+<<<<<<< HEAD
+=======
+	if(istype(tool, /obj/item/gripper/chemistry))
+		var/obj/item/gripper/chemistry/SG = tool
+		if(SG.wrapped)
+			tool = SG.wrapped
+			SG.wrapped = null // When item successfully inserted - stop referencing it in gripper
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istype(tool, /obj/item/organ/external))
 		user.visible_message(
 			SPAN_NOTICE("[user] connects [tool] to [organ.get_surgery_name()]."),
@@ -35,11 +50,29 @@
 		playsound(get_turf(organ), 'sound/effects/squelch1.ogg', 50, 1)
 
 /datum/surgery_step/insert_item/fail_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
+<<<<<<< HEAD
 	user.visible_message(
 		SPAN_WARNING("[user]'s hand slips, hitting [organ.get_surgery_name()] with \the [tool]!"),
 		SPAN_WARNING("Your hand slips, hitting [organ.get_surgery_name()] with \the [tool]!")
 	)
 	organ.take_damage(5, 0)
+=======
+	if(istype(tool, /obj/item/gripper/chemistry))
+		var/obj/item/gripper/chemistry/SG = tool
+		if(SG.wrapped)
+			tool = SG.wrapped
+			user.visible_message(
+				SPAN_WARNING("[user]'s gripper slips, hitting [organ.get_surgery_name()] with \the [tool]!"),
+				SPAN_WARNING("Your gripper slips, hitting [organ.get_surgery_name()] with \the [tool]!")
+			)
+			organ.take_damage(5, 0)
+	else
+		user.visible_message(
+			SPAN_WARNING("[user]'s hand slips, hitting [organ.get_surgery_name()] with \the [tool]!"),
+			SPAN_WARNING("Your hand slips, hitting [organ.get_surgery_name()] with \the [tool]!")
+		)
+		organ.take_damage(5, 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/surgery_step/insert_item/robotic
 	required_stat = STAT_MEC
@@ -61,6 +94,16 @@
 	if(!istype(I))
 		return FALSE
 
+<<<<<<< HEAD
+=======
+	if(istype(I, /obj/item/gripper/chemistry))
+		var/obj/item/gripper/chemistry/SG = I
+		if(SG.wrapped)
+			I = SG.wrapped
+		else
+			return FALSE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/total_volume = get_total_occupied_volume()	//Used for internal organs and cavity implants
 
 	// "Organ modules"
@@ -81,7 +124,11 @@
 		if(!owner)
 			return FALSE
 
+<<<<<<< HEAD
 		if(!(organ_tag in implant.allowed_organs))
+=======
+		if(implant.allowed_organs && implant.allowed_organs.len && !(organ_tag in implant.allowed_organs))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_WARNING("[implant] doesn't fit in [get_surgery_name()]."))
 			return FALSE
 
@@ -132,11 +179,15 @@
 			to_chat(user, SPAN_WARNING("You're pretty sure [owner.species.name_plural] don't normally have [o_a][organ_tag_to_name[limb.organ_tag]]."))
 			return FALSE
 
+<<<<<<< HEAD
 		if(istype(I, /obj/item/organ/external/robotic))
 			return TRUE
 
 		var/obj/item/organ/external/existing_limb = owner.get_organ(limb.organ_tag)
 
+=======
+		var/obj/item/organ/external/existing_limb = owner.get_organ(limb.organ_tag)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(existing_limb && !existing_limb.is_stump())
 			to_chat(user, SPAN_WARNING("\The [owner] already has [o_a][organ_tag_to_name[limb.organ_tag]]."))
 			return FALSE
@@ -162,6 +213,14 @@
 	if(do_check && !can_add_item(I, user))
 		return
 
+<<<<<<< HEAD
+=======
+	if(istype(I, /obj/item/gripper/chemistry))
+		var/obj/item/gripper/chemistry/SG = I
+		if(SG.wrapped)
+			I = SG.wrapped
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.unEquip(I, src)
 
 	// "Organ modules"
@@ -207,11 +266,14 @@
 		saved_owner.updatehealth()
 		saved_owner.UpdateDamageIcon()
 
+<<<<<<< HEAD
 
 		saved_owner.update_body()
 		saved_owner.updatehealth()
 		saved_owner.UpdateDamageIcon()
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// Cavity implants
 	else
 		implants += I
@@ -243,14 +305,22 @@
 	if(I in implants)
 		implants -= I
 		embedded -= I
+<<<<<<< HEAD
 		if(isitem(I))
 			var/obj/item/item = I
 			item.on_embed_removal(owner)
 			I.forceMove(drop_location())//Occulus Edit: Drops embedded items on the floor instead of into nullspace
+=======
+		var/isremoved = FALSE //Did we already remove the item?
+		if(isitem(I))
+			var/obj/item/item = I
+			item.on_embed_removal(owner)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(istype(I, /obj/item/implant))
 			var/obj/item/implant/implant = I
 			if(implant.wearer)
 				implant.uninstall()
+<<<<<<< HEAD
 			else
 				I.forceMove(drop_location())
 
@@ -264,10 +334,38 @@
 		if(owner)
 			owner.update_implants()
 
+=======
+				isremoved = TRUE
+			else
+				I.forceMove(drop_location())
+				isremoved = TRUE
+
+		else if(istype(I, /obj/item/organ_module))
+			if(I == module)
+				var/obj/item/organ_module/M = I
+				M.remove(src)
+				isremoved = TRUE
+			else
+				I.forceMove(drop_location())
+				isremoved = TRUE
+		else
+			I.forceMove(drop_location())
+			isremoved = TRUE
+		if(owner)
+			owner.update_implants()
+
+		if(!isremoved)
+			I.forceMove(drop_location())
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(I in internal_organs)
 		var/obj/item/organ/organ = I
 		if(istype(organ))
 			organ.removed(user)
 			playsound(get_turf(src), 'sound/effects/squelch1.ogg', 50, 1)
 		else
+<<<<<<< HEAD
 			I.forceMove(drop_location())
+=======
+			I.forceMove(drop_location())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

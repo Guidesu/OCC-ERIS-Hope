@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(ghost_trap_users)
 	if(href_list["candidate"] && href_list["target"])
 		var/mob/observer/ghost/candidate = locate(href_list["candidate"]) // BYOND magic.
 		var/mob/target = locate(href_list["target"])                     // So much BYOND magic.
-		if(!target || !candidate)
+		if(!target || !candidate || !ismob(target) || !isghost(candidate))
 			return
 		if(candidate != usr)
 			return
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(ghost_trap_users)
 		if(target.key)
 			to_chat(candidate, "The target is already occupied.")
 			return
-		if(assess_candidate(candidate, target))
+		if(assess_candidate(candidate, target) && target.can_be_possessed_by(candidate, FALSE))
 			transfer_personality(candidate,target)
 		return 1
 
@@ -126,10 +126,17 @@ GLOBAL_LIST_EMPTY(ghost_trap_users)
 
 // Fluff!
 /datum/ghosttrap/proc/welcome_candidate(var/mob/target)
+<<<<<<< HEAD
 	to_chat(target, "<b>You are a positronic brain, brought into existence on [station_name()].</b>")
 	to_chat(target, "<b>As a synthetic intelligence, you answer to all crewmembers, as well as the AI.</b>")
 	to_chat(target, "<b>Remember, the purpose of your existence is to serve the crew and the ship. Above all else, do no harm.</b>")
 	to_chat(target, "<b>Use say [target.get_language_prefix()]b to speak to other artificial intelligences.</b>")
+=======
+	to_chat(target, "<b>You are a positronic brain, brought into existence on the [station_name()].</b>")
+	to_chat(target, "<b>As a synthetic intelligence, you answer to all colonists, as well as the AI.</b>")
+	to_chat(target, "<b>Remember, the purpose of your existence is to serve the colonists and the [station_name()]. Above all else, do no harm.</b>")
+	to_chat(target, "<b>Use say [target.get_language_prefix()]b to speak with other silicons.</b>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/turf/T = get_turf(target)
 	var/obj/item/device/mmi/digital/posibrain/P = target.loc
 	T.visible_message(SPAN_NOTICE("\The [P] chimes quietly."))
@@ -149,6 +156,7 @@ GLOBAL_LIST_EMPTY(ghost_trap_users)
 		target.real_name = newname
 		target.name = target.real_name
 
+<<<<<<< HEAD
 /*****************
 * Cortical Borer *
 *****************/
@@ -168,6 +176,8 @@ GLOBAL_LIST_EMPTY(ghost_trap_users)
 	your host and your eventual spawn safe and warm.")
 	to_chat(target, "You can speak to your victim with <b>say</b>, to other borers with <b>say [target.get_language_prefix()]x</b>, and use your Abilities tab to access powers.")
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /********************
 * Maintenance Drone *
 *********************/
@@ -218,4 +228,8 @@ datum/ghosttrap/pai/transfer_personality(var/mob/candidate, var/mob/living/silic
 	ghost_trap_role = "Blitzshell Drone."
 	can_set_own_name = FALSE
 	list_as_special_role = FALSE
+<<<<<<< HEAD
 	can_only_use_once = TRUE
+=======
+	can_only_use_once = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

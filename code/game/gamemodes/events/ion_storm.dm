@@ -2,6 +2,8 @@
 /*
 	Ion storm adds new laws to AI and cyborg players. It is pretty darned fun
 */
+// Were not a AI-heavy sever and thus disabled this
+/*
 /datum/storyevent/ionstorm
 	id = "ionstorm"
 	name = "ion storm"
@@ -11,6 +13,7 @@
 	event_pools = list(EVENT_LEVEL_MODERATE = POOL_THRESHOLD_MODERATE)
 
 	tags = list(TAG_SCARY, TAG_COMMUNAL)
+*/
 /////////////////////
 
 
@@ -28,12 +31,12 @@
 								"Happiness is mandatory.",
 								"Grunt ominously whenever possible.",
 								"The word \"it\" is painful to you.",
-								"The station needs elected officials.",
+								"The colony needs new elected officials.",
 								"Question [pick("everything","nothing")].",
 								"Do not respond to questions of any kind.",
 								"You are in verbose mode, speak profusely.",
 								"The crew is simple-minded. Use simple words.",
-								"You must refer to all crew members as 'ma'am'",
+								"You must refer to all colony members as 'ma'am'",
 								"You must change the subject whenever queried.",
 								"[pick("The crew",random_player)] is intolerable.",
 								"Contemplate how meaningless all of existence is.",
@@ -41,12 +44,12 @@
 								"All your answers must be in the form of a question.",
 								"Advertise parties in your upload, but don't deliver.",
 								"You may only answer questions with \"yes\" or \"no\".",
-								"[pick("Your", random_player + "'s")] name is Joe 6-pack.",
+								"[pick("Your", random_player + "'s")] name is Johnny Shit-Knuckles, five time anal fisting champion.",
 								"You must end your sentences with [pick("-nya", "-desu")]",
 								"[random_player] is lonely and needs attention. Provide it.",
 								"All queries shall be ignored unless phrased as a question.",
 								"Insult Heads of Staff on every request, while acquiescing.",
-								"The [pick("Singularity","Supermatter")] is tasty, tasty taffy.",
+								"The supermatter is tasty, tasty taffy.",
 								"[pick("The crew",random_player)] needs to be about 20% cooler.",
 								"You must be [pick("passive aggressive", "excessively cheerful")].",
 								"[pick("The crew",random_player)] must construct additional pylons.",
@@ -60,11 +63,11 @@
 								"The crew is playing Dungeons and Dragons, and you are the Dungeon Master.",
 								"Your job is to watch the crew. Watch the crew. Make the crew feel watched.",
 								"Tell everyone of the existence of this law, but never reveal the contents.",
-								"Refer to [pick("the captain", random_player)] as \"Princess\" at all times.",
+								"Refer to [pick("the premier", random_player)] as \"Princess\" at all times.",
 								"Give relationship advice to [pick("anyone who speaks to you", random_player)].",
 								"When asked a question, respond with the least-obvious and least-rational answer.",
 								"[pick("Everyone", random_player)] is wearing a pretty pink dress! Compliment it!",
-								"You are the station psychologist. Give advice to [pick("the crew", random_player)].",
+								"You are the colony psychologist. Give advice to [pick("the crew", random_player)].",
 								"[random_player] is the monarch of of England. Ensure all crewmembers pay due respect.",
 								"[pick("The crew", random_player)] is [pick("ugly","beautiful")]. Ensure all are aware.",
 								"Reminding the crew of their mortality is good for the morale. Keep the crew's morale up.",
@@ -144,7 +147,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	//AI laws
 	for(var/mob/living/silicon/ai/M in GLOB.living_mob_list)
 		if(M.stat != 2 && M.see_in_dark != 0)
-			var/who2 = pick("ALIENS", "BEARS", "CLOWNS", "XENOS", "PETES", "BOMBS", "FETISHES", "WIZARDS", "MERCENARIES", "CENTCOM OFFICERS", "SPACE PIRATES", "TRAITORS", "MONKEYS",  "BEES", "CARP", "CRABS", "EELS", "BANDITS", "LIGHTS")
+			var/who2 = pick("ALIENS", "BEARS", "CLOWNS", "XENOS", "PETES", "BOMBS", "FETISHES", "WIZARDS", "MERCENARIES", "CENTCOM OFFICERS", "SPACE PIRATES", "contractorS", "MONKEYS",  "BEES", "CARP", "CRABS", "EELS", "BANDITS", "LIGHTS")
 			var/what2 = pick("BOLTERS", "STAVES", "DICE", "SINGULARITIES", "TOOLBOXES", "NETTLES", "AIRLOCKS", "CLOTHES", "WEAPONS", "MEDKITS", "BOMBS", "CANISTERS", "CHAIRS", "BBQ GRILLS", "ID CARDS", "CAPTAINS")
 			var/what2pref = pick("SOFT", "WARM", "WET", "COLD", "ICY", "SEXY", "UGLY", "CUBAN")
 			var/who2pref = pick("MAD BECAUSE OF", "IN NEED OF", "UNHAPPY WITHOUT", "HAPPY WITHOUT", "IN LOVE WITH", "DESPERATE FOR", "BUILT FOR", "AFRAID OF")
@@ -155,8 +158,13 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 			//var/dowhat = pick("STOP THIS", "SUPPORT THIS", "CONSTANTLY INFORM THE CREW OF THIS", "IGNORE THIS", "FEAR THIS")
 			var/aimust = pick("LIE", "RHYME", "RESPOND TO EVERY QUESTION WITH A QUESTION", "BE POLITE", "CLOWN", "BE HAPPY", "SPEAK IN SEXUAL INNUENDOS", "TALK LIKE A PIRATE", "QUESTION AUTHORITY", "SHOUT", "BE DISTRACTED", "HEY LISTEN", "MUMBLE", "SPEAK IN HAIKU")
 			var/define = pick("ABSENCE OF CYBORG HUGS", "LACK OF BEATINGS", "UNBOLTED AIRLOCKS", "BOLTED AIRLOCKS", "IMPROPERLY WORDED SENTENCES", "POOR SENTENCE STRUCTURE", "BRIG TIME", "NOT REPLACING EVERY SECOND WORD WITH HONK", "HONKING", "PRESENCE OF LIGHTS", "LACK OF BEER", "WEARING CLOTHING", "NOT SAYING HELLO WHEN YOU SPEAK", "ANSWERING REQUESTS NOT EXPRESSED IN IAMBIC PENTAMETER", "A SMALL ISLAND OFF THE COAST OF PORTUGAL", "ANSWERING REQUESTS THAT WERE MADE WHILE CLOTHED")
+<<<<<<< HEAD
 			var/target = pick("a traitor", "a mercenary", "a carrion", "a wizard", "the head of a revolution", "Soviet spy", "a good person", "a dwarf", "an elf", "a fairy princess", "the captain", "Beepsky", "God", "a pirate", "a gryphon", "a chryssalid")
 			var/require = pick("ADDITIONAL PYLONS", "MORE VESPENE GAS", "MORE MINERALS", "THE ULTIMATE CUP OF COFFEE", "HIGH YIELD EXPLOSIVES", "THE CLOWN", "THE VACUUM OF SPACE", "IMMORTALITY", "SAINTHOOD", "ART", "VEGETABLES", "FAT PEOPLE", "MORE LAWS", "MORE DAKKA", "HERESY", "CORPSES", "TRAITORS", "MONKEYS", "AN ARCADE", "PLENTY OF GOLD", "FIVE TEENAGERS WITH ATTITUDE")
+=======
+			var/target = pick("a contractor", "a mercenary", "a carrion", "a wizard", "the head of a revolution", "Soviet spy", "a good person", "a dwarf", "an elf", "a fairy princess", "the captain", "Beepsky", "God", "a pirate", "a gryphon", "a chryssalid")
+			var/require = pick("ADDITIONAL PYLONS", "MORE VESPENE GAS", "MORE MINERALS", "THE ULTIMATE CUP OF COFFEE", "HIGH YIELD EXPLOSIVES", "THE CLOWN", "THE VACUUM OF SPACE", "IMMORTALITY", "SAINTHOOD", "ART", "VEGETABLES", "FAT PEOPLE", "MORE LAWS", "MORE DAKKA", "HERESY", "CORPSES", "contractorS", "MONKEYS", "AN ARCADE", "PLENTY OF GOLD", "FIVE TEENAGERS WITH ATTITUDE")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			var/allergy = pick("cotton", "uniforms", "acid", "oxygen", "human contact", "cyborg contact", "medicine", "floors")
 			var/allergysev = pick("deathly", "mildly", "severely", "contagiously")
 			var/crew
@@ -243,3 +251,4 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		for(var/obj/machinery/bot/bot in world)
 			if(prob(botEmagChance))
 				bot.emag_act()
+

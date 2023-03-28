@@ -1,4 +1,5 @@
 /obj/item/gun/launcher/spikethrower
+<<<<<<< HEAD
 
 	name = "spike thrower"
 	desc = "A vicious alien projectile weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
@@ -11,10 +12,25 @@
 	fire_sound_text = "a strange noise"
 	fire_sound = 'sound/weapons/bladeslice.ogg'
 
+=======
+	name = "spike thrower"
+	desc = "A vicious alien projectile weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/last_regen = 0
 	var/spike_gen_time = 100
 	var/max_spikes = 3
 	var/spikes = 3
+<<<<<<< HEAD
+=======
+	release_force = 30
+	icon = 'icons/obj/guns/launcher/pneumatic.dmi'
+	icon_state = "pneumatic"
+	item_state = "pneumatic"
+	fire_sound_text = "a strange noise"
+	fire_sound = 'sound/weapons/bladeslice.ogg'
+	serial_type = "INDEX" //No number
+	serial_shown = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/launcher/spikethrower/New()
 	..()
@@ -35,7 +51,11 @@
 	..(user)
 	to_chat(user, "It has [spikes] spike\s remaining.")
 
+<<<<<<< HEAD
 /obj/item/gun/launcher/spikethrower/on_update_icon()
+=======
+/obj/item/gun/launcher/spikethrower/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "spikethrower[spikes]"
 
 /obj/item/gun/launcher/spikethrower/special_check(user)

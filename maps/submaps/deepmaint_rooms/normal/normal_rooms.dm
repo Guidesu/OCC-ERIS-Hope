@@ -77,6 +77,7 @@
 	name = "sm_core"
 	desc = "sm_core"
 	mappath = 'maps/submaps/deepmaint_rooms/normal/sm_core.dmm'
+<<<<<<< HEAD
 
 /datum/map_template/deepmaint_template/room/oopsitsphoron
 	name = "oopsitsphoron"
@@ -92,3 +93,5 @@
 	name = "oopsitsbeartraps"
 	desc = "oopsitsbeartraps"
 	mappath = 'maps/submaps/deepmaint_rooms/normal/oopsitsbeartraps.dmm'
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

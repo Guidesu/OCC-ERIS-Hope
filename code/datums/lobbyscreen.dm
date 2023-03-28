@@ -17,20 +17,38 @@
 
 /datum/lobbyscreen/New()
 	if(!length(possibleMusic) || !image_file)
+<<<<<<< HEAD
 		crash_with("Login screen setup is wrong.")
+=======
+		CRASH("Login screen setup is wrong.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	musicTrack = pick(possibleMusic)
 	return ..()
 
 /datum/lobbyscreen/ship
 	image_file = 'icons/title_screens/ship.png'
 	possibleMusic = list(
+<<<<<<< HEAD
 		'sound/music/lobby/Duke_Gneiss-Bluespace.ogg',
 		'sound/music/lobby/Duke_Gneiss-Exploring.ogg'
+=======
+		'sound/music/lobby/To_Eris-Almost_there.ogg',
+		'sound/music/lobby/Lobo_Loco-Technetium_Planet.ogg'
+		)
+
+
+/datum/lobbyscreen/enroute
+	image_file = 'icons/title_screens/transit.png'
+	possibleMusic = list(
+		'sound/music/lobby/transit.ogg',
+		'sound/music/lobby/Grimbeard-Tubeworm_Instrumental.ogg'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 /datum/lobbyscreen/ironhammer
 	image_file = 'icons/title_screens/ironhammer.png'
 	possibleMusic = list(
+<<<<<<< HEAD
 		'sound/music/lobby/Duke_Gneiss-The_Runner_in_motion.ogg',
 		'sound/music/lobby/Duke_Gneiss-Metropolis.ogg'
 		)
@@ -39,23 +57,47 @@
 	image_file = 'icons/title_screens/onestar.png'
 	possibleMusic = list(
 		'sound/music/lobby/Duke_Gneiss-Downtown_2.ogg'
+=======
+		'sound/music/lobby/Nctrnm-Dos_Lagos.ogg',
+		'sound/music/lobby/Grimbeard-Tubeworm_Instrumental.ogg'
+		)
+
+
+/datum/lobbyscreen/onestar
+	image_file = 'icons/title_screens/onestar.png'
+	possibleMusic = list(
+		'sound/music/lobby/Grimbeard-The_Part_Where_You_Always_Leave.ogg',
+		'sound/music/lobby/Kevin_MacLeod-Impact_Prelude.ogg'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 /datum/lobbyscreen/neotheology
 	image_file = 'icons/title_screens/neotheology.png'
 	possibleMusic = list(
+<<<<<<< HEAD
 		'sound/music/lobby/Duke_Gneiss-Neotheology.ogg')
+=======
+		'sound/music/lobby/To_Eris-Almost_there.ogg')
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/lobbyscreen/proc/play_music(client/C)
 	if(!musicTrack)
 		return
 	if(C.get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
+<<<<<<< HEAD
 		sound_to(C, sound(musicTrack, repeat = 0, wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+=======
+		sound_to(C, sound(musicTrack, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/lobbyscreen/proc/stop_music(client/C)
 	if(!musicTrack)
 		return
+<<<<<<< HEAD
 	sound_to(C, sound(null, repeat = 0, wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+=======
+	sound_to(C, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/lobbyscreen/proc/show_titlescreen(client/C)
@@ -67,3 +109,7 @@
 	if(C.mob) // Check if the client is still connected to something
 		// Hide title screen, allowing player to see the map
 		winset(C, "lobbybrowser", "is-disabled=true;is-visible=false")
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

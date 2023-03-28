@@ -2,12 +2,21 @@
 	name = "antigrav generator"
 	desc = "It temporarily disables gravity around."
 	icon_state = "GraviMobile"
+<<<<<<< HEAD
 	density = TRUE
 	anchored = FALSE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 0
 	active_power_usage = 10000
 	circuit = /obj/item/electronics/circuitboard/antigrav
+=======
+	density = 1
+	anchored = 0
+	use_power = IDLE_POWER_USE
+	idle_power_usage = 0
+	active_power_usage = 10000
+	circuit = /obj/item/circuitboard/antigrav
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/power_usage_per_tile = 200
 	var/on = FALSE

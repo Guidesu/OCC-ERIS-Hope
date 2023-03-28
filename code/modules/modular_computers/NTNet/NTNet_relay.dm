@@ -1,18 +1,29 @@
 // Relays don't handle any actual communication. Global NTNet datum does that, relays only tell the datum if it should or shouldn't work.
 /obj/machinery/ntnet_relay
-	name = "NTNet Quantum Relay"
+	name = "NTNet quantum relay"
 	desc = "A very complex router and transmitter capable of connecting electronic devices together. Looks fragile."
 	icon = 'icons/obj/machines/telecomms.dmi'
+<<<<<<< HEAD
 	use_power = ACTIVE_POWER_USE
 	active_power_usage = 20000 //20kW, apropriate for machine that keeps massive cross-Zlevel wireless network operational.
 	idle_power_usage = 100
 	icon_state = "bus"
 	anchored = TRUE
 	density = TRUE
+=======
+	use_power = 2
+	active_power_usage = 20000 //20kW, apropriate for machine that keeps massive cross-Zlevel wireless network operational.
+	idle_power_usage = 100
+	icon_state = "router"
+	anchored = 1
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/datum/ntnet/NTNet = null // This is mostly for backwards reference and to allow varedit modifications from ingame.
 	var/enabled = 1				// Set to 0 if the relay was turned off
 	var/dos_failure = 0			// Set to 1 if the relay failed due to (D)DoS attack
 	var/list/dos_sources = list()	// Backwards reference for qdel() stuff
+
+	circuit = /obj/item/circuitboard/ntnet_relay
 
 	// Denial of Service attack variables
 	var/dos_overload = 0		// Amount of DoS "packets" in this relay's buffer
@@ -32,9 +43,9 @@
 
 /obj/machinery/ntnet_relay/on_update_icon()
 	if(operable())
-		icon_state = "bus"
+		icon_state = "router"
 	else
-		icon_state = "bus_off"
+		icon_state = "router_off"
 
 /obj/machinery/ntnet_relay/Process()
 	if(operable())
@@ -57,7 +68,7 @@
 		ntnet_global.add_log("Quantum relay switched from overload recovery mode to normal operation mode.")
 	..()
 
-/obj/machinery/ntnet_relay/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/obj/machinery/ntnet_relay/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
 	var/list/data = list()
 	data["enabled"] = enabled
 	data["dos_capacity"] = dos_capacity
@@ -72,7 +83,7 @@
 		ui.set_auto_update(1)
 
 /obj/machinery/ntnet_relay/attack_hand(var/mob/living/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/ntnet_relay/Topic(href, href_list)
 	if(..())
@@ -94,17 +105,20 @@
 		return 1
 
 /obj/machinery/ntnet_relay/New()
+	..()
 	uid = gl_uid
 	gl_uid++
+<<<<<<< HEAD
 	component_parts = list()
 	component_parts += new /obj/item/stack/cable_coil(src,15)
 	component_parts += new /obj/item/electronics/circuitboard/ntnet_relay(src)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(ntnet_global)
 		ntnet_global.relays.Add(src)
 		NTNet = ntnet_global
 		ntnet_global.add_log("New quantum relay activated. Current amount of linked relays: [NTNet.relays.len]")
-	..()
 
 /obj/machinery/ntnet_relay/Destroy()
 	if(ntnet_global)
@@ -116,7 +130,11 @@
 		D.error = "Connection to quantum relay severed"
 	..()
 
+<<<<<<< HEAD
 /obj/machinery/ntnet_relay/attackby(var/obj/item/W as obj, var/mob/user as mob)
+=======
+/obj/machinery/ntnet_relay/attackby(obj/item/W, mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(default_deconstruction(W, user))
 		return
 	if(default_part_replacement(W, user))

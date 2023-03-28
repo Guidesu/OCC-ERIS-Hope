@@ -89,7 +89,11 @@ mob/living/carbon/human/proc/handle_pain()
 	var/maxdam = 0
 	var/obj/item/organ/external/damaged_organ = null
 	for(var/obj/item/organ/external/E in organs)
+<<<<<<< HEAD
 		if(E.status&ORGAN_DEAD)
+=======
+		if(E.status&ORGAN_DEAD || BP_IS_ROBOTIC(E))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			continue
 		var/dam = E.get_damage()
 		dam *= (get_specific_organ_efficiency(OP_NERVE, E.organ_tag)/100)
@@ -103,7 +107,11 @@ mob/living/carbon/human/proc/handle_pain()
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
+<<<<<<< HEAD
 		if(I.status&ORGAN_DEAD)
+=======
+		if(I.status&ORGAN_DEAD || BP_IS_ROBOTIC(I))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			continue
 		if(I.damage > 2) if(prob(2))
 			var/obj/item/organ/external/parent = I.parent

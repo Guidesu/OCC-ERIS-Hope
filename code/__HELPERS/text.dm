@@ -58,7 +58,7 @@
 	return input
 
 /proc/sanitizeFileName(var/input)
-	input = replace_characters(input, list(" "="_", "\\" = "_", "\""="'", "/" = "_", ":" = "_", "*" = "_", "?" = "_", "|" = "_", "<" = "_", ">" = "_"))
+	input = replace_characters(input, list(" "="_", "\\" = "_", "\""="'", "/" = "_", ":" = "_", "*" = "_", "?" = "_", "|" = "_", "<" = "_", ">" = "_", "#" = "_"))
 	if(findtext(input,"_") == 1)
 		input = copytext(input, 2)
 	return input
@@ -163,6 +163,19 @@
 //Old variant. Haven't dared to replace in some places.
 /proc/sanitize_old(var/t, var/list/repl_chars = list("\n"="#", "\t"="#"))
 	return html_encode(replace_characters(t, repl_chars))
+
+//Removes a few problematic characters
+/proc/sanitize_simple(t,list/repl_chars = list("\n"="#","\t"="#"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index + length(char))
+			index = findtext(t, char, index + length(char))
+	return t
+
+/proc/sanitize_filename(t)
+	return sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
+
 
 /*
  * Text searches
@@ -365,7 +378,11 @@ proc/TextPreview(var/string, var/len=40)
 /proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
 	if(!(C && C.get_preference_value(/datum/client_preference/chat_tags) == GLOB.PREF_SHOW))
 		return tagdesc
+<<<<<<< HEAD
 	return icon2html(icon(text_tag_icons, tagname), world, realsize=TRUE)
+=======
+	return icon2html(icon(text_tag_icons, tagname), world)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/contains_az09(var/input)
 	for(var/i=1, i<=length(input), i++)
@@ -450,10 +467,15 @@ proc/TextPreview(var/string, var/len=40)
 	t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 	t = replacetext(t, "\[row\]", "</td><tr>")
 	t = replacetext(t, "\[cell\]", "<td>")
+<<<<<<< HEAD
 	t = replacetext(t, "\[moebius\]", "<img src = moebus_logo.png>")
 	t = replacetext(t, "\[ironhammer\]", "<img src = ironhammer.png>")
 	t = replacetext(t, "\[guild\]", "<img src = guild.png>")
 	t = replacetext(t, "\[logo\]", "<img src = ntlogo.png>")
+=======
+	t = replacetext(t, "\[logo\]", "<img src = nadezhdalogo.png>")
+	t = replacetext(t, "\[logolonestar\]", "<img src = lonestarlogo.png>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	t = replacetext(t, "\[editorbr\]", "")
 	return t
 
@@ -483,7 +505,12 @@ proc/TextPreview(var/string, var/len=40)
 	t = replacetext(t, "</table>", "\[/grid\]")
 	t = replacetext(t, "<tr>", "\[row\]")
 	t = replacetext(t, "<td>", "\[cell\]")
+<<<<<<< HEAD
 	t = replacetext(t, "<img src = ntlogo.png>", "\[logo\]")
+=======
+	t = replacetext(t, "<img src = nadezhdalogo.png>", "\[logo\]")
+	t = replacetext(t, "<img src = lonestarlogo.png>", "\[logolonestar\]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	t = replacetext(t, "<span class=\"paper_field\"></span>", "\[field\]")
 	t = strip_html_properly(t)
 	return t

@@ -8,10 +8,17 @@
 	var/charging = FALSE
 	var/charge = 0
 	var/charge_max = 50
+<<<<<<< HEAD
 	var/flickering = 0
 	var/ticks_before_next_summon = 2
 	var/mobgenlist = list(
 		/mob/living/simple_animal/hostile/minerbot, //Occulus edit
+=======
+	var/flick_lighting = 0
+	var/ticks_before_next_summon = 2
+	var/mobgenlist = list(
+		/mob/living/simple_animal/hostile/bear,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/mob/living/simple_animal/hostile/carp,
 		/mob/living/simple_animal/hostile/carp,
 		/mob/living/simple_animal/hostile/carp/pike,
@@ -38,7 +45,11 @@
 		else
 			to_chat(user, "Nothing seems to happen.")
 	else if(charging)
+<<<<<<< HEAD
 		if(flickering)
+=======
+		if(flick_lighting)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, "The portal looks too unstable to pass through!")
 		else
 			to_chat(user, "The teleporter needs time to charge.")
@@ -112,13 +123,21 @@
 	for(var/mob/living/silicon/robot/R in range(8, src))//Borgs too
 		victims_to_teleport += R
 
+<<<<<<< HEAD
 	for(var/mob/living/exosuit/E in range(8, src))//And exosuits too
+=======
+	for(var/obj/mecha/E in range(8, src))//And exosuits too
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		victims_to_teleport += E
 
 	for(var/mob/living/M in victims_to_teleport)
 		go_to_bluespace(get_turf(src), 3, FALSE, M, get_turf(target))
 
+<<<<<<< HEAD
 	new /obj/structure/scrap_spawner/science/large(src.loc)
+=======
+	new /obj/structure/scrap/science/large(src.loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	sleep(2)
 	var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
@@ -128,6 +147,7 @@
 	qdel(src)
 
 
+<<<<<<< HEAD
 /obj/rogue/teleporter/on_update_icon()
 	cut_overlays()
 
@@ -150,6 +170,30 @@
 
 /obj/rogue/teleporter/proc/portal_burst()
 	add_overlays(image(icon, icon_state = "portal_on"))
+=======
+/obj/rogue/teleporter/update_icon()
+	cut_overlays()
+
+	if(charging && charge < 10)
+		add_overlay(image(icon, icon_state = "charging_1"))
+		return
+
+	if(charging & charge < 25)
+		add_overlay(image(icon, icon_state = "charging_2"))
+		return
+
+	if(charging & charge < charge_max)
+		add_overlay(image(icon, icon_state = "charging_3"))
+		return
+
+	if(charge >= charge_max)
+		add_overlay(image(icon, icon_state = "charged_portal"))
+		add_overlay(image(icon, icon_state = "beam"))
+		return
+
+/obj/rogue/teleporter/proc/portal_burst()
+	add_overlay(image(icon, icon_state = "portal_on"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	visible_message("A shimmering portal appears!")
 	sleep(100)
 	update_icon()
@@ -160,6 +204,7 @@
 				A.stasis = FALSE
 				A.activate_ai()
 
+<<<<<<< HEAD
 	add_overlays(image(icon, icon_state = "portal_failing"))
 	visible_message("The portal starts flickering!")
 	flickering = 1
@@ -167,6 +212,15 @@
 	update_icon()
 
 	add_overlays(image(icon, icon_state = "portal_pop"))
+=======
+	add_overlay(image(icon, icon_state = "portal_failing"))
+	visible_message("The portal starts flickering!")
+	flick_lighting = 1
+	sleep(100)
+	update_icon()
+
+	add_overlay(image(icon, icon_state = "portal_pop"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	visible_message("The portal bursts!")
 
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
@@ -175,6 +229,7 @@
 		if (get_dist(src, O) > 8)
 			continue
 
+<<<<<<< HEAD
 		var/flash_time = 8
 		if (ishuman(O))
 			var/mob/living/carbon/human/H = O
@@ -187,14 +242,23 @@
 			if(eye_efficiency < 50 && prob(100 - eye_efficiency  + 20))
 				if (O.HUDtech.Find("flash"))
 					FLICK("e_flash", O.HUDtech["flash"])
+=======
+		if (ishuman(O))
+			var/mob/living/carbon/human/H = O
+			H.flash(FALSE, FALSE , FALSE , FALSE, 8)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		else
 			if(!O.blinded)
 				if (istype(O,/mob/living/silicon/ai))
 					return
+<<<<<<< HEAD
 				if (O.HUDtech.Find("flash"))
 					FLICK("flash", O.HUDtech["flash"])
 		O.Weaken(flash_time)
+=======
+				O.flash(FALSE, FALSE, FALSE ,FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		sleep(1)
 
@@ -236,6 +300,10 @@
 
 		for(var/mob/living/silicon/robot/R in range(8, src))//Borgs too
 			victims_to_teleport += R
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		for(var/obj/structure/closet/C in range(8, src))//Clostes as well, for transport and storage
 			victims_to_teleport += C
 		for(var/atom/movable/M in victims_to_teleport)
@@ -267,4 +335,8 @@
 		sleep(1)
 		var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
 		sparks.set_up(3, 0, get_turf(user))
+<<<<<<< HEAD
 		sparks.start()
+=======
+		sparks.start()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

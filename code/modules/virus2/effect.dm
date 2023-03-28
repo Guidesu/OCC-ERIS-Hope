@@ -85,7 +85,7 @@
 			if(prob(10))
 				spawn(50)
 					if(O)
-						O.droplimb(0,DROPLIMB_BLUNT)
+						O.droplimb(0,DISMEMBER_METHOD_BLUNT)
 		else
 			if(prob(75))
 				to_chat(mob, SPAN_WARNING("Your whole body feels like it might fall apart!"))
@@ -157,18 +157,31 @@
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
 			for (var/obj/item/organ/external/E in H.organs)
+<<<<<<< HEAD
 				if (E.status & ORGAN_BROKEN && prob(30))
 					E.mend_fracture()
 		var/heal_amt = -5*multiplier
 		mob.apply_damages(heal_amt,heal_amt,heal_amt,heal_amt)
+=======
+				if (E.status & ORGAN_BROKEN && prob(15))
+					E.mend_fracture()
+		var/heal_amt = 3*multiplier
+		mob.heal_overall_damage(heal_amt,heal_amt,heal_amt,heal_amt)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	deactivate(var/mob/living/carbon/mob,var/multiplier)
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
 			to_chat(H, SPAN_NOTICE("You suddenly feel hurt and old..."))
+<<<<<<< HEAD
 			H.age += 8
 		var/backlash_amt = 5*multiplier
+=======
+			//H.age += 8 we dont use that kinda system of age here
+		var/backlash_amt = 3*multiplier
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
+
 
 /datum/disease2/effect/bones
 	name = "Fragile Bones Syndrome"

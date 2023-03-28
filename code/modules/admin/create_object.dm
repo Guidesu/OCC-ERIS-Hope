@@ -1,6 +1,10 @@
 var/create_object_html = null
 var/list/create_object_forms = list(/obj, /obj/structure, /obj/machinery,
+<<<<<<< HEAD
 								/obj/effect, /obj/item, /mob/living/exosuit, /obj/item,
+=======
+								/obj/effect, /obj/item, /obj/mecha, /obj/item,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 								/obj/item/clothing, /obj/item/stack, /obj/item/device,
 								/obj/item/reagent_containers, /obj/item/gun)
 

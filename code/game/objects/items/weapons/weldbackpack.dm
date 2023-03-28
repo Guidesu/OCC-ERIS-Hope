@@ -6,11 +6,15 @@
 	icon_state = "welderpack"
 	w_class = ITEM_SIZE_BULKY
 	var/max_fuel = 350
+	my_fuel = "fuel"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/weldpack/canister
 	name = "canister"
-	desc = "You may need it for draging around additional fuel."
+	desc = "You may need it to keep additional fuel on hand."
 	slot_flags = null
 	icon_state = "canister"
 	w_class = ITEM_SIZE_NORMAL
@@ -18,11 +22,28 @@
 	rarity_value = 25
 	spawn_tags = SPAWN_TAG_ITEM_UTILITY
 
+<<<<<<< HEAD
 /obj/item/weldpack/Initialize(mapload)
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
 	. = ..()
 
+=======
+/obj/item/weldpack/canister/oil
+	name = "oil canister"
+	desc = "You may need it to keep additional oil on hand."
+	slot_flags = null
+	icon_state = "canister_oil"
+	my_fuel = "oil"
+	w_class = ITEM_SIZE_NORMAL
+	max_fuel = 100
+
+/obj/item/weldpack/Initialize()
+	create_reagents(max_fuel)
+	reagents.add_reagent(my_fuel, max_fuel)
+	. = ..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
@@ -46,6 +67,13 @@
 	else if (reagents.total_volume > 50)
 		explosion(src.loc,0,1,3)
 	else if (reagents.total_volume > 0)
-		explosion(src.loc,-1,1,2)
+		explosion(src.loc,0,1,2)
 	if(src)
 		qdel(src)
+
+/obj/item/weldpack/canister/flamethrower
+	name = "flamethrower canister"
+	desc = "Contains all the fuel needed to burn down any jungle and those strange talking trees."
+	icon = 'icons/obj/guns/launcher/backburner.dmi'
+	icon_state = "canister_g"
+	max_fuel = 200

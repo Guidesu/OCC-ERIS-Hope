@@ -4,8 +4,8 @@
  *		ID CARD
  *		FINGERPRINT CARD HOLDER
  *		FINGERPRINT CARD
+ *		KEYS
  */
-
 
 
 /*
@@ -20,6 +20,11 @@
 	spawn_blacklisted = TRUE
 	var/list/files = list()
 
+<<<<<<< HEAD
+=======
+	var/list/files = list(  )
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/card/data
 	name = "data disk"
 	desc = "A disk of data."
@@ -60,7 +65,11 @@
 	name = "broken cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 2, TECH_COVERT = 2)
+=======
+	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_SILVER = 1, MATERIAL_PLASTIC = 1)
 
 /obj/item/card/emag
@@ -68,7 +77,12 @@
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 2, TECH_COVERT = 2)
+=======
+	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
+	matter = list(MATERIAL_SILVER = 1, MATERIAL_PLASTIC = 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/uses = 10
 
 var/const/NO_EMAG_ACT = -50
@@ -93,7 +107,7 @@ var/const/NO_EMAG_ACT = -50
 
 /obj/item/card/id
 	name = "identification card"
-	desc = "A card used to provide ID and determine access across the ship."
+	desc = "A card used to provide ID and determine access across the colony."
 	icon_state = "id"
 	item_state = "card-id"
 	slot_flags = SLOT_ID
@@ -116,11 +130,21 @@ var/const/NO_EMAG_ACT = -50
 	var/rank			//actual job
 	var/dorm = 0			// determines if this ID has claimed a dorm already
 
+	var/mining_points = 0 //mining points on the ID
+
 	var/formal_name_prefix
 	var/formal_name_suffix
+	var/claimed_locker = FALSE
 
+<<<<<<< HEAD
+=======
+	var/group = "colony" // ID class used for wallet code - Seb
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/card/id/examine(mob/user)
 	set src in oview(1)
+	if(mining_points)
+		to_chat(usr, "There are [mining_points] mining points on the card.")
 	if(in_range(usr, src))
 		show(usr)
 		to_chat(usr, desc)
@@ -131,6 +155,10 @@ var/const/NO_EMAG_ACT = -50
 	else
 		to_chat(usr, SPAN_WARNING("It is too far away."))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/card/id/proc/prevent_tracking()
 	return 0
 
@@ -140,7 +168,6 @@ var/const/NO_EMAG_ACT = -50
 		user << browse_rsc(side, "side.png")
 	var/datum/browser/popup = new(user, "idcard", name, 600, 250)
 	popup.set_content(dat())
-	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 	return
 
@@ -200,7 +227,9 @@ var/const/NO_EMAG_ACT = -50
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
 	access = list(access_syndicate, access_external_airlocks)
+	group = "centcom"
 
+<<<<<<< HEAD
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"
 	desc = "The spare ID of the High Lord himself."
@@ -214,9 +243,55 @@ var/const/NO_EMAG_ACT = -50
 	access = get_all_station_access()
 	..()
 
+=======
+/obj/item/card/id/medical_command
+	name = "Medical ID card"
+	desc = "An ID straight from the SI Medical Divisions."
+	registered_name = "Medical ERT"
+	assignment = "SI Medical ERT"
+	access = list(access_moebius, access_medical_equip, access_morgue, access_genetics, access_heads,
+		access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
+		access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels,
+		access_external_airlocks, access_paramedic, access_research_equipment, access_medical_suits)
+
+/obj/item/card/id/guild_command
+	name = "Guild AA ID card"
+	desc = "An ID card with all access as the guild uses several backdoors and emergency access commands to bypass most access requirements."
+	registered_name = "Guild ERT"
+	assignment = "Guild ERT"
+
+/obj/item/card/id/guild_command/New()
+	access = get_all_station_access()
+	..()
+
+/obj/item/card/id/lss_command
+	name = "LSS Auditor ID card"
+	desc = "An ID card that is for top down, with access to check out and inspect anything anyware at a moments time."
+	registered_name = "LSS Auditor"
+	assignment = "LSS Auditor"
+
+/obj/item/card/id/lss_command/New()
+	access = get_all_station_access()
+	..()
+
+
+/obj/item/card/id/captains_spare
+	name = "premier's spare ID"
+	desc = "A golden and pompous spare ID, for when a new premier is elected or in the shameful case an existing one lost his original badge. The most stolen item on the colony."
+	icon_state = MATERIAL_GOLD
+	item_state = "gold_id"
+	registered_name = "Premier"
+	assignment = "Premier"
+	group = "golden"
+
+/obj/item/card/id/captains_spare/New()
+	access = get_all_station_access()
+	..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Access module for NanoTrasen Synthetics."
 	icon_state = "id-robot"
 	item_state = "tdgreen"
 	assignment = "Synthetic"
@@ -228,12 +303,16 @@ var/const/NO_EMAG_ACT = -50
 
 /obj/item/card/id/all_access
 	name = "\improper Administrator's spare ID"
-	desc = "The spare ID of the Lord of Lords himself."
+	desc = "The spare ID of the Lord of Lords themselves."
 	icon_state = "data"
 	item_state = "tdgreen"
 	registered_name = "Administrator"
 	assignment = "Administrator"
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
+=======
+	group = "centcom"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/card/id/all_access/New()
 	access = get_access_ids()
@@ -241,19 +320,27 @@ var/const/NO_EMAG_ACT = -50
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
-	desc = "An ID straight from Cent. Com."
+	desc = "An ID straight from Central Command."
 	icon_state = "centcom"
 	registered_name = "Central Command"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
-		..()
+	group = "secblue"
+
+<<<<<<< HEAD
+/obj/item/card/id/gold
+=======
+/obj/item/card/id/all_access/New()
+	access = get_all_centcom_access()
+	..()
 
 /obj/item/card/id/gold
+	group = "golden"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = MATERIAL_GOLD
 	item_state = "gold_id"
 
 /obj/item/card/id/sci
+<<<<<<< HEAD
 	icon_state = "id_sci"
 
 /obj/item/card/id/gene
@@ -292,10 +379,76 @@ var/const/NO_EMAG_ACT = -50
 /obj/item/card/id/hos
 	icon_state = "id_hos"
 
+=======
+	group = "whitesilver"
+	icon_state = "id_sci"
+
+/obj/item/card/id/gene
+	group = "whitesilver"
+	icon_state = "id_gene"
+
+/obj/item/card/id/chem
+	group = "whitesilver"
+	icon_state = "id_chem"
+
+/obj/item/card/id/med
+	group = "whitesilver"
+	icon_state = "id_med"
+
+/obj/item/card/id/sci
+	group = "whitesilver"
+	icon_state = "id_sci"
+
+/obj/item/card/id/viro
+	group = "whitesilver"
+	icon_state = "id_viro"
+
+/obj/item/card/id/heatlab
+	group = "whitesilver"
+	icon_state = "id_heatlab"
+
+/obj/item/card/id/rd
+	group = "whitesilver"
+	icon_state = "id_rd"
+
+/obj/item/card/id/cmo
+	group = "whitesilver"
+	icon_state = "id_cmo"
+
+/obj/item/card/id/det
+	group = "secblue"
+	icon_state = "id_inspector"
+
+/obj/item/card/id/medcpec
+	group = "secblue"
+	icon_state = "id_medspec"
+
+/obj/item/card/id/sec
+	group = "secblue"
+	icon_state = "id_operative"
+
+/obj/item/card/id/hos
+	group = "secblue"
+	icon_state = "id_hos"
+
+/obj/item/card/id/secert
+	name = "Marshal ID card"
+	desc = "An ID straight from the Nadezhda Marshals"
+	registered_name = "Marshal Agent"
+	assignment = "Marshal Agent"
+	icon_state = "id_hos_all-access"
+	group = "golden"
+
+/obj/item/card/id/secert/New()
+	access = get_all_station_access()
+	..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/card/id/hop
 	icon_state = "id_hop"
 
 /obj/item/card/id/ce
+<<<<<<< HEAD
 	icon_state = "id_ce"
 
 /obj/item/card/id/engie
@@ -308,6 +461,25 @@ var/const/NO_EMAG_ACT = -50
 	icon_state = "id_car"
 
 /obj/item/card/id/hydro
+=======
+	group = "engineers"
+	icon_state = "id_ce"
+
+/obj/item/card/id/engie
+	group = "engineers"
+	icon_state = "id_engie"
+
+/obj/item/card/id/atmos // Currently unused.
+	group = "engineers"
+	icon_state = "id_atmos"
+
+/obj/item/card/id/car
+	group = "engineers" // Not an engie, but the sepia fits.
+	icon_state = "id_car"
+
+/obj/item/card/id/hydro
+	group = "greenone"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "id_hydro"
 
 /obj/item/card/id/chaplain
@@ -326,7 +498,39 @@ var/const/NO_EMAG_ACT = -50
 	icon_state = "id_ltgrey"
 
 /obj/item/card/id/white
+<<<<<<< HEAD
 	icon_state = "id_white"
 
 /obj/item/card/id/blankwhite
 	icon_state = "id_blankwhite"
+=======
+	group = "whitesilver"
+	icon_state = "id_white"
+
+/obj/item/card/id/blankwhite
+	group = "whitesilver"
+	icon_state = "id_blankwhite"
+
+/obj/item/card/id/lodge
+	icon_state = "id_lodge"
+	desc = "A bird skull hanging from a leather thong, carved by the hunting lodge and given to members to display name and rank. A small chip inside allows it to be used like any other access badge, encoded with the users biometrics."
+
+//Keys
+/obj/item/keys
+	name = "skeleton key"
+	desc = "The true key to rule them all, can't open \"deadbolts\"."
+	icon = 'icons/obj/card.dmi'
+	icon_state = "keys"
+	w_class = ITEM_SIZE_TINY
+
+/obj/item/keys/janitor
+	name = "janitor keys"
+	desc = "A set of keys to open any door, can't open \"deadbolts\"."
+	w_class = ITEM_SIZE_BULKY //No hiding this
+	slot_flags = SLOT_BELT
+
+/obj/item/keys/lockpicks
+	name = "lock picks"
+	desc = "A set of lock picks used to open doors, sadly cant pick through \"deadbolts\"."
+	icon_state = "lockpick"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -7,8 +7,11 @@
 	layer = BELOW_OBJ_LAYER
 	w_class = ITEM_SIZE_GARGANTUAN
 	matter = list(MATERIAL_STEEL = 10)
+<<<<<<< HEAD
 	//bad_type = /obj/structure/closet
 	spawn_tags = SPAWN_TAG_CLOSET
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/locked = FALSE
 	var/broken = FALSE
 	var/horizontal = FALSE
@@ -27,7 +30,7 @@
 	var/hack_stage = 0
 	var/max_mob_size = 2
 	var/wall_mounted = FALSE //never solid (You can always pass over it)
-	var/health = 100
+	health = 100
 	var/breakout = FALSE //if someone is currently breaking out. mutex
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -41,6 +44,12 @@
 	var/store_mobs = 1
 	var/old_chance = 0 //Chance to have rusted closet content in it, from 0 to 100. Keep in mind that chance increases in maints
 
+<<<<<<< HEAD
+=======
+	var/old_lock_odds = 0 //Changes the access lock to something that must be hacked or CC access
+			      //If their is already a lock on this, it overrides it.
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/closet/can_prevent_fall()
 	return TRUE
 
@@ -57,9 +66,20 @@
 	if(prob(old_chance))
 		make_old()
 
+<<<<<<< HEAD
 	if(old_chance)
 		for(var/obj/thing in contents)
 			if(prob(old_chance))
+=======
+	if (prob(old_lock_odds + old_chance))
+		make_lock_old()
+		update_icon() //So we have are lock added on icon wise
+
+
+	if (old_chance)
+		for (var/atom/thing in contents)
+			if (prob(old_chance))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				thing.make_old()
 
 	return mapload ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_NORMAL
@@ -81,10 +101,14 @@
 
 /obj/structure/closet/Destroy()
 	dump_contents()
+<<<<<<< HEAD
 	return ..()
+=======
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/examine(mob/user)
-	if(..(user, 1) && !opened)
+	if(..(user, 1) && !opened && !istype(src, /obj/structure/closet/body_bag))
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
@@ -220,7 +244,12 @@
 	opened = FALSE
 	update_icon()
 	playsound(src.loc, close_sound, 100, 1, -3)
+<<<<<<< HEAD
 	density = TRUE
+=======
+	if(!wall_mounted)
+		density = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_openspace()
 	return 1
 
@@ -296,6 +325,13 @@
 	for(var/mob/living/M in src.loc)
 		if(M.buckled || M.pinned.len)
 			continue
+
+		//sometimes, players use closets, to stuff mobs into it
+		//and it's works pretty good, you just weld it and that's all
+		//but not when they are to big...
+		if(M.mob_size >= MOB_LARGE)
+			continue
+
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
 		if(M.client)
@@ -314,12 +350,20 @@
 			qdel(src)
 		if(2)
 			if(prob(50))
+<<<<<<< HEAD
 				for(var/atom/movable/A as mob|obj in src)
+=======
+				for (var/atom/movable/A as mob|obj in src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					A.ex_act(severity + 1)
 				qdel(src)
+			else
+				health -= 99
 		if(3)
 			if(prob(5))
 				qdel(src)
+			else
+				health -= 50
 
 /obj/structure/closet/proc/populate_contents()
 	return
@@ -335,7 +379,8 @@
 		return
 
 	..()
-	damage(proj_damage)
+	if (!(Proj.testing))
+		damage(proj_damage)
 
 	return
 
@@ -348,9 +393,103 @@
 
 /obj/structure/closet/attackby(obj/item/I, mob/user)
 
+<<<<<<< HEAD
 	if(istype(I, /obj/item/gripper))
+=======
+	if (istype(I, /obj/item/gripper))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//Empty gripper attacks will call attack_AI
-		return 0
+		return FALSE
+
+	var/list/usable_qualities = list(QUALITY_WELDING)
+	if(opened)
+		usable_qualities += QUALITY_SAWING
+		usable_qualities += QUALITY_BOLT_TURNING
+	if(rigged)
+		usable_qualities += QUALITY_WIRE_CUTTING
+	if(secure && locked)
+		usable_qualities += QUALITY_PULSING
+
+	var/tool_type = I.get_tool_type(user, usable_qualities, src)
+	switch(tool_type)
+		if(QUALITY_WELDING)
+			if(!opened)
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					welded = !welded
+					update_icon()
+					visible_message(
+						SPAN_NOTICE("[src] has been disassembled by [user]."),
+						"You hear [tool_type]."
+					)
+			else
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					visible_message(
+						SPAN_NOTICE("\The [src] has been [tool_type == QUALITY_BOLT_TURNING ? "taken" : "cut"] apart by [user] with \the [I]."),
+						"You hear [tool_type]."
+					)
+					drop_materials(drop_location())
+					qdel(src)
+			return
+
+		if(QUALITY_SAWING, QUALITY_BOLT_TURNING)
+			if(opened)
+				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
+					visible_message(
+						SPAN_NOTICE("\The [src] has been [tool_type == QUALITY_BOLT_TURNING ? "taken" : "cut"] apart by [user] with \the [I]."),
+						"You hear [tool_type]."
+					)
+					drop_materials(drop_location())
+					qdel(src)
+				return
+
+		if(QUALITY_WIRE_CUTTING)
+			if(rigged)
+				to_chat(user, SPAN_NOTICE("You cut away the wiring."))
+				new /obj/item/stack/cable_coil(drop_location(), 1)
+				playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+				rigged = FALSE
+				return
+
+		if(QUALITY_PULSING)
+			if(!(secure && locked))
+				return
+			user.visible_message(
+			SPAN_WARNING("[user] picks in wires of the [src.name] with a multitool"), \
+			SPAN_WARNING("[pick("Picking wires in [src.name] lock", "Hacking [src.name] security systems", "Pulsing in locker controller")].")
+			)
+			if(I.use_tool(user, src, WORKTIME_LONG, QUALITY_PULSING, FAILCHANCE_HARD, required_stat = STAT_MEC))
+				if(hack_stage < hack_require)
+					var/obj/item/tool/T = I
+					if(istype(T) && T.item_flags & SILENT)
+						playsound(loc, 'sound/items/glitch.ogg', 3, 1, -5) //Silenced tools can hack it silently
+					else if(istype(T) && T.item_flags & LOUD)
+						playsound(loc, 'sound/items/glitch.ogg', 500, 1, 10) //Loud tools can hack it LOUDLY
+					else
+						playsound(loc, 'sound/items/glitch.ogg', 70, 1, -1)
+
+					if(istype(T) && T.item_flags & HONKING)
+						playsound(loc, WORKSOUND_HONK, 70, 1, -2)
+
+				//Cognition can be used to speed up the proccess
+					if(prob (user.stats.getStat(STAT_COG)))
+						hack_stage = hack_require
+						to_chat(user, SPAN_NOTICE("You discover an exploit in [src]'s security system and it shuts down! Now you just need to pulse the lock."))
+					else
+						hack_stage++
+
+					to_chat(user, SPAN_NOTICE("Multitool blinks <b>([hack_stage]/[hack_require])</b> on screen."))
+				else if(hack_stage >= hack_require)
+					locked = FALSE
+					broken = TRUE
+					update_icon()
+					user.visible_message(
+					SPAN_WARNING("[user] [locked?"locks":"unlocks"] [name] with a multitool,"), \
+					SPAN_WARNING("You [locked? "locked" : "unlocked"] [name] with multitool")
+					)
+				return
+
+		if(ABORT_CHECK)
+			return
 
 	var/list/usable_qualities = list(QUALITY_WELDING)
 	if(opened)
@@ -423,7 +562,11 @@
 		if(rigged)
 			to_chat(user, SPAN_NOTICE("[src] is already rigged!"))
 			return
+<<<<<<< HEAD
 		if(C.use(1))
+=======
+		if (C.use(1))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_NOTICE("You rig [src]."))
 			rigged = TRUE
 			return
@@ -441,6 +584,7 @@
 	else if(istype(I, /obj/item/melee/energy/blade) && secure)
 		emag_act(INFINITY, user)
 		return
+<<<<<<< HEAD
 	else if((QUALITY_PULSING in I.tool_qualities) && secure && locked)
 		user.visible_message(
 		SPAN_WARNING("[user] picks in wires of the [src.name] with a multitool"), \
@@ -477,6 +621,8 @@
 				SPAN_WARNING("You [locked? "locked" : "unlocked"] [name] with multitool")
 				)
 				return
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		src.attack_hand(user)
 	return
@@ -578,7 +724,11 @@
 	else
 		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
+<<<<<<< HEAD
 /obj/structure/closet/on_update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
+=======
+/obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(opened)
 		layer = BELOW_OBJ_LAYER
@@ -605,9 +755,15 @@
 				add_overlay("[icon_lock]_off")
 				add_overlay(icon_sparking)
 
+<<<<<<< HEAD
 /obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes", var/wallbreaker)//Occulus Edit
 	if(damage)//Occulus edit
 		damage(damage)//Occulus Edit
+=======
+/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
+	if(damage)
+		damage(damage)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		attack_animation(user)
 		visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))
 		return 1
@@ -679,3 +835,12 @@
 
 /obj/structure/closet/AllowDrop()
 	return TRUE
+
+/obj/structure/closet/proc/make_lock_old()
+	req_access = list(access_cent_specops)
+	name = "[pick("locked", "sealed", "card reader", "access required", "eletronic")] [name]"
+	desc += "\n "
+	desc += " The access panel looks old. It's unlikely anyone can open this without hacking or brute force."
+	hack_require = rand(1,2) //Easyer to hack older locks
+	locked = TRUE
+	secure = TRUE

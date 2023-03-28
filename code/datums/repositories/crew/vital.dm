@@ -6,7 +6,11 @@
 
 	if(!H.isSynthetic() && H.should_have_process(OP_HEART))
 		var/obj/item/organ/internal/heart/O = H.random_organ_by_process(OP_HEART)
+<<<<<<< HEAD
 		if (!O || !BP_IS_ROBOTIC(O)) // Don't make medical freak out over prosthetic hearts
+=======
+		if(O && BP_IS_ORGANIC(O)) // Don't make medical freak out over prosthetic hearts
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			crew_data["true_pulse"] = H.pulse()
 			crew_data["pulse"] = H.get_pulse(1)
 			switch(crew_data["true_pulse"])
@@ -24,13 +28,18 @@
 				if(PULSE_THREADY)
 					crew_data["alert"] = TRUE
 					crew_data["pulse_span"] = "bad"
+<<<<<<< HEAD
 		else if(BP_IS_ROBOTIC(O))
+=======
+		else if(O)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			crew_data["pulse_span"] = "highlight"
 			crew_data["pulse"] = "synthetic"
 	else
 		crew_data["pulse_span"] = "highlight"
 		crew_data["pulse"] = "synthetic"
 
+<<<<<<< HEAD
 	crew_data["pressure"] = "N/A"
 	crew_data["true_oxygenation"] = -1
 	crew_data["oxygenation"] = ""
@@ -53,6 +62,23 @@
 			if(0 to 10)
 				crew_data["oxygenation"] = "normal"
 				crew_data["oxygenation_span"] = "good"
+=======
+	if(!H.isSynthetic() && H.should_have_process(OP_HEART))
+//		crew_data["pressure"] = H.get_blood_pressure()
+		crew_data["suffocation"] = round(H.getOxyLoss())
+		crew_data["burns"] = round(H.getFireLoss())
+		crew_data["trauma"] = round(H.getBruteLoss())
+		crew_data["poisoning"] = round(H.getToxLoss())
+
+		if(H.getOxyLoss() >= 10)
+			crew_data["alert"] = TRUE
+		if(H.getBruteLoss() >= 50)
+			crew_data["alert"] = TRUE
+		if(H.getFireLoss() >= 50)
+			crew_data["alert"] = TRUE
+		if(H.getToxLoss() >= 50)
+			crew_data["alert"] = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	crew_data["bodytemp"] = H.bodytemperature - T0C
 	return ..()
@@ -64,11 +90,18 @@
 		crew_data["pulse"] = rand(60, 90)
 		crew_data["pulse_span"] = "good"
 
+<<<<<<< HEAD
 	if(crew_data["true_oxygenation"] != -1)
 		crew_data["pressure"] = "[FLOOR(120+rand(-5,5), 1)]/[FLOOR(80+rand(-5,5), 1)]"
 		crew_data["true_oxygenation"] = 100
 		crew_data["oxygenation"] = "normal"
 		crew_data["oxygenation_span"] = "good"
+=======
+	crew_data["suffocation"] = 0
+	crew_data["burns"] = 0
+	crew_data["trauma"] = 0
+	crew_data["poisoning"] = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /crew_sensor_modifier/vital/proc/set_dead(var/list/crew_data)
 	crew_data["alert"] = TRUE
@@ -77,11 +110,18 @@
 		crew_data["pulse"] = 0
 		crew_data["pulse_span"] = "bad"
 
+<<<<<<< HEAD
 	if(crew_data["true_oxygenation"] != -1)
 		crew_data["pressure"] = "[FLOOR((120+rand(-5,5))*0.25, 1)]/[FLOOR((80+rand(-5,5))*0.25, 1)]"
 		crew_data["true_oxygenation"] = 25
 		crew_data["oxygenation"] = "extremely low"
 		crew_data["oxygenation_span"] = "bad"
+=======
+	crew_data["suffocation"] = rand(10, 300)
+	crew_data["burns"] = rand(10, 300)
+	crew_data["trauma"] = rand(10, 300)
+	crew_data["poisoning"] = rand(10, 300)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /* Jamming */
 /crew_sensor_modifier/vital/jamming

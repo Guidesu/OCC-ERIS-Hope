@@ -1,9 +1,18 @@
 
 var/global/BSACooldown = 0
 var/global/floorIsLava = 0
+#define NO_ANTAG 0
+#define LIMITED_ANTAG 1
+#define ANTAG 2
 
+#define ADMIN_QUE_DISPLAY(user,display) "<a href='?_src_=holder;adminmoreinfo=\ref[user]'>[display]</a>"
+#define ADMIN_PP_DISPLAY(user,display) "<a href='?_src_=holder;adminplayeropts=\ref[user]'>[display]</a>"
+#define ADMIN_VV_DISPLAY(atom,display) "<a href='?_src_=vars;Vars=\ref[atom]'>[display]</a>"
+#define ADMIN_SM_DISPLAY(user,display) "<a href='?_src_=holder;subtlemessage=\ref[user]'>[display]</a>"
+#define ADMIN_TP_DISPLAY(user,display) "<a href='?_src_=holder;contractor=\ref[user]'>[display]</a>"
 
 ////////////////////////////////
+<<<<<<< HEAD
 /proc/message_admins(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
@@ -12,12 +21,28 @@ var/global/floorIsLava = 0
 			to_chat(C, msg)
 
 /proc/msg_admin_attack(text) //Toggleable Attack Messages
-	log_attack(text)
-	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
+=======
+/proc/message_admins(var/msg, tag = "admin_log", tagtext = "ADMIN LOG", mod_send_message = FALSE)
+	lobby_message(message = msg, color = "#FFA500")
+	var/m = "<span class=\"log_message\"><span class=\"prefix\">[tagtext]:</span> <span class=\"message\">[msg]</span></span>"
+	log_adminwarn(m)
 	for(var/client/C in admins)
-		if(R_ADMIN & C.holder.rights)
+		m = "<span class=\"log_message\"><span class=\"message\">[msg]</span></span>"
+		if(check_rights(R_ADMIN, 0, C.mob) || (mod_send_message && check_rights(R_MOD, 0, C.mob)))
+			to_chat(C, m)
+
+/proc/msg_admin_attack(var/text, tag = "attack", tagtext = "ATTACK:") //Toggleable Attack Messages
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+	log_attack(text)
+	lobby_message(message = text, color = "#FFA500")
+	for(var/client/C in admins)
+		if(check_rights(R_ADMIN | R_DEBUG, 0, C.mob))
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
+<<<<<<< HEAD
 				var/msg = rendered
+=======
+				var/msg = "<span class=\"log_message\"><span class=\"prefix\">[create_text_tag(tag, "[tagtext]:", C)]</span> <span class=\"message\">[text]</span></span>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(C, msg)
 
 /**
@@ -27,11 +52,20 @@ var/global/floorIsLava = 0
  * important - If the message is important. If TRUE it will ignore the PREF_HEAR preferences,
                send a sound and flash the window. Defaults to FALSE
  */
+<<<<<<< HEAD
 /proc/message_adminTicket(msg, important = FALSE)
 	for(var/client/C in admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C, msg)
 			if(important || (C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR))
+=======
+/proc/message_adminTicket(msg, important = FALSE, quiet = FALSE, tag = "admin_ticket", tagtext = "Request for Help")
+	for(var/client/C in admins)
+		if(check_rights(R_ADMIN | R_MOD | R_DEBUG, 0, C.mob))
+			var/rendered = "<span class=\"adminhelp\"><span class=\"prefix\">[create_text_tag(tag, "[tagtext]:", C)]</span> [msg]</span></span>"
+			to_chat(C, rendered)
+			if(important || (!quiet && (C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				sound_to(C, 'sound/effects/adminhelp.ogg')
 
 /**
@@ -41,6 +75,7 @@ var/global/floorIsLava = 0
  * important - If the message is important. If TRUE it will ignore the PREF_HEAR preferences,
                send a sound and flash the window. Defaults to FALSE
  */
+<<<<<<< HEAD
 /proc/message_mentorTicket(msg, important = FALSE)
 	for(var/client/C in admins)
 		if(check_rights(R_ADMIN | R_MENTOR | R_MOD, 0, C.mob))
@@ -49,6 +84,18 @@ var/global/floorIsLava = 0
 				sound_to(C, 'sound/effects/adminhelp.ogg')
 
 proc/admin_notice(message, rights)
+=======
+/proc/message_mentorTicket(msg, important = FALSE, quiet = FALSE, tag = "mentor_ticket", tagtext = "Request for Mentor")
+	for(var/client/C in admins)
+		if(check_rights(R_ADMIN | R_MENTOR | R_MOD, 0, C.mob))
+			var/rendered = "<span class=\"adminhelp\"><span class=\"prefix\">[create_text_tag(tag, "[tagtext]:", C)]</span> [msg]</span></span>"
+			to_chat(C, rendered)
+			if(important || (!quiet && (C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)))
+				sound_to(C, 'sound/effects/adminhelp.ogg')
+
+
+/proc/admin_notice(var/message, var/rights)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/mob/M in SSmobs.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
@@ -128,7 +175,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/show_player_panel, null, TRUE)
 	body += {"
 		<br><br>\[
 		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
-		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
+		<a href='?src=\ref[src];contractor=\ref[M]'>TP</a> -
 		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
 		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
 		<a href='?src=\ref[src];manup=\ref[M]'>MAN_UP</a> -
@@ -141,6 +188,10 @@ ADMIN_VERB_ADD(/datum/admins/proc/show_player_panel, null, TRUE)
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
 		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A> |
+<<<<<<< HEAD
+=======
+		<A href='?src=\ref[src];adminpmhistory=\ref[M]'>AdminPM History</A>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	"}
 
@@ -160,7 +211,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/show_player_panel, null, TRUE)
 		<A href='?src=\ref[src];jumpto=\ref[M]'><b>Jump to</b></A> |
 		<A href='?src=\ref[src];getmob=\ref[M]'>Get</A>
 		<br><br>
-		[check_rights(R_ADMIN|R_MOD,0) ? "<A href='?src=\ref[src];traitor=\ref[M]'>Traitor panel</A> | " : "" ]
+		[check_rights(R_ADMIN|R_MOD,0) ? "<A href='?src=\ref[src];contractor=\ref[M]'>contractor panel</A> | " : "" ]
 		<A href='?src=\ref[src];narrateto=\ref[M]'>Narrate to</A> |
 		<A href='?src=\ref[src];subtlemessage=\ref[M]'>Subtle message</A>
 	"}
@@ -317,7 +368,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/access_news_network, R_ADMIN, FALSE)
 				<BR><HR><A href='?src=\ref[src];admincaster=set_signature'>The newscaster recognises you as:<BR> <FONT COLOR='green'>[src.admincaster_signature]</FONT></A>
 			"}
 		if(1)
-			dat+= "Station Feed Channels<HR>"
+			dat+= "Colony Feed Channels<HR>"
 			if( isemptylist(news_network.network_channels) )
 				dat+="<I>No active channels found...</I>"
 			else
@@ -379,7 +430,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/access_news_network, R_ADMIN, FALSE)
 			dat+="<B>[src.admincaster_feed_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[src.admincaster_feed_channel.author]</FONT>\]</FONT><HR>"
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [company_name] D-Notice.<BR>
+					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the Nadezhda colony, and marked with a [company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -414,7 +465,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/access_news_network, R_ADMIN, FALSE)
 		if(11)
 			dat+={"
 				<B>[company_name] D-Notice Handler</B><HR>
-				<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the station's
+				<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the colony's
 				morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed
 				stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>
 			"}
@@ -442,11 +493,11 @@ ADMIN_VERB_ADD(/datum/admins/proc/access_news_network, R_ADMIN, FALSE)
 		if(13)
 			dat+={"
 				<B>[src.admincaster_feed_channel.channel_name]: </B><FONT SIZE=1>\[ created by: <FONT COLOR='maroon'>[src.admincaster_feed_channel.author]</FONT> \]</FONT><BR>
-				Channel messages listed below. If you deem them dangerous to the station, you can <A href='?src=\ref[src];admincaster=toggle_d_notice;toggle_d_notice=\ref[src.admincaster_feed_channel]'>Bestow a D-Notice upon the channel</A>.<HR>
+				Channel messages listed below. If you deem them dangerous to the colony, you can <A href='?src=\ref[src];admincaster=toggle_d_notice;toggle_d_notice=\ref[src.admincaster_feed_channel]'>Bestow a D-Notice upon the channel</A>.<HR>
 			"}
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [company_name] D-Notice.<BR>
+					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the Nadezhda colony, and marked with a [company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -498,7 +549,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/access_news_network, R_ADMIN, FALSE)
 			"}
 		if(18)
 			dat+={"
-				<B><FONT COLOR ='maroon'>-- STATIONWIDE WANTED ISSUE --</B></FONT><BR><FONT SIZE=2>\[Submitted by: <FONT COLOR='green'>[news_network.wanted_issue.backup_author]</FONT>\]</FONT><HR>
+				<B><FONT COLOR ='maroon'>-- COLONY-WIDE WANTED ISSUE --</B></FONT><BR><FONT SIZE=2>\[Submitted by: <FONT COLOR='green'>[news_network.wanted_issue.backup_author]</FONT>\]</FONT><HR>
 				<B>Criminal</B>: [news_network.wanted_issue.author]<BR>
 				<B>Description</B>: [news_network.wanted_issue.body]<BR>
 				<B>Photo:</B>:
@@ -614,7 +665,11 @@ ADMIN_VERB_ADD(/datum/admins/proc/announce, R_ADMIN, FALSE)
 	if(!check_rights(0))
 		return
 
+<<<<<<< HEAD
 	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
+=======
+	var/message = input("Global message to send:", "Admin Announce", null, null) as message
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
@@ -827,19 +882,26 @@ ADMIN_VERB_ADD(/datum/admins/proc/immreboot, R_SERVER, FALSE)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/proc/is_special_character(mob/M as mob) // returns 1 for special characters
+/proc/is_special_character(mob/M) // returns 1 for special characters
 	if (!istype(M))
-		return FALSE
+		return NO_ANTAG
+
+	if(M.mind && player_is_limited_antag(M.mind))
+		return LIMITED_ANTAG
 
 	if(M.mind && player_is_antag(M.mind))
-		return TRUE
-
+		return ANTAG
 
 	if(isrobot(M))
 		var/mob/living/silicon/robot/R = M
-		if(R.emagged)
-			return TRUE
+		if(R.HasTrait(CYBORG_TRAIT_EMAGGED))
+			return ANTAG
 
+	return NO_ANTAG
+
+/proc/is_limited_antag(mob/M)
+	if(M.mind && player_is_limited_antag(M.mind))
+		return TRUE
 	return FALSE
 
 ADMIN_VERB_ADD(/datum/admins/proc/spawn_fruit, R_DEBUG, FALSE)
@@ -949,18 +1011,97 @@ ADMIN_VERB_ADD(/datum/admins/proc/spawn_atom, R_DEBUG, FALSE)
 		var/turf/T = get_turf(usr.loc)
 		T.ChangeTurf(chosen)
 	else
-		new chosen(usr.loc)
+		var/newItem = new chosen(usr.loc)
+
+		if(istype(newItem, /obj/item/gun))
+			var/obj/item/gun/weapon = newItem
+			weapon.loadAmmoBestGuess()
+
 
 	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
 
+ADMIN_VERB_ADD(/datum/admins/proc/remove_var_copy, R_ADMIN|R_DEBUG|R_FUN, TRUE)
+/**
+ * Removes a var copy from the global list that contains them, effectively the same as deletion.
+ * Automatically executes if a text argument is given, assuming it is the name of the copy to delete.
+ *
+ * Args:
+ * target_copy: Text. The proc will assume this is the key, or the name, of the var copy, and will search GLOB.var_copies for it's value.
+**/
+/datum/admins/proc/remove_var_copy(var/target_copy as text)
+	set name = "Remove Copy"
+	set desc = "Remove a vareditted var template"
+	set category = "Fun"
+
+	if(!check_rights(R_ADMIN | R_DEBUG | R_FUN))
+		return
+
+	if (!(length(target_copy) > 0)) //did they send anything?
+		target_copy = stripped_input(usr, "What is the name of the slot you want to delete?")
+	if (target_copy in GLOB.var_copies)
+		GLOB.var_copies -= target_copy
+		to_chat(usr, "<span class='warning'>[target_copy] deleted.</span>")
+		log_and_message_admins("<span class='notice'> deleted a var copy, named [target_copy].</span>")
+	else
+		to_chat(usr, "<span class='warning'>[target_copy] does not exist. Did you type it correctly?</span>")
+
+ADMIN_VERB_ADD(/datum/admins/proc/spawn_var_copy, R_ADMIN|R_DEBUG|R_FUN, TRUE)
+/**
+ * Spawns a atom on the location of the user, using the type variable within GLOB.var_copies[target_copy], using the target_copy argument.
+ * Then searches said list for any variables. If any variables are present, they will be applied to the newly created atom.
+ *
+ * Automatically executes if a text argument is given, assuming it is the name of the copy to delete.
+ *
+ * Args:
+ * target_copy: Text. The proc will assume this is the key, or the name, of the var copy, and will search GLOB.var_copies for it's value.
+**/
+/datum/admins/proc/spawn_var_copy(var/target_copy as text)
+	set name = "Spawn Copy"
+	set desc = "Spawn a atom with a vareditted var template"
+	set category = "Fun"
+
+	if(!check_rights(R_ADMIN | R_DEBUG | R_FUN))
+		return
+
+	if (!(length(target_copy) > 0)) //did they send anything?
+		target_copy = stripped_input(usr, "What is the name of the copy you want to spawn?")
+	if (target_copy in GLOB.var_copies)
+		var/list/spawn_variables = GLOB.var_copies[target_copy]
+		var/atom/spawn_target = spawn_variables["type"]
+
+		var/atom/newItem = new spawn_target(usr.loc)
+
+		for(var/variable in newItem.vars)
+			if (variable == "type") //type is read-only, we will runtime if we don't have this check
+				continue
+			if (variable in GLOB.banned_vars) // these vars must never be applied
+				continue
+			if (variable in spawn_variables) // if a var exists in this, an admin wanted it to be carried over, so let's apply it
+				newItem.vars[variable] = spawn_variables[variable]
+	else
+		to_chat(usr, "<span class='warning'>[target_copy] does not exist. Did you type it correctly?</span>")
+
+ADMIN_VERB_ADD(/datum/admins/proc/list_var_copies, R_ADMIN|R_DEBUG|R_FUN, TRUE)
+/// Will list the keys/names of all var copies currently saved into the GLOB.var_copies.
+/datum/admins/proc/list_var_copies()
+	set name = "List Copy Names"
+	set desc = "List the names of all currently saved var copies"
+	set category = "Fun"
+
+	if(!check_rights(R_ADMIN | R_DEBUG | R_FUN))
+		return
+
+	to_chat(usr, "<b>Names of all var copies currently saved:</b>")
+	for (var/key_to_print in GLOB.var_copies)
+		to_chat(usr, key_to_print) //prints the keys, not the values
 
 // -Removed due to rare practical use. Moved to debug verbs ~Errorage,
-//ADMIN_VERB_ADD(/datum/admins/proc/show_traitor_panel, R_ADMIN, TRUE)
+//ADMIN_VERB_ADD(/datum/admins/proc/show_contractor_panel, R_ADMIN, TRUE)
 //interface which shows a mob's mind
-/datum/admins/proc/show_traitor_panel(var/mob/M in SSmobs.mob_list)
+/datum/admins/proc/show_contractor_panel(var/mob/M in SSmobs.mob_list)
 	set category = "Admin"
 	set desc = "Edit mobs's memory and role"
-	set name = "Show Traitor Panel"
+	set name = "Show contractor Panel"
 
 	if(!istype(M))
 		to_chat(usr, "This can only be used on instances of type /mob")
@@ -1094,15 +1235,14 @@ ADMIN_VERB_ADD(/datum/admins/proc/toggleguests, R_ADMIN, FALSE)
 		M = whom
 		C = M.client
 	else
-		return "<b>(*not an mob*)</b>"
+		return "<b>(*not a mob*)</b>"
 	switch(detail)
 		if(0)
 			return "<b>[key_name(C, link, name, highlight_special)]</b>"
-
 		if(1)	//Private Messages
-			return "<b>[key_name(C, link, name, highlight_special)](<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>)</b>"
-
+			return "<b>[key_name(C, link, name, highlight_special)]([ADMIN_QUE_DISPLAY(M,"?")])</b>"
 		if(2)	//Admins
+<<<<<<< HEAD
 			var/ref_mob = "\ref[M]"
 			return "<b>[key_name(C, link, name, highlight_special)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, UNLINT(src))]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
 
@@ -1113,6 +1253,13 @@ ADMIN_VERB_ADD(/datum/admins/proc/toggleguests, R_ADMIN, FALSE)
 		if(4)	//Mentors
 			var/ref_mob = "\ref[M]"
 			return "<b>[key_name(C, link, name, highlight_special)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, UNLINT(src))])</b>"
+=======
+			return "<b>[key_name(C, link, name, highlight_special)]([ADMIN_QUE_DISPLAY(M,"?")]) ([ADMIN_PP_DISPLAY(M,"PP")]) ([ADMIN_VV_DISPLAY(M,"VV")]) ([ADMIN_SM_DISPLAY(M,"SM")]) ([admin_jump_link(M, UNLINT(src))]) ([ADMIN_TP_DISPLAY(M,"TP")])</b>"
+		if(3)	//Devs
+			return "<b>[key_name(C, link, name, highlight_special)]([ADMIN_VV_DISPLAY(M,"VV")])([admin_jump_link(M, UNLINT(src))])</b>"
+		if(4)	//Mentors
+			return "<b>[key_name(C, link, name, highlight_special)] ([ADMIN_QUE_DISPLAY(M,"?")]) ([ADMIN_PP_DISPLAY(M,"PP")]) ([ADMIN_VV_DISPLAY(M,"VV")]) ([ADMIN_SM_DISPLAY(M,"SM")]) ([admin_jump_link(M, UNLINT(src))])</b>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //
@@ -1162,7 +1309,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/force_mode_latespawn, R_ADMIN, FALSE)
 /datum/admins/proc/force_mode_latespawn()
 	set category = "Admin"
 	set name = "Force Mode Spawn"
-	set desc = "Force autotraitor to proc."
+	set desc = "Force autocontractor to proc."
 
 	if (!istype(src,/datum/admins))
 		src = usr.client.holder
@@ -1195,6 +1342,10 @@ ADMIN_VERB_ADD(/datum/admins/proc/paralyze_mob, R_ADMIN, FALSE)
 			msg = "has unparalyzed [key_name(H)]."
 		log_and_message_admins(msg)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Returns a list of the number of admins in various categories
 // result[1] is the number of staff that match the rank mask and are active
 // result[2] is the number of staff that do not match the rank mask
@@ -1220,4 +1371,107 @@ ADMIN_VERB_ADD(/datum/admins/proc/paralyze_mob, R_ADMIN, FALSE)
 		if(rights_required && !(rights_required & subject.holder.rights))
 			return 0
 		return 1
+<<<<<<< HEAD
 	return 0
+=======
+	return 0
+//This proc lets us make artifacts with the effects and triggers we want.
+ADMIN_VERB_ADD(/datum/admins/proc/spawn_artifact, R_ADMIN, FALSE)
+/datum/admins/proc/spawn_artifact(effect in subtypesof(/datum/artifact_effect))
+	set category = "Debug"
+	set desc = "(atom path) Spawn an artifact with a specified effect."
+	set name = "Spawn Artifact"
+
+	if (!check_rights(R_ADMIN|R_DEBUG,0))
+		return
+
+	var/obj/machinery/artifact/A
+	var/primary_trigger
+
+	var/datum/artifact_effect/secondary_effect
+	var/secondary_trigger
+
+	if (ispath(effect))
+		primary_trigger = input(usr, "Choose a trigger", "Choose a trigger") as null | anything in list("TRIGGER_TOUCH", "TRIGGER_WATER", "TRIGGER_ACID", "TRIGGER_VOLATILE", "TRIGGER_TOXIN", "TRIGGER_FORCE", "TRIGGER_ENERGY", "TRIGGER_HEAT", "TRIGGER_COLD", "TRIGGER_PLASMA", "TRIGGER_OXY", "TRIGGER_CO2", "TRIGGER_NITRO")
+
+		if (!primary_trigger)
+			return
+		//This is a very ghetto way of doing it, but this is an admin ability and it shouldn't be called every second, so we should be fine. Feel free to rework the implementation.
+		switch(primary_trigger)
+			if("TRIGGER_TOUCH")
+				primary_trigger = 0
+			if("TRIGGER_WATER")
+				primary_trigger = 1
+			if("TRIGGER_ACID")
+				primary_trigger = 2
+			if("TRIGGER_VOLATILE")
+				primary_trigger = 3
+			if("TRIGGER_TOXIN")
+				primary_trigger = 4
+			if("TRIGGER_FORCE")
+				primary_trigger = 5
+			if("TRIGGER_ENERGY")
+				primary_trigger = 6
+			if("TRIGGER_HEAT")
+				primary_trigger = 7
+			if("TRIGGER_COLD")
+				primary_trigger = 8
+			if("TRIGGER_PLASMA")
+				primary_trigger = 9
+			if("TRIGGER_OXY")
+				primary_trigger = 10
+			if("TRIGGER_CO2")
+				primary_trigger = 11
+			if("TRIGGER_NITRO")
+				primary_trigger = 12
+
+		var/choice = alert(usr, "Secondary effect?", "Secondary effect", "Yes", "No") == "Yes"
+
+		if (choice)
+			secondary_effect = input(usr, "Choose an effect", "Choose effect") as null | anything in subtypesof(/datum/artifact_effect)
+
+			if (!ispath(secondary_effect))
+				return
+
+			secondary_trigger = input(usr, "Choose a trigger", "Choose a trigger") as null | anything in list("TRIGGER_TOUCH", "TRIGGER_WATER", "TRIGGER_ACID", "TRIGGER_VOLATILE", "TRIGGER_TOXIN", "TRIGGER_FORCE", "TRIGGER_ENERGY", "TRIGGER_HEAT", "TRIGGER_COLD", "TRIGGER_PLASMA", "TRIGGER_OXY", "TRIGGER_CO2", "TRIGGER_NITRO")
+
+			if (!secondary_trigger)
+				return
+			switch(secondary_trigger)
+				if("TRIGGER_TOUCH")
+					secondary_trigger = 0
+				if("TRIGGER_WATER")
+					secondary_trigger = 1
+				if("TRIGGER_ACID")
+					secondary_trigger = 2
+				if("TRIGGER_VOLATILE")
+					secondary_trigger = 3
+				if("TRIGGER_TOXIN")
+					secondary_trigger = 4
+				if("TRIGGER_FORCE")
+					secondary_trigger = 5
+				if("TRIGGER_ENERGY")
+					secondary_trigger = 6
+				if("TRIGGER_HEAT")
+					secondary_trigger = 7
+				if("TRIGGER_COLD")
+					secondary_trigger = 8
+				if("TRIGGER_PLASMA")
+					secondary_trigger = 9
+				if("TRIGGER_OXY")
+					secondary_trigger = 10
+				if("TRIGGER_CO2")
+					secondary_trigger = 11
+				if("TRIGGER_NITRO")
+					secondary_trigger = 12
+
+		A = new(usr.loc)
+		A.my_effect = new effect(A)
+		A.my_effect.trigger = primary_trigger
+
+		if (secondary_effect)
+			A.secondary_effect = new secondary_effect
+			A.secondary_effect.trigger = secondary_trigger
+		else
+			QDEL_NULL(A.secondary_effect)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

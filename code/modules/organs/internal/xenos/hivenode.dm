@@ -11,4 +11,8 @@
 
 /obj/item/organ/internal/xenos/hivenode/replaced_mob(mob/living/carbon/human/target)
 	..()
+<<<<<<< HEAD
 	owner.add_language(LANGUAGE_HIVEMIND)
+=======
+	owner.add_language(LANGUAGE_HIVEMIND)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

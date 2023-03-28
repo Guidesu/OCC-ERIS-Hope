@@ -19,6 +19,16 @@
 
 	var/static/dmm_suite/maploader = new
 
+<<<<<<< HEAD
+=======
+	///if true, creates a list of all atoms created by this template loading, defaults to FALSE
+	var/returns_created_atoms = FALSE
+
+	///the list of atoms created by this template being loaded, only populated if returns_created_atoms is TRUE
+	var/list/created_atoms = list()
+	//make sure this list is accounted for/cleared if you request it from ssatoms!
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/map_template/New(path = null, rename = null)
 	if(path)
 		mappath = path
@@ -39,6 +49,7 @@
 			height = bounds[MAP_MAXY]
 	return bounds
 
+<<<<<<< HEAD
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		return // let proper initialisation handle it later
@@ -64,6 +75,53 @@
 	atoms |= areas
 
 	SSatoms.InitializeAtoms(atoms)
+=======
+/datum/map_template/proc/initTemplateBounds(list/bounds)
+	if (!bounds) //something went wrong
+		stack_trace("[name] template failed to initialize correctly!")
+		return
+
+
+	var/list/obj/machinery/atmospherics/atmos_machines = list()
+	var/list/obj/structure/cable/cables = list()
+	var/list/atom/movable/movables = list()
+	var/list/area/areas = list()
+
+	var/list/turfs = block(
+		locate(
+			bounds[MAP_MINX],
+			bounds[MAP_MINY],
+			bounds[MAP_MINZ]
+			),
+		locate(
+			bounds[MAP_MAXX],
+			bounds[MAP_MAXY],
+			bounds[MAP_MAXZ]
+			)
+		)
+
+	for(var/turf/current_turf as anything in turfs)
+		var/area/current_turfs_area = current_turf.loc
+		areas |= current_turfs_area
+		if(!SSatoms.initialized)
+			continue
+
+		for(var/movable_in_turf in current_turf)
+			movables += movable_in_turf
+			if(istype(movable_in_turf, /obj/structure/cable))
+				cables += movable_in_turf
+				continue
+			if(istype(movable_in_turf, /obj/machinery/atmospherics))
+				atmos_machines += movable_in_turf
+
+	if(!SSatoms.initialized)
+		return
+
+	SSatoms.InitializeAtoms(areas + turfs + movables, returns_created_atoms ? created_atoms : null)
+
+	// NOTE, now that Initialize and LateInitialize run correctly, do we really
+	// need these two below?
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
 
@@ -72,9 +130,12 @@
 		var/area/A = I
 		A.power_change()
 
+<<<<<<< HEAD
 	if(machinery_was_awake)
 		SSmachines.wake() // Wake only if it was awake before we tried to suspended it.
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH)
@@ -283,4 +344,8 @@
 		admin_notice("Submap loader gave up with [budget] left to spend.", R_DEBUG)
 	else
 		admin_notice("Submaps loaded.", R_DEBUG)
+<<<<<<< HEAD
 	admin_notice("Loaded: [english_list(pretty_submap_list)]", R_DEBUG) */
+=======
+	admin_notice("Loaded: [english_list(pretty_submap_list)]", R_DEBUG) */
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

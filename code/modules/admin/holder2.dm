@@ -6,7 +6,7 @@ var/list/admin_datums = list()
 	var/rights = 0
 	var/fakekey			= null
 
-	var/weakref/marked_datum_weak
+	var/datum/weakref/marked_datum_weak
 
 	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as holders.
@@ -63,7 +63,11 @@ proc/admin_proc()
 
 NOTE: It checks usr by default. Supply the "Ñ" argument if you wish to check for a specific client/mob.
 */
+<<<<<<< HEAD
 /proc/check_rights(rights_required, show_msg=1, client/C = usr)
+=======
+/proc/check_rights(rights_required, show_msg=1, var/client/C = usr)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(ismob(C))
 		var/mob/M = C
 		C = M.client
@@ -73,7 +77,11 @@ NOTE: It checks usr by default. Supply the "Ñ" argument if you wish to check fo
 		return FALSE
 	if(!C.holder)
 		if(show_msg)
+<<<<<<< HEAD
 			C << "<span class='warning'>Error: You are not an admin.</span>"
+=======
+			to_chat(C, "<span class='warning'>Error: You are not an admin.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(rights_required)
@@ -81,7 +89,11 @@ NOTE: It checks usr by default. Supply the "Ñ" argument if you wish to check fo
 			return TRUE
 		else
 			if(show_msg)
+<<<<<<< HEAD
 				C << "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>"
+=======
+				to_chat(C, "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 	else
 		return TRUE

@@ -5,7 +5,7 @@
 /obj/item/grenade/chem_grenade
 	name = "grenade casing"
 	icon_state = "chemg"
-	item_state = "grenade"
+	item_state = "chemg" //Sprites by hyperioo
 	desc = "A hand made chemical grenade."
 	w_class = ITEM_SIZE_SMALL
 	force = WEAPON_FORCE_HARMLESS
@@ -22,6 +22,7 @@
 	var/list/beakers = new/list()
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/glass/bottle)
 	var/affected_area = 3
+	price_tag = 5
 
 /obj/item/grenade/chem_grenade/Initialize()
 	create_reagents(1000)
@@ -195,6 +196,14 @@
 	affected_area = 4
 	matter = list(MATERIAL_STEEL = 5)
 
+<<<<<<< HEAD
+=======
+/obj/item/grenade/chem_grenade/large/moebius
+	name = "large Soteria chem grenade"
+	desc = "An oversized grenade that affects a larger area. Has Soteria markings"
+	icon_state = "moebius_grenade"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//I tried to just put it in the allowed_containers list but
 	//if you do that it must have reagents.  If you're going to
 	//make a special case you might as well do it explicitly. -Sayu
@@ -232,6 +241,7 @@
 						beakers = list()
 	..()
 
+<<<<<<< HEAD
 /obj/item/grenade/chem_grenade/large/moebius
 	name = "large moebius chem grenade"
 	desc = "An oversized grenade that affects a larger area. Has Moebius markings"
@@ -239,6 +249,11 @@
 
 /obj/item/grenade/chem_grenade/metalfoam
 	name = "\"Stop-Space\""
+=======
+
+/obj/item/grenade/chem_grenade/metalfoam
+	name = "Lonestar \"Stop-Space\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "foam"
 	desc = "Used for emergency sealing of air breaches."
 	can_be_modified = FALSE
@@ -260,7 +275,11 @@
 	beakers += B2
 
 /obj/item/grenade/chem_grenade/incendiary
+<<<<<<< HEAD
 	name = "FS IG \"River\""
+=======
+	name = "HS IG \"River\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Used for clearing rooms of living things."
 	icon_state = "incendiary"
 	can_be_modified = FALSE
@@ -284,7 +303,11 @@
 	beakers += B2
 
 /obj/item/grenade/chem_grenade/antiweed
+<<<<<<< HEAD
 	name = "\"Flora Armageddon\""
+=======
+	name = "Lonestar \"Flora Armageddon\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
 	icon_state = "foam"
 	can_be_modified = FALSE
@@ -307,14 +330,23 @@
 	icon_state = "grenade"
 
 /obj/item/grenade/chem_grenade/antiweed/nt_antiweed
+<<<<<<< HEAD
 	name = "NeoTheology \"Kudzu Killer\""
 	desc = "NT brand weedkiller grenades. Designed to deal with Kudzu infestations back in New Rome. Mixes toxic biomatter with plasticides for great results"
+=======
+	name = "Absolute \"Kudzu Killer\""
+	desc = "Church brand weedkiller grenades. Designed to deal with Kudzu infestations. Mixes toxic biomatter with plasticides for great results"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "foam"
 	matter = list(MATERIAL_STEEL = 3, MATERIAL_PLASTIC = 2, MATERIAL_BIOMATTER = 5)
 	matter_reagents = list("water" = 30)
 
 /obj/item/grenade/chem_grenade/cleaner
+<<<<<<< HEAD
 	name = "\"Shit-Be-Gone\""
+=======
+	name = "Lonestar \"Shit-Be-Gone\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "foam"
 	desc = "Dirt? Grime? Blood and criminal evidence? Say good-fucking-bye to all of those things with one simple throw!"
 	can_be_modified = FALSE
@@ -323,6 +355,16 @@
 	spawn_tags = SPAWN_TAG_GRENADE_CLEANER
 	rarity_value = 25
 
+<<<<<<< HEAD
+=======
+/obj/item/grenade/chem_grenade/cleaner/nt_cleaner
+	name = "Absolutism \"Cleanse Capsule\""
+	desc = "Church brand cleaner grenades. Designed to deal with biogenerator accidents and the aftermaths of wildlife hordes in the colony."
+	icon_state = "foam"
+	matter = list(MATERIAL_STEEL = 3, MATERIAL_BIOMATTER = 5)
+	matter_reagents = list("water" = 30)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/grenade/chem_grenade/cleaner/Initialize()
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
@@ -337,6 +379,7 @@
 	beakers += B1
 	beakers += B2
 
+<<<<<<< HEAD
 /obj/item/grenade/chem_grenade/cleaner/nt_cleaner
 	name = "NeoTheology \"Cleanse Capsule\""
 	desc = "NT brand cleaner grenades. Designed to deal with Biogenerator accidents and the aftermaths of gang wars inside the New Rome slums."
@@ -346,6 +389,10 @@
 
 /obj/item/grenade/chem_grenade/teargas
 	name = "FS TGG \"Simon\""
+=======
+/obj/item/grenade/chem_grenade/teargas
+	name = "HS TGG \"Simon\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Concentrated Capsaicin. Contents under pressure. Use with caution."
 	can_be_modified = FALSE
 	icon_state = "grenade"
@@ -370,4 +417,8 @@
 
 #undef EMPTY
 #undef WIRED
+<<<<<<< HEAD
 #undef READY
+=======
+#undef READY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

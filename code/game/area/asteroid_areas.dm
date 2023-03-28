@@ -6,6 +6,30 @@
 	sound_env = ASTEROID
 	vessel = null
 
+/area/mine/prep
+	name = "Lonestar Mining Prep"
+
+/area/mine/processing
+	name = "Lonestar Ore Processing"
+
+/area/mine/hallway
+	name = "Lonestar General"
+
+/area/mine/medical
+	name = "Lonestar Triage"
+
+/area/mine/livingarea
+	name = "Lonestar Quarters"
+
+/area/mine/atmos
+	name = "Lonestar Atmos"
+
+/area/mine/power
+	name = "Lonestar Machine Room"
+
+/area/mine/lockers
+	name = "Lonestar Locker Room"
+
 /area/mine/explored
 	name = "Mine"
 	icon_state = "explored"
@@ -13,6 +37,15 @@
 /area/mine/unexplored
 	name = "Mine"
 	icon_state = "unexplored"
+	turf_initializer = new /datum/turf_initializer/mining()
+
+/area/mine/gulag
+	name = "Labor Mines"
+	has_gravity = 1
+
+/area/mine/gulag_base
+	name = "Labor Camp"
+	has_gravity = 1
 
 
 // OUTPOSTS
@@ -34,6 +67,7 @@
 	name = "Abandoned Fortress"
 	icon_state = "yellow"
 
+<<<<<<< HEAD
 /area/outpost/blacksite
 	name = "Abandoned Blacksite"
 	icon_state = "away"
@@ -46,6 +80,18 @@
 
 /area/outpost/blacksite/large
 	name = "Large Abandoned Blacksite"
+=======
+/area/outpost/abandoned_fortress/powered
+	name = "Abandoned Fortress"
+	icon_state = "yellow"
+	requires_power = FALSE
+
+/area/outpost/abandoned_fortress/powered_lit
+	name = "Excelsior Fortress"
+	icon_state = "yellow"
+	requires_power = FALSE
+	dynamic_lighting = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Main mining outpost
 /area/outpost/mining_main

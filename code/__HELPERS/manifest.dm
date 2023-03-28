@@ -16,6 +16,7 @@
 	var/list/dept_data = list(
 
 		list("names" = list(), "header" = "Command Staff", "flag" = COMMAND),
+<<<<<<< HEAD
 		list("names" = list(), "header" = "Cobalt Aegis Security", "flag" = IRONHAMMER),
 		list("names" = list(), "header" = "NanoTrasen Medical", "flag" = MEDICAL),
 		list("names" = list(), "header" = "NanoTrasen Research", "flag" = SCIENCE),
@@ -24,6 +25,16 @@
 		list("names" = list(), "header" = "Civilian", "flag" = CIVILIAN),
 		list("names" = list(), "header" = "Service", "flag" = SERVICE),
 		list("names" = list(), "header" = "Engineering", "flag" = ENGINEERING),
+=======
+		list("names" = list(), "header" = "Marshal and Blackshield", "flag" = SECURITY),
+		list("names" = list(), "header" = "Soteria Medical", "flag" = MEDICAL),
+		list("names" = list(), "header" = "Soteria Research", "flag" = SCIENCE),
+		list("names" = list(), "header" = "Church of the Absolute", "flag" = CHURCH),
+		list("names" = list(), "header" = "Lonestar Shipping Solutions", "flag" = LSS),
+		list("names" = list(), "header" = "Artificers Guild", "flag" = ENGINEERING),
+		list("names" = list(), "header" = "Prospector", "flag" = PROSPECTORS),
+		list("names" = list(), "header" = "Civilian", "flag" = CIVILIAN),
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		list("names" = list(), "header" = "Miscellaneous", "flag" = MISC),
 		list("names" = list(), "header" = "Silicon")
 	)
@@ -63,7 +74,8 @@
 				if (temp)
 					isactive[name] = temp
 				else
-					skip = TRUE
+					break
+					//skip = TRUE //Disabled so that no matter how afk, someone is still on the manifest.
 				break
 
 		if (skip)
@@ -144,6 +156,10 @@
 		"med" = filtered_nano_crew_manifest(medical_positions),\
 		"sup" = filtered_nano_crew_manifest(cargo_positions),\
 		"chr" = filtered_nano_crew_manifest(church_positions),\
+<<<<<<< HEAD
+=======
+		"pro" = filtered_nano_crew_manifest(prospector_positions),\
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"bot" = silicon_nano_crew_manifest(nonhuman_positions),\
 		"civ" = filtered_nano_crew_manifest(civilian_positions)\
 		)

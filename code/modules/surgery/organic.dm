@@ -74,7 +74,11 @@
 		SPAN_NOTICE("You keep the incision open on [organ.get_surgery_name()] with \the [tool].")
 	)
 	organ.open = 2
+<<<<<<< HEAD
 	organ.ui_interact(user)
+=======
+	organ.nano_ui_interact(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/surgery_step/retract_skin/fail_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
 	user.visible_message(
@@ -105,7 +109,10 @@
 		SPAN_NOTICE("You cauterize the incision on [organ.get_surgery_name()] with \the [tool].")
 	)
 	organ.open = 0
+<<<<<<< HEAD
 	organ.germ_level = 0
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	organ.diagnosed = FALSE
 
 /datum/surgery_step/cauterize/fail_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
@@ -150,6 +157,7 @@
 	)
 	organ.take_damage(5, 0)
 
+<<<<<<< HEAD
 
 
 /datum/surgery_step/detach_organ
@@ -189,6 +197,14 @@
 	target_organ_type = /obj/item/organ/internal/bone
 	required_tool_quality = QUALITY_HAMMERING
 	duration = 80
+=======
+/datum/surgery_step/break_bone
+	target_organ_type = /obj/item/organ/internal
+	required_tool_quality = QUALITY_HAMMERING
+	//its easyer and faster to harm then heal
+	difficulty = 0
+	duration = 20
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	blood_level = 1
 
 /datum/surgery_step/break_bone/can_use(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
@@ -218,7 +234,11 @@
 	organ.take_damage(5, 0)
 
 /datum/surgery_step/mend_bone
+<<<<<<< HEAD
 	target_organ_type = /obj/item/organ/internal/bone
+=======
+	target_organ_type = /obj/item/organ/internal
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	required_tool_quality = QUALITY_BONE_SETTING
 	duration = 100
 	blood_level = 1
@@ -234,7 +254,11 @@
 	return .
 
 
+<<<<<<< HEAD
 /datum/surgery_step/mend_bone/begin_step(mob/living/user, obj/item/organ/internal/bone/organ, obj/item/stack/tool)
+=======
+/datum/surgery_step/mend_bone/begin_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.visible_message(
 		SPAN_NOTICE("[user] starts mending [organ.get_surgery_name()] with \the [tool]."),
 		SPAN_NOTICE("You start mending [organ.get_surgery_name()] with \the [tool].")
@@ -242,13 +266,21 @@
 
 	organ.owner_custom_pain("The pain in your [organ.name] is living hell!", 1)
 
+<<<<<<< HEAD
 /datum/surgery_step/mend_bone/end_step(mob/living/user, obj/item/organ/internal/bone/organ, obj/item/stack/tool)
+=======
+/datum/surgery_step/mend_bone/end_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	user.visible_message(
 		SPAN_NOTICE("[user] mends [organ.get_surgery_name()] with \the [tool]."),
 		SPAN_NOTICE("You mend [organ.get_surgery_name()] with \the [tool].")
 	)
 	organ.mend()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/surgery_step/mend_bone/fail_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
 	user.visible_message(
 		SPAN_WARNING("[user]'s hand slips, scraping [organ.get_surgery_name()] with \the [tool]!"),
@@ -257,7 +289,11 @@
 	organ.take_damage(5, 0)
 
 /datum/surgery_step/replace_bone
+<<<<<<< HEAD
 	target_organ_type = /obj/item/organ/internal/bone
+=======
+	target_organ_type = /obj/item/organ/internal
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	allowed_tools = list(/obj/item/organ/internal/bone = 75) //Bone replacement surgery is hard
 	duration = 120
 	blood_level = 1
@@ -294,6 +330,7 @@
 	)
 	organ.fracture()
 
+<<<<<<< HEAD
 /datum/surgery_step/reinforce_bone
 	target_organ_type = /obj/item/organ/internal/bone
 	allowed_tools = list(/obj/item/bone_brace = 50) //Bone reinforcement surgery is very hard
@@ -329,6 +366,48 @@
 /datum/surgery_step/remove_item
 	required_tool_quality = QUALITY_CLAMPING
 	duration = 90
+=======
+/datum/surgery_step/detach_organ
+	target_organ_type = /obj/item/organ/internal
+	required_tool_quality = QUALITY_CUTTING
+	duration = 80
+	blood_level = 1
+
+/datum/surgery_step/detach_organ/can_use(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+	return BP_IS_ORGANIC(organ) && organ.is_open() && !(organ.status & ORGAN_CUT_AWAY)
+
+/datum/surgery_step/detach_organ/begin_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+	user.visible_message(
+		SPAN_NOTICE("[user] starts to separate [organ.get_surgery_name()] with \the [tool]."),
+		SPAN_NOTICE("You start to separate [organ.get_surgery_name()] with \the [tool].")
+	)
+
+	var/obj/item/organ/external/limb = organ.get_limb()
+	if(limb)
+		organ.owner_custom_pain("The pain in your [limb.name] is living hell!", 1)
+
+/datum/surgery_step/detach_organ/end_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+	user.visible_message(
+		SPAN_NOTICE("[user] separates [organ.get_surgery_name()] with \the [tool]."),
+		SPAN_NOTICE("You separate [organ.get_surgery_name()] with \the [tool].")
+	)
+	organ.status |= ORGAN_CUT_AWAY
+
+/datum/surgery_step/detach_organ/fail_step(mob/living/user, obj/item/organ/internal/organ, obj/item/stack/tool)
+	user.visible_message(
+		SPAN_WARNING("[user]'s hand slips, damaging [organ.get_surgery_name()] with \the [tool]!"),
+		SPAN_WARNING("Your hand slips, damaging [organ.get_surgery_name()] with \the [tool]!")
+	)
+	organ.take_damage(5, 0)
+
+
+
+/datum/surgery_step/remove_item
+	required_tool_quality = QUALITY_CLAMPING
+	//Easyer to jank something out then it is to heal the wound you made
+	difficulty = 0
+	duration = 30
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/surgery_step/remove_item/can_use(mob/living/user, obj/item/organ/external/organ, obj/item/tool, atom/movable/target)
 	return BP_IS_ORGANIC(organ) && organ.is_open() && organ.can_remove_item(target)
@@ -379,7 +458,12 @@
 		SPAN_NOTICE("[user] amputates [organ.get_surgery_name()] at the [organ.amputation_point] with \the [tool]."),
 		SPAN_NOTICE("You amputate [organ.get_surgery_name()] with \the [tool].")
 	)
+<<<<<<< HEAD
 	organ.droplimb(TRUE, DROPLIMB_EDGE)
+=======
+	organ.droplimb(TRUE, DISMEMBER_METHOD_EDGE)
+	playsound(user.loc, 'sound/sanity/limb_tear_off.ogg', 50, 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/surgery_step/amputate/fail_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
 	user.visible_message(
@@ -388,6 +472,7 @@
 	)
 	organ.take_damage(30, 0, sharp=TRUE, edge=TRUE)
 	organ.fracture()
+<<<<<<< HEAD
 
 
 //removing shrapnel from yourself, using a knife
@@ -455,3 +540,5 @@
 	)
 	organ.take_damage(0, tool.force*1.5)
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

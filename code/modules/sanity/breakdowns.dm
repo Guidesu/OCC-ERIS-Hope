@@ -44,7 +44,10 @@
 	holder.owner.adjustCloneLoss(-10)
 	holder.owner.adjustFireLoss(-25)
 	holder.owner.adjustOxyLoss(-45)
+<<<<<<< HEAD
 	holder.owner.adjustToxLoss(-25)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	holder.owner.reagents.add_reagent("tramadol", 5) // the way this works is silly as all fuck and should probably be fixed at some point
 	..()
 
@@ -105,12 +108,20 @@
 	start_messages = list(
 		"You feel invincible!",
 		"You are unstoppable, you are unbreakable!",
+<<<<<<< HEAD
 		"You feel like a GOD!",
 		"You feel a rush of adrenaline in your veins. Nothing can hurt you now!",
 		"You've learned to brush off wounds that would kill lesser beings!"
 	)
 	end_messages = list(
 		"The last drop of adrenaline leaves your veins. You feel like a normal human now."
+=======
+		"You feel a rush of adrenaline in your veins. Nothing can hurt you now!",
+		"You've learned to brush off wounds that would kill lesser beings!",
+	)
+	end_messages = list(
+		"The last drop of adrenaline leaves your veins. You feel like a normal human now.",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /datum/breakdown/positive/determination/occur()
@@ -137,12 +148,21 @@
 	)
 
 /datum/breakdown/positive/lesson/conclude()
+<<<<<<< HEAD
 	for(var/stat in ALL_STATS)
 		holder.owner.stats.changeStat(stat, rand(5,10))
 	..()
 
 
 
+=======
+	for(var/stat in ALL_STATS_FOR_LEVEL_UP)
+		holder.owner.stats.changeStat(stat, rand(1,3))
+	..()
+
+
+/* - Shit breakdown - disabled until it is reworked to be in specific circumstances.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/breakdown/negative/selfharm
 	name = "Self-harm"
 	duration = 1 MINUTES
@@ -165,7 +185,11 @@
 	if(!.)
 		return
 	if(init_update())
+<<<<<<< HEAD
 		var/datum/gender/G = gender_datums[holder.owner.identifying_gender] // OCCULUS EDIT - adjusting for gender rework
+=======
+		var/datum/gender/G = holder.owner.get_gender()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(prob(50))
 			var/emote = pick(list(
 				"screams incoherently!",
@@ -190,7 +214,11 @@
 				if(damage_eyes)
 					holder.owner.visible_message(SPAN_DANGER("[holder.owner] scratches at [G.his] eyes!"))
 					var/obj/item/organ/internal/eyes/eyes = holder.owner.random_organ_by_process(OP_EYES)
+<<<<<<< HEAD
 					eyes.take_damage(rand(1,2), 1)
+=======
+					eyes.take_damage(rand(1,10), TRUE, BRUTE, TRUE, TRUE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				else
 					holder.owner.visible_message(SPAN_DANGER(pick(list(
 						"[holder.owner] tries to end [G.his] misery!",
@@ -203,6 +231,7 @@
 
 /datum/breakdown/negative/selfharm/occur()
 	spawn(delay)
+<<<<<<< HEAD
 		holder.owner.suppress_communication = TRUE	// OCCULUS EDIT: was ++holder.owner.suppress_communication
 	return ..()
 
@@ -211,22 +240,42 @@
 	..()
 
 
+=======
+		++holder.owner.suppress_communication
+	return ..()
+
+/datum/breakdown/negative/selfharm/conclude()
+	--holder.owner.suppress_communication
+	..()
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/breakdown/negative/hysteric
 	name = "Hysteric"
 	duration = 1.5 MINUTES
+<<<<<<< HEAD
 	delay = 30 SECONDS
+=======
+	delay = 60 SECONDS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	restore_sanity_post = 50
 
 	start_messages = list(
 		"You get overwhelmed and start to panic!",
 		"You're inconsolably terrified!",
 		"You can't choke back the tears anymore!",
+<<<<<<< HEAD
 		"The hair on your nape stands on end! The fear sends you into a frenzy!",
 		"It's too much! You freak out and lose control!"
 	)
 	end_messages = list(
 		"You calm down as your feelings subside. You feel horribly embarassed!"
+=======
+		"It's too much! You freak out and lose control!"
+	)
+	end_messages = list(
+		"You calm down as your feelings subside. You feel horribly embarrassed!"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 /datum/breakdown/negative/hysteric/update()
@@ -257,7 +306,11 @@
 
 
 /datum/breakdown/negative/delusion
+<<<<<<< HEAD
 	//name = "Delusion"
+=======
+	name = "Delusion"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	duration = 1 MINUTES
 	restore_sanity_post = 50
 
@@ -285,7 +338,11 @@
 		holder.owner.playsound_local(holder.owner, 'sound/effects/alert.ogg')
 
 
+<<<<<<< HEAD
 /* Occulus Removal Start - By popular opinion, this is a bad breakdown.
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/breakdown/negative/fabric
 	name = "The Fabric"
 	duration = 3 MINUTES
@@ -325,8 +382,12 @@
 	holder.owner.client?.images |= I
 
 /datum/breakdown/negative/fabric/proc/update_client_images()
+<<<<<<< HEAD
 	holder.owner.client?.images |= images 
 */ // Occulus Removal End
+=======
+	holder.owner.client?.images |= images
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/breakdown/negative/spiral
@@ -336,7 +397,11 @@
 
 	start_messages = list(
 		"You feel like there is no point in any of this!",
+<<<<<<< HEAD
 		"You brain refuses to comprehend any of this!",
+=======
+		"Your brain refuses to comprehend any of this!",
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		"You feel like you don't want to continue whatever you're doing!",
 		"You feel like your best days are gone forever!",
 		"You feel it. You know it. There is no turning back!"
@@ -355,6 +420,7 @@
 	insight_reward = 20
 	restore_sanity_post = 80
 
+<<<<<<< HEAD
 	start_messages = list("You think this doesn’t feel real... But reality hurts! Ensure that you will feel again!")
 	end_messages = list("You feel alive again.")
 	var/message_time = 0
@@ -362,6 +428,14 @@
 						"How does it feel to control the power of lightning? let's find out.",
 						"More, more, more, more you want more power. Take it in your hands.",
 						"Electricity belongs to everyone, why does machinery grab it?")
+=======
+	start_messages = list("You think this doesn’t feel real... you have to make sure this is real! Get a jump from electrictiy!")
+	end_messages = list("You feel alive again.")
+	var/message_time = 0
+	var/messages = list("You want to receive an electric shock to make sure you're really alive.",
+						"You think about a way to make sure this is real.. a shock, that's it!.",
+						"Pain is real, numbiness is false. I must.. feel!.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/breakdown/common/power_hungry/can_occur()
 	if(holder.owner.species.siemens_coefficient > 0)
@@ -394,11 +468,19 @@
 
 /datum/breakdown/negative/glassification
 	name = "Glassification"
+<<<<<<< HEAD
 	duration = 5 MINUTES
 	restore_sanity_post = 40
 	var/time
 	var/cooldown = 15 SECONDS
 	var/time_view = 5 SECONDS
+=======
+	duration = 2 MINUTES
+	restore_sanity_post = 40
+	var/time
+	var/cooldown = 20 SECONDS
+	var/time_view = 1 SECONDS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/active_view = FALSE
 	var/mob/living/carbon/human/target
 	start_messages = list("You start to see through everything. Your mind expands.")
@@ -445,15 +527,27 @@
 	active_view = FALSE
 	time = world.time + cooldown
 
+<<<<<<< HEAD
+=======
+/*
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/breakdown/common/herald
 	name = "Herald"
 	restore_sanity_pre = 5
 	restore_sanity_post = 45
+<<<<<<< HEAD
 	duration = 3 MINUTES	// SYZYGY EDIT - Nerfs its duration from 5 to 3 minutes
 	start_messages = list("You've seen the abyss too long, and now forbidden knowledge haunts you.")
 	end_messages = list("You feel like you've forgotten something important. But this comforts you.")
 	var/message_time = 0
 	var/cooldown_message = 15 SECONDS	// SYZYGY EDIT - Nerfs its cooldown to 15 seconds from 10
+=======
+	duration = 5 MINUTES
+	start_messages = list("You've seen the abyss too long, and now forbidden knowledge haunts you.")
+	end_messages = list("You feel like you've forgotten something important. But this comforts you.")
+	var/message_time = 0
+	var/cooldown_message = 10 SECONDS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/breakdown/common/herald/update()
@@ -463,7 +557,12 @@
 	if(world.time >= message_time)
 		message_time = world.time + cooldown_message
 		var/chance = rand(1, 100)
+<<<<<<< HEAD
 		holder.owner.whisper_say(chance <= 50 ? "[holder.pick_quote_20()]" : "[holder.pick_quote_40()]") //Occulus edit, so you mutter to yourself
+=======
+		holder.owner.say(chance <= 50 ? "[holder.pick_quote_20()]" : "[holder.pick_quote_40()]")
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/breakdown/common/desire_for_chrome
 	name = "Desire for Chrome"
@@ -554,13 +653,21 @@
 		message_time = world.time + BREAKDOWN_ALERT_COOLDOWN
 		to_chat(holder.owner, SPAN_NOTICE(pick(messages)))
 
+<<<<<<< HEAD
+=======
+/* Soj Edit, dont be a creep
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/breakdown/common/obsession
 	name = "Obsession"
 	insight_reward = 20
 	restore_sanity_post = 70
 	var/mob/living/carbon/human/target
 	var/message_time = 0
+<<<<<<< HEAD
 	var/obsession_time = 5 SECONDS //Occulus edit, so other breakdowns aren't so common but it's not 3 minutes of spam
+=======
+	var/obsession_time = 3 MINUTES
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/last_time
 	var/delta_time
 
@@ -616,7 +723,11 @@
 	for(var/stat in ALL_STATS)
 		holder.owner.stats.removeTempStat(stat, "Obsession")
 	..()
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define KLEPTOMANIA_COOLDOWN rand(30 SECONDS, 60 SECONDS)
 
 /datum/breakdown/common/kleptomania
@@ -656,7 +767,11 @@
 
 
 /datum/breakdown/common/signs
+<<<<<<< HEAD
 	//name = "Signs"
+=======
+	name = "Signs"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	restore_sanity_post = 70
 	insight_reward = 5
 	var/message

@@ -30,9 +30,15 @@ var/global/list/stool_cache = list() //haha stool
 	update_icon()
 
 /obj/item/stool/padded/New(var/newloc, var/new_material)
+<<<<<<< HEAD
 	..(newloc, "steel", "carpet")
 
 /obj/item/stool/on_update_icon()
+=======
+	..(newloc, MATERIAL_STEEL, MATERIAL_CARPET)
+
+/obj/item/stool/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// Prep icon.
 	icon_state = ""
 	cut_overlays()
@@ -42,7 +48,11 @@ var/global/list/stool_cache = list() //haha stool
 		var/image/I = image(icon, base_icon)
 		I.color = material.icon_colour
 		stool_cache[cache_key] = I
+<<<<<<< HEAD
 	associate_with_overlays(stool_cache[cache_key])
+=======
+	add_overlay(stool_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
@@ -50,7 +60,11 @@ var/global/list/stool_cache = list() //haha stool
 			var/image/I =  image(icon, "stool_padding")
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
+<<<<<<< HEAD
 		associate_with_overlays(stool_cache[padding_cache_key])
+=======
+		add_overlay(stool_cache[padding_cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// Strings.
 	if(padding_material)
 		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
@@ -79,7 +93,11 @@ var/global/list/stool_cache = list() //haha stool
 		dismantle()
 		qdel(src)
 		var/mob/living/T = M
+<<<<<<< HEAD
 		T.apply_effect(10, WEAKEN, T.getarmor(ARMOR_MELEE)) //Occulus Edit - Breaking a barstool over someone's back now respects armor!
+=======
+		T.Weaken(10)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		T.damage_through_armor(20, BRUTE, BP_CHEST, ARMOR_MELEE)
 		return
 	..()
@@ -125,7 +143,7 @@ var/global/list/stool_cache = list() //haha stool
 			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
-			padding_type = "carpet"
+			padding_type = MATERIAL_CARPET
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
@@ -165,7 +183,11 @@ var/global/list/stool_cache = list() //haha stool
 	else
 		..()
 
+<<<<<<< HEAD
 /obj/item/stool/custom/on_update_icon()
+=======
+/obj/item/stool/custom/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 

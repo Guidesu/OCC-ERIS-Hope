@@ -62,7 +62,11 @@
 	if(!force && parent)
 		_RemoveFromParent()
 	if(!silent)
+<<<<<<< HEAD
 		SEND_SIGNAL(parent, COMSIG_COMPONENT_REMOVING, src)
+=======
+		LEGACY_SEND_SIGNAL(parent, COMSIG_COMPONENT_REMOVING, src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	parent = null
 	return ..()
 
@@ -112,7 +116,11 @@
 	var/list/sig_types = islist(sig_type_or_types) ? sig_type_or_types : list(sig_type_or_types)
 	for(var/sig_type in sig_types)
 		if(!override && procs[target][sig_type])
+<<<<<<< HEAD
 			crash_with("[sig_type] overridden. Use override = TRUE to suppress this warning")
+=======
+			CRASH("[sig_type] overridden. Use override = TRUE to suppress this warning")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		procs[target][sig_type] = proc_or_callback
 
@@ -139,12 +147,19 @@
 			if(2)
 				lookup[sig] = (lookup[sig]-src)[1]
 			if(1)
+<<<<<<< HEAD
 				crash_with("[target] ([target.type]) somehow has single length list inside comp_lookup")
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(src in lookup[sig])
 					lookup -= sig
 					if(!length(lookup))
 						target.comp_lookup = null
 						break
+<<<<<<< HEAD
+=======
+				CRASH("[target] ([target.type]) somehow has single length list inside comp_lookup")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(0)
 				lookup -= sig
 				if(!length(lookup))
@@ -164,7 +179,12 @@
 	return
 
 /datum/component/proc/PostTransfer()
+<<<<<<< HEAD
 	return COMPONENT_NOTRANSFER //Do not support transfer by default as you must properly support it
+=======
+	return COMPONENT_NOTRANSFER
+	//Do not support transfer by default as you must properly support it
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/component/proc/_GetInverseTypeList(our_type = type)
 	//we can do this one simple trick
@@ -267,7 +287,11 @@
 		new_comp = new nt(arglist(args)) // Dupes are allowed, act like normal
 
 	if(!old_comp && !QDELETED(new_comp)) // Nothing related to duplicate components happened and the new component is healthy
+<<<<<<< HEAD
 		SEND_SIGNAL(src, COMSIG_COMPONENT_ADDED, new_comp)
+=======
+		LEGACY_SEND_SIGNAL(src, COMSIG_COMPONENT_ADDED, new_comp)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return new_comp
 	return old_comp
 
@@ -283,7 +307,11 @@
 	PreTransfer()
 	_RemoveFromParent()
 	parent = null
+<<<<<<< HEAD
 	SEND_SIGNAL(old_parent, COMSIG_COMPONENT_REMOVING, src)
+=======
+	LEGACY_SEND_SIGNAL(old_parent, COMSIG_COMPONENT_REMOVING, src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/proc/TakeComponent(datum/component/target)
 	if(!target || target.parent == src)

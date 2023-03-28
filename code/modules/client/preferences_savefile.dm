@@ -22,15 +22,18 @@
 	loaded_preferences = S
 	return 1
 
-/datum/preferences/proc/save_preferences()
+/datum/preferences/proc/save_preferences(var/announce = 1)
 	if(!path)				return 0
 	if(!check_cooldown())
 		if(istype(client))
 			to_chat(client, SPAN_WARNING("You're attempting to save your preferences a little too fast. Wait half a second, then try again."))
+			log_and_message_admins("[key_name(usr)] has saved their preferences really fast and was stopped.")
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
 	S.cd = "/"
+	if(announce)
+		log_and_message_admins("[key_name(usr)] has saved their preferences.")
 
 	S["version"] << SAVEFILE_VERSION_MAX
 	player_setup.save_preferences(S)
@@ -42,6 +45,7 @@
 	if(!check_cooldown())
 		if(istype(client))
 			to_chat(client, SPAN_WARNING("You're attempting to load your character a little too fast. Wait half a second, then try again."))
+			log_and_message_admins("[key_name(usr)] has loaded a character too fast and was stopped.")
 		return 0
 
 	if(!fexists(path))		return 0
@@ -67,6 +71,7 @@
 		S.cd = GLOB.maps_data.character_load_path(S, default_slot)
 
 	loaded_character = S
+	log_and_message_admins("[key_name(usr)] has loaded a character.")
 
 	return 1
 
@@ -75,6 +80,7 @@
 	if(!check_cooldown())
 		if(istype(client))
 			to_chat(client, SPAN_WARNING("You're attempting to save your character a little too fast. Wait half a second, then try again."))
+			log_and_message_admins("[key_name(usr)] has saved a character really fast and was stopped.")
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
@@ -83,9 +89,13 @@
 	S["version"] << SAVEFILE_VERSION_MAX
 	player_setup.save_character(S)
 	loaded_character = S
+<<<<<<< HEAD
 
 	try_refresh_lobby(client.mob)
 
+=======
+	log_and_message_admins("[key_name(usr)] has saved a character.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return S
 
 /datum/preferences/proc/overwrite_character(slot)			//Eclipse edit.
@@ -108,6 +118,23 @@
 /datum/preferences/proc/sanitize_preferences()
 	player_setup.sanitize_setup()
 	return 1
+
+/datum/preferences/proc/overwrite_character(slot)
+	if(!path)				return 0
+	if(!fexists(path))		return 0
+	var/savefile/S = new /savefile(path)
+	if(!S)					return 0
+	if(!slot)	slot = default_slot
+	if(slot != SAVE_RESET)
+		slot = sanitize_integer(slot, 1, config.character_slots, initial(default_slot))
+		if(slot != default_slot)
+			default_slot = slot
+			S["default_slot"] << slot
+	else
+		S["default_slot"] << default_slot
+
+	return 1
+
 
 /datum/preferences/proc/update_setup(var/savefile/preferences, var/savefile/character)
 	if(!preferences || !character)

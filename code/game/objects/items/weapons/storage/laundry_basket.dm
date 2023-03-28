@@ -50,7 +50,11 @@
 	linked = O
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/storage/laundry_basket/on_update_icon()
+=======
+/obj/item/storage/laundry_basket/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(contents.len)
 		icon_state = "laundry-full"
 	else

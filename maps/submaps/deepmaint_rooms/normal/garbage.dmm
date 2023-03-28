@@ -6,11 +6,19 @@
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "c" = (
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "d" = (
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"d" = (
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint,
 /area/deepmaint)
 "e" = (
@@ -28,7 +36,11 @@
 	icon_state = "railing0";
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "g" = (
@@ -37,7 +49,11 @@
 	icon_state = "railing0";
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "h" = (
@@ -54,7 +70,11 @@
 	icon_state = "railing0";
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "j" = (
@@ -63,11 +83,19 @@
 	icon_state = "railing0";
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "k" = (
 /obj/spawner/pack/machine,
+=======
+/obj/random/scrap/moderate_weighted,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"k" = (
+/obj/random/pack/machine,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_cargo,
 /area/deepmaint)
 "l" = (
@@ -76,12 +104,20 @@
 	icon_state = "railing0";
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "m" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "n" = (
@@ -91,16 +127,28 @@
 	icon_state = "railing0";
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "o" = (
 /obj/structure/railing,
+<<<<<<< HEAD
 /obj/spawner/scrap,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "p" = (
 /obj/spawner/scrap,
+=======
+/obj/random/scrap/moderate_weighted,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"p" = (
+/obj/random/scrap/moderate_weighted,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -112,6 +160,7 @@
 	anchored = 1
 	},
 /obj/structure/railing,
+<<<<<<< HEAD
 /obj/spawner/scrap,
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
@@ -124,10 +173,24 @@
 /obj/spawner/mob/roaches/cluster/low_chance,
 /turf/simulated/floor/tiled/techmaint,
 /area/deepmaint)
+=======
+/obj/random/scrap/moderate_weighted,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"r" = (
+/obj/random/junk/low_chance,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "t" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
+<<<<<<< HEAD
+=======
+/obj/random/mob/psi_monster/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "u" = (
@@ -138,12 +201,40 @@
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
 "v" = (
+<<<<<<< HEAD
 /obj/spawner/traps/low_chance,
+=======
+/obj/random/traps/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint_perforated,
 /area/deepmaint)
+<<<<<<< HEAD
+=======
+"w" = (
+/obj/structure/catwalk,
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"A" = (
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"F" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"Q" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/deepmaint)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -153,8 +244,13 @@ a
 a
 a
 a
+<<<<<<< HEAD
 s
 a
+=======
+a
+Q
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 "}
@@ -178,7 +274,11 @@ e
 e
 e
 e
+<<<<<<< HEAD
 e
+=======
+w
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 e
 v
@@ -194,7 +294,11 @@ j
 j
 n
 e
+<<<<<<< HEAD
 b
+=======
+F
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -238,7 +342,11 @@ a
 "}
 (8,1,1) = {"
 a
+<<<<<<< HEAD
 b
+=======
+F
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 i
 l
@@ -256,10 +364,17 @@ e
 e
 m
 e
+<<<<<<< HEAD
 e
 m
 e
 u
+=======
+w
+m
+e
+A
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (10,1,1) = {"
@@ -281,9 +396,15 @@ d
 a
 a
 a
+<<<<<<< HEAD
 a
 a
 s
+=======
+Q
+a
+a
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a

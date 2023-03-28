@@ -9,6 +9,7 @@
 	contents_list_base = list(/obj/item/clothing/under/rank/captain = 1,
 	/obj/item/clothing/gloves/captain = 1)
 	contents_list_extra = list()
+<<<<<<< HEAD
 	contents_list_random = list(/obj/item/clothing/head/space/capspace = 70,
 	/obj/item/clothing/suit/space/captain = 70,
 	/obj/item/tank/jetpack/oxygen = 55,
@@ -18,28 +19,44 @@
 	/obj/item/card/id/captains_spare = 10,
 	/obj/item/clothing/under/captainformal = 65,
 	/obj/item/clothing/head/caphat/formal = 65,
+=======
+	contents_list_random = list(/obj/item/tank/jetpack/oxygen = 55,
+	/obj/item/tool/chainofcommand = 65,
+	/obj/item/reagent_containers/food/drinks/flask = 50,
+	/obj/item/gun/energy/captain = 65,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	/obj/item/device/radio/headset/heads/captain = 40,
 	/obj/item/bedsheet/captain = 30,
 	/obj/item/storage/backpack/satchel/captain = 40,
 	/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 15,
 	/obj/item/modular_computer/tablet/lease/preset/command = 25,
+<<<<<<< HEAD
 	/obj/item/stamp/captain = 35,
 	/obj/item/disk/nuclear = 15,
 	/obj/item/hand_tele = 25,
+=======
+	/obj/item/hand_tele = 25,
+	/obj/item/bluespace_harpoon = 15,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	/obj/item/reagent_containers/hypospray = 15,
 	/obj/item/hatton = 15,
 	/obj/item/rcd = 15,
 	/obj/item/melee/telebaton = 15,
+<<<<<<< HEAD
 	/obj/item/clothing/suit/storage/greatcoat = 15)
 	weight = 0.2
+=======
+	/obj/item/clothing/suit/armor/hos = 15)
+	weight = 0.1 //Rarest
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /* Occulus edit
 /datum/stash/command/kismet
 	contents_list_external = list(/obj/item/remains/human = 1)
 	lore = "A hundred thousand credits of education fallen to a ten cent rubber bullet to the temple.<br>\
 <br>\
- Kismet, my captain.<br>\
- You were too vainglorious for anything but that damned fine hat. As for your effects, the mutineers won't have them.<br>\
+ Kismet, my friend.<br>\
+ You were too vainglorious for anything but that damned fine hat. As for your effects, the looters won't have them.<br>\
 <br>\
  Lest I forget, %D"
 
@@ -91,4 +108,7 @@ Remember this spot when the anesthetic wears off<br>\
  %D;<br>\
  <br>\
  don't go stumbling around for a week like last time. "
+<<<<<<< HEAD
  */
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

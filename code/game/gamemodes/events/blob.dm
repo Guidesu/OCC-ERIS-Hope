@@ -1,10 +1,8 @@
 /*
 	The blob is a horrible acidic slime creature that eats through airlocks and expands infinitely.
 	The rate of expansion slows down as it grows, so it is ultimately soft-capped
-
 	Its attacks deal light burn damage, but spam many hits. They deal a lot of damage by splashing acid
 	onto victims, allowing acidproof gear to provide some good protection
-
 	Blobs are very vulnerable to fire and lasers. Flamethrower is the recommended weapon, and
 	In an emergency, a phoron canister and a lighter will bring a quick end to a blob
 */
@@ -30,10 +28,23 @@
 /datum/event/blob/start()
 	var/area/A = random_ship_area(filter_players = TRUE, filter_critical = TRUE)
 	var/turf/T = A.random_space()
+	var/active_players = 0
+	var/mob/living/carbon/human/fighter
 	if(!T)
 		log_and_message_admins("Blob failed to find a viable turf.")
 		kill()
 		return
+
+	for(fighter in GLOB.player_list)
+		if(fighter.mind.assigned_role in list(JOBS_ANTI_HIVEMIND))
+			active_players++
+
+	log_and_message_admins("Active Blob combative players number is [active_players].")
+	if(GLOB.hive_data_bool["pop_lock"])
+		if(active_players <= 7)
+			log_and_message_admins("Blob failed to spawn as their was less then 7 active players exspected to combat the blob.")
+			kill()
+			return
 
 	log_and_message_admins("Blob spawned at \the [get_area(T)]", location = T)
 	Blob = new /obj/effect/blob/core(T)
@@ -66,12 +77,12 @@
 	opacity = 0
 	anchored = TRUE
 	mouse_opacity = 2
-
-	var/maxHealth = 20
-	var/health = 1
-	var/health_regen = 1.7
+	var/icon_scale = 1
+	maxHealth = 20
+	health = 1
+	var/health_regen = 3
 	var/brute_resist = 1.25
-	var/fire_resist = 0.6
+	var/fire_resist = 0.8
 	var/expandType = /obj/effect/blob
 
 	//We will periodically update and track neighbors in two lists:
@@ -103,15 +114,15 @@
 	update_icon()
 	set_awake()
 
-
 	//Random rotation for blobs, as well as larger sizing for some
-	var/rot = pick(list(0, 90, 180, -90))
-	var/matrix/M = matrix()
-	M.Turn(rot)
-	M.Scale(icon_scale)
-	transform = M
 	name += "[rand(0,999)]"
 	return ..(loc)
+
+/obj/effect/blob/add_initial_transforms()
+	. = ..()
+
+	var/rot = pick(list(0, 90, 180, -90))
+	add_new_transformation(/datum/transform_type/modular, list(scale_x = icon_scale, scale_y = icon_scale, rotation = rot, flag = BLOB_INITIAL_TRANSFORM, priority = BLOB_INITIAL_TRANSFORM_PRIORITY))
 
 /obj/effect/blob/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -182,6 +193,17 @@
 
 		set_expand_time()
 
+<<<<<<< HEAD
+=======
+/*
+/obj/effect/blob/verb/expandverb()
+	set src in view()
+	set name = "Expand"
+
+	expand(pick(non_blob_neighbors))
+*/
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/blob/proc/regen()
 	if (!(QDELETED(core)))
 		health = min(health + health_regen, maxHealth)
@@ -202,9 +224,6 @@
 	else
 		//If the core is gone, no more expansion
 		next_expansion = INFINITY
-
-
-
 
 /*
 	TO minimise performance costs at massive sizes, blobs will go to sleep once they're no longer at the
@@ -292,12 +311,6 @@
 			update_icon()
 			wake_neighbors()
 
-
-
-
-
-
-
 /*********************************
 	EXPANDING!
 **********************************/
@@ -345,6 +358,15 @@
 	if(B)
 		B.ex_act(2)
 		return
+<<<<<<< HEAD
+=======
+
+	var/obj/mecha/M = locate() in T
+	if(M)
+		M.visible_message(SPAN_DANGER("The blob attacks \the [M]!"))
+		M.take_damage(40)
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	T.Enter(src) //This should make them travel down stairs
 
@@ -453,6 +475,47 @@
 	//If we get here, nobody was harmed
 	return result//Occulus edit
 
+/obj/effect/blob/proc/MeltFloor(var/turf/T)
+	if(!core)
+		return
+	if(istype(T, /turf/simulated/floor))
+		if(prob(25))
+			var/turf/simulated/floor/D
+			D = T
+			D.take_damage(20, BLAST)
+			playsound(src.loc, pick('sound/items/Welder.ogg','sound/items/Welder.ogg'), 10, 1)
+	for(var/obj/item/A in T)
+		if(!A.unacidable)
+			if(prob(5))
+				visible_message(SPAN_DANGER("Acid melts [A]!"))
+				A.ex_act(1)
+	for(var/obj/machinery/B in T)
+		if(!B.unacidable)
+			if(prob(5))
+				B.ex_act(1)
+				visible_message(SPAN_DANGER("Acid melts [B]!"))
+	for(var/obj/structure/C in T)
+		if(!C.unacidable)
+			if(prob(5))
+				C.ex_act(1)
+				visible_message(SPAN_DANGER("Acid melts [C]!"))
+	if(istype(T, /turf/simulated/open))
+		expand(get_turf(locate(T.x, T.y, T.z-1)))
+		active = FALSE
+
+/obj/effect/blob/shield/MeltFloor(var/turf/T)
+	if(istype(T, /turf/simulated/floor))
+		if(prob(10))
+			var/turf/simulated/floor/D
+			D = T
+			D.take_damage(100, BLAST)
+			playsound(src.loc, pick('sound/items/Welder.ogg','sound/items/Welder.ogg'), 75, 1)
+	..()
+/obj/structure/multiz
+	unacidable = 1
+
+/obj/machinery/multistructure/bioreactor_part
+	unacidable = 1
 
 //Stepping on a blob is bad for your health.
 //When walked over, the blob will wake up and attack whoever stepped on it
@@ -482,7 +545,12 @@
 			absorbed_damage = min(health * fire_resist, Proj.damage_types[i])
 			taken_damage= (Proj.damage_types[i]  / fire_resist)
 			Proj.damage_types[i] -= absorbed_damage
+<<<<<<< HEAD
 	take_damage(taken_damage)
+=======
+	if (!(Proj.testing))
+		take_damage(taken_damage)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (Proj.get_total_damage() <= 0)
 		return 0
 	else
@@ -514,10 +582,10 @@
 	maxHealth = 200
 	health = 200
 	brute_resist = 4
-	fire_resist = 2
+	fire_resist = 3
 	density = TRUE
 	icon_scale = 1.2
-	health_regen = 0 //The core does not heal
+	health_regen = 1
 
 	expandType = /obj/effect/blob/shield
 
@@ -539,8 +607,6 @@
 			B.set_awake()
 	return ..()
 
-
-
 /obj/effect/blob/shield
 	name = "strong blob"
 	icon = 'icons/mob/blob.dmi'
@@ -548,9 +614,9 @@
 	desc = "Some blob creature thingy"
 	maxHealth = 160
 	health = 160
-	health_regen = 2
+	health_regen = 5
 	brute_resist = 2
-	fire_resist = 1
+	fire_resist = 1.3
 	density = TRUE
 	icon_scale = 1.2
 
@@ -562,10 +628,5 @@
 		icon_state = "blob"
 	else
 		icon_state = "blob_damaged"
-
-
-
 	//Blob gradually fades out as it's damaged.
 	alpha = 255 * healthpercent
-
-

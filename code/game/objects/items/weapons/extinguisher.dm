@@ -1,6 +1,6 @@
 /obj/item/extinguisher
 	name = "fire extinguisher"
-	desc = "A traditional red fire extinguisher."
+	desc = "A traditional red fire extinguisher, its rated for A and B, unless it was refilled with just water..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
@@ -24,11 +24,16 @@
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 	var/list/overlaylist = list("fire_extinguisherO1","fire_extinguisherO2","fire_extinguisherO3","fire_extinguisherO4","fire_extinguisherO5","fire_extinguisherO6")
+<<<<<<< HEAD
 
 
+=======
+	structure_damage_factor = STRUCTURE_DAMAGE_HEAVY
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/extinguisher/mini
 	name = "fire extinguisher"
-	desc = "A light and compact fibreglass-framed model fire extinguisher."
+	desc = "A light and compact fiberglass-framed model fire extinguisher, its rated for A and B, unless it was refilled with just water..."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
 	hitsound = null	//it is much lighter, after all.
@@ -44,9 +49,15 @@
 	. = ..()
 	if(overlaylist.len)
 		var/icon/temp = new /icon('icons/obj/items.dmi', overlaylist[rand(1,overlaylist.len)])
+<<<<<<< HEAD
 		add_overlays(temp)
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
+=======
+		overlays += temp
+	create_reagents(max_water)
+	reagents.add_reagent("abwater", max_water)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
@@ -81,6 +92,16 @@
 		var/obj/o = target
 		var/amount = o.reagents.trans_to_obj(src, 50)
 		to_chat(user, SPAN_NOTICE("You fill [src] with [amount] units of the contents of [target]."))
+<<<<<<< HEAD
+=======
+		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
+		return
+
+	if( istype(target, /obj/structure/reagent_dispensers/water_cooler) && flag)
+		var/obj/o = target
+		var/amount = o.reagents.trans_to_obj(src, 50)
+		to_chat(user, SPAN_NOTICE("You fill [src] with [amount] units of the contents of [target]."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 

@@ -1,9 +1,16 @@
 //A temporary effect that does not DO anything except look pretty.
 /obj/effect/temporary
+<<<<<<< HEAD
 	anchored = TRUE
 	unacidable = 1
 	mouse_opacity = 0
 	density = FALSE
+=======
+	anchored = 1
+	unacidable = 1
+	mouse_opacity = 0
+	density = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	plane = 0
 	layer = 0
 

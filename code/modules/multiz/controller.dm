@@ -153,7 +153,11 @@ var/datum/controller/process/open_space/OS_controller = null
 	return
 
 
+<<<<<<< HEAD
 /turf/simulated/open/on_update_icon()
+=======
+/turf/simulated/open/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	var/turf/below = GetBelow(src)
 	if(below)
@@ -166,7 +170,11 @@ var/datum/controller/process/open_space/OS_controller = null
 		icon_state = below.icon_state
 		dir = below.dir
 		color = below.color//rgb(127,127,127)
+<<<<<<< HEAD
 		add_overlays(below.overlays)
+=======
+		add_overlay(below.get_overlays())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(!istype(below,/turf/simulated/open))
 			// get objects
@@ -178,14 +186,24 @@ var/datum/controller/process/open_space/OS_controller = null
 				var/image/temp2 = image(o, dir=o.dir, layer = o.layer)
 				temp2.plane = plane
 				temp2.color = o.color//rgb(127,127,127)
+<<<<<<< HEAD
 				temp2.add_overlays(o.overlays)
 				o_img += temp2
 			add_overlays(o_img)
+=======
+				temp2.add_overlay(o.get_overlays())
+				o_img += temp2
+			add_overlay(o_img)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		var/image/over_OS_darkness = image('icons/turf/floors.dmi', "black_open")
 		over_OS_darkness.plane = OVER_OPENSPACE_PLANE
 		over_OS_darkness.layer = MOB_LAYER
+<<<<<<< HEAD
 		add_overlays(over_OS_darkness)
+=======
+		add_overlay(over_OS_darkness)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return .
 
 #undef LIST_FAST

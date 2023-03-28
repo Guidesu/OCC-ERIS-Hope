@@ -3,7 +3,7 @@
 /obj/item/device/antibody_scanner
 	name = "antibody scanner"
 	desc = "Scans living beings for antibodies in their blood."
-	icon_state = "health"
+	icon_state = "viroscanner"
 	w_class = ITEM_SIZE_SMALL
 	item_state = "electronic"
 	matter = list(MATERIAL_PLASTIC = 1, MATERIAL_GLASS = 1)
@@ -13,6 +13,7 @@
 /obj/item/device/antibody_scanner/attack(mob/M as mob, mob/user as mob)
 	if(!istype(M,/mob/living/carbon/))
 		report("Scan aborted: Incompatible target.", user)
+		flick("viroscanner2", src)
 		return
 
 	var/mob/living/carbon/C = M
@@ -20,17 +21,21 @@
 		var/mob/living/carbon/human/H = C
 		if(H.species.flags & NO_BLOOD)
 			report("Scan aborted: The target does not have blood.", user)
+			flick("viroscanner2", src)
 			return
 
 	if(!C.antibodies.len)
 		report("Scan Complete: No antibodies detected.", user)
+		flick("viroscanner2", src)
 		return
 
 	if (CLUMSY in user.mutations && prob(50))
 		// I was tempted to be really evil and rot13 the output.
 		report("Antibodies detected: [reverse_text(antigens2string(C.antibodies))]", user)
+		flick("viroscanner2", src)
 	else
 		report("Antibodies detected: [antigens2string(C.antibodies)]", user)
+		flick("viroscanner2", src)
 
 /obj/item/device/antibody_scanner/proc/report(var/text, mob/user as mob)
 	to_chat(user, "\blue \icon[src] \The [src] beeps, \"[text]\"")
@@ -51,7 +56,11 @@
 	name = "virus sample"
 
 /obj/item/virusdish/random/New()
+<<<<<<< HEAD
 	..()
+=======
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	src.virus2 = new /datum/disease2/disease
 	src.virus2.makerandom()
 	growth = rand(5, 50)
@@ -107,8 +116,12 @@
 	var/stage = 1
 	var/analysed = 1
 
+<<<<<<< HEAD
 /obj/item/diseasedisk/premade/Initialize(mapload)
 	. = ..()
+=======
+/obj/item/diseasedisk/premade/New()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "blank GNA disk (stage: [stage])"
 	effect = new /datum/disease2/effectholder
 	effect.effect = new /datum/disease2/effect/invisible

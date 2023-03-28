@@ -3,9 +3,10 @@
  * /obj/item/rig_module/grenade_launcher
  * /obj/item/rig_module/mounted
  * /obj/item/rig_module/mounted/taser
- * /obj/item/rig_module/shield
- * /obj/item/rig_module/fabricator
  * /obj/item/rig_module/device/flash
+ * /obj/item/rig_module/fabricator
+ * /obj/item/rig_module/held/energy_blade
+ * /obj/item/rig_module/held/shield
  */
 
 /obj/item/rig_module/device/flash
@@ -26,7 +27,11 @@
 
 	interface_name = "integrated grenade launcher"
 	interface_desc = "Discharges loaded grenades against the wearer's location."
+<<<<<<< HEAD
 	rarity_value = 20
+=======
+	price_tag = 500
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/fire_force = 30
 	var/fire_distance = 10
@@ -97,6 +102,10 @@
 	selectable = 1
 	usable = 1
 	module_cooldown = 0
+<<<<<<< HEAD
+=======
+	price_tag = 750
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	icon_state = "lcannon"
 
@@ -104,7 +113,11 @@
 
 	interface_name = "mounted laser cannon"
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
+<<<<<<< HEAD
 	rarity_value = 100
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
@@ -128,6 +141,9 @@
 	name = "mounted energy gun"
 	desc = "A forearm-mounted energy projector."
 	icon_state = "egun"
+	price_tag = 500
+
+
 
 
 
@@ -135,7 +151,10 @@
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 
 	gun_type = /obj/item/gun/energy/gun/mounted
+<<<<<<< HEAD
 	rarity_value = 50
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/rig_module/mounted/taser
 
@@ -144,7 +163,11 @@
 	icon_state = "taser"
 
 
+<<<<<<< HEAD
 	usable = 0
+=======
+	usable = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	suit_overlay_active = "mounted-taser"
 	suit_overlay_inactive = "mounted-taser"
@@ -153,6 +176,7 @@
 	interface_desc = "A shoulder-mounted cell-powered taser."
 
 	gun_type = /obj/item/gun/energy/taser/mounted
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_RIG_MODULE_COMMON
 
 /obj/item/rig_module/energy_blade
@@ -210,6 +234,8 @@
 	for(var/obj/item/melee/energy/blade/blade in M.contents)
 		M.drop_from_inventory(blade)
 		qdel(blade)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/rig_module/fabricator
 	name = "matter fabricator"
@@ -218,12 +244,17 @@
 	usable = 1
 	use_power_cost = 15
 	icon_state = "enet"
+	price_tag = 1000
 
 	engage_string = "Fabricate Star"
 
 	interface_name = "death blossom launcher"
 	interface_desc = "An integrated microfactory that produces poisoned throwing stars from thin air and electricity."
+<<<<<<< HEAD
 	rarity_value = 100
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/fabrication_type = /obj/item/material/star/ninja
 	var/fire_force = 30
 	var/fire_distance = 10
@@ -250,3 +281,125 @@
 			H.put_in_hands(new_weapon)
 
 	return 1
+
+
+/obj/item/rig_module/held
+
+/obj/item/rig_module/held/energy_blade
+	name = "energy blade projector"
+	desc = "A powerful cutting beam projector."
+	icon_state = "eblade"
+
+	activate_string = "Project Blade"
+	deactivate_string = "Cancel Blade"
+
+	interface_name = "spider fang blade"
+	interface_desc = "A lethal energy projector that can shape a blade projected from the hand of the wearer."
+
+	usable = 0
+	selectable = 1
+	toggleable = 1
+	use_power_cost = 50
+	active_power_cost = 10
+	passive_power_cost = 0
+
+/obj/item/rig_module/held/energy_blade/Process()
+
+	if(holder && holder.wearer)
+		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
+			deactivate()
+			return 0
+
+	return ..()
+
+/obj/item/rig_module/held/energy_blade/activate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+
+	if(M.l_hand && M.r_hand)
+		to_chat(M, SPAN_DANGER("Your hands are full."))
+		deactivate()
+		return
+
+	var/obj/item/melee/energy/blade/blade = new(M)
+	blade.creator = M
+	M.put_in_hands(blade)
+
+/obj/item/rig_module/held/energy_blade/deactivate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+
+	if(!M)
+		return
+
+	for(var/obj/item/melee/energy/blade/blade in M.contents)
+		M.drop_from_inventory(blade)
+		qdel(blade)
+
+/obj/item/rig_module/held/shield
+	name = "rig shield module"
+	desc = "A heavy deployable shield installable on a hardsuit."
+	icon_state = "riot"
+	activate_string = "Deploy Shield"
+	deactivate_string = "Retract Shield"
+
+	interface_name = "H&S star shield"
+	interface_desc = "A reinforced ballistic shield for use against high-velocity projectiles and energy weapons."
+
+	usable = 0
+	selectable = 1
+	toggleable = 1
+	use_power_cost = 0
+	active_power_cost = 0
+	passive_power_cost = 0
+	price_tag = 2500
+
+/obj/item/rig_module/held/shield/Process()
+	if(active)
+		if(holder && holder.wearer)
+			if(!(locate(/obj/item/shield/hardsuit) in holder.wearer))
+				deactivate()
+				return 0
+
+	return ..()
+
+/obj/item/rig_module/held/shield/activate()
+
+	var/mob/living/M = holder.wearer
+
+	if((src == M.l_hand) || (src == M.r_hand))
+		return FALSE
+
+	if(M.l_hand && M.r_hand)
+		to_chat(M, SPAN_DANGER("Your hands are full."))
+		return FALSE
+
+	if(!do_after(M, 1.5 SECONDS, src))
+		to_chat(M, SPAN_DANGER("You have to stand still to deploy the shield!"))
+		return FALSE
+
+	..()
+
+	var/obj/item/shield/hardsuit/shield = new(M)
+	shield.creator = M
+	M.put_in_hands(shield)
+	M.visible_message(SPAN_WARNING("\The [M] deploys \his [shield]!"))
+
+/obj/item/rig_module/held/shield/deactivate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+
+	if(!M)
+		return
+
+	for(var/obj/item/shield/hardsuit/shield in M.contents)
+		M.drop_from_inventory(shield)
+		qdel(shield)
+
+	to_chat(M, "The shield retracts into the hardsuit.")

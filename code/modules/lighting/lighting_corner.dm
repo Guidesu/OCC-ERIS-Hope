@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/var/total_lighting_corners = 0
+/var/datum/lighting_corner/dummy/dummy_lighting_corner = new
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Because we can control each corner of every lighting overlay.
 // And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
 // For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
@@ -12,6 +17,7 @@
 
 	var/x     = 0
 	var/y     = 0
+	var/z     = 0
 
 	var/lum_r = 0
 	var/lum_g = 0
@@ -19,9 +25,9 @@
 
 	var/needs_update = FALSE
 
-	var/cache_r  = 0
-	var/cache_g  = 0
-	var/cache_b  = 0
+	var/cache_r  = LIGHTING_SOFT_THRESHOLD
+	var/cache_g  = LIGHTING_SOFT_THRESHOLD
+	var/cache_b  = LIGHTING_SOFT_THRESHOLD
 	var/cache_mx = 0
 
 	var/update_gen = 0
@@ -29,7 +35,10 @@
 /datum/lighting_corner/New(var/turf/new_turf, var/diagonal)
 	. = ..()
 
+	total_lighting_corners++
+
 	masters[new_turf] = turn(diagonal, 180)
+	z = new_turf.z
 
 	var/vertical   = diagonal & ~(diagonal - 1) // The horizontal directions (4 and 8) are bigger than the vertical ones (1 and 2), so we can reliably say the lsb is the horizontal direction.
 	var/horizontal = diagonal & ~vertical       // Now that we know the horizontal one we can get the vertical one.
@@ -45,7 +54,7 @@
 
 	// Diagonal one is easy.
 	T = get_step(new_turf, diagonal)
-	if(T) // In case we're on the map's border.
+	if (T) // In case we're on the map's border.
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 
@@ -55,7 +64,7 @@
 
 	// Now the horizontal one.
 	T = get_step(new_turf, horizontal)
-	if(T) // Ditto.
+	if (T) // Ditto.
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 
@@ -65,7 +74,7 @@
 
 	// And finally the vertical one.
 	T = get_step(new_turf, vertical)
-	if(T)
+	if (T)
 		if (!T.corners)
 			T.corners = list(null, null, null, null)
 
@@ -77,11 +86,9 @@
 
 /datum/lighting_corner/proc/update_active()
 	active = FALSE
-	for (var/TT in masters)
-		var/turf/T = TT
+	for (var/turf/T in masters)
 		if (T.lighting_overlay)
 			active = TRUE
-			return
 
 // God that was a mess, now to do the rest of the corner code! Hooray!
 /datum/lighting_corner/proc/update_lumcount(var/delta_r, var/delta_g, var/delta_b)
@@ -91,10 +98,14 @@
 
 	if (!needs_update)
 		needs_update = TRUE
-		global.lighting_update_corners += src
+		lighting_update_corners += src
 
 /datum/lighting_corner/proc/update_overlays()
+<<<<<<< HEAD
 	// Cache these values a head of time so 4 individual lighting overlays don't all calculate them individually.
+=======
+	// Cache these values a head of time so 4 individual lighting over-lays don't all calculate them individually.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/lum_r = src.lum_r
 	var/lum_g = src.lum_g
 	var/lum_b = src.lum_b
@@ -103,21 +114,39 @@
 	if (mx > 1)
 		. = 1 / mx
 
+	#if LIGHTING_SOFT_THRESHOLD != 0
 	else if (mx < LIGHTING_SOFT_THRESHOLD)
 		. = 0 // 0 means soft lighting.
 
-	cache_r  = lum_r * . || LIGHTING_SOFT_THRESHOLD
-	cache_g  = lum_g * . || LIGHTING_SOFT_THRESHOLD
-	cache_b  = lum_b * . || LIGHTING_SOFT_THRESHOLD
-	cache_mx = mx
+	cache_r  = round(lum_r * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+	cache_g  = round(lum_g * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+	cache_b  = round(lum_b * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+	#else
+	cache_r  = round(lum_r * ., LIGHTING_ROUND_VALUE)
+	cache_g  = round(lum_g * ., LIGHTING_ROUND_VALUE)
+	cache_b  = round(lum_b * ., LIGHTING_ROUND_VALUE)
+	#endif
+	cache_mx = round(mx, LIGHTING_ROUND_VALUE)
 
 	for (var/TT in masters)
 		var/turf/T = TT
+<<<<<<< HEAD
 		var/atom/movable/lighting_overlay/O = T.lighting_overlay
 		if (O && !O.needs_update)
 			O.needs_update = TRUE
 			global.lighting_update_overlays += O
+=======
+		if (T.lighting_overlay)
+			if (!T.lighting_overlay.needs_update)
+				T.lighting_overlay.needs_update = TRUE
+				lighting_update_overlays += T.lighting_overlay
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/lighting_corner/dummy/New()
 	return
+
+/datum/lighting_corner/Destroy(var/force)
+	if (!force)
+		return QDEL_HINT_LETMELIVE
+	CRASH("Who decided to force qdel() a lighting corner? Why did you do this?")

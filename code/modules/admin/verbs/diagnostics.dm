@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /client/proc/fix_next_move()
 	set category = "Debug"
 	set name = "Unfreeze Everyone"

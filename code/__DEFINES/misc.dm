@@ -25,6 +25,29 @@
 #define SEE_INVISIBLE_MINIMUM 5
 #define INVISIBILITY_MAXIMUM 100
 
+<<<<<<< HEAD
+=======
+// MultiZAS directions.
+#define NORTHUP (NORTH|UP)
+#define EASTUP (EAST|UP)
+#define SOUTHUP (SOUTH|UP)
+#define WESTUP (WEST|UP)
+#define NORTHDOWN (NORTH|DOWN)
+#define EASTDOWN (EAST|DOWN)
+#define SOUTHDOWN (SOUTH|DOWN)
+#define WESTDOWN (WEST|DOWN)
+
+// Stat modifier defines
+#define MELEE_STATTAG (1<<1)
+#define RANGED_STATTAG (1<<2)
+#define DEFENSE_STATTAG (1<<3)
+#define NEGATIVE_DEFENSE_STATTAG (1<<4)
+#define NOTHING_STATTAG (1<<5)
+
+#define PRIOR_TO_APPLY "prior"
+#define AFTER_APPLY "after"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // Some arbitrary defines to be used by self-pruning global lists.
 #define PROCESS_KILL 26 // Used to trigger removal from a processing list.
 #define MAX_GEAR_COST 5 // Used in chargen for accessory loadout limit.
@@ -39,6 +62,10 @@
 #define SPECIALROLE_HUD 7 // AntagHUD image.
 #define  STATUS_HUD_OOC 8 // STATUS_HUD without virus DB check for someone being ill.
 #define        LIFE_HUD 9 // STATUS_HUD that only reports dead or alive
+<<<<<<< HEAD
+=======
+#define   EXCELSIOR_HUD 10 // Used by excelsior to see who else is excel
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
 
@@ -59,9 +86,15 @@
 #define WAIT_FINISH  4
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
+<<<<<<< HEAD
 #define MAX_MESSAGE_LEN       2048		//Syzygy edit: What's the WORST that could happen? - Inspired by Citadel's edit
 #define MAX_PAPER_MESSAGE_LEN 3072
 #define MAX_BOOK_MESSAGE_LEN  9216
+=======
+#define MAX_MESSAGE_LEN       3072
+#define MAX_PAPER_MESSAGE_LEN 4096
+#define MAX_BOOK_MESSAGE_LEN  12288
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define MAX_LNAME_LEN         64
 #define MAX_NAME_LEN          26
 #define MAX_DESC_LEN          128
@@ -106,7 +139,11 @@
 #define COIN_SILVER "Silver coin"
 #define COIN_DIAMOND "Diamond coin"
 #define COIN_IRON "Iron coin"
+<<<<<<< HEAD
 #define COIN_PHORON "Solid phoron coin"
+=======
+#define COIN_PLASMA "Solid plasma coin"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define COIN_URANIUM "Uranium coin"
 #define COIN_PLATINUM "Platunum coin"
 
@@ -119,7 +156,15 @@
 #define MATERIAL_UNMELTABLE 0x1
 #define MATERIAL_BRITTLE    0x2
 #define MATERIAL_PADDING    0x4
+<<<<<<< HEAD
 
+=======
+//Soj Changes
+#define CLIENT_MIN_FPS 0 //SERVER sync
+
+#define CLIENT_MAX_FPS 60 //Do not go above this or byond goes fucky
+//Soj End of SoJ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4 // Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
 
 #define BOMBCAP_DVSTN_RADIUS (max_explosion_range/4)
@@ -168,9 +213,16 @@
 //HUD element hidings flags
 #define F12_FLAG 1 // 0001
 #define TOGGLE_INVENTORY_FLAG 2 //0010
+<<<<<<< HEAD
 
 // Default name for announsment system
 #define ANNOUNSER_NAME "CEV Northern Light System Announcer"
+=======
+#define TOGGLE_BOTTOM_FLAG 4 //0100
+
+// Default name for announcement system
+#define ANNOUNCER_NAME "Nadezhda Colony System Announcer"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 #define LIST_OF_CONSONANT list("a", "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "á", "â", "ã", "ä", "æ", "ç", "é", "ê", "ë", "ì", "í", "ï", "ð", "ñ", "ò", "ô", "õ", "ö", "÷", "ø", "ù")
@@ -181,13 +233,25 @@
 //distance
 #define RANGE_ADJACENT -1
 
+<<<<<<< HEAD
+=======
+//#define UNTIL(X) while(!(X)) stoplag() old one
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 //Core implants
 #define CORE_ACTIVATED /datum/core_module/activatable
 
 //Cruciform
 #define CRUCIFORM_COMMON /datum/core_module/rituals/cruciform/base
+<<<<<<< HEAD
 #define CRUCIFORM_AGROLYTE /datum/core_module/rituals/cruciform/agrolyte
 #define CRUCIFORM_PRIEST /datum/core_module/rituals/cruciform/priest
+=======
+//#define CRUCIFORM_AGROLYTE /datum/core_module/rituals/cruciform/agrolyte
+//#define CRUCIFORM_CUSTODIAN /datum/core_module/rituals/cruciform/custodian
+#define CRUCIFORM_PRIEST /datum/core_module/rituals/cruciform/priest
+//#define CRUCIFORM_ACOLYTE /datum/core_module/rituals/cruciform/priest/acolyte
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #define CRUCIFORM_INQUISITOR /datum/core_module/rituals/cruciform/inquisitor
 #define CRUCIFORM_CRUSADER /datum/core_module/rituals/cruciform/crusader
 #define CRUCIFORM_UPLINK /datum/core_module/cruciform/uplink
@@ -218,6 +282,10 @@
 #define EMAIL_SYSADMIN  "admin@internal-services.net"
 #define EMAIL_BROADCAST "broadcast@internal-services.net"
 #define EMAIL_PAYROLL "payroll@internal-services.net"
+<<<<<<< HEAD
+=======
+#define EMAIL_NANOGATE "satellite-uplink@nanogate.populi.net"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define LEGACY_RECORD_STRUCTURE(X, Y) GLOBAL_LIST_EMPTY(##X);/datum/computer_file/data/##Y/var/list/fields[0];/datum/computer_file/data/##Y/New(){..();GLOB.##X.Add(src);}/datum/computer_file/data/##Y/Destroy(){. = ..();GLOB.##X.Remove(src);}
 
@@ -227,18 +295,26 @@
  //Preference save/load cooldown. This is in deciseconds.
 #define PREF_SAVELOAD_COOLDOWN 4 //Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.
 
+<<<<<<< HEAD
 #define JOINTEXT(X) jointext(X, null)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //lazy text span classes defines.
 #define SPAN_NOTICE(text)  "<span class='notice'>[text]</span>"
 #define SPAN_WARNING(text) "<span class='warning'>[text]</span>"
 #define SPAN_DANGER(text)  "<span class='danger'>[text]</span>"
+<<<<<<< HEAD
 #define span(class, text) ("<span class='[class]'>[text]</span>")
+=======
+#define SPAN_PSION(text)   "<b><font color='purple'>[text]</b></font>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 // the thing below allow using SPANning in datum definition, the above can't.
 #define SPAN(class, X) "<span class='" + ##class + "'>" + ##X + "</span>"
 
 #define text_starts_with(text, start) (copytext(text, 1, length(start) + 1) == start)
 
+<<<<<<< HEAD
 #define attack_animation(A) if(istype(A)) A.do_attack_animation(src)
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
@@ -266,6 +342,11 @@
 
 // Spawns multiple objects of the same type
 #define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for(var/i in 1 to num) { new type(args) } }
+=======
+// Overlays
+// (placeholders for if/when TG overlays system is ported)
+//#define cut_overlays(...)			overlays.Cut()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 
@@ -334,9 +415,74 @@
 #define FIXED_COLOUR_PRIORITY 		4 //color inherent to the atom (e.g. blob color)
 #define COLOUR_PRIORITY_AMOUNT      4 //how many priority levels there are.
 
+<<<<<<< HEAD
 //Prevent the master controller from starting automatically
 #define NO_INIT_PARAMETER "no-init"
+=======
+//Sounds list
+#define WALLHIT_SOUNDS list('sound/effects/wallhit.ogg', 'sound/effects/wallhit2.ogg', 'sound/effects/wallhit3.ogg')
+
+//Prevent the master controller from starting automatically
+#define NO_INIT_PARAMETER "no-init"
+//Force the log directory to be something specific in the data/logs folder
+#define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /// Required minimum values to see reagents in a beaker
 #define HUMAN_REQ_COG_FOR_REG 35
 #define HUMAN_REQ_BIO_FOR_REG 50
+<<<<<<< HEAD
+=======
+
+/// Misc atmos equations
+
+#define FIRESTACKS_TEMP_CONV(firestacks) min(5200,max(2.25*round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2), 700))
+
+//SoJ additions below
+#define MAP_FACTION "CEV Eris"
+//cruciform paths
+#define CRUCIFORM_TESS /datum/core_module/rituals/cruciform/tessellate
+#define CRUCIFORM_LEMN /datum/core_module/rituals/cruciform/lemniscate
+#define CRUCIFORM_MONO /datum/core_module/rituals/cruciform/monomial
+#define CRUCIFORM_DIVI /datum/core_module/rituals/cruciform/divisor
+#define CRUCIFORM_FACT /datum/core_module/rituals/cruciform/factorial
+#define CRUCIFORM_OMNI /datum/core_module/rituals/cruciform/omni
+
+// Bureaucracy Bitfields
+#define STAMP_GENERIC	0x1		//Most stamps should apply this.
+#define STAMP_APPROVAL	0x2		//No special behaviour usually, a checkmark stamp would apply it.
+#define STAMP_DENIAL	0x4		//Applied by the denied stamp, though some others also have cross symbols.
+#define STAMP_FACTION	0x8		//For factions. A faction will have an official stamp they can use.
+#define STAMP_DOCUMENT	0xF		//For stuff like ATM printouts.
+#define STAMP_ADMIN		0x10	//Admin Fax Replies
+
+//additional Aphla defines
+#define INVISIBILITY_NONE                 0
+#define INVISIBILITY_WEAK                 25
+
+//Lying animation
+#define ANIM_LYING_TIME 2
+
+// Macro defining the actual code applying our overlays lists to the BYOND over-lays list. (I guess a macro for speed)
+// TODO - I don't really like the location of this macro define.  Consider it. ~Leshana
+#define COMPILE_OVERLAYS(A)\
+    do {\
+        var/list/oo = A.our_overlays;\
+        var/list/po = A.priority_overlays;\
+        if(LAZYLEN(po)){\
+            if(LAZYLEN(oo)){\
+                A.overlays = oo + po;\
+            }\
+            else{\
+                A.overlays = po;\
+            }\
+        }\
+        else if(LAZYLEN(oo)){\
+            A.overlays = oo;\
+        }\
+        else{\
+            A.overlays.Cut();\
+        }\
+        A.flags &= ~OVERLAY_QUEUED;\
+    } while (FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

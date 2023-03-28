@@ -1,7 +1,7 @@
-//#define TESTING
-#if DM_VERSION < 506
-#warn This compiler is out of date. You may experience issues with projectile animations.
-#endif
+//duck you byond
+var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core
@@ -25,7 +25,9 @@ var/global/list/global_map
 // Noises made when hit while typing.
 var/list/hit_appends = list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 
+var/start_time				= null
 
+<<<<<<< HEAD
 var/runtime_diary
 var/diary              
 var/world_qdel_log
@@ -40,6 +42,25 @@ var/const/company_short = "Northern Light" //Occulus Edits end here
 var/game_version        = "Discordia"
 var/changelog_hash      = ""
 var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 400)
+=======
+var/runtime_diary			= null
+var/runtime_diary_filename	= null
+var/diary					= null
+var/diary_filename			= null
+var/world_qdel_log			= null
+var/href_logfile			= null
+var/href_logfile_filename	= null
+var/station_name			= "Nadezhda Colony"
+var/station_short			= "Nadezhda"
+var/const/dock_name			= "Amethyn"
+var/const/boss_name			= "High Council"
+var/const/boss_short		= "High Council"
+var/const/company_name		= "Nadezhda Colony"
+var/const/company_short		= "Nadezhda"
+var/game_version			= "Liberty"
+var/changelog_hash			= ""
+var/game_year				= (text2num(time2text(world.realtime, "YYYY")) + 629)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 var/round_progressing = 1
 var/master_storyteller       = "shitgenerator"
@@ -67,7 +88,12 @@ var/Debug2 = 0
 
 var/gravity_is_on = 1
 
+<<<<<<< HEAD
 var/join_motd
+=======
+var/server_ad = null
+var/join_motd = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
 
@@ -99,7 +125,7 @@ var/global/list/alphabet_uppercase = list("A", "B", "C", "D", "E", "F", "G", "H"
 // Some scary sounds.
 var/static/list/scarySounds = list(
 	'sound/weapons/thudswoosh.ogg',
-	'sound/weapons/Taser.ogg',
+	'sound/weapons/energy/Taser.ogg',
 	'sound/weapons/armbomb.ogg',
 	'sound/voice/hiss1.ogg',
 	'sound/voice/hiss2.ogg',
@@ -118,7 +144,7 @@ var/static/list/scarySounds = list(
 )
 
 // Bomb cap!
-var/max_explosion_range = 14
+var/max_explosion_range = 20
 
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
 var/global/obj/item/device/radio/intercom/global_announcer = new(null)

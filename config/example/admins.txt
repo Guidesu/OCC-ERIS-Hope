@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ######################################################################
 # Basically, ckey goes first. Rank goes after the "-"                #
 # Case is not important for ckey.                                    #
@@ -6,3 +7,13 @@
 ######################################################################
 
 # not_a_user - Admin
+=======
+######################################################################
+# Basically, ckey goes first. Rank goes after the "-"                #
+# Case is not important for ckey.                                    #
+# Case IS important for the rank. However punctuation/spaces are not #
+# Ranks can be anything defined in admin_ranks.txt           ~Carn   #
+######################################################################
+
+# somerussians - host
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

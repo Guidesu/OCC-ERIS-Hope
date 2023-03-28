@@ -7,6 +7,12 @@
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "c" = (
+<<<<<<< HEAD
+=======
+/obj/structure/railing/grey{
+	dir = 4
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/crawler)
 "d" = (
@@ -15,17 +21,21 @@
 "e" = (
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
+<<<<<<< HEAD
 "f" = (
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/space,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "g" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
 "h" = (
+<<<<<<< HEAD
 /turf/space,
 /area/crawler)
 "i" = (
@@ -62,13 +72,44 @@
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/crawler)
 "p" = (
+=======
+/obj/structure/railing,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"j" = (
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /obj/structure/railing/grey,
 /turf/simulated/floor/plating/under,
 /area/crawler)
+<<<<<<< HEAD
 "q" = (
+=======
+"k" = (
+/obj/random/mob/roomba/mecha/low,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"l" = (
+/obj/machinery/power/supply_beacon,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"m" = (
+/obj/structure/catwalk,
+/turf/space,
+/area/crawler)
+"n" = (
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"o" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"p" = (
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing/grey{
 	dir = 4
 	},
@@ -80,20 +121,53 @@
 "r" = (
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"s" = (
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+"P" = (
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+"R" = (
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"X" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"Y" = (
+/obj/structure/lattice,
+/obj/effect/window_lwall_spawn/smartspawn/onestar,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
+<<<<<<< HEAD
 a
 a
 a
 g
 a
+=======
+g
+g
+g
+g
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 "}
 (2,1,1) = {"
 a
+<<<<<<< HEAD
 c
 d
 d
@@ -101,10 +175,20 @@ d
 d
 d
 c
+=======
+P
+s
+r
+r
+r
+s
+P
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
 a
+<<<<<<< HEAD
 d
 a
 f
@@ -112,10 +196,20 @@ f
 f
 a
 d
+=======
+P
+e
+r
+R
+r
+e
+P
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
 a
+<<<<<<< HEAD
 d
 f
 h
@@ -123,11 +217,21 @@ h
 h
 f
 d
+=======
+c
+j
+r
+k
+r
+p
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
 a
 d
+<<<<<<< HEAD
 f
 h
 h
@@ -144,32 +248,67 @@ h
 h
 h
 f
+=======
+a
+Y
+X
+Y
+a
+d
+a
+"}
+(6,1,1) = {"
+a
+d
+Y
+h
+m
+o
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 b
 "}
 (7,1,1) = {"
 b
 d
+<<<<<<< HEAD
 a
 i
 l
 n
 a
+=======
+Y
+n
+l
+n
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 b
 "}
 (8,1,1) = {"
 b
 d
+<<<<<<< HEAD
 a
 f
 m
 f
 a
+=======
+Y
+h
+m
+o
+Y
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 b
 "}
 (9,1,1) = {"
+<<<<<<< HEAD
 a
 o
 p
@@ -178,10 +317,21 @@ r
 r
 q
 o
+=======
+b
+d
+a
+Y
+X
+Y
+a
+d
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (10,1,1) = {"
 a
+<<<<<<< HEAD
 e
 e
 r
@@ -200,10 +350,31 @@ r
 r
 e
 j
+=======
+c
+j
+r
+k
+r
+p
+c
+b
+"}
+(11,1,1) = {"
+a
+P
+s
+r
+r
+r
+s
+P
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
+<<<<<<< HEAD
 e
 e
 r
@@ -211,15 +382,30 @@ r
 r
 e
 e
+=======
+P
+e
+r
+R
+r
+e
+P
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"
 a
 a
 g
+<<<<<<< HEAD
 k
 k
 k
+=======
+g
+g
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 a
 a

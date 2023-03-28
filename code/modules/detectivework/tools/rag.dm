@@ -39,7 +39,11 @@
 	STOP_PROCESSING(SSobj, src) //so we don't continue turning to ash while gc'd
 	. = ..()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/rag/attack_self(mob/user)
+=======
+/obj/item/reagent_containers/glass/rag/attack_self(mob/user as mob)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(on_fire)
 		user.visible_message(SPAN_WARNING("\The [user] stamps out [src]."), SPAN_WARNING("You stamp out [src]."))
 		user.unEquip(src)
@@ -63,12 +67,16 @@
 /obj/item/reagent_containers/glass/rag/proc/update_name()
 	if(on_fire)
 		name = "burning [initial(name)]"
-	else if(reagents.total_volume)
+	else if(reagents)
 		name = "damp [initial(name)]"
 	else
 		name = "dry [initial(name)]"
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/rag/on_update_icon()
+=======
+/obj/item/reagent_containers/glass/rag/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(on_fire)
 		icon_state = "raglit"
 	else
@@ -105,7 +113,11 @@
 			user.visible_message("\The [user] finishes wiping off the [A]!")
 			A.clean_blood()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/rag/attack(atom/target as obj|turf|area, mob/user, flag)
+=======
+/obj/item/reagent_containers/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(isliving(target))
 		var/mob/living/M = target
 		if(on_fire)
@@ -115,24 +127,47 @@
 		else if(reagents.total_volume)
 			if(user.targeted_organ == BP_MOUTH && ishuman(target))
 				var/mob/living/carbon/human/H = target
+<<<<<<< HEAD
 				user.visible_message(SPAN_DANGER("\The [user] starts smothering [H] with [src]!"), SPAN_DANGER("You start smothering [H] with [src]!"))
 				if(!H.check_mouth_coverage())
 					if(do_after(user, 20, H))
 						user.do_attack_animation(src)
 						user.visible_message(SPAN_DANGER("\The [user] smothers [H] with [src]!"), SPAN_DANGER("You smother [H] with [src]!"))
+=======
+				if(!H.check_mouth_coverage())
+					if(do_after(user, 20, H))
+						user.do_attack_animation(src)
+						user.visible_message(
+							"<span class='danger'>\The [user] smothers [H] with [src]!</span>",
+							"<span class='warning'>You smother [H] with [src]!</span>",
+							"You hear some struggling and muffled cries of surprise"
+							)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_BLOOD)
 						update_name()
 						return
 
 				user.do_attack_animation(src)
+<<<<<<< HEAD
 				user.visible_message(SPAN_DANGER("\The [user] tries to smother [H] with [src], but fails because the mouth is covered!"), SPAN_DANGER("You try to smother [H] with [src], but their mouth is covered!"))
+=======
+				user.visible_message(
+					"<span class='danger'>\The [user] try to smothers [H] with [src], but blocked!</span>",
+					"<span class='warning'>You try to smother [H] with [src]!</span>"
+					)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else
 				wipe_down(target, user)
 		return
 
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user, proximity)
+=======
+/obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!proximity)
 		return
 

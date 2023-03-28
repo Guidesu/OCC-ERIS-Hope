@@ -32,12 +32,18 @@
 	desc = "An inflated membrane. Do not puncture."
 	density = TRUE
 	anchored = TRUE
+<<<<<<< HEAD
 	opacity = 0
+=======
+	opacity = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
 
+	atmos_canpass = CANPASS_DENSITY
+
 	var/undeploy_path = null
-	var/health = 50.0
+	health = 50.0
 
 /obj/structure/inflatable/wall
 	name = "inflatable wall"
@@ -56,23 +62,26 @@
 
 /obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
+	if(!proj_damage)
+		return
 
-	health -= proj_damage
+	if (!(Proj.testing))
+		health -= proj_damage
 	..()
-	if(health <= 0)
-		deflate(1)
+	if (!(Proj.testing))
+		if(health <= 0)
+			deflate(1)
 	return
 
 /obj/structure/inflatable/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(1)
 			qdel(src)
 			return
-		if(2.0)
+		if(2)
 			deflate(1)
 			return
-		if(3.0)
+		if(3)
 			if(prob(50))
 				deflate(1)
 				return
@@ -82,7 +91,12 @@
 	return
 
 /obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
+<<<<<<< HEAD
 	if(!istype(W) || istype(W, /obj/item/inflatable_dispenser)) return
+=======
+	if(!istype(W) || istype(W, /obj/item/inflatable_dispenser))
+		return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if (can_puncture(W))
 		visible_message(SPAN_DANGER("[user] pierces [src] with [W]!"))
@@ -92,7 +106,7 @@
 		..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
@@ -102,7 +116,7 @@
 /obj/structure/inflatable/CtrlClick()
 	hand_deflate()
 
-/obj/structure/inflatable/proc/deflate(var/violent=0)
+/obj/structure/inflatable/proc/deflate(violent=0)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
@@ -129,7 +143,7 @@
 	verbs -= /obj/structure/inflatable/verb/hand_deflate
 	deflate()
 
-/obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)
+/obj/structure/inflatable/attack_generic(mob/user, damage, attack_verb)
 	health -= damage
 	attack_animation(user)
 	if(health <= 0)
@@ -137,7 +151,7 @@
 		spawn(1) deflate(1)
 	else
 		user.visible_message(SPAN_DANGER("[user] [attack_verb] at [src]!"))
-	return 1
+	return TRUE
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
@@ -213,7 +227,7 @@
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
@@ -266,4 +280,7 @@
 		init_inflatable_count = initial(init_inflatable_count)
 
 /obj/item/storage/briefcase/inflatable/empty/init_inflatable_count = 0
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

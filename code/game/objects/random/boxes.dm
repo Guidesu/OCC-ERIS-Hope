@@ -1,8 +1,39 @@
 /obj/spawner/boxes
 	name = "random box"
 	icon_state = "box-blue"
+<<<<<<< HEAD
 	tags_to_spawn = list(SPAWN_BOX)
 	include_paths = list(/obj/spawner/pack/rare)
+=======
+	item_to_spawn()
+		return pickweight(list(/obj/random/pack/rare = 1,
+					/obj/item/storage/box/beakers = 3,
+					/obj/item/storage/box/bloodpacks = 2,
+					/obj/item/storage/box/autoinjectors = 2,
+					/obj/item/storage/box/matches = 2,
+					/obj/item/storage/box/donkpockets = 2,
+					/obj/item/storage/box/data_disk/basic = 2,
+					/obj/item/storage/box/data_disk = 1,
+					/obj/item/storage/box/cups = 1,
+					/obj/item/storage/box/drinkingglasses = 2,
+					/obj/item/storage/box/fingerprints = 1,
+					/obj/item/storage/box/handcuffs = 2,
+					/obj/item/storage/box/holobadge = 1,
+					/obj/item/storage/box/ids = 1,
+					/obj/item/storage/box/injectors = 1,
+					/obj/item/storage/box/lights = 1,
+					/obj/item/storage/box/monkeycubes = 1,
+					/obj/item/storage/box/mousetraps = 1,
+					/obj/item/storage/box/pillbottles = 1,
+					/obj/item/storage/box/rxglasses = 1,
+					/obj/item/storage/box/samplebags = 1,
+					/obj/item/storage/box/smokes = 1,
+					/obj/item/ammo_magazine/ammobox/antim_small = 1,
+					/obj/item/storage/box/solution_trays = 1,
+					/obj/item/storage/box/survival = 1,
+					/obj/item/storage/box/swabs = 1,
+					/obj/item/storage/briefcase/crimekit = 1))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/spawner/boxes/low_chance
 	name = "low chance box"

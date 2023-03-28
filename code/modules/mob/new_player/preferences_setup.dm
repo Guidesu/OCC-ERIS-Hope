@@ -3,9 +3,11 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 	proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-		var/datum/species/current_species = all_species[species]
-		if(!current_species) current_species = all_species[SPECIES_HUMAN]
+		var/datum/species/current_species = all_species[SPECIES_HUMAN]
+		var/datum/species_form/current_form = GLOB.all_species_form_list[species_form]
+		if(!current_form) current_form = GLOB.all_species_form_list[FORM_HUMAN]
 		gender = pick(current_species.genders)
+<<<<<<< HEAD
 
 		h_style = random_hair_style(gender, species)
 		f_style = random_facial_hair_style(gender, species)
@@ -18,6 +20,24 @@
 				ASSIGN_LIST_TO_COLORS(current_species.get_random_skin_color(), r_skin, g_skin, b_skin)
 			if(current_species.appearance_flags & HAS_HAIR_COLOR)
 				var/hair_colors = current_species.get_random_hair_color()
+=======
+		h_style = random_hair_style(gender, species)
+		f_style = random_facial_hair_style(gender, species)
+		if(current_species)
+			s_tone = random_skin_tone()
+			if(current_form.appearance_flags & HAS_EYE_COLOR)
+			//ASSIGN_LIST_TO_COLORS(current_species.get_random_eye_color(), r_eyes, g_eyes, b_eyes)
+				randomize_eyes_color()
+			if(current_form.appearance_flags & HAS_SKIN_COLOR)
+				randomize_skin_color()
+				//ASSIGN_LIST_TO_COLORS(current_species.get_random_skin_color(), r_skin, g_skin, b_skin)
+			if(current_form.appearance_flags & HAS_HAIR_COLOR)
+				randomize_hair_color("hair")
+				randomize_hair_color("facial")
+				/*
+				//var/hair_colors = current_species.get_random_hair_color()
+				var/hair_colors = ReadRGB("#000000")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(hair_colors)
 					ASSIGN_LIST_TO_COLORS(hair_colors, r_hair, g_hair, b_hair)
 
@@ -26,9 +46,15 @@
 						g_facial = g_hair
 						b_facial = b_hair
 					else
+
 						ASSIGN_LIST_TO_COLORS(current_species.get_random_facial_hair_color(), r_facial, g_facial, b_facial)
 
 		if(current_species.appearance_flags & HAS_UNDERWEAR)
+
+						//ASSIGN_LIST_TO_COLORS(current_species.get_random_facial_hair_color(), r_facial, g_facial, b_facial)
+						ASSIGN_LIST_TO_COLORS(ReadRGB("#000000"), r_facial, g_facial, b_facial)
+				*/
+		if(current_form.appearance_flags & HAS_UNDERWEAR)
 			if(all_underwear)
 				all_underwear.Cut()
 			for(var/datum/category_group/underwear/WRC in GLOB.underwear.categories)
@@ -190,7 +216,8 @@
 	skin_color = rgb(red, green, blue)
 */
 /datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, naked = FALSE)
-	var/update_icon = FALSE
+	var/update_icon = TRUE
+	var/list/leftover_to_equip = list()
 	copy_to(mannequin, TRUE)
 
 	if(!naked)
@@ -233,32 +260,18 @@
 					if(!permitted)
 						continue
 
+					if(G.slot == slot_accessory_buffer)
+						leftover_to_equip.Add(G) //Save accessories 'til last
+						update_icon = TRUE
+
 					if(G.slot && G.slot != slot_accessory_buffer && !(G.slot in loadout_taken_slots) && G.spawn_on_mob(mannequin, gear_list[gear_slot][G.display_name]))
 						loadout_taken_slots.Add(G.slot)
 						update_icon = TRUE
 
+			if(leftover_to_equip) //Equip accessories to the preview
+				var/obj/item/clothing/under/under = mannequin.w_uniform
+				for(var/datum/gear/thing in leftover_to_equip)
+					under.attach_accessory(null, thing.spawn_item(mannequin, gear_list[gear_slot][thing.display_name]))
+
 	if(update_icon)
 		mannequin.update_icons()
-/*
-/datum/preferences/proc/update_preview_icon()
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	dress_preview_mob(mannequin)
-
-	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
-	preview_icon.Scale(48+32, 16+32)
-
-	mannequin.dir = NORTH
-	var/icon/stamp = getFlatIcon(mannequin, NORTH, always_use_defdir = 1)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
-
-	mannequin.dir = WEST
-	stamp = getFlatIcon(mannequin, WEST, always_use_defdir = 1)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
-
-	mannequin.dir = SOUTH
-	stamp = getFlatIcon(mannequin, SOUTH, always_use_defdir = 1)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
-*/

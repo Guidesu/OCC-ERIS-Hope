@@ -40,9 +40,31 @@
 	licence = /decl/licence/cc_by_sa_4_0
 	url = "https://ghyti.bandcamp.com/"
 
+<<<<<<< HEAD
 /music_track/youwillbeokay
 	artist = "Sam Haft, covered by Anna Patsu"
 	title = "You Will be Okay"
 	song = 'sound/music/YouWillBeOkay.ogg'
 	licence = /decl/licence/cc_by_sa_4_0
 	url = "https://www.youtube.com/watch?v=kpnwRg268FQ&ab_channel=Vivziepop"
+=======
+/music_track/aroundthev
+	artist = "Lobo Loco"
+	title = "Around the Village"
+	song = 'sound/music/europa/Lobo_Loco-Arround_the_Village.ogg'
+	licence = /decl/licence/cc_by_3_0
+
+/music_track/nuclear
+	artist = "Lobo Loco"
+	title = "Nuclear Fusion Generator"
+	song = 'sound/music/europa/Lobo_Loco-Nuclear_Fusion_Generator.ogg'
+	licence = /decl/licence/cc_by_3_0
+	url = "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300012"
+
+/music_track/loners
+	artist = "Lobo Loco"
+	title = "Loners in the Night"
+	song = 'sound/music/europa/Lobo_Loco-Loners_in_the_Night.ogg'
+	licence = /decl/licence/cc_by_3_0
+	url = "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300012"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

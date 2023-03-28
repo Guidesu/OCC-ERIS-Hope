@@ -6,9 +6,15 @@
 	light_range = 3
 	use_power = NO_POWER_USE
 	var/obj/item/card/id/botcard			// the ID card that the bot "holds"
+<<<<<<< HEAD
 	var/on = TRUE
 	var/health = 0 //do not forget to set health for your bot!
 	var/maxhealth = 0
+=======
+	var/on = 1
+	health = 0 //do not forget to set health for your bot!
+	maxHealth = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
 	var/open = 0//Maint panel
@@ -28,7 +34,7 @@
 /obj/machinery/bot/proc/explode()
 	qdel(src)
 
-/obj/machinery/bot/proc/healthcheck()
+/obj/machinery/bot/healthCheck()
 	if (src.health <= 0)
 		src.explode()
 
@@ -47,8 +53,13 @@
 
 /obj/machinery/bot/examine(mob/user)
 	..(user)
+<<<<<<< HEAD
 	if (src.health < maxhealth)
 		if (src.health > maxhealth/3)
+=======
+	if (src.health < maxHealth)
+		if (src.health > maxHealth/3)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(user, SPAN_WARNING("[src]'s parts look loose."))
 		else
 			to_chat(user, SPAN_DANGER("[src]'s parts look very loose!"))
@@ -60,9 +71,13 @@
 			open = !open
 			to_chat(user, "<span class='notice'>Maintenance panel is now [src.open ? "opened" : "closed"].</span>")
 	else if(istype(W, /obj/item/tool/weldingtool))
+<<<<<<< HEAD
 		if(health < maxhealth)
+=======
+		if(health < maxHealth)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(open)
-				health = min(maxhealth, health+10)
+				health = min(maxHealth, health+10)
 				user.visible_message(SPAN_WARNING("[user] repairs [src]!"),SPAN_NOTICE("You repair [src]!"))
 				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			else
@@ -78,16 +93,21 @@
 					src.health -= W.force * brute_dam_coeff
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			..()
-			healthcheck()
+			healthCheck()
 		else
 			..()
 
 /obj/machinery/bot/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj.get_structure_damage())
 		return
+<<<<<<< HEAD
 	health -= Proj.get_structure_damage()
+=======
+	if (!(Proj.testing))
+		health -= Proj.get_structure_damage()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
-	healthcheck()
+	healthCheck()
 
 /obj/machinery/bot/ex_act(severity)
 	switch(severity)
@@ -97,13 +117,13 @@
 		if(2.0)
 			src.health -= rand(5,10)*fire_dam_coeff
 			src.health -= rand(10,20)*brute_dam_coeff
-			healthcheck()
+			healthCheck()
 			return
 		if(3.0)
 			if (prob(50))
 				src.health -= rand(1,5)*fire_dam_coeff
 				src.health -= rand(1,5)*brute_dam_coeff
-				healthcheck()
+				healthCheck()
 				return
 	return
 
@@ -134,7 +154,7 @@
 		playsound(src.loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 		if(prob(10))
 			new /obj/effect/decal/cleanable/blood/oil(src.loc)
-		healthcheck()
+		healthCheck()
 
 /******************************************************************/
 // Navigation procs

@@ -1,9 +1,11 @@
-#ifndef T_BOARD
-#error T_BOARD macro is not defined but we need it!
-#endif
 // New shields
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/shield_generator
 	name = T_BOARD("hull shield generator")
+=======
+/obj/item/circuitboard/shield_generator
+	build_name = "hull shield generator"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	board_type = "machine"
 	build_path = /obj/machinery/power/shield_generator
 	matter = list(MATERIAL_GLASS = 2, MATERIAL_GOLD = 1)
@@ -14,8 +16,13 @@
 							/obj/item/stock_parts/smes_coil = 1,
 							/obj/item/stock_parts/console_screen = 1)
 
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/shield_diffuser
 	name = T_BOARD("shield diffuser")
+=======
+/obj/item/circuitboard/shield_diffuser
+	build_name = "shield diffuser"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	board_type = "machine"
 	build_path = /obj/machinery/shield_diffuser
 	origin_tech = list(TECH_MAGNET = 4, TECH_POWER = 2)
@@ -24,8 +31,13 @@
 							/obj/item/stock_parts/micro_laser = 1)
 
 
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/shieldwallgen
 	name = T_BOARD("shield wall generator")
+=======
+/obj/item/circuitboard/shieldwallgen
+	build_name = "shield wall generator"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	board_type = "machine"
 	matter = list(MATERIAL_GLASS = 2, MATERIAL_GOLD = 1)
 	build_path = /obj/machinery/shieldwallgen

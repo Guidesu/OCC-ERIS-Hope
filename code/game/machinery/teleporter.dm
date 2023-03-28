@@ -3,7 +3,11 @@
 	desc = "Used to control a linked teleportation Hub and Station."
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/teleporter
+=======
+	circuit = /obj/item/circuitboard/teleporter
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/locked
 	var/id
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
@@ -19,7 +23,11 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 2000
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/teleporterhub
+=======
+	circuit = /obj/item/circuitboard/teleporterhub
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/machinery/computer/teleporter/mconsole
 	var/obj/machinery/teleport/station/mstation
 	var/entropy_value = 8
@@ -33,7 +41,11 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 2000
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/teleporterstation
+=======
+	circuit = /obj/item/circuitboard/teleporterstation
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/machinery/teleport/hub/mhub
 	var/obj/machinery/computer/teleporter/mconsole
 
@@ -165,7 +177,11 @@
 
 		if(istype(L, /obj/landmark/) && istype(L.loc, /turf))
 			to_chat(usr, "You insert the coordinates into the machine.")
+<<<<<<< HEAD
 			to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the station at all times.")
+=======
+			to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the colony at all times.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			user.drop_item()
 			qdel(I)
 
@@ -316,8 +332,13 @@
 
 /obj/machinery/teleport/station/New()
 	..()
+<<<<<<< HEAD
 	cut_overlays()
 	add_overlays("controller-wires")
+=======
+	overlays.Cut()
+	overlays += "controller-wires"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/teleport/station/attack_ai()
 	src.attack_hand()

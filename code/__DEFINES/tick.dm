@@ -24,4 +24,8 @@
 /// Tick limit for MC while running
 #define TICK_LIMIT_MC 70
 /// Tick limit while initializing
+<<<<<<< HEAD
 #define TICK_LIMIT_MC_INIT_DEFAULT (100 - TICK_BYOND_RESERVE)
+=======
+#define TICK_LIMIT_MC_INIT_DEFAULT (100 - TICK_BYOND_RESERVE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

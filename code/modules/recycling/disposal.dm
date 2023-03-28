@@ -132,19 +132,29 @@
 		return
 
 	if(user.unEquip(I, src))
+<<<<<<< HEAD
 		to_chat(user, "You place \the [I] into the [src].")
 		for(var/mob/M in viewers(src))
 			if(M == user)
 				continue
 			M.show_message("[user.name] places \the [I] into the [src].", 3)
 			playsound(src.loc, 'sound/machines/vending_drop.ogg', 100, 1)
+=======
+		user.visible_message("[user.name] places \the [I] into \the [src].", \
+			"You place \the [I] into the [src].")
+		playsound(loc, 'sound/machines/vending_drop.ogg', 100, 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		update()
 
 // mouse drop another mob or self
 //
 /obj/machinery/disposal/MouseDrop_T(atom/movable/A, mob/user)
+<<<<<<< HEAD
 	if(istype(A, /mob))
+=======
+	if(ismob(A))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/mob/target = A
 		if(user.stat || !user.canmove)
 			return
@@ -155,6 +165,12 @@
 		if(isanimal(user) && target != user)
 			return
 
+<<<<<<< HEAD
+=======
+		if (target.mob_size < MOB_MEDIUM) //We cant stuff in anything bigger then 20
+			return
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		src.add_fingerprint(user)
 		var/target_loc = target.loc
 		var/msg
@@ -214,6 +230,7 @@
 			return
 
 		I.add_fingerprint(user)
+<<<<<<< HEAD
 		I.forceMove(src)
 		to_chat(user, "You place \the [I] into the [src].")
 		for(var/mob/M in viewers(src))
@@ -222,6 +239,17 @@
 			M.show_message("[user.name] places \the [I] into the [src].", 3)
 			playsound(src.loc, 'sound/machines/vending_drop.ogg', 100, 1)
 
+=======
+		if(user.drop_from_inventory(I))
+			user.drop_from_inventory(I)
+			I.forceMove(src)
+			user.visible_message("[user.name] places \the [I] into \the [src].", \
+				"You place \the [I] into the [src].")
+			playsound(loc, 'sound/machines/vending_drop.ogg', 100, 1)
+		else
+			user.visible_message("[user.name] fails to throw away \the [I] into \the [src].", \
+				"You fail to throw away \the [I] into the [src].")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		update()
 		return
 	. = ..()
@@ -353,7 +381,7 @@
 		AM.pipe_eject(0)
 	update()
 
-// update the icon & overlays to reflect mode & status
+// update the icon & over-lays to reflect mode & status
 /obj/machinery/disposal/proc/update()
 	cut_overlays()
 	if(stat & BROKEN)
@@ -362,14 +390,18 @@
 		flush = 0
 		return
 
+<<<<<<< HEAD
 	// flush handle
 	if(flush)
 		add_overlays(image('icons/obj/pipes/disposal.dmi', "dispover-handle"))
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	// only handle is shown if no power
 	if(stat & NOPOWER || mode == -1)
 		return
 
+<<<<<<< HEAD
 	// 	check for items in disposal - occupied light
 	if(contents.len > 0)
 		add_overlays(image('icons/obj/pipes/disposal.dmi', "dispover-full"))
@@ -379,6 +411,21 @@
 		add_overlays(image('icons/obj/pipes/disposal.dmi', "dispover-charge"))
 	else if(mode == 2)
 		add_overlays(image('icons/obj/pipes/disposal.dmi', "dispover-ready"))
+=======
+	// charging and ready light
+	if(mode == 1)
+		add_overlay(image(icon, "dispover-charge"))
+	else if(mode == 2)
+		add_overlay(image(icon, "dispover-ready"))
+
+	// 	check for items in disposal - occupied light
+	if(contents.len > 0)
+		add_overlay(image(icon, "dispover-full"))
+
+	// flush handle
+	if(flush)
+		add_overlay(image(icon, "dispover-handle"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // timed process
 // charge the gas reservoir and perform flush if ready
@@ -495,18 +542,23 @@
 		qdel(H)
 
 /obj/machinery/disposal/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (istype(mover,/obj/item) && mover.throwing)
+	if(ishuman(mover) && mover.throwing)
+		var/mob/living/carbon/human/H = mover
+		if(H.stats.getPerk(PERK_SPACE_ASSHOLE))
+			H.forceMove(src)
+			visible_message("[H] dives into \the [src]!")
+			flush = TRUE
+		return
+	else if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
 			return
-		if(prob(75))
-			I.forceMove(src)
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] lands in \the [src].", 3)
 		else
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
-		return 0
+			if(prob(75))
+				I.forceMove(src)
+				visible_message("\The [I] lands in \the [src].")
+			else
+				visible_message("\The [I] bounces off of \the [src]\'s rim!")
 	else
 		return ..(mover, target, height, air_group)
 
@@ -524,6 +576,7 @@
 	var/destinationTag = "" // changes if contains a delivery container
 	var/tomail = 0 //changes if contains wrapped package
 	var/has_mob = FALSE //If it contains a mob
+	var/from_cloner = FALSE // if the package originates from a genetics cloner
 
 	var/partialTag = "" //set by a partial tagger the first time round, then put in destinationTag if it goes through again.
 
@@ -585,18 +638,33 @@
 		if(!loc)
 			return // check if we got GC'd
 
+<<<<<<< HEAD
 		if(has_mob && prob(5))
 			for(var/mob/living/H in src)
 				if(isdrone(H)) //Drones use the mailing code to move through the disposal system,
 					continue
 
+=======
+		if(has_mob && prob(10) && !from_cloner) //Mobs shunted from the cloning vat are free from damage.
+			for(var/mob/living/H in src)
+				if(isdrone(H)) //Drones use the mailing code to move through the disposal system,
+					continue
+				//if(H.stats.getPerk(PERK_SPACE_ASSHOLE)) //Assholes gain disposal immunity
+				//	continue - SoJ edit, we dont want perfect immunity
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				// Hurt any living creature jumping down disposals
 				var/multiplier = 1
 
 				// STAT_MEC or STAT_TGH help you reduce disposal damage, with no damage being recieved at all at STAT_LEVEL_EXPERT
+<<<<<<< HEAD
 				if(H.stats)
 					multiplier = min(H.stats.getMult(STAT_MEC, STAT_LEVEL_EXPERT), H.stats.getMult(STAT_TGH, STAT_LEVEL_EXPERT))
 
+=======
+				//if(H.stats)
+				//	multiplier = min(H.stats.getMult(STAT_MEC, STAT_LEVEL_EXPERT), H.stats.getMult(STAT_TGH, STAT_LEVEL_EXPERT))
+				//Soj edit we want these to be REALLY deadly and not good for fast travel
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(multiplier > 0)
 					H.take_overall_damage(8 * multiplier, 0, "Blunt Trauma")
 
@@ -704,7 +772,7 @@
 	level = BELOW_PLATING_LEVEL			// underfloor only
 	var/pipe_dir = 0		// bitmask of pipe directions
 	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
+	health = 10 	// health points 0-10
 	layer = 2.3			// slightly lower than wires and other pipes
 	var/base_icon_state	// initial icon state on map
 	var/sortType = list()
@@ -885,21 +953,21 @@
 /obj/structure/disposalpipe/ex_act(severity)
 
 	switch(severity)
-		if(1.0)
+		if(1)
 			broken(0)
 			return
-		if(2.0)
+		if(2)
 			health -= rand(5,15)
-			healthcheck()
+			healthCheck()
 			return
-		if(3.0)
+		if(3)
 			health -= rand(0,15)
-			healthcheck()
+			healthCheck()
 			return
 
 
 	// test health for brokenness
-/obj/structure/disposalpipe/proc/healthcheck()
+/obj/structure/disposalpipe/healthCheck()
 	if(health < -2)
 		broken(0)
 	else if(health < 1)
@@ -1349,7 +1417,12 @@
 /obj/structure/disposalpipe/trunk/Destroy()
 	// Unlink trunk and disposal so that objets are not sent to nullspace
 	var/obj/machinery/disposal/D = linked
+<<<<<<< HEAD
 	D.trunk = null
+=======
+	if (istype(D))
+		D.trunk = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	linked = null
 	return ..()
 
@@ -1377,7 +1450,6 @@
 	var/obj/machinery/disposal/D = locate() in src.loc
 	if(D && D.anchored)
 		return
-
 	//Disposal outlet
 	var/obj/structure/disposaloutlet/O = locate() in src.loc
 	if(O && O.anchored)

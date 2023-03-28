@@ -63,7 +63,11 @@
 		else
 
 			to_chat(user, SPAN_NOTICE("You start connecting [R.name] to [src.name] ..."))
+<<<<<<< HEAD
 			if(do_after(user,50, src))
+=======
+			if(do_after(user,5, src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				if(R.use(2))
 					src.alpha = 0
 				new /obj/structure/catwalk(src.loc)
@@ -78,7 +82,11 @@
 	//if(!(istype(src.loc, /turf/space)))
 	//	qdel(src)
 	spawn(1)
+<<<<<<< HEAD
 		set_overlays(list())
+=======
+		cut_overlays()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		var/dir_sum = 0
 

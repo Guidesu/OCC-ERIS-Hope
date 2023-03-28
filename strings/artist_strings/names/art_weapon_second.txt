@@ -8,6 +8,13 @@ Leg
 Lower
 Body
 Mother
+<<<<<<< HEAD
+=======
+Fucker
+Mc Fucker
+Asshole
+Ass
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Idiot
 Turd
 Waffeler
@@ -34,7 +41,15 @@ Blow
 Kick
 Punch
 Wound
+<<<<<<< HEAD
 Gamer
+=======
+Collywobbler
+Cockgoblin
+Penisgremlin
+Gamer
+Fart
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Sting
 Ray
 Foundation
@@ -54,6 +69,12 @@ Leader
 Captain
 Vagabond
 Soldier
+<<<<<<< HEAD
+=======
+Serbian
+Russian
+German
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Carpenter
 Snake
 Crusader
@@ -78,6 +99,7 @@ Guide
 Warrior
 Wrangler
 Traitor
+<<<<<<< HEAD
 Commissar
 Tajaran
 Human
@@ -88,3 +110,6 @@ Akula
 Covid
 Sergal
 Akula
+=======
+Commissar
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

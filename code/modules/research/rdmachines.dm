@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
 var/list/default_material_composition = list(MATERIAL_STEEL = 0, MATERIAL_GLASS = 0, MATERIAL_GOLD = 0, MATERIAL_SILVER = 0, MATERIAL_PHORON = 0, MATERIAL_URANIUM = 0, MATERIAL_DIAMOND = 0)
 
+=======
+//Devices that link into the R&D console fall into thise type for easy identification and some shared procs.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/machines/research.dmi'
@@ -39,8 +43,14 @@ var/list/default_material_composition = list(MATERIAL_STEEL = 0, MATERIAL_GLASS 
 	name = "protolathe"
 	desc = "A machine used for construction of advanced prototypes. Operated from an R\&D console."
 	icon_state = "protolathe"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/protolathe
 
+=======
+	circuit = /obj/item/circuitboard/protolathe
+	unsuitable_materials = list() //So we can use biomatter and others
+	max_efficiency = 0.2
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_type = PROTOLATHE
 	storage_capacity = 120
 
@@ -49,8 +59,13 @@ var/list/default_material_composition = list(MATERIAL_STEEL = 0, MATERIAL_GLASS 
 	name = "circuit imprinter"
 	desc = "A machine used for printing advanced circuit boards. Operated from an R\&D console."
 	icon_state = "imprinter"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/circuit_imprinter
 
+=======
+	circuit = /obj/item/circuitboard/circuit_imprinter
+	max_efficiency = 0.2
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_type = IMPRINTER
 	storage_capacity = 60
 	speed = 3
@@ -59,16 +74,27 @@ var/list/default_material_composition = list(MATERIAL_STEEL = 0, MATERIAL_GLASS 
 // Versions with some materials already loaded, to be used on map spawn
 /obj/machinery/autolathe/rnd/protolathe/loaded
 	stored_material = list(
+<<<<<<< HEAD
 		MATERIAL_STEEL = 60,
 		MATERIAL_GLASS = 60,
 		MATERIAL_PLASTIC = 60
+=======
+		MATERIAL_STEEL = 15,
+		MATERIAL_GLASS = 15,
+		MATERIAL_PLASTIC = 15
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 
 /obj/machinery/autolathe/rnd/imprinter/loaded
 	stored_material = list(
+<<<<<<< HEAD
 		MATERIAL_STEEL = 30,
 		MATERIAL_PLASTIC = 30
+=======
+		MATERIAL_STEEL = 10,
+		MATERIAL_PLASTIC = 10
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		)
 
 /obj/machinery/autolathe/rnd/imprinter/loaded/Initialize()

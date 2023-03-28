@@ -1,27 +1,41 @@
 #define ERRORCODE_INVALID	1
 #define ERRORCODE_NOFUNDS	2
 
+<<<<<<< HEAD
 /obj/machinery/computer/supplycomp
+=======
+/obj/machinery/computer/supplycomp		// TODO: Remove this from the game
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "supply control console"
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "tech_key"
 	icon_screen = "supply"
 	light_color = COLOR_LIGHTING_ORANGE_MACHINERY
 	req_access = list(access_cargo)
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/supplycomp
 	var/temp = null
+=======
+	circuit = /obj/item/circuitboard/supplycomp
+	var/temp
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
 	var/can_order_contraband = FALSE
 	var/requestonly = FALSE
+<<<<<<< HEAD
 	var/contraband = FALSE
 	var/hacked = FALSE
+=======
+	var/contraband = TRUE
+	var/hacked = TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/computer/supplycomp/attack_hand(mob/user)
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access Denied."))
 		return
-
 	if(..())
 		return
 	user.set_machine(src)
@@ -34,10 +48,15 @@
 		if (shuttle)
 			dat += "<BR><B>Supply shuttle</B><HR>"
 			dat += "\nLocation: "
+<<<<<<< HEAD
 
 			if (shuttle.has_arrive_time())
 				dat += "In transit ([shuttle.eta_minutes()] Mins.)"
 
+=======
+			if (shuttle.has_arrive_time())
+				dat += "In transit ([shuttle.eta_minutes()] Mins.)"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			else if(shuttle.at_station())
 				if (!shuttle.can_launch())
 					dat += "Docking/Undocking"
@@ -45,21 +64,29 @@
 					dat += "Vessel"
 			else
 				dat += "Away"
+<<<<<<< HEAD
 
 			dat += "<BR>"
 
+=======
+			dat += "<BR>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(!requestonly)
 				if(shuttle.can_launch())
 					if(shuttle.at_station())
 						dat += "<A href='?src=\ref[src];send=1'>Send away</A>"
 					else
 						dat += "<A href='?src=\ref[src];send=1'>Request supply shuttle</A>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				else if (shuttle.can_cancel())
 					dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel request</A>"
 				else
 					dat += "*Shuttle is busy*"
 			dat += "<BR>\n<BR>"
+<<<<<<< HEAD
 
 		if(!requestonly)
 			dat += "<HR>\n"
@@ -80,12 +107,26 @@
 	onclose(user, "computer")
 	return
 
+=======
+		if(!requestonly)
+			dat += "<HR>\n"
+			dat += "<b>Guild Credits: [get_account_credits(department_accounts[DEPARTMENT_LSS])][CREDS]</b><BR><BR>"
+		dat += "<A href='?src=\ref[src];order=categories'>[requestonly ? "Request" : "Order"] items</A><BR>"
+		if(!requestonly)
+			dat += "<A href='?src=\ref[src];viewmes=1'>View messages</A><BR>"
+			dat += "<A href='?src=\ref[src];viewaccount=\ref[department_accounts[DEPARTMENT_LSS]]'>View banking data</A><BR>"
+		dat += {"
+		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>
+		<A href='?src=\ref[src];vieworders=1'>View orders</A>"}
+	user << browse(dat, "window=computer;size=575x450")
+	onclose(user, "computer")
+	return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/computer/supplycomp/emag_act(remaining_charges, mob/user)
 	if(!hacked)
 		to_chat(user, SPAN_NOTICE("Special supplies unlocked."))
 		hacked = TRUE
 		return TRUE
-
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
 	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if (!shuttle)
@@ -93,12 +134,15 @@
 		return
 	if(..())
 		return TRUE
+<<<<<<< HEAD
 
 	var/datum/money_account/supply_account = department_accounts[DEPARTMENT_GUILD]
 
+=======
+	var/datum/money_account/supply_account = department_accounts[DEPARTMENT_LSS]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(isturf(loc) && ( in_range(src, usr) || issilicon(usr) ) )
 		usr.set_machine(src)
-
 	//Calling the shuttle
 	if(href_list["send"])
 		if(shuttle.at_station())
@@ -112,7 +156,10 @@
 			temp = "The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes."
 			post_signal("supply")
 		temp += "<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(href_list["viewmes"])
 		if(SSsupply.centcom_message)
 			temp += "Latest message: <BR><BR>"
@@ -121,12 +168,16 @@
 		else
 			temp += "Can not find any messages from Commercial barge. <BR>"
 		temp += "<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(href_list["viewaccount"])
 		var/datum/money_account/account = locate(href_list["viewaccount"]) in all_money_accounts
 		if(!account)
 			updateUsrDialog()
 			return
+<<<<<<< HEAD
 
 		temp = "<A href='?src=\ref[src];mainmenu=1'>Main Menu</a><HR><BR>"
 
@@ -134,6 +185,12 @@
 		temp += "Account number: #[account.account_number]<br>"
 		temp += "Balance: [num2text(account.money, 12)][CREDS]<br>"
 
+=======
+		temp = "<A href='?src=\ref[src];mainmenu=1'>Main Menu</a><HR><BR>"
+		temp += "<b>[account.get_name()]</b><br>"
+		temp += "Account number: #[account.account_number]<br>"
+		temp += "Balance: [num2text(account.money, 12)][CREDS]<br>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		temp += "<br><b>Transaction logs</b>"
 		temp += "<table border=1 style='width:100%'>"
 		temp += "<tr>"
@@ -152,21 +209,26 @@
 			temp += "<td>[T.source_terminal]</td>"
 			temp += "</tr>"
 		temp += "</table><br>"
+<<<<<<< HEAD
 
 		temp += "<A href='?src=\ref[src];viewaccount=\ref[account]'>Refresh</A>"
 
+=======
+		temp += "<A href='?src=\ref[src];viewaccount=\ref[account]'>Refresh</A>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (href_list["force_send"])
 		shuttle.force_launch(src)
-
 	if (href_list["cancel_send"])
 		shuttle.cancel_launch(src)
-
 	else if (href_list["order"])
 		if(requestonly)
 			temp = ""
 		else
 			temp = "<b>Guild Credits: [get_account_credits(supply_account)][CREDS]</b><BR>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(href_list["order"] == "categories")
 			//all_supply_groups
 			//Request what?
@@ -185,21 +247,29 @@
 					continue
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"
 				//Have to send the type instead of a reference to the obj because it would get caught by GC
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
 			for(var/mob/V in hearers(src))
 				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
 			return
-
 		//Find the correct supply_pack datum
 		var/datum/supply_pack/P = SSsupply.supply_packs[href_list["doorder"]]
 		if(!istype(P))	return
+<<<<<<< HEAD
 
 		var/reason = sanitize(input(usr, "Reason:", "Why do you require this item?","") as null|text)
 		if(!reason || !CanUseTopic(usr))
 			return
 
+=======
+		var/reason = sanitize(input(usr, "Reason:", "Why do you require this item?","") as null|text)
+		if(!reason || !CanUseTopic(usr))
+			return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/idname = "*None Provided*"
 		var/idrank = "*None Provided*"
 		if(ishuman(usr))
@@ -208,6 +278,7 @@
 			idrank = H.get_assignment()
 		else if(issilicon(usr))
 			idname = usr.real_name
+<<<<<<< HEAD
 
 		//make our supply_order datum
 		var/datum/supply_order/O = new /datum/supply_order(P, idname, idrank, null, reason)
@@ -217,16 +288,25 @@
 
 		reqtime = (world.time + 5) % 1e5
 
+=======
+		//make our supply_order datum
+		var/datum/supply_order/O = new /datum/supply_order(P, idname, idrank, null, reason)
+		SSsupply.requestlist += O
+		O.generateRequisition(loc)
+		reqtime = (world.time + 5) % 1e5
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		temp = "Order request placed.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> | <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 		if(!requestonly)
 			temp += " | <A href='?src=\ref[src];confirmorder=[O.id]'>Authorize Order</A>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else if(href_list["confirmorder"])
 		//Find the correct supply_order datum
 		var/ordernum = text2num(href_list["confirmorder"])
 		var/error = approve_order(ordernum)
-
 		//An errorcode of 0 means success
 		if (!error)
 			temp = "Thanks for your order.<BR>"
@@ -234,16 +314,13 @@
 			temp = "Not enough credits.<BR>"
 		else if (error == ERRORCODE_INVALID)
 			temp = "Invalid Request<br>"
-
 		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in SSsupply.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.id] - [SO.object.name] ordered by [SO.orderer][SO.reason ? " ([SO.reason])":""]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
 	/*
 	//Cancelling already authorised orders gets messy, disabled for now
 	//Just don't authorise it til you're sure
@@ -252,13 +329,11 @@
 		SSsupply.requestlist -= remove_supply
 		get_supply_credits() += remove_supply.object.cost
 		temp += "Canceled: [remove_supply.object.name]<BR><BR><BR>"
-
 		for(var/S in SSsupply.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "[SO.object.name] approved by [SO.orderedby][SO.comment ? " ([SO.comment])":""] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 	*/
-
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
 		for(var/S in SSsupply.requestlist)
@@ -267,11 +342,13 @@
 			if(!requestonly)
 				temp += "<A href='?src=\ref[src];confirmorder=[SO.id]'>Approve</A> "
 			temp += "<A href='?src=\ref[src];rreq=[SO.id]'>Remove</A><BR>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!requestonly)
 			temp += "<BR><A href='?src=\ref[src];clearreq=1'>Clear list</A>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
@@ -282,19 +359,19 @@
 				temp = "Request removed.<BR>"
 				break
 		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
 	else if (href_list["clearreq"])
 		SSsupply.requestlist.Cut()
 		temp = "List cleared.<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
 	else if (href_list["mainmenu"])
 		temp = null
-
 	add_fingerprint(usr)
 	updateUsrDialog()
 	return
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/computer/supplycomp/proc/approve_order(ordernum)
 	var/datum/supply_order/O
 	for (var/i in 1 to SSsupply.requestlist.len)
@@ -305,30 +382,34 @@
 				SSsupply.requestlist.Cut(i,i+1)
 				SSsupply.shoppinglist += O
 				return 0
-
 			else
 				return ERRORCODE_NOFUNDS
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/computer/supplycomp/proc/post_signal(var/command)
-
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
-
 	if(!frequency) return
-
 	var/datum/signal/status_signal = new
 	status_signal.source = src
 	status_signal.transmission_method = 1
 	status_signal.data["command"] = command
-
 	frequency.post_signal(src, status_signal)
-
 #undef ERRORCODE_INVALID
 #undef ERRORCODE_NOFUNDS
+<<<<<<< HEAD
 
 
 /obj/machinery/computer/supplycomp/order
 	name = "supply ordering console"
 	icon_screen = "request"
 	circuit = /obj/item/electronics/circuitboard/ordercomp
+=======
+/obj/machinery/computer/supplycomp/order
+	name = "supply ordering console"
+	icon_screen = "request"
+	circuit = /obj/item/circuitboard/ordercomp
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	requestonly = TRUE
 	req_access = list()

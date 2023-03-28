@@ -87,6 +87,7 @@
 	update_icon()
 
 
+<<<<<<< HEAD
 /obj/item/device/assembly/prox_sensor/on_update_icon()
 	cut_overlays()
 	attached_overlays = list()
@@ -95,6 +96,16 @@
 		attached_overlays += "prox_timing"
 	if(scanning)
 		add_overlays("prox_scanning")
+=======
+/obj/item/device/assembly/prox_sensor/update_icon()
+	cut_overlays()
+	attached_overlays = list()
+	if(timing)
+		add_overlay("prox_timing")
+		attached_overlays += "prox_timing"
+	if(scanning)
+		add_overlay("prox_scanning")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		attached_overlays += "prox_scanning"
 	if(holder)
 		holder.update_icon()

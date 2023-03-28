@@ -55,7 +55,11 @@ var/list/flooring_cache = list()
 						has_border |= step_dir
 
 						//Now, if we don't, then lets add a border
+<<<<<<< HEAD
 						associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[step_dir]-[plane]", "[flooring.icon_base]_edges", step_dir, (flooring.flags & TURF_EDGES_EXTERNAL)))
+=======
+						add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[step_dir]-[plane]", "[flooring.icon_base]_edges", step_dir, (flooring.flags & TURF_EDGES_EXTERNAL)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 				//By doing &15 we only take the first four bits, which represent NORTH, SOUTH, EAST, WEST
 				has_smooth = ~(has_border & 15)
@@ -70,6 +74,7 @@ var/list/flooring_cache = list()
 						//If we are, then check the diagonal tile
 						if (!flooring.test_link(src, get_step(src, NORTHEAST)))
 							//If we smooth with north and east, but don't smooth with the northeast diagonal, then we have an inner corner!
+<<<<<<< HEAD
 							associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[NORTHEAST]-[plane]", "[flooring.icon_base]_corners", NORTHEAST))
 
 					if((has_smooth & NORTHWEST) == NORTHWEST)
@@ -83,6 +88,21 @@ var/list/flooring_cache = list()
 					if((has_smooth & SOUTHWEST) == SOUTHWEST)
 						if (!flooring.test_link(src, get_step(src, SOUTHWEST)))
 							associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[SOUTHWEST]-[plane]", "[flooring.icon_base]_corners", SOUTHWEST))
+=======
+							add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[NORTHEAST]-[plane]", "[flooring.icon_base]_corners", NORTHEAST))
+
+					if((has_smooth & NORTHWEST) == NORTHWEST)
+						if (!flooring.test_link(src, get_step(src, NORTHWEST)))
+							add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[NORTHWEST]-[plane]", "[flooring.icon_base]_corners", NORTHWEST))
+
+					if((has_smooth & SOUTHEAST) == SOUTHEAST)
+						if (!flooring.test_link(src, get_step(src, SOUTHEAST)))
+							add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[SOUTHEAST]-[plane]", "[flooring.icon_base]_corners", SOUTHEAST))
+
+					if((has_smooth & SOUTHWEST) == SOUTHWEST)
+						if (!flooring.test_link(src, get_step(src, SOUTHWEST)))
+							add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-corner-[SOUTHWEST]-[plane]", "[flooring.icon_base]_corners", SOUTHWEST))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 
@@ -90,6 +110,7 @@ var/list/flooring_cache = list()
 			if (has_border)
 				if(flooring.flags & TURF_HAS_CORNERS)
 					if((has_border & NORTHEAST) == NORTHEAST)
+<<<<<<< HEAD
 						associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[NORTHEAST]-[plane]", "[flooring.icon_base]_edges", NORTHEAST,(flooring.flags & TURF_EDGES_EXTERNAL)))
 					if((has_border & NORTHWEST) == NORTHWEST)
 						associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[NORTHWEST]-[plane]", "[flooring.icon_base]_edges", NORTHWEST,(flooring.flags & TURF_EDGES_EXTERNAL)))
@@ -97,6 +118,15 @@ var/list/flooring_cache = list()
 						associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[SOUTHEAST]-[plane]", "[flooring.icon_base]_edges", SOUTHEAST,(flooring.flags & TURF_EDGES_EXTERNAL)))
 					if((has_border & SOUTHWEST) == SOUTHWEST)
 						associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[SOUTHWEST]-[plane]", "[flooring.icon_base]_edges", SOUTHWEST,(flooring.flags & TURF_EDGES_EXTERNAL)))
+=======
+						add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[NORTHEAST]-[plane]", "[flooring.icon_base]_edges", NORTHEAST,(flooring.flags & TURF_EDGES_EXTERNAL)))
+					if((has_border & NORTHWEST) == NORTHWEST)
+						add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[NORTHWEST]-[plane]", "[flooring.icon_base]_edges", NORTHWEST,(flooring.flags & TURF_EDGES_EXTERNAL)))
+					if((has_border & SOUTHEAST) == SOUTHEAST)
+						add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[SOUTHEAST]-[plane]", "[flooring.icon_base]_edges", SOUTHEAST,(flooring.flags & TURF_EDGES_EXTERNAL)))
+					if((has_border & SOUTHWEST) == SOUTHWEST)
+						add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-edge-[SOUTHWEST]-[plane]", "[flooring.icon_base]_edges", SOUTHWEST,(flooring.flags & TURF_EDGES_EXTERNAL)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 			//Now lets handle those fancy floors which have many centre icons
@@ -110,15 +140,21 @@ var/list/flooring_cache = list()
 
 
 
+<<<<<<< HEAD
 	if(decals && decals.len)//Occulus edit: You can't add or associate lists to an overlay. You need to do so for each image.
 		var/x = decals.len
 		while(x > 0)
 			associate_with_overlays(decals[x])
 			x-- //Occulus edit end.
+=======
+	if(decals && decals.len)
+		add_overlay(decals)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(broken || burnt)
 		if(!isnull(broken))
 			if(flooring.has_damage_range)
+<<<<<<< HEAD
 				associate_with_overlays(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-broken-[broken]-[plane]", "broken[broken]"))
 			else
 				var/n = rand(1,3)
@@ -130,6 +166,19 @@ var/list/flooring_cache = list()
 			else
 				var/n = rand(1,3)
 				associate_with_overlays(get_damage_overlay("scorched[n]-[plane]", "scorched[n]"))
+=======
+				add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-broken-[broken]-[plane]", "broken[broken]"))
+			else
+				var/n = rand(1,3)
+				add_overlay(get_damage_overlay("damaged[n]-[plane]", "damaged[n]"))
+
+		if(!isnull(burnt))
+			if(flooring.has_burn_range)
+				add_overlay(get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-burned-[burnt]-[plane]", "burned[burnt]"))
+			else
+				var/n = rand(1,3)
+				add_overlay(get_damage_overlay("scorched[n]-[plane]", "scorched[n]"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(update_neighbors)
 		for(var/turf/simulated/floor/F in RANGE_TURFS(1, src))
@@ -137,7 +186,6 @@ var/list/flooring_cache = list()
 				continue
 			F.update_icon()
 	update_openspace()
-
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour
@@ -166,7 +214,11 @@ var/list/flooring_cache = list()
 		else if (istype(T, /turf/simulated/floor) && !istype(T, /turf/simulated/floor/exoplanet))
 			var/turf/simulated/floor/t = T
 			//If the floor is the same as us,then we're linked,
+<<<<<<< HEAD
 			if (t.flooring && t.flooring.type == type)
+=======
+			if (t.flooring?.type == type)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				is_linked = TRUE
 				/*
 					But there's a caveat. To make atom black/whitelists work correctly, we also need to check that
@@ -203,9 +255,6 @@ var/list/flooring_cache = list()
 							//Found a match on the list
 							is_linked = FALSE
 							break
-
-
-
 
 	//Alright now we have a preliminary answer about smoothing, however that answer may change with the following
 	//Atom lists!
@@ -324,7 +373,7 @@ var/list/flooring_cache = list()
 		I.plane = src.plane
 
 
-		//External overlays will be offsetted out of this tile
+		//External over-lays will be offsetted out of this tile
 		if (external)
 			if (icon_dir & NORTH)
 				I.pixel_y = 32

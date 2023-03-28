@@ -1,5 +1,8 @@
 /obj/item/gun/matter
+<<<<<<< HEAD
 	bad_type = /obj/item/gun/matter
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/max_stored_matter = 30
 	var/stored_matter = 0
 	var/matter_type
@@ -7,8 +10,11 @@
 	var/projectile_cost = 1
 	var/projectile_type
 
+<<<<<<< HEAD
 	bad_type = /obj/item/gun/matter
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/matter/attackby(obj/item/I, mob/user)
 	var/obj/item/stack/material/M = I
 	if(istype(M) && M.material.name == matter_type)

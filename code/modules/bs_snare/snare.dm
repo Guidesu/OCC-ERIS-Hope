@@ -7,6 +7,10 @@
 	origin_tech = list(TECH_BLUESPACE = 6)
 	//var/locking_access = access_rd
 	var/silk_id = "" //using by snare controller to teleport user to controller's mark
+<<<<<<< HEAD
+=======
+	price_tag = 250
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/accessory/bs_silk/New()
 	. = ..()
@@ -15,7 +19,11 @@
 	removable = !removable*/
 
 /obj/item/clothing/accessory/bs_silk/attackby(obj/item/I, mob/user)
+<<<<<<< HEAD
 	if((QUALITY_PULSING in I.tool_qualities))// || removable)
+=======
+	if(isMultitool(I))// || removable)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		var/input_id = input("Enter new BS Snare ID", "Snare ID", silk_id)
 		silk_id = input_id
 		return
@@ -31,6 +39,10 @@
 
 /obj/item/clothing/accessory/bs_silk/examine()
 	..()
+<<<<<<< HEAD
 	var/s_id = silk_id != "" ? silk_id : "NOT SETTED"
+=======
+	var/s_id = silk_id != "" ? silk_id : "NOT SET"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(usr, "<br>On small display you can notice label that mean: \"DEVICE ID: <b>[s_id]</b>\".")
 	//to_chat(usr, "<br>It[removable ? " can be removed" : "'s locked by access: " + locking_access].")

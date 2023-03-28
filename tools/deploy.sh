@@ -12,17 +12,33 @@ fi
 mkdir -p \
     $1/maps \
     $1/strings \
+<<<<<<< HEAD
 	$1/config
+=======
+	$1/config \
+    $1/tgui/public \
+    $1/tgui/packages/tgfont/dist
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
   cp -r .git/logs/* $1/.git/logs/
 fi
 
+<<<<<<< HEAD
 cp cev_eris.dmb cev_eris.rsc $1/
 cp -r maps/* $1/maps/
 cp -r strings/* $1/strings/
 cp -r config/names $1/config/
+=======
+cp liberty-station.dmb liberty-station.rsc $1/
+cp -r maps/* $1/maps/
+cp -r strings/* $1/strings/
+cp -r config/names $1/config/
+cp -r tgui/public/* $1/tgui/public/
+cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 #remove .dm files from _maps
 
 #this regrettably doesn't work with windows find

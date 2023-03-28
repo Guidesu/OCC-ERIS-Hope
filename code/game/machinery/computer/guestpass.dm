@@ -3,7 +3,11 @@
 /////////////////////////////////////////////
 /obj/item/card/id/guest
 	name = "guest pass"
+<<<<<<< HEAD
 	desc = "Allows temporary access to ship areas."
+=======
+	desc = "Allows temporary access to colony areas."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "guest"
 	light_color = COLOR_LIGHTING_BLUE_MACHINERY
 
@@ -46,7 +50,11 @@
 	light_power_on = 0.2
 	density = FALSE
 	CheckFaceFlag = 0
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/guestpass
+=======
+	circuit = /obj/item/circuitboard/guestpass
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/card/id/giver
 	var/list/accesses = list()
 	var/giv_name = "NOT SPECIFIED"

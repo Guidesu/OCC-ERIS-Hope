@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(character_setup)
 		prefs.setup()
 
 	for(var/d in preferences_datums)
-		var/datum/preferences/prefs = d
+		var/datum/preferences/prefs = preferences_datums[d]
 		if(istype(prefs) && !prefs.path)
 			error("Prefs failed to setup (SS): [prefs.client_ckey]")
 			prefs.setup()
@@ -26,4 +26,8 @@ SUBSYSTEM_DEF(character_setup)
 	for(var/client/C in clients)
 		GLOB.lobbyScreen.play_music(C)
 
+<<<<<<< HEAD
 	. = ..()
+=======
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

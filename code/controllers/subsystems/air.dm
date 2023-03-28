@@ -202,7 +202,13 @@ SUBSYSTEM_DEF(air)
 		tiles_to_update.len--
 
 		// Check if the turf is self-zone-blocked
+<<<<<<< HEAD
 		if(T.c_airblock(T) & ZONE_BLOCKED)
+=======
+		var/block
+		ATMOS_CANPASS_TURF(block, T, T)
+		if (block & ZONE_BLOCKED)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			deferred_tiles += T
 			if (MC_TICK_CHECK)
 				return
@@ -332,10 +338,27 @@ SUBSYSTEM_DEF(air)
 	ASSERT(isturf(B))
 	#endif
 
+<<<<<<< HEAD
 	var/ablock = A.c_airblock(B)
 	if(ablock == BLOCKED)
 		return BLOCKED
 	return ablock | B.c_airblock(A)
+=======
+	var/ablock
+	ATMOS_CANPASS_TURF(ablock, A, B)
+	if(ablock == BLOCKED)
+		return BLOCKED
+	var/bblock
+	ATMOS_CANPASS_TURF(bblock, B, A)
+	return ablock | bblock
+
+/datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
+	#ifdef ZASDBG
+	ASSERT(istype(T))
+	#endif
+
+	return istype(T) && T.zone && !T.zone.invalid
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
 	#ifdef ZASDBG
@@ -513,7 +536,11 @@ SUBSYSTEM_DEF(air)
 		return FALSE
 	if(A.nitrogen != B.nitrogen)
 		return FALSE
+<<<<<<< HEAD
 	if(A.phoron  != B.phoron ) // OCCULUS EDIT - Plasma to Phoron
+=======
+	if(A.plasma  != B.plasma )
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	if(A.carbon_dioxide != B.carbon_dioxide)
 		return FALSE
@@ -529,4 +556,8 @@ SUBSYSTEM_DEF(air)
 #undef SSAIR_EDGES
 #undef SSAIR_FIRE_ZONES
 #undef SSAIR_HOTSPOTS
+<<<<<<< HEAD
 #undef SSAIR_ZONES
+=======
+#undef SSAIR_ZONES
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

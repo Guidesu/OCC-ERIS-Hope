@@ -7,11 +7,11 @@
 	layer = ABOVE_OBJ_LAYER //Just above doors
 	anchored = TRUE
 	flags = ON_BORDER
-	var/maxhealth = 20
-	var/resistance = RESISTANCE_NONE	//Incoming damage is reduced by this flat amount before being subtracted from health. Defines found in code\__defines\weapons.dm
+	maxHealth = 20
+	var/resistance = RESISTANCE_FLIMSY	//Incoming damage is reduced by this flat amount before being subtracted from health. Defines found in code\__defines\weapons.dm
 	var/maximal_heat = T0C + 100 		// Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 		// Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
-	var/health
+	health
 	var/ini_dir = null
 	var/state = 2
 	var/reinf = 0
@@ -20,6 +20,8 @@
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 	var/no_color = FALSE //If true, don't apply a color to the base
+
+	atmos_canpass = CANPASS_PROC
 
 /obj/structure/window/can_prevent_fall()
 	return !is_fulltile()
@@ -35,10 +37,14 @@
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 
+<<<<<<< HEAD
 	if(health == maxhealth)
+=======
+	if(health == maxHealth)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		to_chat(user, SPAN_NOTICE("It looks fully intact."))
 	else
-		var/perc = health / maxhealth
+		var/perc = health / maxHealth
 		if(perc > 0.75)
 			to_chat(user, SPAN_NOTICE("It has a few cracks."))
 		else if(perc > 0.5)
@@ -62,7 +68,8 @@
 	var/initialhealth = health
 
 	if (!ignore_resistance)
-		damage -= resistance
+		damage = damage * (1 - silicate / 200) // up to 50% damage resistance
+		damage -= resistance // then flat resistance from material
 	if (damage <= 0)
 		return 0
 
@@ -77,18 +84,18 @@
 	else
 		if(sound_effect)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 100, 1)
-		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
+		if(health < maxHealth / 4 && initialhealth >= maxHealth / 4)
 			visible_message("[src] looks like it's about to shatter!" )
-		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
+		else if(health < maxHealth / 2 && initialhealth >= maxHealth / 2)
 			visible_message("[src] looks seriously damaged!" )
-		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
+		else if(health < maxHealth * 3/4 && initialhealth >= maxHealth * 3/4)
 			visible_message("Cracks begin to appear in [src]!" )
 	return damage
 
 /obj/structure/window/proc/apply_silicate(var/amount)
-	if(health < maxhealth) // Mend the damage
-		health = min(health + amount * 3, maxhealth)
-		if(health == maxhealth)
+	if(health < maxHealth) // Mend the damage
+		health = min(health + amount * 3, maxHealth)
+		if(health == maxHealth)
 			visible_message("[src] looks fully repaired." )
 	else // Reinforce
 		silicate = min(silicate + amount, 100)
@@ -103,7 +110,11 @@
 	var/image/img = image(src.icon, src.icon_state)
 	img.color = "#ffffff"
 	img.alpha = silicate * 255 / 100
+<<<<<<< HEAD
 	add_overlays(img)
+=======
+	add_overlay(img)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Setting the explode var makes the shattering louder and more violent, possibly injuring surrounding mobs
 /obj/structure/window/proc/shatter(var/display_message = 1, var/explode = FALSE)
@@ -116,7 +127,13 @@
 	//Cache a list of nearby turfs for throwing shards at
 	var/list/turf/nearby
 	if (explode)
+<<<<<<< HEAD
 		nearby = (RANGE_TURFS(2, src) - get_turf(src))
+=======
+		nearby = (trange(2, src) - get_turf(src))
+	else
+		nearby = (RANGE_TURFS(1, src) - get_turf(src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(display_message)
 		visible_message("[src] shatters!")
@@ -127,7 +144,11 @@
 			new /obj/item/stack/rods(loc)
 		while(index < rand(4,6))
 			var/obj/item/material/shard/S = new shardtype(loc)
+<<<<<<< HEAD
 			if (explode && nearby.len > 0)
+=======
+			if (nearby.len > 0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				var/turf/target = pick(nearby)
 				spawn()
 					S.throw_at(target,40,3)
@@ -143,10 +164,12 @@
 /obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
 
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
+	if(!proj_damage)
+		return
 
 	..()
-	hit(proj_damage)
+	if (!(Proj.testing))
+		hit(proj_damage)
 	return
 
 
@@ -169,12 +192,14 @@
 /obj/structure/window/proc/is_full_window()
 	return (dir == SOUTHWEST || dir == SOUTHEAST || dir == NORTHWEST || dir == NORTHEAST)
 
-/obj/structure/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/structure/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0, direction)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
 	if(is_full_window())
 		return 0	//full tile window, you can't move into it!
-	if(get_dir(loc, target) & dir)
+	if (isnull(direction))
+		direction = get_dir(loc, target)
+	if(direction & dir)
 		return !density
 	else
 		return 1
@@ -190,6 +215,11 @@
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
+
+	if(isliving(AM))
+		hit_by_living(AM)
+		return
+
 	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
 	var/tforce = 0
 	if(ismob(AM))
@@ -198,10 +228,9 @@
 		var/obj/item/I = AM
 		tforce = I.throwforce
 	if(reinf) tforce *= 0.25
-	if(health - tforce <= 7 && !reinf)
+	if(hit(tforce) && health <= 7 && !reinf)
 		set_anchored(FALSE)
 		step(src, get_dir(AM, src))
-	hit(tforce)
 	mount_check()
 
 /obj/structure/window/attack_tk(mob/user as mob)
@@ -275,6 +304,19 @@
 	sleep(5) //Allow a littleanimating time
 	return TRUE
 
+/obj/structure/window/proc/hit_by_living(var/mob/living/M)
+	var/body_part = pick(BP_HEAD, BP_CHEST, BP_GROIN)
+	visible_message(SPAN_DANGER("[M] slams against \the [src]!"))
+	if(prob(30))
+		M.Weaken(1)
+	M.damage_through_armor(8, BRUTE, body_part, ARMOR_MELEE)
+
+	var/tforce = 15
+	if(reinf) tforce *= 0.25
+	if(hit(tforce) && health <= 7 && !reinf)
+		set_anchored(FALSE)
+		step(src, get_dir(M, src))
+	mount_check()
 
 /obj/structure/window/attackby(obj/item/I, mob/user)
 
@@ -285,7 +327,7 @@
 		usable_qualities.Add(QUALITY_SCREW_DRIVING)
 	if(reinf && state <= 1)
 		usable_qualities.Add(QUALITY_PRYING)
-	if (health < maxhealth)
+	if (health < maxHealth)
 		usable_qualities.Add(QUALITY_SEALING)
 
 	//If you set intent to harm, you can hit the window with tools to break it. Set to any other intent to use tools on it
@@ -294,9 +336,15 @@
 		switch(tool_type)
 			if(QUALITY_SEALING)
 				user.visible_message("[user] starts sealing up cracks in [src] with the [I]", "You start sealing up cracks in [src] with the [I]")
+<<<<<<< HEAD
 				if (I.use_tool(user, src, 60 + ((maxhealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, STAT_MEC))
 					to_chat(user, SPAN_NOTICE("The [src] looks pretty solid now!"))
 					health = maxhealth
+=======
+				if (I.use_tool(user, src, 60 + ((maxHealth - health)*3), QUALITY_SEALING, FAILCHANCE_NORMAL, STAT_MEC))
+					to_chat(user, SPAN_NOTICE("The [src] looks pretty solid now!"))
+					health = maxHealth
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			if(QUALITY_BOLT_TURNING)
 				if(!anchored && (!state || !reinf))
 					if(!glasstype)
@@ -304,13 +352,15 @@
 						return
 					if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_EASY, required_stat = STAT_MEC))
 						visible_message(SPAN_NOTICE("[user] dismantles \the [src]."))
+						var/obj/glass
 						if(is_fulltile())
-							new glasstype(loc, 6)
+							glass = new glasstype(loc, 6)
 						else
-							new glasstype(loc, 1)
+							glass = new glasstype(loc, 1)
+						glass.add_fingerprint(user)
+
 						qdel(src)
 						return
-				return 1 //No whacking the window with tools unless harm intent
 
 			if(QUALITY_PRYING)
 				if(reinf && state <= 1)
@@ -362,7 +412,11 @@
 	damage = take_damage(damage, TRUE, ignore_resistance)
 	if(sound_effect && loc) // If the window was shattered and, thus, nullspaced, don't try to play hit sound
 		playsound(loc, 'sound/effects/glasshit.ogg', damage*4.5, 1, damage*0.6, damage*0.6) //The harder the hit, the louder and farther travelling the sound
+<<<<<<< HEAD
 
+=======
+	return damage
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/window/proc/rotate()
 	set name = "Rotate Window Counter-Clockwise"
@@ -409,7 +463,7 @@
 	if (start_dir)
 		set_dir(start_dir)
 
-	health = maxhealth
+	health = maxHealth
 
 	ini_dir = dir
 
@@ -498,7 +552,11 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return
 
@@ -516,16 +574,21 @@
 	glasstype = /obj/item/stack/material/glass
 	maximal_heat = T0C + 200	// Was 100. Spaceship windows surely surpass coffee pots.
 	damage_per_fire_tick = 3.0	// Was 2. Made weaker than rglass per tick.
-	maxhealth = 15
-	resistance = RESISTANCE_NONE
+	maxHealth = 15
+	resistance = RESISTANCE_FLIMSY
 
 /obj/structure/window/basic/full
 	dir = SOUTH|EAST
 	icon = 'icons/obj/structures/windows.dmi'
 	icon_state = "fwindow"
 	alpha = 120
+<<<<<<< HEAD
 	maxhealth = 40
 	resistance = RESISTANCE_NONE
+=======
+	maxHealth = 40
+	resistance = RESISTANCE_FLIMSY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	flags = null
 
 /obj/structure/window/phoronbasic
@@ -533,11 +596,16 @@
 	desc = "A borosilicate alloy window. It seems to be quite strong."
 	basestate = "pwindow"
 	icon_state = "plasmawindow"
+<<<<<<< HEAD
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronglass
+=======
+	shardtype = /obj/item/material/shard/plasma
+	glasstype = /obj/item/stack/material/glass/plasmaglass
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	maximal_heat = T0C + 5227  // Safe use temperature at 5500 kelvin. Easy to remember.
 	damage_per_fire_tick = 1.5 // Lowest per-tick damage so overheated supermatter chambers have some time to respond to it. Will still shatter before a delam.
-	maxhealth = 150
+	maxHealth = 150
 	resistance = RESISTANCE_AVERAGE
 
 /obj/structure/window/phoronbasic/full
@@ -545,7 +613,7 @@
 	icon = 'icons/obj/structures/windows.dmi'
 	icon_state = "plasmawindow_mask"
 	alpha = 150
-	maxhealth = 200
+	maxHealth = 200
 	resistance = RESISTANCE_AVERAGE
 	flags = null
 
@@ -559,7 +627,7 @@
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 
-	maxhealth = 50
+	maxHealth = 50
 	resistance = RESISTANCE_FRAGILE
 
 /obj/structure/window/New(Loc, constructed=0)
@@ -574,7 +642,7 @@
 	icon = 'icons/obj/structures/windows.dmi'
 	icon_state = "fwindow"
 	alpha = 150
-	maxhealth = 80
+	maxHealth = 80
 	resistance = RESISTANCE_FRAGILE
 	flags = null
 
@@ -583,20 +651,31 @@
 	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
 	basestate = "rpwindow"
 	icon_state = "plasmarwindow"
+<<<<<<< HEAD
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
 	maximal_heat = T0C + 5453 // Safe use temperature at 6000 kelvin.
+=======
+	shardtype = /obj/item/material/shard/plasma
+	glasstype = /obj/item/stack/material/glass/plasmarglass
+	maximal_heat = T0C + 99453 // Safe use temperature at 100,000 kelvin. I think?
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	damage_per_fire_tick = 1.5
-	maxhealth = 200
-	resistance = RESISTANCE_IMPROVED
+	maxHealth = 200
+	resistance = RESISTANCE_TOUGH
 
 /obj/structure/window/reinforced/phoron/full
 	dir = SOUTH|EAST
 	icon = 'icons/obj/structures/windows.dmi'
 	icon_state = "plasmarwindow_mask"
 	alpha = 150
+<<<<<<< HEAD
 	maxhealth = 250
 	resistance = RESISTANCE_IMPROVED
+=======
+	maxHealth = 250
+	resistance = RESISTANCE_TOUGH
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	flags = null
 
 /obj/structure/window/reinforced/tinted
@@ -618,7 +697,7 @@
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
-	maxhealth = 300
+	maxHealth = 300
 	resistance = RESISTANCE_IMPROVED
 	reinf = 1
 	basestate = "w"
@@ -666,8 +745,13 @@
 
 /obj/machinery/button/windowtint
 	name = "window tint control"
+<<<<<<< HEAD
 	icon = 'icons/obj/machines/buttons.dmi'	//- Occulus edit- Someone linked the wrong dmi file, Hah. Should function now properly
 	icon_state = "light0"
+=======
+	icon = 'icons/obj/machines/buttons.dmi'
+	icon_state = "launcher0"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 

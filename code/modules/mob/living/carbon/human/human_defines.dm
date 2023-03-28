@@ -11,13 +11,21 @@
 	var/b_hair = 0
 	var/h_style = "Bald"
 
+	death_threshold = HEALTH_THRESHOLD_DEAD
+
 	//Facial hair colour and style
 	var/r_facial = 0
 	var/g_facial = 0
 	var/b_facial = 0
 	var/f_style = "Shaved"
 
+<<<<<<< HEAD
 	var/wagging = 0 //UGH.
+=======
+	//Hair gradiants
+	var/grad_style = "none"
+	var/grad_color = "#000000"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//Eye colour
 	var/r_eyes = 0
@@ -29,6 +37,7 @@
 
 
 	//Skin colour
+<<<<<<< HEAD
 	var/r_skin = 0
 	var/g_skin = 0
 	var/b_skin = 0
@@ -39,6 +48,27 @@
 	var/list/body_markings = list()
 
 	var/lip_style	//no lipstick by default- arguably misleading, as it could be used for general makeup
+=======
+	var/skin_color = "#FFE0D0"
+
+	var/size_multiplier = 1 //multiplier for the mob's icon size
+	var/scale_effect = 0	//new multiplier. The one above is obsolete
+	var/damage_multiplier = 1 //multiplies melee combat damage
+	var/icon_update = 1 //whether icon updating shall take place
+
+	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
+	//Ears, Tail and Wings
+	var/datum/sprite_accessory/ears/ears	=  null
+	var/list/ears_colors					= list()
+	var/datum/sprite_accessory/tail/tail	=  null
+	var/list/tail_colors					= list()
+	var/datum/sprite_accessory/wings/wings	=  null
+	var/list/wings_colors					= list()
+	var/tail_over = 0 //If the tail's on the alt layer or not.
+
+	var/list/body_markings						= list()
 
 	var/age = 30		//Player's age (pure fluff)
 	var/b_type = "A+"	//Player's bloodtype
@@ -78,8 +108,13 @@
 	var/xylophone = 0 //For the spoooooooky xylophone cooldown
 	var/flapping = 0
 
+<<<<<<< HEAD
 	var/mob/remoteview_target
 	var/remoteviewer = FALSE //Acts as an override for remoteview_target viewing, see human/life.dm: handle_vision()
+=======
+	var/mob/remoteview_target = null
+	var/remoteviewer = FALSE //for Glassification breakdown
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/hand_blood_color
 
 	var/gunshot_residue
@@ -90,12 +125,14 @@
 	mob_swap_flags = ~HEAVY
 
 	var/flash_protection = 0				// Total level of flash protection
+	var/psi_blocking = 0					// Total level of psi protection
+	var/psi_blocking_additive = 0			// Added level of psi protection, form things like perks or other such things.
 	var/equipment_tint_total = 0			// Total level of visualy impairing items
 	var/equipment_darkness_modifier			// Darkvision modifier from equipped items
 	var/equipment_vision_flags				// Extra vision flags from equipped items
 	var/equipment_see_invis					// Max see invibility level granted by equipped items
 	var/equipment_prescription				// Eye prescription granted by equipped items
-	var/list/equipment_overlays = list()	// Extra overlays from equipped items
+	var/list/equipment_overlays = list()	// Extra over-lays from equipped items
 
 	var/med_record = ""
 	var/sec_record = ""
@@ -103,6 +140,7 @@
 	var/exploit_record = ""
 
 	var/stance_damage = 0 //Whether this mob's ability to stand has been affected
+<<<<<<< HEAD
 	var/identifying_gender // In case the human identifies as another gender than it's biological
 	mob_classification = CLASSIFICATION_ORGANIC | CLASSIFICATION_HUMANOID
 
@@ -115,3 +153,26 @@
 
 	var/genetic_corruption = 0  //Eclipse add - Mekhanite's vat genetic corruption
 	var/stable_genes = FALSE //Eclipse add - Genetic stability
+=======
+
+	var/identifying_gender = null // In case the human identifies as another gender than it's biological
+	mob_classification = CLASSIFICATION_ORGANIC | CLASSIFICATION_HUMANOID
+
+
+	var/datum/sanity/sanity = null
+	var/rest_points = 0
+
+	var/shock_resist = 0 // Resistance to paincrit
+
+	var/punch_damage_increase = 0 // increases... punch damage... can be affected by clothing or implants.
+
+	var/language_blackout = 0
+	var/suppress_communication = 0
+
+	var/momentum_speed = 0 // The amount of run-up
+	var/momentum_dir = 0 // Direction of run-up
+	var/momentum_reduction_timer
+
+
+	var/added_movedelay = 0 //Used for humans only
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

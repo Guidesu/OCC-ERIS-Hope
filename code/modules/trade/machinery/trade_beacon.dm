@@ -3,7 +3,11 @@
 	icon_state = "beacon"
 	anchored = TRUE
 	density = TRUE
+<<<<<<< HEAD
 	var/entropy_value = 1
+=======
+	//var/entropy_value = 0.25 - SoJ edit we dont have the same round langths as eris, so were disabling it untill we have more ways to glob lower or fix entropy
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/trade_beacon/attackby(obj/item/I, mob/user)
 	if(default_deconstruction(I, user))
@@ -15,14 +19,26 @@
 	return "[A.name] ([z], [x], [y])"
 
 /obj/machinery/trade_beacon/proc/activate()
+<<<<<<< HEAD
 	FLICK("[icon_state]_active", src)
 	do_sparks(5, 0, loc)
 	bluespace_entropy(2, get_turf(src))
+=======
+	flick("[icon_state]_active", src)
+	do_sparks(5, 0, loc)
+	//bluespace_entropy(entropy_value, get_turf(src)) - Todo re-add this one day
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	playsound(loc, "sparks", 50, 1)
 
 /obj/machinery/trade_beacon/sending
 	name = "sending trade beacon"
 	icon_state = "beacon_sending"
+<<<<<<< HEAD
+=======
+	circuit = /obj/item/circuitboard/trade_beacon/sending
+	var/export_cooldown = 180 SECONDS
+	var/export_timer_start
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/trade_beacon/sending/Initialize()
 	. = ..()
@@ -33,10 +49,29 @@
 	return ..()
 
 /obj/machinery/trade_beacon/sending/proc/get_objects()
+<<<<<<< HEAD
 	return range(2, src)
 
 /obj/machinery/trade_beacon/receiving
 	name = "receiving trade beacon"
+=======
+	var/list/objects = range(2, src) - src		// So the beacon won't send itself in the list of objects
+	return objects
+
+/obj/machinery/trade_beacon/sending/proc/start_export()
+	if(!export_timer_start)
+		activate()
+		export_timer_start = world.time
+		addtimer(CALLBACK(src, .proc/reset_export_timer), export_cooldown, TIMER_STOPPABLE)
+
+/obj/machinery/trade_beacon/sending/proc/reset_export_timer()
+	activate()
+	export_timer_start = null
+
+/obj/machinery/trade_beacon/receiving
+	name = "receiving trade beacon"
+	circuit = /obj/item/circuitboard/trade_beacon/receiving
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/trade_beacon/receiving/Initialize()
 	. = ..()
@@ -49,10 +84,24 @@
 /obj/machinery/trade_beacon/receiving/proc/drop(drop_type)
 	var/list/floor = list()
 	for(var/turf/simulated/floor/F in block(locate(x - 2, y - 2, z), locate(x + 2, y + 2, z)))
+<<<<<<< HEAD
 		if(F.contains_dense_objects())
+=======
+		if(F.contains_dense_objects(TRUE))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			continue
 		floor += F
 	if(!length(floor))
 		return FALSE
 	activate()
+<<<<<<< HEAD
 	return new drop_type(pick(floor))
+=======
+	var/turf/simulated/floor/pickfloor = pick(floor)
+	if(ispath(drop_type, /obj/structure/closet))
+		var/mob/living/carbon/human/dude = locate(/mob/living/carbon/human) in pickfloor
+		if(dude)
+			dude.damage_through_armor(30)
+
+	return new drop_type(pickfloor)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

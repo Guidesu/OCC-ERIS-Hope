@@ -3,6 +3,7 @@
 /obj/item/coin
 	icon = 'icons/obj/items.dmi'
 	name = COIN_STANDARD
+	desc = "A coin."
 	icon_state = "coin"
 	flags = CONDUCT
 	force = 0.0
@@ -12,35 +13,45 @@
 	var/string_attached
 	var/sides = 2
 
+<<<<<<< HEAD
 /obj/item/coin/Initialize(mapload)
 	. = ..()
+=======
+/obj/item/coin/New()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
+	..()
 
 /obj/item/coin/gold
 	name = COIN_GOLD
+	desc = "A gold coin."
 	icon_state = "coin_gold"
 	matter = list(MATERIAL_GOLD = 1)	//occulus edit: adding matter value to coins
 	price_tag = 75	//occulus edit: adding pricetag and export to coins based on 1.5 the mat value
 
 /obj/item/coin/silver
 	name = COIN_SILVER
+	desc = "A silver coin."
 	icon_state = "coin_silver"
 	matter = list(MATERIAL_SILVER = 1)	//occulus edit: adding matter value to coins
 	price_tag = 60	//occulus edit: adding pricetag and export to coins
 
 /obj/item/coin/diamond
 	name = COIN_DIAMOND
+	desc = "A diamond coin."
 	icon_state = "coin_diamond"
 	matter = list(MATERIAL_DIAMOND = 1)	//occulus edit: adding matter value to coins
 	price_tag = 150	//occulus edit: adding pricetag and export to coins
 
 /obj/item/coin/iron
 	name = COIN_IRON
+	desc = "A iron coin."
 	icon_state = "coin_iron"
 	matter = list(MATERIAL_IRON = 1)	//occulus edit: adding matter value to coins
 	price_tag = 10	//occulus edit: adding pricetag and export to coins, special exception to value
 
+<<<<<<< HEAD
 /obj/item/coin/phoron
 	name = COIN_PHORON
 	icon_state = "coin_phoron"
@@ -48,6 +59,15 @@
 	price_tag = 45	//occulus edit: adding pricetag and export to coins
 
 /obj/item/coin/uranium
+=======
+/obj/item/coin/plasma
+	name = COIN_PLASMA
+	desc = "A plasma coin."
+	icon_state = "coin_plasma"
+
+/obj/item/coin/uranium
+	desc = "A uranium coin."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = COIN_URANIUM
 	icon_state = "coin_uranium"
 	matter = list(MATERIAL_URANIUM = 1)	//occulus edit: adding matter value to coins
@@ -55,6 +75,7 @@
 
 /obj/item/coin/platinum
 	name = COIN_PLATINUM
+	desc = "A platinum coin."
 	icon_state = "coin_adamantine"
 	matter = list(MATERIAL_PLATINUM = 1)	//occulus edit: adding matter value to coins
 	price_tag = 120	//occulus edit: adding pricetag and export to coins
@@ -66,7 +87,11 @@
 			to_chat(user, SPAN_NOTICE("There already is a string attached to this coin."))
 			return
 		if (CC.use(1))
+<<<<<<< HEAD
 			add_overlays(image('icons/obj/items.dmi',"coin_string_overlay"))
+=======
+			add_overlay(image('icons/obj/items.dmi',"coin_string_overlay"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			string_attached = 1
 			to_chat(user, SPAN_NOTICE("You attach a string to the coin."))
 		else
@@ -77,8 +102,15 @@
 			..()
 			return
 
+<<<<<<< HEAD
 		new /obj/item/stack/cable_coil(user.loc, 1)
 		set_overlays(list())
+=======
+		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
+		CC.amount = 1
+		CC.update_icon()
+		cut_overlays()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		string_attached = null
 		to_chat(user, "\blue You detach the string from the coin.")
 	else ..()

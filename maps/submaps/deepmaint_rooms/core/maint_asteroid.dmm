@@ -3,6 +3,7 @@
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "ab" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/plating,
 /area/deepmaint)
@@ -17,32 +18,63 @@
 "ae" = (
 /obj/spawner/junk,
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"ac" = (
+/obj/random/junk,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"ad" = (
+/obj/random/material_ore,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"ae" = (
+/obj/random/junk,
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "af" = (
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "ag" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/material/ore,
+=======
+/obj/random/junk,
+/obj/random/material_ore,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "ah" = (
 /turf/simulated/mineral,
 /area/deepmaint)
 "ai" = (
+<<<<<<< HEAD
 /obj/spawner/material/ore,
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "aj" = (
 /obj/spawner/junk,
 /obj/spawner/junk,
+=======
+/obj/random/material_ore,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"aj" = (
+/obj/random/junk,
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "ak" = (
 /turf/simulated/wall,
 /area/deepmaint)
 "al" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/material/ore,
 /turf/simulated/floor/plating,
@@ -50,6 +82,15 @@
 "am" = (
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/gun_loot,
+=======
+/obj/random/junk,
+/obj/random/material_ore,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"am" = (
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "an" = (
@@ -57,16 +98,28 @@
 /area/deepmaint)
 "ao" = (
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/gun_loot,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/gun_loot,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "ap" = (
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/gun_loot,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/gun_loot,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "aq" = (
@@ -88,8 +141,13 @@
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "at" = (
+<<<<<<< HEAD
 /obj/spawner/material/ore,
 /obj/spawner/material/ore,
+=======
+/obj/random/material_ore,
+/obj/random/material_ore,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "au" = (
@@ -122,15 +180,19 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
+<<<<<<< HEAD
 "az" = (
 /obj/spawner/mob/biome_spawner_mob/low_chance,
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "aA" = (
 /turf/simulated/floor/tiled/steel/brown_perforated,
 /area/deepmaint)
 "aB" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
@@ -139,11 +201,22 @@
 /area/deepmaint)
 "aC" = (
 /obj/spawner/structures/common,
+=======
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot/low_chance,
+/obj/random/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"aC" = (
+/obj/random/structures,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aD" = (
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
+<<<<<<< HEAD
 "aE" = (
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
@@ -168,13 +241,32 @@
 /obj/spawner/junk,
 /obj/spawner/material/ore,
 /obj/spawner/material/ore,
+=======
+"aF" = (
+/obj/structure/table/standard,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"aI" = (
+/obj/random/junk,
+/obj/random/material_ore,
+/obj/random/material_ore,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating,
 /area/deepmaint)
 "aJ" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot/low_chance,
+=======
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot,
+/obj/random/pack/tech_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/light{
 	dir = 8
 	},
@@ -182,8 +274,13 @@
 /area/deepmaint)
 "aK" = (
 /obj/machinery/light{
+<<<<<<< HEAD
 	icon_state = "tube1";
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "tube1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
@@ -195,21 +292,37 @@
 /area/deepmaint)
 "aM" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/material/building,
 /obj/spawner/material/building,
 /obj/spawner/material/building,
+=======
+/obj/random/material,
+/obj/random/material,
+/obj/random/material,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aN" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/material/resources/rare,
 /obj/spawner/material/resources/rare,
+=======
+/obj/random/material_rare,
+/obj/random/material_rare,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aO" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/material/resources,
 /obj/spawner/material/resources,
+=======
+/obj/random/material_resources,
+/obj/random/material_resources,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/deepmaint)
 "aP" = (
@@ -219,6 +332,7 @@
 "aQ" = (
 /obj/structure/table/woodentable,
 /obj/item/seeds/ambrosiavulgarisseed,
+<<<<<<< HEAD
 /obj/item/seeds/ambrosiavulgarisseed,
 /obj/item/seeds/ambrosiavulgarisseed,
 /turf/simulated/floor/asteroid,
@@ -231,34 +345,65 @@
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
+=======
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"aR" = (
+/obj/random/material_ore,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "aT" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/asteroid,
 /area/deepmaint)
 "aU" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/spawner/material/ore,
+=======
+/obj/random/junk,
+/obj/random/material_ore,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/plating/under,
 /area/deepmaint)
 "aV" = (
 /obj/structure/closet/cabinet,
+<<<<<<< HEAD
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth,
 /obj/spawner/pack/cloth/low_chance,
+=======
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth,
+/obj/random/pack/cloth/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet,
 /area/deepmaint)
 "aW" = (
 /obj/structure/closet/cabinet,
+<<<<<<< HEAD
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare,
 /obj/spawner/pack/rare/low_chance,
+=======
+/obj/random/pack/rare,
+/obj/random/pack/rare,
+/obj/random/pack/rare/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet,
 /area/deepmaint)
 "aX" = (
 /obj/structure/table/woodentable,
+<<<<<<< HEAD
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/gun_loot/low_chance,
+=======
+/obj/random/pack/gun_loot,
+/obj/random/pack/gun_loot/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/carpet,
 /area/deepmaint)
 "aY" = (
@@ -287,8 +432,13 @@
 /area/deepmaint)
 "be" = (
 /obj/machinery/light{
+<<<<<<< HEAD
 	icon_state = "tube1";
 	dir = 4
+=======
+	dir = 4;
+	icon_state = "tube1"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	},
 /turf/simulated/floor/carpet,
 /area/deepmaint)
@@ -296,6 +446,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/deepmaint)
 "bg" = (
@@ -304,17 +455,77 @@
 /area/deepmaint)
 "bh" = (
 /obj/spawner/junk,
+=======
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor_grid,
+/area/deepmaint)
+"bg" = (
+/obj/random/junk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"bh" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_cargo,
 /area/deepmaint)
 "bi" = (
 /turf/simulated/floor/tiled/techmaint_cargo,
 /area/deepmaint)
+<<<<<<< HEAD
 "bj" = (
 /obj/landmark/loot_biomes/mob/roach{
 	range = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/deepmaint)
+=======
+"bw" = (
+/obj/random/material_ore,
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"hO" = (
+/obj/random/junk,
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"ji" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"kT" = (
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"on" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/deepmaint)
+"so" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/carpet,
+/area/deepmaint)
+"zh" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"EB" = (
+/obj/structure/table/woodentable,
+/obj/item/seeds/ambrosiavulgarisseed,
+/obj/item/seeds/ambrosiavulgarisseed,
+/obj/item/seeds/ambrosiavulgarisseed,
+/obj/random/psi_megafauna,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+"Ir" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"UE" = (
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/asteroid,
+/area/deepmaint)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 aa
@@ -322,6 +533,7 @@ aa
 ab
 aa
 ab
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -330,6 +542,9 @@ ab
 aa
 aa
 ab
+=======
+Ir
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 aa
 aa
@@ -338,6 +553,16 @@ aa
 aa
 ab
 aa
+<<<<<<< HEAD
+=======
+Ir
+aa
+ab
+aa
+aa
+hO
+aa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 aa
@@ -372,7 +597,11 @@ ah
 ah
 ac
 ac
+<<<<<<< HEAD
 az
+=======
+UE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ag
 ah
 ah
@@ -386,7 +615,11 @@ af
 ab
 "}
 (4,1,1) = {"
+<<<<<<< HEAD
 aa
+=======
+Ir
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ag
 ah
 ah
@@ -481,7 +714,11 @@ aa
 ad
 ah
 ak
+<<<<<<< HEAD
 an
+=======
+ji
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ak
 au
 aA
@@ -492,7 +729,11 @@ aD
 aN
 ak
 aW
+<<<<<<< HEAD
 ba
+=======
+so
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bd
 ak
 ah
@@ -509,7 +750,11 @@ ar
 av
 aA
 aA
+<<<<<<< HEAD
 aD
+=======
+kT
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aD
 aD
 aO
@@ -556,6 +801,7 @@ ax
 aA
 aA
 aD
+<<<<<<< HEAD
 aG
 aD
 bj
@@ -567,6 +813,19 @@ aS
 af
 af
 bi
+=======
+aD
+aD
+aD
+bb
+aY
+aY
+bf
+bb
+af
+af
+on
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bi
 "}
 (12,1,1) = {"
@@ -582,11 +841,19 @@ aD
 aD
 aK
 aD
+<<<<<<< HEAD
 aE
 aY
 aY
 aY
 aE
+=======
+bb
+aY
+aY
+aY
+bb
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 ac
 bi
@@ -619,18 +886,31 @@ bh
 ab
 ag
 ah
+<<<<<<< HEAD
 af
+=======
+zh
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 af
 af
 ak
+<<<<<<< HEAD
 aE
 aH
+=======
+bb
+bb
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ak
 aP
 aT
 aT
+<<<<<<< HEAD
 aT
+=======
+af
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aT
 aT
 ah
@@ -651,8 +931,13 @@ af
 af
 aL
 af
+<<<<<<< HEAD
 az
 af
+=======
+af
+UE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 af
 af
@@ -671,7 +956,11 @@ ah
 ah
 ah
 af
+<<<<<<< HEAD
 af
+=======
+zh
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 af
 af
 af
@@ -689,7 +978,11 @@ aa
 ab
 ad
 af
+<<<<<<< HEAD
 af
+=======
+UE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ay
 ah
 ah
@@ -713,13 +1006,21 @@ ab
 ad
 ad
 as
+<<<<<<< HEAD
 az
+=======
+af
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ay
 ah
 ah
 af
 af
+<<<<<<< HEAD
 aQ
+=======
+EB
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 ah
 ah
@@ -733,7 +1034,11 @@ ai
 (19,1,1) = {"
 aa
 aa
+<<<<<<< HEAD
 ad
+=======
+bw
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ad
 at
 ad
@@ -773,7 +1078,11 @@ bg
 aR
 bg
 aI
+<<<<<<< HEAD
 ab
+=======
+hO
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aa
 "}
 (21,1,1) = {"

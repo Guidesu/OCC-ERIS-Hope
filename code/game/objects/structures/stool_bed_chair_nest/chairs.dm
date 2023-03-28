@@ -52,7 +52,11 @@
 		I.color = material.icon_colour
 		I.layer = FLY_LAYER
 		stool_cache[cache_key] = I
+<<<<<<< HEAD
 	associate_with_overlays(stool_cache[cache_key])
+=======
+	add_overlay(stool_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 */
 	// Padding overlay.
 	if(padding_material)
@@ -62,7 +66,11 @@
 			I.color = padding_material.icon_colour
 			I.layer = FLY_LAYER
 			stool_cache[padding_cache_key] = I
+<<<<<<< HEAD
 		associate_with_overlays(stool_cache[padding_cache_key])
+=======
+		add_overlay(stool_cache[padding_cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(buckled_mob && padding_material)
 		var/cache_key = "[base_icon]-armrest-[padding_material.name]"
@@ -71,7 +79,11 @@
 			I.layer = ABOVE_MOB_LAYER
 			I.color = padding_material.icon_colour
 			stool_cache[cache_key] = I
+<<<<<<< HEAD
 		associate_with_overlays(stool_cache[cache_key])
+=======
+		add_overlay(stool_cache[cache_key])
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
@@ -85,14 +97,13 @@
 	if(buckled_mob)
 		buckled_mob.set_dir(dir)
 
-/obj/structure/bed/chair/verb/rotate()
+/obj/structure/bed/chair/verb/rotate_me()
 	set name = "Rotate Chair"
 	set category = "Object"
 	set src in oview(1)
 
 	if(config.ghost_interaction)
-		src.set_dir(turn(src.dir, 90))
-
+		rotate()
 		return
 
 	else
@@ -103,9 +114,13 @@
 		if(usr.stat || usr.restrained())
 			return
 
-		src.set_dir(turn(src.dir, 90))
+		rotate()
 		playsound(src,'sound/effects/CREAK_Wood_Tree_Creak_10_Bright_Very_Subtle_mono.ogg',100,1)
 		return
+
+
+/obj/structure/bed/chair/proc/rotate()
+	src.set_dir(turn(src.dir, 90))
 
 /obj/structure/bed/chair/shuttle
 	name = "chair"
@@ -121,31 +136,31 @@
 	icon_state = "comfychair_preview"
 
 /obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","leather")
+	..(newloc,MATERIAL_STEEL, MATERIAL_LEATHER)
 
 /obj/structure/bed/chair/comfy/red/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","carpet")
+	..(newloc,MATERIAL_STEEL, MATERIAL_CARPET)
 
 /obj/structure/bed/chair/comfy/teal/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","teal")
+	..(newloc,MATERIAL_STEEL,"teal")
 
 /obj/structure/bed/chair/comfy/black/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","black")
+	..(newloc,MATERIAL_STEEL,"black")
 
 /obj/structure/bed/chair/comfy/green/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","green")
+	..(newloc,MATERIAL_STEEL,"green")
 
 /obj/structure/bed/chair/comfy/purp/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","purple")
+	..(newloc,MATERIAL_STEEL,"purple")
 
 /obj/structure/bed/chair/comfy/blue/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","blue")
+	..(newloc,MATERIAL_STEEL,"blue")
 
 /obj/structure/bed/chair/comfy/beige/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","beige")
+	..(newloc,MATERIAL_STEEL,"beige")
 
 /obj/structure/bed/chair/comfy/lime/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","lime")
+	..(newloc,MATERIAL_STEEL,"lime")
 
 /obj/structure/bed/chair/office
 	anchored = FALSE
@@ -213,7 +228,11 @@
 	..()
 	var/image/I = image(icon, "[icon_state]_over")
 	I.layer = FLY_LAYER
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // Chair types
 
@@ -235,10 +254,14 @@
 	..()
 
 /obj/structure/bed/chair/wood/New(var/newloc)
-	..(newloc, "wood")
+	..(newloc, MATERIAL_WOOD)
 	var/image/I = image(icon, "[icon_state]_over")
 	I.layer = FLY_LAYER
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"
@@ -249,7 +272,11 @@
 /obj/structure/bed/chair/custom
 	applies_material_colour = 0
 
+<<<<<<< HEAD
 /obj/structure/bed/chair/custom/on_update_icon()
+=======
+/obj/structure/bed/chair/custom/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/structure/bed/chair/custom/attackby(obj/item/W as obj, mob/user as mob)
@@ -261,7 +288,11 @@
 	. = ..()
 	var/image/I = image(icon, "[icon_state]_over")
 	I.layer = FLY_LAYER
+<<<<<<< HEAD
 	add_overlays(I)
+=======
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 //wooden
@@ -286,9 +317,191 @@
 
 //onestar
 /obj/structure/bed/chair/custom/onestar
+<<<<<<< HEAD
 	name = "onestar chair"
 	desc = "A duranium chair manufactured by OneStar. Doesn't look very comfortable."
 	icon_state = "onestar_chair_grey"
 
 /obj/structure/bed/chair/custom/onestar/red
 	icon_state = "onestar_chair_red"
+=======
+	name = "greyson chair"
+	desc = "A duranium chair manufactured by Greyson Positronics. Doesn't look very comfortable."
+	icon_state = "onestar_chair_grey"
+
+/obj/structure/bed/chair/custom/onestar/red
+	icon_state = "onestar_chair_red"
+
+/*Sofas*/
+/obj/structure/bed/chair/sofa
+	name = "sofa"
+	icon = 'icons/obj/sofas.dmi'
+	icon_state = "sofamiddle"
+	anchored = 1
+	buckle_lying = 0
+	buckle_dir = SOUTH
+	applies_material_colour = 1
+	var/sofa_material = "carpet"
+
+/obj/structure/bed/chair/sofa/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/New()
+	..()
+	if(dir == 1)
+		buckle_dir = NORTH
+		plane = -15
+		layer = OBJ_LAYER
+	if(dir == 2)
+		buckle_dir = SOUTH
+	if(dir == 4)
+		buckle_dir = EAST
+	if(dir == 8)
+		buckle_dir = WEST
+
+	update_icon()
+
+/obj/structure/bed/chair/sofa/update_icon()
+	if(applies_material_colour && sofa_material)
+		material = get_material_by_name(sofa_material)
+		color = material.icon_colour
+
+		if(sofa_material == "carpet")
+			name = "red [initial(name)]"
+		else
+			name = "[sofa_material] [initial(name)]"
+
+//color variations
+
+/obj/structure/bed/chair/sofa
+	sofa_material = "carpet"
+
+/obj/structure/bed/chair/sofa/brown
+	sofa_material = "leather"
+
+/obj/structure/bed/chair/sofa/teal
+	sofa_material = "teal"
+
+/obj/structure/bed/chair/sofa/black
+	sofa_material = "black"
+
+/obj/structure/bed/chair/sofa/green
+	sofa_material = "green"
+
+/obj/structure/bed/chair/sofa/purp
+	sofa_material = "purple"
+
+/obj/structure/bed/chair/sofa/blue
+	sofa_material = "blue"
+
+/obj/structure/bed/chair/sofa/beige
+	sofa_material = "beige"
+
+/obj/structure/bed/chair/sofa/lime
+	sofa_material = "lime"
+
+/obj/structure/bed/chair/sofa/yellow
+	sofa_material = "yellow"
+
+//sofa directions
+
+/obj/structure/bed/chair/sofa/corner/New()
+	..()
+	buckle_dir = SOUTH
+
+/obj/structure/bed/chair/sofa/left
+	icon_state = "sofaend_left"
+
+
+/obj/structure/bed/chair/sofa/right
+	icon_state = "sofaend_right"
+
+
+/obj/structure/bed/chair/sofa/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/brown/left
+	icon_state = "sofaend_left"
+
+
+/obj/structure/bed/chair/sofa/brown/right
+	icon_state = "sofaend_right"
+
+
+/obj/structure/bed/chair/sofa/brown/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/teal/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/teal/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/teal/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/black/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/black/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/black/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/green/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/green/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/green/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/purp/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/purp/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/purp/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/blue/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/blue/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/blue/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/beige/left
+	icon_state = "sofaend_left"
+
+
+/obj/structure/bed/chair/sofa/beige/right
+	icon_state = "sofaend_right"
+
+
+/obj/structure/bed/chair/sofa/beige/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/lime/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/lime/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/lime/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/yellow/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/yellow/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/yellow/corner
+	icon_state = "sofacorner"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

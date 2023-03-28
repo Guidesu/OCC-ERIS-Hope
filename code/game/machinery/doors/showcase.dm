@@ -3,7 +3,7 @@
 	icon = 'icons/obj/doors/showcase.dmi'
 	icon_state = "closed"
 	health = 100
-	maxhealth = 100
+	maxHealth = 100
 	resistance = RESISTANCE_NONE
 	opacity = 0
 	layer = 4.2
@@ -26,9 +26,9 @@
 					return
 			else
 				if(user.a_intent == I_HELP)
-					if(health < maxhealth)
+					if(health < maxHealth)
 						if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_EASY, required_stat = STAT_MEC))
-							health = maxhealth
+							health = maxHealth
 							update_icon()
 					return
 		else if(istype(I,/obj/item/stack/material/glass/reinforced))
@@ -39,7 +39,7 @@
 					to_chat(user, SPAN_NOTICE("You start to put the glass into [src]..."))
 					if(do_after(user, 10, src))
 						if (density && G.use(2))
-							health = maxhealth
+							health = maxHealth
 							stat &= ~BROKEN
 							have_glass = TRUE
 							update_icon()
@@ -58,8 +58,14 @@
 
 
 /obj/machinery/door/blast/shutters/glass/bullet_act(var/obj/item/projectile/Proj)
+<<<<<<< HEAD
 	if(Proj.get_structure_damage())
 		take_damage(Proj.get_structure_damage())
+=======
+	if (!(Proj.testing))
+		if(Proj.get_structure_damage())
+			take_damage(Proj.get_structure_damage())
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 
@@ -72,19 +78,31 @@
 	new /obj/item/material/shard(src.loc)
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/door/blast/shutters/glass/on_update_icon()
+=======
+/obj/machinery/door/blast/shutters/glass/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(density)
 		var/postfix = ""
 		if(!have_glass)
 			postfix = "_empty"
 		else if(stat&BROKEN)
+<<<<<<< HEAD
 			postfix = "-broken"
 		else if(health < maxhealth)
 			var/ratio = health / maxhealth
 			ratio = CEILING(ratio * 4, 1) * 25
 			add_overlays("damage[ratio]")
 		SetIconState("closed[postfix]")
+=======
+			icon_state += "-broken"
+		else if(health < maxHealth)
+			var/ratio = health / maxHealth
+			ratio = CEILING(ratio * 4, 1) * 25
+			add_overlay("damage[ratio]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		SetIconState("open")
 
@@ -100,10 +118,17 @@
 		flicker("opening-broken")
 
 	else
+<<<<<<< HEAD
 		var/ratio = health / maxhealth
 		ratio = CEILING(ratio * 4, 1) * 25
 		cut_overlays()
 		flicker("opening[ratio]")
+=======
+		var/ratio = health / maxHealth
+		ratio = CEILING(ratio * 4, 1) * 25
+		cut_overlays()
+		flick("opening[ratio]", src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	density = FALSE
 	operating = FALSE
@@ -123,9 +148,15 @@
 		flicker("closing-broken")
 		SetIconState("closed-broken")
 	else
+<<<<<<< HEAD
 		var/ratio = health / maxhealth
 		ratio = CEILING(ratio * 4, 1) * 25
 		flicker("closing[ratio]")
+=======
+		var/ratio = health / maxHealth
+		ratio = CEILING(ratio * 4, 1) * 25
+		flick("closing[ratio]", src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	density = TRUE
 	update_icon()

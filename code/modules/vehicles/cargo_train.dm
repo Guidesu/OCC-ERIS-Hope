@@ -5,9 +5,16 @@
 	desc = "A ridable electric car designed for pulling cargo trolleys."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "cargo_engine"
+<<<<<<< HEAD
 	on = FALSE
 	powered = TRUE
 	locked = FALSE
+=======
+	on = 0
+	powered = 1
+	locked = 0
+	layer = BELOW_MOB_LAYER + 0.1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	load_item_visible = 1
 	load_offset_x = 0
@@ -44,8 +51,13 @@
 	..()
 	cell = new /obj/item/cell/large/high(src)
 	key = new(src)
+<<<<<<< HEAD
 	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = layer + 0.2) //over mobs
 	add_overlays(I)
+=======
+	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
+	add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	turn_off()	//so engine verbs are correctly set
 
 /obj/vehicle/train/cargo/engine/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
@@ -76,7 +88,7 @@
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
 /obj/vehicle/train/cargo/bullet_act(var/obj/item/projectile/Proj)
-	if(buckled_mob && prob(70))
+	if(buckled_mob && (prob(70) || (Proj.testing)))
 		buckled_mob.bullet_act(Proj)
 		return
 	..()
@@ -100,6 +112,7 @@
 
 /obj/vehicle/train/cargo/engine/Bump(atom/Obstacle)
 	var/mob/living/carbon/human/H = load
+<<<<<<< HEAD
 	if(istype(Obstacle, /obj/machinery/door) && istype(H))//Occulus Reefix
 		Obstacle.Bumped(H)		//a little hacky, but hey, it works, and respects access rights
 	if(istype(Obstacle, /obj/structure/multiz/stairs/active))//Occulus Edit Start: Trying to get stairs to work
@@ -107,6 +120,15 @@
 		anchored = FALSE
 		Obstacle.Bumped(src)
 		anchored = init_anc//Occulus Edit end
+=======
+	if(istype(Obstacle, /obj/machinery/door) && istype(H))
+		Obstacle.Bumped(H)		//a little hacky, but hey, it works, and respects access rights
+	if(istype(Obstacle, /obj/structure/multiz/stairs/active))//Start: Trying to get stairs to work
+		var/init_anc = anchored
+		anchored = FALSE
+		Obstacle.Bumped(src)
+		anchored = init_anc
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	..()
 
@@ -150,6 +172,15 @@
 	H.apply_effects(5, 5)
 	for(var/i = 0, i < rand(1,3), i++)
 		H.apply_damage(rand(1,5), BRUTE, pick(parts), used_weapon = "Crashed by a train")
+
+	var/damage = rand(1,3)
+	H.damage_through_armor( 2  * damage, BRUTE, BP_HEAD, ARMOR_MELEE)
+	H.damage_through_armor( 2  * damage, BRUTE, BP_CHEST, ARMOR_MELEE)
+	H.damage_through_armor(0.5 * damage, BRUTE, BP_L_LEG, ARMOR_MELEE)
+	H.damage_through_armor(0.5 * damage, BRUTE, BP_R_LEG, ARMOR_MELEE)
+	H.damage_through_armor(0.5 * damage, BRUTE, BP_L_ARM, ARMOR_MELEE)
+	H.damage_through_armor(0.5 * damage, BRUTE, BP_R_ARM, ARMOR_MELEE)
+
 
 	var/damage = rand(1,3)
 	H.damage_through_armor( 2  * damage, BRUTE, BP_HEAD, ARMOR_MELEE)
@@ -219,7 +250,11 @@
 	if (on)
 		to_chat(usr, "You start [src]'s engine.")
 	else
+<<<<<<< HEAD
 		if(!cell.check_charge(charge_use))
+=======
+		if(cell.charge < charge_use)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			to_chat(usr, "[src] is out of power.")
 		else
 			to_chat(usr, "[src]'s engine won't start.")
@@ -277,8 +312,13 @@
 /obj/vehicle/train/cargo/trolley/load(var/atom/movable/C)
 	if(ismob(C) && !passenger_allowed)
 		return 0
+<<<<<<< HEAD
 	//if(!is_type_in_list(C, allowed_passengers))
 	//	return 0 We are going to relax this a tiny bit
+=======
+//	if(!is_type_in_list(C, allowed_passengers))
+//		return 0 We are going to relax this a tiny bit
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//if there are any items you don't want to be able to interact with, add them to this check
 	// ~no more shielded, emitter armed death trains
@@ -319,7 +359,11 @@
 		C.pixel_y += load_offset_y
 		C.layer = layer
 
+<<<<<<< HEAD
 		add_overlays(C)
+=======
+		add_overlay(C)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		//we can set these back now since we have already cloned the icon into the overlay
 		C.pixel_x = initial(C.pixel_x)

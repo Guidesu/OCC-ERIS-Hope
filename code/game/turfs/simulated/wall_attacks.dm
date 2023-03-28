@@ -42,7 +42,11 @@
 			to_chat(user, SPAN_DANGER("\The [reinf_material.display_name] feels porous and crumbly."))
 		else
 			to_chat(user, SPAN_DANGER("\The [material.display_name] crumbles under your touch!"))
+<<<<<<< HEAD
 			dismantle_wall()
+=======
+			dismantle_wall(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return 1
 
 	if(!can_open)
@@ -98,8 +102,10 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
-	//get the user's location
-	if(!istype(user.loc, /turf))	return	//can't do this stuff whilst inside objects and such
+	
+	if(!istype(I, /obj/item/mecha_parts/mecha_equipment)) //make sure you're not in a mech
+		if(!istype(user.loc, /turf)) //get the user's location
+			return	//can't do this stuff whilst inside objects and such
 
 	if(I)
 		radiate()
@@ -153,7 +159,11 @@
 				to_chat(user, SPAN_NOTICE("You begin removing the outer plating..."))
 				if(I.use_tool(user, src, WORKTIME_LONG, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You remove the outer plating."))
+<<<<<<< HEAD
 					dismantle_wall()
+=======
+					dismantle_wall(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					user.visible_message(SPAN_WARNING("The wall was torn open by [user]!"))
 					return
 			if(construction_stage == 4)
@@ -185,7 +195,11 @@
 				to_chat(user, SPAN_NOTICE("You struggle to pry off the outer sheath..."))
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You pry off the outer sheath."))
+<<<<<<< HEAD
 					dismantle_wall()
+=======
+					dismantle_wall(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					return
 			return
 

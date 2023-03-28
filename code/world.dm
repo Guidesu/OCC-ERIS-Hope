@@ -10,7 +10,10 @@
  *
  * The world /New() is the root of where a round itself begins
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /world
 	mob = /mob/new_player
 	turf = /turf/space
@@ -18,4 +21,9 @@
 	view = "15x15"
 	hub = "Exadv1.spacestation13"
 	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
+<<<<<<< HEAD
 	fps = 20
+=======
+	fps = 20
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -1,7 +1,11 @@
 
 //the researchable camera circuit that can connect to any camera network
 
+<<<<<<< HEAD
 /obj/item/weapon/electronics/circuitboard/camera
+=======
+/obj/item/circuitboard/camera
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//name = "Circuit board (Camera)"
 	var/secured = 1
 	var/authorised = 0
@@ -38,7 +42,7 @@
 
 	attackby(var/obj/item/I, var/mob/user)//if(health > 50)
 		..()
-		else if(istype(I,/obj/item/weapon/tool/screwdriver))
+		else if(istype(I,/obj/item/tool/screwdriver))
 			secured = !secured
 			user.visible_message("<span class='notice'>The [src] can [secured ? "no longer" : "now"] be modified.</span>")
 			updateBuildPath()
@@ -86,7 +90,7 @@
 			authorised = 0
 		else if( href_list["auth"] )
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.equipped()
+			var/obj/item/card/id/I = M.equipped()
 			if (istype(I, /obj/item/modular_computer))
 				I = I.GetIdCard()
 			if (I && istype(I))
@@ -94,7 +98,7 @@
 					authorised = 1
 				else if (possibleNets[network] in I.access)
 					authorised = 1
-			if(istype(I,/obj/item/weapon/card/emag))
+			if(istype(I,/obj/item/card/emag))
 				I.resolve_attackby(src, usr)
 		else if( href_list["removeauth"] )
 			authorised = 0
@@ -104,7 +108,11 @@
 		if(istype(src.loc,/mob))
 			attack_self(src.loc)
 
+<<<<<<< HEAD
 /obj/item/weapon/electronics/circuitboard/camera/emag_act(var/remaining_charges, var/mob/user)
+=======
+/obj/item/circuitboard/camera/emag_act(var/remaining_charges, var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(network)
 		authorised = 1
 		user << SPAN_NOTICE("You authorised the circuit network!")

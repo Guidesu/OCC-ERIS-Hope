@@ -1,10 +1,10 @@
 /obj/item/book/ritual
 	name = "Rituals book"
-	desc = "Contains rituals."
+	desc = "Contains all the rituals a disciple needs."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "book"
 	var/has_reference = FALSE
-
+	slot_flags = SLOT_BELT
 	var/expanded_group = null
 	var/current_category = "Common"
 	var/reference_mode = FALSE
@@ -18,7 +18,11 @@
 		), rand(40,80), 1)
 	interact(H)
 
+<<<<<<< HEAD
 /obj/item/book/ritual/ui_data(mob/user)
+=======
+/obj/item/book/ritual/nano_ui_data(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/implant/core_implant/cruciform/CI
 	if(isliving(user))
 		var/mob/living/L = user
@@ -81,8 +85,13 @@
 	return data
 
 
+<<<<<<< HEAD
 /obj/item/book/ritual/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	var/list/data = ui_data(user, ui_key)
+=======
+/obj/item/book/ritual/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data(user, ui_key)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -96,7 +105,11 @@
 
 
 /obj/item/book/ritual/interact(mob/living/carbon/human/H)
+<<<<<<< HEAD
 	ui_interact(H)
+=======
+	nano_ui_interact(H)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/item/book/ritual/Topic(href, href_list)

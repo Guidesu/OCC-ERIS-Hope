@@ -24,4 +24,8 @@
 /datum/sanity/proc/effect_hallucination()
 	var/datum/hallucination/H = new /datum/hallucination/sanity_mirage
 	H.holder = owner
+<<<<<<< HEAD
 	H.activate()
+=======
+	H.activate()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

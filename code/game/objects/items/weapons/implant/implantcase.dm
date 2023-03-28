@@ -1,5 +1,9 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
+<<<<<<< HEAD
 
+=======
+// sprites by INFRARED_BARON#8170
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implantcase
 	name = "glass case"
 	desc = "A case containing an implant."
@@ -10,6 +14,10 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_TINY
 	var/obj/item/implant/implant = null
+<<<<<<< HEAD
+=======
+	var/case_color = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_GLASS = 3)
 
 /obj/item/implantcase/New()
@@ -18,11 +26,19 @@
 		implant = new implant(src)
 		update_icon()
 
+<<<<<<< HEAD
 /obj/item/implantcase/on_update_icon()
 	cut_overlays()
 	if(implant)
 		var/image/content = image('icons/obj/items.dmi', icon_state = implant.implant_overlay, pixel_x = 7, pixel_y = -6)
 		add_overlay(content)
+=======
+/obj/item/implantcase/update_icon()
+	cut_overlays()
+	if(src.implant)
+		add_overlay("implant_[implant:overlay_icon]")
+	return
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/implantcase/attackby(obj/item/I as obj, mob/user as mob)
 	..()

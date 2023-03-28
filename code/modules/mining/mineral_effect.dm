@@ -13,7 +13,11 @@
 	..(newloc)
 	name = "[M.display_name] deposit"
 	ore_key = M.name
+<<<<<<< HEAD
 	SetIconState("rock_[ore_key]")
+=======
+	icon_state = "rock_[ore_key]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/turf/T = get_turf(src)
 	T.overlays += image('icons/obj/mining.dmi', "rock_[ore_key]", dir = 1)
 	if(T.color)

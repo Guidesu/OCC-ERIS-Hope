@@ -5,13 +5,18 @@
 	icon_state = "syndbeacon"
 
 	use_power = NO_POWER_USE
+<<<<<<< HEAD
 	anchored = TRUE
 	density = TRUE
+=======
+	anchored = 1
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(var/mob/user as mob)
+/obj/machinery/wish_granter/attack_hand(var/mob/user as mob) //
 	usr.set_machine(src)
 
 	if(charges <= 0)

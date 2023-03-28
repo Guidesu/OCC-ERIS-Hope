@@ -34,25 +34,32 @@
 	update_icon()
 	return TRUE
 
+<<<<<<< HEAD
+=======
+// this should probably use dump_contents()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			for(var/obj/O in src.contents)
-				qdel(O)
+		if(1)
+			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
+				A.forceMove(src.loc)
+				A.ex_act(severity + 1)
 			qdel(src)
-			return
-		if(2.0)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					qdel(O)
-			qdel(src)
-			return
-		if(3.0)
-			if (prob(50))
+		if(2)
+			if(prob(50))
+				for (var/atom/movable/A as mob|obj in src)
+					A.forceMove(src.loc)
+					A.ex_act(severity + 1)
 				qdel(src)
-			return
-		else
-	return
+			else
+				health -= 99
+		if(3)
+			if(prob(5))
+				for(var/atom/movable/A as mob|obj in src)
+					A.forceMove(src.loc)
+				qdel(src)
+			else
+				health -= 50
 
 /obj/structure/closet/crate/MouseDrop_T(mob/target, mob/user)
 	var/mob/living/L = user
@@ -78,7 +85,11 @@
 	name = "plastic crate"
 	desc = "A rectangular plastic crate."
 	icon_state = "plasticcrate"
+<<<<<<< HEAD
 	matter = list(MATERIAL_PLASTIC = 10)//Occulus Edit: Spelling error
+=======
+	matter = list(MATERIAL_PLASTIC = 10)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	price_tag = 10
 
 /obj/structure/closet/crate/internals
@@ -138,9 +149,13 @@
 	icon_state = "crate"
 
 /obj/structure/closet/crate/rcd/populate_contents()
+<<<<<<< HEAD
 	new /obj/item/rcd_ammo(src)
 	new /obj/item/rcd_ammo(src)
 	new /obj/item/rcd_ammo(src)
+=======
+	new /obj/item/stack/material/compressed_matter(src,30)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	new /obj/item/rcd(src)
 
 /obj/structure/closet/crate/solar
@@ -168,8 +183,13 @@
 	new /obj/item/solar_assembly(src)
 	new /obj/item/solar_assembly(src)
 	new /obj/item/solar_assembly(src)
+<<<<<<< HEAD
 	new /obj/item/electronics/circuitboard/solar_control(src)
 	new /obj/item/electronics/tracker(src)
+=======
+	new /obj/item/circuitboard/solar_control(src)
+	new /obj/item/tracker_electronics(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	new /obj/item/paper/solar(src)
 
 /obj/structure/closet/crate/freezer
@@ -183,10 +203,17 @@
 
 
 /obj/structure/closet/crate/freezer/rations/populate_contents()
+<<<<<<< HEAD
 	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
 	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
 	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
 	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
+=======
+	new /obj/item/reagent_containers/food/snacks/openable/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/openable/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/openable/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/openable/liquidfood(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/closet/crate/bin
 	name = "large bin"
@@ -319,13 +346,66 @@
 	name = "Secure wooden crate"
 	icon_state = "serbcrate"
 
+<<<<<<< HEAD
+=======
+/obj/structure/closet/crate/voidwolf
+	desc = "A secure wooden crate."
+	name = "Secure wooden crate"
+	icon_state = "serbcrate"
+
+/obj/structure/closet/crate/voidwolf/voidwolfdrugs
+
+/obj/structure/closet/crate/voidwolf/voidwolfdrugs/populate_contents()
+
+	new /obj/item/reagent_containers/hypospray/autoinjector/drugs(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/drugs(src)
+	new /obj/item/reagent_containers/syringe/drugs(src)
+	new /obj/item/reagent_containers/syringe/drugs(src)
+	new /obj/item/reagent_containers/pill/zoom(src)
+	new /obj/item/reagent_containers/pill/happy(src)
+	new /obj/item/seeds/ambrosiadeusseed(src)
+	new /obj/item/seeds/ambrosiavulgarisseed(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiadeus(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiadeus(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiadeus(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris(src)
+	new /obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris(src)
+
+	. = ..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/closet/crate/serbcrate_gray
 	desc = "A secure metallic crate."
 	name = "Secure metallic crate"
 	icon_state = "serbcrate_gray"
 
+<<<<<<< HEAD
 /obj/structure/closet/crate/germancrate
 	desc = "A secure metallic crate."
 	name = "Secure metallic crate"
 	icon_state = "germancrate"
 
+=======
+#define SEMI_TRANSPARENT 30
+
+/obj/structure/closet/crate/excelsior
+	name = "suspicious looking crate"
+	alpha = SEMI_TRANSPARENT
+
+/obj/structure/closet/crate/excelsior/close()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	alpha = SEMI_TRANSPARENT
+
+/obj/structure/closet/crate/excelsior/open()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	alpha = 255
+
+#undef SEMI_TRANSPARENT
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -35,7 +35,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] only accepts used swabs."))
 		return
 
-/obj/machinery/dnaforensics/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/dnaforensics/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(stat & (NOPOWER)) return
 	if(user.stat || user.restrained()) return
 	var/list/data = list()
@@ -104,8 +104,12 @@
 	if(bloodsamp)
 		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [bloodsamp.name]"
+<<<<<<< HEAD
 		P.stamped = list(/obj/item/stamp)
 		P.set_overlays(list("paper_stamped"))
+=======
+		P.copy_overlays(list("paper_stamped"), TRUE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		//dna data itself
 		var/data = "No scan information available."
 		if(bloodsamp.dna != null)
@@ -123,7 +127,11 @@
 	return
 
 /obj/machinery/dnaforensics/attack_hand(mob/user)
+<<<<<<< HEAD
 	ui_interact(user)
+=======
+	nano_ui_interact(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/dnaforensics/verb/toggle_lid()
 	set category = "Object"

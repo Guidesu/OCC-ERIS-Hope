@@ -12,7 +12,11 @@
 	w_class = ITEM_SIZE_TINY
 	var/obj/item/reagent_containers/syringe/syringe
 
+<<<<<<< HEAD
 /obj/item/syringe_cartridge/on_update_icon()
+=======
+/obj/item/syringe_cartridge/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays.Cut()
 	if(syringe)
 		underlays += image(syringe.icon, src, syringe.icon_state)
@@ -74,7 +78,11 @@
 
 	fire_sound = 'sound/weapons/empty.ogg'
 	fire_sound_text = "a metallic thunk"
+<<<<<<< HEAD
 	recoil_buildup = 0
+=======
+	init_recoil = CARBINE_RECOIL(0)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	release_force = 10
 	throw_distance = 10
 
@@ -84,6 +92,10 @@
 	var/list/darts = list()
 	var/max_darts = 1
 	var/obj/item/syringe_cartridge/next
+<<<<<<< HEAD
+=======
+	serial_type = "SI"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/launcher/syringe/New()
 	..()

@@ -6,6 +6,7 @@
 /obj/structure/noticeboard,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/crawler)
+<<<<<<< HEAD
 "c" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -13,6 +14,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/wood,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "d" = (
 /turf/simulated/floor/wood,
 /area/crawler)
@@ -37,11 +40,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crawler)
+<<<<<<< HEAD
 "i" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/light/floor,
 /turf/simulated/floor/wood,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "j" = (
 /obj/structure/table/onestar,
 /turf/simulated/floor/tiled/techmaint,
@@ -50,10 +56,13 @@
 /obj/structure/table/onestar,
 /turf/simulated/floor/wood,
 /area/crawler)
+<<<<<<< HEAD
 "l" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/wood,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "m" = (
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/wall/untinted/onestar_reinforced,
@@ -65,7 +74,11 @@
 /turf/simulated/floor/wood,
 /area/crawler)
 "o" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/plaque,
+=======
+/obj/effect/floor_decal/fact_plaque,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "p" = (
@@ -123,7 +136,11 @@
 /turf/simulated/floor/wood,
 /area/crawler)
 "x" = (
+<<<<<<< HEAD
 /obj/structure/table/rack,
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "y" = (
@@ -132,9 +149,12 @@
 	id = 10
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/machinery/button/switch{
 	id = 10
 	},
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "z" = (
@@ -146,9 +166,12 @@
 	id = 11
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/machinery/button/switch{
 	id = 11
 	},
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/wood,
 /area/crawler)
 "B" = (
@@ -159,6 +182,43 @@
 /obj/structure/closet/onestar/tier2,
 /turf/simulated/floor/wood,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"E" = (
+/obj/structure/table/onestar,
+/obj/random/junkfood,
+/turf/simulated/floor/wood,
+/area/crawler)
+"H" = (
+/obj/random/junkfood/onlypizza,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"K" = (
+/obj/structure/table/onestar,
+/obj/random/junkfood/onlyburger,
+/turf/simulated/floor/tiled/techmaint,
+/area/crawler)
+"N" = (
+/obj/structure/table/onestar,
+/obj/random/junkfood,
+/turf/simulated/floor/tiled/techmaint,
+/area/crawler)
+"Q" = (
+/obj/structure/table/onestar,
+/obj/random/structures/os,
+/turf/simulated/floor/wood,
+/area/crawler)
+"X" = (
+/obj/structure/table/onestar,
+/obj/random/junkfood/onlyburger,
+/turf/simulated/floor/wood,
+/area/crawler)
+"Y" = (
+/obj/structure/table/onestar,
+/obj/random/structures/os,
+/turf/simulated/floor/tiled/techmaint,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -174,11 +234,19 @@ a
 (2,1,1) = {"
 a
 d
+<<<<<<< HEAD
 c
 n
 e
 d
 l
+=======
+s
+n
+e
+d
+d
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 x
 a
 "}
@@ -186,8 +254,13 @@ a
 b
 e
 j
+<<<<<<< HEAD
 j
 j
+=======
+Y
+N
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 d
 d
 x
@@ -196,8 +269,13 @@ a
 (4,1,1) = {"
 a
 e
+<<<<<<< HEAD
 j
 j
+=======
+N
+K
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 j
 p
 d
@@ -230,7 +308,11 @@ B
 B
 g
 t
+<<<<<<< HEAD
 g
+=======
+H
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 o
 g
 g
@@ -262,9 +344,15 @@ B
 (10,1,1) = {"
 a
 e
+<<<<<<< HEAD
 k
 k
 k
+=======
+E
+X
+Q
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 d
 A
@@ -275,7 +363,11 @@ a
 e
 k
 k
+<<<<<<< HEAD
 k
+=======
+E
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 d
 x
@@ -284,11 +376,19 @@ a
 (12,1,1) = {"
 a
 w
+<<<<<<< HEAD
 i
 d
 p
 d
 l
+=======
+e
+d
+p
+d
+d
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 C
 a
 "}

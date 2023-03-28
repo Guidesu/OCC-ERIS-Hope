@@ -1,5 +1,8 @@
 /obj/item/paper/manifest
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/order_cost = 0
 	var/order_id = 0
 	var/errors = 0
@@ -17,10 +20,17 @@
 		errors |= MANIFEST_ERROR_ITEM
 
 /obj/item/paper/manifest/proc/is_approved()
+<<<<<<< HEAD
 	return stamped && stamped.len && !is_denied()
 
 /obj/item/paper/manifest/proc/is_denied()
 	return stamped && (/obj/item/stamp/denied in stamped)
+=======
+	return stamped && !is_denied()
+
+/obj/item/paper/manifest/proc/is_denied()
+	return stamped & STAMP_DENIAL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/supply_order
 	var/id

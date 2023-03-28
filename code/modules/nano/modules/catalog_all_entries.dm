@@ -1,8 +1,13 @@
 /datum/nano_module/catalog
 	name = "Catalog"
 
+<<<<<<< HEAD
 /datum/nano_module/catalog/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_REINITIALIZE, state = GLOB.default_state)
 	var/list/data = ui_data(user)
+=======
+/datum/nano_module/catalog/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_REINITIALIZE, state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "chemistry_catalog.tmpl", name, 640, 700, state = state)

@@ -6,7 +6,11 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_STEEL = 1, MATERIAL_GLASS = 1)
 
+<<<<<<< HEAD
 	charge_per_use = 2
+=======
+	charge_per_use = 0.5
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/precision = FALSE
 
 /obj/item/device/scanner/mining/is_valid_scan_target(atom/O)
@@ -46,7 +50,11 @@
 					ore_type = "precious metals"
 				if(MATERIAL_URANIUM)
 					ore_type = "nuclear fuel"
+<<<<<<< HEAD
 				if(MATERIAL_PHORON, MATERIAL_OSMIUM, MATERIAL_TRITIUM)
+=======
+				if(MATERIAL_PLASMA, MATERIAL_OSMIUM, MATERIAL_TRITIUM)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					ore_type = "exotic matter"
 
 			if(ore_type)
@@ -62,6 +70,15 @@
 
 		lines += "- [result] of [ore_type]."
 
+<<<<<<< HEAD
+=======
+	if(istype(source, /turf/simulated))
+		var/turf/simulated/source_simulated = source
+		lines += "Seismic activity: [source_simulated.seismic_activity]"
+	else
+		lines += "Seismic activity: 1"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return jointext(lines, "<br>")
 
 /proc/mining_scan_action_precise(turf/source, mob/user)
@@ -84,4 +101,8 @@
 
 		lines += "- [result] of [ore_type]."
 
+<<<<<<< HEAD
 	return jointext(lines, "<br>")
+=======
+	return jointext(lines, "<br>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

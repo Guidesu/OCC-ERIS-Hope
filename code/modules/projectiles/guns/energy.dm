@@ -1,24 +1,37 @@
 /obj/item/gun/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun."
+<<<<<<< HEAD
 	icon = 'icons/obj/guns/energy.dmi'
+=======
+	icon = 'icons/obj/guns/energy/energy.dmi'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "energy"
-	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound = 'sound/weapons/energy/Taser.ogg'
 	fire_sound_text = "laser blast"
 	bad_type = /obj/item/gun/energy
 	spawn_tags = SPAWN_TAG_GUN_ENERGY
 
 	recoil_buildup = 0.5 //energy weapons have little to no recoil
 
+	init_recoil = HANDGUN_RECOIL(0.1)
+
+
 	var/charge_cost = 100 //How much energy is needed to fire.
+<<<<<<< HEAD
 	var/obj/item/cell/cell
 	var/suitable_cell = /obj/item/cell/medium
+=======
+	cell = null
+	suitable_cell = /obj/item/cell/medium
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/cell_type = /obj/item/cell/medium/high
 	var/projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = TRUE //if set, the icon state will be chosen based on the current charge
 	var/item_modifystate
 	var/item_charge_meter = FALSE //same as above for item state
+<<<<<<< HEAD
 	//for sawable guns
 	var/saw_off = FALSE
 	var/sawn //what it will becone after sawing
@@ -27,14 +40,46 @@
 	var/self_recharge = FALSE		//if set, the weapon will recharge itself
 	var/disposable = FALSE
 	var/use_external_power = FALSE	//if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
+=======
+
+	//self-recharging
+	var/self_recharge = 0	//if set, the weapon will recharge itself
+	var/disposable = FALSE
+	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/recharge_time = 4
+	var/recharge_amount = null //If set, the gun will recharge this many units per recharge_time, rather than restoring exactly enough for one shot
 	var/charge_tick = 0
+<<<<<<< HEAD
 	var/overcharge_timer //Holds ref to the timer used for overcharging
 	var/overcharge_rate = 1 //Base overcharge additive rate for the gun
 	var/overcharge_level = 0 //What our current overcharge level is. Peaks at overcharge_max
 	var/overcharge_max = 10
 
 	bad_type = /obj/item/gun/energy
+=======
+	gun_tags = list(GUN_ENERGY)
+
+	wield_delay = 0.4 SECOND
+	wield_delay_factor = 0.2 // 20 vig
+
+/obj/item/gun/energy/loadAmmoBestGuess()
+	var/obj/item/cell/chosenCell = null
+
+	if(cell == null)
+		for(var/potentialCell in typesof(suitable_cell))
+			var/obj/item/cell/potential = potentialCell
+
+			if(!chosenCell)
+				chosenCell = potential
+			else if (initial(potential.maxcharge) > initial(chosenCell.maxcharge))
+				chosenCell = potential
+
+		if(chosenCell)
+			cell = new chosenCell
+			cell.loc = src
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/energy/switch_firemodes()
 	. = ..()
@@ -74,7 +119,10 @@
 			if(!external || !external.use(charge_cost)) //Take power from the borg...
 				return 0
 
-		cell.give(charge_cost) //... to recharge the shot
+		if(recharge_amount)
+			cell.give(recharge_amount)
+		else
+			cell.give(charge_cost) //... to recharge the shot
 		update_icon()
 	return 1
 
@@ -94,7 +142,22 @@
 	return new projectile_type(src)
 
 /obj/item/gun/energy/proc/get_external_cell()
+<<<<<<< HEAD
 	return loc.get_cell()
+=======
+	if(isrobot(src.loc))
+		var/mob/living/silicon/robot/R = src.loc
+		return R.cell
+	if(istype(src.loc, /obj/item/rig_module))
+		var/obj/item/rig_module/module = src.loc
+		if(module.holder && module.holder.wearer)
+			var/mob/living/carbon/human/H = module.holder.wearer
+			if(istype(H) && H.back)
+				var/obj/item/rig/suit = H.back
+				if(istype(suit))
+					return suit.cell
+	return null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gun/energy/examine(mob/user)
 	..(user)
@@ -105,7 +168,11 @@
 	to_chat(user, "Has [shots_remaining] shot\s remaining.")
 	return
 
+<<<<<<< HEAD
 /obj/item/gun/energy/on_update_icon(var/ignore_inhands)
+=======
+/obj/item/gun/energy/update_icon(var/ignore_inhands)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(charge_meter)
 		var/ratio = 0
 
@@ -121,11 +188,23 @@
 
 		if(item_charge_meter)
 			set_item_state("-[item_modifystate][ratio]")
+<<<<<<< HEAD
+=======
+
+		if(wielded)
+			item_state_slots[slot_l_hand_str] = "lefthand"  + wielded_item_state + "-[ratio]"
+			item_state_slots[slot_r_hand_str] = "righthand" + wielded_item_state + "-[ratio]"
+		else
+			item_state_slots[slot_l_hand_str] = "lefthand" + "-[ratio]"
+			item_state_slots[slot_r_hand_str] = "righthand" + "-[ratio]"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!item_charge_meter && item_modifystate)
 		set_item_state("-[item_modifystate]")
 	if(!ignore_inhands)
 		update_wear_icon()
 
+<<<<<<< HEAD
 /obj/item/gun/energy/MouseDrop(over_object)
 	if(disposable)
 		to_chat(usr, SPAN_WARNING("[src] is a disposable, its batteries cannot be removed!."))
@@ -151,24 +230,61 @@
 			qdel(src)
 			new sawn(usr.loc)
 			to_chat(user, SPAN_WARNING("You cut down the stock, barrel, and anything else nice from \the [src], ruining a perfectly good weapon."))
+=======
+
+/obj/item/gun/energy/MouseDrop(over_object)
+	if(!self_recharge && !disposable)
+		if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
+			cell = null
+			update_icon()
+	if(self_recharge)
+		to_chat(usr, SPAN_WARNING("[src] is a self-charging gun, its batteries cannot be removed!."))
+	if(disposable)
+		to_chat(usr, SPAN_WARNING("[src] is a disposable gun, its batteries cannot be removed!."))
+
+/obj/item/gun/energy/attackby(obj/item/C, mob/living/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(self_recharge)
 		to_chat(usr, SPAN_WARNING("[src] is a self-charging gun, it doesn't need more batteries."))
 		return
 	if(disposable)
 		to_chat(usr, SPAN_WARNING("[src] is a disposable gun, it doesn't need more batteries."))
+<<<<<<< HEAD
 		return
 
 	if(cell)
 		to_chat(usr, SPAN_WARNING("[src] is already loaded."))
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
+	if(istype(C, suitable_cell))
+		if(cell)
+			if(replace_item(cell, C, user))
+				cell = C
+				update_icon()
+		else if(insert_item(C, user))
+			cell = C
+			update_icon()
+	..()
 
 	if(istype(C, suitable_cell) && insert_item(C, user))
 		cell = C
 		update_icon()
 
+<<<<<<< HEAD
 	..()
 
 /obj/item/gun/energy/ui_data(mob/user)
+=======
+/obj/item/gun/energy/attack_self(mob/user)
+	if(!self_recharge && cell && cell.charge < charge_cost && eject_item(cell, user))
+		cell = null
+		update_icon()
+		return
+	..()
+
+/obj/item/gun/energy/nano_ui_data(mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/data = ..()
 	data["charge_cost"] = charge_cost
 	var/obj/item/cell/C = get_cell()
@@ -178,6 +294,12 @@
 		data["max_shots"] = round(C.maxcharge/charge_cost)
 	return data
 
+<<<<<<< HEAD
+=======
+/obj/item/gun/energy/get_dud_projectile()
+	return new projectile_type
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/energy/refresh_upgrades()
 	//refresh our unique variables before applying upgrades too
 	charge_cost = initial(charge_cost)
@@ -185,8 +307,18 @@
 	overcharge_rate = initial(overcharge_rate)
 	..()
 
+<<<<<<< HEAD
 /obj/item/gun/energy/generate_guntags()
 	..()
 	gun_tags |= GUN_ENERGY
 	if(istype(projectile_type, /obj/item/projectile/beam))
 		gun_tags |= GUN_LASER
+=======
+/obj/item/gun/energy/pickup(mob/user)
+	..()
+	playsound(src,'sound/weapons/guns/interact/smg_cock.ogg',20,4)
+
+/obj/item/gun/energy/dropped(mob/user)
+	..()
+	playsound(src,'sound/weapons/guns/interact/lmg_magin.ogg',20,4)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

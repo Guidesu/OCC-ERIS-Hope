@@ -37,7 +37,11 @@
 		return
 	..()
 
+<<<<<<< HEAD
 /mob/living/carbon/human/me_verb(message as text)
+=======
+/mob/living/carbon/human/me_verb(message as message) //SoJ edit.
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(suppress_communication)
 		to_chat(src, get_suppressed_message())
 		return
@@ -50,12 +54,25 @@
 	var/alt_name = ""
 	if(name != rank_prefix_name(GetVoice()))
 		alt_name = "(as [rank_prefix_name(get_id_name())])"
+	var/last_symbol = copytext(message, length(message))
+	if(last_symbol=="@")
+		if(!src.stats.getPerk(PERK_CODESPEAK))
+			to_chat(src, "You don't know the codes, pal.")
+			return FALSE
 
+<<<<<<< HEAD
 	message = sanitize(message)
 	. = ..(message, alt_name = alt_name)
 
 	if(.)
 		SEND_SIGNAL(src, COMSIG_HUMAN_SAY, message)
+=======
+	message = capitalize(sanitize(message))
+	. = ..(message, alt_name = alt_name)
+
+	if(.)
+		LEGACY_SEND_SIGNAL(src, COMSIG_HUMAN_SAY, message)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/carbon/human/proc/forcesay(list/append)
 	if(stat == CONSCIOUS)
@@ -119,7 +136,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/GetVoice()
+/mob/living/carbon/human/GetVoice(mask_check)
 
 	var/voice_sub
 	if(istype(back, /obj/item/rig))
@@ -128,6 +145,13 @@
 		if(rig.speech && rig.speech.voice_holder && rig.speech.voice_holder.active && rig.speech.voice_holder.voice)
 			voice_sub = rig.speech.voice_holder.voice
 	else
+		if(mask_check && wear_mask)
+			var/obj/item/clothing/mask/mask = wear_mask
+			if(istype(mask) && mask.muffle_voice)
+				voice_sub = "Unknown"
+				if(GetIdCard())
+					var/obj/item/card/id/gotcard = src.GetIdCard()
+					voice_sub += " as [gotcard.registered_name]"
 		for(var/obj/item/gear in list(wear_mask, wear_suit, head))
 			if(!gear)
 				continue
@@ -175,6 +199,8 @@
 			verb=pick("exclaims", "shouts", "yells")
 		else if(ending == "?")
 			verb="asks"
+		else if(ending=="@")
+			verb="reports"
 
 	return verb
 
@@ -219,6 +245,10 @@
 				var/obj/item/device/radio/R = r_ear
 				R.talk_into(src, message, null, verb, speaking, speech_volume)
 				used_radios += r_ear
+			else if(head && istype(head, /obj/item/device/radio)) // Snowflake code for radio hat
+				var/obj/item/device/radio/R = head
+				R.talk_into(src, message, null, verb, speaking, speech_volume)
+				used_radios += head
 		if("right ear")
 			var/obj/item/device/radio/R
 			if(r_hand && istype(r_hand, /obj/item/device/radio))

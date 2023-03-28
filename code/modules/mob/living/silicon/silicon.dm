@@ -35,19 +35,49 @@
 	#define SEC_HUD 1 //Security HUD mode
 	#define MED_HUD 2 //Medical HUD mode
 	mob_classification = CLASSIFICATION_SYNTHETIC
+	colony_friend = TRUE
 
+<<<<<<< HEAD
+=======
+	status_flags = CANWEAKEN|CANSTUN|CANPUSH
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/silicon/Initialize()
 	GLOB.silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_COMMON)
+	add_language(LANGUAGE_ROBOT)
+	add_language(LANGUAGE_COMMON)
+	add_language(LANGUAGE_ILLYRIAN)
+	add_language(LANGUAGE_EURO)
+	add_language(LANGUAGE_JANA)
+	add_language(LANGUAGE_CYRILLIC)
+	add_language(LANGUAGE_LATIN)
+	add_language(LANGUAGE_OPIFEXEE)
+	add_language(LANGUAGE_KRIOSAN)
+	add_language(LANGUAGE_AKULA)
+	add_language(LANGUAGE_MARQUA)
+	add_language(LANGUAGE_PLANT)
+	add_language(LANGUAGE_SYNTHETIC)
+	add_language(LANGUAGE_MERP)
 	init_id()
 	init_subsystems()
+
+/mob/living/silicon/New()
+	..()
+	if(ckey)
+		recalibrate_hotkeys()
 
 /mob/living/silicon/Destroy()
 	GLOB.silicon_mob_list -= src
 	for(var/datum/alarm_handler/AH in SSalarm.all_handlers)
 		AH.unregister_alarm(src)
 	. = ..()
+
+/mob/living/silicon/lay_down()
+	resting = FALSE
+	update_lying_buckled_and_verb_status()
+	updateicon()
 
 /mob/living/silicon/proc/init_id()
 	if(idcard)
@@ -59,6 +89,7 @@
 	real_name = pickedName
 	name = real_name
 	create_or_rename_email(pickedName, "root.rt")
+	recalibrate_hotkeys()
 
 /mob/living/silicon/proc/show_laws()
 	return
@@ -72,6 +103,7 @@
 /mob/living/silicon/emp_act(severity)
 	switch(severity)
 		if(1)
+<<<<<<< HEAD
 			take_organ_damage(0,20,emp=1)
 			Stun(rand(5,10))
 		if(2)
@@ -80,6 +112,15 @@
 //	FLICK("noise", flash)
 	if (HUDtech.Find("flash"))
 		FLICK("noise", HUDtech["flash"])
+=======
+			src.take_organ_damage(0,20,emp=TRUE)
+			Stun(rand(5,10))
+		if(2)
+			src.take_organ_damage(0,10,emp=TRUE)
+			confused = (min(confused + 2, 30))
+//	flick("noise", src.flash)
+	flash(0, FALSE , FALSE , FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
 	..()
@@ -110,10 +151,11 @@
 	return 1
 
 /mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
-	if (Proj.is_hot() >= HEAT_MOBIGNITE_THRESHOLD)
+	if (Proj.is_hot() >= HEAT_MOBIGNITE_THRESHOLD && (!(Proj.testing)))
 		IgniteMob()
 
 	if(!Proj.nodamage)
+<<<<<<< HEAD
 		if(Proj.damage_types[BRUTE])
 			adjustBruteLoss(Proj.damage_types[BRUTE])
 		if(Proj.damage_types[BURN])
@@ -121,6 +163,16 @@
 
 	Proj.on_hit(src)
 	updatehealth()
+=======
+		if(Proj.damage_types[BRUTE] && (!(Proj.testing)))
+			adjustBruteLoss(Proj.damage_types[BRUTE])
+		if(Proj.damage_types[BURN] && (!(Proj.testing)))
+			adjustFireLoss(Proj.damage_types[BURN])
+
+	Proj.on_hit(src)
+	if (!(Proj.testing))
+		updatehealth()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/armor_value = 0, var/check_protection = 1)
@@ -235,6 +287,17 @@
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)
 
+/mob/living/silicon/verb/recalibrate_hotkeys()
+	set name = "Recalibrate Hotkeys"
+	set desc = "Makes you use the correct borg based hotkeys."
+	set category = "OOC"
+
+	if(client.get_preference_value(/datum/client_preference/stay_in_hotkey_mode) == GLOB.PREF_YES)
+		winset(client, null, "mainwindow.macro=borgmacro hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#F0F0F0")
+	else
+		winset(client, null, "mainwindow.macro=borgmacro hotkey_toggle.is-checked=false input.focus=true input.background-color=#D3B5B5")
+
+
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
@@ -246,9 +309,13 @@
 	return 1
 
 /mob/living/silicon/ex_act(severity)
+<<<<<<< HEAD
 	if(!blinded)
 		if (HUDtech.Find("flash"))
 			FLICK("flash", HUDtech["flash"])
+=======
+	flash(0, FALSE , FALSE , FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	switch(severity)
 		if(1.0)
@@ -325,8 +392,13 @@
 		cameratext += "[(cameratext == "")? "" : "|"]<A HREF='?src=\ref[src];switchcamera=\ref[C]'>[C.c_tag]</A>"
 	to_chat(src, "[A.alarm_name()]! ([(cameratext)? cameratext : "No Camera"])")
 
+<<<<<<< HEAD
 /mob/living/silicon/proc/is_malf_or_traitor()
 	return check_special_role(ROLE_TRAITOR) || check_special_role(ROLE_MALFUNCTION)
+=======
+/mob/living/silicon/proc/is_malf_or_contractor()
+	return check_special_role(ROLE_CONTRACTOR) || check_special_role(ROLE_MALFUNCTION)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/silicon/adjustEarDamage()
 	return

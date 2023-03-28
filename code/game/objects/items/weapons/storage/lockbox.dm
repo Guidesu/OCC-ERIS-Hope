@@ -1,7 +1,11 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/storage/lockbox
+<<<<<<< HEAD
 	name = "lockbox"
+=======
+	name = "lock box"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "A locked box."
 	icon_state = "lockbox+l"
 	item_state = "syringe_kit"

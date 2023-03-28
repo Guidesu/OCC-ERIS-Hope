@@ -9,10 +9,18 @@
  */
 
 /obj/item/stack/tile
+<<<<<<< HEAD
 	name = "broken tile"
 	singular_name = "broken tile"
 	icon = 'icons/obj/stack/tile.dmi'
 	desc = "This should not exist."
+=======
+	name = "scrap metal"
+	singular_name = "scrap metal"
+	icon = 'icons/obj/stack/tile.dmi'
+	icon_state = "broken_tile"
+	desc = "A useless bit of scrap metal. You could probably salvage this."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_NORMAL
 	force = WEAPON_FORCE_HARMLESS
 	throwforce = WEAPON_FORCE_WEAK
@@ -47,6 +55,40 @@
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	flags = 0
+
+/obj/item/stack/tile/wood/ashen
+	name = "ashen wood floor tile"
+	singular_name = "ashen wood floor tile"
+	desc = "An easy to fit wooden floor tile."
+	icon_state = "tile_ashwood"
+
+/obj/item/stack/tile/wood/ashen/red
+	name = "red ashen wood floor tile"
+	singular_name = "red ashen wood floor tile"
+	desc = "An easy to fit wooden floor tile."
+	icon_state = "tile_ashwood"
+
+/obj/item/stack/tile/wood/ashen/dull
+	name = "dull ashen wood floor tile"
+	singular_name = "dull ashen wood floor tile"
+	desc = "An easy to fit wooden floor tile."
+	icon_state = "tile_oldwood"
+
+/obj/item/stack/tile/wood/old
+	name = "old wood floor tile"
+	singular_name = "old wood floor tile"
+	desc = "An easy to fit wooden floor tile. Mind the splinters."
+	icon_state = "tile_oldwood"
+
+/obj/item/stack/tile/wood/wood_old
+	name = "old wood floor tile"
+	singular_name = "old wood floor tile"
+	desc = "An easy to fit wooden floor tile. Mind the splinters."
+	icon_state = "tile_oldwood"
+
+/obj/item/stack/tile/wood/old/veridical
+	name = "old veridical wood floor tile"
+	singular_name = "old veridical wood floor tile"
 
 /obj/item/stack/tile/wood/cyborg
 	name = "wood floor tile synthesizer"
@@ -158,6 +200,44 @@
 		build_type = cyborg_floor[new_cyborg_floor]
 		to_chat(usr, SPAN_NOTICE("You set \the [src] floor" /*to '[decal]'.*/))
 
+	var/list/cyborg_floor = list(
+		"steel techfloor" = /obj/item/stack/tile/floor/steel/techfloor,
+		"gray platform" =  /obj/item/stack/tile/floor/steel/gray_platform,
+		"cafe floor tile" = /obj/item/stack/tile/floor/cafe,
+		"maint floor tile" = /obj/item/stack/tile/floor/techmaint,
+		"perforated maint floor tile" = /obj/item/stack/tile/floor/techmaint/perforated,
+		"panel maint floor tile" = /obj/item/stack/tile/floor/techmaint/panels,
+		"cargo maint floor tile" = /obj/item/stack/tile/floor/techmaint/cargo,
+		"steel techfloor tile with vents" = /obj/item/stack/tile/floor/steel/techfloor_grid,
+		"steel brown perforated tile" = /obj/item/stack/tile/floor/steel/brown_perforated,
+		"steel gray perforated tile" = /obj/item/stack/tile/floor/steel/gray_perforated,
+		"steel cargo tile" = /obj/item/stack/tile/floor/steel/cargo,
+		"steel bar flat tile" = /obj/item/stack/tile/floor/steel/bar_flat,
+		"steel bar dance tile" = /obj/item/stack/tile/floor/steel/bar_dance,
+		"steel bar light tile" = /obj/item/stack/tile/floor/steel/bar_light,
+		"white floor tile" = /obj/item/stack/tile/floor/white,
+		"white cargo tile" = /obj/item/stack/tile/floor/white/cargo,
+		"red carpet" = /obj/item/stack/tile/carpet,
+		"black carpet" = /obj/item/stack/tile/carpet/bcarpet,
+		"blue carpet" = /obj/item/stack/tile/carpet/blucarpet,
+		"turquoise carpet" = /obj/item/stack/tile/carpet/turcarpet,
+		"silver blue carpet" = /obj/item/stack/tile/carpet/sblucarpet,
+		"purple carpet" = /obj/item/stack/tile/carpet/purcarpet,
+		"orange carpet" = /obj/item/stack/tile/carpet/oracarpet
+	)
+
+/obj/item/stack/tile/floor/cyborg/afterattack(var/atom/A, var/mob/user, proximity, params)
+	if(!proximity)
+		return
+
+/obj/item/stack/tile/floor/cyborg/attack_self(var/mob/user)
+
+	var/new_cyborg_floor = input("Choose type of floor", "Tile synthesizer")as null|anything in cyborg_floor
+	if(new_cyborg_floor && !isnull(cyborg_floor[new_cyborg_floor]))
+		stacktype = cyborg_floor[new_cyborg_floor]
+		build_type = cyborg_floor[new_cyborg_floor]
+		to_chat(usr, SPAN_NOTICE("You set \the [src] floor" /*to '[decal]'.*/))
+
 // Cafe
 /obj/item/stack/tile/floor/cafe
 	name = "cafe floor tile"
@@ -193,7 +273,11 @@
  * Steel
  */
 
+<<<<<<< HEAD
  // Cyborg tile stack can copy steel tiles by clicking on them (for easy reconstruction)
+=======
+// Cyborg tile stack can copy steel tiles by clicking on them (for easy reconstruction)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/stack/tile/floor/steel/AltClick(var/mob/living/user)
 	var/obj/item/I = user.get_active_hand()
 	if(istype(I, /obj/item/stack/tile/floor/cyborg))
@@ -319,7 +403,7 @@
 /obj/item/stack/tile/floor/white/techfloor
 	name = "white techfloor tile"
 	singular_name = "white techfloor tile"
-	icon_state = "tile_white_techfloor"
+	icon_state = "tile-white-techfloor"
 
 /obj/item/stack/tile/floor/white/techfloor_grid
 	name = "white techfloor tile with vents"
@@ -334,7 +418,7 @@
 /obj/item/stack/tile/floor/white/gray_perforated
 	name = "white gray perforated tile"
 	singular_name = "white gray perforated tile"
-	icon_state = "tile-white-grayperforated"
+	icon_state = "tile_white_grayperforated"
 
 /obj/item/stack/tile/floor/white/cargo
 	name = "white cargo tile"
@@ -472,6 +556,7 @@
 
 
 /obj/item/stack/tile/derelict/white_red_edges
+<<<<<<< HEAD
 	name = "one star floor tile"
 	singular_name = "one star floor tile"
 	icon_state = "tile_derelict1"
@@ -489,4 +574,23 @@
 /obj/item/stack/tile/derelict/white_big_edges
 	name = "one star floor tile"
 	singular_name = "one star floor tile"
+=======
+	name = "greyson positronic floor tile"
+	singular_name = "greyson positronic floor tile"
+	icon_state = "tile_derelict1"
+
+/obj/item/stack/tile/derelict/white_small_edges
+	name = "greyson positronic floor tile"
+	singular_name = "greyson positronic floor tile"
+	icon_state = "tile_derelict2"
+
+/obj/item/stack/tile/derelict/red_white_edges
+	name = "greyson positronic floor tile"
+	singular_name = "greyson positronic floor tile"
+	icon_state = "tile_derelict3"
+
+/obj/item/stack/tile/derelict/white_big_edges
+	name = "greyson positronic floor tile"
+	singular_name = "greyson positronic floor tile"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "tile_derelict4"

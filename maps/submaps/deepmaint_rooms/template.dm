@@ -6,7 +6,11 @@
 	height = 11
 	mappath = null
 	annihilate = FALSE // If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+<<<<<<< HEAD
 	var/room_tag
+=======
+	var/room_tag = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /datum/map_template/deepmaint_template/big

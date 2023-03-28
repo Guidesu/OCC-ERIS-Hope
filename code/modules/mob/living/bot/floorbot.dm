@@ -32,7 +32,7 @@
 /mob/living/bot/floorbot/attack_hand(var/mob/user)
 	user.set_machine(src)
 	var/dat
-	dat += "<TT><B>Automatic Station Floor Repairer v1.0</B></TT><BR><BR>"
+	dat += "<TT><B>Automatic Colony Floor Repairer v1.0</B></TT><BR><BR>"
 	dat += "Status: <A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel is [open ? "opened" : "closed"]<BR>"
 	//dat += "Tiles left: [amount]<BR>"
@@ -209,7 +209,7 @@
 				addTiles(1)
 		else if(locate(/obj/structure/catwalk, A))  // Emaged nekowalk destroy
 			visible_message(SPAN_WARNING("[src] begins to dismatle \the [C.name]!"))
-			var/message = pick("Cats dont like it, so i do a favor for them!", "No animals were harmed in the process!", "Nya~!", "M.E.O.W!")
+			var/message = pick("Cats dont like it, so I do a favor for them!", "No animals were harmed in the process!", "Nya~!", "M.E.O.W!")
 			say(message)
 			playsound(loc, "robot_talk_heavy", 100, 0, 0)
 			if(do_after(src, 50, C))

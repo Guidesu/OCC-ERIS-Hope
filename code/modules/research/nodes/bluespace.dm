@@ -24,12 +24,20 @@
 
 	required_technologies = list(/datum/technology/basic_bluespace)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 200
+=======
+	cost = 150
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list()
 
 /datum/technology/telecommunications
+<<<<<<< HEAD
 	name = "Roots\' Telecommunications"
+=======
+	name = "Roots Telecommunications"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "Parts for telecommunications. Hyperwave filtering method. Subspace ansible. Subspace transmition and analyzing method. Advanced bluespace broadcasting and receiving. Transmition system monitoring."
 	tech_type = RESEARCH_BLUESPACE
 
@@ -39,7 +47,11 @@
 
 	required_technologies = list(/datum/technology/radio_transmission)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 1000
+=======
+	cost = 750
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list(	/datum/design/research/circuit/comconsole,
 							/datum/design/research/circuit/message_monitor,
@@ -67,7 +79,11 @@
 
 	required_technologies = list(/datum/technology/telecommunications)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 800
+=======
+	cost = 600
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list(
 							/datum/design/research/circuit/tcom/bus,
@@ -103,7 +119,11 @@
 	x = 0.5
 	y = 0.4
 	required_technologies = list(/datum/technology/basic_bluespace)
+<<<<<<< HEAD
 	cost = 800
+=======
+	cost = 600
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list(	/datum/design/research/item/ano_scanner,
 							/datum/design/research/item/beacon_locator,
@@ -121,9 +141,16 @@
 
 	required_technologies = list(/datum/technology/spatial_scan)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 1500
 
 	unlocks_designs = list(/datum/design/research/circuit/shield/hull, /datum/design/research/circuit/telesci/inhibit) //OCCULUS EDIT: Adds inhibitors to bluespace research.
+=======
+	cost = 1125
+
+	unlocks_designs = list(	/datum/design/research/circuit/shield/hull,
+							/datum/design/research/circuit/telesci/inhibit)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/technology/teleportation
 	name = "Teleportation"
@@ -136,10 +163,19 @@
 
 	required_technologies = list(/datum/technology/spatial_scan)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 1500
 
 	unlocks_designs = list(/datum/design/research/circuit/teleconsole,
 	                       /datum/design/research/circuit/lrange_scanner/hull)
+=======
+	cost = 1125
+
+	unlocks_designs = list(/datum/design/research/circuit/teleconsole,
+							/datum/design/research/circuit/teleporter/station,
+							/datum/design/research/circuit/teleporter/hub
+	)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/technology/adv_spatial_scan
 	name = "Advanced Spatial Analyzing"
@@ -151,17 +187,29 @@
 	x = 0.5
 	y = 0.6
 	required_technologies = list(/datum/technology/teleportation)
+<<<<<<< HEAD
 	cost = 800
 
 	unlocks_designs = list(	/datum/design/research/circuit/telesci/console,
 							/datum/design/research/circuit/telesci/hub,
 							/datum/design/research/circuit/telesci/relay, //OCCULUS EDIT: Adds relays to BS tech.
+=======
+	cost = 600
+
+	unlocks_designs = list(	/datum/design/research/circuit/telesci/console,
+							/datum/design/research/circuit/telesci/hub,
+							/datum/design/research/circuit/telesci/relay,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 							/datum/design/research/item/part/artificialbscrystal,
 							/datum/design/research/circuit/bssilk/hub,
 							/datum/design/research/circuit/bssilk/console,
 							/datum/design/research/item/bs_snare,
+<<<<<<< HEAD
 							/datum/design/research/circuit/teleporter/station,
 							/datum/design/research/circuit/teleporter/hub
+=======
+							/datum/design/research/item/si_bluespace_scanner
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 							)
 
 /datum/technology/bluespace_tools
@@ -175,7 +223,11 @@
 
 	required_technologies = list(/datum/technology/teleportation)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 3000
+=======
+	cost = 2250
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list(	/datum/design/research/item/beaker/bluespace,
 							/datum/design/research/item/beaker/noreact,
@@ -195,14 +247,25 @@
 
 	required_technologies = list(/datum/technology/bluespace_tools)
 	required_tech_levels = list()
+<<<<<<< HEAD
 	cost = 1500
+=======
+	cost = 1125
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	unlocks_designs = list(	/datum/design/research/item/belt_holding,
 							/datum/design/research/item/pouch_holding,
 							/datum/design/research/item/trashbag_holding,
+<<<<<<< HEAD
 							/datum/design/research/item/oresatchel_holding
 						    )
 	
+=======
+							/datum/design/research/item/oresatchel_holding,
+							/datum/design/research/item/robot_upgrade/satchel_of_holding_for_borgs
+						    )
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /*
 /datum/technology/bluespace_rped
 	name = "Bluespace RPED"
@@ -218,4 +281,8 @@
 	cost = 3000
 
 	unlocks_designs = list()
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

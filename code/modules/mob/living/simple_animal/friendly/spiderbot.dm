@@ -1,15 +1,16 @@
 /mob/living/simple_animal/spiderbot
 
-	min_oxy = 0
-	max_tox = 0
-	max_co2 = 0
-	minbodytemp = 0
-	maxbodytemp = 500
 	mob_size = MOB_SMALL
+	leather_amount = 0
+	bones_amount = 0
 
 	var/obj/item/device/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
+<<<<<<< HEAD
 	var/obj/item/cell/large/cell
+=======
+	var/obj/item/cell/large/cell = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/machinery/camera/camera = null
 	var/obj/item/device/mmi/mmi = null
 	var/list/req_access = list(access_robotics) //Access needed to pop out the brain.
@@ -20,7 +21,7 @@
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "spiderbot-chassis"
 	icon_dead = "spiderbot-smashed"
-
+	needs_environment = FALSE
 	wander = 0
 
 	health = 10
@@ -30,10 +31,11 @@
 	attacktext = "shocked"
 	melee_damage_lower = 1
 	melee_damage_upper = 3
-
+	colony_friend = TRUE
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
+	sanity_damage = 3
 
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
@@ -149,11 +151,15 @@
 
 /mob/living/simple_animal/spiderbot/proc/explode() //When emagged.
 	src.visible_message(SPAN_DANGER("\The [src] makes an odd warbling noise, fizzles, and explodes!"))
-	explosion(get_turf(loc), -1, -1, 3, 5)
+	explosion(get_turf(loc), 0, 0, 3, 5)
 	eject_brain()
 	death()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/spiderbot/on_update_icon()
+=======
+/mob/living/simple_animal/spiderbot/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	if(mmi)
 		if(positronic)

@@ -3,6 +3,7 @@
 /obj/item/gun/equipped(mob/living/H)
 	. = ..()
 	if(is_held() && !safety)
+<<<<<<< HEAD
 		H.update_cursor()
 	else
 		H.remove_cursor()
@@ -24,6 +25,20 @@
 	if(ismob(loc))
 		cursor_check()
 
+=======
+		H.update_cursor(src)
+	else
+		H.remove_cursor()
+
+/obj/item/gun/swapped_from()
+	if(isliving(loc))
+		check_safety_cursor(loc)
+
+/obj/item/gun/swapped_to()
+	if(isliving(loc))
+		check_safety_cursor(loc)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/afterattack(obj/target, mob/living/user, flag)
 	. = ..()
 	if(!is_held())
@@ -33,6 +48,7 @@
 	. = ..()
 	user.remove_cursor()
 
+<<<<<<< HEAD
 /obj/item/gun/dropped(var/mob/living/user)
 	user.remove_cursor()
 	. = ..()
@@ -44,6 +60,16 @@
 		user.update_cursor()
 	. = ..()
 
+=======
+/obj/item/gun/dropped(mob/living/user)
+	user.remove_cursor()
+	. = ..()
+
+/obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
+	check_safety_cursor(user)
+	. = ..()
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gun/Destroy()
 	if(ismob(loc))
 		var/mob/living/L = loc

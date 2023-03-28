@@ -2,8 +2,13 @@
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
+<<<<<<< HEAD
 	anchored = TRUE
 	density = TRUE
+=======
+	anchored = 1
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	use_power = NO_POWER_USE
 
 	var/obj/machinery/atmospherics/unary/generator_input/input1
@@ -31,7 +36,11 @@
 		cut_overlays()
 
 		if(lastgenlev != 0)
+<<<<<<< HEAD
 			add_overlays(image('icons/obj/power.dmi', "teg-op[lastgenlev]"))
+=======
+			add_overlay(image('icons/obj/power.dmi', "teg-op[lastgenlev]"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 #define GENRATE 800		// generator output coefficient from Q
 
@@ -78,7 +87,7 @@
 				input2.network.update = 1
 
 			add_avail(lastgen)
-	// update icon overlays only if displayed level has changed
+	// update icon over-lays only if displayed level has changed
 
 	var/genlev = max(0, min( round(11*lastgen / 100000), 11))
 	if(genlev != lastgenlev)

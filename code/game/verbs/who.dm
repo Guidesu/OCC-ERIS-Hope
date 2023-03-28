@@ -28,10 +28,20 @@
 								entry += " - <font color='black'><b>DEAD</b></font>"
 						else
 							entry += " - <font color='black'><b>DEAD</b></font>"
+<<<<<<< HEAD
 			else
 				entry += " - <font color='gray'>In Lobby</font>"
+=======
+					else
+						entry += " - <font color='black'><b>DEAD</b></font>"
+				else
+					entry += " - <font color='gray'>In Lobby</font>"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
-			if(is_special_character(C.mob))
+			if(is_limited_antag(C.mob))
+				entry += " - <b><font color='red'>Limited Antagonist</font></b>"
+
+			else if(is_special_character(C.mob))
 				entry += " - <b><font color='red'>Antagonist</font></b>"
 
 			if(C.is_afk())
@@ -64,9 +74,15 @@
 	var/num_mentors_online = 0
 	if(holder)
 		for(var/client/C in admins)
+<<<<<<< HEAD
 			if(R_ADMIN & C.holder.rights || (!(R_MOD & C.holder.rights) && !(R_MENTOR & C.holder.rights)))	//Used to determine who shows up in admin rows
 
 				if(C.holder.fakekey && (!(R_ADMIN & holder.rights) && !(R_MOD & holder.rights)))		//Mentors can't see stealthmins
+=======
+			if(R_ADMIN & C.holder.rights || (!(R_MOD & C.holder.rights) && !(R_MENTOR & C.holder.rights))) //Used to determine who shows up in admin rows
+
+				if(C.holder.fakekey && (!(R_ADMIN & holder.rights) && !(R_MOD & holder.rights))) //Mentors can't see stealthmins
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					continue
 
 				msg += "\t[C] is a [C.holder.rank]"

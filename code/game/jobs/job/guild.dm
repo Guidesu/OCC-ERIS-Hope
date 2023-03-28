@@ -1,28 +1,54 @@
 //Cargo
 /datum/job/merchant
+<<<<<<< HEAD
 	title = "Free Trade Union Merchant"
 	flag = MERCHANT
 	department = DEPARTMENT_GUILD
 	head_position = 1
 	department_flag = GUILD | COMMAND
 	faction = "CEV Northern Light"
+=======
+	title = "Chief Executive Officer"
+	flag = MERCHANT
+	department = DEPARTMENT_LSS
+	head_position = TRUE
+	aster_guild_member = TRUE
+	department_flag = LSS | COMMAND
+	faction = MAP_FACTION
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "your greed"
+	supervisors = "the Nadezhda Council"
+	difficulty = "Medium."
 	selection_color = "#b3a68c"
+<<<<<<< HEAD
 	wage = WAGE_NONE	//Guild merchant draws a salary from the guild account
 	access = list(
 		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_merchant, access_mining,
 		access_heads, access_mining_station, access_RC_announce, access_keycard_auth, access_sec_doors,
 		access_eva, access_external_airlocks, access_change_cargo
+=======
+	wage = WAGE_COMMAND	//CEO now gets paid the money moola muh [redacted] -Kaz
+	access = list(
+		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_merchant, access_mining,
+		access_heads, access_mining_station, access_RC_announce, access_keycard_auth, access_sec_doors,
+		access_eva, access_external_airlocks, access_hydroponics, access_bar, access_kitchen, access_theatre
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
+	disallow_species = list(FORM_SOTSYNTH, FORM_AGSYNTH, FORM_BSSYNTH, FORM_CHURCHSYNTH, FORM_NASHEF)
+
 	ideal_character_age = 40
+	minimum_character_age = 25
+	playtimerequired = 1200
+	health_modifier = 5
+
 	stat_modifiers = list(
 		STAT_ROB = 10,
 		STAT_COG = 20,
 		STAT_MEC = 15,
 		STAT_VIG = 10
 	)
+<<<<<<< HEAD
 
 	description = "You are the head of the local branch of Free Trade Union, and Northern Light's Union representative<br>\
 A staunch entrepreneur, you are motivated by profit, for the Union and especially for yourself. You are here firstly to make as much money as you can, and secondly to keep the crew supplied. You can order things at cargo using the local Union funds, these will not magically replenish so you will run out of money quickly if you don't charge. Take payments by card or cash, and deposit them into the Union account to enable more purchases.<br>\
@@ -46,23 +72,42 @@ Counsel the captain on directing the ship towards profitable opportunities"
 
 	loyalties = "As a merchant, your first loyalty is to money. You should be unscrupulous, willing to sell anything to anyone if they can pay your prices. Direct the ship towards profitable endeavours, and press the captain to make choices that will be financially lucrative<br>\
 Your second loyalty is to the Union. Ensure it retains good relations with privateers like the captain of the Northern Light, and don't embarass it. This means limiting your price gouging to only moderate levels. If you make an enemy of everyone, it may prove a costly mistake"
+=======
+	description = "The Chief Executive Officer coordinates the affairs of the local branch of Lonestar Shipping Solutions.<br>\
+Your main objective, bluntly, is to make as much money as you can. Purchase and acquire goods, and sell them on for a profit.<br>\
+Your Cargo Technicians will handle most of the grunt work and your Miners will acquire minerals. They are capable - utilize them well.<br>\
+The vendors found throughout the colony are also operated by your organization. They make you money - ensure they are functional and well-stocked.<br>\
+There is a market for contraband and more unscrupulous services. Venturing into this area may prove profitable, but comes with risk.<br>\
+You do not receive a salary, but can fund yourself from the company account. Strike a balance between the needs of yourself and the wider company."
+
+	duties = "Keep the crew supplied with anything they might need - for a healthy profit.<br>\
+Buy up valuable items from scavengers and make a profit reselling them.<br>\
+Deploy your mining staff to harvest matter and materials.<br>\
+Counsel the council on directing the colony towards profitable opportunities."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	software_on_spawn = list(///datum/computer_file/program/supply,
 							 ///datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/trade,
 							 /datum/computer_file/program/scanner,
 							 /datum/computer_file/program/wordprocessor,
 							 /datum/computer_file/program/reports)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/merchant
 
+	perks = list(PERK_TIMEISMONEY, PERK_MARKET_PROF, PERK_BARTENDER, PERK_CHEM_CONTRABAND)
+
 /obj/landmark/join/start/merchant
+<<<<<<< HEAD
 	name = "Free Trade Union Merchant"	//SYZYGY EDIT - Fixes landmarks
+=======
+	name = "Chief Executive Officer"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "player-beige-officer"
 	join_tag = /datum/job/merchant
 
-
-
 /datum/job/cargo_tech
+<<<<<<< HEAD
 	title = "Union Cargo Technician"
 	flag = GUILDTECH
 	department = DEPARTMENT_GUILD
@@ -74,11 +119,28 @@ Your second loyalty is to the Union. Ensure it retains good relations with priva
 	selection_color = "#c3b9a6"
 	wage = WAGE_LABOUR_DUMB
 	alt_titles = list("Union Salvage Technician")	// OCCULUS EDIT
+=======
+	title = "Cargo Technician"
+	flag = CARGOTECH
+	department = DEPARTMENT_LSS
+	department_flag = LSS
+	faction = MAP_FACTION
+	total_positions = 4
+	spawn_positions = 4
+	supervisors = "the Chief Executive Officer"
+	difficulty = "Easy."
+	alt_titles = list("Cargo Specialist", "Lonestar Sales Technician", "Lonestar Retail Assistant")
+	selection_color = "#c3b9a6"
+	wage = WAGE_LABOUR_DUMB
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	department_account_access = TRUE
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
 
+	disallow_species = list(FORM_BSSYNTH)
+
+
 	access = list(
-		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
+		access_mailsorting, access_cargo, access_cargo_bot, access_mining,
 		access_mining_station
 	)
 
@@ -88,7 +150,11 @@ Your second loyalty is to the Union. Ensure it retains good relations with priva
 		STAT_VIG = 10,
 	)
 
+<<<<<<< HEAD
 	perks = list(/datum/perk/deep_connection)
+=======
+	perks = list(PERK_MARKET_PROF)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	software_on_spawn = list(///datum/computer_file/program/supply,
 							 ///datum/computer_file/program/deck_management,
@@ -97,6 +163,7 @@ Your second loyalty is to the Union. Ensure it retains good relations with priva
 							 /datum/computer_file/program/reports)
 
 
+<<<<<<< HEAD
 	description = "You are a low ranking member of the Free Trade Union, and an apprentice to the local merchant.  You may one day take over his position. You are equal parts scavenger, loader, shopkeeper and salesman. Remember the guild's core role here. To keep everyone supplied with everything they could need, and to profit from this endeavour<br>\
 <br>\
 Your main duties are to keep the local Union branch operational and profitable. To that end you should look out for all of the following tasks:"
@@ -112,10 +179,25 @@ Your main duties are to keep the local Union branch operational and profitable. 
 
 /obj/landmark/join/start/cargo_tech
 	name = "Union Cargo Technician"	//OCCULUS EDIT - Fixes landmarks
+=======
+	description = "The Cargo Technician forms the backbone of Lonestar Shipping Solutions, equal parts scavenger, loader, and salesman.<br>\
+Your main duty is to keep the local company branch operational and profitable. Deliver goods, take payments and orders, and buy from scavengers.<br>\
+In quieter times, use your initiative. Visit departments to ask if there's anything they need and try to sell them unusual items.<br>\
+Busted lights? Broken vendors? Offer your services for a small fee. You may also find profit in the maintenance tunnels.<br>\
+Avoid the deeper tunnels unless otherwise instructed, however - this domain is hazardous and for training mining specialists."
+
+	duties = "Staff the front desk and be ready to process payments and orders.<br>\
+	Deliver goods to departments and individuals in good time.<br>\
+	Always seek other forms of profit, but do so while keeping the company in a good light."
+
+/obj/landmark/join/start/cargo_tech
+	name = "Cargo Technician"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "player-beige"
 	join_tag = /datum/job/cargo_tech
 
 /datum/job/mining
+<<<<<<< HEAD
 	title = "Union Miner"
 	flag = MINER
 	department = DEPARTMENT_GUILD
@@ -149,12 +231,40 @@ Character Expectations:<br>\
 
 	loyalties = "	Your first loyalty is to yourself and survival. This ship is mostly just a paycheck to you<br>\
 	Your second loyalty is to the merchant, he ensures you're well paid and respected, in a universe where workers are often treated as interchangeable parts.	"
+=======
+	title = "Lonestar Miner"
+	flag = MINER
+	department = DEPARTMENT_LSS
+	department_flag = LSS
+	faction = MAP_FACTION
+	total_positions = 4
+	spawn_positions = 4
+	supervisors = "the Chief Executive Officer"
+	difficulty = "Easy."
+	alt_titles = list("Lonestar Drill Technician", "Junior Lonestar Miner")
+	selection_color = "#c3b9a6"
+	wage = WAGE_LABOUR_HAZARD //The miners union is stubborn
+	health_modifier = 5
+
+	disallow_species = list(FORM_BSSYNTH, FORM_CHURCHSYNTH)
+	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
+
+	description = "The Miner is a professional resource procurer, acquiring valuable minerals for Lonestar Shipping Solutions.<br>\
+Your primary responsibility is to descend into the deep tunnels and dig up as much ore as you can.<br>\
+Accessed by elevator, the area contains an outpost with all the facilities to process said ore and deliver refined materials ready for use.<br>\
+Whatever you dig up will go to the cargo department, and from then on it is the responsibility of others within Lonestar to sell it.<br>\
+The deep tunnels are far less dangerous than the wilderness, but pack well - disappearances are not unheard of."
+
+	duties = "Dig up ores and minerals to be processed into usable material.<br>\
+	Locate other valuables within the tunnels that may be turned to profit."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	access = list(
-		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
+		access_maint_tunnels, access_mailsorting, access_mining,
 		access_mining_station
 	)
 
+	perks = list(PERK_MARKET_PROF)
 
 	stat_modifiers = list(
 		STAT_ROB = 15,
@@ -171,7 +281,11 @@ Character Expectations:<br>\
 							 /datum/computer_file/program/reports)
 
 /obj/landmark/join/start/mining
+<<<<<<< HEAD
 	name = "Union Miner"
+=======
+	name = "Lonestar Miner"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "player-beige"
 	join_tag = /datum/job/mining
 /*

@@ -13,6 +13,11 @@
 "d" = (
 /obj/structure/closet/l3closet,
 /obj/effect/floor_decal/industrial/outline/yellow,
+<<<<<<< HEAD
+=======
+/obj/random/medical/low_chance,
+/obj/random/medical_lowcost/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/crawler)
 "e" = (
@@ -39,6 +44,11 @@
 /obj/structure/closet/l3closet,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light/floor,
+<<<<<<< HEAD
+=======
+/obj/random/medical/low_chance,
+/obj/random/medical_lowcost/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/crawler)
 "k" = (
@@ -47,10 +57,13 @@
 	},
 /turf/simulated/floor/tiled/cafe,
 /area/crawler)
+<<<<<<< HEAD
 "l" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "m" = (
 /obj/random/mob/roomba,
 /turf/simulated/floor/tiled/steel/gray_perforated,
@@ -94,9 +107,15 @@ a
 a
 c
 f
+<<<<<<< HEAD
 l
 e
 l
+=======
+e
+e
+e
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 n
 a
@@ -182,9 +201,15 @@ a
 a
 c
 f
+<<<<<<< HEAD
 l
 e
 l
+=======
+e
+e
+e
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 n
 a

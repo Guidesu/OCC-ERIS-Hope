@@ -1,5 +1,10 @@
 GLOBAL_DATUM_INIT(maps_data, /datum/maps_data, new)
 
+<<<<<<< HEAD
+=======
+/proc/isStationLevel(var/level)
+	return level in GLOB.maps_data.station_levels
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/isStationLevel(level)
 	return level in GLOB.maps_data.station_levels
@@ -11,23 +16,44 @@ GLOBAL_DATUM_INIT(maps_data, /datum/maps_data, new)
 	var/turf/T = get_turf(A)
 	return T && isStationLevel(T.z)
 
+<<<<<<< HEAD
 /proc/isPlayerLevel(level)
+=======
+/proc/isPlayerLevel(var/level)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return level in GLOB.maps_data.player_levels
 
 /proc/isOnPlayerLevel(atom/A)
 	var/turf/T = get_turf(A)
 	return T && isPlayerLevel(T.z)
 
+<<<<<<< HEAD
 /proc/isContactLevel(level)
+=======
+/proc/isContactLevel(var/level)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return level in GLOB.maps_data.player_levels
 
 /proc/isOnContactLevel(atom/A)
 	var/turf/T = get_turf(A)
 	return T && isContactLevel(T.z)
 
+<<<<<<< HEAD
 //OCCULUS EDIT - checks for sealed Z-levels.
 /proc/isSealedLevel(level)
 	return level in GLOB.maps_data.sealed_levels
+=======
+//Checks for sealed Z-levels.
+/proc/isSealedLevel(level)
+	return level in GLOB.maps_data.sealed_levels
+
+/proc/isOnSealedLevel(atom/A)
+	var/turf/T = get_turf(A)
+	return T && isSealedLevel(T.z)
+
+/proc/isAdminLevel(var/level)
+	return level in GLOB.maps_data.admin_levels
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /proc/isOnSealedLevel(atom/A)
 	var/turf/T = get_turf(A)
@@ -44,7 +70,11 @@ GLOBAL_DATUM_INIT(maps_data, /datum/maps_data, new)
 	var/turf/T = get_turf(A)
 	return T && isAdminLevel(T.z)
 
+<<<<<<< HEAD
 /proc/get_level_name(level)
+=======
+/proc/get_level_name(var/level)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return (GLOB.maps_data.names.len >= level && GLOB.maps_data.names[level]) || level
 
 /proc/max_default_z_level()
@@ -56,6 +86,9 @@ GLOBAL_DATUM_INIT(maps_data, /datum/maps_data, new)
 	if(isStationLevel(z1) && isStationLevel(z2))
 		return TRUE
 	return FALSE
+
+/proc/is_allowed_digsites(var/level)
+	return level in GLOB.maps_data.allowed_digsites
 
 ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 /client/proc/test_MD()
@@ -81,6 +114,11 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 
 	to_chat(mob, "isAcessableLevel: [GLOB.maps_data.accessable_levels[num2text(mob.z)]]")
 
+<<<<<<< HEAD
+=======
+	to_chat(mob, "allowed_digsites: [is_allowed_digsites(mob.z)]")
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(GLOB.maps_data.asteroid_levels[num2text(T.z)])
 		to_chat(mob, "Asteroid will be generated here")
 	else
@@ -93,45 +131,65 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 	var/list/player_levels     = new // Z-levels a character can typically reach
 	var/list/contact_levels    = new // Z-levels that can be contacted from the station, for eg announcements
 	var/list/sealed_levels	   = new // Z-levels that don't allow random transit at edge
+<<<<<<< HEAD
 	var/list/asteroid_levels   = new
+=======
+	var/list/asteroid_levels    = new
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/accessable_levels = new
 	var/list/empty_levels = null     // Empty Z-levels that may be used for various things
 	var/list/names = new
+	var/list/allowed_digsites = list()
 	var/security_state = /decl/security_state/default // The default security state system to use.
 
 	var/list/loadout_blacklist	//list of types of loadout items that will not be pickable
 
-	var/default_spawn = "Aft Cryogenic Storage"
+	var/default_spawn = "Cryogenic Storage"
 
-	var/allowed_jobs = list(/datum/job/captain, /datum/job/rd, /datum/job/hop, /datum/job/cmo, /datum/job/chief_engineer, /datum/job/ihc,
-						/datum/job/gunserg, /datum/job/inspector, /datum/job/medspec, /datum/job/ihoper,
-						/datum/job/doctor, /datum/job/chemist, /datum/job/paramedic, /datum/job/psychiatrist,
+	var/allowed_jobs = list(/datum/job/premier, /datum/job/rd, /datum/job/pg, /datum/job/cmo, /datum/job/chief_engineer, /datum/job/smc, /datum/job/swo, /datum/job/foreman,
+						/datum/job/supsec, /datum/job/inspector, /datum/job/medspec, /datum/job/trooper, /datum/job/officer, /datum/job/serg,
+						/datum/job/doctor, /datum/job/recovery_team, /datum/job/psychiatrist,
 						/datum/job/technomancer,
 						/datum/job/cargo_tech, /datum/job/mining, /datum/job/merchant,
+<<<<<<< HEAD
 						/datum/job/clubworker, /datum/job/clubmanager,
 						/datum/job/chaplain, /datum/job/acolyte, /datum/job/janitor, /datum/job/hydro,
 						/datum/job/scientist, /datum/job/roboticist,
 						/datum/job/ai, /datum/job/cyborg,
 						/datum/job/assistant, /datum/job/ensign //Occulus Edit
 
+=======
+						/datum/job/salvager, /datum/job/pro,
+						/datum/job/clubworker, /datum/job/clubmanager, /datum/job/artist,
+						/datum/job/chaplain, /datum/job/acolyte, /datum/job/janitor, /datum/job/hydro,
+						/datum/job/scientist, /datum/job/roboticist,
+						/datum/job/ai, /datum/job/cyborg,
+						/datum/job/assistant,
+						/datum/job/off_colony_hunt_master, /datum/job/off_colony_hunter, /datum/job/off_colony_herbalist, /datum/job/outsider
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						)
 
 	var/overmap_z
 	var/overmap_size = 50 * 4
 	var/overmap_event_areas = 40 * 16
 
-	var/emergency_shuttle_docked_message = "The escape pods are now armed. You have approximately %ETD% to board the escape pods."
-	var/emergency_shuttle_leaving_dock = "The escape pods have been launched, arriving at rendezvous point in %ETA%."
-	var/emergency_shuttle_called_message = "The emergency evacuation procedures are now in effect. Escape pods will be armed in %ETA%"
+	var/emergency_shuttle_docked_message = "Emergency evacuation is now in effect. You have %ETA% to choose to evacuate or stay and help contain the problem."
+	var/emergency_shuttle_leaving_dock = "Emergency evacuation is now complete. Remaining colonists have %ETD% before additional support arrives."
+	var/emergency_shuttle_called_message = "The emergency evacuation procedures are now in effect. You have %ETA% to prepare."
 	var/emergency_shuttle_recall_message = "Emergency evacuation sequence aborted. Return to normal operating conditions."
 
-	var/shuttle_docked_message = "Jump preparation complete. The bluespace drive is now spooling up, secure all stations for departure. Time to jump: approximately %ETD%."
-	var/shuttle_leaving_dock = "Jump initiated, exiting bluespace in %ETA%."
-	var/shuttle_called_message = "Jump sequence initiated. Transit procedures are now in effect. Jump in %ETA%."
-	var/shuttle_recall_message = "Jump sequence aborted, return to normal operating conditions."
+	var/shuttle_docked_message = "Shift end complete, remaining employees who remained have %ETD% before the following shifts employees arrive."
+	var/shuttle_leaving_dock = "Shift end is now in effect, employees now have %ETA% to leave or remain on duty for another shift."
+	var/shuttle_called_message = "The shift end will happen in %ETA%. Any unfinished work should be completed before final call."
+	var/shuttle_recall_message = "Shift end aborted, return to normal operating conditions."
 
+<<<<<<< HEAD
 	var/list/usable_email_tlds = list("cev_northern_light.org","northern_light.scg","northern_light.net")
 	var/path = "eris"
+=======
+	var/list/usable_email_tlds = list("nad_col.org","nadezhda.scg","nadezhda.net")
+	var/path = "nadezhda"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/access_modify_region = list(
 		ACCESS_REGION_SECURITY = list(access_hos, access_change_ids, access_change_sec),
@@ -139,6 +197,7 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 		ACCESS_REGION_RESEARCH = list(access_rd, access_change_ids, access_change_research),
 		ACCESS_REGION_ENGINEERING = list(access_ce, access_change_ids, access_change_engineering),
 		ACCESS_REGION_COMMAND = list(access_change_ids),
+<<<<<<< HEAD
 		ACCESS_REGION_GENERAL = list(access_change_ids,
 										access_change_cargo,
 										access_change_club,
@@ -149,6 +208,12 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 										access_change_sec),
 		ACCESS_REGION_SUPPLY = list(access_change_ids, access_change_cargo),
 		ACCESS_REGION_CHURCH = list(access_nt_preacher, access_change_ids, access_change_nt)
+=======
+		ACCESS_REGION_GENERAL = list(access_change_ids),
+		ACCESS_REGION_SUPPLY = list(access_change_ids),
+		ACCESS_REGION_CHURCH = list(access_nt_preacher, access_change_ids),
+		ACCESS_REGION_PROSPECTOR = list(access_foreman, access_change_ids)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	)
 
 	//HOLOMAP
@@ -208,6 +273,7 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 
 	if(MD.is_sealed)
 		sealed_levels += level
+<<<<<<< HEAD
 	//holomaps
 	if(MD.holomap_smoosh)
 		holomap_smoosh = MD.holomap_smoosh
@@ -231,6 +297,11 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 	LIST_NUMERIC_SET(holomap_offset_y, level, MD.holomap_offset_y)
 	LIST_NUMERIC_SET(holomap_legend_x, level, MD.holomap_legend_x)
 	LIST_NUMERIC_SET(holomap_legend_y, level, MD.holomap_legend_y)
+=======
+
+	if(MD.digsites)
+		allowed_digsites += level
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/maps_data/proc/get_empty_zlevel()
 	if(empty_levels == null)
@@ -277,9 +348,13 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 	var/is_accessable_level = TRUE // Prob modifier for random access (space travelling)
 	var/generate_asteroid= FALSE
 	var/is_sealed = FALSE //No transit at map edge
+<<<<<<< HEAD
 	var/custom_z_names = FALSE //Whether a custom name or a simple number would be displayed at GPS beacons
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/tmp/z_level
 	var/height = -1	///< The number of Z-Levels in the map.
+	var/digsites = null /// determines if digsites spawn if they do which types. (GARDEN,ANIMAL,HOUSE,TECHNICAL,TEMPLE,WAR,ANY)
 
 	// Holomaps
 	var/holomap_offset_x = -1	// Number of pixels to offset the map right (for centering) for this z
@@ -304,6 +379,7 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 		z_level = z_level_r
 		name = "[original_name] stage [shift]"
 		GLOB.maps_data.registrate(src)
+<<<<<<< HEAD
 
 		add_z_level(z_level_r, original_level, height)
 
@@ -344,3 +420,7 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 
 /obj/map_data/asteroid/custom_z_name(z_level)
 	return "Asteroid [z_level]"
+=======
+
+		add_z_level(z_level_r, original_level, height)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

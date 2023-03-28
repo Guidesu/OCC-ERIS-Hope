@@ -7,11 +7,21 @@
 /turf/simulated/wall,
 /area/crawler)
 "c" = (
+<<<<<<< HEAD
 /turf/space,
 /area/crawler)
 "d" = (
 /obj/structure/lattice,
 /turf/space,
+=======
+/obj/structure/lattice,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"d" = (
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/floor/asteroid,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "e" = (
 /turf/simulated/mineral,
@@ -39,6 +49,7 @@
 /turf/simulated/floor/asteroid,
 /area/crawler)
 "l" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/structure/lattice,
 /turf/space,
@@ -48,6 +59,16 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/space,
+=======
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"m" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/asteroid,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "n" = (
 /obj/effect/floor_decal/asteroid,
@@ -63,6 +84,7 @@
 /area/crawler)
 "q" = (
 /obj/structure/catwalk,
+<<<<<<< HEAD
 /turf/space,
 /area/crawler)
 "r" = (
@@ -75,11 +97,25 @@
 /turf/simulated/wall,
 /area/crawler)
 "t" = (
+=======
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"r" = (
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/structure/lattice,
+<<<<<<< HEAD
 /turf/space,
+=======
+/turf/simulated/floor/asteroid,
+/area/crawler)
+"s" = (
+/obj/crawler/crawler_wallbreaker/vertical,
+/turf/simulated/wall,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 
 (1,1,1) = {"
@@ -95,6 +131,7 @@ a
 "}
 (2,1,1) = {"
 a
+<<<<<<< HEAD
 c
 e
 e
@@ -102,17 +139,34 @@ e
 e
 d
 c
+=======
+g
+e
+e
+e
+e
+c
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (3,1,1) = {"
 a
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 g
 g
 e
 e
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (4,1,1) = {"
@@ -123,7 +177,11 @@ h
 f
 g
 e
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -134,7 +192,11 @@ i
 f
 g
 e
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (6,1,1) = {"
@@ -145,7 +207,11 @@ f
 n
 o
 e
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (7,1,1) = {"
@@ -156,7 +222,11 @@ j
 o
 o
 e
+<<<<<<< HEAD
 d
+=======
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (8,1,1) = {"
@@ -167,33 +237,56 @@ e
 p
 e
 e
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (9,1,1) = {"
 a
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 e
 g
 e
+<<<<<<< HEAD
 c
 c
+=======
+g
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 b
 "}
 (10,1,1) = {"
 a
+<<<<<<< HEAD
 c
+=======
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 e
 k
 p
 e
+<<<<<<< HEAD
 c
 c
+=======
+g
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
 a
+<<<<<<< HEAD
 d
 e
 l
@@ -201,10 +294,20 @@ q
 t
 d
 d
+=======
+c
+e
+d
+m
+r
+c
+c
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
+<<<<<<< HEAD
 c
 a
 m
@@ -212,6 +315,15 @@ r
 m
 a
 c
+=======
+g
+a
+l
+q
+l
+a
+g
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"

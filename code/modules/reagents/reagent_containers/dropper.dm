@@ -96,7 +96,11 @@
 
 	return
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/dropper/on_update_icon()
+=======
+/obj/item/reagent_containers/dropper/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(reagents.total_volume)
 		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "dropper")

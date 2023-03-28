@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/clonepod
 	name = T_BOARD("clone pod")
+=======
+/obj/item/circuitboard/clonepod
+	build_name = "clone pod"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/clonepod
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
@@ -10,8 +15,13 @@
 		/obj/item/stock_parts/console_screen = 1
 	)
 
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/clonescanner
 	name = T_BOARD("cloning scanner")
+=======
+/obj/item/circuitboard/clonescanner
+	build_name = "cloning scanner"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/dna_scannernew
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
@@ -21,4 +31,22 @@
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stack/cable_coil = 2
+	)
+
+/obj/item/circuitboard/organ_printer
+	build_name = "organ bioprinter"
+	build_path = /obj/machinery/bioprinter
+	board_type = "machine"
+	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 1
+	)
+
+/obj/item/circuitboard/prosthetics_printer
+	build_name = "prosthetics printer"
+	build_path = /obj/machinery/bioprinter/prosthetics
+	board_type = "machine"
+	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+	req_components = list(
+		/obj/item/stock_parts/matter_bin = 1,
 	)

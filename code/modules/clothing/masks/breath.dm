@@ -11,7 +11,11 @@
 	permeability_coefficient = 0.50
 	rarity_value = 10
 	var/hanging = 0
+<<<<<<< HEAD
 	style = STYLE_NEG_LOW
+=======
+	price_tag = 5
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/clothing/mask/breath/proc/adjust_mask(mob/user)
 	if(!usr.incapacitated())
@@ -47,3 +51,22 @@
 	item_state = "medical"
 	rarity_value = 40
 	permeability_coefficient = 0.01
+
+/obj/item/clothing/mask/breathxeno/marqua
+	desc = "A strange device fitted over the neck"
+	name = "gil-mask"
+	icon_state = "marquamask"
+	item_state = "breath"
+	body_parts_covered = FACE
+	w_class = ITEM_SIZE_SMALL
+	gas_transfer_coefficient = 0.10
+	permeability_coefficient = 0.50
+
+/obj/item/clothing/mask/breathxeno/marqua/equipped(mob/living/carbon/M)
+	if(M.species.reagent_tag != IS_MARQUA)
+		body_parts_covered = null
+		item_flags = null
+	else
+		item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT | FLEXIBLEMATERIAL
+		body_parts_covered = HEAD
+	..()

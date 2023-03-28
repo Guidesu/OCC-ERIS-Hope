@@ -55,6 +55,13 @@ SUBSYSTEM_DEF(statverbs)
 				to_chat(user, SPAN_WARNING("You're not smart enough to do that!"))
 			if(STAT_VIG)
 				to_chat(user, SPAN_WARNING("You're not perceptive enough to do that!"))
+<<<<<<< HEAD
+=======
+			if(STAT_VIV)
+				to_chat(user, SPAN_WARNING("Your nerves can't handle this!"))
+			if(STAT_ANA)
+				to_chat(user, SPAN_WARNING("You're not healthy enough to do this!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	action(user, target)
@@ -127,7 +134,11 @@ SUBSYSTEM_DEF(statverbs)
 		if(do_mob(user, target, target.flooring.removal_time * 3))
 			user.visible_message(
 				SPAN_DANGER("[user] roughly tore plating off from [target]!"),
+<<<<<<< HEAD
 				"You tore the plating off from [target]"
+=======
+				"You tore plating off from [target]"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			)
 			target.make_plating(FALSE)
 		else
@@ -137,15 +148,64 @@ SUBSYSTEM_DEF(statverbs)
 				"You stop tearing plating off from [target_name]"
 			)
 
+<<<<<<< HEAD
+=======
+/obj/item/modular_computer/initalize_statverbs()
+	if(enabled == 0)
+		add_statverb(/datum/statverb/fix_computer)
+
+/datum/statverb/fix_computer
+	name = "Fix computer"
+	required_stat = STAT_COG
+	minimal_stat  = STAT_LEVEL_PROF //We use what we at lest need to use this
+
+/datum/statverb/fix_computer/action(mob/user, obj/item/modular_computer/target)
+	if(target.hard_drive.damage < 100)
+		user.visible_message(
+			SPAN_WARNING("[target] doesn't need repairs!")
+		)
+		return
+	var/timer = 160 - (user.stats.getStat(STAT_COG) * 2)
+	if(target.hard_drive.damage == 100)
+		var/datum/repeating_sound/keyboardsound = new(30, timer, 0.15, target, "keyboard", 80, 1)
+		user.visible_message(
+			SPAN_NOTICE("You begin repairing [target]."),
+		)
+		if(do_mob(user, target, timer))
+			keyboardsound.stop()
+			keyboardsound = null
+			target.hard_drive.damage = 0
+			target.hard_drive.install_default_files()
+			target.update_icon()
+			user.visible_message(
+				SPAN_NOTICE("You manage to repair [target], but the harddrive was corrupted! Only default programs were restored."),
+			)
+		else
+			keyboardsound.stop()
+			keyboardsound = null
+			var/target_name = target ? "[target]" : "the computer"
+			user.visible_message(
+				SPAN_NOTICE("You stop repairing [target_name]."),
+			)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/computer/rdconsole/initalize_statverbs()
 	if(access_research_equipment in req_access)
 		add_statverb(/datum/statverb/hack_console)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/statverb/hack_console
 	name = "Hack console"
 	required_stat = STAT_COG
 	minimal_stat  = STAT_LEVEL_ADEPT
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/statverb/hack_console/action(mob/user, obj/machinery/computer/rdconsole/target)
 	if(target.hacked == 1)
 		user.visible_message(
@@ -175,6 +235,7 @@ SUBSYSTEM_DEF(statverbs)
 			user.visible_message(
 				SPAN_DANGER("[user] stopped hacking into [target_name]!"),
 				"You stop hacking into [target_name]."
+<<<<<<< HEAD
 			)
 
 /obj/item/modular_computer/initalize_statverbs()
@@ -213,4 +274,6 @@ SUBSYSTEM_DEF(statverbs)
 			var/target_name = target ? "[target]" : "the computer"
 			user.visible_message(
 				SPAN_NOTICE("You stop repairing [target_name]."),
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			)

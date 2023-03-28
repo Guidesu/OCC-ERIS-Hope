@@ -294,7 +294,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	idle_power_usage = 600
 	machinetype = 1
 	produces_heat = 0
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/receiver
+=======
+	circuit = /obj/item/circuitboard/telecomms/receiver
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/telecomms/receiver/receive_signal(datum/signal/signal)
 
@@ -345,7 +349,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	icon_state = "hub"
 	idle_power_usage = 1600
 	machinetype = 7
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/hub
+=======
+	circuit = /obj/item/circuitboard/telecomms/hub
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	long_range_link = 1
 	netspeed = 40
 
@@ -376,7 +384,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	idle_power_usage = 600
 	machinetype = 8
 	produces_heat = 0
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/relay
+=======
+	circuit = /obj/item/circuitboard/telecomms/relay
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	netspeed = 5
 	long_range_link = 1
 	var/broadcasting = 1
@@ -423,7 +435,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
 	idle_power_usage = 1000
 	machinetype = 2
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/bus
+=======
+	circuit = /obj/item/circuitboard/telecomms/bus
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	netspeed = 40
 	var/change_frequency = 0
 
@@ -472,7 +488,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	idle_power_usage = 600
 	machinetype = 3
 	delay = 5
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/processor
+=======
+	circuit = /obj/item/circuitboard/telecomms/processor
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
 	receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
@@ -505,7 +525,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	desc = "A machine used to store data and network statistics."
 	idle_power_usage = 300
 	machinetype = 4
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/telecomms/server
+=======
+	circuit = /obj/item/circuitboard/telecomms/server
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/log_entries = list()
 	var/list/stored_names = list()
 	var/list/TrafficActions = list()
@@ -557,11 +581,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 				var/race = "unknown"
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
-					race = "[H.species.name]"
+					race = H.species ? "[H.species.name]" : "unknown"
 					log.parameters["intelligible"] = 1
 				else if(isbrain(M))
 					var/mob/living/carbon/brain/B = M
-					race = "[B.species.name]"
+					race = B.species ? "[B.species.name]" : "unknown"
 					log.parameters["intelligible"] = 1
 				else if(M.isMonkey())
 					race = "Monkey"

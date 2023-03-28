@@ -1,5 +1,6 @@
 /obj/item/implant/explosive
 	name = "explosive implant"
+<<<<<<< HEAD
 	desc = "A military grade micro bio-explosive. Highly dangerous."
 	var/death_react = "Safe Hand"
 	var/explosion_delay = 70
@@ -7,9 +8,21 @@
 	var/phrase = "supercalifragilisticexpialidocious"
 	icon_state = "implant_explosive"
 	implant_overlay = "implantstorage_explosive"
+=======
+	desc = "A military grade micro bio-explosive. Highly dangerous and EMP proof."
+	icon_state = "implant_explosive"
+	var/elevel = "Localized Limb"
+	var/phrase = "supercalifragilisticexpialidocious"
+	icon_state = "implant_evil"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	is_legal = FALSE
 	origin_tech = list(TECH_MATERIAL=2, TECH_COMBAT=3, TECH_BIO=4, TECH_COVERT=4)
 
+<<<<<<< HEAD
+=======
+	overlay_icon = "explosive"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/implant/explosive/New()
 	..()
 	add_hearing()
@@ -43,6 +56,7 @@
 		activate()
 		qdel(src)
 
+<<<<<<< HEAD
 /obj/item/implant/explosive/proc/do_boom()
 	playsound(loc, 'sound/items/countdown.ogg', 75, 1, -3)
 	sleep(25)
@@ -50,6 +64,9 @@
 	qdel(src)
 
 /obj/item/implant/explosive/activate(delay)
+=======
+/obj/item/implant/explosive/activate()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (malfunction == MALFUNCTION_PERMANENT)
 		return
 
@@ -62,6 +79,7 @@
 		log_game("Explosive implant triggered in [T] ([T.key]).")
 
 		if(ishuman(wearer))
+<<<<<<< HEAD
 			if(part)
 				wearer.visible_message("<span class='warning'>Something beeps inside [wearer][part ? "'s [part.name]" : ""]!</span>")
 				playsound(loc, 'sound/items/countdown.ogg', 75, 1, -3)
@@ -74,6 +92,27 @@
 					explosion(get_turf(wearer), 1, 2, 3, 3)
 					part.droplimb(0,DROPLIMB_BLUNT)
 					qdel(src)
+=======
+			if (elevel == "Localized Limb")
+				if(part) //For some reason, small_boom() didn't work. So have this bit of working copypaste.
+					wearer.visible_message("<span class='warning'>Something beeps inside [wearer][part ? "'s [part.name]" : ""]!</span>")
+					playsound(loc, 'sound/items/countdown.ogg', 75, 1, -3)
+					sleep(25)
+					if (part.organ_tag in list(BP_CHEST, BP_HEAD, BP_GROIN))
+						part.createwound(BRUISE, 60)	//mangle them instead
+						explosion(get_turf(wearer), 0, 0, 2, 3)
+						qdel(src)
+					else
+						explosion(get_turf(wearer), 0, 0, 2, 3)
+						part.droplimb(0,DISMEMBER_METHOD_BLUNT)
+						qdel(src)
+			if (elevel == "Destroy Body")
+				explosion(get_turf(T), 0, 0, 1, 6)
+				T.gib()
+			if (elevel == "Full Explosion")
+				explosion(get_turf(T), 0, 1, 3, 6)
+				T.gib()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		else
 			do_boom()
@@ -85,6 +124,7 @@
 	if(t)
 		t.hotspot_expose(3500,125)
 
+<<<<<<< HEAD
 /obj/item/implant/explosive/on_uninstall()
 	if(!istype(wearer) || !wearer.mind)
 		return
@@ -125,6 +165,34 @@
 
 /obj/item/implant/explosive/malfunction(severity)
 	if (malfunction)
+=======
+/obj/item/implant/explosive/on_install(mob/living/source)
+	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
+	phrase = input("Choose activation phrase:") as text
+	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
+	phrase = replace_characters(phrase, replacechars)
+	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
+	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")
+
+/obj/item/implant/explosive/proc/small_boom()
+	if (ishuman(wearer) && part)
+		wearer.visible_message("<span class='warning'>Something beeps inside [wearer][part ? "'s [part.name]" : ""]!</span>")
+		playsound(loc, 'sound/items/countdown.ogg', 75, 1, -3)
+		spawn(25)
+			if (ishuman(wearer) && part)
+				//No tearing off these parts since it's pretty much killing
+				//and you can't replace groins
+				if (part.organ_tag in list(BP_CHEST, BP_GROIN, BP_HEAD))
+					part.createwound(BRUISE, 60)	//mangle them instead
+				else
+					part.droplimb(0,DISMEMBER_METHOD_BLUNT)
+			explosion(get_turf(wearer), 0, 0, 2, 3)
+			qdel(src)
+
+/obj/item/implant/explosive/malfunction(severity)
+	return
+/*	if (malfunction)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 	switch (severity)
@@ -141,7 +209,7 @@
 					else
 						meltdown()		//50% chance of implant disarming
 	spawn (20)
-		malfunction = MALFUNCTION_NONE
+		malfunction = MALFUNCTION_NONE*/
 
 
 /obj/item/implantcase/explosive
@@ -153,6 +221,7 @@
 /obj/item/implanter/explosive
 	name = "implanter (E)"
 	implant = /obj/item/implant/explosive
+<<<<<<< HEAD
 	spawn_tags = null
 
 //Occulus Edit Start: Readding this as I prefer the old explosives
@@ -170,3 +239,5 @@
 					part.droplimb(0,DROPLIMB_BLUNT)
 			explosion(get_turf(wearer), -1, -1, 2, 3)
 			qdel(src)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

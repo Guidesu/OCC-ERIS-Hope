@@ -37,6 +37,7 @@
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
+<<<<<<< HEAD
 	// Spawning location of area is randomized or default values, but can be changed to the Eris Coordinates in the code below.
 	// This provides a random starting location for Eris.
 	start_x = start_x || rand(OVERMAP_EDGE, GLOB.maps_data.overmap_size - OVERMAP_EDGE)
@@ -51,6 +52,14 @@
 	forceMove(locate(start_x, start_y, GLOB.maps_data.overmap_z))
 	testing("Located sector \"[name_stages[1]]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
+=======
+	start_x = start_x || rand(OVERMAP_EDGE, GLOB.maps_data.overmap_size - OVERMAP_EDGE)
+	start_y = start_y || rand(OVERMAP_EDGE, GLOB.maps_data.overmap_size - OVERMAP_EDGE)
+
+	forceMove(locate(start_x, start_y, GLOB.maps_data.overmap_z))
+	testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	GLOB.maps_data.player_levels |= map_z
 
 	if(!in_space)
@@ -104,6 +113,7 @@
 /obj/effect/overmap/sector/Initialize()
 	. = ..()
 	if(known)
+<<<<<<< HEAD
 		update_known()
 
 /obj/effect/overmap/proc/update_known()
@@ -114,3 +124,9 @@
 
 /obj/effect/overmap/proc/add_landmark(obj/effect/shuttle_landmark/landmark)
 	generic_waypoints += landmark
+=======
+		layer = 2
+		set_plane(-1)
+		for(var/obj/machinery/computer/helm/H in GLOB.computer_list)
+			H.get_known_sectors()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

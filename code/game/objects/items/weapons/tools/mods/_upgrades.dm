@@ -5,6 +5,7 @@
 	Some upgrades have multiple bonuses. Some have drawbacks in addition to boosts
 */
 
+
 /*/client/verb/debugupgrades()
 	for (var/t in subtypesof(/obj/item/tool_upgrade))
 		new t(usr.loc)
@@ -13,6 +14,7 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	can_transfer = TRUE
 	var/prefix = "upgraded" //Added to the tool's name
+<<<<<<< HEAD
 
 	var/removal_time = WORKTIME_SLOW
 	var/removal_difficulty = FAILCHANCE_CHALLENGING
@@ -21,6 +23,12 @@
 	var/list/required_qualities = list()
 	var/removable = TRUE
 	var/breakable = TRUE //Some mods meant to be tamper-resistant and should be removed only in a hard way
+=======
+	var/install_time = WORKTIME_FAST
+	var/breakable = TRUE //Some mods meant to be tamper-resistant and should be removed only in a hard way
+	//The upgrade can be applied to a tool that has any of these qualities
+	var/list/required_qualities = list()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	//The upgrade can not be applied to a tool that has any of these qualities
 	var/list/negative_qualities = list()
@@ -37,39 +45,86 @@
 	var/list/gun_loc_tag //Define(string). For checking if the gun already has something of this installed (No double trigger mods, for instance)
 	var/list/req_gun_tags = list() //Define(string). Must match all to be able to install it.
 	var/list/weapon_upgrades = list() //variable name(string) -> num
+<<<<<<< HEAD
+=======
+	var/removal_time = WORKTIME_SLOW
+	var/removal_difficulty = FAILCHANCE_CHALLENGING
+	var/destroy_on_removal = FALSE
+	var/unique_removal = FALSE 		//Flag for unique removals.
+	var/unique_removal_type 		//What slot do we remove when this is removed? Used for rails.
+	var/greyson_moding = FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/component/item_upgrade/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_IATTACK, .proc/attempt_install)
 	RegisterSignal(parent, COMSIG_EXAMINE, .proc/on_examine)
 	RegisterSignal(parent, COMSIG_REMOVE, .proc/uninstall)
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/attempt_install(atom/A, mob/living/user, params)
 	return can_apply(A, user) && apply(A, user)
 
 /datum/component/item_upgrade/proc/can_apply(atom/A, mob/living/user)
+=======
+/datum/component/item_upgrade/proc/attempt_install(atom/A, var/mob/living/user, params)
+	return can_apply(A, user) && apply(A, user)
+
+/datum/component/item_upgrade/proc/can_apply(var/atom/A, var/mob/living/user)
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(isrobot(A))
 		return check_robot(A, user)
 
 	if(isitem(A))
 		var/obj/item/T = A
+<<<<<<< HEAD
 		//No using multiples of the same upgrade
 		for (var/obj/item/I in T.item_upgrades)
 			if(I.type == parent.type || (exclusive_type && istype(I.type, exclusive_type)))
 				to_chat(user, SPAN_WARNING("An upgrade of this type is already installed!"))
 				return FALSE
 
+=======
+		if(is_type_in_list(parent, T.blacklist_upgrades, TRUE))
+			if(user)
+				to_chat(user, SPAN_WARNING("[parent] cannot be installed on [T]!"))
+			return FALSE
+		//No using multiples of the same upgrade
+		for(var/obj/item/I in T.item_upgrades)
+			if (I.type == parent.type || (exclusive_type && istype(I, exclusive_type)))
+				if(user)
+					to_chat(user, SPAN_WARNING("An upgrade of this type is already installed!"))
+				return FALSE
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(istool(A))
 		return check_tool(A, user)
 
 	if(isgun(A))
 		return check_gun(A, user)
 
+<<<<<<< HEAD
 	return FALSE
 
 /datum/component/item_upgrade/proc/check_robot(mob/living/silicon/robot/R, mob/living/user)
 	if(!R.opened)
 		to_chat(user, SPAN_WARNING("You need to open [R]'s panel to access its tools."))
 		return FALSE
+=======
+	if(isarmor(A))
+		return check_armor(A, user)
+
+	if(istype(A, /obj/item/rig))
+		return check_rig(A, user)
+
+	return FALSE
+
+/datum/component/item_upgrade/proc/check_robot(var/mob/living/silicon/robot/R, var/mob/living/user)
+	if(!R.opened)
+		if(user)
+			to_chat(user, SPAN_WARNING("You need to open [R]'s panel to access its tools."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/list/robotools = list()
 	for(var/obj/item/tool/robotool in R.module.modules)
 		robotools.Add(robotool)
@@ -78,6 +133,7 @@
 		if(chosen_tool == "Cancel")
 			return FALSE
 		return can_apply(chosen_tool,user)
+<<<<<<< HEAD
 	else
 		to_chat(user, SPAN_WARNING("[R] has no modifiable tools."))
 	return FALSE
@@ -89,22 +145,45 @@
 
 	if(T.item_upgrades.len >= T.max_upgrades)
 		to_chat(user, SPAN_WARNING("This tool can't fit anymore modifications!"))
+=======
+	if(user)
+		to_chat(user, SPAN_WARNING("[R] has no modifiable tools."))
+	return FALSE
+
+/datum/component/item_upgrade/proc/check_tool(var/obj/item/tool/T, var/mob/living/user)
+	if(!tool_upgrades.len)
+		to_chat(user, SPAN_WARNING("\The [parent] can not be attached to a tool."))
+		return FALSE
+	if(T.item_upgrades.len >= T.max_upgrades)
+		if(user)
+			to_chat(user, SPAN_WARNING("This tool can't fit anymore modifications!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(required_qualities.len)
 		var/qmatch = FALSE
 		for (var/q in required_qualities)
+<<<<<<< HEAD
 			if(T.ever_has_quality(q))
+=======
+			if (T.ever_has_quality(q))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				qmatch = TRUE
 				break
 
 		if(!qmatch)
+<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("This tool lacks the required qualities!"))
+=======
+			if(user)
+				to_chat(user, SPAN_WARNING("This tool lacks the required qualities!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 
 	if(negative_qualities.len)
 		for(var/i in negative_qualities)
 			if(T.ever_has_quality(i))
+<<<<<<< HEAD
 				to_chat(user, SPAN_WARNING("This tool can not accept the modification!"))
 				return FALSE
 
@@ -118,23 +197,71 @@
 
 	if((req_fuel_cell & REQ_FUEL_OR_CELL) && (!T.use_power_cost && !T.use_fuel_cost))
 		to_chat(user, SPAN_WARNING("This tool does not use [T.use_power_cost?"fuel":"power"]!"))
+=======
+				if(user)
+					to_chat(user, SPAN_WARNING("This tool can not accept the modification!"))
+				return FALSE
+
+	//Bypasses any other checks.
+	if(greyson_moding && T.allow_greyson_mods)
+		return TRUE
+
+	if((req_fuel_cell & REQ_FUEL) && !T.use_fuel_cost)
+		if(user)
+			to_chat(user, SPAN_WARNING("This tool does not use fuel!"))
+		return FALSE
+
+	if((req_fuel_cell & REQ_CELL) && !T.use_power_cost)
+		if(user)
+			to_chat(user, SPAN_WARNING("This tool does not use power!"))
+		return FALSE
+
+	if((req_fuel_cell & REQ_FUEL_OR_CELL) && (!T.use_power_cost && !T.use_fuel_cost))
+		if(user)
+			to_chat(user, SPAN_WARNING("This tool does not use [T.use_power_cost?"fuel":"power"]!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	if(tool_upgrades[UPGRADE_SANCTIFY])
 		if(SANCTIFIED in T.aspects)
+<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("This tool already sanctified!"))
+=======
+			if(user)
+				to_chat(user, SPAN_WARNING("This tool already sanctified!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 
 	if(tool_upgrades[UPGRADE_CELLPLUS])
 		if(!(T.suitable_cell == /obj/item/cell/medium || T.suitable_cell == /obj/item/cell/small))
+<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("This tool does not require a cell holding upgrade."))
 			return FALSE
 		if(T.cell)
 			to_chat(user, SPAN_WARNING("Remove the cell from the tool first!"))
+=======
+			if(user)
+				to_chat(user, SPAN_WARNING("This tool does not require a cell holding upgrade."))
+			return FALSE
+		if(T.cell)
+			if(user)
+				to_chat(user, SPAN_WARNING("Remove the cell from the tool first!"))
+			return FALSE
+
+	if(tool_upgrades[UPGRADE_CELLMINUS])
+		if(!(T.suitable_cell == /obj/item/cell/medium || T.suitable_cell == /obj/item/cell/large))
+			if(user)
+				to_chat(user, SPAN_WARNING("This tool does not require a cell holding upgrade."))
+			return FALSE
+		if(T.cell)
+			if(user)
+				to_chat(user, SPAN_WARNING("Remove the cell from the tool first!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 
 	return TRUE
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/check_gun(obj/item/gun/G, mob/living/user)
 	if(!weapon_upgrades.len)
 		to_chat(user, SPAN_WARNING("\The [parent] can not be applied to guns!"))
@@ -142,11 +269,59 @@
 
 	if(G.item_upgrades.len >= G.max_upgrades)
 		to_chat(user, SPAN_WARNING("This weapon can't fit anymore modifications!"))
+=======
+/datum/component/item_upgrade/proc/check_rig(var/obj/item/rig/R, var/mob/living/user)
+	if(R.item_upgrades.len >= R.max_upgrades)
+		to_chat(user, SPAN_WARNING("This hardsuit can't fit any more modifications!"))
+		return FALSE
+
+	if(required_qualities.len)
+		var/qmatch = FALSE
+		for (var/q in required_qualities)
+			if (R.has_quality(q))
+				qmatch = TRUE
+				break
+
+		if(!qmatch)
+			to_chat(user, SPAN_WARNING("This hardsuit lacks the required qualities!"))
+			return FALSE
+
+	return TRUE
+
+/datum/component/item_upgrade/proc/check_armor(var/obj/item/clothing/T, var/mob/living/user)
+	if(T.item_upgrades.len >= T.max_upgrades)
+		to_chat(user, SPAN_WARNING("This armor can't fit anymore modifications!"))
+		return FALSE
+
+	if(required_qualities.len)
+		var/qmatch = FALSE
+		for (var/q in required_qualities)
+			if (T.has_quality(q))
+				qmatch = TRUE
+				break
+
+		if(!qmatch)
+			to_chat(user, SPAN_WARNING("This armor lacks the required qualities!"))
+			return FALSE
+
+	return TRUE
+
+/datum/component/item_upgrade/proc/check_gun(var/obj/item/gun/G, var/mob/living/user)
+	if(!weapon_upgrades.len)
+		if(user)
+			to_chat(user, SPAN_WARNING("\The [parent] can not be applied to guns!"))
+		return FALSE //Can't be applied to a weapon
+
+	if(G.item_upgrades.len >= G.max_upgrades)
+		if(user)
+			to_chat(user, SPAN_WARNING("This weapon can't fit anymore modifications!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 
 	for(var/obj/I in G.item_upgrades)
 		var/datum/component/item_upgrade/IU = I.GetComponent(/datum/component/item_upgrade)
 		if(IU && IU.gun_loc_tag == gun_loc_tag)
+<<<<<<< HEAD
 			to_chat(user, SPAN_WARNING("There is already something attached to \the [G]'s [gun_loc_tag]!"))
 			return FALSE
 
@@ -165,6 +340,33 @@
 		user.visible_message(SPAN_NOTICE("[user] starts applying [parent] to [A]"), SPAN_NOTICE("You start applying \the [parent] to \the [A]"))
 		var/obj/item/I = parent
 		if(!I.use_tool(user = user, target =  A, base_time = WORKTIME_FAST, required_quality = null, fail_chance = FAILCHANCE_ZERO, required_stat = STAT_MEC, forced_sound = WORKSOUND_WRENCHING))
+=======
+			if(user)
+				to_chat(user, SPAN_WARNING("There is already something attached to \the [G]'s [gun_loc_tag]!"))
+			return FALSE
+
+	//Bypasses any other checks.
+	if(greyson_moding && G.allow_greyson_mods)
+		return TRUE
+
+	for(var/I in req_gun_tags)
+		if(!G.gun_tags.Find(I))
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [G] lacks the following property: [I]"))
+			return FALSE
+
+	if((req_fuel_cell & REQ_CELL) && !istype(G, /obj/item/gun/energy))
+		if(user)
+			to_chat(user, SPAN_WARNING("This weapon does not use power!"))
+		return FALSE
+	return TRUE
+
+/datum/component/item_upgrade/proc/apply(var/obj/item/A, var/mob/living/user)
+	if(user)
+		user.visible_message(SPAN_NOTICE("[user] starts applying [parent] to [A]"), SPAN_NOTICE("You start applying \the [parent] to \the [A]"))
+		var/obj/item/I = parent
+		if (!I.use_tool(user = user, target =  A, base_time = install_time, required_quality = null, fail_chance = FAILCHANCE_ZERO, required_stat = STAT_MEC, forced_sound = WORKSOUND_WRENCHING))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return FALSE
 		to_chat(user, SPAN_NOTICE("You have successfully installed \the [parent] in \the [A]"))
 		user.drop_from_inventory(parent)
@@ -178,36 +380,113 @@
 	A.refresh_upgrades()
 	return TRUE
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/uninstall(obj/item/I)
 	var/obj/item/P = parent
+=======
+/datum/component/item_upgrade/proc/uninstall(obj/item/I, mob/living/user)
+	var/obj/item/P = parent
+	if(unique_removal)
+		var/obj/item/gun/G = I
+		G.gun_tags.Remove(unique_removal_type)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	I.item_upgrades -= P
 	if(destroy_on_removal)
 		UnregisterSignal(I, COMSIG_ADDVAL)
 		UnregisterSignal(I, COMSIG_APPVAL)
 		qdel(P)
 		return
+<<<<<<< HEAD
+=======
+	if(istype(I, /obj/item/rig))
+		remove_values_armor_rig(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	P.forceMove(get_turf(I))
 	UnregisterSignal(I, COMSIG_ADDVAL)
 	UnregisterSignal(I, COMSIG_APPVAL)
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/apply_values(atom/holder)
+=======
+/datum/component/item_upgrade/proc/apply_values(var/atom/holder)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!holder)
 		return
 	if(istool(holder))
 		apply_values_tool(holder)
 	if(isgun(holder))
 		apply_values_gun(holder)
+<<<<<<< HEAD
 	return TRUE
 
 /datum/component/item_upgrade/proc/add_values(atom/holder)
+=======
+	if(isarmor(holder))
+		apply_values_armor(holder)
+	if(istype(holder, /obj/item/rig))
+		apply_values_armor_rig(holder)
+	return TRUE
+
+/datum/component/item_upgrade/proc/add_values(var/atom/holder)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	ASSERT(holder)
 	if(isgun(holder))
 		add_values_gun(holder)
 	return TRUE
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/apply_values_tool(obj/item/tool/T)
 	if(tool_upgrades[UPGRADE_SANCTIFY])
 		T.aspects += list(SANCTIFIED)
+=======
+/datum/component/item_upgrade/proc/apply_values_armor(var/obj/item/clothing/T)
+	if(tool_upgrades[UPGRADE_MELEE_ARMOR])
+		T.armor = T.armor.modifyRating(melee = tool_upgrades[UPGRADE_MELEE_ARMOR])
+	if(tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+		T.armor = T.armor.modifyRating(bullet = tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+	if(tool_upgrades[UPGRADE_ENERGY_ARMOR])
+		T.armor = T.armor.modifyRating(energy = tool_upgrades[UPGRADE_ENERGY_ARMOR])
+	if(tool_upgrades[UPGRADE_BOMB_ARMOR])
+		T.armor = T.armor.modifyRating(bomb = tool_upgrades[UPGRADE_BOMB_ARMOR])
+	if(tool_upgrades[UPGRADE_ITEMFLAGPLUS])
+		T.item_flags |= tool_upgrades[UPGRADE_ITEMFLAGPLUS]
+
+	T.prefixes |= prefix
+
+/datum/component/item_upgrade/proc/apply_values_armor_rig(var/obj/item/rig/R)
+	if(tool_upgrades[UPGRADE_MELEE_ARMOR])
+		R.armor = R.armor.modifyRating(melee = tool_upgrades[UPGRADE_MELEE_ARMOR])
+	if(tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+		R.armor = R.armor.modifyRating(bullet = tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+	if(tool_upgrades[UPGRADE_ENERGY_ARMOR])
+		R.armor = R.armor.modifyRating(energy = tool_upgrades[UPGRADE_ENERGY_ARMOR])
+	if(tool_upgrades[UPGRADE_BOMB_ARMOR])
+		R.armor = R.armor.modifyRating(bomb = tool_upgrades[UPGRADE_BOMB_ARMOR])
+	if(tool_upgrades[UPGRADE_ITEMFLAGPLUS])
+		R.item_flags |= tool_upgrades[UPGRADE_ITEMFLAGPLUS]
+	R.prefixes |= prefix
+	R.updateArmor()
+
+/datum/component/item_upgrade/proc/remove_values_armor_rig(var/obj/item/rig/R)
+	if(tool_upgrades[UPGRADE_MELEE_ARMOR])
+		R.armor = R.armor.modifyRating(melee = tool_upgrades[UPGRADE_MELEE_ARMOR] * -1)
+	if(tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+		R.armor = R.armor.modifyRating(bullet = tool_upgrades[UPGRADE_BALLISTIC_ARMOR] * -1)
+	if(tool_upgrades[UPGRADE_ENERGY_ARMOR])
+		R.armor = R.armor.modifyRating(energy = tool_upgrades[UPGRADE_ENERGY_ARMOR] * -1)
+	if(tool_upgrades[UPGRADE_BOMB_ARMOR])
+		R.armor = R.armor.modifyRating(bomb = tool_upgrades[UPGRADE_BOMB_ARMOR] * -1)
+	if(tool_upgrades[UPGRADE_ITEMFLAGPLUS])
+		R.item_flags &= ~tool_upgrades[UPGRADE_ITEMFLAGPLUS]
+	R.prefixes -= prefix
+	R.updateArmor()
+
+/datum/component/item_upgrade/proc/apply_values_tool(var/obj/item/tool/T)
+	if(tool_upgrades[UPGRADE_SANCTIFY])
+		T.aspects += list(SANCTIFIED)
+	if(tool_upgrades[UPGRADE_ALLOW_GREYON_MODS])
+		T.allow_greyson_mods = tool_upgrades[UPGRADE_ALLOW_GREYON_MODS]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tool_upgrades[UPGRADE_PRECISION])
 		T.precision += tool_upgrades[UPGRADE_PRECISION]
 	if(tool_upgrades[UPGRADE_WORKSPEED])
@@ -215,6 +494,7 @@
 	if(tool_upgrades[UPGRADE_DEGRADATION_MULT])
 		T.degradation *= tool_upgrades[UPGRADE_DEGRADATION_MULT]
 	if(tool_upgrades[UPGRADE_FORCE_MULT])
+<<<<<<< HEAD
 		T.force *= tool_upgrades[UPGRADE_FORCE_MULT]
 		if(T.force_wielded)//Occulus Edit start. Apparantly this was just never considered
 			T.force_wielded *= tool_upgrades[UPGRADE_FORCE_MULT]
@@ -234,10 +514,20 @@
 			T.switched_on_force += tool_upgrades[UPGRADE_FORCE_MOD]
 		if(T.switched_off_force)
 			T.switched_off_force += tool_upgrades[UPGRADE_FORCE_MOD]//Occulus Edit end
+=======
+		T.force_upgrade_mults += tool_upgrades[UPGRADE_FORCE_MULT] - 1
+	if(tool_upgrades[UPGRADE_FORCE_MOD])
+		T.force_upgrade_mods += tool_upgrades[UPGRADE_FORCE_MOD]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tool_upgrades[UPGRADE_FUELCOST_MULT])
 		T.use_fuel_cost *= tool_upgrades[UPGRADE_FUELCOST_MULT]
 	if(tool_upgrades[UPGRADE_POWERCOST_MULT])
 		T.use_power_cost *= tool_upgrades[UPGRADE_POWERCOST_MULT]
+<<<<<<< HEAD
+=======
+		T.hitcost *= tool_upgrades[UPGRADE_POWERCOST_MULT]
+		T.agonyforce *= tool_upgrades[UPGRADE_POWERCOST_MULT]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tool_upgrades[UPGRADE_BULK])
 		T.extra_bulk += tool_upgrades[UPGRADE_BULK]
 	if(tool_upgrades[UPGRADE_HEALTH_THRESHOLD])
@@ -252,9 +542,12 @@
 		T.color = tool_upgrades[UPGRADE_COLOR]
 	if(tool_upgrades[UPGRADE_ITEMFLAGPLUS])
 		T.item_flags |= tool_upgrades[UPGRADE_ITEMFLAGPLUS]
+<<<<<<< HEAD
 	if(tool_upgrades[UPGRADE_QUALITIES])//Occulus Edit
 		T.tool_qualities -= tool_upgrades[UPGRADE_QUALITIES]//Occulus Edit: If this works I may shoot myself
 		T.tool_qualities += tool_upgrades[UPGRADE_QUALITIES]//Occulus Edit
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(tool_upgrades[UPGRADE_CELLPLUS])
 		switch(T.suitable_cell)
 			if(/obj/item/cell/medium)
@@ -262,6 +555,7 @@
 				prefix = "large-cell"
 			if(/obj/item/cell/small)
 				T.suitable_cell = /obj/item/cell/medium
+<<<<<<< HEAD
 	T.prefixes |= prefix
 
 /datum/component/item_upgrade/proc/apply_values_gun(var/obj/item/gun/G)
@@ -269,6 +563,27 @@
 		G.damage_multiplier *= weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT]
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGEMOD_PLUS])
 		G.damage_multiplier += weapon_upgrades[GUN_UPGRADE_DAMAGEMOD_PLUS]
+=======
+				prefix = "medium-cell"
+	if(tool_upgrades[UPGRADE_CELLMINUS])
+		switch(T.suitable_cell)
+			if(/obj/item/cell/medium)
+				T.suitable_cell = /obj/item/cell/small
+				prefix = "small-cell"
+			if(/obj/item/cell/large)
+				T.suitable_cell = /obj/item/cell/medium
+				prefix = "medium-cell"
+	T.force = initial(T.force) * T.force_upgrade_mults + T.force_upgrade_mods
+	T.prefixes |= prefix
+
+/datum/component/item_upgrade/proc/apply_values_gun(var/obj/item/gun/G)
+	if(weapon_upgrades[GUN_UPGRADE_ALLOW_GREYON_MODS])
+		G.allow_greyson_mods = weapon_upgrades[GUN_UPGRADE_ALLOW_GREYON_MODS]
+	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT])
+		G.damage_multiplier *= weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT]
+	if(weapon_upgrades[GUN_UPGRADE_PAIN_MULT])
+		G.proj_agony_multiplier += weapon_upgrades[GUN_UPGRADE_PAIN_MULT]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(weapon_upgrades[GUN_UPGRADE_PEN_MULT])
 		G.penetration_multiplier *= weapon_upgrades[GUN_UPGRADE_PEN_MULT]
 	if(weapon_upgrades[GUN_UPGRADE_PIERC_MULT])
@@ -280,19 +595,36 @@
 	if(weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT])
 		G.move_delay *= weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT]
 	if(weapon_upgrades[GUN_UPGRADE_RECOIL])
+<<<<<<< HEAD
 		G.recoil_buildup *= weapon_upgrades[GUN_UPGRADE_RECOIL]
 	if(weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH])
 		G.muzzle_flash *= weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH]
 	if(weapon_upgrades[GUN_UPGRADE_SILENCER])
 		G.silenced = weapon_upgrades[GUN_UPGRADE_SILENCER]
+=======
+		G.recoil = G.recoil.modifyAllRatings(weapon_upgrades[GUN_UPGRADE_RECOIL])
+	if(weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH])
+		G.muzzle_flash *= weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH]
+	if(tool_upgrades[UPGRADE_BULK])
+		G.extra_bulk += weapon_upgrades[UPGRADE_BULK]
+	if(weapon_upgrades[GUN_UPGRADE_ONEHANDPENALTY])
+		G.recoil = G.recoil.modifyRating(_one_hand_penalty = weapon_upgrades[GUN_UPGRADE_ONEHANDPENALTY])
+	if(weapon_upgrades[GUN_UPGRADE_SILENCER])
+		G.silenced = weapon_upgrades[GUN_UPGRADE_SILENCER]
+	if(weapon_upgrades[GUN_UPGRADE_MELEE_DAMAGE])
+		G.force *= weapon_upgrades[GUN_UPGRADE_MELEE_DAMAGE]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(weapon_upgrades[GUN_UPGRADE_OFFSET])
 		G.init_offset = max(0, G.init_offset+weapon_upgrades[GUN_UPGRADE_OFFSET])
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_BRUTE])
 		G.proj_damage_adjust[BRUTE] += weapon_upgrades[GUN_UPGRADE_DAMAGE_BRUTE]
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_BURN])
 		G.proj_damage_adjust[BURN] += weapon_upgrades[GUN_UPGRADE_DAMAGE_BURN]
+<<<<<<< HEAD
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_PSY])//Occulus Edit: Psy mods
 		G.proj_damage_adjust[PSY] += weapon_upgrades[GUN_UPGRADE_DAMAGE_PSY]//Occulus Edit: Psy mods
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_TOX])
 		G.proj_damage_adjust[TOX] += weapon_upgrades[GUN_UPGRADE_DAMAGE_TOX]
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_OXY])
@@ -303,12 +635,21 @@
 		G.proj_damage_adjust[HALLOSS] += weapon_upgrades[GUN_UPGRADE_DAMAGE_HALLOSS]
 	if(weapon_upgrades[GUN_UPGRADE_DAMAGE_RADIATION])
 		G.proj_damage_adjust[IRRADIATE] += weapon_upgrades[GUN_UPGRADE_DAMAGE_RADIATION]
+<<<<<<< HEAD
 	if(weapon_upgrades[GUN_UPGRADE_HONK])
 		G.fire_sound = 'sound/items/bikehorn.ogg'
+=======
+	if(weapon_upgrades[UPGRADE_MAXUPGRADES])
+		G.max_upgrades += weapon_upgrades[UPGRADE_MAXUPGRADES]
+	if(weapon_upgrades[GUN_UPGRADE_HONK])
+		G.fire_sound = 'sound/items/bikehorn.ogg'
+		G.modded_sound = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(weapon_upgrades[GUN_UPGRADE_RIGGED])
 		G.rigged = TRUE
 	if(weapon_upgrades[GUN_UPGRADE_EXPLODE])
 		G.rigged = 2
+<<<<<<< HEAD
 	if(weapon_upgrades[GUN_UPGRADE_ZOOM])
 		G.zoom_factor += weapon_upgrades[GUN_UPGRADE_ZOOM]
 		G.initialize_scope()
@@ -324,18 +665,53 @@
 		G.armor_penetration += weapon_upgrades[GUN_UPGRADE_MELEEPENETRATION]
 	if(weapon_upgrades[GUN_UPGRADE_ONEHANDPENALTY])
 		G.one_hand_penalty *= weapon_upgrades[GUN_UPGRADE_ONEHANDPENALTY]
+=======
+	if(weapon_upgrades[GUN_UPGRADE_FOREGRIP])
+		G.braceable = 0
+	if(weapon_upgrades[GUN_UPGRADE_BIPOD])
+		G.braceable = 2
+	if(weapon_upgrades[GUN_UPGRADE_RAIL])
+		G.gun_tags.Add(GUN_SCOPE)
+	if(weapon_upgrades[UPGRADE_COLOR])
+		G.color = weapon_upgrades[UPGRADE_COLOR]
+	if(weapon_upgrades[GUN_UPGRADE_ZOOM])
+		if(G.zoom_factors.len <1)
+			var/newtype = weapon_upgrades[GUN_UPGRADE_ZOOM]
+			G.zoom_factors.Add(newtype)
+			G.initialize_scope()
+		if(istype(G.loc, /mob))
+			var/mob/user = G.loc
+			user.update_action_buttons()
+	if(weapon_upgrades[GUN_UPGRADE_THERMAL])
+		G.vision_flags = SEE_MOBS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(weapon_upgrades[GUN_UPGRADE_DNALOCK])
 		G.dna_compare_samples = TRUE
 		if(G.dna_lock_sample == "not_set")
 			G.dna_lock_sample = usr.real_name
 
+<<<<<<< HEAD
+=======
+	if(!weapon_upgrades[GUN_UPGRADE_DNALOCK])
+		G.dna_user_sample = "not_set"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(G.dna_compare_samples == FALSE)
 		G.dna_lock_sample = "not_set"
 
 	if(G.dna_lock_sample == "not_set") //that may look stupid, but without it previous two lines won't trigger on DNALOCK removal.
 		G.dna_compare_samples = FALSE
 
+<<<<<<< HEAD
+=======
+	if(weapon_upgrades[GUN_UPGRADE_AUTOEJECT])
+		if(G.auto_eject)
+			G.auto_eject = FALSE
+		else
+			G.auto_eject = TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!isnull(weapon_upgrades[GUN_UPGRADE_FORCESAFETY]))
 		G.restrict_safety = TRUE
 		G.safety = weapon_upgrades[GUN_UPGRADE_FORCESAFETY]
@@ -347,8 +723,19 @@
 			E.overcharge_rate *= weapon_upgrades[GUN_UPGRADE_OVERCHARGE_MAX]
 		if(weapon_upgrades[GUN_UPGRADE_OVERCHARGE_MAX])
 			E.overcharge_max *= weapon_upgrades[GUN_UPGRADE_OVERCHARGE_MAX]
+<<<<<<< HEAD
 		if(weapon_upgrades[GUN_UPGRADE_AGONY_MULT])
 			E.proj_agony_multiplier *= weapon_upgrades[GUN_UPGRADE_AGONY_MULT]
+=======
+		if(weapon_upgrades[GUN_UPGRADE_CELLMINUS])
+			switch(E.suitable_cell)
+				if(/obj/item/cell/medium)
+					E.suitable_cell = /obj/item/cell/small
+					prefix = "small-cell"
+				if(/obj/item/cell/large)
+					E.suitable_cell = /obj/item/cell/medium
+					prefix = "medium-cell"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(istype(G, /obj/item/gun/projectile))
 		var/obj/item/gun/projectile/P = G
@@ -358,11 +745,22 @@
 	for(var/datum/firemode/F in G.firemodes)
 		apply_values_firemode(F)
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/add_values_gun(obj/item/gun/G)
 	if(weapon_upgrades[GUN_UPGRADE_FULLAUTO])
 		G.add_firemode(FULL_AUTO_400)
 
 /datum/component/item_upgrade/proc/apply_values_firemode(datum/firemode/F)
+=======
+	G.prefixes |= prefix
+
+
+/datum/component/item_upgrade/proc/add_values_gun(var/obj/item/gun/G)
+	if(weapon_upgrades[GUN_UPGRADE_FULLAUTO])
+		G.add_firemode(FULL_AUTO_300)
+
+/datum/component/item_upgrade/proc/apply_values_firemode(var/datum/firemode/F)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/i in F.settings)
 		switch(i)
 			if("fire_delay")
@@ -372,6 +770,7 @@
 				if(weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT])
 					F.settings[i] *= weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT]
 
+<<<<<<< HEAD
 /datum/component/item_upgrade/proc/on_examine(mob/user)
 	if(tool_upgrades[UPGRADE_SANCTIFY])
 		to_chat(user, SPAN_NOTICE("Does additional burn damage to mutants."))
@@ -387,6 +786,25 @@
 			to_chat(user, SPAN_NOTICE("Reduces tool degradation by [(1-tool_upgrades[UPGRADE_DEGRADATION_MULT])*100]%"))
 		else if	(tool_upgrades[UPGRADE_DEGRADATION_MULT] > 1)
 			to_chat(user, SPAN_WARNING("Increases tool degradation by [(tool_upgrades[UPGRADE_DEGRADATION_MULT]-1)*100]%"))
+=======
+/datum/component/item_upgrade/proc/on_examine(var/mob/user)
+	if(tool_upgrades[UPGRADE_SANCTIFY])
+		to_chat(user, SPAN_NOTICE("Does additional burn damage to mutants."))
+	if(tool_upgrades[UPGRADE_PRECISION] > 0)
+		to_chat(user, SPAN_NOTICE("Enhances precision by [tool_upgrades[UPGRADE_PRECISION]]"))
+	else if (tool_upgrades[UPGRADE_PRECISION] < 0)
+		to_chat(user, SPAN_WARNING("Reduces precision by [abs(tool_upgrades[UPGRADE_PRECISION])]"))
+	if(tool_upgrades[UPGRADE_WORKSPEED] > 0)
+		to_chat(user, SPAN_NOTICE("Enhances workspeed by [tool_upgrades[UPGRADE_WORKSPEED]*100]%"))
+	else if (tool_upgrades[UPGRADE_WORKSPEED] < 0)
+		to_chat(user, SPAN_WARNING("Reduces workspeed by [tool_upgrades[UPGRADE_WORKSPEED]*100]%"))
+
+
+	if(tool_upgrades[UPGRADE_DEGRADATION_MULT] < 1 && tool_upgrades[UPGRADE_DEGRADATION_MULT] > 0)
+		to_chat(user, SPAN_NOTICE("Reduces tool degradation by [(1-tool_upgrades[UPGRADE_DEGRADATION_MULT])*100]%"))
+	else if	(tool_upgrades[UPGRADE_DEGRADATION_MULT] > 1)
+		to_chat(user, SPAN_WARNING("Increases tool degradation by [(tool_upgrades[UPGRADE_DEGRADATION_MULT]-1)*100]%"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(tool_upgrades[UPGRADE_FORCE_MULT] >= 1)
 		to_chat(user, SPAN_NOTICE("Increases tool damage by [(tool_upgrades[UPGRADE_FORCE_MULT]-1)*100]%"))
@@ -400,8 +818,24 @@
 		to_chat(user, SPAN_NOTICE("Modifies fuel storage by [tool_upgrades[UPGRADE_MAXFUEL]] units."))
 	if(tool_upgrades[UPGRADE_BULK])
 		to_chat(user, SPAN_WARNING("Increases tool size by [tool_upgrades[UPGRADE_BULK]]"))
+<<<<<<< HEAD
 	if(tool_upgrades[UPGRADE_MAXUPGRADES])
 		to_chat(user, SPAN_NOTICE("Adds [tool_upgrades[UPGRADE_MAXUPGRADES]] additional modification slots."))
+=======
+
+	if(tool_upgrades[UPGRADE_MELEE_ARMOR])
+		to_chat(user, SPAN_NOTICE("Increases melee defense by [tool_upgrades[UPGRADE_MELEE_ARMOR]]"))
+	if(tool_upgrades[UPGRADE_BALLISTIC_ARMOR])
+		to_chat(user, SPAN_NOTICE("Increases bullet defense by [tool_upgrades[UPGRADE_BALLISTIC_ARMOR]]"))
+	if(tool_upgrades[UPGRADE_ENERGY_ARMOR])
+		to_chat(user, SPAN_NOTICE("Increases energy defense by [tool_upgrades[UPGRADE_ENERGY_ARMOR]]"))
+	if(tool_upgrades[UPGRADE_BOMB_ARMOR])
+		to_chat(user, SPAN_NOTICE("Increases explosive defense by [tool_upgrades[UPGRADE_BOMB_ARMOR]]"))
+
+	if(tool_upgrades[UPGRADE_ALLOW_GREYON_MODS])
+		to_chat(user, SPAN_NOTICE("This mod allows you to install Greyson Positronic mods"))
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(required_qualities.len)
 		to_chat(user, SPAN_WARNING("Requires a tool with one of the following qualities:"))
 		to_chat(user, english_list(required_qualities, and_text = " or "))
@@ -410,6 +844,7 @@
 		to_chat(user, SPAN_NOTICE("Can be attached to a firearm, giving the following benefits:"))
 
 		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT])
+<<<<<<< HEAD
 			var/amount = weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT]
 			if(amount > 1)
 				to_chat(user, SPAN_NOTICE("Increases projectile damage by [amount*100]%"))
@@ -422,6 +857,27 @@
 				to_chat(user, SPAN_NOTICE("Increases projectile penetration by [amount*100]%"))
 			else
 				to_chat(user, SPAN_WARNING("Decreases projectile penetration by [amount*100]%"))
+=======
+			var/amount = weapon_upgrades[GUN_UPGRADE_DAMAGE_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_NOTICE("Increases projectile damage by [amount*100]%"))
+			else
+				to_chat(user, SPAN_WARNING("Decreases projectile damage by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_PAIN_MULT])
+			var/amount = weapon_upgrades[GUN_UPGRADE_PAIN_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_NOTICE("Increases projectile agony damage by [amount*100]%"))
+			else
+				to_chat(user, SPAN_WARNING("Decreases projectile agony damage by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_PEN_MULT])
+			var/amount = weapon_upgrades[GUN_UPGRADE_PEN_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_NOTICE("Increases projectile penetration by [amount*100]%"))
+			else
+				to_chat(user, SPAN_WARNING("Decreases projectile penetration by [abs(amount*100)]%"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(weapon_upgrades[GUN_UPGRADE_PIERC_MULT])
 			var/amount = weapon_upgrades[GUN_UPGRADE_PIERC_MULT]
@@ -434,6 +890,7 @@
 			else
 				to_chat(user, SPAN_WARNING("Decreases projectile piercing penetration by [amount] walls"))
 
+<<<<<<< HEAD
 		if(weapon_upgrades[GUN_UPGRADE_FIRE_DELAY_MULT])
 			var/amount = weapon_upgrades[GUN_UPGRADE_FIRE_DELAY_MULT]
 			if(amount > 1)
@@ -489,6 +946,77 @@
 				to_chat(user, SPAN_WARNING("Increases muzzle flash by [amount*100]%"))
 			else
 				to_chat(user, SPAN_NOTICE("Decreases muzzle flash by [amount*100]%"))
+=======
+		if(weapon_upgrades[UPGRADE_BULK])
+			to_chat(user, SPAN_WARNING("Increases weapon size by [weapon_upgrades[UPGRADE_BULK]]"))
+
+		if(weapon_upgrades[GUN_UPGRADE_FIRE_DELAY_MULT])
+			var/amount = weapon_upgrades[GUN_UPGRADE_FIRE_DELAY_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases fire delay by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases fire delay by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT])
+			var/amount = weapon_upgrades[GUN_UPGRADE_MOVE_DELAY_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases move delay by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases move delay by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_MELEE_DAMAGE])
+			var/amount = weapon_upgrades[GUN_UPGRADE_MELEE_DAMAGE]-1
+			if(amount > 0)
+				to_chat(user, SPAN_NOTICE("Increases melee damage by [amount*100]%"))
+			else
+				to_chat(user, SPAN_WARNING("Decreases melee damage by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_STEPDELAY_MULT])
+			var/amount = weapon_upgrades[GUN_UPGRADE_STEPDELAY_MULT]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Slows down the weapon's projectile by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Speeds up the weapon's projectile by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DNALOCK] == 1)
+			to_chat(user, SPAN_WARNING("Adds a biometric scanner to the weapon."))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_BRUTE])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's brute damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_BRUTE]] damage points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_BURN])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's burn damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_BURN]] damage points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_TOX])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's toxic damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_TOX]] damage points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_OXY])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's oxy-loss damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_OXY]] damage points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_CLONE])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's cellular damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_CLONE]] damage points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_HALLOSS])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's pain trauma by [weapon_upgrades[GUN_UPGRADE_DAMAGE_HALLOSS]] points"))
+
+		if(weapon_upgrades[GUN_UPGRADE_DAMAGE_RADIATION])
+			to_chat(user, SPAN_NOTICE("Modifies projectile's radiation damage by [weapon_upgrades[GUN_UPGRADE_DAMAGE_RADIATION]] damage points"))
+
+
+		if(weapon_upgrades[GUN_UPGRADE_RECOIL])
+			var/amount = weapon_upgrades[GUN_UPGRADE_RECOIL]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases kickback by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases kickback by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH])
+			var/amount = weapon_upgrades[GUN_UPGRADE_MUZZLEFLASH]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases muzzle flash by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases muzzle flash by [abs(amount*100)]%"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(weapon_upgrades[GUN_UPGRADE_MAGUP])
 			var/amount = weapon_upgrades[GUN_UPGRADE_MAGUP]
@@ -505,6 +1033,7 @@
 		else if(weapon_upgrades[GUN_UPGRADE_FORCESAFETY] == 1)
 			to_chat(user, SPAN_WARNING("Forces the safety toggle of the weapon to always be on."))
 
+<<<<<<< HEAD
 		if(weapon_upgrades[GUN_UPGRADE_DNALOCK] == 1)
 			to_chat(user, SPAN_WARNING("Adds a biometric scanner to the weapon."))
 
@@ -535,6 +1064,35 @@
 				to_chat(user, SPAN_WARNING("Increases weapon inaccuracy by [amount]°"))
 			else
 				to_chat(user, SPAN_NOTICE("Decreases weapon inaccuracy by [amount]°"))
+=======
+		if(weapon_upgrades[GUN_UPGRADE_CHARGECOST])
+			var/amount = weapon_upgrades[GUN_UPGRADE_CHARGECOST]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases cell firing cost by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases cell firing cost by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_OVERCHARGE_MAX])
+			var/amount = weapon_upgrades[GUN_UPGRADE_OVERCHARGE_MAX]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases overcharge maximum by [amount*100]%"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases overcharge maximum by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_OVERCHARGE_RATE])
+			var/amount = weapon_upgrades[GUN_UPGRADE_OVERCHARGE_RATE]-1
+			if(amount > 0)
+				to_chat(user, SPAN_NOTICE("Increases overcharge rate by [amount*100]%"))
+			else
+				to_chat(user, SPAN_WARNING("Decreases overcharge rate by [abs(amount*100)]%"))
+
+		if(weapon_upgrades[GUN_UPGRADE_OFFSET])
+			var/amount = weapon_upgrades[GUN_UPGRADE_OFFSET]-1
+			if(amount > 0)
+				to_chat(user, SPAN_WARNING("Increases weapon inaccuracy by [amount]°"))
+			else
+				to_chat(user, SPAN_NOTICE("Decreases weapon inaccuracy by [abs(amount*100)]%"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 		if(weapon_upgrades[GUN_UPGRADE_HONK])
 			to_chat(user, SPAN_WARNING("Cheers up the firing sound of the weapon."))
@@ -545,6 +1103,15 @@
 		if(weapon_upgrades[GUN_UPGRADE_EXPLODE])
 			to_chat(user, SPAN_WARNING("Rigs the weapon to explode."))
 
+<<<<<<< HEAD
+=======
+		if(weapon_upgrades[GUN_UPGRADE_RAIL])
+			to_chat(user, SPAN_WARNING("Adds a scope slot."))
+
+		if(weapon_upgrades[GUN_UPGRADE_ALLOW_GREYON_MODS])
+			to_chat(user, SPAN_NOTICE("This mod allows you to install Greyson Positronic mods"))
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(weapon_upgrades[GUN_UPGRADE_ZOOM])
 			var/amount = weapon_upgrades[GUN_UPGRADE_ZOOM]
 			if(amount > 0)
@@ -552,8 +1119,15 @@
 			else
 				to_chat(user, SPAN_WARNING("Decreases scope zoom by x[amount]"))
 
+<<<<<<< HEAD
 		to_chat(user, SPAN_WARNING("Requires a weapon with the following properties"))
 		to_chat(user, english_list(req_gun_tags))
+=======
+		to_chat(user, SPAN_WARNING("Requires a weapon with the following properties:"))
+		to_chat(user, english_list(req_gun_tags))
+		to_chat(user, SPAN_WARNING("When applied to a weapon, this takes the following slot:"))
+		to_chat(user, "[gun_loc_tag]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/component/item_upgrade/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_IATTACK)
@@ -561,7 +1135,11 @@
 	UnregisterSignal(parent, COMSIG_REMOVE)
 
 /datum/component/item_upgrade/PostTransfer()
+<<<<<<< HEAD
 	return COMPONENT_TRANSFER
+=======
+	return COMPONENT_NOTRANSFER //I guess we use this? - Trilby
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/component/upgrade_removal
 	dupe_mode = COMPONENT_DUPE_UNIQUE
@@ -572,7 +1150,11 @@
 /datum/component/upgrade_removal/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATTACKBY)
 
+<<<<<<< HEAD
 /datum/component/upgrade_removal/proc/attempt_uninstall(obj/item/C, mob/living/user)
+=======
+/datum/component/upgrade_removal/proc/attempt_uninstall(var/obj/item/C, var/mob/living/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!isitem(C))
 		return 0
 
@@ -583,6 +1165,13 @@
 	if(istype(upgrade_loc, /obj/item/tool))
 		T = upgrade_loc
 
+<<<<<<< HEAD
+=======
+	if(istype(upgrade_loc, /obj/item/clothing))
+		//to_chat(user, SPAN_DANGER("You cannot remove armor upgrades once they've been installed!")) so we dont spawm for suit changing
+		return 1
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	ASSERT(istype(upgrade_loc))
 	//Removing upgrades from a tool. Very difficult, but passing the check only gets you the perfect result
 	//You can also get a lesser success (remove the upgrade but break it in the process) if you fail
@@ -591,6 +1180,7 @@
 		var/list/possibles = upgrade_loc.item_upgrades.Copy()
 		possibles += "Cancel"
 		var/obj/item/tool_upgrade/toremove = input("Which upgrade would you like to try to remove? The upgrade will probably be destroyed in the process","Removing Upgrades") in possibles
+<<<<<<< HEAD
 		if(toremove == "Cancel")
 			return 1
 		var/datum/component/item_upgrade/IU = toremove.GetComponent(/datum/component/item_upgrade)
@@ -601,14 +1191,37 @@
 			if(IU.tool_upgrades[UPGRADE_QUALITIES])
 				T.tool_qualities -= IU.tool_upgrades[UPGRADE_QUALITIES]
 			SEND_SIGNAL(toremove, COMSIG_REMOVE, upgrade_loc)
+=======
+		if (toremove == "Cancel")
+			return 1
+		if(!toremove.can_remove)
+			to_chat(user, SPAN_DANGER("You cannot remove [toremove] once it's been installed!"))
+			return 0
+		var/datum/component/item_upgrade/IU = toremove.GetComponent(/datum/component/item_upgrade)
+		if(C.use_tool(user = user, target =  upgrade_loc, base_time = IU.removal_time, required_quality = QUALITY_SCREW_DRIVING, fail_chance = IU.removal_difficulty, required_stat = STAT_MEC))
+			//If you pass the check, then you manage to remove the upgrade intact
+			to_chat(user, SPAN_NOTICE("You successfully remove \the [toremove] while leaving it intact."))
+			LEGACY_SEND_SIGNAL(toremove, COMSIG_REMOVE, upgrade_loc)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			upgrade_loc.refresh_upgrades()
 			return 1
 		else
 			//You failed the check, lets see what happens
+<<<<<<< HEAD
 			if(prob(50))
 				//50% chance to break the upgrade and remove it
 				to_chat(user, SPAN_DANGER("You successfully remove \the [toremove], but destroy it in the process."))
 				SEND_SIGNAL(toremove, COMSIG_REMOVE, parent)
+=======
+			if(IU.breakable == FALSE)
+				to_chat(user, SPAN_DANGER("You failed to remove \the [toremove]."))
+				upgrade_loc.refresh_upgrades()
+				user.update_action_buttons()
+			else if(prob(50))
+				//50% chance to break the upgrade and remove it
+				to_chat(user, SPAN_DANGER("You successfully remove \the [toremove], but destroy it in the process."))
+				LEGACY_SEND_SIGNAL(toremove, COMSIG_REMOVE, parent)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				QDEL_NULL(toremove)
 				upgrade_loc.refresh_upgrades()
 				user.update_action_buttons()
@@ -620,6 +1233,7 @@
 				upgrade_loc.refresh_upgrades()
 				user.update_action_buttons()
 				return 1
+<<<<<<< HEAD
 			else
 				//You failed the check, lets see what happens
 				if(IU.breakable == FALSE)
@@ -643,12 +1257,23 @@
 					return 1
 	return 0
 
+=======
+	return 0
+
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/tool_upgrade
 	name = "tool upgrade"
 	icon = 'icons/obj/tool_upgrades.dmi'
 	force = WEAPON_FORCE_HARMLESS
 	w_class = ITEM_SIZE_SMALL
+<<<<<<< HEAD
 	spawn_tags = SPAWN_TAG_TOOL_UPGRADE
 	price_tag = 200
 	rarity_value = 15
 	bad_type = /obj/item/tool_upgrade
+=======
+	price_tag = 200
+	var/can_remove = TRUE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

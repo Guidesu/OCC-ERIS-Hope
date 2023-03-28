@@ -3,7 +3,11 @@
 //There's also a robot version which uses power instead of gas tubes.
 
 /obj/item/hatton
+<<<<<<< HEAD
 	name = "Excelsior BT \"Hatton\""
+=======
+	name = "Artificer's Guild BT \"Hatton\""
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	desc = "More an instrument than a weapon, this breaching tool was designed for emergency situations."
 	icon = 'icons/obj/guns/breacher.dmi'
 	icon_state = "Hatton_Hammer_1"
@@ -13,12 +17,18 @@
 	//m_amt = 2000
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("struck", "hit", "bashed")
+<<<<<<< HEAD
 	price_tag = 1000
 	spawn_blacklisted = TRUE
 	var/obj/item/hatton_magazine/magazine
 	origin_tech = list(TECH_COMBAT = 2)
 	matter = list(MATERIAL_PLASTEEL = 10, MATERIAL_PLASTIC = 2)
 	var/fire_sound = 'sound/weapons/pulse.ogg'
+=======
+	price_tag = 500
+	var/obj/item/hatton_magazine/magazine
+	var/fire_sound = 'sound/weapons/energy/pulse.ogg'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/fire_cooldown = 0
 	var/last_fired = 0
 
@@ -27,15 +37,26 @@
 	. = ..()
 	update_icon()
 
+<<<<<<< HEAD
 /obj/item/hatton/on_update_icon()
+=======
+/obj/item/hatton/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(magazine)
 		if(magazine.charge)
 			icon_state = "Hatton_Hammer_1"
+<<<<<<< HEAD
 			add_overlays(icon(icon, "[magazine.charge]/3"))
 		else
 			icon_state = "Hatton_Hammer_1_empty"
 			add_overlays(icon(icon, "1/3"))
+=======
+			add_overlay(icon(icon, "[magazine.charge]/3"))
+		else
+			icon_state = "Hatton_Hammer_1_empty"
+			add_overlay(icon(icon, "1/3"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		icon_state="Hatton_Hammer_0"
 
@@ -109,11 +130,11 @@
 
 	if(isliving(user))
 		var/mob/living/M = user
-		if ((CLUMSY in M.mutations) && prob(50))
+		if ((CLUMSY in M.mutations) && prob(8))
 			to_chat(user, SPAN_DANGER("[src] blows up in your face."))
 			M.drop_item()
 			Fire(get_turf(M))
-			del(src)
+			qdel(src)
 			return
 
 	if (use_charge())
@@ -145,15 +166,24 @@
 
 // Magazine
 /obj/item/hatton_magazine
+<<<<<<< HEAD
 	name = "Excelsior BT \"Hatton\" gas tube"
+=======
+	name = "Artificer's Guild BT \"Hatton\" gas tube"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/guns/breacher.dmi'
 	icon_state = "Hatton_box1"
 	w_class = ITEM_SIZE_SMALL
 	//m_amt = 15
 	origin_tech = list(TECH_MATERIAL = 2)
+<<<<<<< HEAD
 	matter = list(MATERIAL_PHORON = 10, MATERIAL_PLASTEEL = 2, MATERIAL_PLASTIC = 2)
 	price_tag = 100
 	spawn_blacklisted = TRUE
+=======
+	matter = list(MATERIAL_PLASMA = 10, MATERIAL_PLASTEEL = 2, MATERIAL_PLASTIC = 2)
+	price_tag = 50
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/charge = 3
 
@@ -161,19 +191,32 @@
 	. = ..()
 	update_icon()
 
+<<<<<<< HEAD
 /obj/item/hatton_magazine/on_update_icon()
+=======
+/obj/item/hatton_magazine/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(charge)
 		icon_state = "Hatton_box1"
 	else
 		icon_state = "Hatton_box0"
 
 /obj/item/hatton_magazine/moebius
+<<<<<<< HEAD
 	name = "NanoTrasen BT \"Q-del\" gas tube"
 	icon_state = "Moebius_box1"
 	matter = list(MATERIAL_PHORON = 10, MATERIAL_PLASTEEL = 2, MATERIAL_PLASTIC = 2)
 	charge = 2
 
 /obj/item/hatton_magazine/moebius/on_update_icon()
+=======
+	name = "Soteria BT \"Q-del\" gas tube"
+	icon_state = "Moebius_box1"
+	matter = list(MATERIAL_PLASMA = 10, MATERIAL_PLASTEEL = 2, MATERIAL_PLASTIC = 2)
+	charge = 2
+
+/obj/item/hatton_magazine/moebius/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(charge)
 		icon_state = "Moebius_box1"
 	else
@@ -185,6 +228,10 @@
 //Just imagine the robot is using that power to run an internal air compressor to refill the tube.
 //This also explains the cooldown between uses
 /obj/item/hatton/robot
+<<<<<<< HEAD
+=======
+	var/power_cost = 200 KILOWATTS //This uses about 7.5% of the charge on a rescue robot
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	fire_cooldown = 150 //fifteen second cooldown between uses
 	desc = "More an instrument than a weapon, this breaching device was designed for emergency situations. It uses a massive surge of power to break down obstacles."
 	spawn_frequency = 0
@@ -203,6 +250,7 @@
 	return
 
 /obj/item/hatton/moebius
+<<<<<<< HEAD
 	name = "NanoTrasen BT \"Q-del\""
 	desc = {"This breaching tool was reverse engineered from the \"Hatton\" design.
 	Despite the Excelsior \"Hatton\" being traded on the free market through Technomancer League channels,
@@ -214,14 +262,32 @@
 	spawn_blacklisted = TRUE
 
 /obj/item/hatton/moebius/on_update_icon()
+=======
+	name = "Soteria BT \"Q-del\""
+	desc = {"This breaching tool was reverse engineered from the \"Hatton\" design.
+	Despite the Artificer's Guild \"Hatton\" being traded on the free market through guild channels,
+	this device suffers from a wide number of reliability issues stemming from it being lathe printed."}
+	icon_state = "Moebius_Hammer_1"
+	item_state = "Moebius_Hammer_1"
+	matter = list(MATERIAL_PLASTEEL = 8, MATERIAL_SILVER = 5, MATERIAL_PLASTIC = 5)
+
+/obj/item/hatton/moebius/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(magazine)
 		if(magazine.charge)
 			icon_state = "Moebius_Hammer_1"
+<<<<<<< HEAD
 			add_overlays(icon(icon, "[magazine.charge]/3"))
 		else
 			icon_state = "Moebius_Hammer_1_empty"
 			add_overlays(icon(icon, "1/3"))
+=======
+			add_overlay(icon(icon, "[magazine.charge]/3"))
+		else
+			icon_state = "Moebius_Hammer_1_empty"
+			add_overlay(icon(icon, "1/3"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		icon_state = "Moebius_Hammer_0"
 
@@ -297,6 +363,3 @@
 
 /obj/structure/cable/hatton_act()
 	return
-
-
-

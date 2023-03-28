@@ -107,7 +107,11 @@
 
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/interact(mob/user)
+<<<<<<< HEAD
 	set_pin_data(IC_OUTPUT, 2, weakref(src))
+=======
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	push_data()
 	..()
 
@@ -127,7 +131,11 @@
 						assembly.give_power(fuel[I]*(1 / reagents.total_volume))
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/do_work()
+<<<<<<< HEAD
 	set_pin_data(IC_OUTPUT, 2, weakref(src))
+=======
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	push_data()
 
 // For implants.
@@ -138,7 +146,10 @@
 	appetite and will need to eat more often due to this.  This device will fail if used inside synthetic entities."
 	icon_state = "setup_implant"
 	complexity = 10
+<<<<<<< HEAD
 	origin_tech = list(TECH_POWER = 4, TECH_ENGINEERING = 4, TECH_DATA = 4, TECH_BIO = 5)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	spawn_flags = IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/passive/power/metabolic_siphon/proc/test_validity(var/mob/living/carbon/human/host)
@@ -148,10 +159,17 @@
 
 /obj/item/integrated_circuit/passive/power/metabolic_siphon/make_energy()
 	var/mob/living/carbon/human/host = null
+<<<<<<< HEAD
 //	if(assembly && istype(assembly, /obj/item/device/electronic_assembly/implant))
 //		var/obj/item/device/electronic_assembly/implant/implant_assembly = assembly
 //		if(implant_assembly.implant.wearer)
 //			host = implant_assembly.implant.wearer
+=======
+	if(assembly && istype(assembly, /obj/item/device/electronic_assembly/implant))
+		var/obj/item/device/electronic_assembly/implant/implant_assembly = assembly
+		if(implant_assembly.implant.wearer)
+			host = implant_assembly.implant.wearer
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(host && test_validity(host))
 		assembly.give_power(10)
 		host.nutrition = max(host.nutrition - DEFAULT_HUNGER_FACTOR, 0)
@@ -163,7 +181,10 @@
 	more often due to this.  This device will fail if used inside organic entities."
 	icon_state = "setup_implant"
 	complexity = 10
+<<<<<<< HEAD
 	origin_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 4, TECH_DATA = 3)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	spawn_flags = IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/passive/power/metabolic_siphon/synthetic/test_validity(var/mob/living/carbon/human/host)

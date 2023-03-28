@@ -22,24 +22,37 @@
 	if(!user.incapacitated())
 		switch(open)
 			if (0)
-				flags_inv = BLOCKHEADHAIR
+				flags_inv = BLOCKHAIR|HIDEEARS
 				body_parts_covered = HEAD
+<<<<<<< HEAD
 				icon_state = "swatclava_open"
+=======
+				icon_state = initial(icon_state) + "_open"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, "You put the balaclava away, revealing your face.")
 				open = 1
 			if (1)
 				flags_inv = HIDEFACE|BLOCKFACEHAIR
 				body_parts_covered = FACE
+<<<<<<< HEAD
 				icon_state = "swatclava_mouth"
+=======
+				icon_state = initial(icon_state) + "_mouth"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, "You adjust the balaclava up to cover your mouth.")
 				open = 2
 			else
-				flags_inv = HIDEFACE|BLOCKHAIR
+				flags_inv = HIDEFACE|BLOCKHAIR|HIDEEARS
 				body_parts_covered = FACE|HEAD
+<<<<<<< HEAD
 				icon_state = "swatclava"
+=======
+				icon_state = initial(icon_state)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				to_chat(user, "You pull the balaclava up to cover your whole head.")
 				open = 0
 		user.update_hair(0)
+		user.update_ears(0) // Fix to prevent ear clipping
 		user.update_inv_ears(0)
 		user.update_inv_wear_mask() //Updates mob icons
 

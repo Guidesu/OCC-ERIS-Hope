@@ -4,7 +4,11 @@
 	icon_keyboard = "rd_key"
 	icon_screen = "ai-fixer"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/aifixer
+=======
+	circuit = /obj/item/circuitboard/aifixer
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	req_one_access = list(access_robotics, access_heads)
 	var/mob/living/silicon/ai/occupant
 	var/active = 0
@@ -99,7 +103,11 @@
 		return 1
 	if (href_list["fix"])
 		src.active = 1
+<<<<<<< HEAD
 		src.add_overlays(image('icons/obj/computer.dmi', "ai-fixer-on"))
+=======
+		src.add_overlay(image('icons/obj/computer.dmi', "ai-fixer-on"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		while (src.occupant.health < 100)
 			src.occupant.adjustOxyLoss(-1)
 			src.occupant.adjustFireLoss(-1)
@@ -111,13 +119,22 @@
 				src.occupant.lying = 0
 				GLOB.dead_mob_list -= src.occupant
 				GLOB.living_mob_list += src.occupant
+<<<<<<< HEAD
 				src.remove_overlays(image('icons/obj/computer.dmi', "ai-fixer-404"))
 				src.add_overlays(image('icons/obj/computer.dmi', "ai-fixer-full"))
+=======
+				src.cut_overlay(image('icons/obj/computer.dmi', "ai-fixer-404"))
+				src.add_overlay(image('icons/obj/computer.dmi', "ai-fixer-full"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				src.occupant.add_ai_verbs()
 			src.updateUsrDialog()
 			sleep(10)
 		src.active = 0
+<<<<<<< HEAD
 		src.remove_overlays(image('icons/obj/computer.dmi', "ai-fixer-on"))
+=======
+		src.cut_overlay(image('icons/obj/computer.dmi', "ai-fixer-on"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 		src.add_fingerprint(usr)
@@ -132,8 +149,16 @@
 
 	if(occupant)
 		if(occupant.stat)
+<<<<<<< HEAD
 			add_overlays(image('icons/obj/computer.dmi', "ai-fixer-404"))
 		else
 			add_overlays(image('icons/obj/computer.dmi', "ai-fixer-full"))
 	else
 		add_overlays(image('icons/obj/computer.dmi', "ai-fixer-empty"))
+=======
+			add_overlay(image('icons/obj/computer.dmi', "ai-fixer-404"))
+		else
+			add_overlay(image('icons/obj/computer.dmi', "ai-fixer-full"))
+	else
+		add_overlay(image('icons/obj/computer.dmi', "ai-fixer-empty"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

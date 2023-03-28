@@ -165,7 +165,9 @@
 		if(ACCESS_REGION_SUPPLY) //supply
 			return "Supply"
 		if(ACCESS_REGION_CHURCH) //Neotheo
-			return "NeoTheology"
+			return "Church"
+		if(ACCESS_REGION_PROSPECTOR) //Prospectors
+			return "Prospector"
 
 /proc/get_access_desc(id)
 	var/list/AS = get_all_access_datums_by_id()
@@ -224,10 +226,13 @@ var/obj/item/card/id/all_access/ghost_all_access
 	for(var/obj/item/I in HUMAN_ID_CARDS)
 		. |= I.GetAccess()
 
+<<<<<<< HEAD
 	var/obj/item/implant/core_implant/soulcrypt/S = get_soulcrypt()
 	if(S)
 		. |= S.GetAccess() //Eclipse add
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/obj/item/implant/core_implant/C = get_core_implant()
 	if(C)
 		. |= C.GetAccess()

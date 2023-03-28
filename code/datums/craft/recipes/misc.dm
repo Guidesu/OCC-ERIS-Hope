@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 /datum/craft_recipe/wall_girders
 	name = "wall girder"
 	result = /obj/structure/girder
 	time = WORKTIME_NORMAL
+=======
+/datum/craft_recipe/ashtray
+	name = "ashtray"
+	result = /obj/item/material/ashtray
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	steps = list(
-		list(CRAFT_MATERIAL, 5, MATERIAL_STEEL)
+		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
+<<<<<<< HEAD
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	related_stats = list(STAT_MEC)
 
@@ -12,18 +19,55 @@
 	name = "low wall girder"
 	result = /obj/structure/girder/low
 	time = WORKTIME_FAST
-	steps = list(
-		list(CRAFT_MATERIAL, 3, MATERIAL_STEEL)
-	)
-	related_stats = list(STAT_MEC)
+=======
+	related_stats = list(STAT_COG)
 
-/datum/craft_recipe/kitchen_spike
-	name = "Meat spike"
-	result = /obj/structure/kitchenspike
-	time = WORKTIME_NORMAL
+/datum/craft_recipe/tray
+	name = "dinner tray"
+	result = /obj/item/tray
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	steps = list(
-		list(/obj/item/stack/rods, 3),
-		list(QUALITY_WELDING, 20, 50)
+		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL, "time" = 40),
+		list(QUALITY_WIRE_CUTTING, 10, 120)
+	)
+<<<<<<< HEAD
+	related_stats = list(STAT_MEC)
+=======
+	related_stats = list(STAT_COG)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
+
+/datum/craft_recipe/folder
+	name = "folder, black"
+	steps = list(
+		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
+	)
+	related_stats = list(STAT_COG)
+
+/datum/craft_recipe/folder/blue
+	name = "folder, blue"
+	result = /obj/item/folder/blue
+
+/datum/craft_recipe/folder/cyan
+	name = "folder, cyan"
+	result = /obj/item/folder/cyan
+
+/datum/craft_recipe/folder/grey
+	name = "folder, grey"
+	result = /obj/item/folder
+
+/datum/craft_recipe/folder/red
+	name = "folder, red"
+	result = /obj/item/folder/red
+
+/datum/craft_recipe/folder/yellow
+	name = "folder, yellow"
+	result = /obj/item/folder/yellow
+
+/datum/craft_recipe/plasticflaps
+	name = "plastic flaps"
+	result = /obj/structure/plasticflaps
+	steps = list(
+		list(CRAFT_MATERIAL, 4, MATERIAL_PLASTIC) //I can see people abusing this a lot
 	)
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	related_stats = list(STAT_MEC)
@@ -38,14 +82,33 @@
 	flags = CRAFT_BATCH
 	related_stats = list(STAT_COG)
 
+<<<<<<< HEAD
 /datum/craft_recipe/box
 	name = "box"
 	result = /obj/item/storage/box
+=======
+/datum/craft_recipe/pipe
+	name = "Smoking pipe"
+	result = /obj/item/clothing/mask/smokable/pipe
+	icon_state = "woodworking"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
+		list(CRAFT_MATERIAL, 5, MATERIAL_WOOD, "time" = 0),
+		list(QUALITY_CUTTING, 10, 10)
 	)
 	related_stats = list(STAT_COG)
 
+/datum/craft_recipe/cloth_stripe
+	name = "salvage cloth"
+	result = /obj/item/stack/material/cloth/random
+	icon_state = "clothing"
+	steps = list(
+		list(/obj/item/clothing/under, 1, "time" = 25),
+		list(QUALITY_CUTTING, 10, "time" = 30)
+	)
+	related_stats = list(STAT_COG)
+
+<<<<<<< HEAD
 /datum/craft_recipe/bone_braces
 	name = "bone braces"
 	result = /obj/item/bone_brace
@@ -59,11 +122,20 @@
 /datum/craft_recipe/plastic_bag
 	name = "plastic bag"
 	result = /obj/item/storage/bag/plastic
+=======
+/datum/craft_recipe/ameridian_spire
+	name = "ameridian growth"
+	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
+	result = /obj/structure/ameridian_crystal/spire/fake
+	icon_state = "device"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_PLASTIC)
+		list(/obj/item/ameridian_core, 1, "time" = 25),
+		list(CRAFT_MATERIAL, 60, MATERIAL_AMERIDIAN, "time" = 25)
 	)
 	related_stats = list(STAT_COG)
 
+<<<<<<< HEAD
 /datum/craft_recipe/blood_pack
 	name = "blood pack"
 	result = /obj/item/reagent_containers/blood/empty
@@ -75,17 +147,36 @@
 /datum/craft_recipe/ashtray
 	name = "ashtray"
 	result = /obj/item/material/ashtray
+=======
+/datum/craft_recipe/hair_pin
+	name = "hair pin"
+	result = /obj/item/clothing/head/pin
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
 	related_stats = list(STAT_COG)
 
-/datum/craft_recipe/beehive_assembly
-	name = "beehive assembly"
-	result = /obj/item/beehive_assembly
+// Consume!! Makes it's own tab. Not a big deal I guess.
+
+/datum/craft_recipe/consumer
+	category = "Consumer"
+	time = 200
+	related_stats = list(STAT_MEC)
+	icon_state = "device"
+
+
+/datum/craft_recipe/consumer/toaster
+	name = "toaster"
+	result = /obj/item/toy/consumer/product/toaster
 	steps = list(
-		list(CRAFT_MATERIAL, 10, MATERIAL_WOOD)
+		list(/obj/item/toy/consumer/kit/toaster, 1, "time" = 50),
+		list(QUALITY_SCREW_DRIVING, 35, "time" = 170),
+		list(QUALITY_BOLT_TURNING, 35, "time" =  200),
+		list(QUALITY_SCREW_DRIVING, 35, "time" = 170),
+		list(QUALITY_PRYING, 35, "time" = 170)
 	)
+<<<<<<< HEAD
 	related_stats = list(STAT_MEC)
 
 /datum/craft_recipe/beehive_frame
@@ -300,3 +391,5 @@
 		list(QUALITY_WELDING, 10, 10)
 	)
 	related_stats = list(STAT_MEC)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

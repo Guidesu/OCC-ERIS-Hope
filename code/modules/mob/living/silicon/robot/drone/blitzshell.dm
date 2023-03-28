@@ -1,7 +1,11 @@
 /mob/living/silicon/robot/drone/blitzshell
 	icon_state = "blitzshell"
 	law_type = /datum/ai_laws/blitzshell
+<<<<<<< HEAD
 	module_type = /obj/item/robot_module/drone/rogue //Occulus Edit
+=======
+	module_type = /obj/item/robot_module/blitzshell
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_size = ITEM_SIZE_HUGE
@@ -12,9 +16,19 @@
 	ai_access = FALSE
 
 /mob/living/silicon/robot/drone/blitzshell/updatename()
+<<<<<<< HEAD
 	real_name = "Malfunctioning drone ([rand(100,999)])"//Occulus Edit: Blitzshell fixes
 	name = real_name
 
+=======
+	real_name = "\"Blitzshell\" assault drone ([rand(100,999)])"
+	name = real_name
+
+/mob/living/silicon/robot/drone/blitzshell/init()
+	..()
+	locked = locked //No cheesing these ones.
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /mob/living/silicon/robot/drone/blitzshell/is_allowed_vent_crawl_item()
 	return TRUE
 
@@ -24,8 +38,13 @@
 	verbs -= /mob/living/silicon/robot/drone/verb/choose_armguard
 	verbs -= /mob/living/silicon/robot/drone/verb/choose_eyecolor
 
+<<<<<<< HEAD
 	//remove_language(LANGUAGE_ROBOT) Occulus Edit: These drones are NTL drones that are malfunctioning. They can listen in on other synthetics
 	//remove_language(LANGUAGE_DRONE) Occulus Edit: These drones are NL drones that are malunctioning. They can listen in on other synthetics
+=======
+	remove_language(LANGUAGE_ROBOT)
+	remove_language(LANGUAGE_DRONE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	add_language(LANGUAGE_BLITZ, 1)
 	UnlinkSelf()
 
@@ -35,7 +54,11 @@
 
 /mob/living/silicon/robot/drone/blitzshell/request_player()
 	var/datum/ghosttrap/G = get_ghost_trap("blitzshell drone")
+<<<<<<< HEAD
 	G.request_player(src, "A new rogue drone has become active, and is requesting a pilot.", MINISYNTH, 30 SECONDS)//Occulus Edit: Namechange
+=======
+	G.request_player(src, "A new Blitzshell drone has become active, and is requesting a pilot.", MINISYNTH, 30 SECONDS)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /mob/living/silicon/robot/drone/blitzshell/get_scooped()
 	return
@@ -43,6 +66,7 @@
 /mob/living/silicon/robot/drone/blitzshell/allowed()
 	return FALSE
 
+<<<<<<< HEAD
 //Occulus Edit - Completely changing the loadout for rogue drones
 
 /obj/item/robot_module/drone/rogue
@@ -71,16 +95,56 @@
 	modules += new /obj/item/gun/energy/plasma/mounted/blitz(src)
 	modules += new /obj/item/tool/knife/tacknife(src) //For claiming heads for assassination missions
 	Objective stuff
+=======
+/obj/item/robot_module/blitzshell
+	networks = list()
+	health = 200 //Very tanky!
+	speed_factor = 1.2
+	hide_on_manifest = TRUE
+	power_efficiency = 1.5 //Antag
+
+	stat_modifiers = list(
+		STAT_ROB = 120,
+		STAT_TGH = 120,
+		STAT_BIO = 75,
+		STAT_COG = 120,
+		STAT_MEC = 60
+	)
+
+/obj/item/robot_module/blitzshell/New(mob/living/silicon/robot/R)
+	//modules += new /obj/item/gun/energy/laser/mounted/blitz(src) //Deemed too strong for initial loadout
+	modules += new /obj/item/gun/energy/plasma/mounted/blitz(src)
+	modules += new /obj/item/tool/knife/tacknife(src) //For claiming heads for assassination missions
+	modules += new /obj/item/tool/tape_roll/flextape(src) //For blinding/cuff/muting people
+	modules += new /obj/item/tool/baton/robot(src) //LTL for hostages
+	modules += new /obj/item/melee/energy/sword(src) // Lethal option, they can get 1 clicked with a flash
+	//Objective stuff
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	modules += new /obj/item/storage/bsdm/permanent(src) //for sending off item contracts
 	modules += new /obj/item/gripper/antag(src) //For picking up item contracts
 	modules += new /obj/item/reagent_containers/syringe/blitzshell(src) //Blood extraction
 	modules += new /obj/item/device/drone_uplink(src)
+<<<<<<< HEAD
 	Misc equipment
 	modules += new /obj/item/card/id/syndicate(src) //This is our access. Scan cards to get better access
 	modules += new /obj/item/device/nanite_container(src) //For self repair. Get more charges via the contract system
 	..()
 	Occulus Edit End
 	*/
+=======
+	//Misc equipment
+	modules += new /obj/item/card/id/syndicate(src) //This is our access. Scan cards to get better access
+	modules += new /obj/item/tool/multitool/hacktool(src) //Limited getto access untill they can steal ID's
+	modules += new /obj/item/borg/sight/thermal(src) //allows us to be better at combat and stealth
+	modules += new /obj/item/device/nanite_container(src) //For self repair. Get more charges via the contract system
+
+	//We are stronk so we get less no knockdowns
+	R.stats.addPerk(PERK_ASS_OF_CONCRETE)
+	//So we cant be escaped as quickly
+	R.stats.addPerk(PERK_PARKOUR)
+
+	..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/gripper/antag
 	name = "Objective Gripper"
@@ -109,13 +173,21 @@
 					to_chat(user, SPAN_DANGER("You was interrupted!"))
 					return
 				user.visible_message(SPAN_DANGER("[user] is rip the [H]'s head off!"),SPAN_DANGER("You rip the [H]'s head off."))
+<<<<<<< HEAD
 				E.droplimb(TRUE, DROPLIMB_EDGE)
+=======
+				E.droplimb(TRUE, DISMEMBER_METHOD_EDGE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				grip_item(E, user)
 			else
 				to_chat(user, SPAN_DANGER("[H] missing his head!"))
 		else
 			to_chat(user, SPAN_DANGER("You cannot rip someone head while they alive!"))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/gripper/antag/New()
 	..()
 	for(var/i in GLOB.antag_item_targets)
@@ -125,7 +197,10 @@
 	name = "nanorepair system"
 	icon_state = "nanorepair_tank"
 	desc = "Contains several capsules of nanites programmed to repair mechanical and electronic systems."
+<<<<<<< HEAD
 	spawn_tags = null
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/charges = 3
 	var/cooldown
 
@@ -158,7 +233,10 @@
 	name = "smoke deployment system"
 	icon_state = "smokescreen"
 	desc = "Contains several capsules filled with smoking agent. Whem used creates a small smoke cloud."
+<<<<<<< HEAD
 	spawn_tags = null
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/charges = 3
 
 /obj/item/device/smokescreen/examine(mob/user)
@@ -183,7 +261,10 @@
 /obj/item/device/drone_uplink
 	name = "Drone Bounty Uplink"
 	icon_state = "uplink_access"
+<<<<<<< HEAD
 	spawn_tags = null
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/drone_uplink/New()
 	..()

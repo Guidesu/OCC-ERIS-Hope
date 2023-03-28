@@ -5,8 +5,13 @@ LINEN BINS
 */
 
 /obj/item/bedsheet
+<<<<<<< HEAD
 	name = "bedsheet"
 	desc = "A surprisingly soft linen bedsheet."
+=======
+	name = "bed sheet"
+	desc = "A surprisingly soft linen bed sheet."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/bedsheets.dmi'
 	icon_state = "sheet"
 	item_state = "bedsheet"
@@ -20,12 +25,20 @@ LINEN BINS
 	var/inuse = FALSE
 
 /obj/item/bedsheet/Initialize(mapload, nfolded=FALSE)
+<<<<<<< HEAD
 	.=..()
+=======
+	. = ..()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	folded = nfolded
 	update_icon()
 
 /obj/item/bedsheet/afterattack(atom/A, mob/user)
+<<<<<<< HEAD
 	if(!user || user.incapacitated() || !user.Adjacent(A) || istype(A, /obj/structure/bedsheetbin) || istype(A, /obj/item/storage/))
+=======
+	if(!user || user.incapacitated() || !user.Adjacent(A))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	if(toggle_fold(user))
 		user.drop_item()
@@ -37,10 +50,14 @@ LINEN BINS
 	if(!user)
 		return FALSE
 	if(inuse)
+<<<<<<< HEAD
 		to_chat(user, "Someone already using \the [src]")
+=======
+		to_chat(user, "Someone is already using \the [src]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return FALSE
 	inuse = TRUE
-	if (do_after(user, 6, src, incapacitation_flags = INCAPACITATION_UNCONSCIOUS))
+	if (do_after(user, 6, src, incapacitation_flags = INCAPACITATION_KNOCKOUT))
 		if(user.loc != loc)
 			user.do_attack_animation(src)
 		playsound(get_turf(loc), "rustle", 15, 1, -5)
@@ -61,7 +78,11 @@ LINEN BINS
 	inuse = FALSE
 	return FALSE
 
+<<<<<<< HEAD
 /obj/item/bedsheet/proc/toggle_fold(mob/user, no_message=FALSE)
+=======
+/obj/item/bedsheet/proc/toggle_fold(mob/user, no_message = FALSE)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!user)
 		return FALSE
 	if(inuse)
@@ -92,7 +113,11 @@ LINEN BINS
 	return FALSE
 
 /obj/item/bedsheet/verb/fold_verb()
+<<<<<<< HEAD
 	set name = "Fold bedsheet"
+=======
+	set name = "Fold bed sheet"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set category = "Object"
 	set src in view(1)
 
@@ -102,7 +127,11 @@ LINEN BINS
 		toggle_fold(usr)
 
 /obj/item/bedsheet/verb/roll_verb()
+<<<<<<< HEAD
 	set name = "Roll bedsheet"
+=======
+	set name = "Roll bed sheet"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set category = "Object"
 	set src in view(1)
 
@@ -122,13 +151,21 @@ LINEN BINS
 		if(do_after(user, 50, src))
 			to_chat(user, SPAN_NOTICE("You cut \the [src] into pieces!"))
 			for(var/i in 1 to rand(2,5))
+<<<<<<< HEAD
 				new /obj/item/reagent_containers/glass/rag(get_turf(src))
+=======
+				new /obj/item/stack/material/cloth(get_turf(src))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			qdel(src)
 		return
 	..()
 
 /obj/item/bedsheet/attack_hand(mob/user)
+<<<<<<< HEAD
 	if(!user || user.incapacitated(INCAPACITATION_UNCONSCIOUS))
+=======
+	if(!user || user.incapacitated(INCAPACITATION_KNOCKOUT))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return
 	if(!folded)
 		toggle_roll(user)
@@ -146,7 +183,11 @@ LINEN BINS
 		if(folded)
 			pickup(usr)
 
+<<<<<<< HEAD
 /obj/item/bedsheet/on_update_icon()
+=======
+/obj/item/bedsheet/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (folded)
 		icon_state = "sheet-folded"
 	else if (rolled)
@@ -202,10 +243,81 @@ LINEN BINS
 /obj/item/bedsheet/brown
 	icon_state = "sheetbrown"
 
+/obj/item/bedsheet/ian
+	icon_state = "sheetian"
+
+/obj/item/bedsheet/double
+	icon_state = "doublesheet"
+	item_state = "sheet"
+
+/obj/item/bedsheet/bluedouble
+	icon_state = "doublesheetblue"
+	item_state = "sheetblue"
+
+/obj/item/bedsheet/greendouble
+	icon_state = "doublesheetgreen"
+	item_state = "sheetgreen"
+
+/obj/item/bedsheet/orangedouble
+	icon_state = "doublesheetorange"
+	item_state = "sheetorange"
+
+/obj/item/bedsheet/purpledouble
+	icon_state = "doublesheetpurple"
+	item_state = "sheetpurple"
+
+/obj/item/bedsheet/rainbowdouble //all the way across the sky.
+	icon_state = "doublesheetrainbow"
+	item_state = "sheetrainbow"
+
+/obj/item/bedsheet/reddouble
+	icon_state = "doublesheetred"
+	item_state = "sheetred"
+
+/obj/item/bedsheet/yellowdouble
+	icon_state = "doublesheetyellow"
+	item_state = "sheetyellow"
+
+/obj/item/bedsheet/mimedouble
+	icon_state = "doublesheetmime"
+	item_state = "sheetmime"
+
+/obj/item/bedsheet/clowndouble
+	icon_state = "doublesheetclown"
+	item_state = "sheetrainbow"
+
+/obj/item/bedsheet/captaindouble
+	icon_state = "doublesheetcaptain"
+	item_state = "sheetcaptain"
+
+/obj/item/bedsheet/rddouble
+	icon_state = "doublesheetrd"
+	item_state = "sheetrd"
+
+/obj/item/bedsheet/hosdouble
+	icon_state = "doublesheethos"
+	item_state = "sheethos"
+
+/obj/item/bedsheet/hopdouble
+	icon_state = "doublesheethop"
+	item_state = "sheethop"
+
+/obj/item/bedsheet/cedouble
+	icon_state = "doublesheetce"
+	item_state = "sheetce"
+
+/obj/item/bedsheet/browndouble
+	icon_state = "doublesheetbrown"
+	item_state = "sheetbrown"
+
+/obj/item/bedsheet/iandouble
+	icon_state = "doublesheetian"
+	item_state = "sheetian"
+
 
 /obj/structure/bedsheetbin
 	name = "linen bin"
-	desc = "A linen bin. It looks rather cosy."
+	desc = "A linen bin. It looks rather cozy."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
@@ -258,6 +370,10 @@ LINEN BINS
 
 		else
 			B = new /obj/item/bedsheet(loc, TRUE)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		B.loc = user.loc
 
 		user.put_in_hands(B)

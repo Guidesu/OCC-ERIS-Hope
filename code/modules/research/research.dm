@@ -29,11 +29,23 @@ Procs:
 **	Includes all the helper procs and basic tech processing.  **
 ***************************************************************/
 
+<<<<<<< HEAD
+=======
+/datum/research/proc/adjust_research_points(value)
+	if(value > 0)
+		GLOB.research_point_gained += value
+	research_points += value
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/research								//Holder for all the existing, archived, and known tech. Individual to console.
 	var/list/known_designs = list()			//List of available designs (at base reliability).
 	var/list/design_categories_protolathe = list()
 	var/list/design_categories_imprinter = list()
 	var/list/design_categories_mechfab = list()
+<<<<<<< HEAD
+=======
+	var/list/design_categories_organfab = list()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/list/researched_tech = list() // Tree = list(of_researched_tech)
 	var/list/researched_nodes = list() // All research nodes
@@ -82,7 +94,11 @@ Procs:
 	var/datum/tech/tree = locate(T.tech_type) in researched_tech
 	researched_tech[tree] += T
 	if(!force)
+<<<<<<< HEAD
 		research_points -= T.cost
+=======
+		adjust_research_points(-T.cost)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	if(initial) // Initial technologies don't add levels
 		tree.max_level -= 1
@@ -151,6 +167,11 @@ Procs:
 		design_categories_imprinter |= cat
 	if(D.build_type & MECHFAB)
 		design_categories_mechfab |= cat
+<<<<<<< HEAD
+=======
+	if(D.build_type & ORGAN_GROWER)
+		design_categories_organfab |= cat
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 // Unlocks hidden tech trees
@@ -178,7 +199,12 @@ Procs:
 /datum/research/proc/can_load_file(datum/computer_file/file)
 	if(istype(file, /datum/computer_file/binary/research_points))
 		var/datum/computer_file/binary/research_points/research_points_file = file
+<<<<<<< HEAD
 		return !(research_points_file.research_id in known_research_file_ids)
+=======
+		if(research_points_file.size >= 1)
+			return TRUE //!(research_points_file.research_id in known_research_file_ids) Soj edit we now just kill the file
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	return FALSE
 
@@ -188,8 +214,15 @@ Procs:
 
 	if(istype(file, /datum/computer_file/binary/research_points))
 		var/datum/computer_file/binary/research_points/research_points_file = file
+<<<<<<< HEAD
 		known_research_file_ids += research_points_file.research_id
 		research_points += research_points_file.size * 1000
+=======
+		known_research_file_ids += research_points_file.research_id //Used for admins/logs still
+		adjust_research_points(research_points_file.size * 1000)
+		file.size = 0 //Just in case
+		file.holder.recalculate_size()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		return TRUE
 
 	return FALSE
@@ -204,8 +237,14 @@ Procs:
 	var/shortname = "name"
 	var/desc = "description"   //General description of what it does and what it makes.
 	var/level = 0              //A simple number scale of the research level.
+<<<<<<< HEAD
 	var/rare = 1               //How much CentCom wants to get that tech. Used in supply shuttle tech cost calculation.
 	var/max_level              //Calculated based on the ammount of technologies
+=======
+	//Rare - Does work currently
+	var/rare = 1               //How much CentCom wants to get that tech. Used in supply shuttle tech cost calculation.
+	var/max_level              //Calculated based on the amount of technologies
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/shown = TRUE           //Used to hide tech that is not supposed to be shown from the start
 	var/item_tech_req          //Deconstructing items with this tech will unlock this tech tree
 
@@ -242,6 +281,7 @@ Procs:
 	shortname = "Robotics"
 	desc = "Research into the exosuits"
 
+<<<<<<< HEAD
 /datum/tech/covert
 	name = "Covert Technologies Research"
 	shortname = "Covert Tech"
@@ -249,6 +289,23 @@ Procs:
 	rare = 3
 	shown = FALSE
 	item_tech_req = TECH_COVERT // research any traitor item and this tech will show up
+=======
+/datum/tech/greyson
+	name = "Greyson Positronic"
+	shortname = "Greyson Positronic"
+	desc = "Research into the Greyson Positronic blueprints and mimicry of their tech"
+	rare = 5
+	//shown = FALSE
+	//item_tech_req = TECH_ARCANE //So we will never be shown ^_^
+
+/datum/tech/illegal
+	name = "Covert Technologies Research"
+	shortname = "Covert Tech"
+	desc = "The study of technologies that are used in covert missions."
+	rare = 3
+	shown = FALSE
+	item_tech_req = TECH_ILLEGAL // research any contractor item and this tech will show up
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/technology
 	var/name = "name"

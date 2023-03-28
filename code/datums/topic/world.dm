@@ -103,6 +103,10 @@
 			"car" = cargo_positions,
 			"civ" = civilian_positions,
 			"chr" = church_positions,
+<<<<<<< HEAD
+=======
+			"pro" = prospector_positions,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			"bot" = nonhuman_positions
 		)
 

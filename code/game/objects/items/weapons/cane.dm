@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /obj/item/tool/cane
+=======
+/obj/item/cane
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
 	icon = 'icons/obj/weapons.dmi'
@@ -7,24 +11,42 @@
 	flags = CONDUCT
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_WEAK
+<<<<<<< HEAD
 	worksound = WORKSOUND_EASY_CROWBAR
 	w_class = ITEM_SIZE_NORMAL
+=======
+	w_class = ITEM_SIZE_BULKY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	matter = list(MATERIAL_PLASTIC = 5)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 	tool_qualities = list(QUALITY_PRYING = 10)
 
+<<<<<<< HEAD
 /obj/item/tool/cane/concealed
+=======
+/obj/item/cane/concealed
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/concealed_blade
 	max_upgrades = 5
 
+<<<<<<< HEAD
 /obj/item/tool/cane/concealed/New()
 	..()
 	var/obj/item/tool/knife/switchblade/temp_blade = new(src)
+=======
+/obj/item/cane/concealed/New()
+	..()
+	var/obj/item/material/butterfly/switchblade/temp_blade = new(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	concealed_blade = temp_blade
 	temp_blade.max_upgrades = 5
 	temp_blade.attack_self()
 
+<<<<<<< HEAD
 /obj/item/tool/cane/concealed/attack_self(var/mob/user)
+=======
+/obj/item/cane/concealed/attack_self(var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(concealed_blade)
 		user.visible_message(
 			SPAN_WARNING("[user] has unsheathed \a [concealed_blade] from \his [src]!"),
@@ -39,7 +61,11 @@
 	else
 		..()
 
+<<<<<<< HEAD
 /obj/item/tool/cane/concealed/attackby(var/obj/item/tool/knife/switchblade/W, var/mob/user)
+=======
+/obj/item/cane/concealed/attackby(var/obj/item/material/butterfly/W, var/mob/user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(!src.concealed_blade && istype(W))
 		user.visible_message(
 			SPAN_WARNING("[user] has sheathed \a [W] into \his [src]!"),
@@ -51,3 +77,29 @@
 		update_icon()
 	else
 		..()
+<<<<<<< HEAD
+=======
+
+/obj/item/cane/concealed/update_icon()
+	if(concealed_blade)
+		name = initial(name)
+		icon_state = initial(icon_state)
+		item_state = initial(icon_state)
+	else
+		name = "cane shaft"
+		icon_state = "nullrod"
+		item_state = "foldcane"
+
+/obj/item/cane/whitecane
+	name = "white cane"
+	desc = "A white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "whitecane"
+	item_state = "whitecane"
+
+/obj/item/cane/crutch
+	name ="crutch"
+	desc = "A long stick with a crosspiece at the top, used to help with walking."
+	icon_state = "crutch"
+	item_state = "crutch"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

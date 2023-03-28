@@ -4,21 +4,30 @@
 	desc = ""
 	category = "Crusader"
 
-
 /datum/ritual/cruciform/crusader/brotherhood
 	name = "Eternal Brotherhood"
 	phrase = "Ita multi unum corpus sumus in Christo singuli autem alter alterius membra."
 	desc = "Reveals other disciples to speaker."
+	nutri_cost = 25//low cost
+	blood_cost = 25//low cost
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/ritual/cruciform/crusader/brotherhood/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/datum/core_module/cruciform/neotheologyhud/hud_module = C.get_module(/datum/core_module/cruciform/neotheologyhud)
+	if(user.species?.reagent_tag != IS_SYNTHETIC)
+		if(user.nutrition >= nutri_cost)
+			user.nutrition -= nutri_cost
+		else
+			to_chat(user, SPAN_WARNING("You manage to cast the litany at a cost. The physical body consumes itself..."))
+			user.vessel.remove_reagent("blood",blood_cost)
 	if(hud_module)
 		C.remove_module(hud_module)
 	else
 		C.add_module(new /datum/core_module/cruciform/neotheologyhud)
 	return TRUE
-
 
 /datum/ritual/cruciform/crusader/battle_call
 	name = "Call to Battle"
@@ -28,9 +37,17 @@
 	cooldown_time = 10 MINUTES
 	cooldown_category = "battle call"
 	effect_time = 10 MINUTES
+	nutri_cost = 25//med cost
+	blood_cost = 25//med cost
 
 /datum/ritual/cruciform/crusader/battle_call/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/count = 0
+	if(user.species?.reagent_tag != IS_SYNTHETIC)
+		if(user.nutrition >= nutri_cost)
+			user.nutrition -= nutri_cost
+		else
+			to_chat(user, SPAN_WARNING("You manage to cast the litany at a cost. The physical body consumes itself..."))
+			user.vessel.remove_reagent("blood",blood_cost)
 	for(var/mob/living/carbon/human/brother in view(user))
 		if(brother.get_core_implant(/obj/item/implant/core_implant/cruciform))
 			count += 2
@@ -56,8 +73,19 @@
 	cooldown = TRUE
 	cooldown_time = 2 MINUTES
 	cooldown_category = "flash"
+	nutri_cost = 50//high cost
+	blood_cost = 50//high cost
 
 /datum/ritual/cruciform/crusader/flash/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
+<<<<<<< HEAD
+=======
+	if(user.species?.reagent_tag != IS_SYNTHETIC)
+		if(user.nutrition >= nutri_cost)
+			user.nutrition -= nutri_cost
+		else
+			to_chat(user, SPAN_WARNING("You manage to cast the litany at a cost. The physical body consumes itself..."))
+			user.vessel.remove_reagent("blood",blood_cost)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(prob(100 - user.stats.getStat(STAT_VIG)))
 		user.Weaken(10)
 		to_chat(user, SPAN_WARNING("The flux of psy-energy knocks over you!"))

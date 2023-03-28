@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /obj/item/contraband/poster/wanted
 	bad_type = /obj/item/contraband/poster/wanted
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/item/contraband/poster/wanted/New(turf/loc, icon/person_icon, wanted_name, description)
 	name = "wanted poster ([wanted_name])"
 	desc = "A wanted poster for [wanted_name]."

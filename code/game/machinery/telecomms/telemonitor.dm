@@ -5,7 +5,7 @@
 
 
 /obj/machinery/computer/telecomms/monitor
-	name = "Telecommunications Monitor"
+	name = "telecommunications monitor"
 	icon_screen = "comm_monitor"
 
 	var/screen = 0				// the screen number:

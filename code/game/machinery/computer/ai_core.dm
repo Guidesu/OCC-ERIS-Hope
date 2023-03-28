@@ -6,8 +6,13 @@
 	icon_state = "0"
 	var/state = 0
 	var/datum/ai_laws/laws = new /datum/ai_laws/eris
+<<<<<<< HEAD
 	var/obj/item/electronics/circuitboard/circuit
 	var/obj/item/device/mmi/brain
+=======
+	var/obj/item/circuitboard/circuit = null
+	var/obj/item/device/mmi/brain = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/structure/AIcore/attackby(obj/item/I, mob/user)
@@ -31,13 +36,21 @@
 			if(state == 0)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You wrench the frame into place."))
+<<<<<<< HEAD
 					anchored = TRUE
+=======
+					anchored = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					state = 1
 					return
 			if(state == 1 && !circuit)
 				if(I.use_tool(user, src, WORKTIME_FAST, tool_type, FAILCHANCE_HARD, required_stat = STAT_MEC))
 					to_chat(user, SPAN_NOTICE("You unfasten the frame."))
+<<<<<<< HEAD
 					anchored = FALSE
+=======
+					anchored = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					state = 0
 					return
 			return
@@ -126,7 +139,11 @@
 
 	switch(state)
 		if(1)
+<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/circuitboard/aicore) && !circuit)
+=======
+			if(istype(I, /obj/item/circuitboard/aicore) && !circuit)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
 				icon_state = "1"
@@ -148,7 +165,7 @@
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 				return
 		if(3)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == "rglass")
+			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MATERIAL_RGLASS)
 				var/obj/item/stack/RG = I
 				if (RG.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
@@ -161,8 +178,13 @@
 						state = 4
 						icon_state = "4"
 
+<<<<<<< HEAD
 			if(istype(I, /obj/item/electronics/ai_module))
 				var/obj/item/electronics/ai_module/AIM = I
+=======
+			if(istype(I, /obj/item/aiModule))
+				var/obj/item/aiModule/AIM = I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				AIM.transmitInstructions(src, usr)
 				to_chat(usr, "Law module applied.")
 				return
@@ -214,7 +236,11 @@
 	transfer.cancel_camera()
 	to_chat(user, "<span class='notice'>Transfer successful:</span> [transfer.name] ([rand(1000,9999)].exe) downloaded to host terminal. Local copy wiped.")
 	to_chat(transfer, "You have been uploaded to a stationary terminal. Remote device connection restored.")
+<<<<<<< HEAD
 
+=======
+	playsound(src.loc, 'sound/AI/my_voice_it_is_a_book.ogg', 50, 1, -3)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(card)
 		card.clear()
 

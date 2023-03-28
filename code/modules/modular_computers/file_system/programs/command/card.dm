@@ -24,7 +24,7 @@
 	var/is_centcom = 0
 	var/show_assignments = 0
 
-/datum/nano_module/program/card_mod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/card_mod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/nano_topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	data["src"] = "\ref[src]"
@@ -60,7 +60,7 @@
 	data["medical_jobs"] = format_jobs(medical_positions)
 	data["science_jobs"] = format_jobs(science_positions)
 	data["security_jobs"] = format_jobs(security_positions)
-	//data["exploration_jobs"] = format_jobs(exploration_positions)
+	data["prospector_jobs"] = format_jobs(prospector_positions)
 	data["service_jobs"] = format_jobs(civilian_positions)
 	data["supply_jobs"] = format_jobs(cargo_positions)
 	data["church_jobs"] = format_jobs(church_positions)
@@ -144,8 +144,13 @@
 			else
 				module.show_assignments = 1
 		if("print")
+<<<<<<< HEAD
 			if(!authorized(user_id_card))
 				to_chat(user, SPAN_WARNING("Access denied."))
+=======
+			if(!authorized_diet(user_id_card))
+				to_chat(usr, "<span class='warning'>Access Light Missing: Denied..</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			if(computer && computer.printer) //This option should never be called if there is no printer
 				if(module.mod_mode)
@@ -168,7 +173,11 @@
 								contents += "  [get_access_desc(A)]"
 
 						if(!computer.printer.print_text(contents,"access report"))
+<<<<<<< HEAD
 							to_chat(user, SPAN_NOTICE("Hardware error: Printer was unable to print the file. It may be out of paper."))
+=======
+							to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 							return
 						else
 							computer.visible_message(SPAN_NOTICE("\The [computer] prints out paper."))
@@ -178,7 +187,11 @@
 									[html_crew_manifest()]
 									"}
 					if(!computer.printer.print_text(contents,text("crew manifest ([])", stationtime2text())))
+<<<<<<< HEAD
 						to_chat(user, SPAN_NOTICE("Hardware error: Printer was unable to print the file. It may be out of paper."))
+=======
+						to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						return
 					else
 						computer.visible_message(SPAN_NOTICE("\The [computer] prints out paper."))
@@ -189,8 +202,13 @@
 				else
 					computer.attackby(user.get_active_hand(), user)
 		if("terminate")
+<<<<<<< HEAD
 			if(!authorized(user_id_card, ACCESS_REGION_COMMAND))
 				to_chat(user, SPAN_WARNING("Access denied."))
+=======
+			if(!authorized_diet(user_id_card))
+				to_chat(usr, "<span class='warning'>Access Light Missing: Denied.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			if(computer && can_run(user, 1))
 				id_card.assignment = "Terminated"
@@ -198,7 +216,11 @@
 				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(!authorized(user_id_card))
+<<<<<<< HEAD
 				to_chat(user, SPAN_WARNING("Access denied."))
+=======
+				to_chat(usr, "<span class='warning'>Access Hard Missing: Denied.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			if(computer && can_run(user, 1))
 				if(href_list["name"])
@@ -220,7 +242,11 @@
 					id_card.associated_email_login["password"] = email_password
 		if("assign")
 			if(!authorized(user_id_card))
+<<<<<<< HEAD
 				to_chat(user, SPAN_WARNING("Access denied."))
+=======
+				to_chat(usr, "<span class='warning'>Access Hard Missing: Denied.</span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				return
 			if(computer && can_run(user, 1) && id_card)
 				var/t1 = href_list["assign_target"]
@@ -260,6 +286,7 @@
 				var/access_type = text2num(href_list["access_target"])
 				var/access_allowed = text2num(href_list["allowed"])
 				if(access_type in get_access_ids(ACCESS_TYPE_STATION|ACCESS_TYPE_CENTCOM))
+<<<<<<< HEAD
 					if (check_modify(user_id_card, access_type))
 						id_card.access -= access_type
 						if(!access_allowed)
@@ -267,6 +294,15 @@
 					else
 						to_chat(user, SPAN_WARNING("Access denied"))
 
+=======
+					for(var/access in user_id_card.access)
+						var/region_type = get_access_region_by_id(access_type)
+						if(access in GLOB.maps_data.access_modify_region[region_type])
+							id_card.access -= access_type
+							if(!access_allowed)
+								id_card.access += access_type
+							break
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(id_card)
 		id_card.SetName(text("[id_card.registered_name]'s ID Card ([id_card.assignment])"))
 
@@ -279,6 +315,7 @@
 /datum/computer_file/program/card_mod/proc/apply_access(var/obj/item/card/id/id_card, var/list/accesses)
 	id_card.access |= accesses
 
+<<<<<<< HEAD
 // Function that checks if the user's id is allowed to use the id computer. Can optionally check for a specific access lookup.
 /datum/computer_file/program/card_mod/proc/authorized(var/obj/item/card/id/id_card, var/area)
 	if (id_card && !area)
@@ -297,3 +334,14 @@
 		if(access in GLOB.maps_data.access_modify_region[region_type])
 			return TRUE
 	return FALSE
+=======
+/datum/computer_file/program/card_mod/proc/authorized(var/obj/item/card/id/id_card)
+	if (id_card)
+		return (access_change_ids in id_card.access)
+	return FALSE
+
+/datum/computer_file/program/card_mod/proc/authorized_diet(var/obj/item/card/id/id_card)
+	if (id_card)
+		return (access_heads in id_card.access)
+	return FALSE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

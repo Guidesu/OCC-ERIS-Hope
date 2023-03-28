@@ -11,9 +11,15 @@
 	var/obj/item/device/electronic_assembly/EA
 	if(istype(A, /obj/item/device/electronic_assembly))
 		EA = A
+<<<<<<< HEAD
 //
 //		var/obj/item/implant/integrated_circuit/I = A
 //		EA = I.IC
+=======
+	else if(istype(A, /obj/item/implant/integrated_circuit))
+		var/obj/item/implant/integrated_circuit/I = A
+		EA = I.IC
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		return
 	if(EA.idlock)
@@ -25,4 +31,8 @@
 		to_chat(user, SPAN("notice", "You scan [A]."))
 		show_browser(user, saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
 	else
+<<<<<<< HEAD
 		to_chat(user, SPAN("warning", "[A] is not complete enough to be encoded!"))
+=======
+		to_chat(user, SPAN("warning", "[A] is not complete enough to be encoded!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

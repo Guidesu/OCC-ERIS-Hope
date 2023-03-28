@@ -30,7 +30,11 @@ SUBSYSTEM_DEF(supply)
 
 
 /datum/controller/subsystem/supply/stat_entry()
+<<<<<<< HEAD
 	..("Credits: [get_account_credits(department_accounts[DEPARTMENT_GUILD])]")
+=======
+	..("Credits: [get_account_credits(department_accounts[DEPARTMENT_LSS])]")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //To stop things being sent to centcom which should not be sent to centcom. Recursively checks for these types.
 /datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
@@ -58,11 +62,11 @@ SUBSYSTEM_DEF(supply)
 		for(var/atom/movable/AM in subarea)
 			if(AM.anchored)
 				continue
-
+			LEGACY_SEND_SIGNAL(shuttle, COMSIG_SHUTTLE_SUPPLY, AM)
 			sold_atoms += export_item_and_contents(AM, contraband, hacked, dry_run = FALSE)
 
-	for(var/a in exports)
-		var/datum/export/E = a
+	for(var/A in exports)
+		var/datum/export/E = A
 		var/export_text = E.total_printout()
 		if(!export_text)
 			continue
@@ -73,8 +77,13 @@ SUBSYSTEM_DEF(supply)
 	msg += "<br>Total exports value: [points] credits.<br>"
 	exports.Cut()
 
+<<<<<<< HEAD
 	var/datum/money_account/GA = department_accounts[DEPARTMENT_GUILD]
 	var/datum/transaction/T = new(points, "Asters Guild", "Exports", "Asters Automated Trading System")
+=======
+	var/datum/money_account/GA = department_accounts[DEPARTMENT_LSS]
+	var/datum/transaction/T = new(points, "Lonestar Shipping Solutions", "Exports", "Lonestar Automated Trading System")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	T.apply_to(GA)
 
 	centcom_message = msg
@@ -111,7 +120,6 @@ SUBSYSTEM_DEF(supply)
 
 		var/datum/supply_order/SO = S
 		var/datum/supply_pack/SP = SO.object
-
 		var/obj/A = new SP.containertype(pickedloc)
 		A.name = "[SP.name][SO.reason ? " ([SO.reason])":"" ]"
 
@@ -151,7 +159,21 @@ SUBSYSTEM_DEF(supply)
 			if(!typepath)
 				continue
 
-			var/atom/B2 = new typepath(A)
+			var/atom/movable/B2
+			if(ispath(typepath, /obj/random))
+				var/obj/randomcatcher/CATCH = new /obj/randomcatcher
+				B2 = CATCH.get_item(typepath)
+				B2.forceMove(A)
+			else
+				B2 = new typepath(A)
+			B2.surplus_tag = TRUE
+			var/list/n_contents = B2.GetAllContents()
+			for(var/atom/movable/I in n_contents)
+				I.surplus_tag = TRUE
+			/* So you can't really just buy crates, then instantly resell them for a potential profit depending on if the crate hasn't had its cost scaled properly.
+			*  Yes, there are limits, I could itterate over every content of the item too and set its surplus_tag to TRUE
+			*  But that doesn't work with stackables when you can just make a new stack, and gets comp-expensive and not worth it just to spite people getting extra numbers
+			*/
 			if(SP.amount && B2:amount) B2:amount = SP.amount
 			if(slip) slip.info += "<li>[B2.name]</li>" //add the item to the manifest
 
@@ -166,7 +188,11 @@ SUBSYSTEM_DEF(supply)
 
 //Deducts credits from the guild account to pay for external purchases
 /proc/pay_for_order(datum/supply_order/order, terminal)
+<<<<<<< HEAD
 	var/datum/money_account/GA = department_accounts[DEPARTMENT_GUILD]
+=======
+	var/datum/money_account/GA = department_accounts[DEPARTMENT_LSS]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if (!GA)
 		return FALSE
 

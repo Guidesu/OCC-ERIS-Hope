@@ -2,7 +2,11 @@
 	id = ROLE_MERCENARY
 	bantype = ROLE_MERCENARY
 	faction_id = FACTION_SERBS
+<<<<<<< HEAD
 	role_text = "Mercenary"
+=======
+	role_text = "Void Wolf"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	welcome_text = WELCOME_SERBS
 	antaghud_indicator = "hudoperative"
 	landmark_id = "mercenary-spawn"
@@ -37,25 +41,45 @@
 	//Put on the fatigues. Armor not included, they equip that manually from the merc base
 	var/decl/hierarchy/outfit/O = outfit_by_type(/decl/hierarchy/outfit/antagonist/mercenary/casual)
 	O.equip(L)
+<<<<<<< HEAD
 	//And we'll give them a random serbian name to start off with
 	var/datum/language/lang = all_languages[LANGUAGE_MERC]
+=======
+
+	//Set their language, This also adds it to their list
+	L.set_default_language(LANGUAGE_ILLYRIAN)
+
+	//Normal mercs can't speak common
+	L.remove_language(LANGUAGE_COMMON)
+
+	//And we'll give them a random serbian name to start off with
+	var/datum/language/lang = all_languages[LANGUAGE_ILLYRIAN]
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	lang.set_random_name(L)
 
 	//the missingg parrt was antag's stats!
 	for(var/name in stat_modifiers)
 		L.stats.changeStat(name, stat_modifiers[name])
 
+<<<<<<< HEAD
 	for(var/perk in perks)
 		L.stats.addPerk(perk)
 
 	create_id("Soldier")
+=======
+	create_id("Void Wolf")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 
 /obj/item/card/id/merc
 	icon_state = "syndicate"
 
+<<<<<<< HEAD
 /obj/item/card/id/merc/Initialize(mapload)
+=======
+/obj/item/card/id/merc/New()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	. = ..()
 	access = list(access_mercenary,//This access governs their ship and base
 	access_external_airlocks,
@@ -63,4 +87,8 @@
 
 
 
+<<<<<<< HEAD
 // #undef WELCOME_SERBS This needs commented out
+=======
+#undef WELCOME_SERBS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

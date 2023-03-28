@@ -20,7 +20,11 @@
 
 	var/mob/player = owner.current
 	// Basic intro text.
+<<<<<<< HEAD
 	to_chat(player, "<span class='danger'><font size=3>You are a [role_text]!</font></span>")//Occulus edit: Fixing intro text
+=======
+	to_chat(player, "<span class='danger'><font size=3>You are \a [role_text]!</font></span>")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(faction)
 		if(src in faction.leaders)
 			to_chat(player, "You are a leader of the [faction.name]!")

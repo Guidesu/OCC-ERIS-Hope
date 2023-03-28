@@ -17,7 +17,11 @@
 	var/list/program			// Currently loaded save, in form of list
 	var/materials = list(MATERIAL_STEEL = 0)
 	var/metal_max = 25 * SHEET_MATERIAL_AMOUNT
+<<<<<<< HEAD
 	var/weakref/idlock = null
+=======
+	var/datum/weakref/idlock = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/integrated_circuit_printer/proc/check_interactivity(mob/user)
 	return CanUseTopic(user) && (get_dist(src, user) < 2)
@@ -31,7 +35,10 @@
 	name = "cyborg integrated circuit printer"
 	upgraded = TRUE
 	fast_clone = TRUE
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/device/integrated_circuit_printer/debug //translation: "integrated_circuit_printer/local_server"
 	name = "debug circuit printer"
@@ -39,7 +46,10 @@
 	upgraded = TRUE
 	can_clone = TRUE
 	fast_clone = TRUE
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_TINY
 
 /obj/item/device/integrated_circuit_printer/cyborg/afterattack(atom/target, mob/user, proximity)
@@ -281,9 +291,15 @@
 		else if(ispath(build_type, /obj/item/integrated_circuit))
 			var/obj/item/integrated_circuit/IC = SScircuit.cached_components[build_type]
 			cost = IC.matter
+<<<<<<< HEAD
 //		else if(ispath(build_type, /obj/item/implant/integrated_circuit))
 //			var/obj/item/device/electronic_assembly/implant/E = SScircuit.cached_assemblies[/obj/item/device/electronic_assembly/implant]
 //			cost = E.matter
+=======
+		else if(ispath(build_type, /obj/item/implant/integrated_circuit))
+			var/obj/item/device/electronic_assembly/implant/E = SScircuit.cached_assemblies[/obj/item/device/electronic_assembly/implant]
+			cost = E.matter
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else if(!(build_type in SScircuit.circuit_fabricator_recipe_list["Tools"]))
 			log_href_exploit(usr)
 			return
@@ -294,6 +310,7 @@
 		var/obj/item/built = new build_type(get_turf(src))
 		usr.put_in_hands(built)
 
+<<<<<<< HEAD
 		if(istype(built, /obj/item/device/electronic_assembly))// || istype(built, /obj/item/implant/integrated_circuit))
 			var/obj/item/device/electronic_assembly/E
 //			if(istype(built, /obj/item/implant/integrated_circuit))
@@ -301,6 +318,15 @@
 //				E = IC.IC
 //			else
 			E = built
+=======
+		if(istype(built, /obj/item/device/electronic_assembly) || istype(built, /obj/item/implant/integrated_circuit))
+			var/obj/item/device/electronic_assembly/E
+			if(istype(built, /obj/item/implant/integrated_circuit))
+				var/obj/item/implant/integrated_circuit/IC = built
+				E = IC.IC
+			else
+				E = built
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			E.creator = key_name(usr)
 			E.opened = TRUE
 			E.update_icon()
@@ -415,4 +441,8 @@
 /obj/item/disk/integrated_circuit/upgrade/clone
 	name = "integrated circuit printer upgrade disk - instant cloner"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one allows the printer to duplicate assemblies instantaneously."
+<<<<<<< HEAD
 	icon_state = "upgrade_disk_clone"
+=======
+	icon_state = "upgrade_disk_clone"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

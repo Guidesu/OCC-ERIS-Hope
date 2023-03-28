@@ -9,6 +9,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	var/obj/item/I = get_active_hand()
 	if(!I)
+<<<<<<< HEAD
 		to_chat(src, SPAN_NOTICE("You are not holding anything to equip."))
 		return
 	if(quick_equip_storage(I))
@@ -63,6 +64,14 @@ This saves us from having to call add_fingerprint() any time something is put in
 			equip_to_from_bag(I, pack)
 		else
 			equip_to_from_bag(null, pack)
+=======
+		if(draw_from_suit_storage())
+			return
+		to_chat(src, SPAN_NOTICE("You are not holding anything to equip."))
+		return
+	if(!equip_to_appropriate_slot(I))
+		to_chat(src, SPAN_WARNING("You are unable to equip that."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/living/carbon/human/put_in_active_hand(var/obj/item/W)
@@ -92,14 +101,17 @@ This saves us from having to call add_fingerprint() any time something is put in
 	return equip_to_slot_if_possible(W, slot_r_hand)
 
 
-
 //Find HUD position on screen
 /mob/living/carbon/human/proc/find_inv_position(var/slot_id)
 	for(var/obj/screen/inventory/HUDinv in HUDinventory)
 		if (HUDinv.slot_id == slot_id)
 			return (HUDinv.invisibility == 101) ? null : HUDinv.screen_loc
 	log_admin("[src] try find_inv_position a [slot_id], but not have that slot!")
+<<<<<<< HEAD
 	to_chat(src, "Some problem hase accure, change UI style pls or call admins.")
+=======
+	to_chat(src, "Some problem has occurred, change UI style please or call admins.")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return "7,7"
 
 //Mannequins have no hud, this was causing a lot of spam in the logs
@@ -271,6 +283,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return BP_R_HAND
 
 /mob/living/carbon/human/equip_to_slot(obj/item/W, slot, redraw_mob = 1)
+	LEGACY_SEND_SIGNAL(src, COMSING_HUMAN_EQUITP, W)
 	switch(slot)
 		if(slot_in_backpack)
 			if(src.get_active_hand() == W)
@@ -300,6 +313,15 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 			if(get_holding_hand(W))
 				W.add_hud_actions(src)
+
+//Proc that gets called when the E key is pressed. Checks for a gun in the suit storage slot and draws it in your active hand.
+
+/mob/living/carbon/human/proc/draw_from_suit_storage()
+	var/i = get_equipped_item(slot_s_store)
+	if(!istype(i,/obj/item/gun))
+		return FALSE
+	put_in_active_hand(i)
+	return TRUE
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible()
 //set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in your own proc.
@@ -372,7 +394,11 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_s_store)
 			src.s_store = W
 		else
+<<<<<<< HEAD
 			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. If possible, please write a ticket with steps to reproduce. Slot was: [slot]"))
+=======
+			to_chat(src, SPAN_DANGER("You are trying to equip this item to an unsupported inventory slot. If possible, please write a ticket with steps to reproduce. Slot was: [slot]"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 
 	return 1
@@ -452,6 +478,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 /mob/living/carbon/human/get_max_w_class()
 	var/get_max_w_class = 0
+<<<<<<< HEAD
 	for(var/obj/item/clothing/C in get_equipped_items())
 		if(C.w_class > get_max_w_class)
 			get_max_w_class = C.w_class
@@ -481,3 +508,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 	else
 		style_factor -= STYLE_MODIFIER * actual_style/MIN_HUMAN_STYLE
 	return style_factor
+=======
+	for(var/obj/item/clothing/C in get_equipped_items(TRUE))
+		if(C)
+			if(C.w_class > get_max_w_class)
+				get_max_w_class = C.w_class
+	return get_max_w_class
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

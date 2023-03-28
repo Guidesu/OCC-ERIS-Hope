@@ -16,4 +16,8 @@
 	var/msg = "[key_name(src)] has modified world.fps to [new_fps]"
 	log_admin(msg, 0)
 	message_admins(msg, 0)
+<<<<<<< HEAD
 	world.change_fps(new_fps)
+=======
+	world.change_fps(new_fps)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

@@ -5,28 +5,77 @@
 	tag = "icon-railing0 (EAST)"
 	},
 /obj/structure/lattice,
+<<<<<<< HEAD
 /turf/template_noop,
 /area/template_noop)
 "b" = (
+=======
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "c" = (
+=======
+/obj/random/junk,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"c" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "d" = (
+=======
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"d" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -36,6 +85,7 @@
 	dir = 8;
 	tag = "icon-railing0 (WEST)"
 	},
+<<<<<<< HEAD
 /obj/spawner/junkfood/rotten,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
@@ -46,6 +96,18 @@
 "f" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/under/airless,
+=======
+/obj/random/junkfood/rotten,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"e" = (
+/obj/random/traps,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"f" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "g" = (
 /turf/simulated/wall/r_wall,
@@ -56,6 +118,7 @@
 	name = "Service Maintenance";
 	req_access = list(12)
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
 /area/template_noop)
 "k" = (
@@ -70,15 +133,55 @@
 /turf/template_noop,
 /area/template_noop)
 "S" = (
+=======
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/template_noop)
+"i" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"j" = (
+/obj/random/scrap/dense_weighted/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"s" = (
+/obj/structure/lattice,
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"F" = (
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"J" = (
+/obj/structure/lattice,
+/obj/random/mob/carp/low_chance,
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"O" = (
+/obj/structure/lattice,
+/obj/random/mob/carp/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"S" = (
+/obj/random/mob/carp/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/template_noop,
 /area/template_noop)
 
 (1,1,1) = {"
 a
 f
+<<<<<<< HEAD
 J
 J
 l
+=======
+O
+s
+j
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (2,1,1) = {"
 b
@@ -92,12 +195,20 @@ c
 h
 e
 g
+<<<<<<< HEAD
 J
+=======
+s
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}
 (4,1,1) = {"
 d
 g
+<<<<<<< HEAD
 k
+=======
+i
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 S
 "}
@@ -106,5 +217,9 @@ J
 g
 g
 g
+<<<<<<< HEAD
 S
+=======
+F
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "}

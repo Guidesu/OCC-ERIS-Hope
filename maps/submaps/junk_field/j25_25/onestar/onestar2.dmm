@@ -1,10 +1,45 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+<<<<<<< HEAD
 "ag" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/under/airless,
 /area/template_noop)
 "ah" = (
 /turf/simulated/floor/plating/under/airless,
+=======
+"aa" = (
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"ab" = (
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol/heavy,
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"ac" = (
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"ad" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/gun_ba,
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"ae" = (
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol/rifle,
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"af" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/gun_ba,
+/mob/living/carbon/superior_animal/robot/greyson/synthetic/epistol/esmg,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"ag" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"ah" = (
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "an" = (
 /obj/structure/window/reinforced{
@@ -13,25 +48,41 @@
 /obj/structure/bed/chair/office/dark,
 /obj/structure/barricade,
 /obj/effect/decal/cleanable/blood/drip,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ao" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/item/remains/human,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "as" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"as" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "au" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 /turf/simulated/floor/dirt/airless,
+=======
+/turf/simulated/floor/asteroid/dirt/dark,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ax" = (
 /obj/structure/sign/faction/one_star,
@@ -40,18 +91,27 @@
 "ay" = (
 /obj/structure/railing/grey,
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 /turf/simulated/floor/dirt/airless,
+=======
+/turf/simulated/floor/asteroid/dirt/dark,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aA" = (
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aJ" = (
 /obj/structure/noticeboard,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/template_noop)
+<<<<<<< HEAD
 "aK" = (
 /obj/machinery/door/airlock/sandstone{
 	name = "OneStar Airlock"
@@ -72,12 +132,32 @@
 "aT" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
+=======
+"aN" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/template_noop)
+"aQ" = (
+/obj/random/scrap/sparse_even,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"aR" = (
+/obj/effect/floor_decal/industrial/loading,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/template_noop)
+"aT" = (
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/tiled/techmaint_cargo,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "aU" = (
 /obj/structure/bed/chair/custom/onestar{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bb" = (
 /obj/structure/sink{
@@ -88,19 +168,28 @@
 	dir = 8;
 	pixel_x = -28
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/cafe/airless,
+=======
+/turf/simulated/floor/tiled/cafe,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bd" = (
 /obj/machinery/light_construct{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/cafe/airless,
+=======
+/turf/simulated/floor/tiled/cafe,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bl" = (
 /obj/structure/sign/faction/one_star_old,
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/template_noop)
 "bm" = (
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
 /area/template_noop)
 "bq" = (
@@ -126,10 +215,32 @@
 "bu" = (
 /obj/spawner/scrap/sparse,
 /turf/simulated/floor/tiled/derelict/white_red_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"bq" = (
+/obj/random/scrap/sparse_even,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"bs" = (
+/obj/structure/closet/onestar/tier2,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"bt" = (
+/obj/structure/table/onestar,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"bu" = (
+/obj/random/scrap/sparse_even,
+/turf/simulated/floor/tiled/derelict/white_red_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bv" = (
 /obj/machinery/light/floor,
 /obj/item/remains/human,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "by" = (
@@ -140,12 +251,25 @@
 /area/template_noop)
 "bE" = (
 /turf/simulated/floor/dirt/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"by" = (
+/obj/structure/sign/faction/one_star_old{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"bE" = (
+/turf/simulated/floor/asteroid/dirt/dark,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bG" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/stamp/denied,
 /obj/item/pen,
@@ -155,6 +279,11 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/obj/item/stamp/denied,
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "bN" = (
 /turf/simulated/wall/untinted/onestar,
@@ -169,6 +298,7 @@
 /obj/structure/table/onestar,
 /obj/item/remains/human,
 <<<<<<< HEAD
+<<<<<<< HEAD
 /obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 =======
@@ -179,12 +309,21 @@
 "cK" = (
 /mob/living/simple_animal/hostile/roomba/gun_ba,
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"cK" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/gun_ba,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "dO" = (
 /obj/structure/table/onestar,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/dark/techfloor,
@@ -200,6 +339,23 @@
 "fa" = (
 /mob/living/simple_animal/hostile/roomba/slayer,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/obj/item/folder/red,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/template_noop)
+"dY" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/trip/armored,
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"eD" = (
+/obj/structure/closet/secure_closet/medicine,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"fa" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/slayer,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "fy" = (
 /obj/structure/toilet{
@@ -208,12 +364,30 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/cafe/airless,
+=======
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"fI" = (
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"ge" = (
+/mob/living/carbon/superior_animal/robot/greyson/custodian/engineer,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"gy" = (
+/obj/structure/lattice,
+/obj/random/junk,
+/turf/template_noop,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "gK" = (
 /obj/machinery/light{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/airless,
 /area/template_noop)
 "ib" = (
@@ -229,12 +403,30 @@
 "jG" = (
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/dirt/airless,
+=======
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"ib" = (
+/obj/structure/table/onestar,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/template_noop)
+"ju" = (
+/obj/structure/sign/faction/one_star_old{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"jG" = (
+/obj/random/scrap/dense_weighted,
+/turf/simulated/floor/asteroid/dirt/dark,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "kb" = (
 /obj/structure/window/reinforced{
 	dir = 6
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 /obj/item/clothing/accessory/medal/conduct,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
@@ -246,6 +438,23 @@
 /obj/spawner/junk,
 /obj/structure/table/onestar,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"kj" = (
+/obj/structure/lattice,
+/mob/living/carbon/superior_animal/robot/greyson/custodian/engineer,
+/turf/template_noop,
+/area/template_noop)
+"ku" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/template_noop)
+"kx" = (
+/obj/random/junk,
+/obj/structure/table/onestar,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "kF" = (
 /obj/structure/window/reinforced{
@@ -254,6 +463,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_platform,
@@ -278,6 +488,32 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"lj" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/boomba,
+/turf/simulated/floor/tiled/derelict/white_red_edges,
+/area/template_noop)
+"lQ" = (
+/obj/structure/girder,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"mx" = (
+/obj/structure/lattice,
+/obj/random/junk/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"mJ" = (
+/obj/random/junk,
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"nC" = (
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "nF" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -287,13 +523,21 @@
 /obj/machinery/light{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "nI" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/techmaint_cargo/airless,
+=======
+/turf/simulated/floor/tiled/techmaint_cargo,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "nR" = (
 /obj/structure/window/reinforced{
@@ -304,11 +548,23 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/modular_computer/laptop,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
 "oc" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"oc" = (
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"oJ" = (
+/mob/living/carbon/superior_animal/robot/greyson/custodian/engineer,
+/turf/template_noop,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "pa" = (
 /obj/structure/window/reinforced{
@@ -316,24 +572,37 @@
 	},
 /obj/structure/table/onestar,
 <<<<<<< HEAD
+<<<<<<< HEAD
 /obj/item/stamp/chameleon,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 =======
 /obj/item/stamp/chameleon,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/obj/item/stamp/chameleon,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "pb" = (
 /obj/structure/cyberplant{
 	desc = "One of those famous OneStar holoplants! Add to your Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that your flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!";
 	name = "OneStar \"Iridescent\""
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/cafe/airless,
 /area/template_noop)
 "pS" = (
 /obj/item/remains/human,
 /obj/item/clothing/accessory/blue,
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"pS" = (
+/obj/item/remains/human,
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "qp" = (
 /obj/structure/window/reinforced{
@@ -344,7 +613,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "qw" = (
 /obj/structure/window/reinforced{
@@ -355,6 +628,7 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/device/lighting/toggleable/lamp,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
 "rb" = (
@@ -364,6 +638,21 @@
 "sB" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"qE" = (
+/obj/random/junk/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"rb" = (
+/obj/structure/table/onestar,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"sB" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "sD" = (
 /obj/structure/window/reinforced{
@@ -373,12 +662,17 @@
 	dir = 4
 	},
 /obj/item/remains/human,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "tl" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/airless,
 /area/template_noop)
 "up" = (
@@ -392,11 +686,27 @@
 "vG" = (
 /obj/spawner/junkfood/rotten,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"up" = (
+/obj/machinery/light_construct,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"uQ" = (
+/obj/random/scrap/sparse_even,
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"vG" = (
+/obj/random/junkfood/rotten,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "vL" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "wg" = (
@@ -413,6 +723,17 @@
 	},
 /obj/item/clothing/accessory/red,
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"wg" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"wF" = (
+/obj/random/junk,
+/turf/simulated/floor/asteroid/dirt/dark,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "xf" = (
 /obj/structure/table/onestar,
@@ -420,12 +741,21 @@
 	dir = 4
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/dark/techfloor,
 =======
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/dark/techfloor/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/obj/item/folder/red,
+/turf/simulated/floor/tiled/dark/techfloor,
+/area/template_noop)
+"yE" = (
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "yJ" = (
 /obj/structure/window/reinforced{
@@ -434,11 +764,19 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "zc" = (
 /obj/spawner/scrap/dense,
 /turf/simulated/floor/tiled/derelict/white_red_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"zc" = (
+/obj/random/scrap/dense_weighted,
+/turf/simulated/floor/tiled/derelict/white_red_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "zj" = (
 /obj/structure/window/reinforced{
@@ -446,22 +784,46 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/device/taperecorder,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
 "zC" = (
 /obj/structure/medical_stand,
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"zn" = (
+/obj/machinery/door/airlock/sandstone{
+	name = "Greyson Airlock"
+	},
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"zC" = (
+/obj/structure/medical_stand,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+/area/template_noop)
+"zF" = (
+/obj/effect/floor_decal/industrial/loading,
+/obj/random/junk,
+/turf/simulated/floor/tiled/techmaint_cargo,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ae" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ax" = (
 /obj/structure/railing/grey{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/dirt/airless,
 /area/template_noop)
 "Bj" = (
@@ -476,6 +838,22 @@
 /obj/effect/floor_decal/industrial/warning,
 /mob/living/simple_animal/hostile/roomba/boomba,
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/turf/simulated/floor/asteroid/dirt/dark,
+/area/template_noop)
+"Bj" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/slayer,
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"BH" = (
+/obj/structure/largecrate,
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"BI" = (
+/obj/effect/floor_decal/industrial/warning,
+/mob/living/carbon/superior_animal/robot/greyson/roomba/boomba,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Cs" = (
 /obj/structure/window/reinforced{
@@ -485,6 +863,7 @@
 /obj/item/remains/human,
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/light,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "Dc" = (
@@ -500,19 +879,65 @@
 /obj/item/phone,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"CV" = (
+/obj/structure/lattice,
+/obj/random/material/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"Dc" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/boomba,
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"DA" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/random/junk,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/template_noop)
+"DR" = (
+/obj/random/junk/low_chance,
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"Ej" = (
+/obj/structure/table/onestar,
+/obj/item/phone,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"EG" = (
+/obj/random/junk,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ES" = (
 /turf/simulated/wall/untinted/onestar_reinforced,
 /area/template_noop)
+<<<<<<< HEAD
+=======
+"Fa" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/trip/armored,
+/turf/simulated/floor/asteroid/dirt/dark,
+/area/template_noop)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "Fb" = (
 /obj/machinery/light_construct{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/white_red_edges/airless,
 /area/template_noop)
 "Fz" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/turf/simulated/floor/tiled/derelict/white_red_edges,
+/area/template_noop)
+"Fz" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "FA" = (
 /obj/structure/window/reinforced{
@@ -520,6 +945,7 @@
 	},
 /obj/structure/bed/chair/office/dark,
 /obj/item/remains/human,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 /area/template_noop)
 "Gb" = (
@@ -529,6 +955,17 @@
 "Gt" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+/area/template_noop)
+"Gb" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"Gt" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "GP" = (
 /obj/structure/window/reinforced{
@@ -540,7 +977,11 @@
 /obj/structure/table/onestar,
 /obj/item/stamp/denied,
 /obj/structure/barricade,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "GZ" = (
 /obj/structure/window/reinforced{
@@ -548,12 +989,17 @@
 	},
 /obj/structure/table/onestar,
 <<<<<<< HEAD
+<<<<<<< HEAD
 /obj/item/stamp/denied,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 =======
 /obj/item/stamp/denied,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/obj/item/stamp/denied,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Hc" = (
 /obj/structure/window/reinforced{
@@ -562,11 +1008,19 @@
 /obj/item/modular_computer/console{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
 "HY" = (
 /obj/item/modular_computer/console,
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"HY" = (
+/obj/item/modular_computer/console,
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "It" = (
 /obj/structure/window/reinforced{
@@ -576,9 +1030,14 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/effect/decal/cleanable/blood/drip,
+<<<<<<< HEAD
 /obj/item/gun/projectile/handmade_pistol,
 /obj/spawner/ammo,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
+=======
+/obj/random/ammo,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "JA" = (
 /obj/structure/window/reinforced{
@@ -589,6 +1048,7 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/device/lighting/toggleable/lamp,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 /area/template_noop)
 "Km" = (
@@ -604,6 +1064,23 @@
 "KX" = (
 /obj/spawner/junk/low_chance,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"Km" = (
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"Kw" = (
+/obj/random/junk,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+"KW" = (
+/turf/simulated/floor/tiled/derelict,
+/area/template_noop)
+"KX" = (
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "La" = (
 /obj/structure/window/reinforced{
@@ -613,6 +1090,7 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -633,11 +1111,36 @@
 /area/template_noop)
 "LY" = (
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"Lz" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/asteroid/dirt/dark,
+/area/template_noop)
+"LE" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"LJ" = (
+/obj/random/material/low_chance,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"LK" = (
+/obj/random/junk/low_chance,
+/turf/template_noop,
+/area/template_noop)
+"LY" = (
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "ME" = (
 /obj/structure/sign/department/medbay{
 	pixel_x = 32
 	},
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/roomba/slayer,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
 /area/template_noop)
@@ -647,6 +1150,24 @@
 "NQ" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/mob/living/carbon/superior_animal/robot/greyson/roomba/slayer,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"NH" = (
+/turf/simulated/floor/tiled/derelict/white_red_edges,
+/area/template_noop)
+"NQ" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"Oe" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/obj/random/junk,
+/turf/simulated/floor/tiled/techmaint_cargo,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Oz" = (
 /obj/structure/sign/faction/one_star,
@@ -660,11 +1181,16 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Pc" = (
 /obj/structure/table/onestar,
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/storage/lunchbox/rainbow,
 /turf/simulated/floor/tiled/dark/brown_perforated,
@@ -678,12 +1204,26 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/obj/item/storage/lunchbox/rainbow,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"Qe" = (
+/obj/structure/sign/faction/derelict2{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Qn" = (
 /obj/structure/bed/chair/custom/onestar{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "QE" = (
 /obj/structure/window/reinforced{
@@ -693,6 +1233,7 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/paper_bin,
 /turf/simulated/floor/tiled/dark/brown_perforated,
@@ -704,6 +1245,14 @@
 "Rf" = (
 /obj/machinery/vending,
 /turf/simulated/floor/tiled/derelict/airless,
+=======
+/obj/item/paper_bin,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"Rf" = (
+/obj/machinery/vending,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Rn" = (
 /obj/structure/window/reinforced{
@@ -713,7 +1262,11 @@
 	dir = 4
 	},
 /obj/machinery/light/floor,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ss" = (
 /obj/structure/toilet{
@@ -722,25 +1275,48 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/roomba/boomba,
 /turf/simulated/floor/tiled/cafe/airless,
+=======
+/mob/living/carbon/superior_animal/robot/greyson/roomba/boomba,
+/obj/random/material_rare,
+/turf/simulated/floor/tiled/cafe,
+/area/template_noop)
+"SO" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/trip/armored,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "SV" = (
 /obj/structure/table/onestar,
 /obj/item/device/lighting/toggleable/lamp,
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
+=======
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"TL" = (
+/obj/random/junk,
+/turf/template_noop,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "UT" = (
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
 "Vu" = (
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "VG" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+<<<<<<< HEAD
 <<<<<<< HEAD
 /obj/item/lipstick/black,
 /turf/simulated/floor/tiled/dark/brown_platform,
@@ -748,6 +1324,9 @@
 /obj/item/lipstick/black,
 /turf/simulated/floor/tiled/dark/brown_platform/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+/turf/simulated/floor/tiled/dark/brown_platform,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "VK" = (
 /obj/structure/window/reinforced{
@@ -758,14 +1337,25 @@
 	},
 /obj/structure/table/onestar,
 <<<<<<< HEAD
+<<<<<<< HEAD
 /obj/item/paper_bin,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
+=======
+/obj/item/paper_bin,
+/turf/simulated/floor/tiled/dark/brown_perforated,
+/area/template_noop)
+"VX" = (
+/obj/random/material/low_chance,
+/turf/simulated/floor/plating/under,
+/area/template_noop)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "Xm" = (
 /obj/structure/table/onestar,
 /obj/item/pen/reagent/sleepy,
 /obj/item/newspaper,
 /turf/simulated/floor/tiled/dark/brown_perforated,
+<<<<<<< HEAD
 =======
 /obj/item/paper_bin,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
@@ -776,6 +1366,8 @@
 /obj/item/newspaper,
 /turf/simulated/floor/tiled/dark/brown_perforated/airless,
 >>>>>>> 38d706f... Overmap Extension Part 2 (#6599)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "XL" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -784,20 +1376,39 @@
 /obj/machinery/light{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/template_noop)
+"Yc" = (
+/mob/living/carbon/superior_animal/robot/greyson/roomba/trip/armored,
+/turf/simulated/floor/plating/under,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Yy" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/medical,
+<<<<<<< HEAD
 /obj/spawner/medical,
 /obj/machinery/light_construct,
 /turf/simulated/floor/tiled/derelict/red_white_edges/airless,
+=======
+/obj/random/medical,
+/obj/machinery/light_construct,
+/turf/simulated/floor/tiled/derelict/red_white_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Ze" = (
 /obj/machinery/light{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/derelict/white_small_edges/airless,
+=======
+/obj/random/junk/low_chance,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/template_noop)
 "Zy" = (
 /turf/template_noop,
@@ -806,14 +1417,22 @@
 (1,1,1) = {"
 Zy
 Zy
+<<<<<<< HEAD
+=======
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
 Zy
 Zy
 Zy
+<<<<<<< HEAD
 Zy
 Zy
+=======
+fI
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 UT
 UT
@@ -823,7 +1442,11 @@ Zy
 Zy
 Zy
 Zy
+<<<<<<< HEAD
 Zy
+=======
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 UT
 UT
@@ -832,6 +1455,7 @@ Zy
 "}
 (2,1,1) = {"
 Zy
+<<<<<<< HEAD
 Zy
 Zy
 ag
@@ -839,17 +1463,35 @@ UT
 Kw
 UT
 Zy
+=======
+fI
+Zy
+ag
+CV
+Kw
+UT
+LK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 UT
 ag
 ah
+<<<<<<< HEAD
 UT
 Zy
 Zy
 Zy
 Zy
 Zy
+=======
+kj
+LK
+TL
+Zy
+Zy
+LK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 ag
@@ -858,8 +1500,13 @@ ah
 UT
 "}
 (3,1,1) = {"
+<<<<<<< HEAD
 Zy
 Zy
+=======
+TL
+oJ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 ES
 ES
@@ -875,10 +1522,17 @@ ah
 Zy
 Zy
 Zy
+<<<<<<< HEAD
 Zy
 Zy
 Zy
 ah
+=======
+TL
+Zy
+fI
+ge
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 ag
 ag
@@ -901,20 +1555,32 @@ Vu
 ah
 UT
 ag
+<<<<<<< HEAD
 Zy
+=======
+LK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 UT
 ah
 ah
 ES
 aQ
+<<<<<<< HEAD
 ah
+=======
+VX
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 "}
 (5,1,1) = {"
 Zy
 UT
+<<<<<<< HEAD
 UT
+=======
+mx
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 pa
 VK
@@ -943,7 +1609,11 @@ Zy
 ah
 ah
 bl
+<<<<<<< HEAD
 KW
+=======
+yE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 KW
 Dc
 BH
@@ -958,7 +1628,11 @@ ES
 pb
 bb
 bd
+<<<<<<< HEAD
 ah
+=======
+Yc
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 UT
 Zy
@@ -966,10 +1640,17 @@ Zy
 Zy
 "}
 (7,1,1) = {"
+<<<<<<< HEAD
 Zy
 ah
 Vu
 aK
+=======
+LK
+VX
+Vu
+zn
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 KW
 KW
 KW
@@ -979,6 +1660,7 @@ Ae
 Rn
 ES
 Qe
+<<<<<<< HEAD
 Vu
 Vu
 aK
@@ -989,6 +1671,18 @@ ah
 UT
 UT
 Zy
+=======
+EG
+Vu
+zn
+Bj
+mJ
+ae
+ah
+CV
+UT
+oJ
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 "}
@@ -998,10 +1692,17 @@ ah
 Vu
 ES
 by
+<<<<<<< HEAD
 KW
 KW
 KW
 KW
+=======
+SO
+yE
+KW
+yE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 La
 Hc
 ES
@@ -1016,7 +1717,11 @@ ah
 ah
 ag
 Zy
+<<<<<<< HEAD
 Zy
+=======
+fI
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 "}
 (9,1,1) = {"
@@ -1027,7 +1732,11 @@ ES
 bG
 QE
 KW
+<<<<<<< HEAD
 KW
+=======
+ab
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 KW
 GP
 It
@@ -1036,11 +1745,19 @@ Vu
 Vu
 Vu
 ES
+<<<<<<< HEAD
 aK
 bN
 aK
 bN
 aK
+=======
+zn
+bN
+zn
+bN
+zn
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 Zy
 Zy
@@ -1074,12 +1791,20 @@ Zy
 Zy
 "}
 (11,1,1) = {"
+<<<<<<< HEAD
 Zy
+=======
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 UT
 ES
 yJ
+<<<<<<< HEAD
 xc
+=======
+Ae
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 tl
 KW
 Fz
@@ -1087,8 +1812,13 @@ ao
 yJ
 ES
 Vu
+<<<<<<< HEAD
 Vu
 Vu
+=======
+ah
+ah
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 ES
 ES
@@ -1102,20 +1832,33 @@ Zy
 "}
 (12,1,1) = {"
 Zy
+<<<<<<< HEAD
 Zy
+=======
+fI
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 ES
 zj
 co
 KW
 KW
+<<<<<<< HEAD
 KW
+=======
+dY
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 JA
 GZ
 ES
 KX
+<<<<<<< HEAD
 Vu
 Vu
+=======
+VX
+Zy
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 NQ
 Gb
 bN
@@ -1130,16 +1873,25 @@ Zy
 (13,1,1) = {"
 Zy
 Zy
+<<<<<<< HEAD
 Zy
+=======
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 HY
 pS
 tl
+<<<<<<< HEAD
 KW
+=======
+yE
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 KW
 KW
 as
 ES
+<<<<<<< HEAD
 Vu
 Vu
 Vu
@@ -1148,6 +1900,16 @@ oc
 aK
 bm
 cK
+=======
+ah
+Yc
+Zy
+vG
+oc
+zn
+bm
+af
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bt
 ES
 Zy
@@ -1167,9 +1929,15 @@ KW
 ju
 Rf
 ES
+<<<<<<< HEAD
 Vu
 Vu
 Vu
+=======
+ah
+UT
+UT
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 XL
 kx
 bN
@@ -1182,7 +1950,11 @@ Zy
 Zy
 "}
 (15,1,1) = {"
+<<<<<<< HEAD
 Zy
+=======
+LK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ag
 ag
 ES
@@ -1190,6 +1962,7 @@ ES
 ES
 ES
 ES
+<<<<<<< HEAD
 aK
 ES
 ES
@@ -1197,6 +1970,15 @@ Oz
 Vu
 Vu
 Vu
+=======
+zn
+ES
+ES
+Oz
+ge
+TL
+VX
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bN
 bN
 bN
@@ -1204,6 +1986,7 @@ xf
 ib
 bN
 ES
+<<<<<<< HEAD
 UT
 Zy
 Zy
@@ -1211,6 +1994,15 @@ Zy
 (16,1,1) = {"
 Zy
 UT
+=======
+gy
+Zy
+TL
+"}
+(16,1,1) = {"
+Zy
+kj
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 bq
 KX
@@ -1220,6 +2012,7 @@ Vu
 Vu
 fa
 Vu
+<<<<<<< HEAD
 Vu
 Vu
 Vu
@@ -1232,12 +2025,27 @@ aT
 aR
 ah
 ah
+=======
+VX
+UT
+UT
+ah
+aN
+aR
+DA
+ku
+aT
+zF
+ah
+Kw
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 UT
 Zy
 "}
 (17,1,1) = {"
 Zy
 ah
+<<<<<<< HEAD
 ah
 Vu
 Vu
@@ -1251,6 +2059,21 @@ Vu
 Vu
 Vu
 Vu
+=======
+VX
+Vu
+LJ
+Vu
+Vu
+Vu
+ac
+Vu
+KX
+UT
+UT
+qE
+ge
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bN
 bN
 bN
@@ -1258,12 +2081,18 @@ bN
 bN
 OV
 ah
+<<<<<<< HEAD
 ah
 Zy
+=======
+Yc
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 "}
 (18,1,1) = {"
 Zy
+<<<<<<< HEAD
 Zy
 ah
 ah
@@ -1279,6 +2108,23 @@ Vu
 Vu
 Vu
 nI
+=======
+LK
+ah
+VX
+Vu
+ME
+Vu
+EG
+Vu
+Vu
+Vu
+qE
+Zy
+ah
+LJ
+Oe
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 aT
 ku
 ku
@@ -1290,11 +2136,19 @@ Zy
 Zy
 "}
 (19,1,1) = {"
+<<<<<<< HEAD
 Zy
 Zy
 UT
 ag
 aK
+=======
+fI
+Zy
+UT
+ag
+zn
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bN
 bN
 Ax
@@ -1302,7 +2156,11 @@ Ax
 Ax
 au
 ax
+<<<<<<< HEAD
 Vu
+=======
+ah
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Vu
 bN
 bN
@@ -1317,9 +2175,15 @@ UT
 Zy
 "}
 (20,1,1) = {"
+<<<<<<< HEAD
 Zy
 Zy
 ah
+=======
+TL
+Zy
+VX
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bm
 cK
 zC
@@ -1347,20 +2211,35 @@ Zy
 Zy
 Zy
 UT
+<<<<<<< HEAD
 ah
 bm
 Yy
 bN
 bE
 bE
+=======
+DR
+aa
+Yy
+bN
+bE
+Fa
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bE
 bE
 Lz
 fa
 oc
+<<<<<<< HEAD
 aK
 bm
 cK
+=======
+zn
+bm
+ad
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 bm
 bN
 lj
@@ -1373,8 +2252,13 @@ Zy
 (22,1,1) = {"
 Zy
 Zy
+<<<<<<< HEAD
 Zy
 ah
+=======
+fI
+ge
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ah
 eD
 bN
@@ -1393,16 +2277,26 @@ bN
 Fb
 ah
 UT
+<<<<<<< HEAD
 Zy
+=======
+fI
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 "}
 (23,1,1) = {"
 Zy
 Zy
+<<<<<<< HEAD
 Zy
 Zy
 UT
+=======
+TL
+Zy
+CV
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 ES
 ES
@@ -1419,17 +2313,26 @@ ES
 ES
 ah
 ah
+<<<<<<< HEAD
 UT
+=======
+CV
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
 "}
 (24,1,1) = {"
+<<<<<<< HEAD
+=======
+TL
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
 Zy
 Zy
+<<<<<<< HEAD
 Zy
 ag
 ah
@@ -1439,11 +2342,25 @@ Zy
 Zy
 UT
 ah
+=======
+lQ
+ah
+Zy
+Zy
+TL
+oJ
+UT
+VX
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ES
 aQ
 UT
 Zy
+<<<<<<< HEAD
 UT
+=======
+CV
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
@@ -1460,14 +2377,22 @@ Zy
 Zy
 UT
 UT
+<<<<<<< HEAD
 Zy
+=======
+LK
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy
 Zy
 UT
 ag
+<<<<<<< HEAD
 ah
+=======
+VX
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 Zy
 Zy
 Zy

@@ -11,13 +11,18 @@
 
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
-	desc = "An interface between crew and the cryogenic storage oversight systems."
+	desc = "An interface between colonists and the cryogenic storage oversight systems."
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "cellconsole"
 	light_power = 1.5
 	light_color = COLOR_LIGHTING_BLUE_MACHINERY
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/cryopodcontrol
 	density = FALSE
+=======
+	circuit = /obj/item/circuitboard/cryopodcontrol
+	density = 0
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	interact_offline = 1
 	var/mode = null
 
@@ -32,15 +37,32 @@
 
 /obj/machinery/computer/cryopod/robot
 	name = "robotic storage console"
-	desc = "An interface between crew and the robotic storage systems"
+	desc = "An interface between crew and the robotic storage systems."
 	icon = 'icons/obj/robot_storage.dmi'
 	icon_state = "console"
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/robotstoragecontrol
+=======
+	circuit = /obj/item/circuitboard/robotstoragecontrol
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	storage_type = "cyborgs"
 	storage_name = "Robotic Storage Control"
 	allow_items = 0
 
+<<<<<<< HEAD
+=======
+/obj/machinery/computer/cryopod/elevator
+	name = "elevator oversight console"
+	desc = "An interface between crew and the elevator storage systems."
+	storage_name = "Elevator Storage Control"
+
+/obj/machinery/computer/cryopod/dormitory
+	name = "dormitory oversight console"
+	desc = "An interface between crew and the dorms storage systems."
+	storage_name = "Dorms Storage Control"
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -125,6 +147,7 @@
 	src.updateUsrDialog()
 	return
 
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/cryopodcontrol
 	name = "Circuit board (Cryogenic Oversight Console)"
 	build_path = /obj/machinery/computer/cryopod
@@ -132,6 +155,15 @@
 
 /obj/item/electronics/circuitboard/robotstoragecontrol
 	name = "Circuit board (Robotic Storage Console)"
+=======
+/obj/item/circuitboard/cryopodcontrol
+	build_name = "cryogenic oversight console"
+	build_path = /obj/machinery/computer/cryopod
+	origin_tech = list(TECH_DATA = 3)
+
+/obj/item/circuitboard/robotstoragecontrol
+	build_name = "robotic storage console"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	build_path = /obj/machinery/computer/cryopod/robot
 	origin_tech = list(TECH_DATA = 3)
 
@@ -169,6 +201,7 @@
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
 	var/applies_stasis = 1
+	var/cryo_announcement = TRUE
 
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
@@ -182,7 +215,11 @@
 		/obj/item/clothing/suit,
 		/obj/item/clothing/shoes/magboots,
 		/obj/item/blueprints,
+<<<<<<< HEAD
 		/obj/item/clothing/head/space,
+=======
+		/obj/item/clothing/head/helmet/space,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		/obj/item/storage/internal
 	)
 
@@ -195,8 +232,43 @@
 	on_store_name = "Robotic Storage Oversight"
 	on_enter_occupant_message = "The storage unit broadcasts a sleep signal to you. Your systems start to shut down, and you enter low-power mode."
 	allow_occupant_types = list(/mob/living/silicon/robot)
-	disallow_occupant_types = list(/mob/living/silicon/robot/drone)
+	disallow_occupant_types = list(/mob/living/carbon/human)
 	applies_stasis = 0
+	time_till_despawn = 600 //1 minute. We want to be much faster then normal cryo
+
+/obj/machinery/cryopod/elevator
+	name = "Elevator to the Lower Colony"
+	desc = "An elevator that takes you to the lower colony districts. You do have an apartment down there, don't you?"
+	icon = 'icons/obj/doors/Doorhatchele.dmi'
+	icon_state = "door_closed"
+	base_icon_state = "door_closed"
+	occupied_icon_state = "door_closed"
+	on_store_message = "has taken the elevator down to the lower colony districts."
+	on_store_name = "Residential Oversight"
+	on_enter_occupant_message = "The elevator closes behind you, the lift ready to take you below shortly."
+	opacity = 1
+
+	time_till_despawn = 600 //1 minute. We want to be much faster then normal cryo, since waiting in an elevator for half an hour is a special kind of hell.
+
+	allow_occupant_types = list(/mob/living/silicon/robot,/mob/living/carbon/human)
+	disallow_occupant_types = list(/mob/living/silicon/robot) //Needs to be done via the robotic storage as that does more fancy despawning
+
+/obj/machinery/cryopod/dormitory
+	name = "Long Sleep Bed"
+	desc = "A bed for a long term sleep. (Use this to log out like a cryopod)"
+	icon = 'icons/obj/furniture.dmi'
+	icon_state = "bed"
+	base_icon_state = "bed"
+	occupied_icon_state = "bed"
+	on_store_message = null
+	on_store_name = null
+	on_enter_occupant_message = "You slip into the warm sheets and prepare for a long rest."
+	cryo_announcement = FALSE
+
+	time_till_despawn = 600 //1 minute. Quick log outs because of how it looks
+
+	allow_occupant_types = list(/mob/living/silicon/robot,/mob/living/carbon/human)
+	disallow_occupant_types = list(/mob/living/silicon/robot) //Needs to be done via the robotic storage as that does more fancy despawning
 
 /obj/machinery/cryopod/New()
 	announce = new /obj/item/device/radio/intercom(src)
@@ -336,17 +408,67 @@
 			else
 				W.forceMove(src.loc)
 
+<<<<<<< HEAD
+=======
+	//Update any existing objectives involving this mob.
+	for(var/datum/objective/O in all_objectives)
+		// We don't want revs to get objectives that aren't for heads of staff. Letting
+		// them win or lose based on cryo is silly so we remove the objective.
+		if(O.target == occupant.mind)
+			if(O.owner && O.owner.current)
+				to_chat(O.owner.current, "<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
+			qdel(O)
+
+	//Same for contract-based objectives.
+	for(var/datum/antag_contract/contract in GLOB.excel_antag_contracts)
+		contract.on_mob_despawned(occupant.mind)
+
+
+	//Handle job slot/tater cleanup.
+	var/job = occupant.mind.assigned_role
+
+	SSjob.FreeRole(job)
+
+	clear_antagonist(occupant.mind)
+
+	// Delete them from datacore.
+
+	if(PDA_Manifest.len)
+		PDA_Manifest.Cut()
+	for(var/datum/data/record/R in data_core.medical)
+		if ((R.fields["name"] == occupant.real_name))
+			qdel(R)
+	for(var/datum/data/record/T in data_core.security)
+		if ((T.fields["name"] == occupant.real_name))
+			qdel(T)
+	for(var/datum/data/record/G in data_core.general)
+		if ((G.fields["name"] == occupant.real_name))
+			qdel(G)
+
+	icon_state = base_icon_state
+
+	//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
+
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	//Make an announcement and log the person entering storage.
 	control_computer.frozen_crew += "[occupant.real_name]" + "[occupant.mind ? ", [occupant.mind.assigned_role]" : ""]" + " - [stationtime2text()]"
 	control_computer._admin_logs += "[key_name(occupant)]" + "[occupant.mind ? ", ([occupant.mind.assigned_role])" : ""]" + " at [stationtime2text()]"
 	log_and_message_admins("[key_name(occupant)]" + "[occupant.mind ? " ([occupant.mind.assigned_role])" : ""]" + " entered cryostorage.")
+<<<<<<< HEAD
 
 	announce.autosay("[occupant.real_name]" + "[occupant.mind ? ", [occupant.mind.assigned_role]" : ""]" + ", [on_store_message]", "[on_store_name]")
+=======
+
+	if(cryo_announcement)
+		announce.autosay("[occupant.real_name]" + "[occupant.mind ? ", [occupant.mind.assigned_role]" : ""]" + ", [on_store_message]", "[on_store_name]")
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [occupant.real_name] into storage.</span>")
 
 	//When the occupant is put into storage, their respawn time is reduced.
 	//This check exists for the benefit of people who get put into cryostorage while SSD and come back later
-	if (occupant.in_perfect_health())
+	if (occupant.in_good_health())
 		if (occupant.mind && occupant.mind.key)
 
 			//Whoever inhabited this body is long gone, we need some black magic to find where and who they are now
@@ -360,8 +482,25 @@
 				//Going safely to cryo will allow the patient to respawn more quickly
 				M.set_respawn_bonus("CRYOSLEEP", CRYOPOD_SPAWN_BONUS)
 
+<<<<<<< HEAD
 	// This despawn is not a gib() in this sense, it is used to remove objectives tied on these despawned mobs in cryos
 	occupant.despawn()
+=======
+	//This should guarantee that ghosts don't spawn.
+	occupant.ckey = null
+
+	// Remove the mob's record.
+	var/datum/computer_file/report/crew_record/record
+	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records) // loop through the records
+		if(occupant.mind.name == CR.get_name()) // Check the mind's name to the record's name
+			record = CR
+			break
+
+	record?.Destroy() // Delete the crew record
+
+	// Delete the mob.
+	qdel(occupant)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	set_occupant(null)
 
 /obj/machinery/cryopod/affect_grab(var/mob/user, var/mob/target)
@@ -423,7 +562,11 @@
 	set name = "Eject Pod"
 	set category = "Object"
 	set src in oview(1)
+<<<<<<< HEAD
 	if(!usr) // when called from preferences_spawnpoints.dm there is no usr since it is called indirectly. If there is no occupant and usr something really bad has happened here so just keep them in the pod - Hopek
+=======
+	if(!usr) //when called from preferences_spawnpoints.dm there is no usr since it is called indirectly. If there is no occupant and usr something really bad has happened here so just keep them in the pod - Hopek
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!occupant)
 			return
 		usr = occupant
@@ -441,8 +584,14 @@
 		items -= announce
 
 	for(var/obj/item/W in items)
+<<<<<<< HEAD
 		W.forceMove(get_turf(src))
 		occupant.equip_to_appropriate_slot(W) // Items are now ejected. Tries to put them items on the occupant so they don't leave them behind
+=======
+		if (!istype(W, /obj/item/device/radio/intercom)) //Stops people from eating intercoms
+			W.forceMove(get_turf(src))
+			occupant.equip_to_appropriate_slot(W) // Items are now ejected. Tries to put them items on the occupant so they don't leave them behind
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	src.go_out()
 	add_fingerprint(usr)
@@ -496,12 +645,14 @@
 
 	set_occupant(null)
 
-	spawn(30)
-		state("Please remember to check inside the cryopod if any belongings are missing.")
-		playsound(loc, "robot_talk_light", 100, 0, 0)
+	addtimer(CALLBACK(src, .proc/seeyalater), 300)
+
+/obj/machinery/cryopod/proc/seeyalater()
+	state("Please remember to check inside if any belongings are missing.")
+	playsound(loc, "robot_talk_light", 100, 0, 0)
 
 //Notifications is set false when someone spawns in here
-/obj/machinery/cryopod/proc/set_occupant(var/mob/living/new_occupant, var/notifications = TRUE)
+/obj/machinery/cryopod/proc/set_occupant(mob/living/new_occupant, notifications = TRUE)
 	name = initial(name)
 	if(new_occupant)
 		occupant = new_occupant
@@ -514,16 +665,36 @@
 		time_entered = world.time
 		if(ishuman(occupant) && applies_stasis)
 			var/mob/living/carbon/human/H = occupant
+<<<<<<< HEAD
 			H.EnterStasis()
+=======
+			H.in_stasis = 1
+			if(H.mind && H.mind.initial_account)
+				var/datum/money_account/A = H.mind.initial_account
+				if(A.employer && A.wage_original) // Dicrease personnel budget of our department, if have one
+					var/datum/money_account/EA = department_accounts[A.employer]
+					var/datum/department/D = GLOB.all_departments[A.employer]
+					if(EA && D) // Don't bother if department have no employer
+						D.budget_personnel -= A.wage_original
+						if(!EA.wage_manual) // Update department account's wage if it's not in manual mode
+							EA.wage = D.get_total_budget()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		new_occupant.forceMove(src)
 
 		if (notifications)
 			to_chat(occupant, SPAN_NOTICE("[on_enter_occupant_message]"))
 			to_chat(occupant, SPAN_NOTICE("<b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b>"))
+<<<<<<< HEAD
 		if (occupant.in_perfect_health() && notifications)
 			to_chat(occupant, SPAN_NOTICE("<b>Your respawn time will be reduced by 20 minutes, allowing you to respawn as a crewmember much more quickly.</b>"))
 		else if (notifications)
 			to_chat(occupant, SPAN_DANGER("<b>Because you are not in perfect health, going into cryosleep will not reduce your crew respawn time. \
+=======
+		if (occupant.in_good_health() && notifications)
+			to_chat(occupant, SPAN_NOTICE("<b>Your respawn time will be reduced by 20 minutes, allowing you to respawn as a crewmember much more quickly.</b>"))
+		else if (notifications)
+			to_chat(occupant, SPAN_DANGER("<b>Because you are not in good health, going into cryosleep will not reduce your crew respawn time. \
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			If you wish to respawn as a different crewmember, you should treat your injuries at medical first</b>"))
 
 	else

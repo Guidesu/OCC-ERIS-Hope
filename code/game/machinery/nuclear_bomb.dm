@@ -1,8 +1,8 @@
 var/bomb_set
 
 /obj/machinery/nuclearbomb
-	name = "\improper Nuclear Fission Explosive"
-	desc = "Uh oh. RUN!!!!"
+	name = "\improper nuclear fission explosive"
+	desc = "This is probably dangerous."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nuclearbomb0"
 	density = TRUE
@@ -71,18 +71,30 @@ var/bomb_set
 				if (src.auth)
 					if (panel_open == 0)
 						panel_open = 1
+<<<<<<< HEAD
 						add_overlays(image(icon, "npanel_open"))
 						to_chat(user, SPAN_NOTICE("You unscrew the control panel of [src]."))
 					else
 						panel_open = 0
 						remove_overlays(image(icon, "npanel_open"))
+=======
+						add_overlay(image(icon, "npanel_open"))
+						to_chat(user, SPAN_NOTICE("You unscrew the control panel of [src]."))
+					else
+						panel_open = 0
+						cut_overlay(image(icon, "npanel_open"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						to_chat(user, SPAN_NOTICE("You screw the control panel of [src] back on."))
 				else
 					if (panel_open == 0)
 						to_chat(user, SPAN_NOTICE("\The [src] emits a buzzing noise, the panel staying locked in."))
 					if (panel_open == 1)
 						panel_open = 0
+<<<<<<< HEAD
 						remove_overlays(image(icon, "npanel_open"))
+=======
+						cut_overlay(image(icon, "npanel_open"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						to_chat(user, SPAN_NOTICE("You screw the control panel of \the [src] back on."))
 						playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 					FLICK("nuclearbombc", src)
@@ -148,7 +160,7 @@ var/bomb_set
 		if (panel_open)
 			wires.Interact(user)
 		else
-			ui_interact(user)
+			nano_ui_interact(user)
 	else if (deployable)
 		if(removal_stage < 5)
 			src.anchored = TRUE
@@ -161,7 +173,7 @@ var/bomb_set
 			update_icon()
 	return
 
-/obj/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/nuclearbomb/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["hacking"] = 0
 	data["auth"] = is_auth(user)
@@ -324,8 +336,11 @@ var/bomb_set
 	bomb_set--
 	timing = 0
 	timeleft = CLAMP(timeleft, 120, 600)
+<<<<<<< HEAD
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.maps_data.security_state)
 	security_state.set_security_level(previous_level)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	update_icon()
 
 /obj/machinery/nuclearbomb/ex_act(severity)

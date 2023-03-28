@@ -8,7 +8,11 @@
 
 	if(!check_HUDdatum())//check client prefs
 		log_debug("[H] try check a HUD, but HUDdatums not have \"[H.client.prefs.UI_style]!\"")
+<<<<<<< HEAD
 		to_chat(H, "Some problem hase accure, use default HUD type")
+=======
+		to_chat(H, "Some problem has occurred, use default HUD type")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		H.defaultHUD = "ErisStyle"
 		recreate_flag = TRUE
 	else if (H.client.prefs.UI_style != H.defaultHUD)
@@ -45,8 +49,13 @@
 /mob/living/carbon/human/check_HUDdatum()//correct a datum?
 	var/mob/living/carbon/human/H = src
 
+<<<<<<< HEAD
 	if (H.client.prefs.UI_style && !(H.client.prefs.UI_style == ""))
 		if(GLOB.HUDdatums.Find(H.client.prefs.UI_style))
+=======
+	if (H.client.prefs.UI_style && !(H.client.prefs.UI_style == "")) //если у клиента моба прописан стиль\тип ХУДа
+		if(GLOB.HUDdatums.Find(H.client.prefs.UI_style))//Если существует такой тип ХУДА
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return TRUE
 
 	return FALSE
@@ -148,7 +157,11 @@
 	for (var/gear_slot in species.hud.gear)
 		if (!HUDdatum.slot_data.Find(gear_slot))
 			log_debug("[usr] try take inventory data for [gear_slot], but HUDdatum not have it!")
+<<<<<<< HEAD
 			to_chat(src, "Sorry, but something wrong witch creating a inventory slots, we recomendend chance a HUD type or call admins")
+=======
+			to_chat(H, "Sorry, but something went wrong with creating inventory slots, we recommend changing HUD type or call admins")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 		else
 			var/HUDtype
@@ -191,7 +204,10 @@
 /mob/living/carbon/human/create_HUDfrippery()
 	var/mob/living/carbon/human/H = src
 	var/datum/hud/human/HUDdatum = GLOB.HUDdatums[H.defaultHUD]
+<<<<<<< HEAD
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	for (var/list/whistle in HUDdatum.HUDfrippery)
 		var/obj/screen/frippery/F = new (whistle["icon_state"],whistle["loc"],H)

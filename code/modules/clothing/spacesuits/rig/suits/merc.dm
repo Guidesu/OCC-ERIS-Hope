@@ -5,21 +5,33 @@
 
 /obj/item/rig/merc
 	name = "crimson hardsuit control module"
-	desc = "A blood-red hardsuit featuring some fairly illegal technology."
+	desc = "A blood-red hardsuit featuring some fairly advanced technology."
 	icon_state = "merc_rig"
 	suit_type = "crimson hardsuit"
+<<<<<<< HEAD
 	armor = list(
 		melee = 50,
 		bullet = 50,
+=======
+	armor_list = list(
+		melee = 40,
+		bullet = 40,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		energy = 30,
 		bomb = 75,
 		bio = 100,
 		rad = 50
 	)
+<<<<<<< HEAD
 	slowdown = 1
+=======
+	slowdown = 0.3
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	drain = 3.5
 	offline_slowdown = 3
 	offline_vision_restriction = 1
+	stiffness = 0
+	obscuration = 0
 
 	helm_type = /obj/item/clothing/head/space/rig/merc
 
@@ -31,8 +43,9 @@
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/power_sink,
 		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/fabricator/energy_net
+		/obj/item/rig_module/modular_injector/combat,
+		/obj/item/rig_module/fabricator/energy_net,
+		/obj/item/rig_module/storage
 		)
 
 //Has most of the modules removed

@@ -172,9 +172,9 @@
 	alpha = 255
 
 	switch(dir)
-		if(SOUTH || NORTH)
+		if(SOUTH, NORTH)
 			initialize_directions = SOUTH|NORTH
-		if(EAST || WEST)
+		if(EAST, WEST)
 			initialize_directions = EAST|WEST
 		if(NORTHEAST)
 			initialize_directions = NORTH|EAST
@@ -261,9 +261,15 @@
 				qdel(meter)
 		qdel(src)
 	else if(node1 && node2)
+<<<<<<< HEAD
 		add_overlays(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]"))
 	else
 		add_overlays(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]exposed[node1?1:0][node2?1:0][icon_connect_type]"))
+=======
+		add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]"))
+	else
+		add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]exposed[node1?1:0][node2?1:0][icon_connect_type]"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/atmospherics/pipe/simple/update_underlays()
 	return
@@ -511,8 +517,13 @@
 		qdel(src)
 	else
 		cut_overlays()
+<<<<<<< HEAD
 		add_overlays(icon_manager.get_atmos_icon("manifold", , pipe_color, "core" + icon_connect_type))
 		add_overlays(icon_manager.get_atmos_icon("manifold", , , "clamps" + icon_connect_type))
+=======
+		add_overlay(icon_manager.get_atmos_icon("manifold", , pipe_color, "core" + icon_connect_type))
+		add_overlay(icon_manager.get_atmos_icon("manifold", , , "clamps" + icon_connect_type))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		underlays.Cut()
 
 		var/turf/T = get_turf(src)
@@ -759,8 +770,13 @@
 		qdel(src)
 	else
 		cut_overlays()
+<<<<<<< HEAD
 		add_overlays(icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type))
 		add_overlays(icon_manager.get_atmos_icon("manifold", , , "clamps_4way" + icon_connect_type))
+=======
+		add_overlay(icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type))
+		add_overlay(icon_manager.get_atmos_icon("manifold", , , "clamps_4way" + icon_connect_type))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		underlays.Cut()
 
 		/*
@@ -979,7 +995,11 @@
 	alpha = 255
 
 	cut_overlays()
+<<<<<<< HEAD
 	add_overlays(icon_manager.get_atmos_icon("pipe", , pipe_color, "cap"))
+=======
+	add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "cap"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/machinery/atmospherics/pipe/cap/atmos_init()
 	for(var/obj/machinery/atmospherics/target in get_step(src, dir))
@@ -1164,8 +1184,14 @@
 	..()
 	icon_state = "co2"
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/tank/phoron
 	name = "Pressure Tank (Phoron)"
+=======
+/obj/machinery/atmospherics/pipe/tank/plasma
+	name = "Pressure Tank (Plasma)"
+	description_antag = "Will blind people if they do not wear face-covering gear"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "plasma_map"
 
 /obj/machinery/atmospherics/pipe/tank/phoron/New()
@@ -1288,7 +1314,11 @@
 	alpha = 255
 
 	cut_overlays()
+<<<<<<< HEAD
 	add_overlays(icon_manager.get_atmos_icon("pipe", , pipe_color, "universal"))
+=======
+	add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "universal"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays.Cut()
 
 	if (node1)
@@ -1325,7 +1355,11 @@
 	alpha = 255
 
 	cut_overlays()
+<<<<<<< HEAD
 	add_overlays(icon_manager.get_atmos_icon("pipe", , pipe_color, "universal"))
+=======
+	add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "universal"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	underlays.Cut()
 
 	if (node1)

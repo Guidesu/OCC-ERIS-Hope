@@ -75,7 +75,11 @@
 				playsound(src.loc, 'sound/effects/PEN_Ball_Point_Pen_Circling_01_mono.ogg', 50, 1)
 	return
 
+<<<<<<< HEAD
 /obj/structure/bigDelivery/on_update_icon()
+=======
+/obj/structure/bigDelivery/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if(nameset || examtext)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
@@ -89,7 +93,11 @@
 				label_x = rand(-8, 6)
 			I.pixel_x = label_x
 			I.pixel_y = -3
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(src.sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		if(icon_state == "deliverycloset")
@@ -102,7 +110,11 @@
 				tag_x = rand(-8, 6)
 			I.pixel_x = tag_x
 			I.pixel_y = -3
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/structure/bigDelivery/examine(mob/user)
 	if(..(user, 4))
@@ -186,13 +198,21 @@
 				playsound(src.loc, 'sound/effects/PEN_Ball_Point_Pen_Circling_01_mono.ogg', 50, 1)
 	return
 
+<<<<<<< HEAD
 /obj/item/smallDelivery/on_update_icon()
+=======
+/obj/item/smallDelivery/update_icon()
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	cut_overlays()
 	if((nameset || examtext) && icon_state != "deliverycrate1")
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
 		if(icon_state == "deliverycrate5")
 			I.pixel_y = -1
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(src.sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		switch(icon_state)
@@ -209,7 +229,11 @@
 				I.pixel_y = 3
 			if("deliverycrate5")
 				I.pixel_y = -3
+<<<<<<< HEAD
 		add_overlays(I)
+=======
+		add_overlay(I)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/smallDelivery/examine(mob/user)
 	if(..(user, 4))
@@ -221,6 +245,7 @@
 
 /obj/item/packageWrap
 	name = "package wrapper"
+	desc = "A roll of material for wrapping packages."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = ITEM_SIZE_NORMAL
@@ -305,10 +330,13 @@
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
 		to_chat(user, "\blue The object you are trying to wrap is unsuitable for the sorting machinery!")
+<<<<<<< HEAD
 	if (src.amount <= 0)
 		new /obj/item/c_tube( src.loc )
 		qdel(src)
 		return
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	return
 
 /obj/item/packageWrap/examine(mob/user)
@@ -375,9 +403,14 @@
 	openwindow(usr)
 
 /obj/machinery/disposal/deliveryChute
-	name = "Delivery chute"
+	name = "delivery chute"
 	desc = "A chute for big and small packages alike!"
+<<<<<<< HEAD
 	density = TRUE
+=======
+	var/sound_on = TRUE
+	density = 1
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon_state = "intake"
 	layer = BELOW_OBJ_LAYER //So that things being ejected are visible
 	var/c_mode = 0
@@ -417,10 +450,11 @@
 	FLICK("intake-closing", src)
 	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
 												// travels through the pipes.
-	air_contents = new()		// new empty gas resv.
+	//air_contents = new()		// new empty gas resv.
 
 	sleep(10)
-	playsound(src, 'sound/machines/disposalflush.ogg', 50, 0, 0)
+	if(sound_on)
+		playsound(src, 'sound/machines/disposalflush.ogg', 50, 0, 0)
 	sleep(5) // wait for animation to finish
 
 	H.init(src)	// copy the contents of disposer to holder
@@ -439,12 +473,23 @@
 
 /obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
 
-	var/list/usable_qualities = list(QUALITY_SCREW_DRIVING)
+	var/list/usable_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_PULSING)
 	if(c_mode == 1)
 		usable_qualities.Add(QUALITY_WELDING)
 
 	var/tool_type = I.get_tool_type(user, usable_qualities, src)
 	switch(tool_type)
+
+		if(QUALITY_PULSING)
+			if(contents.len > 0)
+				to_chat(user, "Eject the items first!")
+				return
+			if(!sound_on)
+				to_chat(user, "You turn on the chute alarm sound.")
+				sound_on = TRUE
+			if(sound_on)
+				to_chat(user, "You turn off the chute alarm sound.")
+				sound_on = FALSE
 
 		if(QUALITY_SCREW_DRIVING)
 			if(contents.len > 0)

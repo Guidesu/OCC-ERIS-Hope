@@ -1,5 +1,8 @@
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'spacestation13' with the name of your choice
-SERVERNAME CEV Eris: Endless Horizon
+SERVERNAME Liberty Landing
+
+## Hub visiblity - uncomment to make visible on the HUB
+#HUB_VISIBLE
 
 ## Alert levels
 ALERT_GREEN All threats to the ship have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
@@ -102,7 +105,7 @@ PROBABILITY CULT 1
 PROBABILITY EXTEND-A-TRAITORMONGOUS 6
 
 ## Enable asteroid tunnel/cave generation. Will behave strangely if turned off with a map that expects it on.
-#GENERATE_ASTEROID
+GENERATE_ASTEROID
 
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
@@ -127,6 +130,12 @@ ALLOW_ADMIN_OOCCOLOR
 
 ## allow players to initiate a restart vote
 #ALLOW_VOTE_RESTART
+
+## set a restart time in seconds after the server starts
+#AUTOMATIC_RESTART_TIME 21600
+
+## automatic restart delay from round end to actual restart in seconds
+#AUTOMATIC_RESTART_DELAY 900
 
 ## allow players to initate a mode-change start
 #ALLOW_VOTE_MODE
@@ -311,9 +320,21 @@ JOIN_UNASSIGNED
 ## Time in minutes before empty server will restart	
 EMPTY_SERVER_RESTART_TIME 30
 
+<<<<<<< HEAD
 ## EMOJI ###
 ## Comment this out if you want to disable emojis
 EMOJIS
+=======
+## If the server only accepts whitelisted connections
+## 0 Disables Border Control
+## 1 Puts Border Control into 'learning mode' and will have it automatically whitelist new connections
+## 2 Puts Border Control into 'enforcing mode' and will have it deny connections that are not already whitelisted.
+BORDER_CONTROL 0
+
+## EMOJI ###
+## Comment this out if you want to disable emojis
+##EMOJIS
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 ## MOB AI SLEEPING ###
 ## Uncomment this out if you want to disable mob AI sleeping 
@@ -322,6 +343,14 @@ EMOJIS
 WEBHOOK_URL http://localhost:44303/webhook/en
 WEBHOOK_KEY testkey
 
+<<<<<<< HEAD
+=======
+## Text-to-speech stuff ##
+#TTS_BEARER Bearer *lotsa symbols*
+#TTS_ENABLED 1
+#TTS_CACHE 1
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 ###### IP Reputation Checking
 # Enable/disable IP reputation checking (present/nonpresent)
 #IP_REPUTATION
@@ -351,6 +380,7 @@ IPR_MINIMUM_AGE 5
 # Enable/disable 'panic bunker' (prevents new players from joining if they've never been seen before in the DB)
 #PANIC_BUNKER
 
+<<<<<<< HEAD
 # Set start location for CEV Eris uncomment ONE only.
 RANDOM_START
 #ASTEROID_START
@@ -359,3 +389,5 @@ RANDOM_START
 
 # Generate loot data.
 #GENERATE_LOOT_DATA
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

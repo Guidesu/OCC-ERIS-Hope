@@ -10,6 +10,7 @@
 	throwforce = WEAPON_FORCE_NORMAL
 	throw_speed = 1
 	throw_range = 7
+<<<<<<< HEAD
 	w_class = ITEM_SIZE_BULKY
 	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = 14 //enough to hold all starting contents
@@ -20,6 +21,14 @@
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_TOOLBOX
 	bad_type = /obj/item/storage/toolbox
+=======
+	w_class = ITEM_SIZE_BULKY //Cant normally bag this
+	max_w_class = ITEM_SIZE_NORMAL //We can fit anything smaller then us
+	max_storage_space = 18 //enough to hold all starting contents and then some
+	origin_tech = list(TECH_COMBAT = 1)
+	attack_verb = list("robusted")
+	hitsound = 'sound/weapons/smash.ogg'
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"
@@ -30,13 +39,25 @@
 /obj/item/storage/toolbox/emergency/populate_contents()
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/extinguisher/mini(src)
+<<<<<<< HEAD
 	if(prob(40))
 		new /obj/item/device/lighting/toggleable/flashlight(src)
+=======
+	if(prob(50))
+		new /obj/item/device/lighting/toggleable/flashlight(src)
+	else if(prob(10)) //Rare!
+		new /obj/item/gun/projectile/boltgun/flare_gun(src)
+		new /obj/item/ammo_casing/flare(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		new /obj/item/device/lighting/glowstick/flare(src)
 	if (prob(40))
 		new /obj/item/tool/tape_roll(src)
+<<<<<<< HEAD
 	new /obj/item/device/radio/color(src)		//Eclipse edit
+=======
+	new /obj/item/device/radio(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /obj/item/storage/toolbox/mechanical
 	name = "mechanical toolbox"
@@ -89,6 +110,7 @@
 	item_state = "toolbox_syndi"
 	origin_tech = list(TECH_COMBAT = 1, TECH_COVERT = 1)
 	force = WEAPON_FORCE_DANGEROUS
+<<<<<<< HEAD
 	spawn_blacklisted = TRUE
 
 /obj/item/storage/toolbox/syndicate/populate_contents()
@@ -110,3 +132,25 @@
 	new /obj/item/cell/medium/super(src)
 	new /obj/item/cell/small/super(src)
 
+=======
+	max_storage_space = 24 //holds more then normal do to being antag/bigger
+
+/obj/item/storage/toolbox/syndicate/populate_contents()
+	var/obj/item/tool/cell_tool
+
+	new /obj/item/clothing/gloves/insulated(src)
+
+	cell_tool = new /obj/item/tool/screwdriver/combi_driver(src)
+	qdel(cell_tool.cell)
+	cell_tool.cell = new /obj/item/cell/small/super(cell_tool)
+
+	cell_tool = new /obj/item/tool/crowbar/pneumatic(src)
+	qdel(cell_tool.cell)
+	cell_tool.cell = new /obj/item/cell/medium/super(cell_tool)
+
+	new /obj/item/tool/weldingtool/advanced(src)
+	new /obj/item/tool/wirecutters/armature(src)
+	new /obj/item/tool/multitool(src)
+	new /obj/item/cell/medium/super(src)
+	new /obj/item/cell/small/super(src)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

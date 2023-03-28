@@ -1,5 +1,6 @@
 /obj/structure/door_assembly
 	name = "airlock assembly"
+	desc = "The frame for an airlock. It's clearly inoperable."
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_as_0"
 	anchored = FALSE
@@ -8,7 +9,11 @@
 	var/state = 0
 	var/base_icon_state = ""
 	var/base_name = "Airlock"
+<<<<<<< HEAD
 	var/obj/item/electronics/airlock/electronics
+=======
+	var/obj/item/airlock_electronics/electronics = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/airlock_type = "" //the type path of the airlock once completed
 	var/glass_type = "/glass"
 	var/glass = 0 // 0 = glass can be installed. -1 = glass can't be installed. 1 = glass is already installed. Text = mineral plating is installed instead.
@@ -37,10 +42,15 @@
 			if(state == 0)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
 					if(anchored)
-						user.visible_message("[user] begins unsecuring the airlock assembly from the floor.", "You starts unsecuring the airlock assembly from the floor.")
+						user.visible_message("[user] begins unbolting the airlock assembly from the floor.", "You start unbolting the airlock assembly from the floor.")
 					else
+<<<<<<< HEAD
 						user.visible_message("[user] begins securing the airlock assembly to the floor.", "You starts securing the airlock assembly to the floor.")
 					to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]secured the airlock assembly!"))
+=======
+						user.visible_message("[user] begins bolting the airlock assembly to the floor.", "You start bolting the airlock assembly to the floor.")
+					to_chat(user, SPAN_NOTICE("You [anchored? "un" : ""]bolted the airlock assembly!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					anchored = !anchored
 			update_state()
 			return
@@ -59,7 +69,11 @@
 					glass = 0
 			else if(!anchored)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, tool_type, FAILCHANCE_NORMAL, required_stat = STAT_MEC))
+<<<<<<< HEAD
 					to_chat(user, SPAN_NOTICE("You dissasembled the airlock assembly!"))
+=======
+					to_chat(user, SPAN_NOTICE("You disassembled the airlock assembly!"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					new /obj/item/stack/material/steel(src.loc, 8)
 					qdel (src)
 			update_state()
@@ -115,7 +129,11 @@
 				src.state = 1
 				to_chat(user, SPAN_NOTICE("You wire the airlock."))
 
+<<<<<<< HEAD
 	else if(istype(I, /obj/item/electronics/airlock) && state == 1)
+=======
+	else if(istype(I, /obj/item/airlock_electronics) && state == 1)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
@@ -142,7 +160,11 @@
 							glass = 1
 				else if(material_name)
 					// Ugly hack, will suffice for now. Need to fix it upstream as well, may rewrite mineral walls. ~Z
+<<<<<<< HEAD
 					if(!(material_name in list(MATERIAL_GOLD, MATERIAL_SILVER, MATERIAL_DIAMOND, MATERIAL_URANIUM, MATERIAL_PHORON, MATERIAL_SANDSTONE)))
+=======
+					if(!(material_name in list(MATERIAL_GOLD, MATERIAL_SILVER, MATERIAL_DIAMOND, MATERIAL_URANIUM, MATERIAL_PLASMA, MATERIAL_SANDSTONE)))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 						to_chat(user, "You cannot make an airlock out of that material.")
 						return
 					if(S.get_amount() >= 2)
@@ -198,7 +220,7 @@
 	airlock_type = "/engineering"
 
 /obj/structure/door_assembly/door_assembly_min
-	base_icon_state = "min"
+	base_icon_state = "ming"
 	base_name = "Mining Airlock"
 	glass_type = "/glass_mining"
 	airlock_type = "/mining"

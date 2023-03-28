@@ -19,8 +19,11 @@
 	var/thrust_limit = 1 //global thrust limit for all engines, 0..1
 	var/triggers_events = 1
 
+<<<<<<< HEAD
 	var/scan_range = PASSIVE_SCAN_RANGE
 	var/pulsing = FALSE
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	Crossed(var/obj/effect/overmap_event/movable/ME)
 		..()
@@ -38,6 +41,7 @@
 					if(istype(src, /obj/effect/overmap/ship))
 						ME.OE:leave(src)
 
+<<<<<<< HEAD
 /obj/effect/overmap/ship/New()
 	GLOB.ships += src
 	. = ..()
@@ -46,22 +50,30 @@
 	GLOB.ships -= src
 	. = ..()
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/effect/overmap/ship/Initialize()
 	. = ..()
 	for(var/datum/ship_engine/E in ship_engines)
 		if (E.holder.z in map_z)
 			engines |= E
+<<<<<<< HEAD
 			//testing("Engine at level [E.holder.z] linked to overmap object '[name]'.")
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/obj/machinery/computer/engines/E in GLOB.computer_list)
 		if (E.z in map_z)
 			E.linked = src
 			//testing("Engines console at level [E.z] linked to overmap object '[name]'.")
 
+<<<<<<< HEAD
 	for(var/obj/machinery/power/long_range_scanner/LRS in ship_scanners)
 		if (LRS.z in map_z)
 			//testing("Scanner at level [LRS.z] linked to overmap object '[name]'.")
 			scanners |= LRS
 
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	for(var/obj/machinery/computer/helm/H in GLOB.computer_list)
 		if (H.z in map_z)
 			nav_control = H

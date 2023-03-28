@@ -1,11 +1,16 @@
 {{for data.designs}}
 	<div class="item">
 		<div class="block" style='padding: 0px; overflow: auto'>
+<<<<<<< HEAD
 			<div class="item" style="margin: 0px; overflow: hidden">
+=======
+			<div class="item" style="margin: 0px">
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 				<div style='float: left; height: 24px; width: 24px; margin: 4px' class='statusDisplayItem'>
 					<img src='{{:value.icon}}' height=24 width=24>
 				</div>
 				<div class="itemContentWidest">{{:value.name}}</div>
+<<<<<<< HEAD
 				<div class="itemContentWidest" style="line-height: 10px;">
 					{{if value.point_cost > 0}}
 						<font size="1">
@@ -13,6 +18,11 @@
 						License point cost: {{:value.point_cost}}
 						</div>
 						</font>
+=======
+				<div class="itemContentWidest">
+					{{if value.point_cost >= 0}}
+						<font color="#808080" size="2">License point cost: {{:value.point_cost}}</font>
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 					{{/if}}
 				</div>
 			</div>
@@ -60,4 +70,8 @@
 			</b></div>
 		</div>
 	</div>
+<<<<<<< HEAD
 {{/for}}
+=======
+{{/for}}
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e

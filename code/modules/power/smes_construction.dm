@@ -8,47 +8,66 @@
 	name = "SMES coil"
 	desc = "Standard superconductive magnetic coil with average capacity and I/O rating."
 	icon = 'icons/obj/stock_parts.dmi'
+<<<<<<< HEAD
 	icon_state = "smes_coil"			// Just a few icons patched together. If someone wants to make a better icon, feel free to do so!
+=======
+	icon_state = "smes_coil"
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	w_class = ITEM_SIZE_BULKY 						// It's LARGE (backpack size)
 	matter = list(MATERIAL_STEEL = 10, MATERIAL_PLASTIC = 4, MATERIAL_GLASS = 4, MATERIAL_SILVER = 4)
 	origin_tech = list(TECH_MAGNET = 2, TECH_POWER = 3, TECH_MATERIAL = 2)
 	var/ChargeCapacity = 10000000
 	var/IOCapacity = 750000
 	rating = 2
+<<<<<<< HEAD
 	rarity_value = 30
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // 20% Charge Capacity, 60% I/O Capacity. Used for substation/outpost SMESs.
 /obj/item/stock_parts/smes_coil/weak
 	name = "basic SMES coil"
+	icon_state = "smes_coil_weak"
 	desc = "Cheaper model of standard superconductive magnetic coil. It's capacity and I/O rating are considerably lower."
 	matter = list(MATERIAL_STEEL = 6, MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 2)
 	origin_tech = list(TECH_MAGNET = 2, TECH_POWER = 2, TECH_MATERIAL = 1)
 	ChargeCapacity = 2000000
 	IOCapacity = 600000
 	rating = 1
+<<<<<<< HEAD
 	rarity_value = 10
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // 1000% Charge Capacity, 20% I/O Capacity
 /obj/item/stock_parts/smes_coil/super_capacity
 	name = "capacitance SMES coil"
+	icon_state = "smes_coil_capacitance"
 	desc = "Specialised version of standard superconductive magnetic coil. This one has significantly stronger containment field, allowing for significantly larger power storage. It's IO rating is much lower, however."
 	matter = list(MATERIAL_STEEL = 8, MATERIAL_PLASTIC = 4, MATERIAL_GLASS = 4, MATERIAL_URANIUM = 4)
 	origin_tech = list(TECH_MAGNET = 3, TECH_POWER = 4, TECH_MATERIAL = 3)
 	ChargeCapacity = 100000000
 	IOCapacity = 150000
 	rating = 3
+<<<<<<< HEAD
 	rarity_value = 50
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 // 10% Charge Capacity, 400% I/O Capacity. Technically turns SMES into large super capacitor.Ideal for shields.
 /obj/item/stock_parts/smes_coil/super_io
 	name = "transmission SMES coil"
+	icon_state = "smes_coil_transmission"
 	desc = "Specialised version of standard superconductive magnetic coil. While this one won't store almost any power, it rapidly transfers power, making it useful in systems which require large throughput."
 	matter = list(MATERIAL_STEEL = 8, MATERIAL_PLASTIC = 4, MATERIAL_GLASS = 4, MATERIAL_GOLD = 4)
 	origin_tech = list(TECH_MAGNET = 3, TECH_POWER = 4, TECH_MATERIAL = 3)
 	ChargeCapacity = 1000000
 	IOCapacity = 3000000
 	rating = 3
+<<<<<<< HEAD
 	rarity_value = 50
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 // SMES itself
@@ -61,7 +80,11 @@
 	var/grounding = 1			// Cut to quickly discharge, at cost of "minor" electrical issues in output powernet.
 	var/RCon = 1				// Cut to disable AI and remote control.
 	var/RCon_tag = "NO_TAG"		// RCON tag, change to show it on SMES Remote control console.
+<<<<<<< HEAD
 	circuit = /obj/item/electronics/circuitboard/smes
+=======
+	circuit = /obj/item/circuitboard/smes
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	charge = 0
 	should_be_mapped = 1
 
@@ -277,7 +300,11 @@
 /obj/machinery/power/smes/buildable/on_update_icon()
 	if (failing)
 		cut_overlays()
+<<<<<<< HEAD
 		add_overlays(image('icons/obj/power.dmi', "smes-crit"))
+=======
+		add_overlay(image('icons/obj/power.dmi', "smes-crit"))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	else
 		..()
 

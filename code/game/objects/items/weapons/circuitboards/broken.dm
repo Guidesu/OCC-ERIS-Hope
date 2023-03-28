@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /obj/item/electronics/circuitboard/broken
+=======
+/obj/item/circuitboard/broken
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	name = "broken electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics_smoked"

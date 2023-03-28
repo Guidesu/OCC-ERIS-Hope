@@ -2,14 +2,22 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 
 /obj/machinery/power/rad_collector
 	name = "radiation collector array"
+<<<<<<< HEAD
 	desc = "A device which uses Hawking Radiation and phoron to produce power."
+=======
+	desc = "A device which uses Hawking Radiation and plasma to produce power."
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "ca"
 	anchored = FALSE
 	density = TRUE
 	req_access = list(access_engine_equip)
 
+<<<<<<< HEAD
 	var/obj/item/tank/phoron/P = null
+=======
+	var/obj/item/tank/plasma/P = null
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/last_power = 0
 	var/last_power_new = 0
 	var/active = FALSE
@@ -48,7 +56,11 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 				SPAN_NOTICE("[user] turns [src] [active? "on" : "off"]."),
 				SPAN_NOTICE("You turn [src] [active ? "on" : "off"].")
 				)
+<<<<<<< HEAD
 			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas["phoron"]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+=======
+			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas["plasma"]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		else
 			to_chat(user, SPAN_WARNING("The controls are locked!"))
 		return
@@ -88,12 +100,20 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 		if(ABORT_CHECK)
 			return
 
+<<<<<<< HEAD
 	if(istype(I, /obj/item/tank/phoron))
+=======
+	if(istype(I, /obj/item/tank/plasma))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!anchored)
 			to_chat(user, SPAN_WARNING("[src] needs to be secured to the floor first."))
 			return
 		if(P)
+<<<<<<< HEAD
 			to_chat(user, "\red The [src] already has a phoron tank loaded.")
+=======
+			to_chat(user, SPAN_WARNING("[src] already has a plasma tank loaded."))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			return
 		user.drop_item()
 		P = I
@@ -138,7 +158,11 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 
 /obj/machinery/power/rad_collector/proc/receive_pulse(pulse_strength)
 	if(P && active)
+<<<<<<< HEAD
 		var/power_produced = P.air_contents.gas["phoron"]*pulse_strength*20
+=======
+		var/power_produced = P.air_contents.gas["plasma"]*pulse_strength*20
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		add_avail(power_produced)
 		last_power_new = power_produced
 
@@ -146,11 +170,19 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 /obj/machinery/power/rad_collector/proc/update_icons()
 	cut_overlays()
 	if(P)
+<<<<<<< HEAD
 		add_overlays("ptank")
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(active)
 		add_overlays("on")
+=======
+		add_overlay("ptank")
+	if(stat & (NOPOWER|BROKEN))
+		return
+	if(active)
+		add_overlay("on")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 
 /obj/machinery/power/rad_collector/proc/toggle_power()

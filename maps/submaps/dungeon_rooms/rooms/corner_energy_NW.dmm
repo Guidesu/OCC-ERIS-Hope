@@ -20,9 +20,17 @@
 /turf/simulated/floor/plating/under,
 /area/crawler)
 "f" = (
+<<<<<<< HEAD
 /obj/structure/catwalk,
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating/under,
+=======
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "g" = (
 /obj/structure/window/reinforced{
@@ -35,7 +43,11 @@
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
 "i" = (
+<<<<<<< HEAD
 /obj/structure/computerframe,
+=======
+/obj/random/structures/os,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/techmaint_panels,
 /area/crawler)
 "j" = (
@@ -69,11 +81,18 @@
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
 "o" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
+=======
+/obj/machinery/power/terminal,
+/obj/structure/catwalk,
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /area/crawler)
 "p" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -85,6 +104,7 @@
 /obj/crawler/crawler_wallbreaker/vertical,
 /turf/simulated/floor/bluegrid,
 /area/crawler)
+<<<<<<< HEAD
 "r" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -92,6 +112,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "s" = (
 /obj/machinery/power/smes/buildable,
 /turf/simulated/floor/tiled/techmaint_panels,
@@ -105,6 +127,7 @@
 	},
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/crawler)
+<<<<<<< HEAD
 "u" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -112,6 +135,8 @@
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "v" = (
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
@@ -127,10 +152,13 @@
 	},
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+<<<<<<< HEAD
 "y" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
+=======
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 "A" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techmaint,
@@ -145,6 +173,55 @@
 /obj/crawler/crawler_wallbreaker,
 /turf/simulated/floor/bluegrid,
 /area/crawler)
+<<<<<<< HEAD
+=======
+"D" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/lattice,
+/obj/random/powercell,
+/turf/simulated/floor/plating/under,
+/area/crawler)
+"G" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/random/powercell,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"I" = (
+/obj/machinery/power/terminal,
+/obj/structure/catwalk,
+/obj/item/tool_upgrade/augment/cell_mount,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+"N" = (
+/obj/machinery/light/floor,
+/obj/random/powercell,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"P" = (
+/obj/random/powercell,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"R" = (
+/obj/machinery/power/terminal,
+/obj/structure/catwalk,
+/obj/random/powercell,
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+"U" = (
+/obj/item/tool_upgrade/augment/cell_mount,
+/obj/random/mob/roomba/any,
+/turf/simulated/floor/tiled/derelict,
+/area/crawler)
+"Z" = (
+/obj/random/powercell,
+/turf/simulated/floor/tiled/derelict/white_small_edges,
+/area/crawler)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
@@ -162,8 +239,13 @@ a
 c
 g
 c
+<<<<<<< HEAD
 r
 c
+=======
+g
+Z
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 g
 c
 a
@@ -172,7 +254,11 @@ a
 a
 d
 h
+<<<<<<< HEAD
 n
+=======
+I
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 s
 n
 s
@@ -183,11 +269,19 @@ a
 a
 d
 i
+<<<<<<< HEAD
 n
 s
 n
 s
 c
+=======
+R
+s
+o
+s
+Z
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -206,7 +300,11 @@ b
 e
 k
 a
+<<<<<<< HEAD
 u
+=======
+x
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 x
 x
 x
@@ -216,9 +314,15 @@ C
 b
 e
 l
+<<<<<<< HEAD
 o
 v
 v
+=======
+p
+v
+U
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 v
 v
 C
@@ -227,10 +331,17 @@ C
 b
 e
 l
+<<<<<<< HEAD
 p
 v
 v
 y
+=======
+G
+v
+v
+v
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 v
 C
 "}
@@ -240,7 +351,11 @@ e
 l
 p
 v
+<<<<<<< HEAD
 y
+=======
+N
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 A
 b
@@ -249,11 +364,19 @@ b
 a
 e
 l
+<<<<<<< HEAD
 p
 v
 v
 A
 k
+=======
+f
+P
+v
+A
+D
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (11,1,1) = {"
@@ -264,18 +387,30 @@ p
 v
 v
 A
+<<<<<<< HEAD
 k
+=======
+D
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (12,1,1) = {"
 a
+<<<<<<< HEAD
 f
+=======
+e
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 l
 p
 v
 v
 A
+<<<<<<< HEAD
 k
+=======
+D
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (13,1,1) = {"

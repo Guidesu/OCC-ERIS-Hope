@@ -5,6 +5,11 @@
 
 	var/obj/machinery/atmospherics/portables_connector/connected_port
 	var/obj/item/tank/holding
+<<<<<<< HEAD
+=======
+
+	price_tag = 200
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	var/volume = 0
 	var/destroyed = 0
@@ -188,7 +193,7 @@
 		update_icon()
 		return
 
-	var/tool_type = I.get_tool_type(user, list(QUALITY_SHOVELING, QUALITY_CUTTING, QUALITY_BOLT_TURNING), src)
+	var/tool_type = I.get_tool_type(user, list(QUALITY_SCREW_DRIVING, QUALITY_BOLT_TURNING), src)
 	switch(tool_type)
 
 		if(QUALITY_SCREW_DRIVING)

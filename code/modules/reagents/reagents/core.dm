@@ -7,10 +7,15 @@
 	color = "#C80000"
 	taste_description = "iron"
 	taste_mult = 1.3
+	scannable = TRUE
 	glass_icon_state = "glass_red"
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
 	nerve_system_accumulations = 0
+<<<<<<< HEAD
+=======
+	common = TRUE //Everyone knows what blood looks like
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/organic/blood/initialize_data(var/newdata)
 	..()
@@ -37,13 +42,23 @@
 	return TRUE
 
 /datum/reagent/organic/blood/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
 	if(effective_dose > 5)
+<<<<<<< HEAD
 		M.adjustToxLoss(1 * effect_multiplier)
 	if(effective_dose > 15)
 		M.adjustToxLoss(1 * effect_multiplier)
+=======
+		M.add_chemical_effect(CE_TOXIN, effect_multiplier)
+	if(effective_dose > 15)
+		M.add_chemical_effect(CE_TOXIN, effect_multiplier)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
@@ -94,8 +109,73 @@
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."
 	nerve_system_accumulations = 0
+<<<<<<< HEAD
 	reagent_type = "Water"
 
+=======
+	var/fire_suppression_effect = 1 //19000 times this.
+	reagent_type = "Water"
+	common = TRUE //You know what water is.
+
+/datum/reagent/water/affect_ingest(mob/living/carbon/M, alien, effect_multiplier)
+	if(M.stats.getPerk(PERK_STAY_HYDRATED))
+		M.adjustOxyLoss(-0.6 * effect_multiplier)
+		M.heal_organ_damage(0.3 * effect_multiplier, 0.3 * effect_multiplier)
+		M.add_chemical_effect(CE_ANTITOX, 0.3 * effect_multiplier)
+		M.add_chemical_effect(CE_BLOODCLOT, 0.1)
+	if(!ishuman(M))
+		M.adjustHalLoss(-0.5)
+
+/datum/reagent/water/extinguisher
+	name = "Extinguisher"
+	id = "abwater"
+	description = "A mix of water, with chemicals to reduce heat, oil and suppress fire with heavy particulates."
+	taste_description = "watered down chemicals"
+	glass_icon_state = "glass_clear"
+	glass_name = "water"
+	glass_desc = "The father of all refreshments, this one has floating particulates in it..."
+	nerve_system_accumulations = 50 //Chemical soup
+	fire_suppression_effect = 3 //Three times better at putting out fire than water.
+
+/datum/reagent/water/extinguisher/touch_turf(turf/T)
+	..()
+	if(volume >= 1)
+		if(istype(T, /turf/simulated))
+			var/turf/simulated/S = T
+			if(S.wet >= 2)
+				S.wet_floor(1, TRUE)
+		for(var/obj/effect/O in T)
+			if(istype(O,/obj/effect/decal/cleanable/liquid_fuel)) //We only clean flue spills
+				qdel(O)
+		for(var/mob/living/carbon/slime/M in T)
+			M.adjustToxLoss(rand(15, 25))
+
+	T.color = "white"
+	return TRUE
+
+
+/datum/reagent/water/holywater
+	name = "Holy Water"
+	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen with the blessings of faith."
+	fire_suppression_effect = 1.1 //When your hopeful this works...
+	id = "holywater"
+
+/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/human/M, alien, effect_multiplier)
+	var/obj/item/implant/core_implant/I = M.get_core_implant(/obj/item/implant/core_implant/cruciform)
+	if(!I && !I.wearer) //Do we have a core implant?
+		return
+	if(!I.active) //Is it active?
+		return
+	M.heal_organ_damage(0, 0.2 * effect_multiplier, 0, 3 * effect_multiplier)
+	..()
+
+/datum/reagent/water/holywater/touch_turf(turf/T)
+	..()
+	if(volume >= 5)
+		T.holy = 1
+	return TRUE
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/reagent/water/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return TRUE
@@ -112,7 +192,7 @@
 		qdel(hotspot)
 
 	if (environment && environment.temperature > min_temperature) // Abstracted as steam or something
-		var/removed_heat = between(0, volume * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
+		var/removed_heat = between(0, volume * (WATER_LATENT_HEAT * fire_suppression_effect), -environment.get_thermal_energy_change(min_temperature))
 		environment.add_thermal_energy(-removed_heat)
 		if (prob(5))
 			T.visible_message(SPAN_WARNING("The water sizzles as it lands on \the [T]!"))
@@ -145,7 +225,11 @@
 /datum/reagent/water/affect_touch(mob/living/carbon/M, alien, effect_multiplier)
 	if(isslime(M))
 		var/mob/living/carbon/slime/S = M
+<<<<<<< HEAD
 		S.adjustToxLoss(7 * effect_multiplier)
+=======
+		S.adjustToxLoss(20 * effect_multiplier) // Babies have 150 health, adults have 200; So, 10 units and 13.5
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(!S.client)
 			if(S.Target) // Like cats
 				S.Target = null
@@ -156,7 +240,7 @@
 /datum/reagent/toxin/fuel
 	name = "Welding fuel"
 	id = "fuel"
-	description = "Required for welders. Flamable."
+	description = "Required for welders. Inflammable."
 	taste_description = "gross metal"
 	reagent_state = LIQUID
 	color = "#660000"
@@ -165,6 +249,7 @@
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "welder fuel"
 	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
+	common = TRUE //Ubiquitous enough for everyone to have dealt with it, there are canisters of it all over the place.
 
 /datum/reagent/toxin/fuel/touch_turf(turf/T)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
@@ -172,9 +257,12 @@
 	return TRUE
 
 /datum/reagent/toxin/fuel/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
+<<<<<<< HEAD
 	M.adjustToxLoss(0.2 * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
+=======
+	M.add_chemical_effect(CE_TOXIN, 2 * (issmall(M) ? effect_multiplier * 2 : effect_multiplier))
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 /datum/reagent/toxin/fuel/touch_mob(mob/living/L, var/amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 10) // Splashing people with welding fuel to make them easy to ignite!
-

@@ -4,7 +4,11 @@
 /area/deepmaint)
 "b" = (
 /obj/item/remains/xeno,
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/techfloor_grid,
 /area/deepmaint)
 "c" = (
@@ -20,11 +24,16 @@
 /area/deepmaint)
 "f" = (
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/techfloor_grid,
 /area/deepmaint)
 "g" = (
 /obj/item/remains/mouse,
+<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
@@ -35,11 +44,29 @@
 /area/deepmaint)
 "i" = (
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"h" = (
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/cluster/psi_monster/low_chance,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"i" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
 "j" = (
 /obj/item/remains/human,
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
 "k" = (
@@ -50,14 +77,22 @@
 /turf/simulated/floor/tiled/steel/cargo,
 /area/deepmaint)
 "l" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/cargo,
 /area/deepmaint)
 "m" = (
 /turf/simulated/floor/tiled/white/brown_perforated,
 /area/deepmaint)
 "n" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/brown_perforated,
 /area/deepmaint)
 "o" = (
@@ -68,28 +103,53 @@
 /turf/simulated/floor/tiled/white/cargo,
 /area/deepmaint)
 "q" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/steel/brown_platform,
 /area/deepmaint)
 "r" = (
 /obj/spawner/junk,
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"r" = (
+/obj/random/junk,
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/steel/brown_platform,
 /area/deepmaint)
 "s" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
+=======
+/obj/random/junkfood/low_chance,
+/obj/random/junkfood/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/brown_perforated,
 /area/deepmaint)
 "t" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/obj/random/junkfood/low_chance,
+/obj/random/junkfood/low_chance,
+/obj/random/lathe_disk/advanced/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/brown_perforated,
 /area/deepmaint)
 "u" = (
 /turf/simulated/floor/tiled/white/panels,
 /area/deepmaint)
 "v" = (
+<<<<<<< HEAD
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/panels,
 /area/deepmaint)
 "w" = (
@@ -98,6 +158,7 @@
 /area/deepmaint)
 "x" = (
 /obj/item/remains/mouse,
+<<<<<<< HEAD
 /obj/spawner/junk,
 /obj/machinery/light/small{
 	dir = 8
@@ -106,23 +167,101 @@
 /area/deepmaint)
 "y" = (
 /obj/spawner/junk,
+=======
+/obj/random/junk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/table/standard,
+/obj/random/knife,
+/obj/random/knife,
+/obj/random/surgery_tool,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"y" = (
+/obj/random/junk,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
 	},
+<<<<<<< HEAD
+=======
+/obj/structure/table/standard,
+/obj/random/knife,
+/obj/random/melee/low_chance,
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /turf/simulated/floor/tiled/white/gray_platform,
 /area/deepmaint)
 "z" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/white/cargo,
 /area/deepmaint)
+=======
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"B" = (
+/obj/structure/table/standard,
+/obj/random/junkfood/low_chance,
+/obj/random/junkfood/low_chance,
+/obj/random/lathe_disk/advanced/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"D" = (
+/obj/random/junk,
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"E" = (
+/obj/item/remains/mouse,
+/obj/random/junk,
+/obj/structure/table/standard,
+/obj/random/knife,
+/obj/random/melee/low_chance,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"F" = (
+/obj/random/junk,
+/obj/structure/table/standard,
+/obj/random/knife,
+/obj/random/knife,
+/obj/random/pouch/low_chance,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"P" = (
+/obj/item/remains/mouse,
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"Q" = (
+/obj/structure/table/standard,
+/obj/random/psi_megafauna,
+/obj/random/lathe_disk/advanced/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"R" = (
+/obj/structure/table/standard,
+/obj/random/junkfood/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"T" = (
+/obj/random/mob/psi_monster/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 (1,1,1) = {"
 a
 a
+<<<<<<< HEAD
 a
+=======
+T
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a
@@ -151,7 +290,11 @@ c
 d
 d
 x
+<<<<<<< HEAD
 i
+=======
+F
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 m
 s
@@ -168,7 +311,11 @@ j
 k
 n
 t
+<<<<<<< HEAD
 w
+=======
+P
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 "}
 (5,1,1) = {"
@@ -180,12 +327,20 @@ i
 i
 c
 o
+<<<<<<< HEAD
 s
+=======
+Q
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 v
 a
 "}
 (6,1,1) = {"
+<<<<<<< HEAD
 a
+=======
+T
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 c
 c
 c
@@ -219,8 +374,13 @@ g
 i
 k
 m
+<<<<<<< HEAD
 s
 v
+=======
+B
+D
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 q
 "}
 (9,1,1) = {"
@@ -229,10 +389,17 @@ c
 d
 d
 y
+<<<<<<< HEAD
 g
 c
 n
 s
+=======
+E
+c
+n
+R
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 w
 q
 "}
@@ -252,7 +419,11 @@ a
 (11,1,1) = {"
 a
 a
+<<<<<<< HEAD
 a
+=======
+T
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 a
 a
 a

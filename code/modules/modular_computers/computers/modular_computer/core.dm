@@ -75,7 +75,11 @@
 
 /obj/item/modular_computer/Destroy()
 	kill_program(forced=TRUE)
+<<<<<<< HEAD
 	QDEL_NULL_LIST(terminals)
+=======
+	QDEL_LIST(terminals)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	STOP_PROCESSING(SSobj, src)
 
 	if(stored_pen && !ispath(stored_pen))
@@ -99,6 +103,7 @@
 	else
 		computer_emagged = TRUE
 		to_chat(user, "You emag \the [src]. Its screen flickers briefly.")
+<<<<<<< HEAD
 		return TRUE
 
 /obj/item/modular_computer/on_update_icon()
@@ -106,10 +111,27 @@
 	if (screen_on)
 		if(bsod)
 			add_overlays("bsod")
+=======
+		if(!computer_emagged && !emagged_level_up) //Are we already emaged OR able to be CPU overdrived or what ever magic its doing...
+			emagged_level_up = TRUE
+			//Todo make this upgrade to the next level
+			//I.e PDA - > Tablet - > CONSOLE
+			//Make this have downsides (Heat system?)
+			hardware_flag |= PROGRAM_CONSOLE
+			return TRUE
+		return TRUE
+
+/obj/item/modular_computer/update_icon()
+	cut_overlays()
+	if (screen_on)
+		if(bsod)
+			add_overlay("bsod")
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			set_light(screen_light_range, screen_light_strength, get_average_color(icon,"bsod"), skip_screen_check = TRUE)
 			return
 		if(!enabled)
 			if(icon_state_screensaver && try_use_power(0))
+<<<<<<< HEAD
 				add_overlays(icon_state_screensaver)
 			set_light(0, skip_screen_check = TRUE)
 			return
@@ -121,6 +143,19 @@
 				add_overlays(active_program.program_key_state)
 		else
 			add_overlays(icon_state_menu)
+=======
+				add_overlay(icon_state_screensaver)
+			set_light(0, skip_screen_check = TRUE)
+			return
+		if(active_program)
+			add_overlay(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+			var/target_color = get_average_color(icon,active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+			set_light(screen_light_range, screen_light_strength, target_color, skip_screen_check = TRUE)
+			if(active_program.program_key_state)
+				add_overlay(active_program.program_key_state)
+		else
+			add_overlay(icon_state_menu)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 			set_light(screen_light_range, screen_light_strength, get_average_color(icon,icon_state_menu), skip_screen_check = TRUE)
 	else
 		set_light(0, skip_screen_check = TRUE)
@@ -184,7 +219,7 @@
 		active_program = null
 	var/mob/user = usr
 	if(user && istype(user))
-		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 	update_icon()
 
 // Returns 0 for No Signal, 1 for Low Signal and 2 for Good Signal. 3 is for wired connection (always-on)
@@ -200,7 +235,11 @@
 	return ntnet_global.add_log(text, network_card)
 
 /obj/item/modular_computer/proc/shutdown_computer(loud = TRUE)
+<<<<<<< HEAD
 	QDEL_NULL_LIST(terminals)
+=======
+	QDEL_LIST(terminals)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 
 	kill_program(forced=TRUE)
 	for(var/p in all_threads)
@@ -213,7 +252,7 @@
 		if (H.enabled)
 			H.disabled()
 	if(loud)
-		visible_message("\The [src] shuts down.", range = TRUE)
+		visible_message("\The [src] shuts down.", range = 1)
 	enabled = FALSE
 	update_icon()
 
@@ -230,7 +269,12 @@
 	autorun_program(hard_drive)
 
 	if(user)
-		ui_interact(user)
+		nano_ui_interact(user)
+
+/obj/item/modular_computer/proc/autorun_program(obj/item/computer_hardware/hard_drive/disk)
+	var/datum/computer_file/data/autorun = disk?.find_file_by_name("AUTORUN")
+	if(istype(autorun))
+		run_program(autorun.stored_data, disk)
 
 /obj/item/modular_computer/proc/autorun_program(obj/item/computer_hardware/hard_drive/disk)
 	var/datum/computer_file/data/autorun = disk?.find_file_by_name("AUTORUN")
@@ -246,7 +290,7 @@
 	active_program = null
 	update_icon()
 	if(istype(user))
-		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 
 /obj/item/modular_computer/proc/run_program(prog_name, obj/item/computer_hardware/hard_drive/disk)
 	var/datum/computer_file/program/P = null
@@ -285,7 +329,11 @@
 	if(P.run_program(user))
 		active_program = P
 		all_threads.Add(P)
+<<<<<<< HEAD
 		active_program.ui_interact(user)
+=======
+		active_program.nano_ui_interact(user)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		update_uis()
 		update_icon()
 	return TRUE

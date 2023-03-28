@@ -260,7 +260,11 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		var/icon/I = getFlatTypeIcon(design.build_path)
 		assets[filename] = I
 
+<<<<<<< HEAD
 		design.ui_data["icon"] = filename
+=======
+		design.nano_ui_data["icon"] = filename
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 	..()
 
 
@@ -301,6 +305,10 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		assets[filename] = I
 	..()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 /datum/asset/simple/codicon
 	isTrivial = TRUE
 	verify = FALSE

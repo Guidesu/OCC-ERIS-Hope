@@ -1,6 +1,6 @@
 /obj/structure/firedoor_assembly
 	name = "\improper emergency shutter assembly"
-	desc = "It can save lives."
+	desc = "A shutter for your safety. It's clearly inoperational."
 	icon = 'icons/obj/doors/DoorHazard.dmi'
 	icon_state = "door_construction"
 	anchored = FALSE
@@ -64,7 +64,11 @@
 				wired = 1
 				to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 
+<<<<<<< HEAD
 	else if(istype(I, /obj/item/electronics/airalarm) && wired)
+=======
+	else if(istype(I, /obj/item/airalarm_electronics) && wired)
+>>>>>>> d75ed0d4c1f195874792113784be98d2fafb211e
 		if(anchored)
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			user.visible_message(SPAN_WARNING("[user] has inserted a circuit into \the [src]!"),
