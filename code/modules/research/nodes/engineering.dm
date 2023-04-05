@@ -438,8 +438,13 @@
 
 /*
 /datum/technology/bluespace_parts
+<<<<<<< HEAD
 	name = "bluespace Parts"
 	desc = "bluespace Parts"
+=======
+	name = "Bluespace Parts"
+	desc = "Bluespace Parts"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	tech_type = RESEARCH_ENGINEERING
 
 	x = 0.9

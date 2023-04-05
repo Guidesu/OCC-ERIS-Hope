@@ -5,7 +5,11 @@
 	icon_state = "smes_coil"
 	origin_tech = list(
 		TECH_MATERIAL = 19, TECH_ENGINEERING = 19, TECH_PHORON = 19,
+<<<<<<< HEAD
 		TECH_POWER = 19, TECH_bluespace = 19, TECH_BIO = 19, TECH_COMBAT = 19,
+=======
+		TECH_POWER = 19, TECH_BLUESPACE = 19, TECH_BIO = 19, TECH_COMBAT = 19,
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		TECH_MAGNET = 19, TECH_DATA = 19, TECH_COVERT = 19, TECH_ARCANE = 19
 	)
 	spawn_frequency = 0

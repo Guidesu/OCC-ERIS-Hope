@@ -1044,11 +1044,19 @@
 
 
 /datum/admin_topic/bluespaceartillery
+<<<<<<< HEAD
 	keyword = "bluespaceArtillery"
 	require_perms = list(R_ADMIN|R_FUN)
 
 /datum/admin_topic/bluespaceartillery/Run(list/input)
 	var/mob/living/M = locate(input["bluespaceArtillery"])
+=======
+	keyword = "BlueSpaceArtillery"
+	require_perms = list(R_ADMIN|R_FUN)
+
+/datum/admin_topic/bluespaceartillery/Run(list/input)
+	var/mob/living/M = locate(input["BlueSpaceArtillery"])
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	if(!isliving(M))
 		to_chat(usr, "This can only be used on instances of type /mob/living")
 		return
@@ -1065,8 +1073,13 @@
 		BSACooldown = FALSE
 
 	to_chat(M, "You've been hit by bluespace artillery!")
+<<<<<<< HEAD
 	log_admin("[key_name(M)] has been hit by bluespace Artillery fired by [source.owner]")
 	message_admins("[key_name(M)] has been hit by bluespace Artillery fired by [source.owner]")
+=======
+	log_admin("[key_name(M)] has been hit by Bluespace Artillery fired by [source.owner]")
+	message_admins("[key_name(M)] has been hit by Bluespace Artillery fired by [source.owner]")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	var/obj/effect/stop/S
 	S = new /obj/effect/stop

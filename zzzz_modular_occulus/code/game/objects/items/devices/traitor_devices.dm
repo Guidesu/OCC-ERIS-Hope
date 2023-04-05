@@ -41,7 +41,11 @@ var/global/list/active_radio_jammers = list()
 	var/on = FALSE
 	var/jam_range = 7
 	var/tick_cost = 2
+<<<<<<< HEAD
 	origin_tech = list(TECH_ILLEGAL = 4, TECH_bluespace = 4) //Such technology! Subspace jamming!
+=======
+	origin_tech = list(TECH_ILLEGAL = 4, TECH_BLUESPACE = 4) //Such technology! Subspace jamming!
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 
 /obj/item/device/radio_jammer/Initialize()

@@ -2,7 +2,11 @@
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beaconf"
+<<<<<<< HEAD
 	name = "bluespace Gigabeacon"
+=======
+	name = "Bluespace Gigabeacon"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
 	level = BELOW_PLATING_LEVEL		// underfloor
 	layer = LOW_OBJ_LAYER

@@ -58,7 +58,11 @@
   - code_imp: added design definitions to /code/modules/research/designs/circuits.dm
   - tweak: lowered artificial bluespace crystal cost to 5 diamond and 5 plasma
   - bugfix: Fix large grenades not exploding
+<<<<<<< HEAD
   - tweak: bluespace trashbag construction is not free anymore
+=======
+  - tweak: Bluespace trashbag construction is not free anymore
+>>>>>>> parent of ffa6f9f889 (gigantic)
   - bugfix: fixed dead cat icon in hands
   - bugfix: Vagabond's no longer show up as a blank entry on the crew records.
   - tweak: Vagabond's no longer show up as "Unknown" in the crew Manifest.

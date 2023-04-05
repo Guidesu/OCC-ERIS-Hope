@@ -3,7 +3,11 @@
 	name = T_BOARD("advanced telepad")
 	build_path = /obj/machinery/telesci_pad
 	board_type = "machine"
+<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL = 3, TECH_bluespace = 4)
+=======
+	origin_tech = list(TECH_MATERIAL = 3, TECH_BLUESPACE = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	req_components = list(
 		/obj/item/bluespace_crystal = 2,
@@ -13,13 +17,21 @@
 /obj/item/electronics/circuitboard/telesci_console
 	name = T_BOARD("Telescience Console")
 	build_path = /obj/machinery/computer/telesci_console
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/electronics/circuitboard/telesci_relay
 	name = T_BOARD("telepad relay")
 	build_path = /obj/machinery/telesci_relay
 	board_type = "machine"
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_bluespace = 3)
+=======
+	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 1,
@@ -29,7 +41,11 @@
 /obj/item/electronics/circuitboard/tele_inhibitor
 	name = T_BOARD("bluespace inhibitor")
 	build_path = /obj/machinery/telesci_inhibitor
+<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 2, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 2, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	req_components = list(
 		/obj/item/stock_parts/subspace/ansible = 2

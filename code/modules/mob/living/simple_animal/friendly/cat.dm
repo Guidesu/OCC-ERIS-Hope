@@ -280,7 +280,11 @@ var/cat_number = 0
 	anchored = TRUE  // So that people cannot pull Dusty
 	mob_size = MOB_HUGE // So that people cannot put Dusty in lockers to move it
 
+<<<<<<< HEAD
 	status_flags = GODMODE // bluespace cat
+=======
+	status_flags = GODMODE // Bluespace cat
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	min_oxy = 0
 	minbodytemp = 0
 	maxbodytemp = INFINITY

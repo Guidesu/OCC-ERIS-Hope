@@ -43,9 +43,15 @@
 		announcement
 			round_time = 60*20
 			message = {"The new field of research trying to explain several interesting spacetime oddities,
+<<<<<<< HEAD
 						also known as \"bluespace Research\", has reached new heights. Of the several
 						hundred space stations now orbiting in Tau Ceti, fifteen are now specially equipped
 						to experiment with and research bluespace effects. Rumours have it some of these
+=======
+						also known as \"Bluespace Research\", has reached new heights. Of the several
+						hundred space stations now orbiting in Tau Ceti, fifteen are now specially equipped
+						to experiment with and research Bluespace effects. Rumours have it some of these
+>>>>>>> parent of ffa6f9f889 (gigantic)
 						stations even sport functional \"travel gates\" that can instantly move a whole research
 						team to an alternate reality."}
 

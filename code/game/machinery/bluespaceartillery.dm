@@ -22,7 +22,11 @@
 
 /obj/machinery/artillerycontrol/attack_hand(mob/user as mob)
 	user.set_machine(src)
+<<<<<<< HEAD
 	var/dat = "<B>bluespace Artillery Control:</B><BR>"
+=======
+	var/dat = "<B>Bluespace Artillery Control:</B><BR>"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	dat += "Locked on<BR>"
 	dat += "<B>Charge progress: [reload]/180:</B><BR>"
 	dat += "<A href='byond://?src=\ref[src];fire=1'>Open Fire</A><BR>"
@@ -42,7 +46,11 @@
 		if (usr.stat || usr.restrained()) return
 		if(src.reload < 180) return
 		if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
+<<<<<<< HEAD
 			command_announcement.Announce("bluespace artillery fire detected. Brace for impact.")
+=======
+			command_announcement.Announce("Bluespace artillery fire detected. Brace for impact.")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 			message_admins("[key_name_admin(usr)] has launched an artillery strike.", 1)
 			var/list/L = list()
 			for(var/turf/T in get_area_turfs(thearea.type))
@@ -55,7 +63,11 @@
 	var/A
 	A = input("Area to jump bombard", "Open Fire", A) in SSmapping.teleportlocs
 	var/area/thearea = SSmapping.teleportlocs[A]
+<<<<<<< HEAD
 	command_alert("bluespace artillery fire detected. Brace for impact.")
+=======
+	command_alert("Bluespace artillery fire detected. Brace for impact.")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	spawn(30)
 	var/list/L = list()
 

@@ -6,7 +6,11 @@
 	item_state = "complicator"
 	w_class = ITEM_SIZE_SMALL
 	price_tag = 20000
+<<<<<<< HEAD
 	origin_tech = list(TECH_POWER = 7, TECH_bluespace = 4, TECH_MAGNET = 9)
+=======
+	origin_tech = list(TECH_POWER = 7, TECH_BLUESPACE = 4, TECH_MAGNET = 9)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	spawn_frequency = 0
 	spawn_blacklisted = TRUE
 	var/last_summon = -30 MINUTES

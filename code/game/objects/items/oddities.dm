@@ -324,7 +324,11 @@ End Occulus Edit */
 	name = "Broken necklace"
 	desc = "A broken necklace that has a blue crystal as a trinket."
 	icon_state = "broken_necklace"
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 9)
+=======
+	origin_tech = list(TECH_BLUESPACE = 9)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	oddity_stats = list(
 		STAT_COG = 9,
 		STAT_VIG = 9,

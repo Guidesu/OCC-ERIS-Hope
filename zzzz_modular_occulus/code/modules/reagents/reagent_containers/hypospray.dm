@@ -75,7 +75,7 @@
 	name = "MID 'Hecate'"
 	allowed_containers = list(/obj/item/reagent_containers/glass/beaker/hypocartridge/tiny, /obj/item/reagent_containers/glass/beaker/hypocartridge/small, /obj/item/reagent_containers/glass/beaker/hypocartridge/large)
 	icon_state = "cmohypo"
-	desc = "The  original Medical Injection Device 'Hecate'. It was found onboard the ICSS Hope, and its origins are unknown. It can take 90-unit cartridges, acts faster and delivers more reagents per spray then its copied counterparts. The Hecate has a built in scanner to check patients current reagents and prevent overdoses. It seems to have anomalous properties."
+	desc = "The  original Medical Injection Device 'Hecate'. It was found onboard the Northern Light, and its origins are unknown. It can take 90-unit cartridges, acts faster and delivers more reagents per spray then its copied counterparts. The Hecate has a built in scanner to check patients current reagents and prevent overdoses. It seems to have anomalous properties."
 	unacidable = 1
 	start_vial = /obj/item/reagent_containers/glass/beaker/hypocartridge/large/CMO
 	inject_wait = DELUXE_WAIT_INJECT

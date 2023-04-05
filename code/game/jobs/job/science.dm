@@ -4,7 +4,7 @@
 	head_position = 1
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE | COMMAND
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "The Captain and NanoTrasen"
@@ -41,7 +41,7 @@
 							/datum/computer_file/program/chem_catalog,
 							/datum/computer_file/program/reports)
 
-	description = "You are the head of NanoTrasen research on the ICSS Hope, tasked with directing shipboard research to new and profitable discoveries."
+	description = "You are the head of NanoTrasen research on the Northern Light, tasked with directing shipboard research to new and profitable discoveries."
 
 	duties = "Direct the scientists under your command, ensure they work efficiently towards the bettering of all mankind.<br>\
 Use department funds to purchase scientific curios, artefacts, and anything of interesting research value. As well as any equipment and supplies that would be useful for these ends<br>\
@@ -62,7 +62,7 @@ As a scientist, your first loyalty is to knowledge and Discovery, the ultimate g
 	flag = SCIENTIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the Chief Science Officer"
@@ -116,7 +116,7 @@ Explore, learn and adventure, do anything to advance the cause of knowledge"
 	flag = ROBOTICIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Chief Science Officer"
@@ -149,7 +149,7 @@ In addition, your department contains the manufacturing facilities for prostheti
 <br>\
 Lastly, though they're not commonly used, you have the facilities to construct massive and powerful mechanised vehicles. These have powerful capabilities in mining and rescue, as well as obvious military applications"
 
-	duties = "	Repair, maintain and upgrade robots aboard the ICSS Hope<br>\
+	duties = "	Repair, maintain and upgrade robots aboard the CEV Northern Light<br>\
 	Maintain and implant new bionics in crewmembers<br>\
 	Advertise bionics for sale and run a commercial cybernetic clinic<br>\
 	Construct large mechas for specialised use in departments"

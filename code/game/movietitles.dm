@@ -29,7 +29,11 @@ client
 		if(mob.get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
 			sound_to(mob, sound(null, channel = GLOB.lobby_sound_channel))
 			if(GLOB.end_credits_song == null)
+<<<<<<< HEAD
 				var/title_song = pick('sound/music/lobby/Duke_Gneiss-Downtown_2.ogg', 'sound/music/lobby/Duke_Gneiss-bluespace.ogg', 'sound/music/lobby/Duke_Gneiss-Metropolis.ogg')
+=======
+				var/title_song = pick('sound/music/lobby/Duke_Gneiss-Downtown_2.ogg', 'sound/music/lobby/Duke_Gneiss-Bluespace.ogg', 'sound/music/lobby/Duke_Gneiss-Metropolis.ogg')
+>>>>>>> parent of ffa6f9f889 (gigantic)
 				sound_to(mob, sound(title_song, wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 			else if(get_preference_value(/datum/client_preference/play_admin_midis) == GLOB.PREF_YES)
 				sound_to(mob, sound(GLOB.end_credits_song, wait = 0, volume = 40, channel = GLOB.lobby_sound_channel)) //will only play end credits music if your lobby music is on!

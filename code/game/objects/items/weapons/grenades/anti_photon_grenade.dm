@@ -4,7 +4,11 @@
 	icon_state = "emp"
 	item_state = "emp"
 	det_time = 20
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 4, TECH_MATERIAL = 4)
+=======
+	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/grenade/anti_photon/prime()
 	playsound(loc, 'sound/effects/phasein.ogg', 50, 1, 5)

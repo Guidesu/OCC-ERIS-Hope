@@ -79,7 +79,11 @@
 /obj/item/storage/backpack/holding
 	name = "bag of holding"
 	desc = "A backpack that opens into a localized pocket of bluespace."
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 4)
+=======
+	origin_tech = list(TECH_BLUESPACE = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	icon_state = "holdingpack"
 	max_w_class = ITEM_SIZE_BULKY
 	max_storage_space = DEFAULT_HUGE_STORAGE * 2
@@ -91,7 +95,11 @@
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/backpack/holding))
+<<<<<<< HEAD
 		to_chat(user, SPAN_WARNING("The bluespace interfaces of the two devices conflict and malfunction."))
+=======
+		to_chat(user, SPAN_WARNING("The Bluespace interfaces of the two devices conflict and malfunction."))
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		qdel(W)
 		return
 	..()

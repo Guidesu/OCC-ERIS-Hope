@@ -12,7 +12,11 @@ GLOBAL_LIST_EMPTY(explosion_watcher_list)
 		TECH_ENGINEERING = 250,
 		TECH_PHORON = 500,
 		TECH_POWER = 300,
+<<<<<<< HEAD
 		TECH_bluespace = 1000,
+=======
+		TECH_BLUESPACE = 1000,
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		TECH_BIO = 300,
 		TECH_COMBAT = 500,
 		TECH_MAGNET = 350,

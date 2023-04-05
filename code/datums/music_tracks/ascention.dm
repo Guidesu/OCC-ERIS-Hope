@@ -7,9 +7,15 @@
 
 /music_track/bluespace //Track 8
 	artist = "Duke Gneiss"
+<<<<<<< HEAD
 	title = "bluespace"
 	album = "Ascention"
 	song = 'sound/music/lobby/Duke_Gneiss-bluespace.ogg'
+=======
+	title = "Bluespace"
+	album = "Ascention"
+	song = 'sound/music/lobby/Duke_Gneiss-Bluespace.ogg'
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	url = "https://soundcloud.com/dukegneiss/bluespace"
 
 /music_track/exploring //Track 13

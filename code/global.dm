@@ -30,6 +30,7 @@ var/runtime_diary
 var/diary              
 var/world_qdel_log
 var/href_logfile       
+<<<<<<< HEAD
 var/station_name        = "ICSS Hope" //Hope edits
 var/station_short       = "Hope"
 var/const/dock_name     = "I-T-D Andromeda"
@@ -38,6 +39,16 @@ var/const/boss_short    = "The Syndicate"
 var/const/company_name  = "Coalition of Lankara"
 var/const/company_short = "Coalition" //Occulus Edits end here
 var/game_version        = "Harmony"
+=======
+var/station_name        = "CEV Northern Light" //Occulus edits
+var/station_short       = "Northern Light"
+var/const/dock_name     = "N.A.S. Crescent"
+var/const/boss_name     = "NL Command Board"
+var/const/boss_short    = "The Board"
+var/const/company_name  = "Northern Light"
+var/const/company_short = "Northern Light" //Occulus Edits end here
+var/game_version        = "Discordia"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 var/changelog_hash      = ""
 var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 650)
 

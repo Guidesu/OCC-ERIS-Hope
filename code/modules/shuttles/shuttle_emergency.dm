@@ -79,7 +79,11 @@
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
 		if (emergency_controller.autopilot)
 			emergency_controller.autopilot = 0
+<<<<<<< HEAD
 			to_chat(world, (SPAN_NOTICE("<b>Alert: The shuttle autopilot has been overridden. bluespace drive engaged!</b>")))
+=======
+			to_chat(world, (SPAN_NOTICE("<b>Alert: The shuttle autopilot has been overridden. Bluespace drive engaged!</b>")))
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	if(usr)
 		log_admin("[key_name(usr)] has overridden the shuttle autopilot and forced immediate launch")

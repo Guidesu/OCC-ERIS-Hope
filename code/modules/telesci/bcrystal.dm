@@ -9,14 +9,22 @@
 	to_chat(user, SPAN_NOTICE("Dust disappears as you touch it"))
 	qdel(src)
 
+<<<<<<< HEAD
 // bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
+=======
+// Bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
+>>>>>>> parent of ffa6f9f889 (gigantic)
 /obj/item/bluespace_crystal
 	name = "bluespace crystal"
 	desc = "A glowing bluespace crystal, not much is known about how they work. It looks very delicate."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "bluespace_crystal"
 	w_class = 1
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 4, TECH_MATERIAL = 3)
+=======
+	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_DIAMOND = 5, MATERIAL_PHORON = 5)//Occulus Edit: Material fix
 	var/blink_range = 8 // The teleport range when crushed/thrown at someone.
 	var/entropy_value = 2
@@ -65,5 +73,9 @@
 /obj/item/bluespace_crystal/artificial
 	name = "artificial bluespace crystal"
 	desc = "An artificially made bluespace crystal, it looks delicate."
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	blink_range = 4 // Not as good as the organic stuff!

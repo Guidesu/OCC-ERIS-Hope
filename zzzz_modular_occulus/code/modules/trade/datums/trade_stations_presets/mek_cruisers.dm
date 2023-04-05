@@ -2,7 +2,7 @@
 	icon_states = "nt_cruiser"
 	markup = 0.4
 	name_pool = list(
-		"MTV 'Sacerdos'" = "Mekhane Transport Vessel 'Sacerdos'. Message recieved, \"Greeting ICSS Hope. All proceeds from our transactions go to humanitarian efforts on Tau Ceti.\"",
+		"MTV 'Sacerdos'" = "Mekhane Transport Vessel 'Sacerdos'. Message recieved, \"Greeting Northern Light. All proceeds from our transactions go to humanitarian efforts on Tau Ceti.\"",
 		"MTV 'Magus'" = "Mekhane Transport Vessel 'Magus'. Message recieved, \"Good evening fellow travellers in the void. We can feel our brothers with you, as such you may browse our supplies.\"",
 		"MEV 'Vatis'" = "Mekhane Exploration Vessel 'Vatis'. Message recieved, \"Good evening. It is rare to find other travellers in the void. Rarer still to find our kin. We will spare what we can for you, but most of our supplies must last us until we find a new home.\""
 	)

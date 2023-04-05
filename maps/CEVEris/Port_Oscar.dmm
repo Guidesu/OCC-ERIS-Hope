@@ -52171,7 +52171,7 @@
 	},
 /obj/structure/sign/goldenplaque{
 	desc = "The current employee of the month of the Board, and the previous ones. There are a lot more than you remember.";
-	name = "ICSS Hope Medals Board";
+	name = "Northern Light Medals Board";
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/turcarpet,

@@ -4,7 +4,11 @@
 	icon_state = "implant_deathalarm"
 	implant_overlay = "implantstorage_deathalarm"
 	var/mobname = "Will Robinson"
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace=1, TECH_MAGNET=2, TECH_DATA=4, TECH_BIO=3)
+=======
+	origin_tech = list(TECH_BLUESPACE=1, TECH_MAGNET=2, TECH_DATA=4, TECH_BIO=3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/implant/death_alarm/get_data()
 	var/data = {"

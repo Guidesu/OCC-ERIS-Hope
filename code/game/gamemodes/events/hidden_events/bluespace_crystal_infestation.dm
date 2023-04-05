@@ -32,7 +32,11 @@ Additionally, not harvested nest will periodically teleport items and people to 
 
 /datum/event/bluespace_crystal_infestation/start()
 	var/space_to_spawn = event_area.random_space()
+<<<<<<< HEAD
 	log_and_message_admins("bluespace nest spawned: [jumplink(space_to_spawn)]")
+=======
+	log_and_message_admins("Bluespace nest spawned: [jumplink(space_to_spawn)]")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	var/obj/structure/bs_crystal_structure/BSCS = new (space_to_spawn)
 	BSCS.entropy_value += 2//8 + 2 = 10
 	GLOB.bluespace_entropy += rand(BSCS.entropy_value, BSCS.entropy_value * 3)

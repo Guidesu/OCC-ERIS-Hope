@@ -341,7 +341,11 @@
 
 	if(href_list["eject"])
 		eject()
+<<<<<<< HEAD
 		temp_msg = "NOTICE:<BR>bluespace crystals ejected."
+=======
+		temp_msg = "NOTICE:<BR>Bluespace crystals ejected."
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 	updateDialog()
 

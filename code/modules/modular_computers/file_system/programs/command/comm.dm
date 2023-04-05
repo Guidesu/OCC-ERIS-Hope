@@ -174,7 +174,11 @@
 						SSnano.update_uis(src)
 						return
 					if(!is_relay_online())//Contact Centcom has a check, Syndie doesn't to allow for Traitor funs.
+<<<<<<< HEAD
 						to_chat(usr, "<span class='warning'>No Emergency bluespace Relay detected. Unable to transmit message.</span>")
+=======
+						to_chat(usr, "<span class='warning'>No Emergency Bluespace Relay detected. Unable to transmit message.</span>")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 						return 1
 
 					var/input = sanitize(input("Please choose a message to transmit to [GLOB.maps_data.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)

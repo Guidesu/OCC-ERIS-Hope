@@ -6,7 +6,11 @@
 	var/activation_emote = "sigh"
 	var/obj/item/scanned
 	is_legal = FALSE
+<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=4, TECH_bluespace=5, TECH_COVERT=4)
+=======
+	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=4, TECH_BLUESPACE=5, TECH_COVERT=4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	spawn_tags = null
 
 /obj/item/implant/compressed/trigger(emote, mob/living/source)

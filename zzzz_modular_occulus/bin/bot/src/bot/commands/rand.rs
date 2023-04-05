@@ -10,7 +10,7 @@ use serenity::prelude::*;
 use std::fmt::Write;
 
 #[command]
-#[description = "Words banned by the ICSS Hope command board. Do you dare?"]
+#[description = "Words banned by the Northern Light command board. Do you dare?"]
 async fn spola(ctx: &Context, msg: &Message) -> CommandResult {
     msg.channel_id
         .say(&ctx.http, get_random_phrase(ctx, "spola").await)

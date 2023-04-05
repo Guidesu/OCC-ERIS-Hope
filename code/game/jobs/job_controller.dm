@@ -21,7 +21,7 @@ var/global/list/whitelisted_jobs = ()	//Eclipse var - used in debug proc
 	var/list/job_debug = list()
 
 
-	proc/SetupOccupations(var/faction = "ICSS Hope")
+	proc/SetupOccupations(var/faction = "CEV Northern Light")
 		occupations.Cut()
 		occupations_by_name.Cut()
 		for(var/J in subtypesof(/datum/job))

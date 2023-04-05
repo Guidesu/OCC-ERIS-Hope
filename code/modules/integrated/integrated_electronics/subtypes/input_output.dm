@@ -292,7 +292,11 @@
 	outputs = list("\<TEXT\> address received", "\<TEXT\> data received", "\<TEXT\> secondary text received")
 	activators = list("\<PULSE IN\> send data", "\<PULSE OUT\> on data received")
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+<<<<<<< HEAD
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_MAGNET = 2, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	power_draw_per_use = 50
 	var/datum/exonet_protocol/exonet = null
 

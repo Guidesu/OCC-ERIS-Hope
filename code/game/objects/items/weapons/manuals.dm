@@ -196,7 +196,7 @@
 				<body>
 
 				<h1>Overview</h1>
-				The ICSS Hope's regulations exist as a guideline for what is and isn't allowed aboard the vessel. While none of this is legally binding within Sol or other space. Command and by extension, Aegis is free to enforce these regulations as they see fit to maintain a functioning vessel.
+				The Northern Light's regulations exist as a guideline for what is and isn't allowed aboard the vessel. While none of this is legally binding within Sol or other space. Command and by extension, Aegis is free to enforce these regulations as they see fit to maintain a functioning vessel.
 
 				<h1>Minor Violations:</h1>
 

@@ -71,36 +71,61 @@
 // Telecomm parts
 /datum/design/research/item/part/subspace_ansible
 	build_path = /obj/item/stock_parts/subspace/ansible
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAA"
 
 /datum/design/research/item/part/hyperwave_filter
 	build_path = /obj/item/stock_parts/subspace/filter
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAB"
 
 /datum/design/research/item/part/subspace_amplifier
 	build_path = /obj/item/stock_parts/subspace/amplifier
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAC"
 
 /datum/design/research/item/part/subspace_treatment
 	build_path = /obj/item/stock_parts/subspace/treatment
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAD"
 
 /datum/design/research/item/part/subspace_analyzer
 	build_path = /obj/item/stock_parts/subspace/analyzer
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAE"
 
 /datum/design/research/item/part/subspace_crystal
 	build_path = /obj/item/stock_parts/subspace/crystal
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "UAAAF"
 
 /datum/design/research/item/part/subspace_transmitter
 	build_path = /obj/item/stock_parts/subspace/transmitter
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
 	sort_string = "UAAAG"
 
@@ -108,6 +133,15 @@
 	name = "Artificial bluespace Crystal"
 	build_path = /obj/item/bluespace_crystal/artificial
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+	sort_string = "UAAAG"
+
+/datum/design/research/item/part/artificialbscrystal
+	name = "Artificial BlueSpace Crystal"
+	build_path = /obj/item/bluespace_crystal/artificial
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAAAF"
 
 // SMES coils

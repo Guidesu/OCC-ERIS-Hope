@@ -24,7 +24,11 @@
 /datum/lobbyscreen/ship
 	image_file = 'icons/title_screens/ship.png'
 	possibleMusic = list(
+<<<<<<< HEAD
 		'sound/music/lobby/Duke_Gneiss-bluespace.ogg',
+=======
+		'sound/music/lobby/Duke_Gneiss-Bluespace.ogg',
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		'sound/music/lobby/Duke_Gneiss-Exploring.ogg'
 		)
 

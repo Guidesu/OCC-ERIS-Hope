@@ -22,7 +22,7 @@ Cobalt Aegis Security
 Church of Mekhane
 Vasily Dokuchaev
 Mining hulk
-ICSS Hope
+CEV Northern Light
 Bar
 Club
 Brig of a ship
@@ -34,7 +34,11 @@ Security Department
 Primary tool storage
 Maintenance
 Deep maintenance
+<<<<<<< HEAD
 bluespace
+=======
+Bluespace
+>>>>>>> parent of ffa6f9f889 (gigantic)
 cyberspace
 mountains
 pool

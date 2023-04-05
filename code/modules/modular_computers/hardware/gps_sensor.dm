@@ -6,7 +6,11 @@
 	hardware_size = 1
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_PLASTIC = 2)
 	matter_reagents = list("silicon" = 10)
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	usage_flags = PROGRAM_ALL
 	var/datum/gps_data/gps
 

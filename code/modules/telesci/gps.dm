@@ -9,7 +9,11 @@ GLOBAL_LIST_EMPTY(gps_by_type)
 	icon_state = "gps-c"
 	w_class = 2
 	slot_flags = SLOT_BELT
+<<<<<<< HEAD
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 25, MATERIAL_GLASS = 5)
 	var/gps_prefix = "COM"
 	var/gpstag = "COM0"
@@ -51,7 +55,11 @@ GLOBAL_LIST_EMPTY(gps_by_type)
 		t += "<BR><A href='?src=\ref[src];tag=1'>Set Tag</A> "
 		t += "<BR>Tag: [gpstag]"
 		if(locked_location && locked_location.loc)
+<<<<<<< HEAD
 			t += "<BR>bluespace coordinates saved: [locked_location.loc]"
+=======
+			t += "<BR>Bluespace coordinates saved: [locked_location.loc]"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 			gps_window_height += 20
 
 		for(var/obj/item/device/gps/G in GLOB.GPS_list)

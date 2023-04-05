@@ -290,7 +290,11 @@
 	max_w_class = ITEM_SIZE_BULKY
 	max_storage_space = DEFAULT_HUGE_STORAGE
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_GOLD = 5, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 4)
+=======
+	origin_tech = list(TECH_BLUESPACE = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	spawn_blacklisted = TRUE
 
 /obj/item/storage/pouch/holding/New()

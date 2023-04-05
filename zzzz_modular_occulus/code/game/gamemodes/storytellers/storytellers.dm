@@ -28,7 +28,7 @@ It is set as storyteller base in __defines/gamemode.dm
 		EVENT_LEVEL_MAJOR = 0, //Major
 		EVENT_LEVEL_ROLESET = 0 //Roleset - Spawns antagonists at 30minutes and 150 minutes roughly
 	)
-/*The Mentor is designed to teach new players the ropes of the ICSS Hope.
+/*The Mentor is designed to teach new players the ropes of the Northern Light.
 It generates points about half as a fast as guide
 */
 /datum/storyteller/mentor

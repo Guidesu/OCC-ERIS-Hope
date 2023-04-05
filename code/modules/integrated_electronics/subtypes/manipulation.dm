@@ -594,7 +594,11 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	action_flags = IC_ACTION_LONG_RANGE
 
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 1, TECH_bluespace = 3)
+=======
+	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 2000, MATERIAL_GOLD = 200)
 	var/entropy_value = 1
 

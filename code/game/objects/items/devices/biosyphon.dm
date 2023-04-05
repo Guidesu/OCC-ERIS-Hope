@@ -10,7 +10,11 @@
 	throw_speed = 1
 	throw_range = 2
 	price_tag = 20000
+<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL = 4, TECH_bluespace = 8, TECH_POWER = 7)
+=======
+	origin_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 8, TECH_POWER = 7)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_PLASTIC = 6, MATERIAL_GLASS = 7)
 	spawn_frequency = 0
 	spawn_blacklisted = TRUE

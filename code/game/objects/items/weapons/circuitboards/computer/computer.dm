@@ -36,7 +36,11 @@
 	name = T_BOARD("teleporter control console")
 	rarity_value = 40
 	build_path = /obj/machinery/computer/teleporter
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 2, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/electronics/circuitboard/secure_data
 	name = T_BOARD("security records console")

@@ -102,7 +102,11 @@ SUBSYSTEM_DEF(economy)
 		var/datum/money_account/source //Source account for internal funding
 
 		var/reason = "Payroll Funding"
+<<<<<<< HEAD
 		var/terminal = "ICSS Hope Payroll system"
+=======
+		var/terminal = "CEV Northern Light payroll system"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 		//Alright, how much money are we requesting
 		var/total_request = department.pending_wage_total + department.pending_budget_total
@@ -183,13 +187,13 @@ SUBSYSTEM_DEF(economy)
 			//Get the crewman's account that we'll pay to
 			var/crew_account_num = R.get_account()
 			var/amount = department.pending_wages[R]
-			paid = transfer_funds(department.account_number, crew_account_num, "Payroll", "ICSS Hope payroll system", amount)
+			paid = transfer_funds(department.account_number, crew_account_num, "Payroll", "CEV Northern Light payroll system", amount)
 			if (paid)
 				total_paid += amount
 				var/sender = "[department.name] account"
 				if (department.funding_type == FUNDING_INTERNAL)
 					//If this wage was funded internally, make sure the recipient knows that
-					sender = "ICSS Hope via [sender]"
+					sender = "CEV Northern Light via [sender]"
 
 				payroll_mail_account_holder(R, sender, amount)
 		department.pending_wages = list() //All pending wages paid off

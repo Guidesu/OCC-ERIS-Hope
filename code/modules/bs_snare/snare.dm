@@ -4,7 +4,11 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "teleporter"
 	w_class = ITEM_SIZE_SMALL
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 6)
+=======
+	origin_tech = list(TECH_BLUESPACE = 6)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	//var/locking_access = access_rd
 	var/silk_id = "" //using by snare controller to teleport user to controller's mark
 

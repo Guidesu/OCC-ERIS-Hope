@@ -353,7 +353,11 @@
 	do_sting(target,thrown)
 	do_thorns(target,thrown)
 
+<<<<<<< HEAD
 	// bluespace tomato code copied over from grown.dm.
+=======
+	// Bluespace tomato code copied over from grown.dm.
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	if(get_trait(TRAIT_TELEPORTING))
 
 		//Plant potency determines radius of teleport.

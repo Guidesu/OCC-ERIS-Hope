@@ -5,7 +5,11 @@
 /obj/item/electronics/circuitboard/telecomms/receiver
 	name = T_BOARD("subspace receiver")
 	build_path = /obj/machinery/telecomms/receiver
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	req_components = list(
 		/obj/item/stock_parts/subspace/ansible = 1,
 		/obj/item/stock_parts/subspace/filter = 1,
@@ -26,7 +30,11 @@
 /obj/item/electronics/circuitboard/telecomms/relay
 	name = T_BOARD("relay mainframe")
 	build_path = /obj/machinery/telecomms/relay
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 4, TECH_bluespace = 3)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 4, TECH_BLUESPACE = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 2,
@@ -69,7 +77,11 @@
 /obj/item/electronics/circuitboard/telecomms/broadcaster
 	name = T_BOARD("subspace broadcaster")
 	build_path = /obj/machinery/telecomms/broadcaster
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	req_components = list(
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,

@@ -12,12 +12,20 @@
 	start_vote(/datum/poll/evac/transfer)
 
 /datum/poll/evac/transfer
+<<<<<<< HEAD
 	name = "Engage bluespace Drive"
+=======
+	name = "Engage Bluespace Drive"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	question = "Do you want to jump to another sector of space and restart the round?"
 	choice_types = list(/datum/vote_choice/transfer, /datum/vote_choice/notransfer)
 
 /datum/vote_choice/transfer
+<<<<<<< HEAD
 	text = "Spool up the bluespace Drive!"
+=======
+	text = "Spool up the Bluespace Drive!"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /datum/vote_choice/transfer/on_win()
 	evacuation_controller.call_evacuation(null, FALSE, TRUE, FALSE, TRUE)

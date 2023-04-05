@@ -1,5 +1,9 @@
 /obj/machinery/bluespacerelay
+<<<<<<< HEAD
 	name = "Emergency bluespace Relay"
+=======
+	name = "Emergency Bluespace Relay"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "This sends messages through bluespace! Wow!"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "bspacerelay"

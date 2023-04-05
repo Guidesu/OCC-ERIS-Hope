@@ -192,7 +192,11 @@ var/list/portal_cache = list()
 	..(loc, 0, exit)
 	deltimer(lifetime)
 	if(msg_admins)
+<<<<<<< HEAD
 		message_admins("bluespace rift created between [jumplink(src)] and [jumplink(src.target)] with [teleportations_left] teleportations left")
+=======
+		message_admins("Bluespace rift created between [jumplink(src)] and [jumplink(src.target)] with [teleportations_left] teleportations left")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/effect/portal/wormhole/rift/pair()
 	partner = null

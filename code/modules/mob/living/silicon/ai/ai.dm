@@ -379,7 +379,11 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 	if(!is_relay_online())
+<<<<<<< HEAD
 		to_chat(usr, SPAN_WARNING("No Emergency bluespace Relay detected. Unable to transmit message."))
+=======
+		to_chat(usr, SPAN_WARNING("No Emergency Bluespace Relay detected. Unable to transmit message."))
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		return
 	if(emergency_message_cooldown)
 		to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))

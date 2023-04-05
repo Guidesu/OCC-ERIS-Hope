@@ -1,12 +1,12 @@
 /obj/effect/overmap/ship/eris
-	name = "ICSS Hope"
+	name = "CEV Northern Light"
 	fore_dir = NORTH
 	vessel_mass = 300
 	default_delay = 20 SECONDS
 	speed_mod = 5 SECONDS
 	base = 1
 
-	name_stages = list("ICSS Hope", "unknown vessel", "unknown spatial phenomenon")//Occulus Edit
+	name_stages = list("CEV Northern Light", "unknown vessel", "unknown spatial phenomenon")//Occulus Edit
 	icon_stages = list("eris", "ship", "poi")
 
 	start_x = 9

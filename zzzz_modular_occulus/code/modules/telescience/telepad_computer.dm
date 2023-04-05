@@ -55,7 +55,11 @@
 
 /obj/machinery/computer/telesci_console/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	addLog("Hawker-Nayala bluespace Tunnel Console initialized. Welcome.")
+=======
+	addLog("Hawker-Nayala Bluespace Tunnel Console initialized. Welcome.")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/machinery/computer/telesci_console/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/tool/multitool))
@@ -139,7 +143,11 @@
 
 		if(inhibitorExploded)
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
+<<<<<<< HEAD
 			a.autosay("ALERT: Extreme bluespace disruption detected in [loc]. Equipment failure imm-m-...", "bluespace Inhibition Node")
+=======
+			a.autosay("ALERT: Extreme bluespace disruption detected in [loc]. Equipment failure imm-m-...", "Bluespace Inhibition Node")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 			qdel(a)
 
 
@@ -236,7 +244,11 @@
 		return FALSE
 
 	if(mastermindKey.len == 5 && workingRelays.len < 4)
+<<<<<<< HEAD
 		addLog("bluespace interference detected at target location. Four available relays are required to isolate accurate path.")
+=======
+		addLog("Bluespace interference detected at target location. Four available relays are required to isolate accurate path.")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 		return FALSE
 
 	var/bulls = 0
@@ -497,7 +509,11 @@
 				addLog("Beginning automatic pathfinding calculations for bluespace tunnel to ([targetX],[targetY],[targetZ]).")
 				startPathfinding()
 			else if(dangerous)
+<<<<<<< HEAD
 				addLog("Beginning manual calculations for bluespace tunnel to ([targetX],[targetY],[targetZ]). Warning: bluespace interference detected.")
+=======
+				addLog("Beginning manual calculations for bluespace tunnel to ([targetX],[targetY],[targetZ]). Warning: Bluespace interference detected.")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 				startMastermind()
 			else
 				addLog("Beginning manual calculations for bluespace tunnel to ([targetX],[targetY],[targetZ]).")

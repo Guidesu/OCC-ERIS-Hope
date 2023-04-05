@@ -352,7 +352,11 @@
 	name = "subspace ansible"
 	icon_state = "subspace_ansible"
 	desc = "A compact module capable of sensing extradimensional activity."
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 5 ,TECH_MATERIAL = 4, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 5 ,TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 2)
 
 /obj/item/stock_parts/subspace/filter
@@ -366,33 +370,53 @@
 	name = "subspace amplifier"
 	icon_state = "subspace_amplifier"
 	desc = "A compact micro-machine capable of amplifying weak subspace transmissions."
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1)
 
 /obj/item/stock_parts/subspace/treatment
 	name = "subspace treatment disk"
 	icon_state = "treatment_disk"
 	desc = "A compact micro-machine capable of stretching out hyper-compressed radio waves."
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 2, TECH_MATERIAL = 5, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 2, TECH_MATERIAL = 5, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1)
 
 /obj/item/stock_parts/subspace/analyzer
 	name = "subspace wavelength analyzer"
 	icon_state = "wavelength_analyzer"
 	desc = "A sophisticated analyzer capable of analyzing cryptic subspace wavelengths."
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1)
 
 /obj/item/stock_parts/subspace/crystal
 	name = "ansible crystal"
 	icon_state = "ansible_crystal"
 	desc = "A crystal made from pure glass used to transmit laser databursts to subspace."
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 2)
 
 /obj/item/stock_parts/subspace/transmitter
 	name = "subspace transmitter"
 	icon_state = "subspace_transmitter"
 	desc = "A large piece of equipment used to open a window into the subspace dimension."
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 5, TECH_MATERIAL = 5, TECH_bluespace = 3)
+=======
+	origin_tech = list(TECH_MAGNET = 5, TECH_MATERIAL = 5, TECH_BLUESPACE = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 2, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1)

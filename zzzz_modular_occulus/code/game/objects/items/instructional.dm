@@ -63,7 +63,11 @@
 	icon_state = "instructional_cog_book"
 
 /obj/item/oddity/instructional/common/cog/python
+<<<<<<< HEAD
 	name = "Aerospace Engineering, Avian Biology, and Applications of bluespace"
+=======
+	name = "Aerospace Engineering, Avian Biology, and Applications of Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc =	"A surprisingly in-depth study on the effects of bluespace on the airspeed velocty on unencumbered Swallows."
 	icon_state = "instructional_cog_python"
 

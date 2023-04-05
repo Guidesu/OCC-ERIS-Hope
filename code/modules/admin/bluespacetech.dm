@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
 // bluespace Technician is a godmode avatar designed for debugging and admin actions
+=======
+// Bluespace Technician is a godmode avatar designed for debugging and admin actions
+>>>>>>> parent of ffa6f9f889 (gigantic)
 // Their primary benefit is the ability to spawn in wherever you are, making it quick to get a human for your needs
 // They also have incorporeal flying movement if they choose, which is often the fastest way to get somewhere specific
 // They are mostly invincible, although godmode is a bit imperfect.
@@ -11,8 +15,13 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 /client/proc/cmd_dev_bst()
 	set category = "Debug"
+<<<<<<< HEAD
 	set name = "Spawn bluespace Tech"
 	set desc = "Spawns a bluespace Tech to debug stuff"
+=======
+	set name = "Spawn Bluespace Tech"
+	set desc = "Spawns a Bluespace Tech to debug stuff"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 
 	if(!check_rights(R_ADMIN|R_DEBUG))
@@ -22,9 +31,15 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	var/mob/living/carbon/human/bst/bst = new(T)
 	bst.anchored = TRUE
 	bst.ckey = usr.ckey
+<<<<<<< HEAD
 	bst.name = "bluespace Technician"
 	bst.real_name = "bluespace Technician"
 	bst.voice_name = "bluespace Technician"
+=======
+	bst.name = "Bluespace Technician"
+	bst.real_name = "Bluespace Technician"
+	bst.voice_name = "Bluespace Technician"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	bst.h_style = "Crewcut"
 	var/list/stat_modifiers = list(
 		STAT_ROB = 99,
@@ -61,7 +76,11 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	//Sort out ID
 	var/obj/item/card/id/bst/id = new/obj/item/card/id/bst(bst)
 	id.registered_name = bst.real_name
+<<<<<<< HEAD
 	id.assignment = "bluespace Technician"
+=======
+	id.assignment = "Bluespace Technician"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	id.name = "[id.assignment]"
 	bst.equip_to_slot_or_del(id, slot_wear_id)
 	bst.update_inv_wear_id()
@@ -90,7 +109,11 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	spawn(10)
 		bst_post_spawn(bst)
 
+<<<<<<< HEAD
 	log_admin("bluespace Tech Spawned: X:[bst.x] Y:[bst.y] Z:[bst.z] User:[src]")
+=======
+	log_admin("Bluespace Tech Spawned: X:[bst.x] Y:[bst.y] Z:[bst.z] User:[src]")
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	return 1
 
 /client/proc/bst_post_spawn(mob/living/carbon/human/bst/bst)
@@ -200,7 +223,11 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 /obj/item/device/radio/headset/ert/bst
 	name = "bluespace technician's headset"
+<<<<<<< HEAD
 	desc = "A bluespace Technician's headset. The letters 'BST' are stamped on the side."
+=======
+	desc = "A Bluespace Technician's headset. The letters 'BST' are stamped on the side."
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	translate_binary = TRUE
 	translate_hive = TRUE
 	keyslot1 = new /obj/item/device/encryptionkey/binary
@@ -222,7 +249,11 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 /obj/item/clothing/under/assistantformal/bst
 	name = "bluespace technician's uniform"
+<<<<<<< HEAD
 	desc = "A bluespace Technician's Uniform. There is a logo on the sleeve that reads 'BST'."
+=======
+	desc = "A Bluespace Technician's Uniform. There is a logo on the sleeve that reads 'BST'."
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	has_sensor = FALSE
 	sensor_mode = 0
 	siemens_coefficient = 0
@@ -307,7 +338,11 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	else
 		..()
 
+<<<<<<< HEAD
 	return TRUE //Because bluespace
+=======
+	return TRUE //Because Bluespace
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/card/id/bst
 	icon_state = "centcom"

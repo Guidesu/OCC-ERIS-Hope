@@ -6,7 +6,11 @@
 	item_state = "bsdm"
 	max_storage_space = DEFAULT_BULKY_STORAGE
 	max_w_class = ITEM_SIZE_BULKY
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 3, TECH_COVERT = 3)
+=======
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_COVERT = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_STEEL = 6)
 	spawn_blacklisted = TRUE
 	var/del_on_send = TRUE

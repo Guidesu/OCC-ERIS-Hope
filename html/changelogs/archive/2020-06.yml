@@ -133,7 +133,11 @@
   - rscadd: New sprite for the D-qel Hatter, its the D-qel hatter spite. Shocked we
       know
   - code_imp: The sorting no one asked for but everyone wants* - New medical tab for
+<<<<<<< HEAD
       Rnd tech that has medical items. bluespace Snar stuff now is in bluespace tab.
+=======
+      Rnd tech that has medical items. Bluespace Snar stuff now is in Bluespace tab.
+>>>>>>> parent of ffa6f9f889 (gigantic)
   - rscadd: New glowstick type, undark! Its better then the leading brands
   - bugfix: every ban have a cid
   - bugfix: IP ban do not remembers ip if you choose no

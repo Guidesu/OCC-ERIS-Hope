@@ -8,7 +8,11 @@
 	icon = "binarykey"
 
 	required_technologies = list()
+<<<<<<< HEAD
 	required_tech_levels = list(RESEARCH_bluespace = 5)
+=======
+	required_tech_levels = list(RESEARCH_BLUESPACE = 5)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	cost = 2000
 
 	unlocks_designs = list(/datum/design/research/item/binaryencrypt)

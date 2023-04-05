@@ -179,8 +179,13 @@
 	return station_time_in_ticks
 
 /obj/item/integrated_circuit/time/clock/bluespace
+<<<<<<< HEAD
 	name = "integrated clock (bluespace Absolute Time)"
 	desc = "Tells you what the time is, in bluespace Absolute Time, unaffected by local time dilation or other phenomenon."
+=======
+	name = "integrated clock (Bluespace Absolute Time)"
+	desc = "Tells you what the time is, in Bluespace Absolute Time, unaffected by local time dilation or other phenomenon."
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /obj/item/integrated_circuit/time/clock/bluespace/get_time()
 	return REALTIMEOFDAY

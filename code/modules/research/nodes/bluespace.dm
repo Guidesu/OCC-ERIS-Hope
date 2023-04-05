@@ -111,7 +111,11 @@
 							)
 
 /datum/technology/bluespace_shield
+<<<<<<< HEAD
 	name = "bluespace Shields"
+=======
+	name = "Bluespace Shields"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "Improved light-shields with using of bluespace technologies."
 	tech_type = RESEARCH_BLUESPACE
 
@@ -165,8 +169,13 @@
 							)
 
 /datum/technology/bluespace_tools
+<<<<<<< HEAD
 	name = "Advanced bluespace Tech"
 	desc = "In-bluespace storing method, allowing store objects/reagents in bluespace. And The method of separate storage of reagents."
+=======
+	name = "Advanced Bluespace Tech"
+	desc = "In-Bluespace storing method, allowing store objects/reagents in bluespace. And The method of separate storage of reagents."
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	tech_type = RESEARCH_BLUESPACE
 
 	x = 0.8
@@ -185,7 +194,11 @@
 							)
 
 /datum/technology/bluespace_extended
+<<<<<<< HEAD
 	name = "Extended bluespace Tech"
+=======
+	name = "Extended Bluespace Tech"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "Application of the bluespace storing technology to a wider variety of containers."
 	tech_type = RESEARCH_BLUESPACE
 
@@ -205,8 +218,13 @@
 	
 /*
 /datum/technology/bluespace_rped
+<<<<<<< HEAD
 	name = "bluespace RPED"
 	desc = "bluespace RPED"
+=======
+	name = "Bluespace RPED"
+	desc = "Bluespace RPED"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	tech_type = RESEARCH_BLUESPACE
 
 	x = 0.8

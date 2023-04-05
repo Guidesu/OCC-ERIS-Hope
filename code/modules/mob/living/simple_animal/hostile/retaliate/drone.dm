@@ -239,7 +239,11 @@
 		if(spawnees & 8)
 			C = new(src.loc)
 			C.name = "Drone shielding controller"
+<<<<<<< HEAD
 			C.origin_tech = list(TECH_bluespace = rand(3,6))
+=======
+			C.origin_tech = list(TECH_BLUESPACE = rand(3,6))
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 		if(spawnees & 16)
 			C = new(src.loc)

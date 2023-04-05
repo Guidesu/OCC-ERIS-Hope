@@ -518,7 +518,7 @@
 /obj/item/toy/figure/vagabond
 	name = "vagabond figurine"
 	desc = "A \"Space Life\" brand figurine showcasing the form of a random deplorable, wearing one of the ship's uniforms, and an orange bandana. \
-	Must have been custom-made to commemorate the ICSS Hope's doomed voyage."
+	Must have been custom-made to commemorate the Northern Light's doomed voyage."
 	icon_state = "vagabond"
 
 /obj/item/toy/figure/rooster

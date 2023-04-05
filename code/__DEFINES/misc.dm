@@ -170,7 +170,11 @@
 #define TOGGLE_INVENTORY_FLAG 2 //0010
 
 // Default name for announsment system
+<<<<<<< HEAD
 #define ANNOUNSER_NAME "ICSS Hope Automated Announcer"
+=======
+#define ANNOUNSER_NAME "CEV Northern Light System Announcer"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 
 #define LIST_OF_CONSONANT list("a", "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "á", "â", "ã", "ä", "æ", "ç", "é", "ê", "ë", "ì", "í", "ï", "ð", "ñ", "ò", "ô", "õ", "ö", "÷", "ø", "ù")

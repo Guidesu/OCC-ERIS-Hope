@@ -71,7 +71,7 @@
 	info = {"NanoTrasen Science Division
 	4/12/*illegible*
 	<br>
-	I trust you’ve had ample time to revieable to extract a significant amount of data from the sample, and much of it suggw and compile my earlier reports about the bio-mechanical threat known as the “Hivemind”. I’ve taken it upon myself to dedicate most of our rSTUDY OF of the HSTUDY OF STUed- None oever its origin, it is unique to the ICSS Hope, like so many of the anomalies we encounter here.
+	I trust you’ve had ample time to revieable to extract a significant amount of data from the sample, and much of it suggw and compile my earlier reports about the bio-mechanical threat known as the “Hivemind”. I’ve taken it upon myself to dedicate most of our rSTUDY OF of the HSTUDY OF STUed- None oever its origin, it is unique to the Northern Light, like so many of the anomalies we encounter here.
 	<br>
 	Despite the valiant efforts o been able to fully rid the ship of it. Though it can be fought back and seemingly temporarily destroyed, it has shown the capability to emerge after some time and begin it’s attempted conquest once again.
 	<br>
@@ -87,7 +87,7 @@
 	<br>
 	Dr. Zaqel Qarxik
 	NanoTrasen Chief Science Officer
-	ICSS Hope"}
+	CEV Northern Light"}
 
 /obj/item/paper/oscarreport
 	name = "paper- 'Exterminator Report'"
@@ -102,7 +102,7 @@
 	<br>
 	Dr. Zaqel Qarxik
 	NanoTrasen Chief Science Officer
-	ICSS Hope"}
+	CEV Northern Light"}
 
 
 /obj/item/paper/nice

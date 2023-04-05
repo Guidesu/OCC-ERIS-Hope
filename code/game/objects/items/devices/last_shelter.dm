@@ -7,7 +7,11 @@ GLOBAL_DATUM(last_shelter, /obj/item/device/last_shelter)
 	icon_state = "last_shelter"
 	item_state = "last_shelter"
 	price_tag = 20000
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 5, TECH_bluespace = 9, TECH_BIO = 3)
+=======
+	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 9, TECH_BIO = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	spawn_frequency = 0
 	spawn_blacklisted = TRUE
 	var/cooldown = 15 MINUTES

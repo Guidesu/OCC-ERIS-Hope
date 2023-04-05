@@ -156,51 +156,81 @@ other types of metals and chemistry for reagents).
 	sort_string = "VACBB"
 
 /datum/design/research/item/beacon
+<<<<<<< HEAD
 	name = "bluespace tracking beacon design"
 	build_path = /obj/item/device/radio/beacon
 	category = "Telecoms | bluespace"
+=======
+	name = "Bluespace tracking beacon design"
+	build_path = /obj/item/device/radio/beacon
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VADAA"
 
 /datum/design/research/item/bag_holding
 	name = "'Bag of Holding', an infinite capacity bag prototype"
 	desc = "Using localized pockets of bluespace this bag prototype offers incredible storage capacity with the contents weighting nothing. It's a shame the bag itself is pretty heavy."
 	build_path = /obj/item/storage/backpack/holding
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAEAA"
 
 /datum/design/research/item/belt_holding
 	name = "'Belt of Holding', an infinite capacity belt prototype"
 	desc = "Using localized pockets of bluespace this belt prototype offers incredible storage capacity with the contents weighting nothing."
 	build_path = /obj/item/storage/belt/holding
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAEAB"
 
 /datum/design/research/item/pouch_holding
 	name = "'Pouch of Holding', an infinite capacity pouch prototype"
 	desc = "Using localized pockets of bluespace this pouch prototype offers incredible storage capacity with the contents weighting nothing."
 	build_path = /obj/item/storage/pouch/holding
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAEAC"
 
 /datum/design/research/item/trashbag_holding
 	name = "'Trashbag of Holding', an infinite capacity trashbag prototype"
 	desc = "Using localized pockets of bluespace this trashbag prototype offers incredible storage capacity with the contents weighting nothing."
 	build_path = /obj/item/storage/bag/trash/holding
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAEAD"
 
 /datum/design/research/item/oresatchel_holding
 	name = "'Ore satchel of Holding', an infinite capacity ore satchel prototype"
 	desc = "Using localized pockets of bluespace this ore satchel prototype offers incredible storage capacity with the contents weighting nothing."
 	build_path = /obj/item/storage/bag/ore/holding
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VAEAE"
 
 /datum/design/research/item/binaryencrypt
 	name = "Binary encryption key"
 	desc = "Allows for deciphering the binary channel on-the-fly."
 	build_path = /obj/item/device/encryptionkey/binary
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	sort_string = "VASAA"
 
 /datum/design/research/item/glowstick

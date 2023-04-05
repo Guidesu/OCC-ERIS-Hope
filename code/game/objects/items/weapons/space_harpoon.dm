@@ -3,13 +3,21 @@
 
 /obj/item/bluespace_harpoon
 	name = "NT BSD \"Harpoon\""
+<<<<<<< HEAD
 	desc = "The pride of Nanotrasen's bluespace research efforts, this 'harpoon' serves as a tool for short and accurate teleportation of both cargo and personnel through bluespace." // OCCULUS EDIT - Better description
+=======
+	desc = "The pride of Nanotrasen's Bluespace research efforts, this 'harpoon' serves as a tool for short and accurate teleportation of both cargo and personnel through Bluespace." // OCCULUS EDIT - Better description
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	icon_state = "harpoon-1"
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEM_SIZE_NORMAL
 	throw_speed = 4
 	throw_range = 20
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 5)
+=======
+	origin_tech = list(TECH_BLUESPACE = 5)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	price_tag = 4000
 	matter = list(MATERIAL_SILVER = 10, MATERIAL_GOLD = 5, MATERIAL_PHORON = 20, MATERIAL_PLASTIC = 20)
 	spawn_blacklisted = TRUE

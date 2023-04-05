@@ -6,7 +6,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = DEPARTMENT_COMMAND
 	head_position = 1
 	department_flag = COMMAND
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your heart, wisdom and NanoTrasen"
@@ -24,7 +24,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	outfit_type = /decl/hierarchy/outfit/job/captain
 
 	description = "You are the Captain. <br>\
-The assigned supervisor of the vast rusting hulk that is the ICSS Hope. At least, as long as you keep sending the expedition reports.<br>\
+The assigned supervisor of the vast rusting hulk that is the CEV Northern Light. At least, as long as you keep sending the expedition reports.<br>\
 This ship is a pinnacle of your career, crewed by an alliance of corporations and factions that must cooperate to survive.<br>\
 
 You are the leader of this ship. Your word is law, but only as long as you can enforce that law.<br>\
@@ -34,7 +34,7 @@ Treat your command officers with respect, and listen to their council. Try not t
 You are a free agent, able to go where you will. Your loyalty given to whoever you see fit. You cannot run this ship alone, however. You need everyone."
 
 	loyalties = "Your first loyalty is to The Board of Investors. The board appointed you here as their representative and CEO. Do not disappoint them. <br>\
-	Your second loyalty is to the ICSS Hope, your ship. It is the pinnacle of your career, and you are nothing without it. If it were to be destroyed, you and your descendants would be ruined for centuries. <br>\
+	Your second loyalty is to the Northern Light, your ship. It is the pinnacle of your career, and you are nothing without it. If it were to be destroyed, you and your descendants would be ruined for centuries. <br>\
 	Your third loyalty is to your command staff. They represent their entire faction while on-duty. Listen to their counsel. Ensure their interests are served. Keep them happy"
 
 	stat_modifiers = list(
@@ -75,7 +75,7 @@ You are a free agent, able to go where you will. Your loyalty given to whoever y
 	department = DEPARTMENT_COMMAND
 	head_position = 1
 	department_flag = COMMAND
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"

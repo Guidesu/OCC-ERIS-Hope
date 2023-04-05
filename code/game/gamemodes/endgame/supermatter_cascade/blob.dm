@@ -1,6 +1,10 @@
 // QUALITY COPYPASTA
 /turf/unsimulated/wall/supermatter
+<<<<<<< HEAD
 	name = "bluespace"
+=======
+	name = "Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "THE END IS right now actually."
 
 	icon = 'icons/turf/space.dmi'

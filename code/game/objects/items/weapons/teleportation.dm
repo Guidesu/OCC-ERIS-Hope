@@ -16,7 +16,11 @@
 	w_class = ITEM_SIZE_SMALL
 	throw_speed = 3
 	throw_range = 5
+<<<<<<< HEAD
 	origin_tech = list(TECH_MAGNET = 1, TECH_bluespace = 3)
+=======
+	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	matter = list(MATERIAL_PLASTIC = 3, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1, MATERIAL_URANIUM = 1)
 	spawn_blacklisted = TRUE///obj/item/hand_tele
 	var/obj/item/cell/cell

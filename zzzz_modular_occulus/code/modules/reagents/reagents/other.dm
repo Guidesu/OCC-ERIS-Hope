@@ -190,7 +190,11 @@ datum/reagent/nitrate
 //Still teleports people into space. Need to figure out why.. But otherwise good to go.
 /datum/reagent/liquid_bluespace
 	id = "liquid_bluespace"
+<<<<<<< HEAD
 	name = "Liquid bluespace"
+=======
+	name = "Liquid Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	description = "Appears to bend local spacetime around the container"
 	color = "#4ECBF5"
 	metabolism = 0

@@ -1,5 +1,9 @@
 /mob/living/carbon/superior_animal/roach/bluespace
+<<<<<<< HEAD
 	name = "bluespace roach"
+=======
+	name = "Bluespace roach"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	desc = "A bluespace roach"
 	icon_state = "bluespaceroach"
 	maxHealth = 25

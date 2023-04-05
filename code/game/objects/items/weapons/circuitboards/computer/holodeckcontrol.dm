@@ -5,7 +5,11 @@
 /obj/item/electronics/circuitboard/holodeckcontrol
 	name = T_BOARD("holodeck control console")
 	build_path = /obj/machinery/computer/HolodeckControl
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 2, TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	var/last_to_emag
 	var/linkedholodeck_area
 	var/list/supported_programs

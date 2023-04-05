@@ -443,13 +443,21 @@
 	category = CAT_BLUE
 
 /datum/design/research/circuit/bssilk/console
+<<<<<<< HEAD
 	name = "bluespace Snare Control Console"
+=======
+	name = "Bluespace Snare Control Console"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	build_path = /obj/item/electronics/circuitboard/bssilk_cons
 	sort_string = "VAAAK"
 	category = CAT_BLUE
 
 /datum/design/research/circuit/bssilk/hub
+<<<<<<< HEAD
 	name = "bluespace Snare Hub"
+=======
+	name = "Bluespace Snare Hub"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	build_path = /obj/item/electronics/circuitboard/bssilk_hub
 	sort_string = "VAAAG"
 	category = CAT_BLUE

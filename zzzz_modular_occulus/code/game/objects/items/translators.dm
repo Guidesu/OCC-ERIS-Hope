@@ -91,7 +91,11 @@
 /datum/design/research/item/translator
 	name = "Handheld Translator"
 	build_path = /obj/item/device/universal_translator
+<<<<<<< HEAD
 	category = "Telecoms | bluespace"
+=======
+	category = "Telecoms | Bluespace"
+>>>>>>> parent of ffa6f9f889 (gigantic)
 
 /datum/design/research/item/translator/ear
 	name = "Translator Earpiece"

@@ -117,12 +117,12 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 						)
 
 	var/overmap_z
-	var/overmap_size = 50 * 13
-	var/overmap_event_areas = 40 * 20
+	var/overmap_size = 50 * 4
+	var/overmap_event_areas = 40 * 16
 
-	var/emergency_shuttle_docked_message = "The safety pods are now armed. You have approximately %ETD% to board the safety pods."
-	var/emergency_shuttle_leaving_dock = "The safety pods have been launched, arriving at ICMS Destiny point in %ETA%."
-	var/emergency_shuttle_called_message = "The emergency evacuation procedures are now in effect. Safety pods will be armed in %ETA%"
+	var/emergency_shuttle_docked_message = "The escape pods are now armed. You have approximately %ETD% to board the escape pods."
+	var/emergency_shuttle_leaving_dock = "The escape pods have been launched, arriving at rendezvous point in %ETA%."
+	var/emergency_shuttle_called_message = "The emergency evacuation procedures are now in effect. Escape pods will be armed in %ETA%"
 	var/emergency_shuttle_recall_message = "Emergency evacuation sequence aborted. Return to normal operating conditions."
 
 	var/shuttle_docked_message = "Jump preparation complete. The bluespace drive is now spooling up, secure all stations for departure. Time to jump: approximately %ETD%."
@@ -130,7 +130,7 @@ ADMIN_VERB_ADD(/client/proc/test_MD, R_DEBUG, null)
 	var/shuttle_called_message = "Jump sequence initiated. Transit procedures are now in effect. Jump in %ETA%."
 	var/shuttle_recall_message = "Jump sequence aborted, return to normal operating conditions."
 
-	var/list/usable_email_tlds = list("ICSS_Hope.org","hope.scg","hope.net")
+	var/list/usable_email_tlds = list("cev_northern_light.org","northern_light.scg","northern_light.net")
 	var/path = "eris"
 
 	var/access_modify_region = list(

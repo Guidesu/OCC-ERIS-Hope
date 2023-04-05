@@ -120,7 +120,11 @@
 	max_storage_space = INFINITY
 	max_w_class = ITEM_SIZE_BULKY
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_GOLD = 4, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 4)
+=======
+	origin_tech = list(TECH_BLUESPACE = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	can_hold = list(/obj/item/ore,
 	                /obj/item/reagent_containers/food/snacks/grown,
 	                /obj/item/seeds,

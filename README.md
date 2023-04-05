@@ -1,4 +1,4 @@
-# Pride of NanoTrasen: NEV ICSS Hope [![Build Status](https://travis-ci.com/SyzygyStation/Syzygy-Eris.svg?branch=master)](https://travis-ci.com/SyzygyStation/Syzygy-Eris)
+# Pride of NanoTrasen: NEV Northern Light [![Build Status](https://travis-ci.com/SyzygyStation/Syzygy-Eris.svg?branch=master)](https://travis-ci.com/SyzygyStation/Syzygy-Eris)
 
 
 ## CONTRIBUTING

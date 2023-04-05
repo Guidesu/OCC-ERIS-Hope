@@ -5,7 +5,7 @@
 	department = DEPARTMENT_GUILD
 	head_position = 1
 	department_flag = GUILD | COMMAND
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your greed"
@@ -24,7 +24,7 @@
 		STAT_VIG = 10
 	)
 
-	description = "You are the head of the local branch of Free Trade Union, and ICSS Hope's Union representative<br>\
+	description = "You are the head of the local branch of Free Trade Union, and Northern Light's Union representative<br>\
 A staunch entrepreneur, you are motivated by profit, for the Union and especially for yourself. You are here firstly to make as much money as you can, and secondly to keep the crew supplied. You can order things at cargo using the local Union funds, these will not magically replenish so you will run out of money quickly if you don't charge. Take payments by card or cash, and deposit them into the Union account to enable more purchases.<br>\
 <br>\
 The Union also operates all the vendors on the ship, every credit paid into them goes to your Union account. Naturally operating is a two way street, you are expected, when necessary, to refill those vendors. Or send a technician to do it<br>\
@@ -33,7 +33,7 @@ You do not recieve a salary, but the local Union funds are yours to use. You may
 <br>\
 Things to bear in mind:<br>\
 	-Nobody has a right to free stuff. You are well within your rights to charge for anything you distribute, and you won't make a penny if you don't.<br>\
-	-ICSS Hope has few laws on contraband. If someone wants something and they can afford it, you get it for them. Don't try to play moral guardian and don't ask questions. You are not responsible for whatever they do with your products.<br>\
+	-CEV Northern Light has few laws on contraband. If someone wants something and they can afford it, you get it for them. Don't try to play moral guardian and don't ask questions. You are not responsible for whatever they do with your products.<br>\
 	-Loyalty is a priceless resource, yet cheap to maintain. Don't screw over the miners and technicians working under you. <br>\
 	-Charity is a weapon. Used correctly, it can do wonders for your public image.  A few gifts spread around makes for good returning customers"
 
@@ -45,7 +45,7 @@ Deploy your mining staff to harvest matter and materials<br>\
 Counsel the captain on directing the ship towards profitable opportunities"
 
 	loyalties = "As a merchant, your first loyalty is to money. You should be unscrupulous, willing to sell anything to anyone if they can pay your prices. Direct the ship towards profitable endeavours, and press the captain to make choices that will be financially lucrative<br>\
-Your second loyalty is to the Union. Ensure it retains good relations with privateers like the captain of the ICSS Hope, and don't embarass it. This means limiting your price gouging to only moderate levels. If you make an enemy of everyone, it may prove a costly mistake"
+Your second loyalty is to the Union. Ensure it retains good relations with privateers like the captain of the Northern Light, and don't embarass it. This means limiting your price gouging to only moderate levels. If you make an enemy of everyone, it may prove a costly mistake"
 
 	software_on_spawn = list(///datum/computer_file/program/supply,
 							 ///datum/computer_file/program/deck_management,
@@ -67,7 +67,7 @@ Your second loyalty is to the Union. Ensure it retains good relations with priva
 	flag = GUILDTECH
 	department = DEPARTMENT_GUILD
 	department_flag = GUILD
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Free Trade Union Merchant"
@@ -120,7 +120,7 @@ Your main duties are to keep the local Union branch operational and profitable. 
 	flag = MINER
 	department = DEPARTMENT_GUILD
 	department_flag = GUILD
-	faction = "ICSS Hope"
+	faction = "CEV Northern Light"
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Free Trade Union Merchant"

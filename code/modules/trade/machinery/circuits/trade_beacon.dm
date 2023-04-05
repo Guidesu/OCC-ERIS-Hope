@@ -1,5 +1,9 @@
 /obj/item/electronics/circuitboard/trade_beacon
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 2)
+=======
+	origin_tech = list(TECH_BLUESPACE = 2)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	board_type = "machine"
 	req_components = list(
 		/obj/item/stock_parts/subspace/crystal = 1,

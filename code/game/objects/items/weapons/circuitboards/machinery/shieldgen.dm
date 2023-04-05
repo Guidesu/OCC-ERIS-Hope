@@ -29,7 +29,11 @@
 	board_type = "machine"
 	matter = list(MATERIAL_GLASS = 2, MATERIAL_GOLD = 1)
 	build_path = /obj/machinery/shieldwallgen
+<<<<<<< HEAD
 	origin_tech = list(TECH_bluespace = 3, TECH_MAGNET = 3)
+=======
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	req_components = list(
 		/obj/item/stock_parts/subspace/transmitter = 1,
 		/obj/item/stock_parts/subspace/crystal = 1,

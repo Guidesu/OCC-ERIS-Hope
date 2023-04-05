@@ -7,7 +7,11 @@
 	w_class = ITEM_SIZE_TINY
 	max_amount = 50
 	flags = NOBLUDGEON
+<<<<<<< HEAD
 	origin_tech = list(TECH_MATERIAL = 6, TECH_bluespace = 4)
+=======
+	origin_tech = list(TECH_MATERIAL = 6, TECH_BLUESPACE = 4)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	price_tag = 50
 	spawn_blacklisted = TRUE
 

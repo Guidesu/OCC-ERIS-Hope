@@ -115,7 +115,11 @@ GLOBAL_VAR_INIT(bluespace_distotion_cooldown, 10 MINUTES)
 	if(GLOB.bluespace_gift <= 0 && !minor_distortion)
 		new /obj/item/oddity/broken_necklace(T)
 		do_sparks(3, 0, T)
+<<<<<<< HEAD
 		log_and_message_admins("bluespace gif spawned: [jumplink(T)]") //unique item
+=======
+		log_and_message_admins("Bluespace gif spawned: [jumplink(T)]") //unique item
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	else
 		second_gift *= 10
 	if(prob(second_gift))

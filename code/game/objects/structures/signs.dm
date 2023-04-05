@@ -545,7 +545,7 @@
 
 /obj/structure/sign/faction/moebius
 	name = "NanoTrasen Laboratories"
-	desc = "A shady megacorporation that owns the ICSS Hope "
+	desc = "A shady megacorporation that owns the Northern Light "
 	icon_state = "moebius"
 
 /obj/structure/sign/faction/neotheology

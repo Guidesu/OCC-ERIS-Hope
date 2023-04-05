@@ -1,12 +1,20 @@
 /obj/item/electronics/circuitboard/bssilk_cons
 	name = T_BOARD("bluespace snare console")
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 4, TECH_bluespace = 6)
+=======
+	origin_tech = list(TECH_DATA = 4, TECH_BLUESPACE = 6)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	build_path = /obj/machinery/computer/bssilk_control
 
 /obj/item/electronics/circuitboard/bssilk_hub
 	name = T_BOARD("bluespace snare hub")
 	icon_state = "mainboard"
+<<<<<<< HEAD
 	origin_tech = list(TECH_DATA = 4, TECH_bluespace = 6)
+=======
+	origin_tech = list(TECH_DATA = 4, TECH_BLUESPACE = 6)
+>>>>>>> parent of ffa6f9f889 (gigantic)
 	build_path = /obj/machinery/bssilk_hub
 	req_components = list(
 		/obj/item/bluespace_crystal = 2,

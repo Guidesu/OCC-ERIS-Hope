@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //The bluespace Drive//
+=======
+//The Bluespace Drive//
+>>>>>>> parent of ffa6f9f889 (gigantic)
 //This thing is spoiler heavy. Do not map this or use it WITHOUT MY PERMISSION -Ikky
 //Unless you're downstream then I can't stop you.
 
