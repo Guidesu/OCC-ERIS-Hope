@@ -36,6 +36,9 @@
 
 	bad_type = /obj/item/gun/energy
 
+	wield_delay = 0 SECOND
+	wield_delay_factor = 0
+
 /obj/item/gun/energy/switch_firemodes()
 	. = ..()
 	if(.)

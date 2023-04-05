@@ -1403,11 +1403,18 @@
 	product_ads = "Praise!;Pray!;Obey!"
 	icon_state = "teomat"
 	vendor_department = DEPARTMENT_CHURCH
-	products = list(/obj/item/book/ritual/cruciform = 10, /obj/item/storage/fancy/candle_box = 10, /obj/item/reagent_containers/food/drinks/bottle/ntcahors = 20)
+	products = list(
+		/obj/item/book/ritual/cruciform = 10, 
+		/obj/item/storage/fancy/candle_box = 10, 
+		/obj/item/reagent_containers/food/drinks/bottle/ntcahors = 20, 
+		)
 	contraband = list(/obj/item/implant/core_implant/cruciform = 3)
-	prices = list(/obj/item/book/ritual/cruciform = 500, /obj/item/storage/fancy/candle_box = 200, /obj/item/reagent_containers/food/drinks/bottle/ntcahors = 250,
-				/obj/item/implant/core_implant/cruciform = 1000)
-
+	prices = list(
+		/obj/item/book/ritual/cruciform = 500, 
+		/obj/item/storage/fancy/candle_box = 200, 
+		/obj/item/reagent_containers/food/drinks/bottle/ntcahors = 250, 
+		/obj/item/implant/core_implant/cruciform = 1000
+	)
 /obj/machinery/vending/powermat
 	name = "Power-Mat"
 	desc = "Trust is power, and there's no power you can trust like Robustcell."
@@ -1483,7 +1490,8 @@
 					/obj/item/ammo_magazine/sllrifle = 20,
 					/obj/item/ammo_magazine/ammobox/lrifle_small = 30,
 					/obj/item/storage/ration_pack = 10,
-					/obj/item/clothing/mask/balaclava = 50
+					/obj/item/clothing/mask/balaclava = 50,
+					/obj/item/storage/hcases/ammo/serb = 10
 					)
 	prices = list(
 					/obj/item/reagent_containers/food/drinks/bottle/vodka = 50,
@@ -1495,7 +1503,8 @@
 					/obj/item/ammo_magazine/ammobox/lrifle_small = 400,
 					/obj/item/ammo_magazine/srifle = 200,
 					/obj/item/storage/ration_pack = 800,
-					/obj/item/clothing/mask/balaclava = 100
+					/obj/item/clothing/mask/balaclava = 100,
+					/obj/item/storage/hcases/ammo/serb = 300
 					)
 	idle_power_usage = 211
 	vendor_department = DEPARTMENT_CIVILIAN
@@ -1586,6 +1595,7 @@
 	var/choice = sanitize(input("What do you want to name your Vendomat? You can rename it again later.", "Vendomat Renaming", name) as text|null, MAX_NAME_LEN)
 	if(choice)
 		SetName(choice)
+
 
 
 #undef CUSTOM_VENDOMAT_MODELS

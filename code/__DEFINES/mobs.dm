@@ -116,6 +116,7 @@
 #define ONLY_GHOSTS_IN_VIEW 0
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
+#define MOB_GIGANTIC	120
 #define MOB_HUGE 		80
 #define MOB_LARGE  		40
 #define MOB_MEDIUM 		20
@@ -227,7 +228,7 @@
 #define SPECIES_MONKEY_UNATHI	"Stok"
 
 //species defines
-#define SPECIES_AKULA			"Akula"
+#define SPECIES_AKULA			"Shucan"
 #define SPECIES_ALRAUNE			"Alraune"
 #define SPECIES_NEVREAN			"Nevrean"
 #define SPECIES_PROTEAN			"Protean"
