@@ -4,7 +4,7 @@
 	head_position = 1
 	department = DEPARTMENT_ENGINEERING
 	department_flag = ENGINEERING | COMMAND
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain and NanoTrasen"
@@ -64,7 +64,7 @@ Your second loyalty is to your workers. Ensure they are paid, fed and safe. Don'
 	flag = TECHNOMANCER
 	department = DEPARTMENT_ENGINEERING
 	department_flag = ENGINEERING
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the Chief Engineer"

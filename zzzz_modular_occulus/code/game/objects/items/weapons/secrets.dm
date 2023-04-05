@@ -87,7 +87,7 @@
 	<br>
 	Dr. Zaqel Qarxik
 	NanoTrasen Chief Science Officer
-	CEV Northern Light"}
+	ICSS Hope"}
 
 /obj/item/paper/oscarreport
 	name = "paper- 'Exterminator Report'"
@@ -102,7 +102,7 @@
 	<br>
 	Dr. Zaqel Qarxik
 	NanoTrasen Chief Science Officer
-	CEV Northern Light"}
+	ICSS Hope"}
 
 
 /obj/item/paper/nice

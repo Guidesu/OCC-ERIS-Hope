@@ -9,7 +9,7 @@
 /datum/computer_file/report/recipient/crew_transfer/generate_fields()
 	..()
 	var/list/xo_fields = list()
-	add_field(/datum/report_field/instruction, "CEV Northern Light - Office of the Head of Personnel")
+	add_field(/datum/report_field/instruction, "ICSS Hope - Office of the Head of Personnel")
 	add_field(/datum/report_field/people/from_manifest, "Name (XO)")
 	add_field(/datum/report_field/people/from_manifest, "Name (applicant)", required = 1)
 	add_field(/datum/report_field/date, "Date filed")
@@ -35,7 +35,7 @@
 /datum/computer_file/report/recipient/access_modification/generate_fields()
 	..()
 	var/list/xo_fields = list()
-	add_field(/datum/report_field/instruction, "CEV Northern Light - Office of the Head of Personnel")
+	add_field(/datum/report_field/instruction, "ICSS Hope - Office of the Head of Personnel")
 	add_field(/datum/report_field/people/from_manifest, "Name (XO)")
 	add_field(/datum/report_field/people/from_manifest, "Name (applicant)", required = 1)
 	add_field(/datum/report_field/date, "Date filed")
@@ -61,7 +61,7 @@
 /datum/computer_file/report/recipient/borging/generate_fields()
 	..()
 	var/list/xo_fields = list()
-	add_field(/datum/report_field/instruction, "CEV Northern Light - Office of the Head of Personnel")
+	add_field(/datum/report_field/instruction, "ICSS Hope - Office of the Head of Personnel")
 	add_field(/datum/report_field/people/from_manifest, "Name (XO)")
 	add_field(/datum/report_field/people/from_manifest, "Name (subject)", required = 1)
 	add_field(/datum/report_field/date, "Date filed")
@@ -88,7 +88,7 @@
 
 /datum/computer_file/report/recipient/sec/investigation/generate_fields()
 	..()
-	add_field(/datum/report_field/instruction, "Aegis Division CEV Northern Light")
+	add_field(/datum/report_field/instruction, "Aegis Division ICSS Hope")
 	add_field(/datum/report_field/instruction, "For internal use only.")
 	add_field(/datum/report_field/people/from_manifest, "Name")
 	add_field(/datum/report_field/date, "Date")
@@ -106,7 +106,7 @@
 
 /datum/computer_file/report/recipient/sec/incident/generate_fields()
 	..()
-	add_field(/datum/report_field/instruction, "Aegis Division CEV Northern Light")
+	add_field(/datum/report_field/instruction, "Aegis Division ICSS Hope")
 	add_field(/datum/report_field/instruction, "To be filled out by Operative on duty responding to the Incident. Report must be signed and submitted before the end of the shift!")
 	add_field(/datum/report_field/people/from_manifest, "Reporting Operative")
 	add_field(/datum/report_field/simple_text, "Offense/Incident Type")
@@ -128,7 +128,7 @@
 /datum/computer_file/report/recipient/sec/evidence/generate_fields()
 	..()
 	var/datum/report_field/temp_field
-	add_field(/datum/report_field/instruction, "Aegis Division CEV Northern Light")
+	add_field(/datum/report_field/instruction, "Aegis Division ICSS Hope")
 	add_field(/datum/report_field/date, "Date")
 	add_field(/datum/report_field/time, "Time")
 	add_field(/datum/report_field/people/from_manifest, "Confiscated from")
@@ -154,7 +154,7 @@
 
 /datum/computer_file/report/recipient/docked/generate_fields()
 	..()
-	add_field(/datum/report_field/instruction, "CEV Northern Light Supply and Hangar Management Department")
+	add_field(/datum/report_field/instruction, "ICSS Hope Supply and Hangar Management Department")
 	add_field(/datum/report_field/instruction, "General Info")
 	add_field(/datum/report_field/date, "Date")
 	add_field(/datum/report_field/simple_text, "Vessel Name")
@@ -186,7 +186,7 @@
 
 /datum/computer_file/report/recipient/fauna/generate_fields()
 	..()
-	add_field(/datum/report_field/instruction, "CEV Northern Light Expeditions")
+	add_field(/datum/report_field/instruction, "ICSS Hope Expeditions")
 	add_field(/datum/report_field/instruction, "The following is to be filled out by members of a Expedition team after discovery and study of new alien life forms.")
 	add_field(/datum/report_field/date, "Date")
 	add_field(/datum/report_field/people/list_from_manifest, "Personnel Involved")
@@ -207,7 +207,7 @@
 	logo = "\[moebius\]"
 
 /datum/computer_file/report/recipient/nt/proc/add_header()
-	add_field(/datum/report_field/simple_text, "Vessel", "CEV Northern Light")
+	add_field(/datum/report_field/simple_text, "Vessel", "ICSS Hope")
 	add_field(/datum/report_field/date, "Date")
 	add_field(/datum/report_field/time, "Time")
 	add_field(/datum/report_field/simple_text, "Index")
@@ -270,7 +270,7 @@
 
 /datum/computer_file/report/recipient/nt/incident/ship
 	form_name = "CEV-3203"
-	title = "CEV Northern Light Ship Incident Report"
+	title = "ICSS Hope Ship Incident Report"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/incident/ship/generate_fields()
@@ -281,7 +281,7 @@
 
 /datum/computer_file/report/recipient/nt/incident/personnel
 	form_name = "CEV-3205"
-	title = "CEV Northern Light Personnel Incident Report"
+	title = "ICSS Hope Personnel Incident Report"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/incident/personnel/generate_fields()
@@ -291,13 +291,13 @@
 
 /datum/computer_file/report/recipient/nt/incident/asset
 	form_name = "CEV-3201"
-	title = "CEV Northern Light Asset Incident Report"
+	title = "ICSS Hope Asset Incident Report"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/incident/asset/generate_fields()
 	..()
-	add_field(/datum/report_field/pencode_text, "CEV Northern Light Employee Injuries")
-	add_field(/datum/report_field/pencode_text, "CEV Northern Light Assets Lost")
+	add_field(/datum/report_field/pencode_text, "ICSS Hope Employee Injuries")
+	add_field(/datum/report_field/pencode_text, "ICSS Hope Assets Lost")
 	add_signatures()
 
 /datum/computer_file/report/recipient/nt/incident/xeno
@@ -324,7 +324,7 @@
 
 /datum/computer_file/report/recipient/nt/incident/synth
 	form_name = "CEV-3213X"
-	title = "CEV Northern Light Synthetic Incident Report"
+	title = "ICSS Hope Synthetic Incident Report"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/incident/synth/generate_fields()
@@ -334,7 +334,7 @@
 
 /datum/computer_file/report/recipient/nt/incident/crew
 	form_name = "CEV-3241"
-	title = "CEV Northern Light Ship Crew/Employee Incident Report"
+	title = "ICSS Hope Ship Crew/Employee Incident Report"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/incident/crew/generate_fields()
@@ -433,7 +433,7 @@
 
 /datum/computer_file/report/recipient/nt/visa
 	form_name = "CEV-0952"
-	title = "CEV Northern Light ID or PDA Request Form"
+	title = "ICSS Hope ID or PDA Request Form"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/nt/visa/generate_fields()
@@ -473,7 +473,7 @@
 
 /datum/computer_file/report/recipient/sol/audit
 	form_name = "NDA-AG-12"
-	title = "CEV Northern Light Department Audit"
+	title = "ICSS Hope Department Audit"
 	available_on_ntnet = 1
 
 /datum/computer_file/report/recipient/sol/audit/generate_fields()

@@ -6,7 +6,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = DEPARTMENT_COMMAND
 	head_position = 1
 	department_flag = COMMAND
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your heart, wisdom and NanoTrasen"
@@ -24,7 +24,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	outfit_type = /decl/hierarchy/outfit/job/captain
 
 	description = "You are the Captain. <br>\
-The assigned supervisor of the vast rusting hulk that is the CEV Northern Light. At least, as long as you keep sending the expedition reports.<br>\
+The assigned supervisor of the vast rusting hulk that is the ICSS Hope. At least, as long as you keep sending the expedition reports.<br>\
 This ship is a pinnacle of your career, crewed by an alliance of corporations and factions that must cooperate to survive.<br>\
 
 You are the leader of this ship. Your word is law, but only as long as you can enforce that law.<br>\
@@ -75,7 +75,7 @@ You are a free agent, able to go where you will. Your loyalty given to whoever y
 	department = DEPARTMENT_COMMAND
 	head_position = 1
 	department_flag = COMMAND
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"

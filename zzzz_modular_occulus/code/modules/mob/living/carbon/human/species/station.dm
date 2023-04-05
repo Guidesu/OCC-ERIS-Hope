@@ -8,7 +8,7 @@
 	spawn_flags = SPECIES_IS_RESTRICTED
 
 /datum/species/hi_zoxxen
-	blurb = "The Zorren are a species native to Virgo Prime, the planet in which the CEV Northern Light crash-landed. \
+	blurb = "The Zorren are a species native to Virgo Prime, the planet in which the ICSS Hope crash-landed. \
 	Vaugely fox-like, this species was the first client species of Solgov, and humanity as a whole. \
 	Possessing many unique and highly desirable genetic traits, they were rapidly integrated into \
 	The United Terran Systems over the course of the last century. With the rapid expansion of genemodding and the incoporation of \

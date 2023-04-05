@@ -1,7 +1,7 @@
 /datum/storyteller/erida
 	config_tag = "erida"
 	name = "Erida"
-	welcome = "Welcome to CEV Northern Light!"
+	welcome = "Welcome to ICSS Hope!"
 	description = "Experimental storyteller based on card deck system"
 
 	var/deck_size = 0

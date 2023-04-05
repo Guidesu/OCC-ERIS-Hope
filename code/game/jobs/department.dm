@@ -51,7 +51,7 @@
 	Command
 **************/
 /datum/department/command
-	name = "CEV Northern Light Command"
+	name = "ICSS Hope Command"
 	id = DEPARTMENT_COMMAND
 	/*
 	The command account is the ship account. It is the master account that retainer departments are paid from,
@@ -72,7 +72,7 @@
 
 //Eclipse Edit: Engineering - moved in-house
 /datum/department/technomancers
-	name = "CEV Northern Light Engineering"
+	name = "ICSS Hope Engineering"
 	id = DEPARTMENT_ENGINEERING
 
 /datum/department/ironhammer
@@ -80,7 +80,7 @@
 	id = DEPARTMENT_SECURITY
 
 /datum/department/civilian
-	name = "CEV Northern Light Civic"
+	name = "ICSS Hope Civic"
 	id = DEPARTMENT_CIVILIAN
 	account_budget = 0
 	account_initial_balance = 0

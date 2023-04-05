@@ -2,7 +2,7 @@
 	title = "AI"
 	flag = AI
 	department_flag = COMMAND
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 0 // Not used for AI, see is_position_available below and modules/mob/living/silicon/ai/latejoin.dm
 	spawn_positions = 1
 	selection_color = "#b5b7cb"
@@ -36,7 +36,7 @@
 	title = "Robot"
 	flag = CYBORG
 	department_flag = MISC
-	faction = "CEV Northern Light"
+	faction = "ICSS Hope"
 	total_positions = 2
 	spawn_positions = 2
 	alt_titles = list("Drone", "Cyborg")
